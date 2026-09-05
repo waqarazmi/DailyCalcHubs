@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | DailyCalcHubs</title>
+  <meta name="description" content="Learn more about DailyCalcHubs - empowering Gulf expats and global households with instant, Shariah-compliant, high-precision financial calculators.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://dailycalchubs.com/about.html">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-18Y3LNHDR8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-18Y3LNHDR8');
+  </script>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6944579701716470" crossorigin="anonymous"></script>
+
+  <!-- Font Awesome & Google Fonts -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-dark: #070d18;
+      --card-bg: rgba(22, 34, 58, 0.82);
+      --card-border: rgba(255, 255, 255, 0.12);
+      --neon-cyan: #00f2fe;
+      --neon-teal: #00c9a7;
+      --neon-green: #00e676;
+      --text-white: #ffffff;
+      --text-muted: #94a3b8;
+      --input-bg: #10192e;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-white);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow-x: hidden;
+      line-height: 1.7;
+    }
+
+    .ambient-motion-bg {
+      position: fixed;
+      top: -40%;
+      left: -40%;
+      width: 180vw;
+      height: 180vh;
+      z-index: -1;
+      background: 
+        radial-gradient(circle at 15% 25%, rgba(0, 201, 167, 0.38) 0%, transparent 40%),
+        radial-gradient(circle at 85% 20%, rgba(245, 120, 30, 0.38) 0%, transparent 42%),
+        radial-gradient(circle at 50% 80%, rgba(59, 130, 246, 0.35) 0%, transparent 45%),
+        linear-gradient(160deg, #050a14 0%, #0a1426 100%);
+      pointer-events: none;
+    }
+
+    .main-nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 18px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: #fff;
+    }
+
+    .logo-img-box {
+      width: 38px;
+      height: 38px;
+      background: linear-gradient(135deg, #00f2fe, #4facfe);
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      color: #fff;
+      box-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
+    }
+
+    .brand-title {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+    }
+
+    .nav-links a {
+      color: #cbd5e1;
+      font-size: 13.5px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--neon-teal);
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 30px auto 60px;
+      padding: 0 20px;
+      width: 100%;
+    }
+
+    .about-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 40px;
+      backdrop-filter: blur(18px);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+    }
+
+    h1 {
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--neon-cyan);
+      margin-bottom: 12px;
+    }
+
+    h2 {
+      font-size: 20px;
+      font-weight: 700;
+      color: #fff;
+      margin: 28px 0 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    h2 i { color: var(--neon-teal); font-size: 18px; }
+
+    p {
+      color: #cbd5e1;
+      font-size: 14.5px;
+      margin-bottom: 16px;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      margin: 20px 0;
+    }
+
+    .feature-box {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 18px;
+    }
+
+    .feature-box h3 {
+      font-size: 16px;
+      color: #00e676;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .feature-box p {
+      font-size: 13px;
+      color: #94a3b8;
+      margin-bottom: 0;
+    }
+
+    footer {
+      margin-top: auto;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 30px 0;
+      background: rgba(5, 9, 18, 0.95);
+      font-size: 13px;
+      color: #64748b;
+    }
+
+    .footer-flex-row {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="ambient-motion-bg"></div>
+
+  <!-- Header Nav -->
+  <header class="main-nav">
+    <a href="index.html" class="logo-container">
+      <div class="logo-img-box"><i class="fas fa-calculator"></i></div>
+      <span class="brand-title">DailyCalcHubs</span>
+    </a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html" class="active">About</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms.html">Terms</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div class="about-card">
+      <h1>About DailyCalcHubs</h1>
+      <p>Welcome to <strong>DailyCalcHubs</strong> (<a href="https://dailycalchubs.com/" style="color:var(--neon-teal);">dailycalchubs.com</a>) — your premier all-in-one destination for instant, precise, and transparent financial calculation utilities.</p>
+
+      <h2><i class="fas fa-bullseye"></i> Our Mission</h2>
+      <p>Our mission is to simplify complex everyday financial computations for Gulf expatriates (Saudi Arabia, UAE, Qatar, Kuwait, Oman, Bahrain), Non-Resident Indians (NRIs), and global households. We bridge the gap between volatile live financial markets and everyday financial decision-making.</p>
+
+      <h2><i class="fas fa-toolbox"></i> What We Offer</h2>
+      <div class="feature-grid">
+        <div class="feature-box">
+          <h3><i class="fas fa-globe"></i> Live Forex Converter</h3>
+          <p>Real-time exchange rate calculations covering SAR, AED, USD, KWD, QAR, INR, PKR, BDT, and PHP with live market sync.</p>
+        </div>
+        <div class="feature-box">
+          <h3><i class="fas fa-coins"></i> Shariah Zakat Calculator</h3>
+          <p>Strict 2.5% wealth computation on gold, silver, bank cash, and business trade assets using live Nisab thresholds.</p>
+        </div>
+        <div class="feature-box">
+          <h3><i class="fas fa-wallet"></i> Saudi EOSB Gratuity</h3>
+          <p>End of Service Benefit calculations compliant with Saudi Labor Law (Articles 84 and 85).</p>
+        </div>
+        <div class="feature-box">
+          <h3><i class="fas fa-gem"></i> Indian Jeweller GST</h3>
+          <p>Anti-overcharge invoice verification calculating statutory 3% GST and custom making charges across 14K to 24K gold.</p>
+        </div>
+        <div class="feature-box">
+          <h3><i class="fas fa-chart-line"></i> Ethical SIP Growth</h3>
+          <p>Compound interest and mutual fund wealth accumulation projection for long-term financial planning.</p>
+        </div>
+        <div class="feature-box">
+          <h3><i class="fas fa-cake-candles"></i> Exact DOB Age Tracker</h3>
+          <p>High-precision age breakdown in years, months, days, and total elapsed duration.</p>
+        </div>
+      </div>
+
+      <h2><i class="fas fa-user-shield"></i> Why Trust DailyCalcHubs?</h2>
+      <p><strong>100% Privacy & Client-Side Execution:</strong> Unlike traditional financial platforms that capture and store your income and personal assets, DailyCalcHubs executes 100% of calculations in your local browser. Your data remains strictly on your device.</p>
+
+      <h2><i class="fas fa-envelope"></i> Get In Touch</h2>
+      <p>We are constantly refining our algorithms to reflect updated regulations, tax codes, and exchange feeds. For suggestions, partnership inquiries, or feedback, email us at <strong style="color:var(--neon-cyan);">support@dailycalchubs.com</strong>.</p>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-flex-row">
+      <p>&copy; 2026 DailyCalcHubs. All rights reserved.</p>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms.html">Terms</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

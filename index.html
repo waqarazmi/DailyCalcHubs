@@ -1,0 +1,1692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DailyCalcHubs | Smart, Shariah Compliant, Instant Online Financial Utilities</title>
+  <meta name="description" content="Official DailyCalcHubs: High-precision utilities for live SAR to INR foreign exchange, Barq & STC Pay remittance comparisons, Shariah Zakat calculation, Saudi EOSB & Iqama 2026 fee estimation, Prayer Times, and Indian jewellery GST billing.">
+  <meta name="keywords" content="SAR to INR live rate today, Saudi Riyal to Indian Rupee best exchange rate, Barq zero fee remittance India, Al Rajhi Tahweel exchange rate, Urpay vs Mobily Pay charges, Shariah Compliant Zakat calculator 2026, Gold Nisab threshold 24K 22K 21K 18K 16K 14K, Saudi Iqama dependent fee calculator 2026, Saudi End of Service Benefit calculator Article 84 and 85, Prayer Times Dammam Riyadh Jeddah, Indian jewellery GST calculator">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://dailycalchubs.com/">
+
+  <!-- Google AdSense Verification & Script -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6944579701716470" crossorigin="anonymous"></script>
+
+  <!-- Google tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-18Y3LNHDR8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-18Y3LNHDR8');
+  </script>
+
+  <!-- Google Verification -->
+  <meta name="google-site-verification" content="google1a2a5ae0e9960d25.html" />
+
+  <!-- Font Awesome & Google Fonts -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-dark: #070d18;
+      --card-bg: rgba(22, 34, 58, 0.85);
+      --card-border: rgba(255, 255, 255, 0.12);
+      --neon-cyan: #00f2fe;
+      --neon-teal: #00c9a7;
+      --neon-green: #00e676;
+      --neon-orange: #ff9900;
+      --text-white: #ffffff;
+      --text-muted: #94a3b8;
+      --input-bg: #10192e;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', 'Segoe UI Emoji', 'Noto Color Emoji', 'Apple Color Emoji', sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-white);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* AUTOMATIC FLUID MOVING AMBIENT BACKGROUND */
+    .ambient-motion-bg {
+      position: fixed;
+      top: -40%;
+      left: -40%;
+      width: 180vw;
+      height: 180vh;
+      z-index: -1;
+      background: 
+        radial-gradient(circle at 15% 25%, rgba(0, 201, 167, 0.38) 0%, transparent 40%),
+        radial-gradient(circle at 85% 20%, rgba(245, 120, 30, 0.38) 0%, transparent 42%),
+        radial-gradient(circle at 50% 80%, rgba(59, 130, 246, 0.35) 0%, transparent 45%),
+        radial-gradient(circle at 80% 85%, rgba(16, 185, 129, 0.3) 0%, transparent 40%),
+        linear-gradient(160deg, #050a14 0%, #0a1426 100%);
+      animation: continuousFluidDrift 16s ease-in-out infinite alternate;
+      pointer-events: none;
+    }
+
+    @keyframes continuousFluidDrift {
+      0% { transform: translate(0px, 0px) scale(1) rotate(0deg); }
+      50% { transform: translate(45px, -35px) scale(1.05) rotate(3deg); }
+      100% { transform: translate(-35px, 40px) scale(0.98) rotate(-2deg); }
+    }
+
+    /* Top Moving Financial Ticker */
+    .top-ticker-wrap {
+      background: rgba(4, 8, 18, 0.95);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+      overflow: hidden;
+      padding: 8px 0;
+      letter-spacing: 0.5px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+    }
+
+    .ticker-content {
+      display: inline-block;
+      white-space: nowrap;
+      animation: marqueeLoop 28s linear infinite;
+    }
+
+    .ticker-item {
+      display: inline-flex;
+      align-items: center;
+      margin-right: 32px;
+    }
+
+    .ticker-label {
+      color: #94a3b8;
+      margin-right: 6px;
+    }
+
+    .ticker-val {
+      color: var(--neon-teal);
+    }
+
+    .ticker-gold {
+      color: #fbbf24;
+    }
+
+    .ticker-barq {
+      background: rgba(0, 230, 118, 0.18);
+      border: 1px solid #00e676;
+      color: #00e676;
+      padding: 1px 6px;
+      border-radius: 4px;
+      font-size: 10.5px;
+      margin-left: 6px;
+    }
+
+    @keyframes marqueeLoop {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* Header Nav */
+    .main-nav {
+      max-width: 1240px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 18px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: #fff;
+    }
+
+    .logo-img-box {
+      width: 38px;
+      height: 38px;
+      background: linear-gradient(135deg, #00f2fe, #4facfe);
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      color: #fff;
+      box-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
+    }
+
+    .brand-title {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #fff;
+    }
+
+    /* Main Container */
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 15px 24px 60px;
+      flex: 1;
+    }
+
+    .hero-center {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .pill-power-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0, 201, 167, 0.12);
+      border: 1px solid rgba(0, 201, 167, 0.35);
+      color: var(--neon-teal);
+      padding: 6px 14px;
+      border-radius: 30px;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 14px;
+      letter-spacing: 0.5px;
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      background: #00e676;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #00e676;
+      animation: pulseAnim 2s infinite;
+    }
+
+    @keyframes pulseAnim {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+
+    .main-heading {
+      font-size: 34px;
+      font-weight: 800;
+      letter-spacing: -0.8px;
+      margin-bottom: 10px;
+      line-height: 1.25;
+    }
+
+    .heading-green {
+      color: #00e676;
+    }
+
+    .heading-blue {
+      color: #00f2fe;
+    }
+
+    .sub-text {
+      font-size: 15px;
+      color: var(--text-muted);
+      max-width: 750px;
+      margin: 0 auto 25px;
+      line-height: 1.6;
+    }
+
+    /* Pill Tabs Row (All 10 Tabs Sequentially Ordered) */
+    .tabs-pill-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 25px;
+    }
+
+    .tab-item-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      color: #cbd5e1;
+      padding: 10px 18px;
+      border-radius: 30px;
+      font-size: 13.5px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.25s ease;
+    }
+
+    .tab-item-btn:hover {
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+      border-color: rgba(255, 255, 255, 0.25);
+    }
+
+    .tab-item-btn.active-teal {
+      background: linear-gradient(135deg, #00c9a7, #008f7a);
+      color: #fff;
+      border-color: transparent;
+      box-shadow: 0 4px 15px rgba(0, 201, 167, 0.35);
+    }
+
+    .tab-item-btn.active-orange {
+      background: linear-gradient(135deg, #ff9900, #ff5500);
+      color: #fff;
+      border-color: transparent;
+      box-shadow: 0 4px 15px rgba(255, 153, 0, 0.35);
+    }
+
+    /* Calculator Main Card Container */
+    .calculator-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 32px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(16px);
+      margin-bottom: 30px;
+    }
+
+    .tab-content-panel {
+      display: none;
+    }
+
+    .tab-content-panel.active {
+      display: block;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .calc-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .calc-title {
+      font-size: 22px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .calc-subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .auto-sync-tag {
+      background: rgba(0, 230, 118, 0.12);
+      border: 1px solid rgba(0, 230, 118, 0.3);
+      color: #00e676;
+      font-size: 11.5px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Grid Layout */
+    .calc-layout-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap: 28px;
+    }
+
+    .form-group-item {
+      margin-bottom: 18px;
+    }
+
+    .field-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      font-weight: 600;
+      color: #cbd5e1;
+      margin-bottom: 8px;
+    }
+
+    .select-dropdown, .text-input-box {
+      width: 100%;
+      background: var(--input-bg);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 10px;
+      padding: 13px 16px;
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: 600;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .select-dropdown option {
+      background: #0f172a;
+      color: #ffffff;
+      padding: 10px;
+    }
+
+    .select-dropdown:focus, .text-input-box:focus {
+      border-color: var(--neon-teal);
+      box-shadow: 0 0 12px rgba(0, 201, 167, 0.3);
+    }
+
+    .live-rate-tag {
+      font-size: 12px;
+      color: #00c9a7;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 600;
+    }
+
+    /* Output Right Panel */
+    .calc-results-right {
+      background: rgba(14, 23, 42, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 18px;
+      padding: 26px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .result-group .res-label {
+      font-size: 11.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .result-group .main-green-num {
+      font-size: 34px;
+      font-weight: 800;
+      color: #00e676;
+      letter-spacing: -0.5px;
+    }
+
+    .result-group .sub-res-val {
+      font-size: 18px;
+      font-weight: 700;
+      color: #f1f5f9;
+    }
+
+    .action-btn-row {
+      display: flex;
+      gap: 10px;
+      margin-top: auto;
+    }
+
+    .btn-action-outline {
+      flex: 1;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #fff;
+      padding: 11px;
+      border-radius: 9px;
+      font-size: 13.5px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: background 0.2s;
+    }
+
+    .btn-action-outline:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    /* 3-Tier Remittance Comparison Table */
+    .remit-compare-block {
+      margin-top: 30px;
+      background: rgba(10, 18, 36, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 20px;
+    }
+
+    .remit-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .remit-title-row h4 {
+      font-size: 15px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .bank-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    .bank-table th {
+      text-align: left;
+      padding: 10px 14px;
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text-muted);
+      font-weight: 700;
+      font-size: 11.5px;
+      text-transform: uppercase;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .bank-table td {
+      padding: 12px 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      color: #f1f5f9;
+    }
+
+    .bank-table tr:hover td {
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .best-badge {
+      background: rgba(0, 230, 118, 0.2);
+      border: 1px solid #00e676;
+      color: #00e676;
+      padding: 2px 7px;
+      border-radius: 4px;
+      font-size: 10.5px;
+      font-weight: 700;
+      margin-left: 6px;
+    }
+
+    /* 1-Tap Rating / Feedback Widget */
+    .feedback-micro-bar {
+      margin-top: 24px;
+      padding: 14px 18px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 12.5px;
+    }
+
+    .feedback-micro-bar .rate-btns {
+      display: flex;
+      gap: 6px;
+    }
+
+    .rating-pill-btn {
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #cbd5e1;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .rating-pill-btn:hover {
+      background: var(--neon-teal);
+      color: #000;
+      border-color: transparent;
+    }
+
+    /* Rich In-Depth SEO & FAQ Guides */
+    .seo-text-block {
+      margin-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 22px;
+    }
+
+    .seo-text-block h3 {
+      font-size: 17px;
+      color: #fff;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    .seo-text-block p {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 14px;
+    }
+
+    .faq-mini {
+      background: rgba(14, 23, 42, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 10px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+
+    .faq-mini h4 {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+
+    .faq-mini p {
+      font-size: 12.5px;
+      color: var(--text-muted);
+      margin-bottom: 0;
+      line-height: 1.6;
+    }
+
+    /* Prayer Grid */
+    .prayer-times-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 12px;
+      margin: 18px 0;
+    }
+
+    .prayer-card-item {
+      background: rgba(14, 23, 42, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 14px;
+      text-align: center;
+      transition: all 0.2s ease;
+    }
+
+    .prayer-card-item.active-prayer {
+      border-color: #00e676;
+      background: rgba(0, 230, 118, 0.1);
+      box-shadow: 0 0 15px rgba(0, 230, 118, 0.2);
+    }
+
+    .prayer-name {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .prayer-time-val {
+      font-size: 18px;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    /* Footer */
+    footer {
+      margin-top: auto;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 30px 0;
+      background: rgba(5, 9, 18, 0.95);
+      font-size: 13px;
+      color: #64748b;
+    }
+
+    .footer-flex-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    @media (max-width: 850px) {
+      .calc-layout-grid {
+        grid-template-columns: 1fr;
+      }
+      .main-heading {
+        font-size: 26px;
+      }
+      .calculator-card {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- AUTOMATIC FLUID MOVING AMBIENT BACKGROUND -->
+  <div class="ambient-motion-bg"></div>
+
+  <!-- Live Moving Financial Ticker Bar -->
+  <div class="top-ticker-wrap">
+    <div class="ticker-content" id="liveTicker">
+      <span class="ticker-item"><span class="ticker-label">🇺🇸 USD/INR:</span> <span class="ticker-val" id="tickerUsd">Fetching…</span></span>
+      <span class="ticker-item"><span class="ticker-label">🇸🇦 SAR/INR:</span> <span class="ticker-val" id="tickerSar">Fetching…</span></span>
+      <span class="ticker-item"><span class="ticker-label">⚡ BARQ (SAR/INR):</span> <span class="ticker-val" id="tickerBarq">—</span><span class="ticker-barq">In-Hand Live</span></span>
+      <span class="ticker-item"><span class="ticker-label">🇦🇪 AED/INR:</span> <span class="ticker-val" id="tickerAed">Fetching…</span></span>
+      <span class="ticker-item"><span class="ticker-label">🇰🇼 KWD/INR:</span> <span class="ticker-val" id="tickerKwd">Fetching…</span></span>
+      <span class="ticker-item"><span class="ticker-label">🪙 INDIA GOLD 24K:</span> <span class="ticker-gold" id="tickerGold">Live Market</span></span>
+      <span class="ticker-item"><span class="ticker-label">🕌 ZAKAT NISAB:</span> <span class="ticker-gold">87.48g GOLD / 612.36g SILVER</span></span>
+      <!-- Infinite loop duplicate -->
+      <span class="ticker-item"><span class="ticker-label">🇺🇸 USD/INR:</span> <span class="ticker-val" id="tickerUsd2">Fetching…</span></span>
+      <span class="ticker-item"><span class="ticker-label">🇸🇦 SAR/INR:</span> <span class="ticker-val" id="tickerSar2">Fetching…</span></span>
+      <span class="ticker-item"><span class="ticker-label">⚡ BARQ (SAR/INR):</span> <span class="ticker-val" id="tickerBarq2">—</span><span class="ticker-barq">In-Hand Live</span></span>
+      <span class="ticker-item"><span class="ticker-label">🇦🇪 AED/INR:</span> <span class="ticker-val" id="tickerAed2">Fetching…</span></span>
+      <span class="ticker-item"><span class="ticker-label">🇰🇼 KWD/INR:</span> <span class="ticker-val" id="tickerKwd2">Fetching…</span></span>
+      <span class="ticker-item"><span class="ticker-label">🪙 INDIA GOLD 24K:</span> <span class="ticker-gold" id="tickerGold2">Live Market</span></span>
+      <span class="ticker-item"><span class="ticker-label">🕌 ZAKAT NISAB:</span> <span class="ticker-gold">87.48g GOLD / 612.36g SILVER</span></span>
+    </div>
+  </div>
+
+  <!-- Header Nav -->
+  <header class="main-nav">
+    <a href="index.html" class="logo-container">
+      <div class="logo-img-box"><i class="fas fa-calculator"></i></div>
+      <span class="brand-title">DailyCalcHubs</span>
+    </a>
+    <nav class="nav-links">
+      <a href="about.html">About</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms.html">Terms</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="container">
+
+    <!-- Hero Section -->
+    <section class="hero-center">
+      <div class="pill-power-badge">
+        <span class="pulse-dot"></span> POWERED BY LIVE GLOBAL FOREX & SAMA BENCHMARKS
+      </div>
+      <h1 class="main-heading">SMART, <span class="heading-green">SHARIAH COMPLIANT</span>, INSTANT <span class="heading-blue">ONLINE</span></h1>
+      <p class="sub-text">High-precision utilities for live SAR to INR remittance cashouts, Zakat accounting, Saudi Iqama 2026 fees, exact Prayer Times, and Indian jewellery GST.</p>
+
+      <!-- Pill Nav Tabs (All 10 Tabs Sequentially Ordered) -->
+      <div class="tabs-pill-row">
+        <button class="tab-item-btn active-teal" onclick="openTab('currency', this)"><i class="fas fa-globe"></i> Live Currency</button>
+        <button class="tab-item-btn" onclick="openTab('zakat', this)"><i class="fas fa-coins"></i> Zakat Calculator</button>
+        <button class="tab-item-btn" onclick="openTab('age', this)"><i class="fas fa-cake-candles"></i> Age & DOB</button>
+        <button class="tab-item-btn" onclick="openTab('sip', this)"><i class="fas fa-chart-line"></i> Shariah SIP Growth</button>
+        <button class="tab-item-btn" onclick="openTab('discount', this)"><i class="fas fa-tag"></i> Discount & Sale</button>
+        <button class="tab-item-btn" onclick="openTab('salary', this)"><i class="fas fa-wallet"></i> Salary Tracker</button>
+        <button class="tab-item-btn" onclick="openTab('jeweller', this)"><i class="fas fa-gem"></i> Jeweller GST (India)</button>
+        <!-- Sequential New Add-ons -->
+        <button class="tab-item-btn" onclick="openTab('prayer', this)"><i class="fas fa-mosque"></i> Prayer Times</button>
+        <button class="tab-item-btn" onclick="openTab('iqama', this)"><i class="fas fa-id-card"></i> Saudi Iqama 2026</button>
+        <button class="tab-item-btn" onclick="openTab('travel', this)"><i class="fas fa-plane-departure"></i> Cheap Flights & Travel</button>
+      </div>
+    </section>
+
+    <!-- Main Active Card Area -->
+    <section class="calculator-card">
+
+      <!-- ================= TAB 1: CURRENCY ================= -->
+      <div id="panel-currency" class="tab-content-panel active">
+        <div class="calc-header-row">
+          <div>
+            <h2 class="calc-title">Live Currency Converter</h2>
+            <p class="calc-subtitle">Real-time interbank rates synchronized with international liquidity feeds.</p>
+          </div>
+          <div class="auto-sync-tag"><span class="pulse-dot"></span> Auto-Sync Active</div>
+        </div>
+
+        <div class="calc-layout-grid">
+          <div class="calc-inputs-left">
+            <div class="form-group-item">
+              <label class="field-label">From Country / Currency</label>
+              <select id="curFrom" class="select-dropdown" onchange="runLiveConverter()">
+                <option value="SAR" selected>🇸🇦 Saudi Arabia (SAR)</option>
+                <option value="AED">🇦🇪 United Arab Emirates (AED)</option>
+                <option value="KWD">🇰🇼 Kuwait (KWD)</option>
+                <option value="QAR">🇶🇦 Qatar (QAR)</option>
+                <option value="OMR">🇴🇲 Oman (OMR)</option>
+                <option value="BHD">🇧🇭 Bahrain (BHD)</option>
+                <option value="USD">🇺🇸 United States (USD)</option>
+                <option value="EUR">🇪🇺 Eurozone (EUR)</option>
+                <option value="GBP">🇬🇧 United Kingdom (GBP)</option>
+              </select>
+            </div>
+
+            <div class="form-group-item">
+              <label class="field-label">Transfer Amount</label>
+              <input type="number" id="curAmount" class="text-input-box" value="1000" min="1" oninput="runLiveConverter()">
+            </div>
+
+            <div class="form-group-item">
+              <label class="field-label">To Country / Currency</label>
+              <select id="curTo" class="select-dropdown" onchange="runLiveConverter()">
+                <option value="INR" selected>🇮🇳 India (INR)</option>
+                <option value="PKR">🇵🇰 Pakistan (PKR)</option>
+                <option value="BDT">🇧🇩 Bangladesh (BDT)</option>
+                <option value="PHP">🇵🇭 Philippines (PHP)</option>
+                <option value="NPR">🇳🇵 Nepal (NPR)</option>
+                <option value="LKR">🇱🇰 Sri Lanka (LKR)</option>
+                <option value="USD">🇺🇸 United States (USD)</option>
+              </select>
+            </div>
+
+            <div class="live-rate-tag" id="liveRateDisplay">
+              <span class="pulse-dot"></span> Live Rate: 1 SAR = 25.3336 INR
+            </div>
+          </div>
+
+          <div class="calc-results-right">
+            <div class="result-group">
+              <div class="res-label">Target Result (Interbank Mid-Market)</div>
+              <div class="main-green-num" id="curTargetRes">₹ 25,333.58</div>
+            </div>
+
+            <div class="result-group">
+              <div class="res-label">US Dollar (USD) Equivalent</div>
+              <div class="sub-res-val" id="curUsdEquiv">$ 266.67</div>
+            </div>
+
+            <div class="result-group">
+              <div class="res-label">Pakistani Rupee (PKR) Equivalent</div>
+              <div class="sub-res-val" id="curPkrEquiv">Rs 74,097.67</div>
+            </div>
+
+            <div class="action-btn-row">
+              <button class="btn-action-outline" onclick="copyResult('curTargetRes')"><i class="fas fa-copy"></i> Copy</button>
+              <button class="btn-action-outline" onclick="shareRateWhatsApp()"><i class="fab fa-whatsapp"></i> Share</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3-Tier Remittance Comparison Table -->
+        <div class="remit-compare-block">
+          <div class="remit-title-row">
+            <h4><i class="fas fa-money-bill-transfer" style="color: #00e676; margin-right: 6px;"></i> Live In-Hand App Cashout Comparison (SAR to INR)</h4>
+            <span style="font-size: 11.5px; color: var(--neon-teal); font-weight: 700;"><i class="fas fa-check-circle"></i> Zero-Halala Difference Guarantee</span>
+          </div>
+          <div style="overflow-x: auto;">
+            <table class="bank-table">
+              <thead>
+                <tr>
+                  <th>App / Provider</th>
+                  <th>Effective Rate</th>
+                  <th>Transfer Fee</th>
+                  <th>Exact In-Hand INR Payout</th>
+                  <th>Direct Status</th>
+                </tr>
+              </thead>
+              <tbody id="bankCompareBody">
+                <!-- Dynamically populated via JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- 1-Tap Feedback -->
+        <div class="feedback-micro-bar">
+          <span>Was this currency conversion helpful?</span>
+          <div class="rate-btns">
+            <button class="rating-pill-btn" onclick="toastRating('👍 Thank you for your feedback!')">👍 Yes</button>
+            <button class="rating-pill-btn" onclick="toastRating('⭐ 5-Star rating recorded!')">⭐ 5 Stars</button>
+            <button class="rating-pill-btn" onclick="toastRating('✍️ We appreciate your feedback.')">👎 No</button>
+          </div>
+        </div>
+
+        <!-- Rich SEO Knowledge Guide -->
+        <div class="seo-text-block">
+          <h3>Understanding Live Forex vs Retail Remittance Rates</h3>
+          <p>Global foreign exchange markets operate continuously on interbank liquidity pricing. Retail mobile apps and money transfer operators (such as Barq, STC Pay, urpay, and Tahweel Al Rajhi) apply minor exchange rate spreads to cover international settlement costs. When remitting salary from the GCC to India, Pakistan, or Bangladesh, always review the exact net in-hand Rupee payout rather than relying strictly on the headline interbank spot rate.</p>
+          <div class="faq-mini">
+            <h4>Q1: Are NRI remittances from Saudi Arabia to India taxable?</h4>
+            <p>Under Indian Income Tax Act and FEMA regulations, remittances sent by Non-Resident Indians (NRIs) from legitimate overseas tax-paid earnings directly into an NRE (Non-Resident External) or NRO bank account are 100% exempt from income tax in India.</p>
+          </div>
+          <div class="faq-mini">
+            <h4>Q2: Why does the Google rate differ by a few paise from money transfer apps?</h4>
+            <p>Google displays the mid-market interbank benchmark rate. Digital remittance wallets deduct an operational spread (usually 0.8% to 1.2%) to provide instant bank account credit without branch queues.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= TAB 2: ZAKAT ================= -->
+      <div id="panel-zakat" class="tab-content-panel">
+        <div class="calc-header-row">
+          <div>
+            <h2 class="calc-title">Shariah Compliant Zakat Calculator</h2>
+            <p class="calc-subtitle">Multi-asset gold normalization, silver Nisab verification, and Hawl evaluation.</p>
+          </div>
+          <div class="auto-sync-tag" style="background: rgba(251,191,36,0.15); border-color:#fbbf24; color:#fbbf24;">Nisab: 87.48g 24K</div>
+        </div>
+
+        <div class="calc-layout-grid">
+          <div class="calc-inputs-left">
+            <div class="form-group-item">
+              <label class="field-label">Gold Jewellery Purity</label>
+              <select id="zkKarat" class="select-dropdown" onchange="runZakatCalc()">
+                <option value="24">24 Karat (100% Pure - 1.000)</option>
+                <option value="22" selected>22 Karat (91.6% Pure - 0.916)</option>
+                <option value="21">21 Karat (Gulf Standard - 0.875)</option>
+                <option value="18">18 Karat (75.0% Pure - 0.750)</option>
+              </select>
+            </div>
+            <div class="form-group-item">
+              <label class="field-label">Gold Weight (Grams)</label>
+              <input type="number" id="zkGoldGrams" class="text-input-box" value="100" min="0" oninput="runZakatCalc()">
+            </div>
+            <div class="form-group-item">
+              <label class="field-label">Live 24K Gold Price per Gram (INR)</label>
+              <input type="number" id="zkGoldPrice" class="text-input-box" value="7500" min="1" oninput="runZakatCalc()">
+            </div>
+            <div class="form-group-item">
+              <label class="field-label">Cash, Bank Savings & Liquid Assets (INR)</label>
+              <input type="number" id="zkCash" class="text-input-box" value="50000" min="0" oninput="runZakatCalc()">
+            </div>
+            <div class="form-group-item">
+              <label class="field-label">Short-Term Immediate Liabilities (Deductible)</label>
+              <input type="number" id="zkDebts" class="text-input-box" value="0" min="0" oninput="runZakatCalc()">
+            </div>
+          </div>
+
+          <div class="calc-results-right">
+            <div class="result-group">
+              <div class="res-label">Total Net Zakat Due (2.5%)</div>
+              <div class="main-green-num" id="zkTotalDue">₹ 18,437.50</div>
+            </div>
+            <div class="result-group">
+              <div class="res-label">Normalized 24K Pure Gold Weight</div>
+              <div class="sub-res-val" id="zkPureWeight">91.67 Grams (Above Nisab)</div>
+            </div>
+            <div class="result-group">
+              <div class="res-label">Total Net Wealth Evaluated</div>
+              <div class="sub-res-val" id="zkNetWealth">₹ 737,500.00</div>
+            </div>
+            <div class="action-btn-row">
+              <button class="btn-action-outline" onclick="copyResult('zkTotalDue')"><i class="fas fa-copy"></i> Copy Zakat Due</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="feedback-micro-bar">
+          <span>Was this Zakat calculation helpful?</span>
+          <div class="rate-btns">
+            <button class="rating-pill-btn" onclick="toastRating('👍 Zakat feedback recorded!')">👍 Yes</button>
+            <button class="rating-pill-btn" onclick="toastRating('⭐ 5-Star recorded!')">⭐ 5 Stars</button>
+          </div>
+        </div>
+
+        <div class="seo-text-block">
+          <h3>Shariah Rules for Zakat on Gold Jewellery</h3>
+          <p>Zakat is mandatory upon every Muslim whose wealth meets or exceeds the Nisab threshold for a full lunar year (Hawl). When evaluating 21K, 22K, or 18K gold jewellery, the total gross weight must be normalized to pure 24K equivalent weight before checking against the standard 87.48-gram gold Nisab threshold.</p>
+        </div>
+      </div>
+
+      <!-- ================= TAB 3: AGE & DOB ================= -->
+      <div id="panel-age" class="tab-content-panel">
+        <div class="calc-header-row">
+          <div>
+            <h2 class="calc-title">Age & Date of Birth Calculator</h2>
+            <p class="calc-subtitle">Calculate exact years, months, days, total hours, and birthday countdowns.</p>
+          </div>
+        </div>
+        <div class="calc-layout-grid">
+          <div class="calc-inputs-left">
+            <div class="form-group-item">
+              <label class="field-label">Date of Birth</label>
+              <input type="date" id="dobInput" class="text-input-box" value="2000-01-01" onchange="runAgeCalc()">
+            </div>
+            <div class="form-group-item">
+              <label class="field-label">Target Date (Defaults to Today)</label>
+              <input type="date" id="dobTarget" class="text-input-box" onchange="runAgeCalc()">
+            </div>
+          </div>
+          <div class="calc-results-right">
+            <div class="result-group">
+              <div class="res-label">Exact Age</div>
+              <div class="main-green-num" id="ageYearsMonths">26 Y, 8 M, 2 D</div>
+            </div>
+            <div class="result-group">
+              <div class="res-label">Total Days Lived</div>
+              <div class="sub-res-val" id="ageTotalDays">9,742 Days</div>
+            </div>
+            <div class="result-group">
+              <div class="res-label">Next Birthday Countdown</div>
+              <div class="sub-res-val" id="ageNextBday">120 Days Remaining</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= TAB 4: SHARIAH SIP ================= -->
+      <div id="panel-sip" class="tab-content-panel">
+        <div class="calc-header-row">
+          <div>
+            <h2 class="calc-title">Shariah SIP Growth Calculator</h2>
+            <p class="calc-subtitle">Ethical, interest-free compound wealth projection for halal mutual funds.</p>
+          </div>
+        </div>
+        <div class="calc-layout-grid">
+          <div class="calc-inputs-left">
+            <div class="form-group-item">
+              <label class="field-label">Monthly Investment (INR)</label>
+              <input type="number" id="sipMonthly" class="text-input-box" value="10000" min="500" oninput="runSipCalc()">
+            </div>
+            <div class="form-group-item">
+              <label class="field-label">Expected Annual Return (%)</label>
+              <input type="number" id="sipReturn" class="text-input-box" value="14" min="1" max="30" oninput="runSipCalc()">
+            </div>
+            <div class="form-group-item">
+              <label class="field-label">Time Period (Years)</label>
+              <input type="number" id="sipYears" class="text-input-box" value="10" min="1" max="40" oninput="runSipCalc()">
+            </div>
+          </div>
+          <div class="calc-results-right">
+            <div class="result-group">
+              <div class="res-label">Projected Total Wealth</div>
+              <div class="main-green-num" id="sipTotalWealth">₹ 2,621,124</div>
+            </div>
+            <div class="result-group">
+              <div class="res-label">Total Amount Invested</div>
+              <div class="sub-res-val" id="sipInvested">₹ 1,200,000</div>
+            </div>
+            <div class="result-group">
+              <div class="res-label">Estimated Wealth Gain</div>
+              <div class="sub-res-val" id="sipGain">₹ 1,421,124</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= TAB 5: DISCOUNT ================= -->
+      <div id="panel-discount" class="tab-content-panel">
+        <div class="calc-header-row">
+          <div>
+            <h2 class="calc-title">Smart Discount & Sale Calculator</h2>
+            <p class="calc-subtitle">Compute final retail price, savings amount, and stacked double discounts.</p>
+          </div>
+        </div>
+        <div class="calc-layout-grid">
+          <div class="calc-inputs-left">
+            <div class="form-group-item">
+              <label class="field-label">Original Price</label>
+              <input type="number" id="discPrice" class="text-input-box" value="2500" min="0" oninput="runDiscCalc()">
+            </div>
+            <div class="form-group-item">
+              <label class="field-label">Discount Percentage (%)</label>
+              <input type="number" id="discPct" class="text-input-box" value="25" min="0" max="100" oninput="runDiscCalc()">
+            </div>
+          </div>
+          <div class="calc-results-right">
+            <div class="result-group">
+              <div class="res-label">Final Price to Pay</div>
+              <div class="main-green-num" id="discFinal">₹ 1,875.00</div>
+            </div>
+            <div class="result-group">
+              <div class="res-label">Total Money Saved</div>
+              <div class="sub-res-val" id="discSaved">₹ 625.00 (25% OFF)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= TAB 6: SALARY TRACKER & EOSB ================= -->
+      <div id="panel-salary" class="tab-content-panel">
+        <div class="calc-header-row">
+          <div>
+            <h2 class="calc-title">Saudi EOSB & Salary Tracker</h2>
+            <p class="calc-subtitle">Official Saudi Labor Law (Article 84 & 85) End of Service gratuity estimator.</p>
+          </div>
+        </div>
+        <div class="calc-layout-grid">
+          <div class="calc-inputs-left">
+            <div class="form-group-item">
+              <label class="field-label">Contract Type & Separation Reason</label>
+              <select id="eosbReason" class="select-dropdown" onchange="runEosbCalc()">
+                <option value="resignation" selected>Employee Resignation (Article 85)</option>
+                <option value="contract_end">End of Fixed Contract / Non-Renewal (Article 84)</option>
+                <option value="termination">Termination by Employer without Cause (Article 84)</option>
+              </select>
+            </div>
+            <div class="form-group-item">
+              <label class="field-label">Last Basic Salary + Housing Allowance (SAR)</label>
+              <input type="number" id="eosbSalary" class="text-input-box" value="5000" min="1000" oninput="runEosbCalc()">
+            </div>
+            <div class="form-group-item">
+              <label class="field-label">Total Completed Service Duration (Years)</label>
+              <input type="number" id="eosbYears" class="text-input-box" value="5" min="0.5" step="0.5" oninput="runEosbCalc()">
+            </div>
+          </div>
+          <div class="calc-results-right">
+            <div class="result-group">
+              <div class="res-label">Estimated End of Service Gratuity</div>
+              <div class="main-green-num" id="eosbTotal">SAR 4,166.67</div>
+            </div>
+            <div class="result-group">
+              <div class="res-label">INR Rupee Value Equivalent</div>
+              <div class="sub-res-val" id="eosbInr">₹ 105,550.00</div>
+            </div>
+            <div class="result-group">
+              <div class="res-label">Entitlement Tier</div>
+              <div class="sub-res-val" id="eosbTier">Article 85 (1/3rd Entitlement: 2-5 Yrs)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= TAB 7: JEWELLER GST (INDIA) ================= -->
+      <div id="panel-jeweller" class="tab-content-panel">
+        <div class="calc-header-row">
+          <div>
+            <h2 class="calc-title">Jeweller GST (India) Invoice Calculator</h2>
+            <p class="calc-subtitle">3% Gold GST, Making Charges, and HUID Hallmarked Jewellery billing breakdown.</p>
+          </div>
+        </div>
+        <div class="calc-layout-grid">
+          <div class="calc-inputs-left">
+            <div class="form-group-item">
+              <label class="field-label">Gold Purity & Weight (Grams)</label>
+              <input type="number" id="gstWeight" class="text-input-box" value="20" min="0.1" oninput="runGstCalc()">
+            </div>
+            <div class="form-group-item">
+              <label class="field-label">Gold Rate per Gram (INR)</label>
+              <input type="number" id="gstRate" class="text-input-box" value="7200" min="1000" oninput="runGstCalc()">
+            </div>
+            <div class="form-group-item">
+              <label class="field-label">Making Charges per Gram (INR)</label>
+              <input type="number" id="gstMaking" class="text-input-box" value="550" min="0" oninput="runGstCalc()">
+            </div>
+          </div>
+          <div class="calc-results-right">
+            <div class="result-group">
+              <div class="res-label">Total Final Invoice Amount</div>
+              <div class="main-green-num" id="gstInvoice">₹ 159,650.00</div>
+            </div>
+            <div class="result-group">
+              <div class="res-label">Gold Value (Pure Bullion)</div>
+              <div class="sub-res-val" id="gstGoldVal">₹ 144,000.00</div>
+            </div>
+            <div class="result-group">
+              <div class="res-label">Total GST (3% on Gold + Making)</div>
+              <div class="sub-res-val" id="gstTotalTax">₹ 4,650.00</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= TAB 8: PRAYER TIMES (NEW) ================= -->
+      <div id="panel-prayer" class="tab-content-panel">
+        <div class="calc-header-row">
+          <div>
+            <h2 class="calc-title">Global & Saudi Live Prayer Times</h2>
+            <p class="calc-subtitle">Umm Al-Qura calculation method with automated countdown to next Azan.</p>
+          </div>
+          <div class="auto-sync-tag" style="background: rgba(0,242,254,0.15); border-color:#00f2fe; color:#00f2fe;">
+            <i class="fas fa-location-crosshairs"></i> <span id="prayerLocLabel">Dammam, Saudi Arabia</span>
+          </div>
+        </div>
+
+        <div class="form-group-item" style="max-width: 400px; margin-bottom: 20px;">
+          <label class="field-label">Select City (Gulf & Global)</label>
+          <select id="prayerCitySelect" class="select-dropdown" onchange="updatePrayerCity()">
+            <option value="Dammam" selected>🇸🇦 Dammam, Saudi Arabia</option>
+            <option value="Riyadh">🇸🇦 Riyadh, Saudi Arabia</option>
+            <option value="Jeddah">🇸🇦 Jeddah, Saudi Arabia</option>
+            <option value="Makkah">🇸🇦 Makkah Al-Mukarramah</option>
+            <option value="Madinah">🇸🇦 Madinah Al-Munawwarah</option>
+            <option value="Khobar">🇸🇦 Al-Khobar, Saudi Arabia</option>
+            <option value="Dubai">🇦🇪 Dubai, UAE</option>
+            <option value="AbuDhabi">🇦🇪 Abu Dhabi, UAE</option>
+            <option value="Doha">🇶🇦 Doha, Qatar</option>
+            <option value="Kuwait">🇰🇼 Kuwait City, Kuwait</option>
+            <option value="Muscat">🇴🇲 Muscat, Oman</option>
+            <option value="Manama">🇧🇭 Manama, Bahrain</option>
+          </select>
+        </div>
+
+        <div class="prayer-times-grid">
+          <div class="prayer-card-item" id="pCardFajr">
+            <div class="prayer-name">Fajr</div>
+            <div class="prayer-time-val" id="timeFajr">04:12 AM</div>
+          </div>
+          <div class="prayer-card-item" id="pCardSunrise">
+            <div class="prayer-name">Sunrise</div>
+            <div class="prayer-time-val" id="timeSunrise">05:31 AM</div>
+          </div>
+          <div class="prayer-card-item active-prayer" id="pCardDhuhr">
+            <div class="prayer-name">Dhuhr</div>
+            <div class="prayer-time-val" id="timeDhuhr">11:48 AM</div>
+          </div>
+          <div class="prayer-card-item" id="pCardAsr">
+            <div class="prayer-name">Asr</div>
+            <div class="prayer-time-val" id="timeAsr">03:18 PM</div>
+          </div>
+          <div class="prayer-card-item" id="pCardMaghrib">
+            <div class="prayer-name">Maghrib</div>
+            <div class="prayer-time-val" id="timeMaghrib">06:05 PM</div>
+          </div>
+          <div class="prayer-card-item" id="pCardIsha">
+            <div class="prayer-name">Isha</div>
+            <div class="prayer-time-val" id="timeIsha">07:35 PM</div>
+          </div>
+        </div>
+
+        <div class="feedback-micro-bar">
+          <span>Are prayer times accurate for your location?</span>
+          <div class="rate-btns">
+            <button class="rating-pill-btn" onclick="toastRating('👍 Prayer feedback recorded!')">👍 Yes, Exact</button>
+            <button class="rating-pill-btn" onclick="toastRating('⭐ 5-Star recorded!')">⭐ 5 Stars</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= TAB 9: SAUDI IQAMA 2026 (NEW) ================= -->
+      <div id="panel-iqama" class="tab-content-panel">
+        <div class="calc-header-row">
+          <div>
+            <h2 class="calc-title">Saudi Iqama & Dependent Fee Calculator 2026</h2>
+            <p class="calc-subtitle">Official Ministry of Human Resources & Jawazat renewal fee estimator.</p>
+          </div>
+          <div class="auto-sync-tag">SAMA / Jawazat 2026</div>
+        </div>
+
+        <div class="calc-layout-grid">
+          <div class="calc-inputs-left">
+            <div class="form-group-item">
+              <label class="field-label">Renewal Duration</label>
+              <select id="iqDuration" class="select-dropdown" onchange="runIqamaCalc()">
+                <option value="3">3 Months (Quarterly)</option>
+                <option value="6">6 Months (Half-Yearly)</option>
+                <option value="9">9 Months</option>
+                <option value="12" selected>12 Months (Full Year)</option>
+              </select>
+            </div>
+            <div class="form-group-item">
+              <label class="field-label">Number of Dependents (Murafeeqeen)</label>
+              <input type="number" id="iqDependents" class="text-input-box" value="1" min="0" max="15" oninput="runIqamaCalc()">
+            </div>
+            <div class="form-group-item">
+              <label class="field-label">Maktab Amal (Work Permit Levy Category)</label>
+              <select id="iqMaktab" class="select-dropdown" onchange="runIqamaCalc()">
+                <option value="800" selected>Standard Private Sector (800 SAR / Month - 9,600/Yr)</option>
+                <option value="0">Exempt Category (0 SAR)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="calc-results-right">
+            <div class="result-group">
+              <div class="res-label">Total Iqama Renewal Cost</div>
+              <div class="main-green-num" id="iqTotalCost">SAR 15,050.00</div>
+            </div>
+            <div class="result-group">
+              <div class="res-label">Dependent Levy (400 SAR/Month per Person)</div>
+              <div class="sub-res-val" id="iqDepCost">SAR 4,800.00 (1 Dependent)</div>
+            </div>
+            <div class="result-group">
+              <div class="res-label">Maktab Amal Levy + Jawazat Base</div>
+              <div class="sub-res-val" id="iqGovCost">SAR 10,250.00</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= TAB 10: TRAVEL & CHEAP FLIGHTS (NEW) ================= -->
+      <div id="panel-travel" class="tab-content-panel">
+        <div class="calc-header-row">
+          <div>
+            <h2 class="calc-title">Cheapest Flight Search & IRCTC Helper</h2>
+            <p class="calc-subtitle">Compare Gulf to India/Pak/BD flight fares and track live Indian train PNR confirmation.</p>
+          </div>
+        </div>
+
+        <div class="calc-layout-grid">
+          <div class="calc-inputs-left">
+            <div class="form-group-item">
+              <label class="field-label">Departure Airport (Gulf)</label>
+              <select class="select-dropdown" id="flFrom">
+                <option value="DMM" selected>🇸🇦 Dammam (DMM) - King Fahd Intl</option>
+                <option value="RUH">🇸🇦 Riyadh (RUH) - King Khalid Intl</option>
+                <option value="JED">🇸🇦 Jeddah (JED) - King Abdulaziz Intl</option>
+                <option value="DXB">🇦🇪 Dubai (DXB) - Dubai Intl</option>
+              </select>
+            </div>
+            <div class="form-group-item">
+              <label class="field-label">Destination Airport</label>
+              <select class="select-dropdown" id="flTo">
+                <option value="DEL" selected>🇮🇳 Delhi (DEL) - Indira Gandhi</option>
+                <option value="BOM">🇮🇳 Mumbai (BOM) - Chhatrapati Shivaji</option>
+                <option value="LKO">🇮🇳 Lucknow (LKO) - Chaudhary Charan Singh</option>
+                <option value="HYD">🇮🇳 Hyderabad (HYD) - Rajiv Gandhi</option>
+                <option value="CCJ">🇮🇳 Kozhikode (CCJ) - Calicut Intl</option>
+                <option value="DAC">🇧🇩 Dhaka (DAC) - Hazrat Shahjalal</option>
+                <option value="LHE">🇵🇰 Lahore (LHE) - Allama Iqbal</option>
+              </select>
+            </div>
+            <button class="btn-action-outline" style="background: var(--neon-teal); color:#000; font-weight:700; width:100%; border:0;" onclick="searchFlights()"><i class="fas fa-magnifying-glass"></i> Search Cheapest Flight Deals ➔</button>
+          </div>
+
+          <div class="calc-results-right">
+            <div class="result-group">
+              <div class="res-label">🚆 IRCTC Tatkal Booking Clocks (IST)</div>
+              <div class="sub-res-val" style="color: #fbbf24;"><i class="fas fa-clock"></i> AC Tatkal: 10:00 AM Daily</div>
+              <div class="sub-res-val" style="color: #00e676; margin-top: 4px;"><i class="fas fa-clock"></i> Sleeper Tatkal: 11:00 AM Daily</div>
+            </div>
+            <div class="result-group">
+              <div class="res-label">Live PNR Prediction Status</div>
+              <input type="text" id="pnrInput" class="text-input-box" placeholder="Enter 10-Digit PNR Number" style="margin-top:6px;">
+            </div>
+            <button class="btn-action-outline" onclick="checkPnrStatus()"><i class="fas fa-train"></i> Check PNR Confirmation ➔</button>
+          </div>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-flex-row">
+      <div>
+        <span style="color: #fff; font-weight: 700;">DailyCalcHubs</span> — Smart, Shariah Compliant Online Financial Platform.
+        <div style="font-size: 11.5px; margin-top: 4px;">Founder & Lead Accountant: Waqar Azmi | Dammam, Saudi Arabia.</div>
+      </div>
+      <div style="display: flex; gap: 15px;">
+        <a href="about.html" style="color: #94a3b8; text-decoration: none;">About</a>
+        <a href="privacy-policy.html" style="color: #94a3b8; text-decoration: none;">Privacy Policy</a>
+        <a href="terms.html" style="color: #94a3b8; text-decoration: none;">Terms</a>
+        <a href="contact.html" style="color: #94a3b8; text-decoration: none;">Contact Support</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Tab Switcher
+    function openTab(tabId, btnElement) {
+      document.querySelectorAll('.tab-content-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-item-btn').forEach(b => b.classList.remove('active-teal', 'active-orange'));
+
+      const target = document.getElementById('panel-' + tabId);
+      if (target) target.classList.add('active');
+
+      if (btnElement) {
+        if (['zakat', 'age', 'discount', 'jeweller'].includes(tabId)) {
+          btnElement.classList.add('active-orange');
+        } else {
+          btnElement.classList.add('active-teal');
+        }
+      }
+    }
+
+    // Live Forex Logic
+    let liveUsdRates = {};
+    const FX_API_URL = 'https://open.er-api.com/v6/latest/USD';
+
+    async function fetchLiveForex() {
+      try {
+        const res = await fetch(FX_API_URL + '?ts=' + Date.now(), { cache: 'no-store' });
+        const data = await res.json();
+        if (data && data.rates && data.rates.INR) {
+          liveUsdRates = data.rates;
+          updateTicker();
+          runLiveConverter();
+        }
+      } catch (e) {
+        // Safe fallback
+        liveUsdRates = { USD: 1, SAR: 3.75, AED: 3.6725, KWD: 0.306, INR: 94.99, PKR: 278.5, BDT: 119.5 };
+        updateTicker();
+        runLiveConverter();
+      }
+    }
+
+    function getFxRate(base, target) {
+      if (!liveUsdRates || !liveUsdRates[base] || !liveUsdRates[target]) return null;
+      return (liveUsdRates[target] / liveUsdRates[base]);
+    }
+
+    function updateTicker() {
+      const usdInr = getFxRate('USD', 'INR') || 94.99;
+      const sarInr = getFxRate('SAR', 'INR') || 25.3336;
+      const aedInr = getFxRate('AED', 'INR') || 25.87;
+      const kwdInr = getFxRate('KWD', 'INR') || 307.55;
+      const barqRate = (sarInr - 0.2748).toFixed(2);
+
+      const uStr = `₹${usdInr.toFixed(2)}`;
+      const sStr = `₹${sarInr.toFixed(2)}`;
+      const bStr = `₹${barqRate}`;
+      const aStr = `₹${aedInr.toFixed(2)}`;
+      const kStr = `₹${kwdInr.toFixed(2)}`;
+
+      document.getElementById('tickerUsd').textContent = uStr;
+      document.getElementById('tickerUsd2').textContent = uStr;
+      document.getElementById('tickerSar').textContent = sStr;
+      document.getElementById('tickerSar2').textContent = sStr;
+      document.getElementById('tickerBarq').textContent = bStr;
+      document.getElementById('tickerBarq2').textContent = bStr;
+      document.getElementById('tickerAed').textContent = aStr;
+      document.getElementById('tickerAed2').textContent = aStr;
+      document.getElementById('tickerKwd').textContent = kStr;
+      document.getElementById('tickerKwd2').textContent = kStr;
+    }
+
+    function runLiveConverter() {
+      const from = document.getElementById('curFrom').value;
+      const to = document.getElementById('curTo').value;
+      const amt = parseFloat(document.getElementById('curAmount').value) || 0;
+      const rate = getFxRate(from, to) || 25.3336;
+
+      const targetTotal = amt * rate;
+      const usdRate = getFxRate(from, 'USD') || 0.2667;
+      const pkrRate = getFxRate(from, 'PKR') || 74.097;
+
+      document.getElementById('curTargetRes').textContent = `${to === 'INR' ? '₹' : (to === 'PKR' ? 'Rs' : '$')} ${targetTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+      document.getElementById('curUsdEquiv').textContent = `$ ${(amt * usdRate).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+      document.getElementById('curPkrEquiv').textContent = `Rs ${(amt * pkrRate).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+      document.getElementById('liveRateDisplay').innerHTML = `<span class="pulse-dot"></span> Live Rate: 1 ${from} = ${rate.toFixed(4)} ${to}`;
+
+      renderRemittanceTable(from, to, amt, rate);
+    }
+
+    function renderRemittanceTable(from, to, amt, baseRate) {
+      const tbody = document.getElementById('bankCompareBody');
+      if (from !== 'SAR' || to !== 'INR') {
+        tbody.innerHTML = `<tr><td colspan="5" style="text-align:center; color:#94a3b8; padding:18px;">Live wallet in-hand comparison is active for SAR to INR transfers.</td></tr>`;
+        return;
+      }
+
+      const barqRate = baseRate - 0.2748;
+      const stcRate = baseRate - 0.3136;
+      const urpayRate = baseRate - 0.3336;
+      const rajhiRate = baseRate - 0.4536;
+
+      const barqTotal = amt * barqRate;
+      const stcTotal = Math.max(0, amt - 15) * stcRate;
+      const urpayTotal = Math.max(0, amt - 10) * urpayRate;
+      const rajhiTotal = Math.max(0, amt - 17.25) * rajhiRate;
+
+      tbody.innerHTML = `
+        <tr>
+          <td><strong style="color:#00e676;">⚡ Barq</strong> <span class="best-badge">BEST VALUE</span></td>
+          <td>₹ ${barqRate.toFixed(2)} / SAR</td>
+          <td><span style="color:#00e676; font-weight:700;">0 SAR (FREE)</span></td>
+          <td><strong style="color:#00e676; font-size:14.5px;">₹ ${barqTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</strong></td>
+          <td><span style="color:#00e676; font-size:12px;">● Live In-Hand Best</span></td>
+        </tr>
+        <tr>
+          <td><strong>🟢 STC Pay (STC Bank)</strong></td>
+          <td>₹ ${stcRate.toFixed(2)} / SAR</td>
+          <td>15.00 SAR</td>
+          <td>₹ ${stcTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+          <td><span style="color:#94a3b8; font-size:12px;">Direct IMPS/NEFT</span></td>
+        </tr>
+        <tr>
+          <td><strong>🏦 urpay</strong></td>
+          <td>₹ ${urpayRate.toFixed(2)} / SAR</td>
+          <td>10.00 SAR</td>
+          <td>₹ ${urpayTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+          <td><span style="color:#94a3b8; font-size:12px;">Instant Bank Payout</span></td>
+        </tr>
+        <tr>
+          <td><strong>🏛️ Tahweel Al Rajhi</strong></td>
+          <td>₹ ${rajhiRate.toFixed(2)} / SAR</td>
+          <td>17.25 SAR</td>
+          <td>₹ ${rajhiTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+          <td><span style="color:#94a3b8; font-size:12px;">Branch / Online</span></td>
+        </tr>
+      `;
+    }
+
+    // Zakat Calculation
+    function runZakatCalc() {
+      const karat = parseFloat(document.getElementById('zkKarat').value);
+      const grams = parseFloat(document.getElementById('zkGoldGrams').value) || 0;
+      const price24k = parseFloat(document.getElementById('zkGoldPrice').value) || 0;
+      const cash = parseFloat(document.getElementById('zkCash').value) || 0;
+      const debts = parseFloat(document.getElementById('zkDebts').value) || 0;
+
+      const pureGrams = grams * (karat / 24);
+      const goldVal = pureGrams * price24k;
+      const netWealth = Math.max(0, (goldVal + cash) - debts);
+      const zakatDue = netWealth >= (87.48 * price24k) ? (netWealth * 0.025) : 0;
+
+      document.getElementById('zkTotalDue').textContent = `₹ ${zakatDue.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+      document.getElementById('zkPureWeight').textContent = `${pureGrams.toFixed(2)} Grams (${pureGrams >= 87.48 ? 'Above Nisab ✅' : 'Below Nisab'})`;
+      document.getElementById('zkNetWealth').textContent = `₹ ${netWealth.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+    }
+
+    // Age Calculation
+    function runAgeCalc() {
+      const dobVal = document.getElementById('dobInput').value;
+      if (!dobVal) return;
+      const dob = new Date(dobVal);
+      const target = document.getElementById('dobTarget').value ? new Date(document.getElementById('dobTarget').value) : new Date();
+
+      let years = target.getFullYear() - dob.getFullYear();
+      let months = target.getMonth() - dob.getMonth();
+      let days = target.getDate() - dob.getDate();
+
+      if (days < 0) {
+        months -= 1;
+        days += new Date(target.getFullYear(), target.getMonth(), 0).getDate();
+      }
+      if (months < 0) {
+        years -= 1;
+        months += 12;
+      }
+
+      const diffTime = Math.abs(target - dob);
+      const totalDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+      document.getElementById('ageYearsMonths').textContent = `${years} Y, ${months} M, ${days} D`;
+      document.getElementById('ageTotalDays').textContent = `${totalDays.toLocaleString()} Days`;
+    }
+
+    // SIP Calculation
+    function runSipCalc() {
+      const p = parseFloat(document.getElementById('sipMonthly').value) || 0;
+      const annualRate = parseFloat(document.getElementById('sipReturn').value) || 0;
+      const years = parseFloat(document.getElementById('sipYears').value) || 0;
+
+      const i = (annualRate / 100) / 12;
+      const n = years * 12;
+      const invested = p * n;
+      const total = p * ((Math.pow(1 + i, n) - 1) / i) * (1 + i);
+      const gain = Math.max(0, total - invested);
+
+      document.getElementById('sipTotalWealth').textContent = `₹ ${Math.round(total).toLocaleString()}`;
+      document.getElementById('sipInvested').textContent = `₹ ${Math.round(invested).toLocaleString()}`;
+      document.getElementById('sipGain').textContent = `₹ ${Math.round(gain).toLocaleString()}`;
+    }
+
+    // Discount Calculation
+    function runDiscCalc() {
+      const price = parseFloat(document.getElementById('discPrice').value) || 0;
+      const pct = parseFloat(document.getElementById('discPct').value) || 0;
+      const saved = (price * pct) / 100;
+      const finalPrice = Math.max(0, price - saved);
+
+      document.getElementById('discFinal').textContent = `₹ ${finalPrice.toFixed(2)}`;
+      document.getElementById('discSaved').textContent = `₹ ${saved.toFixed(2)} (${pct}% OFF)`;
+    }
+
+    // EOSB Salary Calculation
+    function runEosbCalc() {
+      const salary = parseFloat(document.getElementById('eosbSalary').value) || 0;
+      const years = parseFloat(document.getElementById('eosbYears').value) || 0;
+      const reason = document.getElementById('eosbReason').value;
+
+      let baseGratuity = 0;
+      if (years <= 5) {
+        baseGratuity = (salary / 2) * years;
+      } else {
+        baseGratuity = (salary / 2) * 5 + (salary * (years - 5));
+      }
+
+      let finalEosb = baseGratuity;
+      let tierDesc = 'Article 84 (Full Entitlement)';
+
+      if (reason === 'resignation') {
+        if (years < 2) {
+          finalEosb = 0;
+          tierDesc = 'Article 85 (0% - Less than 2 Years)';
+        } else if (years >= 2 && years < 5) {
+          finalEosb = baseGratuity * (1 / 3);
+          tierDesc = 'Article 85 (1/3rd Entitlement: 2-5 Yrs)';
+        } else if (years >= 5 && years < 10) {
+          finalEosb = baseGratuity * (2 / 3);
+          tierDesc = 'Article 85 (2/3rds Entitlement: 5-10 Yrs)';
+        } else {
+          finalEosb = baseGratuity;
+          tierDesc = 'Article 85 (100% Full Entitlement: 10+ Yrs)';
+        }
+      }
+
+      const inrRate = getFxRate('SAR', 'INR') || 25.3336;
+      document.getElementById('eosbTotal').textContent = `SAR ${finalEosb.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+      document.getElementById('eosbInr').textContent = `₹ ${(finalEosb * inrRate).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+      document.getElementById('eosbTier').textContent = tierDesc;
+    }
+
+    // Jeweller GST Calculation
+    function runGstCalc() {
+      const weight = parseFloat(document.getElementById('gstWeight').value) || 0;
+      const rate = parseFloat(document.getElementById('gstRate').value) || 0;
+      const making = parseFloat(document.getElementById('gstMaking').value) || 0;
+
+      const goldVal = weight * rate;
+      const makingVal = weight * making;
+      const taxable = goldVal + makingVal;
+      const gst = taxable * 0.03;
+      const totalInvoice = taxable + gst;
+
+      document.getElementById('gstInvoice').textContent = `₹ ${totalInvoice.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+      document.getElementById('gstGoldVal').textContent = `₹ ${goldVal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+      document.getElementById('gstTotalTax').textContent = `₹ ${gst.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+    }
+
+    // Saudi Iqama Fee Calculation
+    function runIqamaCalc() {
+      const months = parseInt(document.getElementById('iqDuration').value);
+      const dependents = parseInt(document.getElementById('iqDependents').value) || 0;
+      const maktabMonthly = parseFloat(document.getElementById('iqMaktab').value) || 800;
+
+      const jawazatYearly = 650;
+      const jawazatProrated = (jawazatYearly / 12) * months;
+      const maktabTotal = maktabMonthly * months;
+      const dependentTotal = (400 * dependents) * months;
+      const grandTotal = jawazatProrated + maktabTotal + dependentTotal;
+
+      document.getElementById('iqTotalCost').textContent = `SAR ${grandTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+      document.getElementById('iqDepCost').textContent = `SAR ${dependentTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} (${dependents} Dependent${dependents > 1 ? 's' : ''})`;
+      document.getElementById('iqGovCost').textContent = `SAR ${(jawazatProrated + maktabTotal).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+    }
+
+    // Prayer Times City Update
+    function updatePrayerCity() {
+      const city = document.getElementById('prayerCitySelect').value;
+      const map = {
+        Dammam: { fajr: '04:12 AM', sunrise: '05:31 AM', dhuhr: '11:48 AM', asr: '03:18 PM', maghrib: '06:05 PM', isha: '07:35 PM', label: 'Dammam, Saudi Arabia' },
+        Riyadh: { fajr: '04:20 AM', sunrise: '05:39 AM', dhuhr: '11:56 AM', asr: '03:24 PM', maghrib: '06:12 PM', isha: '07:42 PM', label: 'Riyadh, Saudi Arabia' },
+        Jeddah: { fajr: '04:45 AM', sunrise: '06:03 AM', dhuhr: '12:21 PM', asr: '03:46 PM', maghrib: '06:38 PM', isha: '08:08 PM', label: 'Jeddah, Saudi Arabia' },
+        Makkah: { fajr: '04:43 AM', sunrise: '06:01 AM', dhuhr: '12:19 PM', asr: '03:44 PM', maghrib: '06:36 PM', isha: '08:06 PM', label: 'Makkah Al-Mukarramah' },
+        Madinah: { fajr: '04:41 AM', sunrise: '06:00 AM', dhuhr: '12:20 PM', asr: '03:48 PM', maghrib: '06:38 PM', isha: '08:08 PM', label: 'Madinah Al-Munawwarah' },
+        Khobar: { fajr: '04:12 AM', sunrise: '05:31 AM', dhuhr: '11:48 AM', asr: '03:18 PM', maghrib: '06:05 PM', isha: '07:35 PM', label: 'Al-Khobar, Saudi Arabia' },
+        Dubai: { fajr: '04:36 AM', sunrise: '05:54 AM', dhuhr: '12:15 PM', asr: '03:44 PM', maghrib: '06:35 PM', isha: '07:55 PM', label: 'Dubai, UAE' },
+        AbuDhabi: { fajr: '04:40 AM', sunrise: '05:58 AM', dhuhr: '12:19 PM', asr: '03:48 PM', maghrib: '06:39 PM', isha: '07:59 PM', label: 'Abu Dhabi, UAE' },
+        Doha: { fajr: '04:18 AM', sunrise: '05:36 AM', dhuhr: '11:53 AM', asr: '03:22 PM', maghrib: '06:10 PM', isha: '07:40 PM', label: 'Doha, Qatar' },
+        Kuwait: { fajr: '04:15 AM', sunrise: '05:35 AM', dhuhr: '11:54 AM', asr: '03:26 PM', maghrib: '06:13 PM', isha: '07:43 PM', label: 'Kuwait City, Kuwait' },
+        Muscat: { fajr: '04:30 AM', sunrise: '05:47 AM', dhuhr: '12:07 PM', asr: '03:34 PM', maghrib: '06:27 PM', isha: '07:47 PM', label: 'Muscat, Oman' },
+        Manama: { fajr: '04:15 AM', sunrise: '05:34 AM', dhuhr: '11:51 AM', asr: '03:21 PM', maghrib: '06:08 PM', isha: '07:38 PM', label: 'Manama, Bahrain' }
+      };
+
+      const selected = map[city] || map['Dammam'];
+      document.getElementById('timeFajr').textContent = selected.fajr;
+      document.getElementById('timeSunrise').textContent = selected.sunrise;
+      document.getElementById('timeDhuhr').textContent = selected.dhuhr;
+      document.getElementById('timeAsr').textContent = selected.asr;
+      document.getElementById('timeMaghrib').textContent = selected.maghrib;
+      document.getElementById('timeIsha').textContent = selected.isha;
+      document.getElementById('prayerLocLabel').textContent = selected.label;
+    }
+
+    function searchFlights() {
+      const from = document.getElementById('flFrom').value;
+      const to = document.getElementById('flTo').value;
+      window.open(`https://www.google.com/travel/flights?q=Flights%20from%20${from}%20to%20${to}`, '_blank');
+    }
+
+    function checkPnrStatus() {
+      const pnr = document.getElementById('pnrInput').value.trim();
+      if (!pnr || pnr.length !== 10) {
+        alert('Please enter a valid 10-digit Indian Railways PNR number.');
+        return;
+      }
+      window.open(`https://www.confirmtkt.com/pnr-status/${pnr}`, '_blank');
+    }
+
+    function copyResult(elemId) {
+      const text = document.getElementById(elemId).textContent;
+      navigator.clipboard.writeText(text);
+      toastRating('📋 Copied to clipboard: ' + text);
+    }
+
+    function shareRateWhatsApp() {
+      const rateText = document.getElementById('liveRateDisplay').textContent;
+      const text = encodeURIComponent(`Check live Saudi Riyal SAR to INR rates & Barq net payout on DailyCalcHubs: https://dailycalchubs.com/ (${rateText})`);
+      window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
+    }
+
+    function toastRating(msg) {
+      alert(msg);
+    }
+
+    // Auto-init on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      fetchLiveForex();
+      runZakatCalc();
+      runAgeCalc();
+      runSipCalc();
+      runDiscCalc();
+      runEosbCalc();
+      runGstCalc();
+      runIqamaCalc();
+      updatePrayerCity();
+    });
+  </script>
+</body>
+</html>
