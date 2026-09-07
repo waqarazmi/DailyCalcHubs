@@ -1222,6 +1222,100 @@
       color: #60a5fa;
       background: rgba(59, 130, 246, 0.1);
     }
+    /* Responsive Country Selector Architecture (Mobile Native vs Desktop HD Flags) */
+    @media (max-width: 768px) {
+      .desktop-custom-select {
+        display: none !important;
+      }
+      .mobile-native-select {
+        display: block !important;
+      }
+    }
+    @media (min-width: 769px) {
+      .mobile-native-select {
+        display: none !important;
+      }
+      .desktop-custom-select {
+        display: block !important;
+      }
+    }
+
+    .custom-select-wrapper {
+      position: relative;
+      width: 100%;
+    }
+    .custom-select-box {
+      width: 100%;
+      background: var(--input-bg);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 10px;
+      padding: 12px 16px;
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      user-select: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .custom-select-box:hover, .custom-select-box.active {
+      border-color: var(--neon-teal);
+      box-shadow: 0 0 12px rgba(0, 201, 167, 0.3);
+    }
+    .custom-dropdown-list {
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+      right: 0;
+      background: #0b1329;
+      border: 1px solid rgba(0, 201, 167, 0.35);
+      border-radius: 10px;
+      max-height: 320px;
+      overflow-y: auto;
+      z-index: 100;
+      box-shadow: 0 12px 35px rgba(0,0,0,0.7);
+    }
+    .custom-dropdown-list.hidden {
+      display: none;
+    }
+    .custom-option-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 16px;
+      font-size: 14.5px;
+      font-weight: 500;
+      color: #e2e8f0;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+    }
+    .custom-option-item:hover {
+      background: rgba(0, 201, 167, 0.15);
+      color: #00e676;
+    }
+    .flag-rect-img {
+      width: 22px;
+      height: 15px;
+      object-fit: cover;
+      border-radius: 2px !important;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.35);
+      flex-shrink: 0;
+      display: inline-block;
+    }
+    .ticker-flag-img {
+      width: 22px;
+      height: 15px;
+      object-fit: cover;
+      border-radius: 2px !important;
+      vertical-align: middle;
+      margin-right: 6px;
+      display: inline-block;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
   </style>
 </head>
 <body>
@@ -1232,20 +1326,20 @@
   <!-- Live Moving Financial Ticker Bar -->
   <div class="top-ticker-wrap">
     <div class="ticker-content" id="liveTicker">
-      <span class="ticker-item"><span class="ticker-label"><img src="https://flagcdn.com/w40/us.png" alt="US" style="width:20px; height:14px; border-radius:2px; object-fit:cover; vertical-align:middle; margin-right:6px; display:inline-block; box-shadow:0 1px 3px rgba(0,0,0,0.3);">USD/INR:</span> <span class="ticker-val" id="tickerUsd">Fetching...</span></span>
-      <span class="ticker-item"><span class="ticker-label"><img src="https://flagcdn.com/w40/sa.png" alt="SA" style="width:20px; height:14px; border-radius:2px; object-fit:cover; vertical-align:middle; margin-right:6px; display:inline-block; box-shadow:0 1px 3px rgba(0,0,0,0.3);">SAR/INR:</span> <span class="ticker-val" id="tickerSar">Fetching...</span></span>
-      <span class="ticker-item"><span class="ticker-label"><img src="https://flagcdn.com/w40/sa.png" alt="SA" style="width:20px; height:14px; border-radius:2px; object-fit:cover; vertical-align:middle; margin-right:6px; display:inline-block; box-shadow:0 1px 3px rgba(0,0,0,0.3);">&#9889; BARQ (SAR/INR):</span> <span class="ticker-val" id="tickerBarq">—</span><span class="ticker-barq">In-Hand Live</span></span>
-      <span class="ticker-item"><span class="ticker-label"><img src="https://flagcdn.com/w40/ae.png" alt="AE" style="width:20px; height:14px; border-radius:2px; object-fit:cover; vertical-align:middle; margin-right:6px; display:inline-block; box-shadow:0 1px 3px rgba(0,0,0,0.3);">AED/INR:</span> <span class="ticker-val" id="tickerAed">Fetching...</span></span>
-      <span class="ticker-item"><span class="ticker-label"><img src="https://flagcdn.com/w40/kw.png" alt="KW" style="width:20px; height:14px; border-radius:2px; object-fit:cover; vertical-align:middle; margin-right:6px; display:inline-block; box-shadow:0 1px 3px rgba(0,0,0,0.3);">KWD/INR:</span> <span class="ticker-val" id="tickerKwd">Fetching...</span></span>
-      <span class="ticker-item"><span class="ticker-label"><img src="https://flagcdn.com/w40/in.png" alt="IN" style="width:20px; height:14px; border-radius:2px; object-fit:cover; vertical-align:middle; margin-right:6px; display:inline-block; box-shadow:0 1px 3px rgba(0,0,0,0.3);">INDIA GOLD 24K:</span> <span class="ticker-gold" id="tickerGold">Live Market</span></span>
+      <span class="ticker-item"><span class="ticker-label"><img src="https://flagcdn.com/w40/us.png" alt="US" class="ticker-flag-img">USD/INR:</span> <span class="ticker-val" id="tickerUsd">Fetching...</span></span>
+      <span class="ticker-item"><span class="ticker-label"><img src="https://flagcdn.com/w40/sa.png" alt="SA" class="ticker-flag-img">SAR/INR:</span> <span class="ticker-val" id="tickerSar">Fetching...</span></span>
+      <span class="ticker-item"><span class="ticker-label"><img src="https://flagcdn.com/w40/sa.png" alt="SA" class="ticker-flag-img">&#9889; BARQ (SAR/INR):</span> <span class="ticker-val" id="tickerBarq">—</span><span class="ticker-barq">In-Hand Live</span></span>
+      <span class="ticker-item"><span class="ticker-label"><img src="https://flagcdn.com/w40/ae.png" alt="AE" class="ticker-flag-img">AED/INR:</span> <span class="ticker-val" id="tickerAed">Fetching...</span></span>
+      <span class="ticker-item"><span class="ticker-label"><img src="https://flagcdn.com/w40/kw.png" alt="KW" class="ticker-flag-img">KWD/INR:</span> <span class="ticker-val" id="tickerKwd">Fetching...</span></span>
+      <span class="ticker-item"><span class="ticker-label"><img src="https://flagcdn.com/w40/in.png" alt="IN" class="ticker-flag-img">INDIA GOLD 24K:</span> <span class="ticker-gold" id="tickerGold">Live Market</span></span>
       <span class="ticker-item"><span class="ticker-label">&#128332; ZAKAT NISAB:</span> <span class="ticker-gold">87.48g GOLD / 612.36g SILVER</span></span>
       <!-- Infinite loop duplicate -->
-      <span class="ticker-item"><span class="ticker-label"><img src="https://flagcdn.com/w40/us.png" alt="US" style="width:20px; height:14px; border-radius:2px; object-fit:cover; vertical-align:middle; margin-right:6px; display:inline-block; box-shadow:0 1px 3px rgba(0,0,0,0.3);">USD/INR:</span> <span class="ticker-val" id="tickerUsd2">Fetching...</span></span>
-      <span class="ticker-item"><span class="ticker-label"><img src="https://flagcdn.com/w40/sa.png" alt="SA" style="width:20px; height:14px; border-radius:2px; object-fit:cover; vertical-align:middle; margin-right:6px; display:inline-block; box-shadow:0 1px 3px rgba(0,0,0,0.3);">SAR/INR:</span> <span class="ticker-val" id="tickerSar2">Fetching...</span></span>
-      <span class="ticker-item"><span class="ticker-label"><img src="https://flagcdn.com/w40/sa.png" alt="SA" style="width:20px; height:14px; border-radius:2px; object-fit:cover; vertical-align:middle; margin-right:6px; display:inline-block; box-shadow:0 1px 3px rgba(0,0,0,0.3);">&#9889; BARQ (SAR/INR):</span> <span class="ticker-val" id="tickerBarq2">—</span><span class="ticker-barq">In-Hand Live</span></span>
-      <span class="ticker-item"><span class="ticker-label"><img src="https://flagcdn.com/w40/ae.png" alt="AE" style="width:20px; height:14px; border-radius:2px; object-fit:cover; vertical-align:middle; margin-right:6px; display:inline-block; box-shadow:0 1px 3px rgba(0,0,0,0.3);">AED/INR:</span> <span class="ticker-val" id="tickerAed2">Fetching...</span></span>
-      <span class="ticker-item"><span class="ticker-label"><img src="https://flagcdn.com/w40/kw.png" alt="KW" style="width:20px; height:14px; border-radius:2px; object-fit:cover; vertical-align:middle; margin-right:6px; display:inline-block; box-shadow:0 1px 3px rgba(0,0,0,0.3);">KWD/INR:</span> <span class="ticker-val" id="tickerKwd2">Fetching...</span></span>
-      <span class="ticker-item"><span class="ticker-label"><img src="https://flagcdn.com/w40/in.png" alt="IN" style="width:20px; height:14px; border-radius:2px; object-fit:cover; vertical-align:middle; margin-right:6px; display:inline-block; box-shadow:0 1px 3px rgba(0,0,0,0.3);">INDIA GOLD 24K:</span> <span class="ticker-gold" id="tickerGold2">Live Market</span></span>
+      <span class="ticker-item"><span class="ticker-label"><img src="https://flagcdn.com/w40/us.png" alt="US" class="ticker-flag-img">USD/INR:</span> <span class="ticker-val" id="tickerUsd2">Fetching...</span></span>
+      <span class="ticker-item"><span class="ticker-label"><img src="https://flagcdn.com/w40/sa.png" alt="SA" class="ticker-flag-img">SAR/INR:</span> <span class="ticker-val" id="tickerSar2">Fetching...</span></span>
+      <span class="ticker-item"><span class="ticker-label"><img src="https://flagcdn.com/w40/sa.png" alt="SA" class="ticker-flag-img">&#9889; BARQ (SAR/INR):</span> <span class="ticker-val" id="tickerBarq2">—</span><span class="ticker-barq">In-Hand Live</span></span>
+      <span class="ticker-item"><span class="ticker-label"><img src="https://flagcdn.com/w40/ae.png" alt="AE" class="ticker-flag-img">AED/INR:</span> <span class="ticker-val" id="tickerAed2">Fetching...</span></span>
+      <span class="ticker-item"><span class="ticker-label"><img src="https://flagcdn.com/w40/kw.png" alt="KW" class="ticker-flag-img">KWD/INR:</span> <span class="ticker-val" id="tickerKwd2">Fetching...</span></span>
+      <span class="ticker-item"><span class="ticker-label"><img src="https://flagcdn.com/w40/in.png" alt="IN" class="ticker-flag-img">INDIA GOLD 24K:</span> <span class="ticker-gold" id="tickerGold2">Live Market</span></span>
       <span class="ticker-item"><span class="ticker-label">&#128332; ZAKAT NISAB:</span> <span class="ticker-gold">87.48g GOLD / 612.36g SILVER</span></span>
     </div>
   </div>
@@ -1307,16 +1401,68 @@
           <div class="calc-inputs-left">
             <div class="form-group-item">
               <label class="field-label">From Country / Currency</label>
-              <select id="curFrom" class="select-dropdown" onchange="runLiveConverter()">
-                <option value="SAR" selected>&#127480;&#127462; Saudi Arabia (SAR)</option>
-                <option value="AED">&#127462;&#127466; United Arab Emirates (AED)</option>
-                <option value="KWD">&#127472;&#127484; Kuwait (KWD)</option>
-                <option value="QAR">&#127476;&#127462; Qatar (QAR)</option>
-                <option value="OMR">&#127476;&#127474; Oman (OMR)</option>
-                <option value="BHD">&#127463;&#127469; Bahrain (BHD)</option>
-                <option value="USD">&#127482;&#127488; United States (USD)</option>
-                <option value="GBP">&#127468;&#127463; United Kingdom (GBP)</option>
-              </select>
+              
+              <!-- Hidden Master State -->
+              <input type="hidden" id="curFrom" value="SAR">
+
+              <!-- Mobile Native Select (Opens Native OS Bottom Sheet with Radio Buttons) -->
+              <div class="mobile-native-select">
+                <select id="curFromMobile" class="select-dropdown" onchange="syncFromMobile('curFrom', this.value)">
+                  <option value="SAR" selected>&#127480;&#127462; Saudi Arabia (SAR)</option>
+                  <option value="AED">&#127462;&#127466; United Arab Emirates (AED)</option>
+                  <option value="KWD">&#127472;&#127484; Kuwait (KWD)</option>
+                  <option value="QAR">&#127478;&#127462; Qatar (QAR)</option>
+                  <option value="OMR">&#127476;&#127474; Oman (OMR)</option>
+                  <option value="BHD">&#127463;&#127469; Bahrain (BHD)</option>
+                  <option value="USD">&#127482;&#127480; United States (USD)</option>
+                  <option value="GBP">&#127468;&#127463; United Kingdom (GBP)</option>
+                </select>
+              </div>
+
+              <!-- Desktop Custom Select (Displays Crisp Rectangular Flags on PC) -->
+              <div class="desktop-custom-select custom-select-wrapper">
+                <div class="custom-select-box" id="curFromBox" onclick="toggleCustomDropdown('curFromList')">
+                  <div style="display:flex; align-items:center; gap:10px;">
+                    <img id="curFromImg" src="https://flagcdn.com/w40/sa.png" alt="Saudi Arabia" class="flag-rect-img">
+                    <span id="curFromLabel">Saudi Arabia (SAR)</span>
+                  </div>
+                  <i class="fas fa-chevron-down" style="font-size:12px; color:#94a3b8;"></i>
+                </div>
+                <div class="custom-dropdown-list hidden" id="curFromList">
+                  <div class="custom-option-item" onclick="syncFromDesktop('curFrom', 'SAR', 'Saudi Arabia (SAR)', 'sa')">
+                    <img src="https://flagcdn.com/w40/sa.png" alt="SA" class="flag-rect-img">
+                    <span>Saudi Arabia (SAR)</span>
+                  </div>
+                  <div class="custom-option-item" onclick="syncFromDesktop('curFrom', 'AED', 'United Arab Emirates (AED)', 'ae')">
+                    <img src="https://flagcdn.com/w40/ae.png" alt="AE" class="flag-rect-img">
+                    <span>United Arab Emirates (AED)</span>
+                  </div>
+                  <div class="custom-option-item" onclick="syncFromDesktop('curFrom', 'KWD', 'Kuwait (KWD)', 'kw')">
+                    <img src="https://flagcdn.com/w40/kw.png" alt="KW" class="flag-rect-img">
+                    <span>Kuwait (KWD)</span>
+                  </div>
+                  <div class="custom-option-item" onclick="syncFromDesktop('curFrom', 'QAR', 'Qatar (QAR)', 'qa')">
+                    <img src="https://flagcdn.com/w40/qa.png" alt="QA" class="flag-rect-img">
+                    <span>Qatar (QAR)</span>
+                  </div>
+                  <div class="custom-option-item" onclick="syncFromDesktop('curFrom', 'OMR', 'Oman (OMR)', 'om')">
+                    <img src="https://flagcdn.com/w40/om.png" alt="OM" class="flag-rect-img">
+                    <span>Oman (OMR)</span>
+                  </div>
+                  <div class="custom-option-item" onclick="syncFromDesktop('curFrom', 'BHD', 'Bahrain (BHD)', 'bh')">
+                    <img src="https://flagcdn.com/w40/bh.png" alt="BH" class="flag-rect-img">
+                    <span>Bahrain (BHD)</span>
+                  </div>
+                  <div class="custom-option-item" onclick="syncFromDesktop('curFrom', 'USD', 'United States (USD)', 'us')">
+                    <img src="https://flagcdn.com/w40/us.png" alt="US" class="flag-rect-img">
+                    <span>United States (USD)</span>
+                  </div>
+                  <div class="custom-option-item" onclick="syncFromDesktop('curFrom', 'GBP', 'United Kingdom (GBP)', 'gb')">
+                    <img src="https://flagcdn.com/w40/gb.png" alt="GB" class="flag-rect-img">
+                    <span>United Kingdom (GBP)</span>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <div class="form-group-item">
@@ -1326,17 +1472,73 @@
 
             <div class="form-group-item">
               <label class="field-label">To Country / Currency</label>
-              <select id="curTo" class="select-dropdown" onchange="runLiveConverter()">
-                <option value="INR" selected>&#127470;&#127475; India (INR)</option>
-                <option value="PKR">&#127477;&#127472; Pakistan (PKR)</option>
-                <option value="BDT">&#127463;&#127465; Bangladesh (BDT)</option>
-                <option value="PHP">&#127477;&#127469; Philippines (PHP)</option>
-                <option value="EGP">&#127466;&#127468; Egypt (EGP)</option>
-                <option value="NPR">&#127475;&#127477; Nepal (NPR)</option>
-                <option value="LKR">&#127473;&#127472; Sri Lanka (LKR)</option>
-                <option value="USD">&#127482;&#127488; United States (USD)</option>
-                <option value="GBP">&#127468;&#127463; United Kingdom (GBP)</option>
-              </select>
+              
+              <!-- Hidden Master State -->
+              <input type="hidden" id="curTo" value="INR">
+
+              <!-- Mobile Native Select (Opens Native OS Bottom Sheet with Radio Buttons) -->
+              <div class="mobile-native-select">
+                <select id="curToMobile" class="select-dropdown" onchange="syncFromMobile('curTo', this.value)">
+                  <option value="INR" selected>&#127470;&#127475; India (INR)</option>
+                  <option value="PKR">&#127477;&#127472; Pakistan (PKR)</option>
+                  <option value="BDT">&#127463;&#127465; Bangladesh (BDT)</option>
+                  <option value="PHP">&#127477;&#127469; Philippines (PHP)</option>
+                  <option value="EGP">&#127466;&#127468; Egypt (EGP)</option>
+                  <option value="NPR">&#127475;&#127477; Nepal (NPR)</option>
+                  <option value="LKR">&#127473;&#127472; Sri Lanka (LKR)</option>
+                  <option value="USD">&#127482;&#127480; United States (USD)</option>
+                  <option value="GBP">&#127468;&#127463; United Kingdom (GBP)</option>
+                </select>
+              </div>
+
+              <!-- Desktop Custom Select (Displays Crisp Rectangular Flags on PC) -->
+              <div class="desktop-custom-select custom-select-wrapper">
+                <div class="custom-select-box" id="curToBox" onclick="toggleCustomDropdown('curToList')">
+                  <div style="display:flex; align-items:center; gap:10px;">
+                    <img id="curToImg" src="https://flagcdn.com/w40/in.png" alt="India" class="flag-rect-img">
+                    <span id="curToLabel">India (INR)</span>
+                  </div>
+                  <i class="fas fa-chevron-down" style="font-size:12px; color:#94a3b8;"></i>
+                </div>
+                <div class="custom-dropdown-list hidden" id="curToList">
+                  <div class="custom-option-item" onclick="syncFromDesktop('curTo', 'INR', 'India (INR)', 'in')">
+                    <img src="https://flagcdn.com/w40/in.png" alt="IN" class="flag-rect-img">
+                    <span>India (INR)</span>
+                  </div>
+                  <div class="custom-option-item" onclick="syncFromDesktop('curTo', 'PKR', 'Pakistan (PKR)', 'pk')">
+                    <img src="https://flagcdn.com/w40/pk.png" alt="PK" class="flag-rect-img">
+                    <span>Pakistan (PKR)</span>
+                  </div>
+                  <div class="custom-option-item" onclick="syncFromDesktop('curTo', 'BDT', 'Bangladesh (BDT)', 'bd')">
+                    <img src="https://flagcdn.com/w40/bd.png" alt="BD" class="flag-rect-img">
+                    <span>Bangladesh (BDT)</span>
+                  </div>
+                  <div class="custom-option-item" onclick="syncFromDesktop('curTo', 'PHP', 'Philippines (PHP)', 'ph')">
+                    <img src="https://flagcdn.com/w40/ph.png" alt="PH" class="flag-rect-img">
+                    <span>Philippines (PHP)</span>
+                  </div>
+                  <div class="custom-option-item" onclick="syncFromDesktop('curTo', 'EGP', 'Egypt (EGP)', 'eg')">
+                    <img src="https://flagcdn.com/w40/eg.png" alt="EG" class="flag-rect-img">
+                    <span>Egypt (EGP)</span>
+                  </div>
+                  <div class="custom-option-item" onclick="syncFromDesktop('curTo', 'NPR', 'Nepal (NPR)', 'np')">
+                    <img src="https://flagcdn.com/w40/np.png" alt="NP" class="flag-rect-img">
+                    <span>Nepal (NPR)</span>
+                  </div>
+                  <div class="custom-option-item" onclick="syncFromDesktop('curTo', 'LKR', 'Sri Lanka (LKR)', 'lk')">
+                    <img src="https://flagcdn.com/w40/lk.png" alt="LK" class="flag-rect-img">
+                    <span>Sri Lanka (LKR)</span>
+                  </div>
+                  <div class="custom-option-item" onclick="syncFromDesktop('curTo', 'USD', 'United States (USD)', 'us')">
+                    <img src="https://flagcdn.com/w40/us.png" alt="US" class="flag-rect-img">
+                    <span>United States (USD)</span>
+                  </div>
+                  <div class="custom-option-item" onclick="syncFromDesktop('curTo', 'GBP', 'United Kingdom (GBP)', 'gb')">
+                    <img src="https://flagcdn.com/w40/gb.png" alt="GB" class="flag-rect-img">
+                    <span>United Kingdom (GBP)</span>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <div class="live-rate-tag" id="liveRateDisplay">
@@ -1370,7 +1572,7 @@
         <!-- 3-Tier Remittance Comparison Table -->
         <div class="remit-compare-block">
           <div class="remit-title-row">
-            <h4><i class="fas fa-money-bill-transfer" style="color: #00e676; margin-right: 6px;"></i> Live In-Hand App Cashout Comparison (<img src="https://flagcdn.com/w40/sa.png" alt="SA" style="width:18px;height:12px;border-radius:2px;object-fit:cover;vertical-align:middle;margin:0 3px;"> SAR to <img src="https://flagcdn.com/w40/in.png" alt="IN" style="width:18px;height:12px;border-radius:2px;object-fit:cover;vertical-align:middle;margin:0 3px;"> INR)</h4>
+            <h4><i class="fas fa-money-bill-transfer" style="color: #00e676; margin-right: 6px;"></i> Live In-Hand App Cashout Comparison (<img src="https://flagcdn.com/w40/sa.png" alt="SA" class="flag-rect-img" style="vertical-align:middle;margin:0 3px;"> SAR to <img src="https://flagcdn.com/w40/in.png" alt="IN" class="flag-rect-img" style="vertical-align:middle;margin:0 3px;"> INR)</h4>
           </div>
           <div style="overflow-x: auto;">
             <table class="bank-table">
@@ -2509,6 +2711,88 @@
       if (elSv) elSv.textContent = '\u20B9' + exSav.toLocaleString('en-IN') + ' INR extra';
     }
 
+    const countryDataMap = {
+      SAR: { label: 'Saudi Arabia (SAR)', flag: 'sa' },
+      AED: { label: 'United Arab Emirates (AED)', flag: 'ae' },
+      KWD: { label: 'Kuwait (KWD)', flag: 'kw' },
+      QAR: { label: 'Qatar (QAR)', flag: 'qa' },
+      OMR: { label: 'Oman (OMR)', flag: 'om' },
+      BHD: { label: 'Bahrain (BHD)', flag: 'bh' },
+      USD: { label: 'United States (USD)', flag: 'us' },
+      GBP: { label: 'United Kingdom (GBP)', flag: 'gb' },
+      INR: { label: 'India (INR)', flag: 'in' },
+      PKR: { label: 'Pakistan (PKR)', flag: 'pk' },
+      BDT: { label: 'Bangladesh (BDT)', flag: 'bd' },
+      PHP: { label: 'Philippines (PHP)', flag: 'ph' },
+      EGP: { label: 'Egypt (EGP)', flag: 'eg' },
+      NPR: { label: 'Nepal (NPR)', flag: 'np' },
+      LKR: { label: 'Sri Lanka (LKR)', flag: 'lk' }
+    };
+
+    function syncFromMobile(targetId, val) {
+      document.getElementById(targetId).value = val;
+      const info = countryDataMap[val];
+      if (info) {
+        const img = document.getElementById(targetId + 'Img');
+        if (img) img.src = 'https://flagcdn.com/w40/' + info.flag + '.png';
+        const lbl = document.getElementById(targetId + 'Label');
+        if (lbl) lbl.textContent = info.label;
+      }
+      runLiveConverter();
+    }
+
+    function syncFromDesktop(targetId, val, label, flagCode) {
+      document.getElementById(targetId).value = val;
+      const mobSelect = document.getElementById(targetId + 'Mobile');
+      if (mobSelect) mobSelect.value = val;
+      const img = document.getElementById(targetId + 'Img');
+      if (img) img.src = 'https://flagcdn.com/w40/' + flagCode + '.png';
+      const lbl = document.getElementById(targetId + 'Label');
+      if (lbl) lbl.textContent = label;
+      const list = document.getElementById(targetId + 'List');
+      if (list) list.classList.add('hidden');
+      const box = document.getElementById(targetId + 'Box');
+      if (box) box.classList.remove('active');
+      runLiveConverter();
+    }
+
+    function toggleCustomDropdown(listId) {
+      const target = document.getElementById(listId);
+      const boxId = (listId === 'curFromList') ? 'curFromBox' : 'curToBox';
+      const otherId = (listId === 'curFromList') ? 'curToList' : 'curFromList';
+      const otherBoxId = (listId === 'curFromList') ? 'curToBox' : 'curFromBox';
+      const other = document.getElementById(otherId);
+      const otherBox = document.getElementById(otherBoxId);
+      if (other) other.classList.add('hidden');
+      if (otherBox) otherBox.classList.remove('active');
+      if (target) {
+        target.classList.toggle('hidden');
+        const box = document.getElementById(boxId);
+        if (box) {
+          if (target.classList.contains('hidden')) {
+            box.classList.remove('active');
+          } else {
+            box.classList.add('active');
+          }
+        }
+      }
+    }
+
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('#curFromBox') && !e.target.closest('#curFromList')) {
+        const l1 = document.getElementById('curFromList');
+        if (l1) l1.classList.add('hidden');
+        const b1 = document.getElementById('curFromBox');
+        if (b1) b1.classList.remove('active');
+      }
+      if (!e.target.closest('#curToBox') && !e.target.closest('#curToList')) {
+        const l2 = document.getElementById('curToList');
+        if (l2) l2.classList.add('hidden');
+        const b2 = document.getElementById('curToBox');
+        if (b2) b2.classList.remove('active');
+      }
+    });
+
     function runLiveConverter() {
       const from = document.getElementById('curFrom').value;
       const to = document.getElementById('curTo').value;
@@ -2527,8 +2811,8 @@
         SAR: 'sa', AED: 'ae', KWD: 'kw', QAR: 'qa', OMR: 'om', BHD: 'bh', USD: 'us', GBP: 'gb',
         INR: 'in', PKR: 'pk', BDT: 'bd', PHP: 'ph', EGP: 'eg', NPR: 'np', LKR: 'lk'
       };
-      const fromFlag = flagMap[from] ? `<img src="https://flagcdn.com/w40/${flagMap[from]}.png" alt="${from}" style="width:18px;height:12px;border-radius:2px;object-fit:cover;vertical-align:middle;margin:0 4px;box-shadow:0 1px 2px rgba(0,0,0,0.3);display:inline-block;">` : '';
-      const toFlag = flagMap[to] ? `<img src="https://flagcdn.com/w40/${flagMap[to]}.png" alt="${to}" style="width:18px;height:12px;border-radius:2px;object-fit:cover;vertical-align:middle;margin:0 4px;box-shadow:0 1px 2px rgba(0,0,0,0.3);display:inline-block;">` : '';
+      const fromFlag = flagMap[from] ? `<img src="https://flagcdn.com/w40/${flagMap[from]}.png" alt="${from}" class="flag-rect-img" style="vertical-align:middle;margin:0 4px;">` : '';
+      const toFlag = flagMap[to] ? `<img src="https://flagcdn.com/w40/${flagMap[to]}.png" alt="${to}" class="flag-rect-img" style="vertical-align:middle;margin:0 4px;">` : '';
 
       document.getElementById('liveRateDisplay').innerHTML = `<span class="pulse-dot"></span> Live Rate: ${fromFlag} 1 ${from} = ${rate.toFixed(4)} ${to} ${toFlag}`;
 
