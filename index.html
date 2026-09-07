@@ -8,6 +8,99 @@
   <meta name="keywords" content="SAR to INR live rate today, Saudi Riyal to Indian Rupee best exchange rate, Barq zero fee remittance India, Al Rajhi Tahweel exchange rate, Urpay vs Mobily Pay charges, Shariah Compliant Zakat calculator 2026, Gold Nisab threshold 24K 22K 21K 18K 16K 14K, Saudi Iqama dependent fee calculator 2026, Saudi End of Service Benefit calculator Article 84 and 85, Prayer Times Dammam Riyadh Jeddah, Indian jewellery GST calculator">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://dailycalchubs.com/">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="apple-touch-icon" href="og-image.jpg">
+  <meta name="theme-color" content="#070d18">
+
+  <!-- Open Graph / WhatsApp / Facebook Social Cards -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="DailyCalcHubs">
+  <meta property="og:title" content="DailyCalcHubs | Smart, Shariah Compliant, Instant Online Financial Utilities">
+  <meta property="og:description" content="High-precision calculators for Gulf expats: Live SAR to INR remittance rates & Barq comparison, Shariah Zakat Nisab, Saudi EOSB Gratuity, and 2026 Iqama renewal fees.">
+  <meta property="og:image" content="https://dailycalchubs.com/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="675">
+  <meta property="og:url" content="https://dailycalchubs.com/">
+
+  <!-- Twitter Meta Cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="DailyCalcHubs | Smart, Shariah Compliant, Instant Online Financial Utilities">
+  <meta name="twitter:description" content="Calculate live SAR to INR exchange rates, Barq vs STC Pay in-hand payouts, Shariah Zakat, and Saudi Iqama fees instantly.">
+  <meta name="twitter:image" content="https://dailycalchubs.com/og-image.jpg">
+
+  <!-- Schema.org Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://dailycalchubs.com/#website",
+        "url": "https://dailycalchubs.com/",
+        "name": "DailyCalcHubs",
+        "description": "Smart, Shariah Compliant, Instant Online Financial Utilities for Gulf Expats and Global Households.",
+        "publisher": {
+          "@type": "Organization",
+          "name": "DailyCalcHubs",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://dailycalchubs.com/og-image.jpg"
+          }
+        }
+      },
+      {
+        "@type": "WebApplication",
+        "@id": "https://dailycalchubs.com/#app",
+        "name": "DailyCalcHubs Financial Utilities",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "All",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://dailycalchubs.com/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How is the Barq retail remittance rate calculated compared to live SAR to INR spot rates?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The live interbank spot rate represents mid-market institutional wholesale pricing. Consumer remittance apps like Barq, STC Pay, and urpay apply a competitive retail spread (typically 0.25 to 0.45 INR per SAR) and waive transfer fees for direct bank payouts to India."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the gold Nisab threshold for calculating Zakat in 2026?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Under Islamic jurisprudence, the Nisab for gold is 87.48 grams (approx 7.5 tolas) of pure 24K gold. If total net unencumbered liquid wealth exceeds this threshold and has been held for a full lunar year (Hawl), 2.5% is obligatory."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How is Saudi End of Service Benefit (EOSB) calculated under Labor Law Article 84 and 85?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Under Article 84, full gratuity awards half a month's wage per year for the first 5 years, plus one full month's wage for each subsequent year. Under Article 85 (resignation), entitlements are tiered: 0% under 2 years, 1/3rd between 2 to 5 years, 2/3rds between 5 to 10 years, and 100% after 10 years."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What are the Saudi Iqama renewal fees and Expat Dependent Levy charges for 2026?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Standard corporate Iqama renewal combines a statutory Jawazat fee of 650 SAR/year, Maktab Amal (Ministry of Human Resources) work permit fee of 9,600 SAR/year (800 SAR/month), and an Expat Dependent Levy of 400 SAR per month per dependent."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
 
   <!-- Google AdSense Verification & Script -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6944579701716470" crossorigin="anonymous"></script>
@@ -1937,7 +2030,7 @@
   </footer>
 
   <script>
-    // Tab Switcher
+    // Tab Switcher with URL Deep Linking
     function openTab(tabId, btnElement) {
       document.querySelectorAll('.tab-content-panel').forEach(p => p.classList.remove('active'));
       document.querySelectorAll('.tab-item-btn').forEach(b => b.classList.remove('active-teal', 'active-orange'));
@@ -1945,12 +2038,17 @@
       const target = document.getElementById('panel-' + tabId);
       if (target) target.classList.add('active');
 
-      if (btnElement) {
+      const btn = btnElement || document.querySelector(`.tab-item-btn[onclick*="'${tabId}'"]`);
+      if (btn) {
         if (['zakat', 'age', 'discount', 'jeweller'].includes(tabId)) {
-          btnElement.classList.add('active-orange');
+          btn.classList.add('active-orange');
         } else {
-          btnElement.classList.add('active-teal');
+          btn.classList.add('active-teal');
         }
+      }
+
+      if (window.history && window.history.replaceState) {
+        window.history.replaceState(null, null, '#' + tabId);
       }
     }
 
@@ -2287,6 +2385,12 @@
       runGstCalc();
       runIqamaCalc();
       updatePrayerCity();
+
+      // Check URL hash for direct tab deep link (e.g. #iqama, #zakat, #salary)
+      const hash = (window.location.hash || '').replace('#', '').trim();
+      if (hash && document.getElementById('panel-' + hash)) {
+        openTab(hash);
+      }
     });
   </script>
 </body>
