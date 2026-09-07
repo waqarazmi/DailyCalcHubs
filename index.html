@@ -923,6 +923,83 @@
       color: #60a5fa;
       background: rgba(59, 130, 246, 0.1);
     }
+      /* Custom Flag Dropdown Component */
+    .custom-select-wrapper {
+      position: relative;
+      width: 100%;
+    }
+    .custom-select-box {
+      width: 100%;
+      background: var(--input-bg);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 10px;
+      padding: 12px 16px;
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      user-select: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .custom-select-box:hover, .custom-select-box.active {
+      border-color: var(--neon-teal);
+      box-shadow: 0 0 12px rgba(0, 201, 167, 0.3);
+    }
+    .custom-dropdown-list {
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+      right: 0;
+      background: #0b1329;
+      border: 1px solid rgba(0, 201, 167, 0.35);
+      border-radius: 10px;
+      max-height: 240px;
+      overflow-y: auto;
+      z-index: 100;
+      box-shadow: 0 12px 35px rgba(0,0,0,0.7);
+    }
+    .custom-dropdown-list.hidden {
+      display: none;
+    }
+    .custom-option-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 16px;
+      font-size: 14.5px;
+      font-weight: 500;
+      color: #e2e8f0;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+    }
+    .custom-option-item:hover {
+      background: rgba(0, 201, 167, 0.15);
+      color: #00e676;
+    }
+    .custom-flag-img {
+      width: 24px;
+      height: 16px;
+      object-fit: cover;
+      border-radius: 2px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+      flex-shrink: 0;
+    }
+    .custom-dropdown-list::-webkit-scrollbar {
+      width: 6px;
+    }
+    .custom-dropdown-list::-webkit-scrollbar-track {
+      background: #0b1329;
+    }
+    .custom-dropdown-list::-webkit-scrollbar-thumb {
+      background: #1e293b;
+      border-radius: 3px;
+    }
+    .custom-dropdown-list::-webkit-scrollbar-thumb:hover {
+      background: #334155;
+    }
   </style>
 </head>
 <body>
@@ -1006,43 +1083,109 @@
 
         <div class="calc-layout-grid">
           <div class="calc-inputs-left">
+            <!-- FROM COUNTRY DROPDOWN -->
             <div class="form-group-item">
               <label class="field-label">From Country / Currency</label>
-              <div style="position: relative; display: flex; align-items: center;">
-                <img id="curFromFlag" src="https://flagcdn.com/w40/sa.png" alt="Flag" style="position: absolute; left: 14px; width: 26px; height: 18px; object-fit: cover; border-radius: 3px; box-shadow: 0 1px 4px rgba(0,0,0,0.4); pointer-events: none; z-index: 2;">
-                <select id="curFrom" class="select-dropdown" style="padding-left: 50px; width: 100%;" onchange="updateCurFromFlag(); runLiveConverter();">
-                  <option value="SAR" selected>Saudi Arabia (SAR)</option>
-                  <option value="AED">United Arab Emirates (AED)</option>
-                  <option value="KWD">Kuwait (KWD)</option>
-                  <option value="QAR">Qatar (QAR)</option>
-                  <option value="OMR">Oman (OMR)</option>
-                  <option value="BHD">Bahrain (BHD)</option>
-                  <option value="USD">United States (USD)</option>
-                  <option value="EUR">Eurozone (EUR)</option>
-                  <option value="GBP">United Kingdom (GBP)</option>
-                </select>
+              <div class="custom-select-wrapper">
+                <input type="hidden" id="curFrom" value="SAR">
+                <div class="custom-select-box" id="curFromBox" onclick="toggleCustomDropdown('curFromList')">
+                  <div style="display: flex; align-items: center; gap: 10px;">
+                    <img id="curFromImg" src="https://flagcdn.com/w40/sa.png" class="custom-flag-img" alt="SA">
+                    <span id="curFromLabel" style="font-weight: 500; color: #fff;">Saudi Arabia (SAR)</span>
+                  </div>
+                  <i class="fas fa-chevron-down" style="font-size: 12px; color: #94a3b8;"></i>
+                </div>
+
+                <div id="curFromList" class="custom-dropdown-list hidden">
+                  <div class="custom-option-item" onclick="selectCustomCountry('curFrom', 'SAR', 'Saudi Arabia (SAR)', 'sa')">
+                    <img src="https://flagcdn.com/w40/sa.png" class="custom-flag-img" alt="SA">
+                    <span>Saudi Arabia (SAR)</span>
+                  </div>
+                  <div class="custom-option-item" onclick="selectCustomCountry('curFrom', 'AED', 'United Arab Emirates (AED)', 'ae')">
+                    <img src="https://flagcdn.com/w40/ae.png" class="custom-flag-img" alt="AE">
+                    <span>United Arab Emirates (AED)</span>
+                  </div>
+                  <div class="custom-option-item" onclick="selectCustomCountry('curFrom', 'KWD', 'Kuwait (KWD)', 'kw')">
+                    <img src="https://flagcdn.com/w40/kw.png" class="custom-flag-img" alt="KW">
+                    <span>Kuwait (KWD)</span>
+                  </div>
+                  <div class="custom-option-item" onclick="selectCustomCountry('curFrom', 'QAR', 'Qatar (QAR)', 'qa')">
+                    <img src="https://flagcdn.com/w40/qa.png" class="custom-flag-img" alt="QA">
+                    <span>Qatar (QAR)</span>
+                  </div>
+                  <div class="custom-option-item" onclick="selectCustomCountry('curFrom', 'OMR', 'Oman (OMR)', 'om')">
+                    <img src="https://flagcdn.com/w40/om.png" class="custom-flag-img" alt="OM">
+                    <span>Oman (OMR)</span>
+                  </div>
+                  <div class="custom-option-item" onclick="selectCustomCountry('curFrom', 'BHD', 'Bahrain (BHD)', 'bh')">
+                    <img src="https://flagcdn.com/w40/bh.png" class="custom-flag-img" alt="BH">
+                    <span>Bahrain (BHD)</span>
+                  </div>
+                  <div class="custom-option-item" onclick="selectCustomCountry('curFrom', 'USD', 'United States (USD)', 'us')">
+                    <img src="https://flagcdn.com/w40/us.png" class="custom-flag-img" alt="US">
+                    <span>United States (USD)</span>
+                  </div>
+                  <div class="custom-option-item" onclick="selectCustomCountry('curFrom', 'GBP', 'United Kingdom (GBP)', 'gb')">
+                    <img src="https://flagcdn.com/w40/gb.png" class="custom-flag-img" alt="GB">
+                    <span>United Kingdom (GBP)</span>
+                  </div>
+                </div>
               </div>
             </div>
 
+            <!-- AMOUNT INPUT -->
             <div class="form-group-item">
               <label class="field-label">Transfer Amount</label>
               <input type="number" id="curAmount" class="text-input-box" value="1000" min="1" oninput="runLiveConverter()">
             </div>
 
+            <!-- TO COUNTRY DROPDOWN -->
             <div class="form-group-item">
               <label class="field-label">To Country / Currency</label>
-              <div style="position: relative; display: flex; align-items: center;">
-                <img id="curToFlag" src="https://flagcdn.com/w40/in.png" alt="Flag" style="position: absolute; left: 14px; width: 26px; height: 18px; object-fit: cover; border-radius: 3px; box-shadow: 0 1px 4px rgba(0,0,0,0.4); pointer-events: none; z-index: 2;">
-                <select id="curTo" class="select-dropdown" style="padding-left: 50px; width: 100%;" onchange="updateCurToFlag(); runLiveConverter();">
-                  <option value="INR" selected>India (INR)</option>
-                  <option value="PKR">Pakistan (PKR)</option>
-                  <option value="BDT">Bangladesh (BDT)</option>
-                  <option value="PHP">Philippines (PHP)</option>
-                  <option value="EGP">Egypt (EGP)</option>
-                  <option value="NPR">Nepal (NPR)</option>
-                  <option value="LKR">Sri Lanka (LKR)</option>
-                  <option value="USD">United States (USD)</option>
-                </select>
+              <div class="custom-select-wrapper">
+                <input type="hidden" id="curTo" value="INR">
+                <div class="custom-select-box" id="curToBox" onclick="toggleCustomDropdown('curToList')">
+                  <div style="display: flex; align-items: center; gap: 10px;">
+                    <img id="curToImg" src="https://flagcdn.com/w40/in.png" class="custom-flag-img" alt="IN">
+                    <span id="curToLabel" style="font-weight: 500; color: #fff;">India (INR)</span>
+                  </div>
+                  <i class="fas fa-chevron-down" style="font-size: 12px; color: #94a3b8;"></i>
+                </div>
+
+                <div id="curToList" class="custom-dropdown-list hidden">
+                  <div class="custom-option-item" onclick="selectCustomCountry('curTo', 'INR', 'India (INR)', 'in')">
+                    <img src="https://flagcdn.com/w40/in.png" class="custom-flag-img" alt="IN">
+                    <span>India (INR)</span>
+                  </div>
+                  <div class="custom-option-item" onclick="selectCustomCountry('curTo', 'PKR', 'Pakistan (PKR)', 'pk')">
+                    <img src="https://flagcdn.com/w40/pk.png" class="custom-flag-img" alt="PK">
+                    <span>Pakistan (PKR)</span>
+                  </div>
+                  <div class="custom-option-item" onclick="selectCustomCountry('curTo', 'BDT', 'Bangladesh (BDT)', 'bd')">
+                    <img src="https://flagcdn.com/w40/bd.png" class="custom-flag-img" alt="BD">
+                    <span>Bangladesh (BDT)</span>
+                  </div>
+                  <div class="custom-option-item" onclick="selectCustomCountry('curTo', 'PHP', 'Philippines (PHP)', 'ph')">
+                    <img src="https://flagcdn.com/w40/ph.png" class="custom-flag-img" alt="PH">
+                    <span>Philippines (PHP)</span>
+                  </div>
+                  <div class="custom-option-item" onclick="selectCustomCountry('curTo', 'EGP', 'Egypt (EGP)', 'eg')">
+                    <img src="https://flagcdn.com/w40/eg.png" class="custom-flag-img" alt="EG">
+                    <span>Egypt (EGP)</span>
+                  </div>
+                  <div class="custom-option-item" onclick="selectCustomCountry('curTo', 'NPR', 'Nepal (NPR)', 'np')">
+                    <img src="https://flagcdn.com/w40/np.png" class="custom-flag-img" alt="NP">
+                    <span>Nepal (NPR)</span>
+                  </div>
+                  <div class="custom-option-item" onclick="selectCustomCountry('curTo', 'LKR', 'Sri Lanka (LKR)', 'lk')">
+                    <img src="https://flagcdn.com/w40/lk.png" class="custom-flag-img" alt="LK">
+                    <span>Sri Lanka (LKR)</span>
+                  </div>
+                  <div class="custom-option-item" onclick="selectCustomCountry('curTo', 'USD', 'United States (USD)', 'us')">
+                    <img src="https://flagcdn.com/w40/us.png" class="custom-flag-img" alt="US">
+                    <span>United States (USD)</span>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -2133,29 +2276,37 @@
       if (elSv) elSv.textContent = '\u20B9' + exSav.toLocaleString('en-IN') + ' INR extra';
     }
 
-        const FLAG_CODE_MAP = {
-      SAR: 'sa', AED: 'ae', KWD: 'kw', QAR: 'qa', OMR: 'om', BHD: 'bh',
-      USD: 'us', EUR: 'eu', GBP: 'gb', INR: 'in', PKR: 'pk', BDT: 'bd',
-      PHP: 'ph', EGP: 'eg', NPR: 'np', LKR: 'lk'
-    };
-
-    function updateCurFromFlag() {
-      const elSel = document.getElementById('curFrom');
-      const elImg = document.getElementById('curFromFlag');
-      if (elSel && elImg) {
-        const c = FLAG_CODE_MAP[elSel.value] || 'sa';
-        elImg.src = 'https://flagcdn.com/w40/' + c + '.png';
-      }
+            function toggleCustomDropdown(listId) {
+      const target = document.getElementById(listId);
+      const otherId = (listId === 'curFromList') ? 'curToList' : 'curFromList';
+      const other = document.getElementById(otherId);
+      if (other) other.classList.add('hidden');
+      if (target) target.classList.toggle('hidden');
     }
 
-    function updateCurToFlag() {
-      const elSel = document.getElementById('curTo');
-      const elImg = document.getElementById('curToFlag');
-      if (elSel && elImg) {
-        const c = FLAG_CODE_MAP[elSel.value] || 'in';
-        elImg.src = 'https://flagcdn.com/w40/' + c + '.png';
-      }
+    function selectCustomCountry(targetId, val, label, flagCode) {
+      const hiddenInput = document.getElementById(targetId);
+      if (hiddenInput) hiddenInput.value = val;
+      const img = document.getElementById(targetId + 'Img');
+      if (img) img.src = 'https://flagcdn.com/w40/' + flagCode + '.png';
+      const lbl = document.getElementById(targetId + 'Label');
+      if (lbl) lbl.textContent = label;
+      const list = document.getElementById(targetId + 'List');
+      if (list) list.classList.add('hidden');
+      runLiveConverter();
     }
+
+    // Close custom dropdowns when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('#curFromBox') && !e.target.closest('#curFromList')) {
+        const l1 = document.getElementById('curFromList');
+        if (l1) l1.classList.add('hidden');
+      }
+      if (!e.target.closest('#curToBox') && !e.target.closest('#curToList')) {
+        const l2 = document.getElementById('curToList');
+        if (l2) l2.classList.add('hidden');
+      }
+    });
 
     function runLiveConverter() {
       const from = document.getElementById('curFrom').value;
