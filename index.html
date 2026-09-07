@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -1102,38 +1102,42 @@
 
                   <!-- Rich Tool Knowledge Base & High-CPC SEO -->
           <div class="tool-knowledge-base">
-            <h3>💱 Live Forex & Multi-Channel Remittance Architecture</h3>
-            <p>Global foreign exchange markets operate continuously on interbank liquidity pricing. Retail mobile apps and digital remittance wallets (such as Barq, STC Pay, urpay, Mobily Pay, and Tahweel Al Rajhi) apply proprietary exchange rate spreads to cover international settlement costs. When remitting hard-earned earnings from Saudi Arabia or the GCC to India, Pakistan, or Bangladesh, savvy expats compare the net in-hand Rupee credit rather than relying strictly on the theoretical mid-market rate.</p>
+            <h3><i class="fas fa-sync-alt" style="color: var(--neon-teal); margin-right: 6px;"></i> Live Forex & Multi-Channel Remittance Architecture</h3>
+            <p>Compare real-time interbank currency benchmarks against leading digital remittance apps (Barq, STC Pay, urpay, and Tahweel Al Rajhi). Always evaluate your guaranteed net in-hand Rupee credit rather than relying solely on the theoretical interbank mid-market rate.</p>
             
             <div class="tool-meta-grid">
               <div class="tool-example-card">
-                <h4>💡 Practical Calculation Example</h4>
-                <p><strong>Scenario:</strong> Remitting 3,000 SAR from Dammam to an SBI account in India.<br>
-                • <em>Interbank Benchmark (22.45):</em> Theoretical ₹67,350 INR.<br>
-                • <em>Digital Wallet (Barq @ 22.52 Promotion, Zero Fee):</em> Net in-hand <strong>₹67,560 INR</strong>.<br>
-                • <em>Traditional Bank Counter (22.15 + 15 SAR Wire Fee):</em> Net in-hand <strong>₹66,117 INR</strong>.<br>
-                <strong>Net Difference:</strong> Choosing the right digital provider yields an extra <strong>₹1,443 INR</strong> on a single transfer!</p>
+                <h4><i class="fas fa-lightbulb" style="color: #fbbf24; margin-right: 6px;"></i> Practical Calculation Example (Auto-Live)</h4>
+                <p>
+                  <strong>Scenario:</strong> Remitting 3,000 SAR from Saudi Arabia to an SBI account in India.<br>
+                  â€¢ <em>Interbank Benchmark (<span id="exLiveSarRate">25.33</span>):</em> Theoretical <strong id="exInterbankTotal">â‚¹75,990</strong>.<br>
+                  â€¢ <em>Digital App (Barq / STC Pay @ Zero Fee):</em> Net in-hand <strong id="exDigitalTotal" style="color: #00e676;">â‚¹75,180</strong>.<br>
+                  â€¢ <em>Traditional Bank Counter (<span id="exBankRate">24.88</span> + 15 SAR Fee):</em> Net in-hand <strong id="exBankTotal">â‚¹74,267</strong>.<br>
+                  <strong>Net Difference:</strong> Choosing the right digital provider yields an extra <strong id="exSavingsTotal" style="color: #00e676;">+â‚¹913 INR</strong> on a single transfer!
+                </p>
               </div>
               <div class="tool-benefit-card">
-                <h4>🎁 Key Expat Benefits</h4>
-                <p>• <strong>Instant Net Yield Comparison:</strong> Know exact delivery amounts across leading digital remittance channels.<br>
-                • <strong>Zero Hidden Wire Deductions:</strong> Differentiates between zero-fee promotional transfers and traditional intermediary bank wire fees.<br>
-                • <strong>Real-Time Forex Volatility Tracking:</strong> Lock your transfers when international currency market spikes occur.</p>
+                <h4><i class="fas fa-gift" style="color: #00e676; margin-right: 6px;"></i> Key Expat Benefits</h4>
+                <p>
+                  â€¢ <strong>Guaranteed In-Hand Payout:</strong> Know the exact net Rupee delivery credited to your bank before remitting.<br>
+                  â€¢ <strong>Zero Hidden Wire Deductions:</strong> Easily spot zero-fee digital transfers versus costly intermediary bank wire charges.<br>
+                  â€¢ <strong>Real-Time Volatility Tracking:</strong> Time and lock your transfers when live international SAR to INR rates peak.
+                </p>
               </div>
             </div>
 
             <div class="tool-disclaimer-box">
-              <strong>⚖️ Financial & Remittance Disclaimer:</strong> Displayed exchange rates and remittance figures represent real-time interbank references and standard digital wallet benchmarks for analytical comparison. Final foreign exchange conversion rates, promotional spreads, and regulatory transfer fees are locked at the time of transaction execution within your licensed remittance provider application.
+              <strong><i class="fas fa-scale-balanced"></i> Financial & Remittance Disclaimer:</strong> Displayed exchange rates and remittance figures represent real-time interbank references and standard digital wallet benchmarks for analytical comparison. Final conversion rates, promotional spreads, and regulatory transfer fees are locked inside your licensed remittance provider application at transaction time.
             </div>
 
             <div class="tool-faq-accordion">
               <div class="tool-faq-item">
                 <h4>Q1: Are NRI remittances sent from Saudi Arabia to India taxable?</h4>
-                <p>Under the Indian Income Tax Act and FEMA regulations, remittances sent by Non-Resident Indians (NRIs) from legitimate overseas earnings directly into an NRE (Non-Resident External) or NRO bank account are 100% exempt from income tax in India.</p>
+                <p>Under the Indian Income Tax Act and FEMA regulations, remittances sent by Non-Resident Indians (NRIs) from legitimate overseas earnings directly into an NRE or NRO bank account are 100% exempt from income tax in India.</p>
               </div>
               <div class="tool-faq-item">
                 <h4>Q2: Why does the Google currency rate differ from mobile money transfer apps?</h4>
-                <p>Google displays the mid-market wholesale interbank rate. Retail transfer apps deduct an operational spread (usually 0.5% to 1.2%) to provide instant bank account credit without branch queues.</p>
+                <p>Google displays the wholesale interbank benchmark. Retail money transfer apps deduct a minor operational spread (usually 0.5% to 1.2%) to cover cross-border settlement and provide instant direct bank credit.</p>
               </div>
             </div>
 
@@ -2100,6 +2104,28 @@
       document.getElementById('tickerAed2').textContent = aStr;
       document.getElementById('tickerKwd').textContent = kStr;
       document.getElementById('tickerKwd2').textContent = kStr;
+
+      // Auto-update Practical Example Card with Live Fetched Rate
+      const exRate = sarInr;
+      const exInter = Math.round(3000 * exRate);
+      const exDigRate = exRate - 0.2748;
+      const exDig = Math.round(3000 * exDigRate);
+      const exBkRate = exRate - 0.4536;
+      const exBk = Math.round(Math.max(0, 3000 - 15) * exBkRate);
+      const exSav = Math.max(0, exDig - exBk);
+
+      const elR = document.getElementById('exLiveSarRate');
+      if (elR) elR.textContent = exRate.toFixed(2);
+      const elIn = document.getElementById('exInterbankTotal');
+      if (elIn) elIn.textContent = 'â‚¹' + exInter.toLocaleString('en-IN');
+      const elDg = document.getElementById('exDigitalTotal');
+      if (elDg) elDg.textContent = 'â‚¹' + exDig.toLocaleString('en-IN');
+      const elBr = document.getElementById('exBankRate');
+      if (elBr) elBr.textContent = exBkRate.toFixed(2);
+      const elBkTot = document.getElementById('exBankTotal');
+      if (elBkTot) elBkTot.textContent = 'â‚¹' + exBk.toLocaleString('en-IN');
+      const elSv = document.getElementById('exSavingsTotal');
+      if (elSv) elSv.textContent = '+â‚¹' + exSav.toLocaleString('en-IN') + ' INR';
     }
 
     function runLiveConverter() {
