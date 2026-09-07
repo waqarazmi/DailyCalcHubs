@@ -1109,35 +1109,35 @@
               <div class="tool-example-card">
                 <h4><i class="fas fa-lightbulb" style="color: #fbbf24; margin-right: 6px;"></i> Practical Calculation Example</h4>
                 <p>
-                  <strong>Scenario:</strong> Remitting 3,000 SAR from Saudi Arabia to an SBI account in India.<br>
-                  &bull; <em>Interbank Rate (<span id="exLiveSarRate">25.33</span>):</em> Theoretical <strong id="exInterbankTotal">&#8377;75,990 INR</strong><br>
-                  &bull; <em>Digital Wallet (Zero Fee):</em> Net in-hand <strong id="exDigitalTotal" style="color: #00e676;">&#8377;75,180 INR</strong><br>
-                  &bull; <em>Bank Branch (15 SAR Fee):</em> Net in-hand <strong id="exBankTotal">&#8377;74,267 INR</strong><br>
-                  <strong>Net Savings:</strong> Choosing the right digital app gives you <strong id="exSavingsTotal" style="color: #00e676;">&#8377;913 INR extra</strong> in hand!
+                  <strong>Scenario:</strong> Remitting 3,000 SAR from Saudi Arabia to India.<br>
+                  â€¢ <em>Interbank Rate (<span id="exLiveSarRate">25.33</span>):</em> Theoretical <strong id="exInterbankTotal">â‚¹75,990 INR</strong>.<br>
+                  â€¢ <em>Digital Wallet (Zero Fee):</em> Net in-hand <strong id="exDigitalTotal" style="color: #00e676;">â‚¹75,180 INR</strong>.<br>
+                  â€¢ <em>Bank Branch (15 SAR Fee):</em> Net in-hand <strong id="exBankTotal">â‚¹74,267 INR</strong>.<br>
+                  <strong>Net Savings:</strong> Choosing the right digital app gives you <strong id="exSavingsTotal" style="color: #00e676;">â‚¹913 INR extra</strong> in hand!
                 </p>
               </div>
               <div class="tool-benefit-card">
                 <h4><i class="fas fa-gift" style="color: #00e676; margin-right: 6px;"></i> Key Expat Benefits</h4>
                 <p>
-                  &bull; <strong>Exact In-Hand Payout:</strong> Know the guaranteed net Rupee delivery credited to your bank before remitting.<br>
-                  &bull; <strong>Zero Hidden Wire Deductions:</strong> Easily spot zero-fee digital transfers versus costly intermediary bank wire charges.<br>
-                  &bull; <strong>Real-Time Volatility Tracking:</strong> Time and lock your transfers when live international SAR to INR rates peak.
+                  â€¢ <strong>Exact In-Hand Payout:</strong> Know the exact net Rupee delivery credited to your bank before remitting.<br>
+                  â€¢ <strong>Zero Hidden Fees:</strong> Easily spot zero-fee digital transfers versus costly bank charges.<br>
+                  â€¢ <strong>Live Timing:</strong> Time and lock your transfers when live SAR to INR rates peak.
                 </p>
               </div>
             </div>
 
             <div class="tool-disclaimer-box">
-              <strong><i class="fas fa-scale-balanced"></i> Financial Disclaimer:</strong> Displayed rates and comparisons are indicative live market estimates for analytical planning. Final rates and fees are locked inside your licensed remittance app at the time of transfer.
+              <strong><i class="fas fa-scale-balanced"></i> Financial & Remittance Disclaimer:</strong> Displayed rates and comparisons are indicative live market estimates for analytical planning. Final rates and fees are locked inside your licensed remittance app at the time of transfer.
             </div>
 
             <div class="tool-faq-accordion">
               <div class="tool-faq-item">
-                <h4>Q1: Are NRI remittances sent from Saudi Arabia to India taxable?</h4>
-                <p>Under the Indian Income Tax Act and FEMA regulations, remittances sent by Non-Resident Indians (NRIs) from legitimate overseas earnings directly into an NRE or NRO bank account are 100% exempt from income tax in India.</p>
+                <h4>Q1: Are NRI remittances to India taxable?</h4>
+                <p>Under Indian Income Tax Act & FEMA regulations, remittances sent to NRE/NRO accounts are 100% Tax-Free.</p>
               </div>
               <div class="tool-faq-item">
-                <h4>Q2: Why does the Google currency rate differ from mobile money transfer apps?</h4>
-                <p>Google displays the wholesale interbank benchmark. Retail money transfer apps deduct a minor operational spread (usually 0.5% to 1.2%) to cover cross-border settlement and provide instant direct bank credit.</p>
+                <h4>Q2: Why does Google rate differ from transfer apps?</h4>
+                <p>Google displays the wholesale interbank rate. Mobile transfer apps deduct a minor service spread (~0.8%) for instant direct bank credit.</p>
               </div>
             </div>
 
@@ -2117,16 +2117,13 @@
       const elR = document.getElementById('exLiveSarRate');
       if (elR) elR.textContent = exRate.toFixed(2);
       const elIn = document.getElementById('exInterbankTotal');
-      if (elIn) elIn.innerHTML = '&#8377;' + exInter.toLocaleString('en-IN') + ' INR';
+      if (elIn) elIn.textContent = 'â‚¹' + exInter.toLocaleString('en-IN') + ' INR';
       const elDg = document.getElementById('exDigitalTotal');
-      if (elDg) elDg.innerHTML = '&#8377;' + exDig.toLocaleString('en-IN') + ' INR';
-      const elBr = document.getElementById('exBankRate');
-      if (elBr) elBr.textContent = exBkRate.toFixed(2);
+      if (elDg) elDg.textContent = 'â‚¹' + exDig.toLocaleString('en-IN') + ' INR';
       const elBkTot = document.getElementById('exBankTotal');
-      if (elBkTot) elBkTot.innerHTML = '&#8377;' + exBk.toLocaleString('en-IN') + ' INR';
+      if (elBkTot) elBkTot.textContent = 'â‚¹' + exBk.toLocaleString('en-IN') + ' INR';
       const elSv = document.getElementById('exSavingsTotal');
-      if (elSv) elSv.innerHTML = '&#8377;' + exSav.toLocaleString('en-IN') + ' INR extra';
-    }
+      if (elSv) elSv.textContent = 'â‚¹' + exSav.toLocaleString('en-IN') + ' INR extra';
 
     function runLiveConverter() {
       const from = document.getElementById('curFrom').value;
