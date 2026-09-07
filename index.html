@@ -1382,114 +1382,38 @@
 
         <div class="calc-layout-grid">
           <div class="calc-inputs-left">
-            <!-- FROM COUNTRY DROPDOWN -->
             <div class="form-group-item">
               <label class="field-label">From Country / Currency</label>
-              <div class="custom-select-wrapper">
-                <input type="hidden" id="curFrom" value="SAR">
-                <div class="custom-select-box" id="curFromBox" onclick="toggleCustomDropdown('curFromList')">
-                  <div style="display: flex; align-items: center; gap: 10px;">
-                    <img id="curFromImg" src="https://flagcdn.com/w40/sa.png" class="custom-flag-img" alt="SA">
-                    <span id="curFromLabel" style="font-weight: 500; color: #fff;">Saudi Arabia (SAR)</span>
-                  </div>
-                  <i class="fas fa-chevron-down" style="font-size: 12px; color: #94a3b8;"></i>
-                </div>
-
-                <div id="curFromList" class="custom-dropdown-list hidden">
-                  <div class="custom-option-item" onclick="selectCustomCountry('curFrom', 'SAR', 'Saudi Arabia (SAR)', 'sa')">
-                    <img src="https://flagcdn.com/w40/sa.png" class="custom-flag-img" alt="SA">
-                    <span>Saudi Arabia (SAR)</span>
-                  </div>
-                  <div class="custom-option-item" onclick="selectCustomCountry('curFrom', 'AED', 'United Arab Emirates (AED)', 'ae')">
-                    <img src="https://flagcdn.com/w40/ae.png" class="custom-flag-img" alt="AE">
-                    <span>United Arab Emirates (AED)</span>
-                  </div>
-                  <div class="custom-option-item" onclick="selectCustomCountry('curFrom', 'KWD', 'Kuwait (KWD)', 'kw')">
-                    <img src="https://flagcdn.com/w40/kw.png" class="custom-flag-img" alt="KW">
-                    <span>Kuwait (KWD)</span>
-                  </div>
-                  <div class="custom-option-item" onclick="selectCustomCountry('curFrom', 'QAR', 'Qatar (QAR)', 'qa')">
-                    <img src="https://flagcdn.com/w40/qa.png" class="custom-flag-img" alt="QA">
-                    <span>Qatar (QAR)</span>
-                  </div>
-                  <div class="custom-option-item" onclick="selectCustomCountry('curFrom', 'OMR', 'Oman (OMR)', 'om')">
-                    <img src="https://flagcdn.com/w40/om.png" class="custom-flag-img" alt="OM">
-                    <span>Oman (OMR)</span>
-                  </div>
-                  <div class="custom-option-item" onclick="selectCustomCountry('curFrom', 'BHD', 'Bahrain (BHD)', 'bh')">
-                    <img src="https://flagcdn.com/w40/bh.png" class="custom-flag-img" alt="BH">
-                    <span>Bahrain (BHD)</span>
-                  </div>
-                  <div class="custom-option-item" onclick="selectCustomCountry('curFrom', 'USD', 'United States (USD)', 'us')">
-                    <img src="https://flagcdn.com/w40/us.png" class="custom-flag-img" alt="US">
-                    <span>United States (USD)</span>
-                  </div>
-                  <div class="custom-option-item" onclick="selectCustomCountry('curFrom', 'GBP', 'United Kingdom (GBP)', 'gb')">
-                    <img src="https://flagcdn.com/w40/gb.png" class="custom-flag-img" alt="GB">
-                    <span>United Kingdom (GBP)</span>
-                  </div>
-                </div>
-              </div>
+              <select id="curFrom" class="select-dropdown" onchange="runLiveConverter()">
+                <option value="SAR" selected>&#127480;&#127462; Saudi Arabia (SAR)</option>
+                <option value="AED">&#127462;&#127466; United Arab Emirates (AED)</option>
+                <option value="KWD">&#127472;&#127484; Kuwait (KWD)</option>
+                <option value="QAR">&#127476;&#127462; Qatar (QAR)</option>
+                <option value="OMR">&#127476;&#127474; Oman (OMR)</option>
+                <option value="BHD">&#127463;&#127469; Bahrain (BHD)</option>
+                <option value="USD">&#127482;&#127488; United States (USD)</option>
+                <option value="GBP">&#127468;&#127463; United Kingdom (GBP)</option>
+              </select>
             </div>
 
-            <!-- AMOUNT INPUT -->
             <div class="form-group-item">
               <label class="field-label">Transfer Amount</label>
               <input type="number" id="curAmount" class="text-input-box" value="1000" min="1" oninput="runLiveConverter()">
             </div>
 
-            <!-- TO COUNTRY DROPDOWN -->
             <div class="form-group-item">
               <label class="field-label">To Country / Currency</label>
-              <div class="custom-select-wrapper">
-                <input type="hidden" id="curTo" value="INR">
-                <div class="custom-select-box" id="curToBox" onclick="toggleCustomDropdown('curToList')">
-                  <div style="display: flex; align-items: center; gap: 10px;">
-                    <img id="curToImg" src="https://flagcdn.com/w40/in.png" class="custom-flag-img" alt="IN">
-                    <span id="curToLabel" style="font-weight: 500; color: #fff;">India (INR)</span>
-                  </div>
-                  <i class="fas fa-chevron-down" style="font-size: 12px; color: #94a3b8;"></i>
-                </div>
-
-                <div id="curToList" class="custom-dropdown-list hidden">
-                  <div class="custom-option-item" onclick="selectCustomCountry('curTo', 'INR', 'India (INR)', 'in')">
-                    <img src="https://flagcdn.com/w40/in.png" class="custom-flag-img" alt="IN">
-                    <span>India (INR)</span>
-                  </div>
-                  <div class="custom-option-item" onclick="selectCustomCountry('curTo', 'PKR', 'Pakistan (PKR)', 'pk')">
-                    <img src="https://flagcdn.com/w40/pk.png" class="custom-flag-img" alt="PK">
-                    <span>Pakistan (PKR)</span>
-                  </div>
-                  <div class="custom-option-item" onclick="selectCustomCountry('curTo', 'BDT', 'Bangladesh (BDT)', 'bd')">
-                    <img src="https://flagcdn.com/w40/bd.png" class="custom-flag-img" alt="BD">
-                    <span>Bangladesh (BDT)</span>
-                  </div>
-                  <div class="custom-option-item" onclick="selectCustomCountry('curTo', 'PHP', 'Philippines (PHP)', 'ph')">
-                    <img src="https://flagcdn.com/w40/ph.png" class="custom-flag-img" alt="PH">
-                    <span>Philippines (PHP)</span>
-                  </div>
-                  <div class="custom-option-item" onclick="selectCustomCountry('curTo', 'EGP', 'Egypt (EGP)', 'eg')">
-                    <img src="https://flagcdn.com/w40/eg.png" class="custom-flag-img" alt="EG">
-                    <span>Egypt (EGP)</span>
-                  </div>
-                  <div class="custom-option-item" onclick="selectCustomCountry('curTo', 'NPR', 'Nepal (NPR)', 'np')">
-                    <img src="https://flagcdn.com/w40/np.png" class="custom-flag-img" alt="NP">
-                    <span>Nepal (NPR)</span>
-                  </div>
-                  <div class="custom-option-item" onclick="selectCustomCountry('curTo', 'LKR', 'Sri Lanka (LKR)', 'lk')">
-                    <img src="https://flagcdn.com/w40/lk.png" class="custom-flag-img" alt="LK">
-                    <span>Sri Lanka (LKR)</span>
-                  </div>
-                  <div class="custom-option-item" onclick="selectCustomCountry('curTo', 'USD', 'United States (USD)', 'us')">
-                    <img src="https://flagcdn.com/w40/us.png" class="custom-flag-img" alt="US">
-                    <span>United States (USD)</span>
-                  </div>
-                  <div class="custom-option-item" onclick="selectCustomCountry('curTo', 'GBP', 'United Kingdom (GBP)', 'gb')">
-                    <img src="https://flagcdn.com/w40/gb.png" class="custom-flag-img" alt="GB">
-                    <span>United Kingdom (GBP)</span>
-                  </div>
-                </div>
-              </div>
+              <select id="curTo" class="select-dropdown" onchange="runLiveConverter()">
+                <option value="INR" selected>&#127470;&#127475; India (INR)</option>
+                <option value="PKR">&#127477;&#127472; Pakistan (PKR)</option>
+                <option value="BDT">&#127463;&#127465; Bangladesh (BDT)</option>
+                <option value="PHP">&#127477;&#127469; Philippines (PHP)</option>
+                <option value="EGP">&#127466;&#127468; Egypt (EGP)</option>
+                <option value="NPR">&#127475;&#127477; Nepal (NPR)</option>
+                <option value="LKR">&#127473;&#127472; Sri Lanka (LKR)</option>
+                <option value="USD">&#127482;&#127488; United States (USD)</option>
+                <option value="GBP">&#127468;&#127463; United Kingdom (GBP)</option>
+              </select>
             </div>
 
             <div class="live-rate-tag" id="liveRateDisplay">
