@@ -1107,27 +1107,27 @@
             
             <div class="tool-meta-grid">
               <div class="tool-example-card">
-                <h4><i class="fas fa-lightbulb" style="color: #fbbf24; margin-right: 6px;"></i> Practical Calculation Example (Auto-Live)</h4>
+                <h4><i class="fas fa-lightbulb" style="color: #fbbf24; margin-right: 6px;"></i> Practical Calculation Example</h4>
                 <p>
                   <strong>Scenario:</strong> Remitting 3,000 SAR from Saudi Arabia to an SBI account in India.<br>
-                  â€¢ <em>Interbank Benchmark (<span id="exLiveSarRate">25.33</span>):</em> Theoretical <strong id="exInterbankTotal">â‚¹75,990</strong>.<br>
-                  â€¢ <em>Digital App (Barq / STC Pay @ Zero Fee):</em> Net in-hand <strong id="exDigitalTotal" style="color: #00e676;">â‚¹75,180</strong>.<br>
-                  â€¢ <em>Traditional Bank Counter (<span id="exBankRate">24.88</span> + 15 SAR Fee):</em> Net in-hand <strong id="exBankTotal">â‚¹74,267</strong>.<br>
-                  <strong>Net Difference:</strong> Choosing the right digital provider yields an extra <strong id="exSavingsTotal" style="color: #00e676;">+â‚¹913 INR</strong> on a single transfer!
+                  &bull; <em>Interbank Rate (<span id="exLiveSarRate">25.33</span>):</em> Theoretical <strong id="exInterbankTotal">&#8377;75,990 INR</strong><br>
+                  &bull; <em>Digital Wallet (Zero Fee):</em> Net in-hand <strong id="exDigitalTotal" style="color: #00e676;">&#8377;75,180 INR</strong><br>
+                  &bull; <em>Bank Branch (15 SAR Fee):</em> Net in-hand <strong id="exBankTotal">&#8377;74,267 INR</strong><br>
+                  <strong>Net Savings:</strong> Choosing the right digital app gives you <strong id="exSavingsTotal" style="color: #00e676;">&#8377;913 INR extra</strong> in hand!
                 </p>
               </div>
               <div class="tool-benefit-card">
                 <h4><i class="fas fa-gift" style="color: #00e676; margin-right: 6px;"></i> Key Expat Benefits</h4>
                 <p>
-                  â€¢ <strong>Guaranteed In-Hand Payout:</strong> Know the exact net Rupee delivery credited to your bank before remitting.<br>
-                  â€¢ <strong>Zero Hidden Wire Deductions:</strong> Easily spot zero-fee digital transfers versus costly intermediary bank wire charges.<br>
-                  â€¢ <strong>Real-Time Volatility Tracking:</strong> Time and lock your transfers when live international SAR to INR rates peak.
+                  &bull; <strong>Exact In-Hand Payout:</strong> Know the guaranteed net Rupee delivery credited to your bank before remitting.<br>
+                  &bull; <strong>Zero Hidden Wire Deductions:</strong> Easily spot zero-fee digital transfers versus costly intermediary bank wire charges.<br>
+                  &bull; <strong>Real-Time Volatility Tracking:</strong> Time and lock your transfers when live international SAR to INR rates peak.
                 </p>
               </div>
             </div>
 
             <div class="tool-disclaimer-box">
-              <strong><i class="fas fa-scale-balanced"></i> Financial & Remittance Disclaimer:</strong> Displayed exchange rates and remittance figures represent real-time interbank references and standard digital wallet benchmarks for analytical comparison. Final conversion rates, promotional spreads, and regulatory transfer fees are locked inside your licensed remittance provider application at transaction time.
+              <strong><i class="fas fa-scale-balanced"></i> Financial Disclaimer:</strong> Displayed rates and comparisons are indicative live market estimates for analytical planning. Final rates and fees are locked inside your licensed remittance app at the time of transfer.
             </div>
 
             <div class="tool-faq-accordion">
@@ -2117,15 +2117,15 @@
       const elR = document.getElementById('exLiveSarRate');
       if (elR) elR.textContent = exRate.toFixed(2);
       const elIn = document.getElementById('exInterbankTotal');
-      if (elIn) elIn.textContent = 'â‚¹' + exInter.toLocaleString('en-IN');
+      if (elIn) elIn.innerHTML = '&#8377;' + exInter.toLocaleString('en-IN') + ' INR';
       const elDg = document.getElementById('exDigitalTotal');
-      if (elDg) elDg.textContent = 'â‚¹' + exDig.toLocaleString('en-IN');
+      if (elDg) elDg.innerHTML = '&#8377;' + exDig.toLocaleString('en-IN') + ' INR';
       const elBr = document.getElementById('exBankRate');
       if (elBr) elBr.textContent = exBkRate.toFixed(2);
       const elBkTot = document.getElementById('exBankTotal');
-      if (elBkTot) elBkTot.textContent = 'â‚¹' + exBk.toLocaleString('en-IN');
+      if (elBkTot) elBkTot.innerHTML = '&#8377;' + exBk.toLocaleString('en-IN') + ' INR';
       const elSv = document.getElementById('exSavingsTotal');
-      if (elSv) elSv.textContent = '+â‚¹' + exSav.toLocaleString('en-IN') + ' INR';
+      if (elSv) elSv.innerHTML = '&#8377;' + exSav.toLocaleString('en-IN') + ' INR extra';
     }
 
     function runLiveConverter() {
