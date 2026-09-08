@@ -2125,6 +2125,11 @@
           </div>
         </div>
 
+        <!-- GPS Status Alert Banner (Shown only when device location is OFF/Denied) -->
+        <div id="gpsAlertNotice" style="display: none; background: rgba(245, 158, 11, 0.12); border: 1px solid rgba(245, 158, 11, 0.35); border-radius: 8px; padding: 10px 14px; margin-bottom: 14px; font-size: 0.85rem; color: #fbbf24; align-items: center;">
+          <span><i class="fas fa-location-dot" style="margin-right: 8px; color: #f59e0b;"></i><strong>Location Notice:</strong> Please turn ON your Device Location (GPS) for exact village & area prayer times.</span>
+        </div>
+
         <!-- Dual Calendar & Live Clock Banner -->
         <div class="date-clock-banner">
           <div class="calendar-pill">
@@ -3130,7 +3135,7 @@
       }
     }
 
-    // High-Precision Reverse Geocoder via OSM Nominatim (Extracts exact area/neighborhood)
+    // High-Precision Universal Reverse Geocoder (Extracts village, neighbourhood, town, district & city)
     async function reverseGeocodeWithOSM(lat, lng, fallbackCity, fallbackCountry) {
       try {
         const osmUrl = 'https://nominatim.openstreetmap.org/reverse?format=json&lat=' + lat + '&lon=' + lng + '&zoom=18&addressdetails=1&accept-language=en';
@@ -3139,11 +3144,14 @@
           const data = await res.json();
           if (data && data.address) {
             const addr = data.address;
-            let area = addr.neighbourhood || addr.suburb || addr.quarter || addr.district || addr.residential || addr.road || '';
-            const city = addr.city || addr.town || addr.municipality || fallbackCity || 'Dammam';
-            const country = addr.country || fallbackCountry || 'Saudi Arabia';
+            // 1. Most specific local area / village / hamlet / suburb
+            let area = addr.village || addr.hamlet || addr.suburb || addr.neighbourhood || addr.quarter || addr.residential || addr.road || '';
+            
+            // 2. City / District / County / Town
+            const city = addr.city || addr.town || addr.state_district || addr.county || addr.district || addr.municipality || fallbackCity || '';
+            const country = addr.country || fallbackCountry || '';
 
-            if (area.toLowerCase().includes('adamah') || area.toLowerCase().includes('seiko')) {
+            if (area && area.toLowerCase().includes('adamah')) {
               area = 'Al Adamah (Seiko)';
             }
 
@@ -3151,6 +3159,8 @@
               return area + ', ' + city;
             } else if (city && country) {
               return city + ', ' + country;
+            } else if (city) {
+              return city;
             }
           }
         }
@@ -3158,25 +3168,39 @@
         console.warn('OSM reverse geocode fallback:', e);
       }
 
-      // Fallback: BigDataCloud
+      // Fallback: BigDataCloud Reverse Geocoding
       try {
         const bdcUrl = 'https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=' + lat + '&longitude=' + lng + '&localityLanguage=en';
         const bRes = await fetch(bdcUrl);
         if (bRes.ok) {
           const bData = await bRes.json();
-          const area = bData.locality || (bData.localityInfo && bData.localityInfo.informative && bData.localityInfo.informative[0] && bData.localityInfo.informative[0].name) || '';
-          const city = bData.city || fallbackCity || '';
+          let area = bData.locality || '';
+          let city = bData.city || '';
+          if (!city && bData.localityInfo && Array.isArray(bData.localityInfo.administrative)) {
+            const admin = bData.localityInfo.administrative;
+            for (let i = 0; i < admin.length; i++) {
+              if (admin[i].adminLevel === 4 || admin[i].adminLevel === 5) {
+                city = admin[i].name;
+                break;
+              }
+            }
+          }
+          if (!city) city = fallbackCity || '';
+          const country = bData.countryName || fallbackCountry || '';
+
           if (area && city && area.toLowerCase() !== city.toLowerCase()) {
             return area + ', ' + city;
+          } else if (city && country) {
+            return city + ', ' + country;
           } else if (city) {
-            return city + ', ' + (fallbackCountry || 'Saudi Arabia');
+            return city;
           }
         }
       } catch (e2) {
         console.warn('BDC reverse geocode error:', e2);
       }
 
-      return (fallbackCity || 'Dammam') + ', ' + (fallbackCountry || 'Saudi Arabia');
+      return (fallbackCity || 'Dammam') + (fallbackCountry ? (', ' + fallbackCountry) : '');
     }
 
     async function fetchPrayerForCoords(lat, lng, locLabel) {
@@ -3231,11 +3255,11 @@
       // 1. Initial display with local fallback
       applyPrayerTimesToDOM(defaultPrayerMap.dammam);
 
-      // Start ticker
+      // Start ticker clock
       updateLiveClocks();
       setInterval(updateLiveClocks, 1000);
 
-      // 2. Fetch IP Geolocation baseline
+      // 2. Fetch IP Geolocation baseline for instant display
       let lat = 26.42;
       let lng = 50.08;
       let city = 'Dammam';
@@ -3254,28 +3278,56 @@
           }
         }
       } catch (err) {
-        console.warn('IP Geolocation fallback to default:', err);
+        console.warn('IP Geolocation baseline fallback:', err);
       }
 
-      // 3. Fetch timings for IP baseline immediately so page is never empty
       await fetchPrayerForCoords(lat, lng, currentCityLabel);
 
-      // 4. Attempt high-precision GPS area detection automatically
-      if (navigator.geolocation) {
+      // 3. High-Precision Auto GPS Tracking & Status Handler
+      function executeGpsTrack() {
+        if (!navigator.geolocation) return;
+
         navigator.geolocation.getCurrentPosition(
           async function(pos) {
             if (pos && pos.coords) {
               const gpsLat = pos.coords.latitude;
               const gpsLng = pos.coords.longitude;
+
+              // Hide notification alert since GPS is ON
+              const alertEl = document.getElementById('gpsAlertNotice');
+              if (alertEl) alertEl.style.display = 'none';
+
               const preciseLabel = await reverseGeocodeWithOSM(gpsLat, gpsLng, city, country);
               await fetchPrayerForCoords(gpsLat, gpsLng, preciseLabel);
             }
           },
           function(err) {
             console.log('Auto GPS background check:', err.message);
+            // If GPS is OFF / Denied / Unavailable, show friendly notification
+            const alertEl = document.getElementById('gpsAlertNotice');
+            if (alertEl) alertEl.style.display = 'flex';
+            const locLabelEl = document.getElementById('prayerLocLabel');
+            if (locLabelEl && currentCityLabel) {
+              locLabelEl.textContent = currentCityLabel + ' (GPS Off)';
+            }
           },
-          { enableHighAccuracy: true, timeout: 8000, maximumAge: 300000 }
+          { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
         );
+      }
+
+      // Execute auto-fetch immediately on page load
+      executeGpsTrack();
+
+      // Listen for permission change if user turns ON location
+      if (navigator.permissions && navigator.permissions.query) {
+        try {
+          const permStatus = await navigator.permissions.query({ name: 'geolocation' });
+          permStatus.onchange = function() {
+            if (permStatus.state === 'granted') {
+              executeGpsTrack();
+            }
+          };
+        } catch (pe) {}
       }
     }
 
