@@ -1396,43 +1396,6 @@
       color: #38bdf8;
       font-family: monospace;
     }
-    .quick-loc-bar {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 6px;
-      margin-top: 10px;
-    }
-    .quick-loc-label {
-      font-size: 0.76rem;
-      color: #94a3b8;
-      font-weight: 600;
-      margin-right: 2px;
-    }
-    .btn-quick-loc {
-      background: rgba(15, 23, 42, 0.7);
-      border: 1px solid rgba(0, 242, 254, 0.22);
-      color: #cbd5e1;
-      font-size: 0.76rem;
-      font-weight: 600;
-      padding: 4px 10px;
-      border-radius: 6px;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      transition: all 0.2s ease;
-    }
-    .btn-quick-loc:hover {
-      background: rgba(0, 242, 254, 0.15);
-      border-color: #00f2fe;
-      color: #00f2fe;
-    }
-    .btn-quick-loc.active-loc {
-      background: rgba(0, 201, 167, 0.2);
-      border-color: #00c9a7;
-      color: #00c9a7;
-    }
   </style>
 </head>
 <body>
@@ -2381,23 +2344,11 @@
             <h2 class="calc-title"><i class="fas fa-mosque" style="color: #00f2fe; margin-right: 8px;"></i> Prayer Times</h2>
             <p class="calc-subtitle">Real-time location detection with Umm Al-Qura ephemeris & live countdown timer.</p>
           </div>
-          <div class="auto-sync-tag" id="prayerLocBtn" onclick="refreshExactGpsArea()" style="background: rgba(16, 185, 129, 0.12); border-color: #10b981; color: #34d399; font-weight: 700; cursor: pointer;" title="Click to auto-detect your exact area via GPS">
+          <div class="auto-sync-tag" style="background: rgba(16, 185, 129, 0.12); border-color: #10b981; color: #34d399; font-weight: 700;">
             <span class="live-pulse-dot"></span>
-            <i class="fas fa-crosshairs" style="margin: 0 4px;"></i>
+            <i class="fas fa-location-dot" style="margin: 0 4px;"></i>
             <span id="prayerLocLabel">Detecting location...</span>
           </div>
-        </div>
-
-        <!-- Quick Area Selector Bar -->
-        <div class="quick-loc-bar">
-          <span class="quick-loc-label"><i class="fas fa-location-crosshairs"></i> Area:</span>
-          <button type="button" class="btn-quick-loc active-loc" id="btnLoc_gps" onclick="refreshExactGpsArea()" title="Auto detect exact neighbourhood / area via GPS"><i class="fas fa-crosshairs"></i> Auto GPS (My Area)</button>
-          <button type="button" class="btn-quick-loc" id="btnLoc_seiko" onclick="loadCityLocation('seiko')" title="Dammam Seiko / Al Adamah"><i class="fas fa-map-pin"></i> Dammam (Seiko)</button>
-          <button type="button" class="btn-quick-loc" id="btnLoc_riyadh" onclick="loadCityLocation('riyadh')"><i class="fas fa-map-pin"></i> Riyadh</button>
-          <button type="button" class="btn-quick-loc" id="btnLoc_jeddah" onclick="loadCityLocation('jeddah')"><i class="fas fa-map-pin"></i> Jeddah</button>
-          <button type="button" class="btn-quick-loc" id="btnLoc_makkah" onclick="loadCityLocation('makkah')"><i class="fas fa-kaaba"></i> Makkah</button>
-          <button type="button" class="btn-quick-loc" id="btnLoc_madinah" onclick="loadCityLocation('madinah')"><i class="fas fa-mosque"></i> Madinah</button>
-          <button type="button" class="btn-quick-loc" id="btnLoc_dubai" onclick="loadCityLocation('dubai')"><i class="fas fa-map-pin"></i> Dubai</button>
         </div>
 
         <!-- Dual Calendar & Live Clock Banner -->
@@ -3442,26 +3393,7 @@
       }
     }
 
-    // Quick Pre-configured Cities & Coordinates
-    const quickLocations = {
-      seiko: { name: 'Al Adamah (Seiko), Dammam', lat: 26.4344, lng: 50.1033 },
-      riyadh: { name: 'Riyadh, Saudi Arabia', lat: 24.7136, lng: 46.6753 },
-      jeddah: { name: 'Jeddah, Saudi Arabia', lat: 21.5433, lng: 39.1728 },
-      makkah: { name: 'Makkah Al-Mukarramah', lat: 21.3891, lng: 39.8579 },
-      madinah: { name: 'Al-Madinah Al-Munawwarah', lat: 24.5247, lng: 39.5692 },
-      dubai: { name: 'Dubai, UAE', lat: 25.2048, lng: 55.2708 }
-    };
-
-    function loadCityLocation(cityKey) {
-      const loc = quickLocations[cityKey];
-      if (!loc) return;
-      document.querySelectorAll('.btn-quick-loc').forEach(btn => btn.classList.remove('active-loc'));
-      const activeBtn = document.getElementById('btnLoc_' + cityKey);
-      if (activeBtn) activeBtn.classList.add('active-loc');
-      fetchPrayerForCoords(loc.lat, loc.lng, loc.name);
-    }
-
-    // High-Precision Reverse Geocoder via OSM Nominatim (Extracts Seiko, Al Adamah, Al Souq, etc.)
+    // High-Precision Reverse Geocoder via OSM Nominatim (Extracts exact area/neighborhood)
     async function reverseGeocodeWithOSM(lat, lng, fallbackCity, fallbackCountry) {
       try {
         const osmUrl = 'https://nominatim.openstreetmap.org/reverse?format=json&lat=' + lat + '&lon=' + lng + '&zoom=18&addressdetails=1&accept-language=en';
@@ -3555,35 +3487,6 @@
         }
       } catch (e) {
         console.warn('Aladhan fetch error:', e);
-      }
-    }
-
-    async function refreshExactGpsArea() {
-      document.querySelectorAll('.btn-quick-loc').forEach(btn => btn.classList.remove('active-loc'));
-      const gpsBtn = document.getElementById('btnLoc_gps');
-      if (gpsBtn) gpsBtn.classList.add('active-loc');
-
-      const locLabelEl = document.getElementById('prayerLocLabel');
-      if (locLabelEl) locLabelEl.textContent = 'Detecting exact area (GPS)...';
-
-      if ('geolocation' in navigator) {
-        navigator.geolocation.getCurrentPosition(
-          async function(pos) {
-            if (pos && pos.coords) {
-              const gpsLat = pos.coords.latitude;
-              const gpsLng = pos.coords.longitude;
-              const areaLabel = await reverseGeocodeWithOSM(gpsLat, gpsLng, 'Dammam', 'Saudi Arabia');
-              await fetchPrayerForCoords(gpsLat, gpsLng, areaLabel);
-            }
-          },
-          function(err) {
-            console.log('GPS unavailable or denied:', err.message);
-            if (locLabelEl) locLabelEl.textContent = currentCityLabel;
-          },
-          { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
-        );
-      } else {
-        alert('Geolocation is not supported by your browser.');
       }
     }
 
