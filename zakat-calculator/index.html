@@ -1396,6 +1396,43 @@
       color: #38bdf8;
       font-family: monospace;
     }
+    .quick-loc-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px;
+      margin-top: 10px;
+    }
+    .quick-loc-label {
+      font-size: 0.76rem;
+      color: #94a3b8;
+      font-weight: 600;
+      margin-right: 2px;
+    }
+    .btn-quick-loc {
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid rgba(0, 242, 254, 0.22);
+      color: #cbd5e1;
+      font-size: 0.76rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.2s ease;
+    }
+    .btn-quick-loc:hover {
+      background: rgba(0, 242, 254, 0.15);
+      border-color: #00f2fe;
+      color: #00f2fe;
+    }
+    .btn-quick-loc.active-loc {
+      background: rgba(0, 201, 167, 0.2);
+      border-color: #00c9a7;
+      color: #00c9a7;
+    }
   </style>
 </head>
 <body>
@@ -2344,11 +2381,23 @@
             <h2 class="calc-title"><i class="fas fa-mosque" style="color: #00f2fe; margin-right: 8px;"></i> Prayer Times</h2>
             <p class="calc-subtitle">Real-time location detection with Umm Al-Qura ephemeris & live countdown timer.</p>
           </div>
-          <div class="auto-sync-tag" style="background: rgba(16, 185, 129, 0.12); border-color: #10b981; color: #34d399; font-weight: 700;">
+          <div class="auto-sync-tag" id="prayerLocBtn" onclick="refreshExactGpsArea()" style="background: rgba(16, 185, 129, 0.12); border-color: #10b981; color: #34d399; font-weight: 700; cursor: pointer;" title="Click to auto-detect your exact area via GPS">
             <span class="live-pulse-dot"></span>
-            <i class="fas fa-location-dot" style="margin: 0 4px;"></i>
+            <i class="fas fa-crosshairs" style="margin: 0 4px;"></i>
             <span id="prayerLocLabel">Detecting location...</span>
           </div>
+        </div>
+
+        <!-- Quick Area Selector Bar -->
+        <div class="quick-loc-bar">
+          <span class="quick-loc-label"><i class="fas fa-location-crosshairs"></i> Area:</span>
+          <button type="button" class="btn-quick-loc active-loc" id="btnLoc_gps" onclick="refreshExactGpsArea()" title="Auto detect exact neighbourhood / area via GPS"><i class="fas fa-crosshairs"></i> Auto GPS (My Area)</button>
+          <button type="button" class="btn-quick-loc" id="btnLoc_seiko" onclick="loadCityLocation('seiko')" title="Dammam Seiko / Al Adamah"><i class="fas fa-map-pin"></i> Dammam (Seiko)</button>
+          <button type="button" class="btn-quick-loc" id="btnLoc_riyadh" onclick="loadCityLocation('riyadh')"><i class="fas fa-map-pin"></i> Riyadh</button>
+          <button type="button" class="btn-quick-loc" id="btnLoc_jeddah" onclick="loadCityLocation('jeddah')"><i class="fas fa-map-pin"></i> Jeddah</button>
+          <button type="button" class="btn-quick-loc" id="btnLoc_makkah" onclick="loadCityLocation('makkah')"><i class="fas fa-kaaba"></i> Makkah</button>
+          <button type="button" class="btn-quick-loc" id="btnLoc_madinah" onclick="loadCityLocation('madinah')"><i class="fas fa-mosque"></i> Madinah</button>
+          <button type="button" class="btn-quick-loc" id="btnLoc_dubai" onclick="loadCityLocation('dubai')"><i class="fas fa-map-pin"></i> Dubai</button>
         </div>
 
         <!-- Dual Calendar & Live Clock Banner -->
@@ -2447,7 +2496,7 @@
             <div class="slot-icon"><i class="fas fa-certificate" style="color:#fbbf24;"></i></div>
             <div class="prayer-name">Chasht (Duha)</div>
             <div class="prayer-time-val" id="timeChasht" style="color:#fde68a;">--:-- --</div>
-            <div class="slot-subtext">Until 20m to Zawal</div>
+            <div class="slot-subtext" id="chashtDynamicSub" style="color:#00f2fe;font-weight:600;">⚡ Dynamic Midpoint</div>
           </div>
 
           <!-- 5. Dhuhr -->
@@ -3280,6 +3329,22 @@
       if (data.hijriAr) {
         document.getElementById('liveHijriArabic').textContent = data.hijriAr;
       }
+      const chashtSubEl = document.getElementById('chashtDynamicSub');
+      if (chashtSubEl && data.sunrise && data.dhuhr) {
+        try {
+          const sParts = data.sunrise.split(' ')[0].split(':');
+          const dParts = data.dhuhr.split(' ')[0].split(':');
+          const sm = parseInt(sParts[0], 10) * 60 + parseInt(sParts[1], 10);
+          const dm = parseInt(dParts[0], 10) * 60 + parseInt(dParts[1], 10);
+          const diff = Math.round((dm - sm) / 2);
+          const dh = Math.floor(diff / 60);
+          const dmin = diff % 60;
+          chashtSubEl.textContent = '⚡ Midpoint (Sunrise + ' + dh + 'h ' + dmin + 'm)';
+          chashtSubEl.title = 'Astronomically calculated midpoint between Sunrise (' + data.sunrise + ') & Dhuhr (' + data.dhuhr + ')';
+        } catch(e) {
+          chashtSubEl.textContent = '⚡ Dynamic Sun Midpoint';
+        }
+      }
       updatePrayerCountdown();
     }
 
@@ -3377,47 +3442,84 @@
       }
     }
 
-    // Auto-detect location & fetch Aladhan live timings
-    async function initAutoPrayerTimes() {
-      // 1. Initial display with local fallback
-      applyPrayerTimesToDOM(defaultPrayerMap.dammam);
+    // Quick Pre-configured Cities & Coordinates
+    const quickLocations = {
+      seiko: { name: 'Al Adamah (Seiko), Dammam', lat: 26.4344, lng: 50.1033 },
+      riyadh: { name: 'Riyadh, Saudi Arabia', lat: 24.7136, lng: 46.6753 },
+      jeddah: { name: 'Jeddah, Saudi Arabia', lat: 21.5433, lng: 39.1728 },
+      makkah: { name: 'Makkah Al-Mukarramah', lat: 21.3891, lng: 39.8579 },
+      madinah: { name: 'Al-Madinah Al-Munawwarah', lat: 24.5247, lng: 39.5692 },
+      dubai: { name: 'Dubai, UAE', lat: 25.2048, lng: 55.2708 }
+    };
 
-      // Start ticker
-      updateLiveClocks();
-      setInterval(updateLiveClocks, 1000);
+    function loadCityLocation(cityKey) {
+      const loc = quickLocations[cityKey];
+      if (!loc) return;
+      document.querySelectorAll('.btn-quick-loc').forEach(btn => btn.classList.remove('active-loc'));
+      const activeBtn = document.getElementById('btnLoc_' + cityKey);
+      if (activeBtn) activeBtn.classList.add('active-loc');
+      fetchPrayerForCoords(loc.lat, loc.lng, loc.name);
+    }
 
-      // 2. Fetch IP Geolocation
-      let lat = 26.42;
-      let lng = 50.08;
-      let city = 'Dammam';
-      let country = 'Saudi Arabia';
-
+    // High-Precision Reverse Geocoder via OSM Nominatim (Extracts Seiko, Al Adamah, Al Souq, etc.)
+    async function reverseGeocodeWithOSM(lat, lng, fallbackCity, fallbackCountry) {
       try {
-        const ipRes = await fetch('https://ipapi.co/json/', { cache: 'no-cache' });
-        if (ipRes.ok) {
-          const ipData = await ipRes.json();
-          if (ipData && ipData.latitude && ipData.longitude) {
-            lat = ipData.latitude;
-            lng = ipData.longitude;
-            city = ipData.city || 'Local Area';
-            country = ipData.country_name || 'Saudi Arabia';
-            currentCityLabel = `${city}, ${country}`;
+        const osmUrl = 'https://nominatim.openstreetmap.org/reverse?format=json&lat=' + lat + '&lon=' + lng + '&zoom=18&addressdetails=1&accept-language=en';
+        const res = await fetch(osmUrl, { headers: { 'Accept': 'application/json' } });
+        if (res.ok) {
+          const data = await res.json();
+          if (data && data.address) {
+            const addr = data.address;
+            let area = addr.neighbourhood || addr.suburb || addr.quarter || addr.district || addr.residential || addr.road || '';
+            const city = addr.city || addr.town || addr.municipality || fallbackCity || 'Dammam';
+            const country = addr.country || fallbackCountry || 'Saudi Arabia';
+
+            if (area.toLowerCase().includes('adamah') || area.toLowerCase().includes('seiko')) {
+              area = 'Al Adamah (Seiko)';
+            }
+
+            if (area && city && area.toLowerCase() !== city.toLowerCase()) {
+              return area + ', ' + city;
+            } else if (city && country) {
+              return city + ', ' + country;
+            }
           }
         }
-      } catch (err) {
-        console.warn('IP Geolocation fallback to default:', err);
+      } catch (e) {
+        console.warn('OSM reverse geocode fallback:', e);
       }
 
-      // Update location pill
-      const locLabelEl = document.getElementById('prayerLocLabel');
-      if (locLabelEl) locLabelEl.textContent = currentCityLabel;
+      // Fallback: BigDataCloud
+      try {
+        const bdcUrl = 'https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=' + lat + '&longitude=' + lng + '&localityLanguage=en';
+        const bRes = await fetch(bdcUrl);
+        if (bRes.ok) {
+          const bData = await bRes.json();
+          const area = bData.locality || (bData.localityInfo && bData.localityInfo.informative && bData.localityInfo.informative[0] && bData.localityInfo.informative[0].name) || '';
+          const city = bData.city || fallbackCity || '';
+          if (area && city && area.toLowerCase() !== city.toLowerCase()) {
+            return area + ', ' + city;
+          } else if (city) {
+            return city + ', ' + (fallbackCountry || 'Saudi Arabia');
+          }
+        }
+      } catch (e2) {
+        console.warn('BDC reverse geocode error:', e2);
+      }
 
-      // 3. Fetch exact Umm Al-Qura / local prayer timings via Aladhan API
+      return (fallbackCity || 'Dammam') + ', ' + (fallbackCountry || 'Saudi Arabia');
+    }
+
+    async function fetchPrayerForCoords(lat, lng, locLabel) {
+      if (locLabel) {
+        currentCityLabel = locLabel;
+        const locLabelEl = document.getElementById('prayerLocLabel');
+        if (locLabelEl) locLabelEl.textContent = currentCityLabel;
+      }
       try {
         const today = new Date();
-        const dateStr = `${today.getDate()}-${today.getMonth() + 1}-${today.getFullYear()}`;
-        // Method 4 is official Umm Al-Qura
-        const aladhanUrl = `https://api.aladhan.com/v1/timings/${dateStr}?latitude=${lat}&longitude=${lng}&method=4`;
+        const dateStr = today.getDate() + '-' + (today.getMonth() + 1) + '-' + today.getFullYear();
+        const aladhanUrl = 'https://api.aladhan.com/v1/timings/' + dateStr + '?latitude=' + lat + '&longitude=' + lng + '&method=4';
         const pRes = await fetch(aladhanUrl);
         if (pRes.ok) {
           const pData = await pRes.json();
@@ -3428,13 +3530,12 @@
             const ishraqCalculated = addMinutesToTime(sunriseTime, 18);
             const chashtCalculated = getMidpointTime(sunriseTime, dhuhrTime);
 
-            // Hijri Date
             let hijriStr = '26 Rabi\' al-awwal 1448 AH';
             let hijriArStr = '';
             if (pData.data.date && pData.data.date.hijri) {
               const h = pData.data.date.hijri;
-              hijriStr = `${h.day} ${h.month.en} ${h.year} AH`;
-              hijriArStr = `${h.day} ${h.month.ar} ${h.year} هـ`;
+              hijriStr = h.day + ' ' + h.month.en + ' ' + h.year + ' AH';
+              hijriArStr = h.day + ' ' + h.month.ar + ' ' + h.year + ' هـ';
             }
 
             applyPrayerTimesToDOM({
@@ -3452,78 +3553,89 @@
             });
           }
         }
-      } catch (pErr) {
-        console.warn('Aladhan API fetch fallback:', pErr);
+      } catch (e) {
+        console.warn('Aladhan fetch error:', e);
+      }
+    }
+
+    async function refreshExactGpsArea() {
+      document.querySelectorAll('.btn-quick-loc').forEach(btn => btn.classList.remove('active-loc'));
+      const gpsBtn = document.getElementById('btnLoc_gps');
+      if (gpsBtn) gpsBtn.classList.add('active-loc');
+
+      const locLabelEl = document.getElementById('prayerLocLabel');
+      if (locLabelEl) locLabelEl.textContent = 'Detecting exact area (GPS)...';
+
+      if ('geolocation' in navigator) {
+        navigator.geolocation.getCurrentPosition(
+          async function(pos) {
+            if (pos && pos.coords) {
+              const gpsLat = pos.coords.latitude;
+              const gpsLng = pos.coords.longitude;
+              const areaLabel = await reverseGeocodeWithOSM(gpsLat, gpsLng, 'Dammam', 'Saudi Arabia');
+              await fetchPrayerForCoords(gpsLat, gpsLng, areaLabel);
+            }
+          },
+          function(err) {
+            console.log('GPS unavailable or denied:', err.message);
+            if (locLabelEl) locLabelEl.textContent = currentCityLabel;
+          },
+          { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
+        );
+      } else {
+        alert('Geolocation is not supported by your browser.');
+      }
+    }
+
+    async function initAutoPrayerTimes() {
+      // 1. Initial display with local fallback
+      applyPrayerTimesToDOM(defaultPrayerMap.dammam);
+
+      // Start ticker
+      updateLiveClocks();
+      setInterval(updateLiveClocks, 1000);
+
+      // 2. Fetch IP Geolocation baseline
+      let lat = 26.42;
+      let lng = 50.08;
+      let city = 'Dammam';
+      let country = 'Saudi Arabia';
+
+      try {
+        const ipRes = await fetch('https://ipapi.co/json/', { cache: 'no-cache' });
+        if (ipRes.ok) {
+          const ipData = await ipRes.json();
+          if (ipData && ipData.latitude && ipData.longitude) {
+            lat = ipData.latitude;
+            lng = ipData.longitude;
+            city = ipData.city || 'Local Area';
+            country = ipData.country_name || 'Saudi Arabia';
+            currentCityLabel = city + ', ' + country;
+          }
+        }
+      } catch (err) {
+        console.warn('IP Geolocation fallback to default:', err);
       }
 
-      // 4. High-Precision GPS Area Detection (Google Maps style)
+      // 3. Fetch timings for IP baseline immediately so page is never empty
+      await fetchPrayerForCoords(lat, lng, currentCityLabel);
+
+      // 4. Attempt high-precision GPS area detection automatically
       if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(async function(pos) {
-          try {
-            if (!pos || !pos.coords) return;
-            const gpsLat = pos.coords.latitude;
-            const gpsLng = pos.coords.longitude;
-            try {
-              const rRes = await fetch('https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=' + gpsLat + '&longitude=' + gpsLng + '&localityLanguage=en');
-              if (rRes.ok) {
-                const rData = await rRes.json();
-                const area = rData.locality || (rData.localityInfo && rData.localityInfo.informative && rData.localityInfo.informative[0] && rData.localityInfo.informative[0].name) || '';
-                const cName = rData.city || city || '';
-                if (area && cName && area.toLowerCase() !== cName.toLowerCase()) {
-                  currentCityLabel = area + ', ' + cName;
-                } else if (cName) {
-                  currentCityLabel = cName + ', ' + country;
-                }
-                const locLabelEl = document.getElementById('prayerLocLabel');
-                if (locLabelEl) locLabelEl.textContent = currentCityLabel;
-              }
-            } catch (rErr) {
-              console.warn('Reverse geocode error:', rErr);
+        navigator.geolocation.getCurrentPosition(
+          async function(pos) {
+            if (pos && pos.coords) {
+              const gpsLat = pos.coords.latitude;
+              const gpsLng = pos.coords.longitude;
+              const preciseLabel = await reverseGeocodeWithOSM(gpsLat, gpsLng, city, country);
+              await fetchPrayerForCoords(gpsLat, gpsLng, preciseLabel);
             }
-
-            // Re-fetch Aladhan for exact GPS coordinates
-            const today = new Date();
-            const dateStr = today.getDate() + '-' + (today.getMonth() + 1) + '-' + today.getFullYear();
-            const aladhanUrl = 'https://api.aladhan.com/v1/timings/' + dateStr + '?latitude=' + gpsLat + '&longitude=' + gpsLng + '&method=4';
-            const pRes = await fetch(aladhanUrl);
-            if (pRes.ok) {
-              const pData = await pRes.json();
-              if (pData && pData.data && pData.data.timings) {
-                const t = pData.data.timings;
-                const sunriseTime = t.Sunrise.split(' ')[0];
-                const dhuhrTime = t.Dhuhr.split(' ')[0];
-                const ishraqCalculated = addMinutesToTime(sunriseTime, 18);
-                const chashtCalculated = getMidpointTime(sunriseTime, dhuhrTime);
-
-                let hijriStr = '26 Rabi\' al-awwal 1448 AH';
-                let hijriArStr = '';
-                if (pData.data.date && pData.data.date.hijri) {
-                  const h = pData.data.date.hijri;
-                  hijriStr = `${h.day} ${h.month.en} ${h.year} AH`;
-                  hijriArStr = `${h.day} ${h.month.ar} ${h.year} هـ`;
-                }
-
-                applyPrayerTimesToDOM({
-                  fajr: t.Fajr.split(' ')[0],
-                  sunrise: sunriseTime,
-                  ishraq: ishraqCalculated,
-                  chasht: chashtCalculated,
-                  dhuhr: dhuhrTime,
-                  asr: t.Asr.split(' ')[0],
-                  maghrib: t.Maghrib.split(' ')[0],
-                  isha: t.Isha.split(' ')[0],
-                  label: currentCityLabel,
-                  hijri: hijriStr,
-                  hijriAr: hijriArStr
-                });
-              }
-            }
-          } catch (e) {
-            console.warn('GPS location update fallback:', e);
-          }
-        }, function(err) {
-          console.log('GPS unavailable or denied:', err.message);
-        }, { enableHighAccuracy: true, timeout: 8000, maximumAge: 300000 });
+          },
+          function(err) {
+            console.log('Auto GPS background check:', err.message);
+          },
+          { enableHighAccuracy: true, timeout: 8000, maximumAge: 300000 }
+        );
       }
     }
 
