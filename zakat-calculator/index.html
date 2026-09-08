@@ -1316,6 +1316,86 @@
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
       border: 1px solid rgba(255, 255, 255, 0.2);
     }
+
+    /* ================= HOW TO USE & FORMULA BOX ================= */
+    .tool-steps-card {
+      background: rgba(15, 23, 42, 0.75);
+      border: 1px solid rgba(0, 242, 254, 0.22);
+      border-radius: 8px;
+      padding: 14px 16px;
+      margin-bottom: 16px;
+    }
+    .tool-steps-title {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #00f2fe;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .tool-steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 10px;
+    }
+    .tool-step-item {
+      background: rgba(30, 41, 59, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      padding: 10px 12px;
+      text-align: center;
+    }
+    .tool-step-num {
+      width: 22px;
+      height: 22px;
+      margin: 0 auto 6px;
+      background: rgba(0, 242, 254, 0.15);
+      color: #00f2fe;
+      border: 1px solid rgba(0, 242, 254, 0.35);
+      border-radius: 50%;
+      font-size: 0.72rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .tool-step-heading {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #f1f5f9;
+      margin-bottom: 4px;
+    }
+    .tool-step-desc {
+      font-size: 0.75rem;
+      color: #94a3b8;
+      line-height: 1.4;
+    }
+    .tool-formula-box {
+      background: rgba(16, 185, 129, 0.07);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      border-left: 4px solid #10b981;
+      border-radius: 8px;
+      padding: 10px 14px;
+      margin-bottom: 16px;
+      font-size: 0.82rem;
+      color: #e2e8f0;
+      line-height: 1.5;
+    }
+    .tool-formula-box strong {
+      color: #34d399;
+    }
+    .tool-formula-box code {
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      color: #38bdf8;
+      font-family: monospace;
+    }
   </style>
 </head>
 <body>
@@ -1605,7 +1685,31 @@
             <h3><i class="fas fa-sync-alt" style="color: var(--neon-teal); margin-right: 6px;"></i> Live Forex & Multi-Channel Remittance Architecture</h3>
             <p>Compare real-time interbank currency benchmarks against leading digital remittance apps (Barq, STC Pay, urpay, and Tahweel Al Rajhi). Always evaluate your final net in-hand Rupee credit rather than relying solely on the theoretical interbank mid-market rate.</p>
             
-            <div class="tool-meta-grid">
+                        <!-- How to Use & Methodology -->
+            <div class="tool-steps-card">
+              <div class="tool-steps-title"><i class="fas fa-list-check"></i> How to Use Saudi Remittance Calculator (3 Easy Steps)</div>
+              <div class="tool-steps-grid">
+                <div class="tool-step-item">
+                  <div class="tool-step-num">1</div>
+                  <div class="tool-step-heading">Enter Transfer Amount</div>
+                  <div class="tool-step-desc">Type your SAR or GCC remittance sum in the input field.</div>
+                </div>
+                <div class="tool-step-item">
+                  <div class="tool-step-num">2</div>
+                  <div class="tool-step-heading">Select Target Currency</div>
+                  <div class="tool-step-desc">Choose India (INR), Pakistan (PKR), or Bangladesh (BDT).</div>
+                </div>
+                <div class="tool-step-item">
+                  <div class="tool-step-num">3</div>
+                  <div class="tool-step-heading">Compare Live Payouts</div>
+                  <div class="tool-step-desc">Review real-time interbank rates and live remittance app cashouts.</div>
+                </div>
+              </div>
+            </div>
+            <div class="tool-formula-box">
+              <strong><i class="fas fa-calculator" style="margin-right: 4px;"></i> Calculation Formula:</strong> <code>Net In-Hand Payout = (Transfer Amount SAR Ã— Live Interbank Rate) - Processing Fee</code>
+            </div>
+<div class="tool-meta-grid">
               <div class="tool-example-card">
                 <h4><i class="fas fa-lightbulb" style="color: #fbbf24; margin-right: 6px;"></i> Practical Calculation Example</h4>
                 <p>
@@ -1724,12 +1828,36 @@
         </div>
                 <!-- Rich Tool Knowledge Base & High-CPC SEO -->
           <div class="tool-knowledge-base">
-            <h3>⚖️ Shariah-Compliant Zakat & Nisab Evaluation Architecture</h3>
+            <h3><i class="fas fa-coins" style="color:#00f2fe;margin-right:8px;"></i> Shariah-Compliant Zakat & Nisab Evaluation Architecture</h3>
             <p>Zakat is the third foundational pillar of Islam, mandatory upon every adult Muslim possessing surplus wealth equal to or exceeding the Nisab threshold continuously for one complete lunar year (Hawl). Classical Islamic jurisprudence (Fiqh) differentiates between gold, silver, liquid cash, business inventory, and personal-use belongings. This tool automates contemporary valuation using real-time precious metals benchmarks.</p>
             
-            <div class="tool-meta-grid">
+                        <!-- How to Use & Methodology -->
+            <div class="tool-steps-card">
+              <div class="tool-steps-title"><i class="fas fa-list-check"></i> How to Use Zakat Calculator (3 Easy Steps)</div>
+              <div class="tool-steps-grid">
+                <div class="tool-step-item">
+                  <div class="tool-step-num">1</div>
+                  <div class="tool-step-heading">Input Gold & Silver Assets</div>
+                  <div class="tool-step-desc">Enter weight in grams for 24K, 22K, 21K, 18K gold and pure silver.</div>
+                </div>
+                <div class="tool-step-item">
+                  <div class="tool-step-num">2</div>
+                  <div class="tool-step-heading">Add Liquid Cash & Debts</div>
+                  <div class="tool-step-desc">Add bank savings and deduct immediate short-term liabilities due.</div>
+                </div>
+                <div class="tool-step-item">
+                  <div class="tool-step-num">3</div>
+                  <div class="tool-step-heading">Instant 2.5% Zakat Due</div>
+                  <div class="tool-step-desc">System automatically evaluates Nisab threshold (85g gold) and displays due charity.</div>
+                </div>
+              </div>
+            </div>
+            <div class="tool-formula-box">
+              <strong><i class="fas fa-calculator" style="margin-right: 4px;"></i> Calculation Formula:</strong> <code>Zakat Due = (Total Zakatable Assets - Due Liabilities) Ã— 2.5% [when Net Assets â‰¥ 85g Gold Nisab]</code>
+            </div>
+<div class="tool-meta-grid">
               <div class="tool-example-card">
-                <h4>💡 Practical Calculation Example</h4>
+                <h4><i class="fas fa-lightbulb" style="color:#fbbf24;margin-right:6px;"></i> Practical Calculation Example</h4>
                 <p><strong>Scenario:</strong> Individual possesses 95 grams of 21K gold jewelry and 15,000 SAR liquid savings, with 3,000 SAR in immediate monthly bills.<br>
                 • <em>21K to 24K Pure Conversion:</em> 95g × (21/24) = <strong>83.125 grams pure gold</strong>.<br>
                 • <em>Nisab Verification (85g Gold @ 280 SAR/g = 23,800 SAR):</em><br>
@@ -1739,7 +1867,7 @@
                 • <em>Zakat Due (2.5%):</em> 35,275 × 0.025 = <strong>881.88 SAR (~₹19,842 INR)</strong>.</p>
               </div>
               <div class="tool-benefit-card">
-                <h4>🎁 Key Spiritual & Financial Benefits</h4>
+                <h4><i class="fas fa-hand-holding-heart" style="color:#34d399;margin-right:6px;"></i> Key Spiritual &amp; Financial Benefits</h4>
                 <p>• <strong>Strict Karat Normalization:</strong> Accurately converts 18K, 21K, and 22K alloyed gold to pure 24K equivalent weight.<br>
                 • <strong>Hawl & Debt Settlement Deductions:</strong> Accounts for short-term due liabilities to prevent over-taxing necessary living funds.<br>
                 • <strong>Shariah Compliance Assurance:</strong> Adheres to consensus classical Nisab standards across major Sunni schools of jurisprudence.</p>
@@ -1809,19 +1937,43 @@
         </div>
                 <!-- Rich Tool Knowledge Base & High-CPC SEO -->
           <div class="tool-knowledge-base">
-            <h3>📅 Dual-Calendar Chronological Age & Hijri Milestone Engine</h3>
+            <h3><i class="fas fa-calendar-days" style="color:#00f2fe;margin-right:8px;"></i> Dual-Calendar Chronological Age & Hijri Milestone Engine</h3>
             <p>Accurate chronological age determination requires reconciling the solar Gregorian calendar (averaging 365.2425 days per solar year) with the lunar Islamic Umm Al-Qura calendar (averaging 354.36 days per lunar year). Because a lunar year is approximately 10 to 11 days shorter than a solar year, an individual's Hijri age advances faster, creating critical discrepancies for official legal documentation, retirement milestones, and government portal compliance.</p>
             
-            <div class="tool-meta-grid">
+                        <!-- How to Use & Methodology -->
+            <div class="tool-steps-card">
+              <div class="tool-steps-title"><i class="fas fa-list-check"></i> How to Use Age & Date of Birth Calculator (3 Easy Steps)</div>
+              <div class="tool-steps-grid">
+                <div class="tool-step-item">
+                  <div class="tool-step-num">1</div>
+                  <div class="tool-step-heading">Enter Date of Birth</div>
+                  <div class="tool-step-desc">Select your day, month, and year of birth on the calendar.</div>
+                </div>
+                <div class="tool-step-item">
+                  <div class="tool-step-num">2</div>
+                  <div class="tool-step-heading">Set Target Date</div>
+                  <div class="tool-step-desc">Defaults to today or pick any custom historical/future date.</div>
+                </div>
+                <div class="tool-step-item">
+                  <div class="tool-step-num">3</div>
+                  <div class="tool-step-heading">View Dual Calendar Age</div>
+                  <div class="tool-step-desc">See exact Gregorian age, Umm Al-Qura Hijri age, and birthday countdown.</div>
+                </div>
+              </div>
+            </div>
+            <div class="tool-formula-box">
+              <strong><i class="fas fa-calculator" style="margin-right: 4px;"></i> Calculation Formula:</strong> <code>Chronological Age = Completed Solar Years, Months, Days + Umm Al-Qura Lunar Hijri Conversion</code>
+            </div>
+<div class="tool-meta-grid">
               <div class="tool-example-card">
-                <h4>💡 Practical Calculation Example</h4>
+                <h4><i class="fas fa-lightbulb" style="color:#fbbf24;margin-right:6px;"></i> Practical Calculation Example</h4>
                 <p><strong>Scenario:</strong> Born on 15 Rajab 1412 AH (equivalent to 20 January 1992 CE).<br>
                 • <em>Solar Gregorian Age:</em> <strong>34 Years, 7 Months, 17 Days</strong> (12,648 days lived).<br>
                 • <em>Lunar Islamic Age:</em> <strong>35 Years, 8 Months, 4 Days</strong>.<br>
                 • <em>Upcoming Birthday:</em> Live countdown to the next solar birthday and lunar Hijri anniversary with day-of-week tracking.</p>
               </div>
               <div class="tool-benefit-card">
-                <h4>🎁 Key Administrative & Personal Benefits</h4>
+                <h4><i class="fas fa-calendar-check" style="color:#34d399;margin-right:6px;"></i> Key Administrative &amp; Personal Benefits</h4>
                 <p>• <strong>Saudi Government Portal Verification:</strong> Essential for Absher, Tawakkalna, and Qiwa civil status verification where Hijri dates are legally mandated.<br>
                 • <strong>Exact Milestone Tracking:</strong> Instant breakdown into completed years, months, weeks, days, and total hours lived.<br>
                 • <strong>Retirement & Pension Planning:</strong> Verifies statutory retirement age thresholds under both Gregorian and Hijri civil service systems.</p>
@@ -1895,12 +2047,36 @@
         </div>
           <!-- Rich Tool Knowledge Base & High-CPC SEO -->
           <div class="tool-knowledge-base">
-            <h3>📈 Systematic Investment Plan (SIP) & Wealth Compounding Engine</h3>
+            <h3><i class="fas fa-chart-pie" style="color:#00f2fe;margin-right:8px;"></i> Systematic Investment Plan (SIP) & Wealth Compounding Engine</h3>
             <p>A Systematic Investment Plan (SIP) is an algorithmic wealth-building methodology that leverages rupee-cost averaging and compound interest by investing a predetermined sum at consistent monthly intervals into diversified equity, mutual fund, or index portfolios. By reinvesting dividends and capital gains over multi-year horizons, compounding accelerates total portfolio valuation exponentially.</p>
             
-            <div class="tool-meta-grid">
+                        <!-- How to Use & Methodology -->
+            <div class="tool-steps-card">
+              <div class="tool-steps-title"><i class="fas fa-list-check"></i> How to Use Shariah SIP Calculator (3 Easy Steps)</div>
+              <div class="tool-steps-grid">
+                <div class="tool-step-item">
+                  <div class="tool-step-num">1</div>
+                  <div class="tool-step-heading">Set Monthly Investment</div>
+                  <div class="tool-step-desc">Enter planned monthly investment in Shariah-compliant mutual funds.</div>
+                </div>
+                <div class="tool-step-item">
+                  <div class="tool-step-num">2</div>
+                  <div class="tool-step-heading">Select Expected Return %</div>
+                  <div class="tool-step-desc">Input realistic annual compounded growth rate (e.g. 12% - 15%).</div>
+                </div>
+                <div class="tool-step-item">
+                  <div class="tool-step-num">3</div>
+                  <div class="tool-step-heading">Choose Time Horizon</div>
+                  <div class="tool-step-desc">Select investment duration from 1 to 30 years to see wealth accumulation.</div>
+                </div>
+              </div>
+            </div>
+            <div class="tool-formula-box">
+              <strong><i class="fas fa-calculator" style="margin-right: 4px;"></i> Calculation Formula:</strong> <code>Total Wealth (M) = P Ã— [((1 + i)^n - 1) / i] Ã— (1 + i) [P = Deposit, i = Monthly Rate, n = Months]</code>
+            </div>
+<div class="tool-meta-grid">
               <div class="tool-example-card">
-                <h4>💡 Practical Calculation Example</h4>
+                <h4><i class="fas fa-lightbulb" style="color:#fbbf24;margin-right:6px;"></i> Practical Calculation Example</h4>
                 <p><strong>Scenario:</strong> Expat investing ₹10,000 monthly for 15 years with an expected 12% annualized return.<br>
                 • <em>Total Capital Invested:</em> ₹10,000 × 180 months = <strong>₹18,00,000</strong>.<br>
                 • <em>Estimated Compounded Gains:</em> <strong>₹32,45,760</strong>.<br>
@@ -1908,7 +2084,7 @@
                 <strong>Wealth Multiplier:</strong> Your wealth generated is nearly <strong>1.8x greater</strong> than your total pocket investment!</p>
               </div>
               <div class="tool-benefit-card">
-                <h4>🎁 Key Financial Planning Benefits</h4>
+                <h4><i class="fas fa-chart-line" style="color:#34d399;margin-right:6px;"></i> Key Financial Planning Benefits</h4>
                 <p>• <strong>Rupee-Cost Averaging:</strong> Automatically buys more units during market dips and fewer units at peaks, removing timing risk.<br>
                 • <strong>Inflation-Beating Wealth Growth:</strong> Long-term equity index compounding historically outperforms conventional fixed deposit savings.<br>
                 • <strong>Retirement & Higher Education Milestones:</strong> Quantifies exact monthly contributions required to reach targeted lump-sum family goals.</p>
@@ -1974,12 +2150,36 @@
         </div>
                 <!-- Rich Tool Knowledge Base & High-CPC SEO -->
           <div class="tool-knowledge-base">
-            <h3>🏷️ Smart Retail Discount & Tiered Promotional Savings Engine</h3>
+            <h3><i class="fas fa-percent" style="color:#00f2fe;margin-right:8px;"></i> Smart Retail Discount & Tiered Promotional Savings Engine</h3>
             <p>Navigating modern retail promotions during major shopping festivals—such as White Friday, National Day sales, Ramadan clearances, and Year-End blowouts—often involves complex tiered percentage markdowns and stacked coupon codes. This utility calculates exact out-of-pocket savings and reveals the authentic net markdown percentage.</p>
             
-            <div class="tool-meta-grid">
+                        <!-- How to Use & Methodology -->
+            <div class="tool-steps-card">
+              <div class="tool-steps-title"><i class="fas fa-list-check"></i> How to Use Smart Discount Calculator (3 Easy Steps)</div>
+              <div class="tool-steps-grid">
+                <div class="tool-step-item">
+                  <div class="tool-step-num">1</div>
+                  <div class="tool-step-heading">Enter Original Price</div>
+                  <div class="tool-step-desc">Input regular retail tag price before promotional markdown.</div>
+                </div>
+                <div class="tool-step-item">
+                  <div class="tool-step-num">2</div>
+                  <div class="tool-step-heading">Enter Discount & Coupon %</div>
+                  <div class="tool-step-desc">Type sale percentage discount and optional extra promo code coupon.</div>
+                </div>
+                <div class="tool-step-item">
+                  <div class="tool-step-num">3</div>
+                  <div class="tool-step-heading">Instant Net Savings</div>
+                  <div class="tool-step-desc">View final checkout price, total cash saved, and optional 15% VAT calculation.</div>
+                </div>
+              </div>
+            </div>
+            <div class="tool-formula-box">
+              <strong><i class="fas fa-calculator" style="margin-right: 4px;"></i> Calculation Formula:</strong> <code>Final Price = Original Price - (Original Price Ã— Discount %) [+ 15% VAT if applicable]</code>
+            </div>
+<div class="tool-meta-grid">
               <div class="tool-example-card">
-                <h4>💡 Practical Calculation Example</h4>
+                <h4><i class="fas fa-lightbulb" style="color:#fbbf24;margin-right:6px;"></i> Practical Calculation Example</h4>
                 <p><strong>Scenario:</strong> Electronic appliance retailing at 800 SAR with an initial 30% store discount and an additional 10% banking coupon.<br>
                 • <em>Original Retail Price:</em> 800 SAR.<br>
                 • <em>First Markdown (30% off):</em> 800 - 240 = <strong>560 SAR</strong>.<br>
@@ -1987,7 +2187,7 @@
                 • <em>Total Net Savings:</em> <strong>296 SAR</strong> (Effective 37% total discount, not 40%).</p>
               </div>
               <div class="tool-benefit-card">
-                <h4>🎁 Key Shopper Benefits</h4>
+                <h4><i class="fas fa-tags" style="color:#34d399;margin-right:6px;"></i> Key Shopper Benefits</h4>
                 <p>• <strong>Instant Checkout Verification:</strong> Prevents deceptive inflated original pricing tricks by revealing true payable costs.<br>
                 • <strong>Sequential Coupon Precision:</strong> Computes cumulative stacked discounts without mathematical rounding errors.<br>
                 • <strong>Budget Optimization:</strong> Accurately tracks family household savings on electronics, apparel, and home essentials.</p>
@@ -2065,12 +2265,36 @@
         </div>
                 <!-- Rich Tool Knowledge Base & High-CPC SEO -->
           <div class="tool-knowledge-base">
-            <h3>🏢 Saudi End-of-Service Benefit (EOSB) & Statutory Gratuity Award</h3>
+            <h3><i class="fas fa-scale-balanced" style="color:#00f2fe;margin-right:8px;"></i> Saudi End-of-Service Benefit (EOSB) & Statutory Gratuity Award</h3>
             <p>End-of-Service Benefit (EOSB / Gratuity) is a mandatory statutory severance compensation mandated by the Kingdom of Saudi Arabia Labor Law (Articles 84, 85, and 87). Designed to safeguard expatriate and national workers, EOSB calculations depend strictly on the worker's last drawn basic wage, total completed tenure, contract type (fixed-term vs indefinite), and reason for contract termination.</p>
             
-            <div class="tool-meta-grid">
+                        <!-- How to Use & Methodology -->
+            <div class="tool-steps-card">
+              <div class="tool-steps-title"><i class="fas fa-list-check"></i> How to Use Saudi Salary & Gratuity Calculator (3 Easy Steps)</div>
+              <div class="tool-steps-grid">
+                <div class="tool-step-item">
+                  <div class="tool-step-num">1</div>
+                  <div class="tool-step-heading">Input Monthly Basic Salary</div>
+                  <div class="tool-step-desc">Enter your basic wage plus fixed monthly housing and transport allowances.</div>
+                </div>
+                <div class="tool-step-item">
+                  <div class="tool-step-num">2</div>
+                  <div class="tool-step-heading">Select Service Tenure</div>
+                  <div class="tool-step-desc">Choose completed years and months of continuous employment.</div>
+                </div>
+                <div class="tool-step-item">
+                  <div class="tool-step-num">3</div>
+                  <div class="tool-step-heading">Select Reason for Termination</div>
+                  <div class="tool-step-desc">Pick Resignation, Contract Expiry, or Company Termination under Saudi Labor Law.</div>
+                </div>
+              </div>
+            </div>
+            <div class="tool-formula-box">
+              <strong><i class="fas fa-calculator" style="margin-right: 4px;"></i> Calculation Formula:</strong> <code>EOSB Gratuity = (Salary Ã· 2 Ã— First 5 Yrs) + (Salary Ã— Remaining Yrs) Ã— Resignation Award %</code>
+            </div>
+<div class="tool-meta-grid">
               <div class="tool-example-card">
-                <h4>💡 Practical Calculation Example</h4>
+                <h4><i class="fas fa-lightbulb" style="color:#fbbf24;margin-right:6px;"></i> Practical Calculation Example</h4>
                 <p><strong>Scenario:</strong> Expat worker with a last drawn basic salary of 7,000 SAR and 6 years of continuous service submits a voluntary resignation.<br>
                 • <em>Step 1 (Full Award Baseline - Article 84):</em><br>
                 &nbsp;&nbsp;First 5 years: 5 × (0.5 × 7,000) = 17,500 SAR.<br>
@@ -2080,7 +2304,7 @@
                 • <em>Net Payable Gratuity:</em> 24,500 × (2/3) = <strong>16,333.33 SAR (~₹3,67,500 INR)</strong>.</p>
               </div>
               <div class="tool-benefit-card">
-                <h4>🎁 Key Labor Rights & Expat Benefits</h4>
+                <h4><i class="fas fa-shield-halved" style="color:#34d399;margin-right:6px;"></i> Key Labor Rights & Expat Benefits</h4>
                 <p>• <strong>Legal Entitlement Protection:</strong> Verifies exact statutory dues before signing final exit clearance (Khuruj Nihai) settlement forms.<br>
                 • <strong>Article 85 Resignation Transparency:</strong> Accurately models the 0%, 1/3, 2/3, and 100% resignation gratuity brackets.<br>
                 • <strong>Wage Separation:</strong> Correctly separates basic salary from discretionary food, transport, and performance bonuses.</p>
@@ -2154,12 +2378,36 @@
         </div>
                 <!-- Rich Tool Knowledge Base & High-CPC SEO -->
           <div class="tool-knowledge-base">
-            <h3>🪙 24K/22K Gold Bullion & Jewelry Invoice GST Architecture</h3>
+            <h3><i class="fas fa-gem" style="color:#00f2fe;margin-right:8px;"></i> 24K/22K Gold Bullion & Jewelry Invoice GST Architecture</h3>
             <p>Purchasing precious metals and fine jewelry involves transparent itemization across pure bullion value, craftsman making charges, hallmark certifications, and statutory Goods and Services Tax (GST). Because retail jewelry is crafted from 22-karat (91.6% purity) or 18-karat (75.0% purity) alloys rather than brittle 24-karat pure gold, accurate invoice calculation unbundles raw metal costs from discretionary artisan fabrication fees.</p>
             
-            <div class="tool-meta-grid">
+                        <!-- How to Use & Methodology -->
+            <div class="tool-steps-card">
+              <div class="tool-steps-title"><i class="fas fa-list-check"></i> How to Use Gold & Jewellery GST Calculator (3 Easy Steps)</div>
+              <div class="tool-steps-grid">
+                <div class="tool-step-item">
+                  <div class="tool-step-num">1</div>
+                  <div class="tool-step-heading">Enter Weight & Karat Purity</div>
+                  <div class="tool-step-desc">Input net gold weight in grams and select 24K, 22K, or 18K purity.</div>
+                </div>
+                <div class="tool-step-item">
+                  <div class="tool-step-num">2</div>
+                  <div class="tool-step-heading">Enter Making Charges</div>
+                  <div class="tool-step-desc">Input jeweler's making charges as percentage or flat per gram fee.</div>
+                </div>
+                <div class="tool-step-item">
+                  <div class="tool-step-num">3</div>
+                  <div class="tool-step-heading">View Itemized Invoice</div>
+                  <div class="tool-step-desc">See pure gold cost, making charges, and exact 3% Indian GST tax.</div>
+                </div>
+              </div>
+            </div>
+            <div class="tool-formula-box">
+              <strong><i class="fas fa-calculator" style="margin-right: 4px;"></i> Calculation Formula:</strong> <code>Total Invoice = (Gold Rate Ã— Weight) + Making Charges + 3% GST on (Gold + Making Charges)</code>
+            </div>
+<div class="tool-meta-grid">
               <div class="tool-example-card">
-                <h4>💡 Practical Calculation Example</h4>
+                <h4><i class="fas fa-lightbulb" style="color:#fbbf24;margin-right:6px;"></i> Practical Calculation Example</h4>
                 <p><strong>Scenario:</strong> Purchasing an 18-gram 22K gold bangle when 24K pure gold is benchmarked at ₹7,200 per gram.<br>
                 • <em>22K Raw Gold Rate (91.67%):</em> ₹7,200 × 0.9167 = ₹6,600/gram.<br>
                 • <em>Raw Bullion Cost:</em> 18g × ₹6,600 = <strong>₹1,18,800</strong>.<br>
@@ -2169,7 +2417,7 @@
                 • <em>Total Final Invoice:</em> <strong>₹1,37,047.68 (~6,091 SAR)</strong>.</p>
               </div>
               <div class="tool-benefit-card">
-                <h4>🎁 Key Consumer Protection Benefits</h4>
+                <h4><i class="fas fa-certificate" style="color:#34d399;margin-right:6px;"></i> Key Consumer Protection Benefits</h4>
                 <p>• <strong>Eliminates Overcharging:</strong> Distinguishes legitimate metal weight from excessive wastage/making charge markups.<br>
                 • <strong>Purity Normalization:</strong> Accurately scales prices between 24K bullion, 22K jewelry, and 18K diamond settings.<br>
                 • <strong>Invoice Transparency:</strong> Ensures the statutory 3% Indian GST is applied strictly to the true taxable subtotal.</p>
@@ -2362,13 +2610,37 @@
           <h3><i class="fas fa-book-quran" style="color:#00f2fe; margin-right:8px;"></i> High-Precision Astronomical Prayer Times & Umm Al-Qura System</h3>
           <p>Accurate Salah timing is fundamental to Islamic worship. This computational engine computes canonical prayer times across your exact geographic coordinates using the official Umm Al-Qura astronomical methodology. It calculates all 8 periods of the daily spiritual cycle: Fajr (true dawn), Sunrise (Shuruq), Ishraq, Chasht (Salat al-Duha), Dhuhr (solar zenith), Asr (shadow length), Maghrib (sunset), and Isha (disappearance of red twilight).</p>
           
-          <div class="tool-meta-grid">
+                      <!-- How to Use & Methodology -->
+            <div class="tool-steps-card">
+              <div class="tool-steps-title"><i class="fas fa-list-check"></i> How to Use Prayer Times Engine (3 Easy Steps)</div>
+              <div class="tool-steps-grid">
+                <div class="tool-step-item">
+                  <div class="tool-step-num">1</div>
+                  <div class="tool-step-heading">Auto-Location Active</div>
+                  <div class="tool-step-desc">Coordinates automatically detect your exact city worldwide via GPS/IP.</div>
+                </div>
+                <div class="tool-step-item">
+                  <div class="tool-step-num">2</div>
+                  <div class="tool-step-heading">Track Live Countdown</div>
+                  <div class="tool-step-desc">View dynamic countdown timer to next Azan and prayer window.</div>
+                </div>
+                <div class="tool-step-item">
+                  <div class="tool-step-num">3</div>
+                  <div class="tool-step-heading">8 Daily Prayer Windows</div>
+                  <div class="tool-step-desc">Check Fajr, Sunrise, Ishraq, Chasht, Dhuhr, Asr, Maghrib, and Isha times.</div>
+                </div>
+              </div>
+            </div>
+            <div class="tool-formula-box">
+              <strong><i class="fas fa-calculator" style="margin-right: 4px;"></i> Calculation Formula:</strong> <code>Salah Times = Astronomical Solar Zenith Angle synchronized with Umm Al-Qura Ephemeris</code>
+            </div>
+<div class="tool-meta-grid">
             <div class="tool-example-card">
-              <h4>â˜€ï¸ When is Ishraq Prayer Time?</h4>
+              <h4><i class="fas fa-sun" style="color:#f59e0b;margin-right:6px;"></i> When is Ishraq Prayer Time?</h4>
               <p>Ishraq begins approximately 15 to 20 minutes post-sunrise, once the sun has risen above the horizon to the height of a spear. Performing Fajr in congregation, remaining in Dhikr until Ishraq, and offering 2 rak'ahs carries immense spiritual reward.</p>
             </div>
             <div class="tool-benefit-card">
-              <h4>ðŸ”† What is Chasht (Salat al-Duha)?</h4>
+              <h4><i class="fas fa-cloud-sun" style="color:#00f2fe;margin-right:6px;"></i> What is Chasht (Salat al-Duha)?</h4>
               <p>Chasht or Salat al-Duha begins when the sun is bright and high (mid-morning, approx 08:30 AM) and extends until 15 to 20 minutes before Dhuhr (Zawal period). It consists of 2 to 8 voluntary rak'ahs of gratitude.</p>
             </div>
           </div>
@@ -2450,12 +2722,36 @@
         </div>
                 <!-- Rich Tool Knowledge Base & High-CPC SEO -->
           <div class="tool-knowledge-base">
-            <h3>🇸🇦 Saudi Iqama Renewal & Expat Dependent Levy 2026 Engine</h3>
+            <h3><i class="fas fa-id-card" style="color:#00f2fe;margin-right:8px;"></i> Saudi Iqama Renewal & Expat Dependent Levy 2026 Engine</h3>
             <p>Maintaining legal expatriate residency in the Kingdom of Saudi Arabia requires structured budget planning across civil passport fees (Jawazat), the Ministry of Human Resources and Social Development (HRSD) work permit financial levy (Maktab Amal), and the monthly expat dependent surcharge. Since the introduction of quarterly Iqama renewals, employers and foreign professionals can optimize cash flow across 3, 6, 9, and 12-month periods.</p>
             
-            <div class="tool-meta-grid">
+                        <!-- How to Use & Methodology -->
+            <div class="tool-steps-card">
+              <div class="tool-steps-title"><i class="fas fa-list-check"></i> How to Use Saudi Iqama Fee Calculator (3 Easy Steps)</div>
+              <div class="tool-steps-grid">
+                <div class="tool-step-item">
+                  <div class="tool-step-num">1</div>
+                  <div class="tool-step-heading">Select Renewal Duration</div>
+                  <div class="tool-step-desc">Choose quarterly (3, 6, 9 months) or annual 12-month renewal window.</div>
+                </div>
+                <div class="tool-step-item">
+                  <div class="tool-step-num">2</div>
+                  <div class="tool-step-heading">Enter Dependent Count</div>
+                  <div class="tool-step-desc">Input accompanying family members sponsored on your Iqama.</div>
+                </div>
+                <div class="tool-step-item">
+                  <div class="tool-step-num">3</div>
+                  <div class="tool-step-heading">Get Itemized Government Fees</div>
+                  <div class="tool-step-desc">View exact Jawazat fee, Maktab Amal levy, and dependent tax breakdown.</div>
+                </div>
+              </div>
+            </div>
+            <div class="tool-formula-box">
+              <strong><i class="fas fa-calculator" style="margin-right: 4px;"></i> Calculation Formula:</strong> <code>Total Renewal = (Maktab Amal [800 SAR/mo] + Jawazat [54.17 SAR/mo] + Dependent [400 SAR/mo]) Ã— Months</code>
+            </div>
+<div class="tool-meta-grid">
               <div class="tool-example-card">
-                <h4>💡 Practical Calculation Example</h4>
+                <h4><i class="fas fa-lightbulb" style="color:#fbbf24;margin-right:6px;"></i> Practical Calculation Example</h4>
                 <p><strong>Scenario:</strong> Expat professional renewing for 12 months with a wife and 2 children in a private firm with a foreign worker majority.<br>
                 • <em>Jawazat Residency Fee:</em> <strong>650 SAR</strong>.<br>
                 • <em>Work Permit Financial Levy (Maktab Amal):</em> 800 SAR/month × 12 = <strong>9,600 SAR</strong>.<br>
@@ -2464,7 +2760,7 @@
                 • <em>Quarterly (3-Month) Option:</em> Pay just <strong>6,162.50 SAR</strong> to renew per quarter!</p>
               </div>
               <div class="tool-benefit-card">
-                <h4>🎁 Key Expat Family Benefits</h4>
+                <h4><i class="fas fa-users" style="color:#34d399;margin-right:6px;"></i> Key Expat Family Benefits</h4>
                 <p>• <strong>Quarterly Cash Flow Management:</strong> Accurately breaks down 3, 6, 9, and 12-month installment payment options.<br>
                 • <strong>Late Renewal Penalty Prevention:</strong> Avoids statutory delay fines (500 SAR for the first late renewal, 1,000 SAR for the second).<br>
                 • <strong>Complete Transparency:</strong> Distinguishes between company-borne work permit levies and personal dependent surcharges.</p>
@@ -2548,12 +2844,36 @@
         </div>
           <!-- Rich Tool Knowledge Base & High-CPC SEO -->
           <div class="tool-knowledge-base">
-            <h3>✈️ Gulf-to-Global Flight & Baggage Travel Budget Architecture</h3>
+            <h3><i class="fas fa-plane-departure" style="color:#00f2fe;margin-right:8px;"></i> Gulf-to-Global Flight & Baggage Travel Budget Architecture</h3>
             <p>Annual vacation travel between Gulf hubs (Dammam, Riyadh, Jeddah, Dubai, Abu Dhabi, Doha) and major international destinations in India, Pakistan, Bangladesh, and Egypt demands comprehensive expenditure forecasting. Airline pricing algorithms fluctuate dramatically based on seasonal demand, booking lead times, baggage limits, and airport connectivity.</p>
             
-            <div class="tool-meta-grid">
+                        <!-- How to Use & Methodology -->
+            <div class="tool-steps-card">
+              <div class="tool-steps-title"><i class="fas fa-list-check"></i> How to Use Travel & Flight Budget Helper (3 Easy Steps)</div>
+              <div class="tool-steps-grid">
+                <div class="tool-step-item">
+                  <div class="tool-step-num">1</div>
+                  <div class="tool-step-heading">Select Gulf Airport</div>
+                  <div class="tool-step-desc">Pick departure from Dammam (DMM), Riyadh (RUH), Jeddah (JED), or Dubai (DXB).</div>
+                </div>
+                <div class="tool-step-item">
+                  <div class="tool-step-num">2</div>
+                  <div class="tool-step-heading">Input Passengers & Baggage</div>
+                  <div class="tool-step-desc">Choose number of travelers and excess baggage weight requirements.</div>
+                </div>
+                <div class="tool-step-item">
+                  <div class="tool-step-num">3</div>
+                  <div class="tool-step-heading">Compare Fares & Check PNR</div>
+                  <div class="tool-step-desc">View airline baggage benchmarks, seasonal fare estimates, and track IRCTC PNR.</div>
+                </div>
+              </div>
+            </div>
+            <div class="tool-formula-box">
+              <strong><i class="fas fa-calculator" style="margin-right: 4px;"></i> Calculation Formula:</strong> <code>Total Travel Estimate = (Base Airfare Ã— Passengers) + Baggage Surcharges + Airport Taxes</code>
+            </div>
+<div class="tool-meta-grid">
               <div class="tool-example-card">
-                <h4>💡 Practical Calculation Example</h4>
+                <h4><i class="fas fa-lightbulb" style="color:#fbbf24;margin-right:6px;"></i> Practical Calculation Example</h4>
                 <p><strong>Scenario:</strong> Family of 3 (2 Adults, 1 Child) planning return travel from Dammam (DMM) to Lucknow (LKO) during peak summer school vacation.<br>
                 • <em>Base Airfares (Return):</em> 1,750 SAR per adult (3,500 SAR) + 1,400 SAR child = <strong>4,900 SAR</strong>.<br>
                 • <em>Pre-Booked Excess Baggage (25kg bundle):</em> <strong>350 SAR</strong>.<br>
@@ -2562,7 +2882,7 @@
                 <strong>Pro-Tip:</strong> Pre-booking excess baggage online saves up to <strong>60%</strong> compared to counter rates!</p>
               </div>
               <div class="tool-benefit-card">
-                <h4>🎁 Key Expat Traveler Benefits</h4>
+                <h4><i class="fas fa-plane" style="color:#34d399;margin-right:6px;"></i> Key Expat Traveler Benefits</h4>
                 <p>• <strong>Prevents Airport Counter Excess Fees:</strong> Avoid paying exorbitant last-minute baggage penalty rates at check-in desks.<br>
                 • <strong>Holistic Door-to-Door Budgeting:</strong> Incorporates connecting transfers, meal allowances, and ancillary fees into one total figure.<br>
                 • <strong>Multi-Route Optimization:</strong> Easily compares travel costs across nonstop direct flights vs budget one-stop itineraries.</p>
