@@ -2635,8 +2635,20 @@
         }
       }
 
-      if (window.history && window.history.replaceState) {
-        window.history.replaceState(null, null, '#' + tabId);
+            const urlMap = {
+        currency: '/saudi-remittance-calculator/',
+        salary: '/saudi-salary-calculator/',
+        iqama: '/saudi-iqama-calculator/',
+        zakat: '/zakat-calculator/',
+        prayer: '/prayer-times/',
+        sip: '/shariah-sip-calculator/',
+        jeweller: '/gold-jewellery-gst-calculator/',
+        age: '/everyday-calculators/',
+        discount: '/everyday-calculators/',
+        travel: '/travel-booking/'
+      };
+      if (window.history && window.history.pushState && urlMap[tabId]) {
+        window.history.pushState(null, null, urlMap[tabId]);
       }
     }
 
@@ -3290,10 +3302,25 @@
       runIqamaCalc();
       initAutoPrayerTimes();
 
-      // Check URL hash for direct tab deep link (e.g. #iqama, #zakat, #salary)
-      const hash = (window.location.hash || '').replace('#', '').trim();
-      if (hash && document.getElementById('panel-' + hash)) {
-        openTab(hash);
+            const pathToTab = {
+        'saudi-remittance-calculator': 'currency',
+        'saudi-salary-calculator': 'salary',
+        'saudi-iqama-calculator': 'iqama',
+        'zakat-calculator': 'zakat',
+        'prayer-times': 'prayer',
+        'shariah-sip-calculator': 'sip',
+        'gold-jewellery-gst-calculator': 'jeweller',
+        'everyday-calculators': 'age',
+        'travel-booking': 'travel'
+      };
+      const cleanPath = (window.location.pathname || '').replace(/^\/|\/$/g, '');
+      if (pathToTab[cleanPath] && document.getElementById('panel-' + pathToTab[cleanPath])) {
+        openTab(pathToTab[cleanPath]);
+      } else {
+        const hash = (window.location.hash || '').replace('#', '').trim();
+        if (hash && document.getElementById('panel-' + hash)) {
+          openTab(hash);
+        }
       }
     });
   </script>
