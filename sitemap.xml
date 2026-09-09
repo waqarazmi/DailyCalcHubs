@@ -5,6 +5,8 @@
     <lastmod>2026-09-09</lastmod>
     <priority>1.00</priority>
   </url>
+
+  <!-- Saudi Remittance Suite (Step 2A) -->
   <url>
     <loc>https://dailycalchubs.com/saudi-remittance-calculator/</loc>
     <lastmod>2026-09-09</lastmod>
@@ -128,12 +130,69 @@
     <priority>0.85</priority>
   </url>
 
-  <!-- Other Core Calculators -->
+  <!-- Saudi Iqama Calculator Suite (Step 2C) -->
   <url>
     <loc>https://dailycalchubs.com/saudi-iqama-calculator/</loc>
-    <lastmod>2026-09-08</lastmod>
+    <lastmod>2026-09-09</lastmod>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://dailycalchubs.com/saudi-iqama-calculator/renewal-fee/</loc>
+    <lastmod>2026-09-09</lastmod>
     <priority>0.90</priority>
   </url>
+  <url>
+    <loc>https://dailycalchubs.com/saudi-iqama-calculator/dependent-fee/</loc>
+    <lastmod>2026-09-09</lastmod>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://dailycalchubs.com/saudi-iqama-calculator/maktab-amal/</loc>
+    <lastmod>2026-09-09</lastmod>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://dailycalchubs.com/saudi-iqama-calculator/work-permit/</loc>
+    <lastmod>2026-09-09</lastmod>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://dailycalchubs.com/saudi-iqama-calculator/iqama-cost/</loc>
+    <lastmod>2026-09-09</lastmod>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://dailycalchubs.com/saudi-iqama-calculator/3-month-cost/</loc>
+    <lastmod>2026-09-09</lastmod>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://dailycalchubs.com/saudi-iqama-calculator/6-month-cost/</loc>
+    <lastmod>2026-09-09</lastmod>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://dailycalchubs.com/saudi-iqama-calculator/9-month-cost/</loc>
+    <lastmod>2026-09-09</lastmod>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://dailycalchubs.com/saudi-iqama-calculator/12-month-cost/</loc>
+    <lastmod>2026-09-09</lastmod>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://dailycalchubs.com/saudi-iqama-calculator/family-dependent-cost/</loc>
+    <lastmod>2026-09-09</lastmod>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://dailycalchubs.com/saudi-iqama-calculator/renewal-guide/</loc>
+    <lastmod>2026-09-09</lastmod>
+    <priority>0.90</priority>
+  </url>
+
+  <!-- Other Core Calculators -->
   <url>
     <loc>https://dailycalchubs.com/prayer-times/</loc>
     <lastmod>2026-09-08</lastmod>
