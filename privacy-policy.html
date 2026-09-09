@@ -3,12 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Privacy Policy | DailyCalcHubs</title>
-  <meta name="description" content="Privacy Policy for DailyCalcHubs - Learn how we handle your data, Google AdSense cookies, DART cookies, and our strict client-side calculation privacy commitment.">
+  <title>Privacy Policy | DailyCalcHubs — Client-Side Computing &amp; Data Protection</title>
+  <meta name="description" content="Privacy Policy for DailyCalcHubs - Discover how we safeguard your privacy with client-side computation, Google AdSense cookies, analytics, and data protection standards.">
+  <meta name="keywords" content="dailycalchubs privacy policy, client side computation privacy, adsense cookie policy, data protection">
+  <link rel="canonical" href="https://dailycalchubs.com/privacy-policy/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://dailycalchubs.com/privacy-policy.html">
 
-  <!-- Google tag (gtag.js) -->
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://dailycalchubs.com/privacy-policy/">
+  <meta property="og:title" content="Privacy Policy | DailyCalcHubs — Client-Side Computing &amp; Data Protection">
+  <meta property="og:description" content="Privacy Policy for DailyCalcHubs - Learn how we handle cookies, Google AdSense, analytics, and our strict client-side calculation privacy commitment.">
+  <meta property="og:image" content="https://dailycalchubs.com/og-image.jpg">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Privacy Policy | DailyCalcHubs — Client-Side Computing &amp; Data Protection">
+  <meta name="twitter:description" content="Privacy Policy for DailyCalcHubs - Learn how we handle cookies, Google AdSense, analytics, and our strict client-side calculation privacy commitment.">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6944579701716470" crossorigin="anonymous"></script>
+
+  <!-- Google Analytics (GA4) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-18Y3LNHDR8"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -17,283 +34,295 @@
     gtag('config', 'G-18Y3LNHDR8');
   </script>
 
-  <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6944579701716470" crossorigin="anonymous"></script>
-
-  <!-- Font Awesome & Google Fonts -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Fonts & Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <style>
     :root {
-      --bg-dark: #070d18;
-      --card-bg: rgba(22, 34, 58, 0.82);
-      --card-border: rgba(255, 255, 255, 0.12);
-      --neon-cyan: #00f2fe;
-      --neon-teal: #00c9a7;
-      --neon-green: #00e676;
-      --text-white: #ffffff;
-      --text-muted: #94a3b8;
-      --input-bg: #10192e;
+      --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --bg-light: #f8fafc;
+      --bg-white: #ffffff;
+      --navy-dark: #0f172a;
+      --navy-footer: #081024;
+      --brand-primary: #0284c7;
+      --brand-dark: #0369a1;
+      --brand-light: #f0f9ff;
+      --brand-border: #bae6fd;
+      --text-dark: #1e293b;
+      --text-muted: #64748b;
+      --border-color: #e2e8f0;
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.08), 0 2px 4px -2px rgba(0,0,0,0.05);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--font-main); background: var(--bg-light); color: var(--text-dark); line-height: 1.6; }
+    a { color: var(--brand-primary); text-decoration: none; }
+    a:hover { color: var(--brand-dark); }
 
-    body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      background-color: var(--bg-dark);
-      color: var(--text-white);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      position: relative;
-      overflow-x: hidden;
-      line-height: 1.7;
-    }
+    /* Header */
+    .site-header { background: var(--bg-white); border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 50; }
+    .header-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; height: 70px; display: flex; align-items: center; justify-content: space-between; }
+    .logo-area { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 20px; color: var(--navy-dark); text-decoration: none; }
+    .logo-icon { width: 36px; height: 36px; background: linear-gradient(135deg, #0284c7, #0369a1); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: 18px; }
+    .header-nav-container { display: flex; align-items: center; }
+    .main-nav { display: flex; align-items: center; gap: 6px; }
+    .nav-link { padding: 8px 12px; font-size: 13.5px; font-weight: 600; color: #475569; border-radius: 6px; transition: all 0.2s; white-space: nowrap; }
+    .nav-link:hover { color: var(--brand-primary); background: var(--brand-light); }
+    .mobile-menu-toggle { display: none; background: none; border: none; font-size: 20px; color: var(--text-dark); cursor: pointer; padding: 6px; }
 
-    .ambient-motion-bg {
-      position: fixed;
-      top: -40%;
-      left: -40%;
-      width: 180vw;
-      height: 180vh;
-      z-index: -1;
-      background: 
-        radial-gradient(circle at 15% 25%, rgba(0, 201, 167, 0.38) 0%, transparent 40%),
-        radial-gradient(circle at 85% 20%, rgba(245, 120, 30, 0.38) 0%, transparent 42%),
-        radial-gradient(circle at 50% 80%, rgba(59, 130, 246, 0.35) 0%, transparent 45%),
-        linear-gradient(160deg, #050a14 0%, #0a1426 100%);
-      pointer-events: none;
-    }
+    /* Breadcrumbs */
+    .breadcrumbs-section { background: var(--bg-white); border-bottom: 1px solid var(--border-color); padding: 12px 0; }
+    .breadcrumbs-wrap { max-width: 1200px; margin: 0 auto; padding: 0 20px; font-size: 13px; color: var(--text-muted); display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .breadcrumbs-wrap a { color: var(--text-muted); }
+    .breadcrumbs-wrap a:hover { color: var(--brand-primary); }
 
-    .main-nav {
-      max-width: 1200px;
-      margin: 0 auto;
-      width: 100%;
-      padding: 18px 24px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 15px;
-    }
+    /* Hero Section */
+    .page-hero { background: linear-gradient(135deg, #f0f9ff 0%, #ffffff 100%); padding: 40px 20px 30px; border-bottom: 1px solid var(--brand-border); }
+    .hero-content { max-width: 900px; margin: 0 auto; text-align: center; }
+    .badge-pill { display: inline-flex; align-items: center; gap: 6px; background: #e0f2fe; color: var(--brand-dark); padding: 5px 14px; border-radius: 20px; font-size: 12px; font-weight: 700; margin-bottom: 14px; border: 1px solid var(--brand-border); }
+    .page-hero h1 { font-size: 34px; font-weight: 800; color: var(--navy-dark); margin-bottom: 12px; letter-spacing: -0.5px; }
+    .page-hero p { font-size: 16px; color: var(--text-muted); max-width: 720px; margin: 0 auto 16px; }
+    .last-updated-tag { display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; color: var(--text-muted); background: white; padding: 4px 12px; border-radius: 20px; border: 1px solid var(--border-color); }
 
-    .logo-container {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-      color: #fff;
-    }
+    /* Main Container */
+    .main-container { max-width: 1000px; margin: 36px auto 60px; padding: 0 20px; }
+    .content-card { background: var(--bg-white); border-radius: 18px; border: 1px solid var(--border-color); box-shadow: var(--shadow-md); padding: 40px; margin-bottom: 36px; }
+    
+    .content-card h2 { font-size: 21px; font-weight: 800; color: var(--navy-dark); margin: 32px 0 14px; border-bottom: 1px solid #f1f5f9; padding-bottom: 8px; }
+    .content-card h2:first-of-type { margin-top: 0; }
+    .content-card h3 { font-size: 16.5px; font-weight: 700; color: var(--navy-dark); margin: 20px 0 10px; }
+    .content-card p { font-size: 15px; color: #334155; line-height: 1.75; margin-bottom: 16px; }
+    .content-card ul { margin-left: 24px; margin-bottom: 20px; font-size: 15px; color: #334155; }
+    .content-card li { margin-bottom: 8px; }
 
-    .logo-img-box {
-      width: 38px;
-      height: 38px;
-      background: linear-gradient(135deg, #00f2fe, #4facfe);
-      border-radius: 9px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-      color: #fff;
-      box-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
-    }
+    .highlight-box { background: var(--brand-light); border-left: 4px solid var(--brand-primary); padding: 18px 22px; border-radius: 0 10px 10px 0; margin: 24px 0; font-size: 14.5px; color: var(--navy-dark); }
+    .highlight-box strong { color: var(--brand-dark); }
 
-    .brand-title {
-      font-size: 20px;
-      font-weight: 800;
-      letter-spacing: -0.5px;
-    }
+    /* Footer */
+    .site-footer { background: var(--navy-footer); color: #cbd5e1; padding: 48px 20px 24px; font-size: 13.5px; }
+    .footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 32px; margin-bottom: 36px; }
+    @media (max-width: 768px) { .footer-container { grid-template-columns: 1fr; } }
+    .footer-brand h4 { font-size: 18px; font-weight: 800; color: white; margin-bottom: 12px; }
+    .footer-brand p { font-size: 13px; line-height: 1.6; color: #94a3b8; }
+    .footer-col h5 { font-size: 14px; font-weight: 700; color: white; margin-bottom: 14px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 13px; }
+    .footer-col a:hover { color: var(--brand-primary); }
+    .footer-bottom { border-top: 1px solid #1e293b; padding-top: 24px; text-align: center; font-size: 12.5px; color: #64748b; }
+    .disclaimer-box { background: rgba(2, 132, 199, 0.08); border: 1px solid rgba(2, 132, 199, 0.25); border-radius: 8px; padding: 12px; font-size: 12px; color: #bae6fd; margin-top: 16px; text-align: left; }
 
-    .nav-links {
-      display: flex;
-      gap: 22px;
-    }
-
-    .nav-links a {
-      color: #cbd5e1;
-      font-size: 13.5px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover, .nav-links a.active {
-      color: var(--neon-teal);
-    }
-
-    .container {
-      max-width: 900px;
-      margin: 30px auto 60px;
-      padding: 0 20px;
-      width: 100%;
-    }
-
-    .policy-card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 24px;
-      padding: 40px;
-      backdrop-filter: blur(18px);
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
-    }
-
-    h1 {
-      font-size: 32px;
-      font-weight: 800;
-      color: var(--neon-cyan);
-      margin-bottom: 12px;
-    }
-
-    .last-updated {
-      font-size: 13px;
-      color: var(--text-muted);
-      margin-bottom: 30px;
-      display: inline-block;
-      background: rgba(255, 255, 255, 0.06);
-      padding: 4px 12px;
-      border-radius: 20px;
-    }
-
-    h2 {
-      font-size: 20px;
-      font-weight: 700;
-      color: #fff;
-      margin: 28px 0 12px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    h2 i { color: var(--neon-teal); font-size: 18px; }
-
-    p {
-      color: #cbd5e1;
-      font-size: 14.5px;
-      margin-bottom: 16px;
-    }
-
-    ul {
-      margin-left: 20px;
-      margin-bottom: 18px;
-      color: #cbd5e1;
-      font-size: 14.5px;
-    }
-
-    li { margin-bottom: 8px; }
-
-    .highlight-box {
-      background: rgba(0, 201, 167, 0.1);
-      border-left: 4px solid var(--neon-teal);
-      padding: 16px 20px;
-      border-radius: 8px;
-      margin: 20px 0;
-      font-size: 14px;
-      color: #e2e8f0;
-    }
-
-    footer {
-      margin-top: auto;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      padding: 30px 0;
-      background: rgba(5, 9, 18, 0.95);
-      font-size: 13px;
-      color: #64748b;
-    }
-
-    .footer-flex-row {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 15px;
+    @media (max-width: 480px) {
+      .page-hero h1 { font-size: 26px; }
+      .content-card { padding: 24px 18px; }
     }
   </style>
 </head>
 <body>
 
-  <div class="ambient-motion-bg"></div>
+  <!-- Site Header with exact 8-tool sequence -->
+  <header class="site-header">
+    <div class="header-container">
+      <a href="/" class="logo-area">
+        <div class="logo-icon"><i class="fas fa-calculator"></i></div>
+        <span>DailyCalcHubs</span>
+      </a>
 
-  <!-- Header Nav -->
-  <header class="main-nav">
-    <a href="index.html" class="logo-container">
-      <div class="logo-img-box"><i class="fas fa-calculator"></i></div>
-      <span class="brand-title">DailyCalcHubs</span>
-    </a>
-    <nav class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="privacy-policy.html" class="active">Privacy Policy</a>
-      <a href="terms.html">Terms</a>
-      <a href="contact.html">Contact</a>
-    </nav>
+      <button class="mobile-menu-toggle" id="mobileMenuBtn" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <div class="header-nav-container" id="navContainer">
+        <nav class="main-nav">
+          <a href="/" class="nav-link">Home</a>
+          <a href="/saudi-remittance-calculator/" class="nav-link">Remittance</a>
+          <a href="/prayer-times/" class="nav-link">Prayer Times</a>
+          <a href="/saudi-salary-calculator/" class="nav-link">Salary</a>
+          <a href="/saudi-iqama-calculator/" class="nav-link">Iqama</a>
+          <a href="/everyday-smart-calculator/" class="nav-link">Everyday</a>
+          <a href="/shariah-sip-calculator/" class="nav-link">Shariah SIP</a>
+          <a href="/travel-booking-calculator/" class="nav-link">Travel &amp; Booking</a>
+        </nav>
+      </div>
+    </div>
   </header>
 
-  <main class="container">
-    <div class="policy-card">
-      <h1>Privacy Policy</h1>
-      <span class="last-updated"><i class="fas fa-clock"></i> Last Updated: August 2026</span>
+  <!-- Breadcrumbs -->
+  <section class="breadcrumbs-section">
+    <div class="breadcrumbs-wrap">
+      <a href="/"><i class="fas fa-home"></i> Home</a>
+      <i class="fas fa-chevron-right" style="font-size: 10px;"></i>
+      <span>Privacy Policy</span>
+    </div>
+  </section>
 
-      <p>At <strong>DailyCalcHubs</strong> (accessible from <a href="https://dailycalchubs.com/" style="color:var(--neon-teal);">https://dailycalchubs.com/</a>), the privacy of our visitors is of paramount importance to us. This Privacy Policy document outlines the types of information that is collected and recorded by DailyCalcHubs and how we use it.</p>
+  <!-- Hero Section -->
+  <section class="page-hero">
+    <div class="hero-content">
+      <div class="badge-pill"><i class="fas fa-shield-halved"></i> Data Protection &amp; Privacy</div>
+      <h1>Privacy Policy</h1>
+      <p>How DailyCalcHubs handles user privacy, client-side calculations, Google AdSense cookies, web analytics, and your statutory data rights.</p>
+      <div class="last-updated-tag"><i class="fas fa-clock"></i> Last Updated: September 2026</div>
+    </div>
+  </section>
+
+  <div class="main-container">
+    <div class="content-card">
+
+      <p>At <strong>DailyCalcHubs</strong> (accessible via <a href="https://dailycalchubs.com/">https://dailycalchubs.com/</a>), the privacy of our visitors is of paramount importance to us. This Privacy Policy document describes the types of information collected and recorded by DailyCalcHubs and outlines how that data is used.</p>
 
       <div class="highlight-box">
-        <strong><i class="fas fa-shield-halved"></i> 100% Client-Side Computing Commitment:</strong>
-        <br>All financial calculations, salary figures, Zakat amounts, and personal inputs entered into our calculator tools run entirely in your local web browser. We do NOT transmit, process, or store your sensitive financial numbers on any central server or database.
+        <strong><i class="fas fa-lock" style="margin-right: 6px;"></i> 100% Client-Side Computing Commitment:</strong>
+        <br>All financial figures, monthly salary numbers, remittance sums, dependent counts, loan amounts, and personal dates entered into our calculators run strictly inside your web browser. DailyCalcHubs does NOT transmit, collect, or store your private calculation inputs on any central server or database.
       </div>
 
-      <h2><i class="fas fa-database"></i> 1. Log Files</h2>
-      <p>DailyCalcHubs follows a standard procedure of using log files. These files log visitors when they visit websites. The information collected by log files includes internet protocol (IP) addresses, browser type, Internet Service Provider (ISP), date and time stamp, referring/exit pages, and possibly the number of clicks. These are not linked to any information that is personally identifiable. The purpose of the information is for analyzing trends, administering the site, tracking users' movement on the website, and gathering demographic information.</p>
-
-      <h2><i class="fas fa-cookie-bite"></i> 2. Cookies and Web Beacons</h2>
-      <p>Like any other website, DailyCalcHubs uses 'cookies'. These cookies are used to store information including visitors' preferences, and the pages on the website that the visitor accessed or visited. The information is used to optimize the users' experience by customizing our web page content based on visitors' browser type and/or other information.</p>
-
-      <h2><i class="fab fa-google"></i> 3. Google DoubleClick DART Cookie & Google AdSense</h2>
-      <p>Google is one of a third-party vendor on our site. It also uses cookies, known as DART cookies, to serve ads to our site visitors based upon their visit to www.dailycalchubs.com and other sites on the internet.</p>
+      <h2>1. Information We Collect</h2>
+      <p>DailyCalcHubs follows standard web hosting practices involving automated server log files. The data collected by these logs includes:</p>
       <ul>
-        <li>Third-party vendors, including Google, use cookies to serve ads based on a user's prior visits to your website or other websites.</li>
-        <li>Google's use of advertising cookies enables it and its partners to serve ads to your users based on their visit to your sites and/or other sites on the Internet.</li>
-        <li>Users may opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer" style="color:var(--neon-teal);">Google Ads Settings</a> or by visiting <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer" style="color:var(--neon-teal);">www.aboutads.info</a>.</li>
+        <li>Internet Protocol (IP) addresses</li>
+        <li>Browser type and version</li>
+        <li>Operating system environment</li>
+        <li>Internet Service Provider (ISP)</li>
+        <li>Date and time stamps</li>
+        <li>Referring and exit pages</li>
+        <li>Aggregate click metrics</li>
+      </ul>
+      <p>This technical log data is not linked to any personally identifiable information (PII) and is utilized solely to analyze system traffic trends, ensure platform security, and optimize server performance.</p>
+
+      <h2>2. How Information Is Used</h2>
+      <p>We use the limited technical information collected for legitimate operational purposes, including:</p>
+      <ul>
+        <li>Operating, maintaining, and improving our computational engines</li>
+        <li>Analyzing aggregated traffic patterns to understand tool popularity</li>
+        <li>Detecting and mitigating automated spam, bot abuse, and security threats</li>
+        <li>Responding to user-initiated queries and feedback via our contact channels</li>
       </ul>
 
-      <h2><i class="fas fa-rectangle-ad"></i> 4. Our Advertising Partners</h2>
-      <p>Some of advertisers on our site may use cookies and web beacons. Our primary advertising partner is <strong>Google AdSense</strong>. Each of our advertising partners has their own Privacy Policy for their policies on user data. You may consult the Privacy Policy for each of the advertising partners of DailyCalcHubs to find more detailed information.</p>
+      <h2>3. Cookies &amp; Web Beacons</h2>
+      <p>DailyCalcHubs and our third-party service providers use cookies to enhance your browsing experience. Cookies are small text files stored locally on your device that retain user preferences, manage session states, and provide aggregated analytics.</p>
+      <p>You can choose to disable cookies through your individual browser options. Detailed instructions on cookie management can be found in your browser's help documentation.</p>
 
-      <h2><i class="fas fa-user-shield"></i> 5. CCPA Privacy Rights (Do Not Sell My Personal Information)</h2>
-      <p>Under the CCPA, among other rights, California consumers have the right to:</p>
+      <h2>4. Google AdSense &amp; Advertising Partners</h2>
+      <p>Google is an advertising partner on DailyCalcHubs. Google uses cookies, including the DoubleClick DART cookie, to serve advertisements to visitors based upon their visits to this website and other sites on the internet.</p>
       <ul>
-        <li>Request that a business that collects a consumer's personal data disclose the categories and specific pieces of personal data that a business has collected about consumers.</li>
-        <li>Request that a business delete any personal data about the consumer that a business has collected.</li>
-        <li>Request that a business that sells a consumer's personal data, not sell the consumer's personal data. DailyCalcHubs does not sell personal data.</li>
+        <li>Third-party advertising vendors, including Google, use cookies to serve ads based on previous visits to this or other websites.</li>
+        <li>Google's use of advertising cookies enables it and its partners to serve ads based on user visits across the web.</li>
+        <li>Users may opt out of personalized advertising at any time by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer">Google Ads Settings</a> or via <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer">www.aboutads.info</a>.</li>
       </ul>
 
-      <h2><i class="fas fa-lock"></i> 6. GDPR Data Protection Rights</h2>
-      <p>We want to make sure you are fully aware of all of your data protection rights. Every user is entitled to the right to access, rectification, erasure, restrict processing, object to processing, and data portability. If you make a request, we have one month to respond to you.</p>
+      <h2>5. Web Analytics (Google Analytics GA4)</h2>
+      <p>We use Google Analytics (GA4) with measurement ID <code>G-18Y3LNHDR8</code> to monitor aggregate web traffic, device types, and page view metrics. Google Analytics processes data in an anonymized manner to help us understand which calculators are most helpful. You may opt out of Google Analytics tracking across all websites by installing the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer">Google Analytics Opt-out Browser Add-on</a>.</p>
 
-      <h2><i class="fas fa-child"></i> 7. Children's Information</h2>
-      <p>Another part of our priority is adding protection for children while using the internet. We encourage parents and guardians to observe, participate in, and/or monitor and guide their online activity. DailyCalcHubs does not knowingly collect any Personal Identifiable Information from children under the age of 13.</p>
+      <h2>6. Third-Party APIs &amp; External Services</h2>
+      <p>Certain tools on DailyCalcHubs interface with publicly accessible APIs to retrieve real-time reference data:</p>
+      <ul>
+        <li><strong>Forex &amp; Currency Feeds:</strong> Interbank reference feeds (e.g. open exchange rate feeds) provide indicative spot rates for currency comparisons.</li>
+        <li><strong>Prayer Times Engine:</strong> Coordinates are submitted to astronomical calculation endpoints (such as Aladhan API) to compute Umm Al-Qura timings. Geolocation queries use browser-level coordinates only with explicit user permission.</li>
+      </ul>
+      <p>Our website may also contain links to external sites (such as government portals or flight aggregators). We have no control over the content or privacy practices of external third-party sites.</p>
 
-      <h2><i class="fas fa-envelope"></i> 8. Contact Us Regarding Privacy</h2>
-      <p>If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us through email at <strong style="color:var(--neon-cyan);">support@dailycalchubs.com</strong> or via our <a href="contact.html" style="color:var(--neon-teal);">Contact Page</a>.</p>
+      <h2>7. CCPA Privacy Rights (Do Not Sell My Personal Information)</h2>
+      <p>Under the California Consumer Privacy Act (CCPA), consumers possess specific data rights:</p>
+      <ul>
+        <li>The right to request disclosure of the categories and specific pieces of personal data collected.</li>
+        <li>The right to request deletion of personal data collected by the business.</li>
+        <li>The right to opt out of the sale of personal information. DailyCalcHubs does NOT sell any user personal information.</li>
+      </ul>
+
+      <h2>8. GDPR Data Protection Rights</h2>
+      <p>For visitors accessing our services from jurisdictions covered by General Data Protection Regulation (GDPR) frameworks, you are entitled to the following rights:</p>
+      <ul>
+        <li><strong>Right to Access:</strong> You may request copies of your personal data held by us.</li>
+        <li><strong>Right to Rectification:</strong> You may request corrections to any information you believe is inaccurate.</li>
+        <li><strong>Right to Erasure:</strong> You may request that we erase personal data under qualifying conditions.</li>
+        <li><strong>Right to Restrict Processing:</strong> You may request that we restrict processing under qualifying conditions.</li>
+      </ul>
+      <p>Requests may be submitted to our privacy desk at <strong>support@dailycalchubs.com</strong>. We respond to verified requests within statutory timeframes.</p>
+
+      <h2>9. Children's Privacy Protection (COPPA)</h2>
+      <p>Protecting the privacy of children on the internet is especially critical. DailyCalcHubs provides general audience utility calculation tools and does not knowingly collect any personally identifiable information from children under the age of 13. If you believe your child has submitted personal details through our contact form, please notify us immediately so we can remove the records.</p>
+
+      <h2>10. Data Security &amp; Retention</h2>
+      <p>We implement industry-standard technical safeguards, including HTTPS SSL encryption across all page requests, to protect against unauthorized access, alteration, or interception. Server access logs are retained only for security analysis and rotated out periodically.</p>
+
+      <h2>11. Changes to This Privacy Policy</h2>
+      <p>We may update this Privacy Policy periodically to reflect technological changes, new platform features, or updated statutory requirements. Any changes will be posted on this page with an updated revision date.</p>
+
+      <h2>12. Contacting Us Regarding Privacy</h2>
+      <p>If you have any questions, concerns, or requests regarding this Privacy Policy or our data handling practices, please contact us at:</p>
+      <ul>
+        <li><strong>Email:</strong> <a href="mailto:support@dailycalchubs.com">support@dailycalchubs.com</a></li>
+        <li><strong>Web Form:</strong> <a href="/contact/">DailyCalcHubs Contact Page</a></li>
+      </ul>
+
     </div>
-  </main>
+  </div>
 
-  <footer>
-    <div class="footer-flex-row">
-      <p>&copy; 2026 DailyCalcHubs. All rights reserved.</p>
-      <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="privacy-policy.html">Privacy Policy</a>
-        <a href="terms.html">Terms</a>
-        <a href="contact.html">Contact</a>
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <h4>DailyCalcHubs</h4>
+        <p>Your comprehensive daily life financial, administrative, spiritual, and travel estimation suite. Reliable, clear calculations for Saudi Arabia, the GCC, and worldwide residents.</p>
+        <div class="disclaimer-box">
+          <i class="fas fa-shield-alt"></i> <strong>Disclaimer:</strong> DailyCalcHubs provides computational estimation tools for educational and personal planning purposes only. We do not provide financial, legal, religious, or immigration advice. Always verify with official authorities before making binding decisions.
+        </div>
       </div>
+
+      <div class="footer-col">
+        <h5>Popular Calculators</h5>
+        <ul>
+          <li><a href="/saudi-remittance-calculator/">Remittance Calculator</a></li>
+          <li><a href="/prayer-times/">Prayer Times Calculator</a></li>
+          <li><a href="/saudi-salary-calculator/">Saudi Salary Calculator</a></li>
+          <li><a href="/saudi-iqama-calculator/">Iqama Fee Calculator</a></li>
+          <li><a href="/everyday-smart-calculator/">Everyday Smart Calc</a></li>
+          <li><a href="/shariah-sip-calculator/">Shariah SIP Calculator</a></li>
+          <li><a href="/travel-booking-calculator/">Travel &amp; Booking Hub</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Travel &amp; Planning</h5>
+        <ul>
+          <li><a href="/travel-booking-calculator/travel-budget/">Travel Budget Planner</a></li>
+          <li><a href="/travel-booking-calculator/flight-cost/">Flight Cost Estimator</a></li>
+          <li><a href="/travel-booking-calculator/hotel-cost/">Hotel Stay Calculator</a></li>
+          <li><a href="/travel-booking-calculator/booking-cost/">Booking Fee Breakdown</a></li>
+          <li><a href="/travel-booking-calculator/expense-split/">Travel Expense Splitter</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Legal &amp; About</h5>
+        <ul>
+          <li><a href="/about/">About Us</a></li>
+          <li><a href="/contact/">Contact Support</a></li>
+          <li><a href="/privacy-policy/">Privacy Policy</a></li>
+          <li><a href="/terms/">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      &copy; 2026 DailyCalcHubs. All rights reserved. Precision everyday calculation engines.
     </div>
   </footer>
 
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuBtn = document.getElementById('mobileMenuBtn');
+      const navContainer = document.getElementById('navContainer');
+      if (menuBtn && navContainer) {
+        menuBtn.addEventListener('click', function() {
+          navContainer.classList.toggle('open');
+        });
+      }
+    });
+  </script>
 </body>
 </html>
