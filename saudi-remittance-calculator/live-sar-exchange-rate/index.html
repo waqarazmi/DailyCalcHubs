@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -259,11 +259,11 @@
   <div class="top-rates-ticker">
     <div class="container">
       <div class="ticker-inner">
-        <div class="ticker-item"><span>SAR / INR:</span><span class="ticker-rate" id="tickerSar">â‚¹ 22.45</span></div>
-        <div class="ticker-item"><span class="ticker-tag-green">âš¡ Barq Rate:</span><span class="ticker-rate" id="tickerBarq">â‚¹ 22.18</span></div>
+        <div class="ticker-item"><span>SAR / INR:</span><span class="ticker-rate" id="tickerSar">&#8377; 22.45</span></div>
+        <div class="ticker-item"><span class="ticker-tag-green"><i class="fas fa-bolt" style="color:#fbbf24;"></i> Barq Rate:</span><span class="ticker-rate" id="tickerBarq">&#8377; 22.18</span></div>
         <div class="ticker-item"><span>SAR / PKR:</span><span class="ticker-rate" id="tickerPkr">Rs 74.20</span></div>
-        <div class="ticker-item"><span>SAR / BDT:</span><span class="ticker-rate" id="tickerBdt">à§³ 32.10</span></div>
-        <div class="ticker-item"><span>SAR / PHP:</span><span class="ticker-rate" id="tickerPhp">â‚± 15.65</span></div>
+        <div class="ticker-item"><span>SAR / BDT:</span><span class="ticker-rate" id="tickerBdt">&#2547; 32.10</span></div>
+        <div class="ticker-item"><span>SAR / PHP:</span><span class="ticker-rate" id="tickerPhp">&#8369; 15.65</span></div>
         <div class="ticker-item"><span>Gold 24K KSA:</span><span class="ticker-rate" style="color:#fbbf24;">322.50 SAR</span></div>
       </div>
     </div>
@@ -355,7 +355,7 @@
         Because SAR is pegged to USD, the exchange rate of the Saudi Riyal against any other currency is calculated via cross-currency mathematics:
       </p>
       <div class="content-callout">
-        <code>1 SAR in Target Currency = (Target Currency per USD) Ã· 3.75</code>
+        <code>1 SAR in Target Currency = (Target Currency per USD) &divide; 3.75</code>
       </div>
       <p>
         When the Indian Rupee or Pakistani Rupee depreciates against the US Dollar on global exchanges, the Saudi Riyal automatically appreciates against those currencies by the exact same proportion!
@@ -406,18 +406,18 @@
   <script>
     const FX_API_URL = 'https://open.er-api.com/v6/latest/USD';
     const currencies = [
-      { code: 'INR', name: 'Indian Rupee', flag: 'ðŸ‡®ðŸ‡³', sym: 'â‚¹', link: '/saudi-remittance-calculator/sar-to-inr/' },
-      { code: 'PKR', name: 'Pakistani Rupee', flag: 'ðŸ‡µðŸ‡°', sym: 'Rs', link: '/saudi-remittance-calculator/sar-to-pkr/' },
-      { code: 'BDT', name: 'Bangladeshi Taka', flag: 'ðŸ‡§ðŸ‡©', sym: 'à§³', link: '/saudi-remittance-calculator/sar-to-bdt/' },
-      { code: 'PHP', name: 'Philippine Peso', flag: 'ðŸ‡µðŸ‡­', sym: 'â‚±', link: '/saudi-remittance-calculator/sar-to-php/' },
-      { code: 'NPR', name: 'Nepalese Rupee', flag: 'ðŸ‡³ðŸ‡µ', sym: 'à¤°à¥‚', link: '/saudi-remittance-calculator/sar-to-npr/' },
-      { code: 'LKR', name: 'Sri Lankan Rupee', flag: 'ðŸ‡±ðŸ‡°', sym: 'Rs', link: '/saudi-remittance-calculator/sar-to-lkr/' },
-      { code: 'USD', name: 'US Dollar (Pegged)', flag: 'ðŸ‡ºðŸ‡¸', sym: '$', link: '/saudi-remittance-calculator/' },
-      { code: 'EUR', name: 'Euro', flag: 'ðŸ‡ªðŸ‡º', sym: 'â‚¬', link: '/saudi-remittance-calculator/' },
-      { code: 'GBP', name: 'British Pound', flag: 'ðŸ‡¬ðŸ‡§', sym: 'Â£', link: '/saudi-remittance-calculator/' },
-      { code: 'AED', name: 'UAE Dirham', flag: 'ðŸ‡¦ðŸ‡ª', sym: 'Ø¯.Ø¥', link: '/saudi-remittance-calculator/' },
-      { code: 'EGP', name: 'Egyptian Pound', flag: 'ðŸ‡ªðŸ‡¬', sym: 'EÂ£', link: '/saudi-remittance-calculator/' },
-      { code: 'CAD', name: 'Canadian Dollar', flag: 'ðŸ‡¨ðŸ‡¦', sym: 'C$', link: '/saudi-remittance-calculator/' }
+      { code: 'INR', name: 'Indian Rupee', flag: '\uD83C\uDDEE\uD83C\uDDF3', sym: '\u20B9', link: '/saudi-remittance-calculator/sar-to-inr/' },
+      { code: 'PKR', name: 'Pakistani Rupee', flag: '\uD83C\uDDF5\uD83C\uDDF0', sym: 'Rs', link: '/saudi-remittance-calculator/sar-to-pkr/' },
+      { code: 'BDT', name: 'Bangladeshi Taka', flag: '\uD83C\uDDE7\uD83C\uDDE9', sym: '\u09F3', link: '/saudi-remittance-calculator/sar-to-bdt/' },
+      { code: 'PHP', name: 'Philippine Peso', flag: '\uD83C\uDDF5\uD83C\uDDED', sym: '\u20B1', link: '/saudi-remittance-calculator/sar-to-php/' },
+      { code: 'NPR', name: 'Nepalese Rupee', flag: '\uD83C\uDDF3\uD83C\uDDF5', sym: 'Rs', link: '/saudi-remittance-calculator/sar-to-npr/' },
+      { code: 'LKR', name: 'Sri Lankan Rupee', flag: '\uD83C\uDDF1\uD83C\uDDF0', sym: 'Rs', link: '/saudi-remittance-calculator/sar-to-lkr/' },
+      { code: 'USD', name: 'US Dollar (Pegged)', flag: '\uD83C\uDDFA\uD83C\uDDF8', sym: '$', link: '/saudi-remittance-calculator/' },
+      { code: 'EUR', name: 'Euro', flag: '\uD83C\uDDEA\uD83C\uDDFA', sym: '\u20AC', link: '/saudi-remittance-calculator/' },
+      { code: 'GBP', name: 'British Pound', flag: '\uD83C\uDDEC\uD83C\uDDE7', sym: '\u00A3', link: '/saudi-remittance-calculator/' },
+      { code: 'AED', name: 'UAE Dirham', flag: '\uD83C\uDDE6\uD83C\uDDEA', sym: 'AED', link: '/saudi-remittance-calculator/' },
+      { code: 'EGP', name: 'Egyptian Pound', flag: '\uD83C\uDDEA\uD83C\uDDEC', sym: 'E\u00A3', link: '/saudi-remittance-calculator/' },
+      { code: 'CAD', name: 'Canadian Dollar', flag: '\uD83C\uDDE8\uD83C\uDDE6', sym: 'C$', link: '/saudi-remittance-calculator/' }
     ];
 
     async function initLiveBoard() {

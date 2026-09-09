@@ -817,11 +817,11 @@
   <div class="top-rates-ticker">
     <div class="container">
       <div class="ticker-inner">
-        <div class="ticker-item"><span>SAR / INR:</span><span class="ticker-rate" id="tickerSar">â‚¹ 22.45</span></div>
-        <div class="ticker-item"><span class="ticker-tag-green">âš¡ Barq Rate:</span><span class="ticker-rate" id="tickerBarq">â‚¹ 22.18</span></div>
+        <div class="ticker-item"><span>SAR / INR:</span><span class="ticker-rate" id="tickerSar">&#8377; 22.45</span></div>
+        <div class="ticker-item"><span class="ticker-tag-green"><i class="fas fa-bolt" style="color:#fbbf24;"></i> Barq Rate:</span><span class="ticker-rate" id="tickerBarq">&#8377; 22.18</span></div>
         <div class="ticker-item"><span>SAR / PKR:</span><span class="ticker-rate" id="tickerPkr">Rs 74.20</span></div>
-        <div class="ticker-item"><span>SAR / BDT:</span><span class="ticker-rate" id="tickerBdt">à§³ 32.10</span></div>
-        <div class="ticker-item"><span>SAR / PHP:</span><span class="ticker-rate" id="tickerPhp">â‚± 15.65</span></div>
+        <div class="ticker-item"><span>SAR / BDT:</span><span class="ticker-rate" id="tickerBdt">&#2547; 32.10</span></div>
+        <div class="ticker-item"><span>SAR / PHP:</span><span class="ticker-rate" id="tickerPhp">&#8369; 15.65</span></div>
         <div class="ticker-item"><span>Gold 24K KSA:</span><span class="ticker-rate" style="color:#fbbf24;">322.50 SAR</span></div>
       </div>
     </div>
@@ -1431,7 +1431,7 @@
             <i class="fas fa-chevron-down"></i>
           </div>
           <div class="faq-answer">
-            Under Saudi labor standards, a statutory calendar month is legally standardized as 30 days regardless of whether the month has 28, 30, or 31 days. Daily wage is computed as <code>Monthly Gross Salary Ã· 30</code>.
+            Under Saudi labor standards, a statutory calendar month is legally standardized as 30 days regardless of whether the month has 28, 30, or 31 days. Daily wage is computed as <code>Monthly Gross Salary &divide; 30</code>.
           </div>
         </div>
 
@@ -1552,11 +1552,11 @@
           const php = (data.rates.PHP / sar).toFixed(2);
           const barq = (inr - 0.27).toFixed(2);
 
-          const sEl = document.getElementById('tickerSar'); if (sEl) sEl.textContent = 'â‚¹ ' + inr;
-          const bEl = document.getElementById('tickerBarq'); if (bEl) bEl.textContent = 'â‚¹ ' + barq;
+          const sEl = document.getElementById('tickerSar'); if (sEl) sEl.textContent = '\u20B9 ' + inr;
+          const bEl = document.getElementById('tickerBarq'); if (bEl) bEl.textContent = '\u20B9 ' + barq;
           const pEl = document.getElementById('tickerPkr'); if (pEl) pEl.textContent = 'Rs ' + pkr;
-          const bdEl = document.getElementById('tickerBdt'); if (bdEl) bdEl.textContent = 'à§³ ' + bdt;
-          const phEl = document.getElementById('tickerPhp'); if (phEl) phEl.textContent = 'â‚± ' + php;
+          const bdEl = document.getElementById('tickerBdt'); if (bdEl) bdEl.textContent = '\u09F3 ' + bdt;
+          const phEl = document.getElementById('tickerPhp'); if (phEl) phEl.textContent = '\u20B1 ' + php;
         }
       } catch (e) {
         // Safe passive fallback

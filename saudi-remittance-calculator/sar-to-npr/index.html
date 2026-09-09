@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -259,11 +259,11 @@
   <div class="top-rates-ticker">
     <div class="container">
       <div class="ticker-inner">
-        <div class="ticker-item"><span>SAR / INR:</span><span class="ticker-rate" id="tickerSar">â‚¹ 22.45</span></div>
-        <div class="ticker-item"><span class="ticker-tag-green">âš¡ Barq Rate:</span><span class="ticker-rate" id="tickerBarq">â‚¹ 22.18</span></div>
+        <div class="ticker-item"><span>SAR / INR:</span><span class="ticker-rate" id="tickerSar">&#8377; 22.45</span></div>
+        <div class="ticker-item"><span class="ticker-tag-green"><i class="fas fa-bolt" style="color:#fbbf24;"></i> Barq Rate:</span><span class="ticker-rate" id="tickerBarq">&#8377; 22.18</span></div>
         <div class="ticker-item"><span>SAR / PKR:</span><span class="ticker-rate" id="tickerPkr">Rs 74.20</span></div>
-        <div class="ticker-item"><span>SAR / BDT:</span><span class="ticker-rate" id="tickerBdt">à§³ 32.10</span></div>
-        <div class="ticker-item"><span>SAR / PHP:</span><span class="ticker-rate" id="tickerPhp">â‚± 15.65</span></div>
+        <div class="ticker-item"><span>SAR / BDT:</span><span class="ticker-rate" id="tickerBdt">&#2547; 32.10</span></div>
+        <div class="ticker-item"><span>SAR / PHP:</span><span class="ticker-rate" id="tickerPhp">&#8369; 15.65</span></div>
         <div class="ticker-item"><span>Gold 24K KSA:</span><span class="ticker-rate" style="color:#fbbf24;">322.50 SAR</span></div>
       </div>
     </div>
@@ -354,7 +354,7 @@
           <div class="result-row-top">
             <div>
               <div class="result-label">Net In-Hand Nepalese Rupees Received</div>
-              <div class="result-big-val" id="nprPayout">à¤°à¥‚ 35,920.00</div>
+              <div class="result-big-val" id="nprPayout">Rs 35,920.00</div>
             </div>
             <div class="result-rate-tag" id="nprRateTag">
               <i class="fas fa-bolt" style="color:#fbbf24;"></i>
@@ -433,9 +433,9 @@
         Assuming a live interbank rate of 1 SAR = 35.92 NPR:
       </p>
       <ul>
-        <li><strong>Barq (0 fee, retail rate ~35.48 NPR):</strong> 2,000 Ã— 35.48 = <strong>à¤°à¥‚ 70,960.00 NPR</strong></li>
-        <li><strong>urpay (11.50 SAR fee, retail rate ~35.38 NPR):</strong> (2,000 - 11.50) Ã— 35.38 = <strong>à¤°à¥‚ 70,352.00 NPR</strong></li>
-        <li><strong>STC Pay (17.25 SAR fee, retail rate ~35.40 NPR):</strong> (2,000 - 17.25) Ã— 35.40 = <strong>à¤°à¥‚ 70,188.00 NPR</strong></li>
+        <li><strong>Barq (0 fee, retail rate ~35.48 NPR):</strong> 2,000 &times; 35.48 = <strong>Rs 70,960.00 NPR</strong></li>
+        <li><strong>urpay (11.50 SAR fee, retail rate ~35.38 NPR):</strong> (2,000 - 11.50) &times; 35.38 = <strong>Rs 70,352.00 NPR</strong></li>
+        <li><strong>STC Pay (17.25 SAR fee, retail rate ~35.40 NPR):</strong> (2,000 - 17.25) &times; 35.40 = <strong>Rs 70,188.00 NPR</strong></li>
       </ul>
 
       <h2>Frequently Asked Questions</h2>
@@ -533,7 +533,7 @@
       const tagEl = document.getElementById('nprRateTag');
 
       const total = amt * rate;
-      payoutEl.textContent = 'à¤°à¥‚ ' + total.toLocaleString('en-NP', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      payoutEl.textContent = 'Rs ' + total.toLocaleString('en-NP', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
       tagEl.innerHTML = `<i class="fas fa-bolt" style="color:#fbbf24;"></i> <span>1 SAR = ${rate.toFixed(4)} NPR</span>`;
 
       const barqRate = rate - 0.44;
@@ -550,30 +550,30 @@
       tbody.innerHTML = `
         <tr>
           <td><strong style="color:#16a34a;"><i class="fas fa-bolt"></i> Barq</strong> <span class="provider-badge-best">ZERO FEE</span></td>
-          <td>à¤°à¥‚ ${barqRate.toFixed(2)}</td>
+          <td>Rs ${barqRate.toFixed(2)}</td>
           <td><strong style="color:#16a34a;">0.00 SAR</strong></td>
-          <td><strong style="color:#16a34a; font-size:14px;">à¤°à¥‚ ${barqNet.toLocaleString('en-NP', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</strong></td>
+          <td><strong style="color:#16a34a; font-size:14px;">Rs ${barqNet.toLocaleString('en-NP', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</strong></td>
           <td><span style="color:#16a34a;"><i class="fas fa-clock"></i> Instant eSewa</span></td>
         </tr>
         <tr>
           <td><strong>urpay (Al Rajhi)</strong></td>
-          <td>à¤°à¥‚ ${urpayRate.toFixed(2)}</td>
+          <td>Rs ${urpayRate.toFixed(2)}</td>
           <td>11.50 SAR (10 + 1.50 VAT)</td>
-          <td>à¤°à¥‚ ${urpayNet.toLocaleString('en-NP', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+          <td>Rs ${urpayNet.toLocaleString('en-NP', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
           <td><span style="color:#64748b;">Direct Bank Credit</span></td>
         </tr>
         <tr>
           <td><strong>STC Pay / STC Bank</strong></td>
-          <td>à¤°à¥‚ ${stcRate.toFixed(2)}</td>
+          <td>Rs ${stcRate.toFixed(2)}</td>
           <td>17.25 SAR (15 + 2.25 VAT)</td>
-          <td>à¤°à¥‚ ${stcNet.toLocaleString('en-NP', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+          <td>Rs ${stcNet.toLocaleString('en-NP', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
           <td><span style="color:#64748b;">IME Pay &amp; Global IME</span></td>
         </tr>
         <tr>
           <td><strong>Tahweel Al Rajhi / Enjaz</strong></td>
-          <td>à¤°à¥‚ ${bankRate.toFixed(2)}</td>
+          <td>Rs ${bankRate.toFixed(2)}</td>
           <td>19.84 SAR (17.25 + 2.59 VAT)</td>
-          <td>à¤°à¥‚ ${bankNet.toLocaleString('en-NP', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+          <td>Rs ${bankNet.toLocaleString('en-NP', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
           <td><span style="color:#64748b;">Branch / Account</span></td>
         </tr>
       `;

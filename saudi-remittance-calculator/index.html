@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -862,11 +862,11 @@
       <div class="ticker-inner">
         <div class="ticker-item">
           <span>SAR / INR:</span>
-          <span class="ticker-rate" id="tickerSar">â‚¹ 22.45</span>
+          <span class="ticker-rate" id="tickerSar">&#8377; 22.45</span>
         </div>
         <div class="ticker-item">
-          <span class="ticker-tag-green">âš¡ Barq Rate:</span>
-          <span class="ticker-rate" id="tickerBarq">â‚¹ 22.18</span>
+          <span class="ticker-tag-green"><i class="fas fa-bolt" style="color:#fbbf24;"></i> Barq Rate:</span>
+          <span class="ticker-rate" id="tickerBarq">&#8377; 22.18</span>
         </div>
         <div class="ticker-item">
           <span>SAR / PKR:</span>
@@ -874,11 +874,11 @@
         </div>
         <div class="ticker-item">
           <span>SAR / BDT:</span>
-          <span class="ticker-rate" id="tickerBdt">à§³ 32.10</span>
+          <span class="ticker-rate" id="tickerBdt">&#2547; 32.10</span>
         </div>
         <div class="ticker-item">
           <span>SAR / PHP:</span>
-          <span class="ticker-rate" id="tickerPhp">â‚± 15.65</span>
+          <span class="ticker-rate" id="tickerPhp">&#8369; 15.65</span>
         </div>
         <div class="ticker-item">
           <span>Gold 24K KSA:</span>
@@ -990,15 +990,15 @@
                 <i class="fas fa-globe" style="color:#0284c7;"></i> TO
               </div>
               <select id="destCurrencySelect" class="calc-input select-currency-addon" onchange="recalculate()">
-                <option value="INR" selected>India (INR - â‚¹)</option>
+                <option value="INR" selected>India (INR - &#8377;)</option>
                 <option value="PKR">Pakistan (PKR - Rs)</option>
-                <option value="BDT">Bangladesh (BDT - à§³)</option>
-                <option value="PHP">Philippines (PHP - â‚±)</option>
-                <option value="NPR">Nepal (NPR - à¤°à¥‚)</option>
+                <option value="BDT">Bangladesh (BDT - &#2547;)</option>
+                <option value="PHP">Philippines (PHP - &#8369;)</option>
+                <option value="NPR">Nepal (NPR - Rs)</option>
                 <option value="LKR">Sri Lanka (LKR - Rs)</option>
-                <option value="EGP">Egypt (EGP - EÂ£)</option>
+                <option value="EGP">Egypt (EGP - E&#163;)</option>
                 <option value="USD">United States (USD - $)</option>
-                <option value="AED">UAE (AED - Ø¯.Ø¥)</option>
+                <option value="AED">UAE (AED - AED)</option>
               </select>
             </div>
           </div>
@@ -1008,7 +1008,7 @@
             <div class="result-row-top">
               <div>
                 <div class="result-label">Estimated Payout Received</div>
-                <div class="result-big-val" id="estimatedPayoutDisplay">â‚¹ 22,450.00</div>
+                <div class="result-big-val" id="estimatedPayoutDisplay">&#8377; 22,450.00</div>
               </div>
               <div class="result-rate-tag" id="liveRateDisplayTag">
                 <i class="fas fa-bolt" style="color:#fbbf24;"></i>
@@ -1490,8 +1490,8 @@
 
     // Currency metadata
     const currencySymbols = {
-      INR: 'â‚¹', PKR: 'Rs', BDT: 'à§³', PHP: 'â‚±', NPR: 'à¤°à¥‚',
-      LKR: 'Rs', EGP: 'EÂ£', USD: '$', AED: 'Ø¯.Ø¥'
+      INR: '\u20B9', PKR: 'Rs', BDT: '\u09F3', PHP: '\u20B1', NPR: 'Rs',
+      LKR: 'Rs', EGP: 'E\u00A3', USD: '$', AED: 'AED'
     };
 
     async function fetchLiveExchangeRates() {
@@ -1551,15 +1551,15 @@
       const barqInr = (sarInr - 0.27).toFixed(2);
 
       const elInr = document.getElementById('tickerSar');
-      if (elInr) elInr.textContent = 'â‚¹ ' + sarInr.toFixed(2);
+      if (elInr) elInr.textContent = '\u20B9 ' + sarInr.toFixed(2);
       const elBarq = document.getElementById('tickerBarq');
-      if (elBarq) elBarq.textContent = 'â‚¹ ' + barqInr;
+      if (elBarq) elBarq.textContent = '\u20B9 ' + barqInr;
       const elPkr = document.getElementById('tickerPkr');
       if (elPkr) elPkr.textContent = 'Rs ' + sarPkr.toFixed(2);
       const elBdt = document.getElementById('tickerBdt');
-      if (elBdt) elBdt.textContent = 'à§³ ' + sarBdt.toFixed(2);
+      if (elBdt) elBdt.textContent = '\u09F3 ' + sarBdt.toFixed(2);
       const elPhp = document.getElementById('tickerPhp');
-      if (elPhp) elPhp.textContent = 'â‚± ' + sarPhp.toFixed(2);
+      if (elPhp) elPhp.textContent = '\u20B1 ' + sarPhp.toFixed(2);
     }
 
     function setSarAmount(val) {
@@ -1589,7 +1589,10 @@
       }
 
       const totalEstimated = sarAmount * baseRate;
-      payoutDisplay.textContent = symbol + ' ' + totalEstimated.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      const formattedNumber = (targetCur === 'INR')
+        ? totalEstimated.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+        : totalEstimated.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      payoutDisplay.textContent = symbol + ' ' + formattedNumber;
       rateDisplay.innerHTML = `<i class="fas fa-bolt" style="color:#fbbf24;"></i> <span>1 SAR = ${baseRate.toFixed(4)} ${targetCur}</span>`;
       compareNote.textContent = `For SAR to ${targetCur}`;
 
@@ -1624,28 +1627,28 @@
           </td>
           <td>${sym} ${barqRate.toFixed(2)}</td>
           <td><strong style="color:#16a34a;">0.00 SAR</strong></td>
-          <td><strong style="color:#16a34a; font-size:14px;">${sym} ${barqNet.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</strong></td>
+          <td><strong style="color:#16a34a; font-size:14px;">${sym} ${(cur === 'INR' ? barqNet.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : barqNet.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }))}</strong></td>
           <td><span style="color:#16a34a; font-size:12px;"><i class="fas fa-clock"></i> Instant</span></td>
         </tr>
         <tr>
           <td><strong>STC Pay / STC Bank</strong></td>
           <td>${sym} ${stcRate.toFixed(2)}</td>
           <td>15.00 SAR (+15% VAT)</td>
-          <td>${sym} ${stcNet.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+          <td>${sym} ${(cur === 'INR' ? stcNet.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : stcNet.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }))}</td>
           <td><span style="color:#64748b; font-size:12px;">Instant IMPS / Raast</span></td>
         </tr>
         <tr>
           <td><strong>urpay (Al Rajhi)</strong></td>
           <td>${sym} ${urpayRate.toFixed(2)}</td>
           <td>10.00 SAR (+15% VAT)</td>
-          <td>${sym} ${urpayNet.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+          <td>${sym} ${(cur === 'INR' ? urpayNet.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : urpayNet.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }))}</td>
           <td><span style="color:#64748b; font-size:12px;">Direct Bank Credit</span></td>
         </tr>
         <tr>
           <td><strong>Tahweel Al Rajhi / Enjaz</strong></td>
           <td>${sym} ${bankRate.toFixed(2)}</td>
           <td>17.25 SAR (+15% VAT)</td>
-          <td>${sym} ${bankNet.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+          <td>${sym} ${(cur === 'INR' ? bankNet.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : bankNet.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }))}</td>
           <td><span style="color:#64748b; font-size:12px;">Same Day / Next Day</span></td>
         </tr>
       `;
