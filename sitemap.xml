@@ -60,11 +60,75 @@
     <lastmod>2026-09-09</lastmod>
     <priority>0.85</priority>
   </url>
+
+  <!-- Saudi Salary Calculator Suite (Step 2B) -->
   <url>
     <loc>https://dailycalchubs.com/saudi-salary-calculator/</loc>
-    <lastmod>2026-09-08</lastmod>
+    <lastmod>2026-09-09</lastmod>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://dailycalchubs.com/saudi-salary-calculator/take-home-salary/</loc>
+    <lastmod>2026-09-09</lastmod>
     <priority>0.90</priority>
   </url>
+  <url>
+    <loc>https://dailycalchubs.com/saudi-salary-calculator/gosi-calculator/</loc>
+    <lastmod>2026-09-09</lastmod>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://dailycalchubs.com/saudi-salary-calculator/overtime/</loc>
+    <lastmod>2026-09-09</lastmod>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://dailycalchubs.com/saudi-salary-calculator/eosb/</loc>
+    <lastmod>2026-09-09</lastmod>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://dailycalchubs.com/saudi-salary-calculator/final-settlement/</loc>
+    <lastmod>2026-09-09</lastmod>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://dailycalchubs.com/saudi-salary-calculator/basic-salary/</loc>
+    <lastmod>2026-09-09</lastmod>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://dailycalchubs.com/saudi-salary-calculator/salary-allowances/</loc>
+    <lastmod>2026-09-09</lastmod>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://dailycalchubs.com/saudi-salary-calculator/daily-salary/</loc>
+    <lastmod>2026-09-09</lastmod>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://dailycalchubs.com/saudi-salary-calculator/hourly-salary/</loc>
+    <lastmod>2026-09-09</lastmod>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://dailycalchubs.com/saudi-salary-calculator/annual-salary/</loc>
+    <lastmod>2026-09-09</lastmod>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://dailycalchubs.com/saudi-salary-calculator/salary-increment/</loc>
+    <lastmod>2026-09-09</lastmod>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://dailycalchubs.com/saudi-salary-calculator/resignation-gratuity/</loc>
+    <lastmod>2026-09-09</lastmod>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Other Core Calculators -->
   <url>
     <loc>https://dailycalchubs.com/saudi-iqama-calculator/</loc>
     <lastmod>2026-09-08</lastmod>
@@ -90,6 +154,8 @@
     <lastmod>2026-09-08</lastmod>
     <priority>0.90</priority>
   </url>
+
+  <!-- Legal & Static Pages -->
   <url>
     <loc>https://dailycalchubs.com/about.html</loc>
     <lastmod>2026-08-23</lastmod>
