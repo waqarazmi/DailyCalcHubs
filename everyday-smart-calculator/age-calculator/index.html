@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Age Calculator — Exact Chronological Age, Days & Next Birthday</title>
+  <meta name="description" content="Calculate your exact chronological age in years, months, and days with our free Smart Age Calculator. Includes next birthday countdown, total days lived, and weekday born.">
+  <meta name="keywords" content="age calculator, date of birth calculator, calculate age online, exact age in days, birthday countdown, chronological age calculator">
+  <link rel="canonical" href="https://dailycalchubs.com/everyday-smart-calculator/age-calculator/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://dailycalchubs.com/everyday-smart-calculator/age-calculator/">
+  <meta property="og:title" content="Age Calculator — Exact Chronological Age, Days & Next Birthday">
+  <meta property="og:description" content="Calculate your exact chronological age in years, months, and days with our free Smart Age Calculator. Includes next birthday countdown, total days lived, and weekday born.">
+  <meta property="og:image" content="https://dailycalchubs.com/og-image.jpg">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Age Calculator — Exact Chronological Age, Days & Next Birthday">
+  <meta name="twitter:description" content="Calculate your exact chronological age in years, months, and days with our free Smart Age Calculator. Includes next birthday countdown, total days lived, and weekday born.">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6944579701716470" crossorigin="anonymous"></script>
+
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-18Y3LNHDR8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-18Y3LNHDR8');
+  </script>
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Age & Date of Birth Calculator",
+    "url": "https://dailycalchubs.com/everyday-smart-calculator/age-calculator/",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "All",
+    "description": "Calculate exact chronological age in years, months, days, total hours, and get a next birthday countdown.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Why is my age in days different from simple multiplication (Years × 365)?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A calendar year contains leap years every 4 years (366 days). Multiplying years by 365 ignores the extra days accumulated during leap years and differences in month lengths, producing an inaccurate total."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I calculate someone's age at a specific historical date?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Use the 'Calculate Age As Of Date' field to select any historical date (such as graduation or wedding date) or future milestone date to see exact age on that day."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does the calculator handle leap year birthdays (February 29)?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "For individuals born on February 29 during a leap year, the calculator precisely tracks days lived according to standard civil calendar convention, treating February 28 or March 1 as the non-leap birthday anniversary."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --bg-light: #f8fafc;
+      --bg-white: #ffffff;
+      --navy-dark: #0f172a;
+      --navy-footer: #081024;
+      --sky-saudi: #0ea5e9;
+      --sky-dark: #0284c7;
+      --sky-light: #f0f9ff;
+      --sky-border: #bae6fd;
+      --text-dark: #1e293b;
+      --text-muted: #64748b;
+      --border-color: #e2e8f0;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
+      --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font-main);
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--sky-dark); text-decoration: none; transition: color 0.2s; }
+    a:hover { color: #0369a1; }
+
+    /* Header */
+    .site-header {
+      background: var(--bg-white);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo-area { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 20px; color: var(--navy-dark); }
+    .logo-icon {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, #0ea5e9, #0284c7);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 18px;
+    }
+    .main-nav { display: flex; align-items: center; gap: 24px; }
+    .nav-link { font-weight: 600; font-size: 14px; color: var(--text-muted); padding: 8px 12px; border-radius: 6px; }
+    .nav-link:hover { color: var(--navy-dark); background: #f1f5f9; }
+    .nav-link.active { color: var(--sky-dark); background: var(--sky-light); }
+
+    /* Breadcrumbs */
+    .breadcrumb-bar {
+      background: var(--bg-white);
+      border-bottom: 1px solid var(--border-color);
+      padding: 12px 20px;
+      font-size: 13.5px;
+      color: var(--text-muted);
+    }
+    .breadcrumb-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .breadcrumb-container a { color: var(--text-muted); }
+    .breadcrumb-container a:hover { color: var(--sky-dark); }
+    .breadcrumb-sep { font-size: 11px; color: #94a3b8; }
+
+    /* Main Container */
+    .page-main { max-width: 1000px; margin: 30px auto; padding: 0 20px; }
+
+    /* Hero */
+    .hero-section {
+      text-align: center;
+      margin-bottom: 30px;
+      background: linear-gradient(180deg, #f0f9ff 0%, #ffffff 100%);
+      padding: 36px 24px;
+      border-radius: 16px;
+      border: 1px solid var(--sky-border);
+    }
+    .badge-hero {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: white;
+      border: 1px solid var(--sky-border);
+      color: var(--sky-dark);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 12.5px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .hero-title { font-size: 32px; font-weight: 800; color: var(--navy-dark); margin-bottom: 10px; }
+    .hero-desc { font-size: 16px; color: var(--text-muted); max-width: 680px; margin: 0 auto; }
+
+    /* Calculator Box */
+    .calc-card {
+      background: var(--bg-white);
+      border-radius: 16px;
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-md);
+      padding: 30px;
+      margin-bottom: 40px;
+    }
+    .form-group { margin-bottom: 22px; }
+    .form-label { display: block; font-weight: 700; font-size: 14px; color: var(--navy-dark); margin-bottom: 8px; }
+    .calc-input {
+      width: 100%;
+      height: 48px;
+      border: 1.5px solid var(--border-color);
+      border-radius: 10px;
+      padding: 0 16px;
+      font-size: 15px;
+      font-family: inherit;
+      color: var(--navy-dark);
+      background: #f8fafc;
+      transition: all 0.2s;
+    }
+    .calc-input:focus {
+      outline: none;
+      border-color: var(--sky-saudi);
+      background: white;
+      box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.15);
+    }
+    .input-with-addons {
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+    .input-addon-badge {
+      position: absolute;
+      left: 14px;
+      color: var(--sky-dark);
+      font-size: 16px;
+      pointer-events: none;
+    }
+    .input-with-addons input { padding-left: 44px; }
+
+    .amount-chips-row {
+      display: flex;
+      gap: 8px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+    .amount-chip-btn {
+      background: var(--sky-light);
+      border: 1px solid var(--sky-border);
+      color: var(--sky-dark);
+      font-size: 12.5px;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .amount-chip-btn:hover {
+      background: var(--sky-dark);
+      color: white;
+      border-color: var(--sky-dark);
+    }
+
+    /* Result Box */
+    .result-summary-box {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: white;
+      border-radius: 14px;
+      padding: 26px;
+      margin-top: 24px;
+      box-shadow: 0 10px 20px rgba(15, 23, 42, 0.15);
+    }
+    .result-row-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+      padding-bottom: 18px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .result-label { font-size: 13.5px; color: #94a3b8; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+    .result-big-val { font-size: 32px; font-weight: 800; color: #38bdf8; margin-top: 4px; }
+    .result-rate-tag {
+      background: rgba(14, 165, 233, 0.2);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      color: #bae6fd;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 13.5px;
+      font-weight: 600;
+    }
+    .result-meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+    }
+    .meta-box-inner {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 14px;
+    }
+    .meta-box-title { font-size: 12px; color: #94a3b8; margin-bottom: 4px; }
+    .meta-box-val { font-size: 16px; font-weight: 700; color: white; }
+
+    /* SEO Article Section */
+    .seo-article {
+      background: var(--bg-white);
+      border-radius: 16px;
+      border: 1px solid var(--border-color);
+      padding: 36px 30px;
+      margin-bottom: 40px;
+    }
+    .seo-article h2 { font-size: 24px; font-weight: 800; color: var(--navy-dark); margin: 28px 0 14px; }
+    .seo-article h2:first-child { margin-top: 0; }
+    .seo-article h3 { font-size: 18px; font-weight: 700; color: var(--navy-dark); margin: 20px 0 10px; }
+    .seo-article p { font-size: 15px; color: #334155; line-height: 1.75; margin-bottom: 16px; }
+    .seo-article ul { margin-left: 24px; margin-bottom: 18px; font-size: 15px; color: #334155; }
+    .seo-article li { margin-bottom: 8px; }
+
+    /* FAQ */
+    .faq-item {
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      margin-bottom: 12px;
+      overflow: hidden;
+      background: white;
+    }
+    .faq-question {
+      padding: 16px 20px;
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--navy-dark);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #f8fafc;
+      transition: background 0.2s;
+    }
+    .faq-question:hover { background: #f1f5f9; }
+    .faq-answer {
+      padding: 18px 20px;
+      font-size: 14.5px;
+      color: #475569;
+      line-height: 1.7;
+      border-top: 1px solid var(--border-color);
+      background: white;
+    }
+
+    /* Related Tools Grid */
+    .related-section { margin-bottom: 40px; }
+    .related-title { font-size: 20px; font-weight: 800; color: var(--navy-dark); margin-bottom: 16px; }
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+    .related-card {
+      background: white;
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 20px;
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: block;
+    }
+    .related-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--sky-saudi);
+    }
+    .related-card-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 4px 8px;
+      border-radius: 4px;
+      background: var(--sky-light);
+      color: var(--sky-dark);
+      margin-bottom: 10px;
+    }
+    .related-card-name { font-size: 16px; font-weight: 700; color: var(--navy-dark); margin-bottom: 6px; }
+    .related-card-desc { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+
+    /* Footer */
+    .site-footer {
+      background: var(--navy-footer);
+      color: #94a3b8;
+      padding: 50px 20px 24px;
+      font-size: 14px;
+    }
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 36px;
+      padding-bottom: 36px;
+      border-bottom: 1px solid #1e293b;
+    }
+    .footer-col h4 { color: white; font-size: 15px; font-weight: 700; margin-bottom: 14px; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 8px; }
+    .footer-col ul li a { color: #94a3b8; font-size: 13.5px; }
+    .footer-col ul li a:hover { color: #38bdf8; }
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 24px auto 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 12.5px;
+    }
+
+    @media (max-width: 768px) {
+      .footer-container { grid-template-columns: 1fr; gap: 24px; }
+      .hero-title { font-size: 26px; }
+      .calc-card { padding: 20px; }
+      .result-row-top { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="header-container">
+      <a href="/" class="logo-area">
+        <div class="logo-icon"><i class="fas fa-calculator"></i></div>
+        <span>DailyCalcHubs</span>
+      </a>
+      <nav class="main-nav">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/saudi-remittance-calculator/" class="nav-link">Remittance</a>
+        <a href="/saudi-salary-calculator/" class="nav-link">Salary</a>
+        <a href="/saudi-iqama-calculator/" class="nav-link">Iqama</a>
+        <a href="/everyday-smart-calculator/" class="nav-link active">Everyday Smart</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Breadcrumbs -->
+  <div class="breadcrumb-bar">
+    <div class="breadcrumb-container">
+      <a href="/"><i class="fas fa-home"></i> Home</a>
+      <span class="breadcrumb-sep"><i class="fas fa-chevron-right"></i></span>
+      <a href="/everyday-smart-calculator/">Everyday Smart Calculator</a>
+      <span class="breadcrumb-sep"><i class="fas fa-chevron-right"></i></span>
+      <span style="color: var(--navy-dark); font-weight:600;">Age & Date of Birth Calculator</span>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="page-main">
+
+    <!-- Hero -->
+    <section class="hero-section">
+      <div class="badge-hero"><i class="fas fa-hourglass-half"></i> Accurate Chronological Tool</div>
+      <h1 class="hero-title">Age & Date of Birth Calculator</h1>
+      <p class="hero-desc">
+        Calculate your exact chronological age in years, months, and days. Discover the weekday you were born, explore lifetime milestones, and countdown to your next birthday.
+      </p>
+    </section>
+
+    <!-- Calculator Card -->
+    <div class="calc-card">
+      <form id="ageForm" onsubmit="event.preventDefault(); calculateDetailedAge();">
+        <div class="form-group">
+          <label class="form-label" for="birthDate">Select Date of Birth</label>
+          <div class="input-with-addons">
+            <span class="input-addon-badge"><i class="fas fa-calendar-day"></i></span>
+            <input type="date" id="birthDate" class="calc-input" value="1998-05-20" required onchange="calculateDetailedAge()">
+          </div>
+          <div class="amount-chips-row">
+            <button type="button" class="amount-chip-btn" onclick="setDobPreset(18)">18 Yrs (2008)</button>
+            <button type="button" class="amount-chip-btn" onclick="setDobPreset(21)">21 Yrs (2005)</button>
+            <button type="button" class="amount-chip-btn" onclick="setDobPreset(25)">25 Yrs (2001)</button>
+            <button type="button" class="amount-chip-btn" onclick="setDobPreset(30)">30 Yrs (1996)</button>
+            <button type="button" class="amount-chip-btn" onclick="setDobPreset(60)">60 Yrs (1966)</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="targetDate">Calculate Age As Of Date</label>
+          <div class="input-with-addons">
+            <span class="input-addon-badge"><i class="fas fa-clock"></i></span>
+            <input type="date" id="targetDate" class="calc-input" onchange="calculateDetailedAge()">
+          </div>
+          <small style="display:block; margin-top:6px; color:#64748b; font-size:12px;">
+            *Defaults to today's date. Change to calculate age at a specific milestone or historical date.
+          </small>
+        </div>
+
+        <div id="ageValidationAlert" style="display:none; background:#fee2e2; border-left:4px solid #ef4444; padding:12px 16px; border-radius:0 8px 8px 0; font-size:13.5px; color:#991b1b; margin-bottom:18px;">
+          <i class="fas fa-circle-exclamation" style="margin-right:6px;"></i> <span id="ageAlertMsg"></span>
+        </div>
+      </form>
+
+      <!-- Result Box -->
+      <div class="result-summary-box">
+        <div class="result-row-top">
+          <div>
+            <div class="result-label">Your Exact Chronological Age</div>
+            <div class="result-big-val" id="resExactAge">28 Yrs, 3 Mos, 20 Days</div>
+          </div>
+          <div class="result-rate-tag">
+            <i class="fas fa-cake-candles"></i> <span id="resBornDayTag">Born on Wednesday</span>
+          </div>
+        </div>
+
+        <div class="result-meta-grid">
+          <div class="meta-box-inner">
+            <div class="meta-box-title">Next Birthday Countdown</div>
+            <div class="meta-box-val" id="resNextBdayCountdown" style="color:#38bdf8;">8 Months, 11 Days</div>
+          </div>
+          <div class="meta-box-inner">
+            <div class="meta-box-title">Next Birthday Day of Week</div>
+            <div class="meta-box-val" id="resNextBdayWeekday">Wednesday</div>
+          </div>
+          <div class="meta-box-inner">
+            <div class="meta-box-title">Total Days Lived</div>
+            <div class="meta-box-val" id="resTotalDays">10,339 Days</div>
+          </div>
+          <div class="meta-box-inner">
+            <div class="meta-box-title">Total Hours Lived (Approx)</div>
+            <div class="meta-box-val" id="resTotalHours">248,136 Hours</div>
+          </div>
+          <div class="meta-box-inner">
+            <div class="meta-box-title">Total Weeks Lived</div>
+            <div class="meta-box-val" id="resTotalWeeks">1,477 Weeks</div>
+          </div>
+          <div class="meta-box-inner">
+            <div class="meta-box-title">Total Months Lived</div>
+            <div class="meta-box-val" id="resTotalMonths">339 Months</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEO & Educational Guide -->
+    <article class="seo-article">
+      <h2>How Chronological Age is Calculated</h2>
+      <p>
+        Chronological age represents the precise measure of time elapsed from an individual's birth to a specified target date. While casual approximations often divide total days lived by 365 or 365.25, high-precision calculations require handling variable calendar month lengths (28, 29, 30, and 31 days) and leap year cycles.
+      </p>
+
+      <h3>Exact Year, Month, and Day Breakdown</h3>
+      <p>
+        Our algorithm follows the international standard civil calendar convention:
+      </p>
+      <ul>
+        <li><strong>Day Subtraction:</strong> If the target day is smaller than the birth day, days are borrowed from the immediately preceding month based on its actual calendar length.</li>
+        <li><strong>Month Subtraction:</strong> If the target month is smaller than the birth month after day borrowing, 12 months are borrowed from the target year.</li>
+        <li><strong>Year Calculation:</strong> Full completed solar years between the adjusted birth year and target year.</li>
+      </ul>
+
+      <h3>Handling Leap Year Birthdays (February 29)</h3>
+      <p>
+        Individuals born on February 29 during a leap year experience a true calendar anniversary once every four years. Under standard civil administrative law and banking guidelines across Saudi Arabia and internationally:
+      </p>
+      <ul>
+        <li>In non-leap years, standard civil age increments on <strong>March 1st</strong> or <strong>February 28th</strong> depending on national administrative regulations.</li>
+        <li>For total days lived, every single day is counted continuously, ensuring complete mathematical integrity regardless of leap years.</li>
+      </ul>
+
+      <h2>Important Age Milestones for Saudi Residents & Expats</h2>
+      <p>
+        In the Kingdom of Saudi Arabia, precise chronological age determines critical legal and administrative thresholds:
+      </p>
+      <ul>
+        <li><strong>Age 18:</strong> Legal majority for obtaining an official private driving license, independent bank accounts, and employment contracts.</li>
+        <li><strong>Age 21:</strong> Threshold for certain commercial licenses and independent travel regulations under Saudi civil law.</li>
+        <li><strong>Age 25:</strong> Dependent male sponsorship threshold under Saudi Iqama regulations (dependent sons above 25 must transfer sponsorship to employment or university).</li>
+        <li><strong>Age 60:</strong> Official retirement age threshold under Saudi Labor Law and GOSI pension regulations for statutory retirement benefits.</li>
+      </ul>
+
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>Why is my age in days different from simple multiplication (Years × 365)?</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer" style="display:none;">
+          A calendar year contains leap years every 4 years (366 days). Simply multiplying years by 365 ignores the extra days accumulated during leap years and differences in month lengths, producing an inaccurate total.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>Can I calculate someone's age at a specific historical date?</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer" style="display:none;">
+          Yes. Use the "Calculate Age As Of Date" field to select any historical date (e.g. graduation date, wedding date) or future milestone date to see exact age on that day.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>How does the calculator handle leap year birthdays (February 29)?</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer" style="display:none;">
+          For individuals born on February 29 during a leap year, the calculator precisely tracks days lived according to standard civil calendar convention, treating February 28 or March 1 as the non-leap birthday anniversary.
+        </div>
+      </div>
+    </article>
+
+    <!-- Related Everyday Tools -->
+    <div class="related-section">
+      <h2 class="related-title">Explore More Everyday Tools</h2>
+      <div class="related-grid">
+        <a href="/everyday-smart-calculator/discount-calculator/" class="related-card">
+          <span class="related-card-badge">Shopping & Savings</span>
+          <div class="related-card-name">Discount & Sale Calculator</div>
+          <div class="related-card-desc">Calculate percentage discounts, promo code savings, and 15% Saudi VAT inclusion in one step.</div>
+        </a>
+        <a href="/saudi-salary-calculator/" class="related-card">
+          <span class="related-card-badge">Work & Career</span>
+          <div class="related-card-name">Saudi Salary & GOSI Hub</div>
+          <div class="related-card-desc">Calculate take-home pay after GOSI deductions, overtime, and EOSB gratuity benefits.</div>
+        </a>
+        <a href="/saudi-remittance-calculator/" class="related-card">
+          <span class="related-card-badge">Money Transfer</span>
+          <div class="related-card-name">Saudi Remittance Hub</div>
+          <div class="related-card-desc">Compare live SAR exchange rates for India, Pakistan, Philippines, Egypt, and Bangladesh.</div>
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    function setDobPreset(yearsAgo) {
+      const today = new Date();
+      const targetYear = today.getFullYear() - yearsAgo;
+      const m = String(today.getMonth() + 1).padStart(2, '0');
+      const d = String(today.getDate()).padStart(2, '0');
+      document.getElementById('birthDate').value = targetYear + '-' + m + '-' + d;
+      calculateDetailedAge();
+    }
+
+    function calculateDetailedAge() {
+      const dobInput = document.getElementById('birthDate').value;
+      const asOfInput = document.getElementById('targetDate').value;
+      const alertBox = document.getElementById('ageValidationAlert');
+      const alertMsg = document.getElementById('ageAlertMsg');
+
+      if (!dobInput) {
+        alertBox.style.display = 'block';
+        alertMsg.innerText = "Please select a valid date of birth.";
+        return;
+      }
+
+      const dob = new Date(dobInput + 'T00:00:00');
+      const asOf = asOfInput ? new Date(asOfInput + 'T00:00:00') : new Date();
+
+      if (dob > asOf) {
+        alertBox.style.display = 'block';
+        alertMsg.innerText = "Date of birth cannot be later than the calculation date.";
+        return;
+      }
+
+      alertBox.style.display = 'none';
+
+      // Exact Years, Months, Days
+      let y1 = dob.getFullYear(), m1 = dob.getMonth(), d1 = dob.getDate();
+      let y2 = asOf.getFullYear(), m2 = asOf.getMonth(), d2 = asOf.getDate();
+
+      let years = y2 - y1;
+      let months = m2 - m1;
+      let days = d2 - d1;
+
+      if (days < 0) {
+        months--;
+        const prevMonthLastDay = new Date(y2, m2, 0).getDate();
+        days += prevMonthLastDay;
+      }
+
+      if (months < 0) {
+        years--;
+        months += 12;
+      }
+
+      document.getElementById('resExactAge').innerText = years + ' Yrs, ' + months + ' Mos, ' + days + ' Days';
+
+      // Day of week born
+      const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+      document.getElementById('resBornDayTag').innerText = 'Born on ' + weekdays[dob.getDay()];
+
+      // Next Birthday Countdown
+      let nextBday = new Date(y2, m1, d1);
+      if (nextBday < asOf) {
+        nextBday = new Date(y2 + 1, m1, d1);
+      }
+      
+      const diffTime = nextBday - asOf;
+      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+      
+      let bdayMonths = Math.floor(diffDays / 30.4375);
+      let bdayRemDays = Math.round(diffDays % 30.4375);
+      
+      if (diffDays === 0) {
+        document.getElementById('resNextBdayCountdown').innerText = "Happy Birthday Today! 🎉";
+      } else if (bdayMonths > 0) {
+        document.getElementById('resNextBdayCountdown').innerText = bdayMonths + ' Mos, ' + bdayRemDays + ' Days';
+      } else {
+        document.getElementById('resNextBdayCountdown').innerText = diffDays + ' Days';
+      }
+
+      document.getElementById('resNextBdayWeekday').innerText = weekdays[nextBday.getDay()];
+
+      // Cumulative Stats
+      const totalDiffMs = asOf - dob;
+      const totalDays = Math.floor(totalDiffMs / (1000 * 60 * 60 * 24));
+      const totalHours = totalDays * 24;
+      const totalWeeks = Math.floor(totalDays / 7);
+      const totalMonths = (years * 12) + months;
+
+      document.getElementById('resTotalDays').innerText = totalDays.toLocaleString('en-US') + ' Days';
+      document.getElementById('resTotalHours').innerText = totalHours.toLocaleString('en-US') + ' Hours';
+      document.getElementById('resTotalWeeks').innerText = totalWeeks.toLocaleString('en-US') + ' Weeks';
+      document.getElementById('resTotalMonths').innerText = totalMonths.toLocaleString('en-US') + ' Months';
+    }
+
+    function toggleFaq(elem) {
+      const answer = elem.nextElementSibling;
+      const icon = elem.querySelector('i');
+      if (answer.style.display === 'block') {
+        answer.style.display = 'none';
+        icon.classList.remove('fa-chevron-up');
+        icon.classList.add('fa-chevron-down');
+      } else {
+        answer.style.display = 'block';
+        icon.classList.remove('fa-chevron-down');
+        icon.classList.add('fa-chevron-up');
+      }
+    }
+
+    // Set today as max on DOB and target date default
+    window.addEventListener('DOMContentLoaded', () => {
+      const todayStr = new Date().toISOString().split('T')[0];
+      document.getElementById('targetDate').value = todayStr;
+      calculateDetailedAge();
+    });
+  </script>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-col">
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom:14px;">
+          <div class="logo-icon" style="width:30px; height:30px; font-size:14px;"><i class="fas fa-calculator"></i></div>
+          <span style="font-weight:800; font-size:18px; color:white;">DailyCalcHubs</span>
+        </div>
+        <p style="font-size:13.5px; line-height:1.6; color:#94a3b8; margin-bottom:14px;">
+          High-precision financial, remittance, salary, Iqama, and everyday utility calculators designed for expatriates and residents across Saudi Arabia and the GCC.
+        </p>
+        <div style="font-size:12.5px; color:#64748b;">
+          Calculations are for educational and planning estimates. Consult official civil affairs or financial bodies for formal documentation.
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Everyday Hub</h4>
+        <ul>
+          <li><a href="/everyday-smart-calculator/">Everyday Smart Hub</a></li>
+          <li><a href="/everyday-smart-calculator/age-calculator/">Age & Birthday Calculator</a></li>
+          <li><a href="/everyday-smart-calculator/discount-calculator/">Discount & Sale Calculator</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Saudi Calculator Hubs</h4>
+        <ul>
+          <li><a href="/saudi-remittance-calculator/">Saudi Remittance Hub</a></li>
+          <li><a href="/saudi-salary-calculator/">Saudi Salary Hub</a></li>
+          <li><a href="/saudi-iqama-calculator/">Saudi Iqama Hub</a></li>
+          <li><a href="/shariah-sip-calculator/">Shariah SIP Calculator</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Company & Legal</h4>
+        <ul>
+          <li><a href="/about-us/">About Us</a></li>
+          <li><a href="/contact-us/">Contact Us</a></li>
+          <li><a href="/privacy-policy/">Privacy Policy</a></li>
+          <li><a href="/terms-of-service/">Terms of Service</a></li>
+          <li><a href="/disclaimer/">Disclaimer</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>&copy; 2026 DailyCalcHubs.com. All rights reserved.</div>
+      <div>Designed with Precision for Saudi Arabia & GCC Residents</div>
+    </div>
+  </footer>
+
+</body>
+</html>
