@@ -6,20 +6,29 @@
   <title>DailyCalcHubs | Simple Calculators for a Smarter Life in Saudi Arabia</title>
   <meta name="description" content="DailyCalcHubs: Saudi Arabia's premier utility platform. High-precision calculators for live SAR remittance, prayer times, Saudi salary & gratuity, Iqama renewal fees, Shariah SIP, and everyday tools.">
   <link rel="canonical" href="https://dailycalchubs.com/">
-  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
   <meta name="robots" content="index, follow">
 
   <!-- Open Graph / Social -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://dailycalchubs.com/">
   <meta property="og:title" content="DailyCalcHubs | Simple Calculators for a Smarter Life in Saudi Arabia">
-  <meta property="og:description" content="Accurate, easy, reliable calculators for life and work in Saudi Arabia. 100% free with live forex, prayer times, salary & Iqama estimators.">
+  <meta property="og:description" content="Accurate, easy, reliable calculators for life and work in Saudi Arabia. 100% free with live forex, prayer times, salary &amp; Iqama estimators.">
   <meta property="og:image" content="https://dailycalchubs.com/og-image.jpg">
+  <meta property="og:image:secure_url" content="https://dailycalchubs.com/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/jpeg">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="DailyCalcHubs | Simple Calculators for a Smarter Life in Saudi Arabia">
   <meta name="twitter:description" content="Accurate, easy, reliable calculators for life and work in Saudi Arabia.">
+  <meta name="twitter:image" content="https://dailycalchubs.com/og-image.jpg">
 
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6944579701716470" crossorigin="anonymous"></script>
@@ -54,8 +63,9 @@
           "@type": "Organization",
           "name": "DailyCalcHubs",
           "url": "https://dailycalchubs.com/",
-          "logo": "https://dailycalchubs.com/favicon.svg"
-        }
+          "logo": "https://dailycalchubs.com/apple-touch-icon.png"
+        },
+        "image": "https://dailycalchubs.com/og-image.jpg"
       },
       {
         "@type": "WebApplication",
@@ -1064,7 +1074,7 @@
       </div>
       <div class="ticker-item">
         <img src="https://flagcdn.com/w20/in.png" alt="INR" width="16" height="11">
-        <span>INDIA GOLD 24K:</span> <span class="ticker-rate">Live Market</span>
+        <span>INDIA GOLD 24K (DELHI):</span> <span class="ticker-rate" id="tickerDelhiGold">&#8377;15,446/g</span>
       </div>
       <div class="ticker-item">
         <i class="fas fa-mosque" style="color: #38bdf8;"></i>
@@ -1451,8 +1461,10 @@
             <li><a href="/">Home</a></li>
             <li><a href="#popular-calculators">Calculators</a></li>
             <li><a href="#guides-area">Guides</a></li>
-            <li><a href="/about.html">About</a></li>
-            <li><a href="/contact.html">Contact</a></li>
+            <li><a href="/about/">About</a></li>
+            <li><a href="/contact/">Contact</a></li>
+            <li><a href="/privacy-policy/">Privacy Policy</a></li>
+            <li><a href="/terms/">Terms of Use</a></li>
           </ul>
         </div>
 
@@ -1564,9 +1576,33 @@
       if (kEl) kEl.textContent = '\u20B9' + kwdInr.toFixed(2);
     }
 
+    async function fetchLiveGold() {
+      const gEl = document.getElementById('tickerDelhiGold');
+      try {
+        const res = await fetch('https://api.gold-api.com/price/XAU/INR?ts=' + Date.now(), { cache: 'no-store' });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const data = await res.json();
+        if (data && typeof data.price === 'number' && data.price > 0) {
+          // 1 troy ounce = 31.1034768 grams.
+          // Landed Delhi 24K retail reference: spot/gram * 1.1453 (6% customs + 3% GST + 4.9% Delhi bullion premium)
+          const spotGram = data.price / 31.1034768;
+          const delhiRef = Math.round(spotGram * 1.1453);
+          if (gEl) gEl.textContent = '\u20B9' + delhiRef.toLocaleString('en-IN') + '/g';
+          return;
+        }
+        throw new Error('Invalid gold payload');
+      } catch (e) {
+        console.warn('Live gold fetch fallback:', e);
+        if (gEl) gEl.textContent = 'Temporarily unavailable';
+      }
+    }
+
     // Auto-init on page load
     window.addEventListener('DOMContentLoaded', () => {
       fetchLiveForex();
+      fetchLiveGold();
+      setInterval(fetchLiveForex, 60000);
+      setInterval(fetchLiveGold, 60000);
     });
   </script>
 </body>
