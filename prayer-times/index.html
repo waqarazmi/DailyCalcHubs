@@ -117,7 +117,7 @@
         "name": "What should I do if my detected location is incorrect?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Ensure device location services are enabled, or select your city directly from our quick-selection buttons (Riyadh, Makkah, Madinah, Jeddah, Dammam, Dubai, Khobar)."
+          "text": "Ensure device location services are enabled and click 'Detect My Location', or select your city directly from our quick-selection buttons (Makkah, Madinah, Riyadh, Jeddah, Dammam, Al Khobar, Dubai, Azamgarh, Lucknow, Delhi, Hyderabad, Kolkata, Bangalore)."
         }
       }
     ]
@@ -195,9 +195,6 @@
     .btn-gps-refresh { background: var(--prayer-light); border: 1.5px solid var(--prayer-border); color: var(--prayer-dark); font-size: 13px; font-weight: 700; padding: 8px 14px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: all 0.2s; }
     .btn-gps-refresh:hover { background: var(--prayer-primary); color: white; border-color: var(--prayer-primary); }
 
-    /* GPS Notice (Shown only when permission needed or denied) */
-    #gpsAlertNotice { display: none; background: #fffbeb; border: 1.5px solid #fde68a; border-radius: 10px; padding: 12px 16px; margin-bottom: 22px; font-size: 13px; color: #92400e; align-items: center; gap: 10px; }
-    #gpsAlertNotice i { color: #d97706; font-size: 16px; }
 
     /* Date & Live Clock Banner */
     .dual-date-clock-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
@@ -393,25 +390,19 @@
             <i class="fas fa-location-dot"></i>
           </div>
           <div>
-            <div class="loc-meta-title">Detected Location</div>
+            <div class="loc-meta-title">DETECTED LOCATION</div>
             <div class="loc-name-display">
               <span class="pulse-dot" title="Location Live Sync Active"></span>
-              <span id="prayerLocLabel">Detecting location...</span>
+              <span id="prayerLocLabel">Dammam, Saudi Arabia</span>
             </div>
           </div>
         </div>
 
         <div class="location-actions">
-          <button class="btn-gps-refresh" onclick="triggerGpsRefresh()" title="Update GPS location">
+          <button class="btn-gps-refresh" id="btnDetectLoc" onclick="triggerGpsRefresh()" title="Detect exact device coordinates">
             <i class="fas fa-crosshairs"></i> Detect My Location
           </button>
         </div>
-      </div>
-
-      <!-- GPS Status Notice (Shown when GPS is off/denied) -->
-      <div id="gpsAlertNotice">
-        <i class="fas fa-triangle-exclamation"></i>
-        <span><strong>Location Notice:</strong> Device location (GPS) is currently off. We are using approximate IP detection. Turn on GPS for exact village and neighborhood coordinates.</span>
       </div>
 
       <!-- B. Dual Date & Live Clock Banner -->
@@ -473,13 +464,19 @@
       <!-- Quick City Selector Chips -->
       <div class="city-chips-bar">
         <span class="city-chip-label"><i class="fas fa-city"></i> Quick Cities:</span>
-        <button type="button" class="city-btn" onclick="selectCity('makkah', 21.4225, 39.8262, 'Makkah, Saudi Arabia')">Makkah</button>
-        <button type="button" class="city-btn" onclick="selectCity('madinah', 24.4672, 39.6111, 'Madinah, Saudi Arabia')">Madinah</button>
-        <button type="button" class="city-btn" onclick="selectCity('riyadh', 24.7136, 46.6753, 'Riyadh, Saudi Arabia')">Riyadh</button>
-        <button type="button" class="city-btn" onclick="selectCity('jeddah', 21.5433, 39.1728, 'Jeddah, Saudi Arabia')">Jeddah</button>
-        <button type="button" class="city-btn" onclick="selectCity('dammam', 26.4207, 50.0888, 'Dammam, Saudi Arabia')">Dammam</button>
-        <button type="button" class="city-btn" onclick="selectCity('khobar', 26.2818, 50.2084, 'Al Khobar, Saudi Arabia')">Al Khobar</button>
-        <button type="button" class="city-btn" onclick="selectCity('dubai', 25.2048, 55.2708, 'Dubai, UAE')">Dubai</button>
+        <button type="button" class="city-btn" onclick="selectCity(this, 'makkah', 21.4225, 39.8262, 'Makkah, Saudi Arabia')">Makkah</button>
+        <button type="button" class="city-btn" onclick="selectCity(this, 'madinah', 24.4672, 39.6111, 'Madinah, Saudi Arabia')">Madinah</button>
+        <button type="button" class="city-btn" onclick="selectCity(this, 'riyadh', 24.7136, 46.6753, 'Riyadh, Saudi Arabia')">Riyadh</button>
+        <button type="button" class="city-btn" onclick="selectCity(this, 'jeddah', 21.5433, 39.1728, 'Jeddah, Saudi Arabia')">Jeddah</button>
+        <button type="button" class="city-btn" onclick="selectCity(this, 'dammam', 26.4207, 50.0888, 'Dammam, Saudi Arabia')">Dammam</button>
+        <button type="button" class="city-btn" onclick="selectCity(this, 'khobar', 26.2818, 50.2084, 'Al Khobar, Saudi Arabia')">Al Khobar</button>
+        <button type="button" class="city-btn" onclick="selectCity(this, 'dubai', 25.2048, 55.2708, 'Dubai, UAE')">Dubai</button>
+        <button type="button" class="city-btn" onclick="selectCity(this, 'azamgarh', 26.0688, 83.1859, 'Azamgarh, India')">Azamgarh</button>
+        <button type="button" class="city-btn" onclick="selectCity(this, 'lucknow', 26.8467, 80.9462, 'Lucknow, India')">Lucknow</button>
+        <button type="button" class="city-btn" onclick="selectCity(this, 'delhi', 28.6139, 77.2090, 'Delhi, India')">Delhi</button>
+        <button type="button" class="city-btn" onclick="selectCity(this, 'hyderabad', 17.3850, 78.4867, 'Hyderabad, India')">Hyderabad</button>
+        <button type="button" class="city-btn" onclick="selectCity(this, 'kolkata', 22.5726, 88.3639, 'Kolkata, India')">Kolkata</button>
+        <button type="button" class="city-btn" onclick="selectCity(this, 'bangalore', 12.9716, 77.5946, 'Bangalore, India')">Bangalore</button>
       </div>
 
       <!-- D. Daily 5 Obligatory Prayers + Sunrise Grid -->
@@ -671,7 +668,7 @@
 
       <div class="faq-item">
         <div class="faq-question">What should I do if my detected location is incorrect? <i class="fas fa-chevron-down"></i></div>
-        <div class="faq-answer">Ensure device location services are enabled, or select your city directly from our quick-selection buttons (Riyadh, Makkah, Madinah, Jeddah, Dammam, Dubai, Khobar).</div>
+        <div class="faq-answer">Ensure device location services are enabled and click "Detect My Location", or select your city directly from our quick-selection buttons (Makkah, Madinah, Riyadh, Jeddah, Dammam, Al Khobar, Dubai, Azamgarh, Lucknow, Delhi, Hyderabad, Kolkata, Bangalore).</div>
       </div>
     </div>
 
@@ -1124,45 +1121,59 @@
       }
     }
 
-    function selectCity(cityKey, lat, lng, label) {
+    function selectCity(btnEl, cityKey, lat, lng, label) {
       document.querySelectorAll('.city-btn').forEach(b => b.classList.remove('active'));
-      const eventTarget = event && event.target ? event.target : null;
-      if (eventTarget) eventTarget.classList.add('active');
-
-      const alertEl = document.getElementById('gpsAlertNotice');
-      if (alertEl) alertEl.style.display = 'none';
-
+      if (btnEl && btnEl.classList) {
+        btnEl.classList.add('active');
+      } else if (event && event.target && event.target.classList) {
+        event.target.classList.add('active');
+      }
       fetchPrayerForCoords(lat, lng, label);
     }
 
-    function executeGpsTrack() {
+    async function executeGpsTrack(isUserInitiated = false) {
+      const btn = document.getElementById('btnDetectLoc');
+      if (isUserInitiated && btn) {
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Detecting...';
+        btn.disabled = true;
+      }
+
       if (!navigator.geolocation) {
-        const alertEl = document.getElementById('gpsAlertNotice');
-        if (alertEl) alertEl.style.display = 'flex';
+        if (isUserInitiated && btn) {
+          btn.innerHTML = '<i class="fas fa-crosshairs"></i> Detect My Location';
+          btn.disabled = false;
+        }
         return;
       }
 
       navigator.geolocation.getCurrentPosition(
         async function(pos) {
-          if (pos && pos.coords) {
-            const gpsLat = pos.coords.latitude;
-            const gpsLng = pos.coords.longitude;
-
-            // Hide notification alert since GPS is active
-            const alertEl = document.getElementById('gpsAlertNotice');
-            if (alertEl) alertEl.style.display = 'none';
-
-            const preciseLabel = await reverseGeocodeWithOSM(gpsLat, gpsLng, 'Local Area', 'Saudi Arabia');
-            await fetchPrayerForCoords(gpsLat, gpsLng, preciseLabel);
+          try {
+            if (pos && pos.coords) {
+              const gpsLat = pos.coords.latitude;
+              const gpsLng = pos.coords.longitude;
+              const preciseLabel = await reverseGeocodeWithOSM(gpsLat, gpsLng, 'Local Area', '');
+              await fetchPrayerForCoords(gpsLat, gpsLng, preciseLabel);
+              document.querySelectorAll('.city-btn').forEach(b => b.classList.remove('active'));
+            }
+          } catch (e) {
+            console.warn('GPS location handling error:', e);
+          } finally {
+            if (btn) {
+              btn.innerHTML = '<i class="fas fa-crosshairs"></i> Detect My Location';
+              btn.disabled = false;
+            }
           }
         },
         function(err) {
-          console.log('GPS tracking status:', err.message);
-          const alertEl = document.getElementById('gpsAlertNotice');
-          if (alertEl) alertEl.style.display = 'flex';
+          console.log('GPS device status:', err.message);
           const locLabelEl = document.getElementById('prayerLocLabel');
           if (locLabelEl && currentCityLabel) {
-            locLabelEl.textContent = currentCityLabel + ' (GPS Off)';
+            locLabelEl.textContent = currentCityLabel;
+          }
+          if (btn) {
+            btn.innerHTML = '<i class="fas fa-crosshairs"></i> Detect My Location';
+            btn.disabled = false;
           }
         },
         { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
@@ -1170,7 +1181,7 @@
     }
 
     function triggerGpsRefresh() {
-      executeGpsTrack();
+      executeGpsTrack(true);
     }
 
     async function initAutoPrayerTimes() {
@@ -1205,16 +1216,16 @@
 
       await fetchPrayerForCoords(lat, lng, currentCityLabel);
 
-      // 3. High-Precision Auto GPS Tracking
-      executeGpsTrack();
-
-      // Listen for permission changes
+      // 3. If GPS permission was already granted previously by user, silently sync
       if (navigator.permissions && navigator.permissions.query) {
         try {
           const permStatus = await navigator.permissions.query({ name: 'geolocation' });
+          if (permStatus.state === 'granted') {
+            executeGpsTrack(false);
+          }
           permStatus.onchange = function() {
             if (permStatus.state === 'granted') {
-              executeGpsTrack();
+              executeGpsTrack(false);
             }
           };
         } catch (pe) {}

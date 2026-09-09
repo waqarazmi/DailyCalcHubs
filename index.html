@@ -1072,9 +1072,11 @@
         <img src="https://flagcdn.com/w20/kw.png" alt="KWD" width="16" height="11">
         <span>KWD/INR:</span> <span class="ticker-rate" id="tickerKwd">&#8377;306.33</span>
       </div>
-      <div class="ticker-item">
+      <div class="ticker-item" id="tickerGoldItem" title="Delhi 24K (999 Purity) Gold Market Reference Rate">
         <img src="https://flagcdn.com/w20/in.png" alt="INR" width="16" height="11">
-        <span>INDIA GOLD 24K (DELHI):</span> <span class="ticker-rate" id="tickerDelhiGold">&#8377;15,446/g</span>
+        <span>INDIA GOLD 24K (DELHI):</span>
+        <span class="ticker-rate" id="tickerDelhiGold">&#8377;15,380/g</span>
+        <span class="ticker-time" id="tickerGoldTime" style="font-size: 10px; color: #94a3b8; font-weight: 500; margin-left: 2px;"></span>
       </div>
       <div class="ticker-item">
         <i class="fas fa-mosque" style="color: #38bdf8;"></i>
@@ -1576,24 +1578,124 @@
       if (kEl) kEl.textContent = '\u20B9' + kwdInr.toFixed(2);
     }
 
+    // Gold Price State & Cache Tracking
+    const goldTracker = {
+      source: 'api.gold-api.com',
+      rate: null,
+      fetchedAt: null,
+      freshness: 'INITIALIZING'
+    };
+
+    function applyGoldRateToDOM(delhiRef, timeStr, isFromCache) {
+      const gEl = document.getElementById('tickerDelhiGold');
+      const tEl = document.getElementById('tickerGoldTime');
+      const itemEl = document.getElementById('tickerGoldItem');
+      if (gEl) gEl.textContent = '\u20B9' + delhiRef.toLocaleString('en-IN') + '/g';
+      if (tEl && timeStr) tEl.textContent = '\u2022 Updated ' + timeStr + ' IST';
+      if (itemEl) {
+        itemEl.title = 'Delhi 24K (999 Purity) Market Reference: \u20B9' + delhiRef.toLocaleString('en-IN') + '/g (' + (isFromCache ? 'Cached ' : 'Live ') + timeStr + ' IST)';
+      }
+    }
+
     async function fetchLiveGold() {
       const gEl = document.getElementById('tickerDelhiGold');
+      
+      // 1. Check same-day cache first for instant zero-delay display
       try {
-        const res = await fetch('https://api.gold-api.com/price/XAU/INR?ts=' + Date.now(), { cache: 'no-store' });
-        if (!res.ok) throw new Error('HTTP ' + res.status);
-        const data = await res.json();
-        if (data && typeof data.price === 'number' && data.price > 0) {
-          // 1 troy ounce = 31.1034768 grams.
-          // Landed Delhi 24K retail reference: spot/gram * 1.1453 (6% customs + 3% GST + 4.9% Delhi bullion premium)
-          const spotGram = data.price / 31.1034768;
-          const delhiRef = Math.round(spotGram * 1.1453);
-          if (gEl) gEl.textContent = '\u20B9' + delhiRef.toLocaleString('en-IN') + '/g';
-          return;
+        const cachedRaw = localStorage.getItem('dch_delhi_gold_cache');
+        if (cachedRaw) {
+          const cached = JSON.parse(cachedRaw);
+          const todayIso = new Date().toISOString().slice(0, 10);
+          if (cached && cached.rate && cached.dateStr === todayIso) {
+            goldTracker.rate = cached.rate;
+            goldTracker.fetchedAt = cached.fetchedAt;
+            goldTracker.source = cached.source || 'Same-day Verified Cache';
+            goldTracker.freshness = 'SAME_DAY_CACHE';
+            applyGoldRateToDOM(cached.rate, cached.timeStr, true);
+          }
         }
-        throw new Error('Invalid gold payload');
-      } catch (e) {
-        console.warn('Live gold fetch fallback:', e);
-        if (gEl) gEl.textContent = 'Temporarily unavailable';
+      } catch (ce) {}
+
+      // 2. Primary Source: Direct XAU in INR from api.gold-api.com (without broken query params)
+      let priceInr = null;
+      let sourceName = 'Gold-API (XAU/INR)';
+      
+      try {
+        const res = await fetch('https://api.gold-api.com/price/XAU/INR', { cache: 'no-store' });
+        if (res.ok) {
+          const data = await res.json();
+          if (data && typeof data.price === 'number' && data.price > 0) {
+            priceInr = data.price;
+          }
+        }
+      } catch (err1) {
+        console.warn('Primary Gold API fetch error:', err1);
+      }
+
+      // 3. Secondary Fallback: XAU in USD converted via live forex INR rate
+      if (!priceInr) {
+        try {
+          const resUsd = await fetch('https://api.gold-api.com/price/XAU', { cache: 'no-store' });
+          if (resUsd.ok) {
+            const dataUsd = await resUsd.json();
+            if (dataUsd && typeof dataUsd.price === 'number' && dataUsd.price > 0) {
+              const usdInr = (liveUsdRates && liveUsdRates.INR) ? liveUsdRates.INR : 94.8;
+              priceInr = dataUsd.price * usdInr;
+              sourceName = 'Gold-API (XAU/USD converted)';
+            }
+          }
+        } catch (err2) {
+          console.warn('Secondary Gold API fetch error:', err2);
+        }
+      }
+
+      // 4. If price obtained, calculate landed Delhi 24K reference benchmark
+      if (priceInr && priceInr > 0) {
+        const spotGram = priceInr / 31.1034768; // 1 troy oz = 31.1034768g
+        // Landed Delhi 24K retail benchmark: 6% customs + 3% GST + 4.9% Delhi bullion spread = factor 1.1453
+        const delhiRef = Math.round(spotGram * 1.1453);
+        
+        let istTimeStr = '';
+        try {
+          istTimeStr = new Date().toLocaleTimeString('en-IN', {
+            timeZone: 'Asia/Kolkata',
+            hour: 'numeric',
+            minute: '2-digit',
+            hour12: true
+          });
+        } catch (te) {
+          istTimeStr = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        }
+
+        goldTracker.rate = delhiRef;
+        goldTracker.fetchedAt = Date.now();
+        goldTracker.source = sourceName;
+        goldTracker.freshness = 'LIVE';
+
+        applyGoldRateToDOM(delhiRef, istTimeStr, false);
+
+        // Save to same-day cache
+        try {
+          const cachePayload = {
+            rate: delhiRef,
+            timeStr: istTimeStr,
+            fetchedAt: Date.now(),
+            dateStr: new Date().toISOString().slice(0, 10),
+            source: sourceName
+          };
+          localStorage.setItem('dch_delhi_gold_cache', JSON.stringify(cachePayload));
+        } catch (se) {}
+        return;
+      }
+
+      // 5. If all network requests failed, check if we already have a valid rate rendered
+      if (goldTracker.rate) {
+        return; // Keep existing rate and timestamp
+      }
+
+      // 6. Only as last resort if zero data available
+      if (gEl && !gEl.textContent.includes('/g')) {
+        gEl.textContent = 'Temporarily unavailable';
       }
     }
 
@@ -1602,7 +1704,7 @@
       fetchLiveForex();
       fetchLiveGold();
       setInterval(fetchLiveForex, 60000);
-      setInterval(fetchLiveGold, 60000);
+      setInterval(fetchLiveGold, 180000); // 3 minutes interval
     });
   </script>
 </body>
