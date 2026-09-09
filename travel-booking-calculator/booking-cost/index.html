@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Booking Cost &amp; Fee Calculator — Hidden Charges &amp; Card Surcharge Estimator</title>
+  <meta name="description" content="Calculate your true online booking checkout cost including platform convenience fees, credit card surcharges, travel insurance, and voucher discounts.">
+  <meta name="keywords" content="booking fee calculator, convenience fee estimator, hidden travel fees calculator, payment gateway surcharge calculator, checkout price calculator">
+  <link rel="canonical" href="https://dailycalchubs.com/travel-booking-calculator/booking-cost/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://dailycalchubs.com/travel-booking-calculator/booking-cost/">
+  <meta property="og:title" content="Booking Cost &amp; Fee Calculator — Hidden Charges &amp; Card Surcharge Estimator">
+  <meta property="og:description" content="Calculate your true online booking checkout cost including platform convenience fees, credit card surcharges, travel insurance, and voucher discounts.">
+  <meta property="og:image" content="https://dailycalchubs.com/og-image.jpg">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Booking Cost &amp; Fee Calculator — Hidden Charges &amp; Card Surcharge Estimator">
+  <meta name="twitter:description" content="Calculate your true online booking checkout cost including platform convenience fees, credit card surcharges, travel insurance, and voucher discounts.">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6944579701716470" crossorigin="anonymous"></script>
+
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-18Y3LNHDR8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-18Y3LNHDR8');
+  </script>
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Booking Cost & Fee Calculator",
+    "url": "https://dailycalchubs.com/travel-booking-calculator/booking-cost/",
+    "applicationCategory": "TravelApplication",
+    "operatingSystem": "All",
+    "description": "Calculate true checkout booking prices factoring platform fees, payment gateway surcharges, insurance, and voucher discounts.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Why do online travel booking sites charge convenience fees?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Online travel agents (OTAs) and booking engines charge convenience or platform service fees to cover payment gateway processing, customer support overhead, server maintenance, and transaction clearing fees."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How can I avoid credit card payment surcharges?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "In Saudi Arabia, paying with a domestic Mada debit card or Apple Pay linked to Mada often carries zero processing surcharge. In contrast, international credit cards or foreign currency cards usually attract a 2% to 3% FX markup fee."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is travel cancellation protection worth the extra cost?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Cancellation protection (or refundable waiver) is beneficial for trips planned several months ahead or during volatile weather/work schedules. For non-negotiable fixed dates, standard tickets with travel insurance are typically much more cost-effective."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --bg-light: #fff9f9;
+      --bg-white: #ffffff;
+      --navy-dark: #0f172a;
+      --navy-footer: #081024;
+      --crimson-primary: #e11d48;
+      --crimson-dark: #be123c;
+      --crimson-light: #fff1f2;
+      --crimson-border: #fecdd3;
+      --text-dark: #1e293b;
+      --text-muted: #64748b;
+      --border-color: #e2e8f0;
+      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.08), 0 2px 4px -2px rgba(0,0,0,0.05);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--font-main); background: var(--bg-light); color: var(--text-dark); line-height: 1.6; }
+    a { color: var(--crimson-primary); text-decoration: none; }
+    a:hover { color: var(--crimson-dark); }
+
+    /* Header */
+    .site-header { background: var(--bg-white); border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 50; }
+    .header-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; height: 70px; display: flex; align-items: center; justify-content: space-between; }
+    .logo-area { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 20px; color: var(--navy-dark); text-decoration: none; }
+    .logo-icon { width: 36px; height: 36px; background: linear-gradient(135deg, #e11d48, #be123c); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: 18px; }
+    .header-nav-container { display: flex; align-items: center; }
+    .main-nav { display: flex; align-items: center; gap: 6px; }
+    .nav-link { padding: 8px 12px; font-size: 13.5px; font-weight: 600; color: #475569; border-radius: 6px; transition: all 0.2s; white-space: nowrap; }
+    .nav-link:hover, .nav-link.active { color: var(--crimson-primary); background: var(--crimson-light); }
+    .mobile-menu-toggle { display: none; background: none; border: none; font-size: 20px; color: var(--text-dark); cursor: pointer; padding: 6px; }
+
+    /* Breadcrumbs */
+    .breadcrumbs-section { background: var(--bg-white); border-bottom: 1px solid var(--border-color); padding: 12px 0; }
+    .breadcrumbs-wrap { max-width: 1200px; margin: 0 auto; padding: 0 20px; font-size: 13px; color: var(--text-muted); display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .breadcrumbs-wrap a { color: var(--text-muted); }
+    .breadcrumbs-wrap a:hover { color: var(--crimson-primary); }
+
+    /* Hero Section */
+    .calc-hero { background: linear-gradient(135deg, #fff1f2 0%, #ffffff 100%); padding: 40px 20px 30px; border-bottom: 1px solid var(--crimson-border); }
+    .hero-content { max-width: 900px; margin: 0 auto; text-align: center; }
+    .badge-pill { display: inline-flex; align-items: center; gap: 6px; background: #ffe4e6; color: var(--crimson-dark); padding: 5px 14px; border-radius: 20px; font-size: 12px; font-weight: 700; margin-bottom: 14px; border: 1px solid var(--crimson-border); }
+    .calc-hero h1 { font-size: 34px; font-weight: 800; color: var(--navy-dark); margin-bottom: 12px; letter-spacing: -0.5px; }
+    .calc-hero p { font-size: 16px; color: var(--text-muted); max-width: 700px; margin: 0 auto 16px; }
+
+    /* Main Calculator Container */
+    .main-container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+    .calculator-card { background: var(--bg-white); border-radius: 16px; border: 1px solid var(--border-color); box-shadow: var(--shadow-md); padding: 32px; margin-bottom: 40px; }
+    
+    .calc-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 32px; }
+    @media (max-width: 860px) {
+      .calc-grid { grid-template-columns: 1fr; }
+    }
+
+    .section-subtitle { font-size: 17px; font-weight: 700; color: var(--navy-dark); margin-bottom: 20px; display: flex; align-items: center; gap: 8px; border-bottom: 2px solid var(--crimson-light); padding-bottom: 10px; }
+    .section-subtitle i { color: var(--crimson-primary); }
+
+    .input-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+    @media (max-width: 600px) {
+      .input-row { grid-template-columns: 1fr; }
+    }
+
+    .input-group { margin-bottom: 16px; }
+    .input-group label { display: block; font-size: 13.5px; font-weight: 600; color: var(--text-dark); margin-bottom: 6px; }
+    .input-wrap { position: relative; display: flex; align-items: center; }
+    .input-wrap span.unit { position: absolute; left: 14px; font-weight: 700; font-size: 13.5px; color: var(--crimson-primary); }
+    .input-wrap span.unit-right { position: absolute; right: 14px; font-size: 13px; color: var(--text-muted); }
+    .input-wrap input, .input-wrap select { width: 100%; padding: 11px 14px; border: 1.5px solid var(--border-color); border-radius: 8px; font-size: 14.5px; font-weight: 600; font-family: inherit; color: var(--navy-dark); background: #fdfefe; transition: all 0.2s; }
+    .input-wrap input.has-unit { padding-left: 54px; }
+    .input-wrap select { padding-left: 14px; cursor: pointer; }
+    .input-wrap input:focus, .input-wrap select:focus { border-color: var(--crimson-primary); outline: none; background: #fff; box-shadow: 0 0 0 3px rgba(225, 29, 72, 0.12); }
+    .field-hint { font-size: 11.5px; color: var(--text-muted); margin-top: 4px; display: block; }
+
+    /* Results Panel */
+    .results-panel { background: linear-gradient(145deg, #ffffff 0%, #fff5f6 100%); border-radius: 12px; border: 1.5px solid var(--crimson-border); padding: 24px; display: flex; flex-direction: column; justify-content: space-between; }
+    .result-header { text-align: center; margin-bottom: 20px; }
+    .result-badge { font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--crimson-dark); letter-spacing: 0.8px; margin-bottom: 4px; }
+    .total-amount-display { font-size: 38px; font-weight: 800; color: var(--crimson-primary); letter-spacing: -0.5px; }
+    .total-sub { font-size: 13px; color: var(--text-muted); font-weight: 500; }
+
+    .result-stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+    .stat-pill { background: white; border: 1px solid var(--crimson-border); border-radius: 8px; padding: 12px; text-align: center; }
+    .stat-pill .stat-label { font-size: 11.5px; font-weight: 600; color: var(--text-muted); display: block; margin-bottom: 2px; }
+    .stat-pill .stat-val { font-size: 16px; font-weight: 700; color: var(--navy-dark); }
+
+    .breakdown-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; font-size: 13px; }
+    .breakdown-table tr { border-bottom: 1px dashed var(--border-color); }
+    .breakdown-table tr:last-child { border-bottom: none; }
+    .breakdown-table td { padding: 8px 0; }
+    .breakdown-table td.cost-num { text-align: right; font-weight: 700; color: var(--navy-dark); }
+    .breakdown-table tr.highlight-row td { color: var(--crimson-primary); font-weight: 700; font-size: 14px; }
+    .breakdown-table tr.discount-row td { color: #059669; font-weight: 700; }
+
+    .btn-action-row { display: flex; gap: 12px; margin-top: 14px; }
+    .btn-calc { flex: 1; padding: 12px; border: none; border-radius: 8px; font-weight: 700; font-size: 14px; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 6px; }
+    .btn-primary-calc { background: var(--crimson-primary); color: white; }
+    .btn-primary-calc:hover { background: var(--crimson-dark); transform: translateY(-1px); }
+    .btn-reset { background: #f1f5f9; color: var(--text-dark); }
+    .btn-reset:hover { background: #e2e8f0; }
+
+    /* Related Hub Navigation Chips */
+    .tools-nav-bar { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 30px; justify-content: center; }
+    .tool-chip { padding: 8px 14px; border-radius: 20px; font-size: 12.5px; font-weight: 600; border: 1px solid var(--border-color); background: white; color: var(--text-dark); transition: all 0.2s; text-decoration: none; }
+    .tool-chip:hover { border-color: var(--crimson-primary); color: var(--crimson-primary); }
+    .tool-chip.active { background: var(--crimson-primary); color: white; border-color: var(--crimson-primary); }
+
+    /* Content & Editorial Section */
+    .editorial-section { background: white; border-radius: 16px; border: 1px solid var(--border-color); padding: 36px; margin-bottom: 40px; }
+    .editorial-section h2 { font-size: 24px; font-weight: 800; color: var(--navy-dark); margin-bottom: 16px; letter-spacing: -0.3px; }
+    .editorial-section h3 { font-size: 18px; font-weight: 700; color: var(--navy-dark); margin: 24px 0 10px; }
+    .editorial-section p { font-size: 14.5px; color: #475569; margin-bottom: 16px; line-height: 1.7; }
+    .editorial-section ul { margin-left: 20px; margin-bottom: 16px; font-size: 14.5px; color: #475569; }
+    .editorial-section li { margin-bottom: 8px; }
+
+    .info-callout { background: var(--crimson-light); border-left: 4px solid var(--crimson-primary); padding: 16px; border-radius: 0 8px 8px 0; margin: 20px 0; font-size: 13.5px; color: var(--navy-dark); }
+    .info-callout strong { color: var(--crimson-dark); }
+
+    /* FAQ Section */
+    .faq-section { background: white; border-radius: 16px; border: 1px solid var(--border-color); padding: 36px; margin-bottom: 40px; }
+    .faq-item { border-bottom: 1px solid var(--border-color); padding: 18px 0; }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-question { font-size: 16px; font-weight: 700; color: var(--navy-dark); cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+    .faq-question i { font-size: 14px; color: var(--crimson-primary); transition: transform 0.2s; }
+    .faq-answer { font-size: 14px; color: #475569; line-height: 1.6; margin-top: 10px; }
+
+    /* Footer */
+    .site-footer { background: var(--navy-footer); color: #cbd5e1; padding: 48px 20px 24px; font-size: 13.5px; }
+    .footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 32px; margin-bottom: 36px; }
+    @media (max-width: 768px) {
+      .footer-container { grid-template-columns: 1fr; }
+    }
+    .footer-brand h4 { font-size: 18px; font-weight: 800; color: white; margin-bottom: 12px; }
+    .footer-brand p { font-size: 13px; line-height: 1.6; color: #94a3b8; }
+    .footer-col h5 { font-size: 14px; font-weight: 700; color: white; margin-bottom: 14px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 13px; }
+    .footer-col a:hover { color: var(--crimson-primary); }
+    .footer-bottom { border-top: 1px solid #1e293b; padding-top: 24px; text-align: center; font-size: 12.5px; color: #64748b; }
+    .disclaimer-box { background: rgba(225, 29, 72, 0.08); border: 1px solid rgba(225, 29, 72, 0.2); border-radius: 8px; padding: 12px; font-size: 12px; color: #fecdd3; margin-top: 16px; text-align: left; }
+  </style>
+</head>
+<body>
+
+  <!-- Site Header with 8-tool sequence -->
+  <header class="site-header">
+    <div class="header-container">
+      <a href="/" class="logo-area">
+        <div class="logo-icon"><i class="fas fa-calculator"></i></div>
+        <span>DailyCalcHubs</span>
+      </a>
+
+      <button class="mobile-menu-toggle" id="mobileMenuBtn" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <div class="header-nav-container" id="navContainer">
+        <nav class="main-nav">
+          <a href="/" class="nav-link">Home</a>
+          <a href="/saudi-remittance-calculator/" class="nav-link">Remittance</a>
+          <a href="/prayer-times-calculator/" class="nav-link">Prayer Times</a>
+          <a href="/saudi-salary-calculator/" class="nav-link">Salary</a>
+          <a href="/saudi-iqama-calculator/" class="nav-link">Iqama</a>
+          <a href="/everyday-smart-calculator/" class="nav-link">Everyday</a>
+          <a href="/shariah-sip-calculator/" class="nav-link">Shariah SIP</a>
+          <a href="/travel-booking-calculator/" class="nav-link active">Travel &amp; Booking</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Breadcrumbs -->
+  <section class="breadcrumbs-section">
+    <div class="breadcrumbs-wrap">
+      <a href="/"><i class="fas fa-home"></i> Home</a>
+      <i class="fas fa-chevron-right" style="font-size: 10px;"></i>
+      <a href="/travel-booking-calculator/">Travel &amp; Booking Hub</a>
+      <i class="fas fa-chevron-right" style="font-size: 10px;"></i>
+      <span>Booking Fee Calculator</span>
+    </div>
+  </section>
+
+  <!-- Hero -->
+  <section class="calc-hero">
+    <div class="hero-content">
+      <div class="badge-pill"><i class="fas fa-receipt"></i> Checkout Transparency Engine</div>
+      <h1>Booking Cost &amp; Fee Calculator</h1>
+      <p>Uncover hidden travel platform fees, payment card surcharges, mandatory booking convenience levies, and voucher discounts before entering payment info.</p>
+    </div>
+  </section>
+
+  <div class="main-container">
+    <!-- Travel Suite Sub-nav -->
+    <div class="tools-nav-bar">
+      <a href="/travel-booking-calculator/" class="tool-chip"><i class="fas fa-th-large"></i> All Travel Tools</a>
+      <a href="/travel-booking-calculator/travel-budget/" class="tool-chip"><i class="fas fa-wallet"></i> Travel Budget</a>
+      <a href="/travel-booking-calculator/flight-cost/" class="tool-chip"><i class="fas fa-plane-departure"></i> Flight Cost</a>
+      <a href="/travel-booking-calculator/hotel-cost/" class="tool-chip"><i class="fas fa-hotel"></i> Hotel Cost</a>
+      <a href="/travel-booking-calculator/booking-cost/" class="tool-chip active"><i class="fas fa-receipt"></i> Booking Fees</a>
+      <a href="/travel-booking-calculator/expense-split/" class="tool-chip"><i class="fas fa-users"></i> Expense Split</a>
+    </div>
+
+    <!-- Main Booking Calculator Card -->
+    <div class="calculator-card">
+      <div class="calc-grid">
+        
+        <!-- Input Form -->
+        <div class="calc-inputs">
+          <div class="section-subtitle"><i class="fas fa-tags"></i> Reservation &amp; Checkout Inputs</div>
+
+          <div class="input-row">
+            <div class="input-group">
+              <label for="baseAmount">Base Reservation Amount</label>
+              <div class="input-wrap">
+                <span class="unit">SAR</span>
+                <input type="number" id="baseAmount" class="has-unit" value="1800" min="20" step="50">
+              </div>
+              <span class="field-hint">Ticket, package, hotel or activity baseline rate</span>
+            </div>
+
+            <div class="input-group">
+              <label for="platformFeeType">Platform / Convenience Fee</label>
+              <div class="input-wrap">
+                <select id="platformFeeType">
+                  <option value="pct3" selected>3% Platform Convenience Fee</option>
+                  <option value="pct5">5% Booking Engine Fee</option>
+                  <option value="flat35">Flat SAR 35 Service Charge</option>
+                  <option value="flat50">Flat SAR 50 Service Charge</option>
+                  <option value="zero">0% (Zero Platform Surcharge)</option>
+                </select>
+              </div>
+              <span class="field-hint">Service charge levied by booking website/OTA</span>
+            </div>
+          </div>
+
+          <div class="input-row">
+            <div class="input-group">
+              <label for="paymentMethod">Payment Method Surcharge</label>
+              <div class="input-wrap">
+                <select id="paymentMethod">
+                  <option value="2.5" selected>Credit Card (2.5% FX / Processing)</option>
+                  <option value="0">Mada / Apple Pay (0% Local Card)</option>
+                  <option value="1.8">Visa / Mastercard Debit (1.8%)</option>
+                  <option value="3.5">International Foreign Card (3.5%)</option>
+                  <option value="2.0">Tabby / Tamara Installment (2.0%)</option>
+                </select>
+              </div>
+              <span class="field-hint">Card brand or cross-border settlement fee</span>
+            </div>
+
+            <div class="input-group">
+              <label for="travelInsurance">Optional Travel Insurance</label>
+              <div class="input-wrap">
+                <span class="unit">SAR</span>
+                <input type="number" id="travelInsurance" class="has-unit" value="85" min="0" step="10">
+              </div>
+              <span class="field-hint">Medical, trip delay &amp; luggage protection</span>
+            </div>
+          </div>
+
+          <div class="input-row">
+            <div class="input-group">
+              <label for="cancelWaiver">Cancellation Protection Waiver</label>
+              <div class="input-wrap">
+                <span class="unit">SAR</span>
+                <input type="number" id="cancelWaiver" class="has-unit" value="50" min="0" step="10">
+              </div>
+              <span class="field-hint">Full refund guarantee or flexible date change</span>
+            </div>
+
+            <div class="input-group">
+              <label for="promoDiscount">Promo Code / Coupon Discount</label>
+              <div class="input-wrap">
+                <span class="unit">SAR</span>
+                <input type="number" id="promoDiscount" class="has-unit" value="100" min="0" step="10">
+              </div>
+              <span class="field-hint">Deducted voucher or promotional saving</span>
+            </div>
+          </div>
+
+          <div class="btn-action-row">
+            <button class="btn-calc btn-primary-calc" id="recalcBookingBtn"><i class="fas fa-calculator"></i> Calculate Net Checkout</button>
+            <button class="btn-calc btn-reset" id="resetBookingBtn"><i class="fas fa-undo"></i> Reset</button>
+          </div>
+        </div>
+
+        <!-- Output Display Panel -->
+        <div class="results-panel">
+          <div>
+            <div class="result-header">
+              <div class="result-badge">Final Checkout Payable Price</div>
+              <div class="total-amount-display" id="totalCheckoutAmount">SAR 1,882</div>
+              <div class="total-sub" id="checkoutSub">Base SAR 1,800 + Fees - Discount</div>
+            </div>
+
+            <div class="result-stats-grid">
+              <div class="stat-pill">
+                <span class="stat-label">Total Extra Surcharges</span>
+                <span class="stat-val" id="totalSurcharges">SAR 182</span>
+              </div>
+              <div class="stat-pill">
+                <span class="stat-label">Effective Surcharge %</span>
+                <span class="stat-val" id="effectiveSurchargePct">+10.1%</span>
+              </div>
+            </div>
+
+            <table class="breakdown-table">
+              <tbody>
+                <tr>
+                  <td>Base Reservation Fare</td>
+                  <td class="cost-num" id="rowBaseFare">SAR 1,800</td>
+                </tr>
+                <tr>
+                  <td>Platform / Convenience Fee</td>
+                  <td class="cost-num" id="rowPlatformFee">SAR 54</td>
+                </tr>
+                <tr>
+                  <td>Payment Gateway Processing</td>
+                  <td class="cost-num" id="rowCardFee">SAR 43</td>
+                </tr>
+                <tr>
+                  <td>Travel Protection Insurance</td>
+                  <td class="cost-num" id="rowInsurance">SAR 85</td>
+                </tr>
+                <tr>
+                  <td>Cancellation Waiver Protection</td>
+                  <td class="cost-num" id="rowWaiver">SAR 50</td>
+                </tr>
+                <tr class="discount-row">
+                  <td>Coupon Voucher Deduction</td>
+                  <td class="cost-num" id="rowDiscount">-SAR 100</td>
+                </tr>
+                <tr class="highlight-row">
+                  <td><strong>Net Billed Total</strong></td>
+                  <td class="cost-num" id="rowFinalBilled">SAR 1,882</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="info-callout" style="margin: 0; font-size: 12.5px;">
+            <i class="fas fa-shield-check" style="color: var(--crimson-primary); margin-right: 4px;"></i>
+            <strong>Payment Tip:</strong> When paying in Saudi Arabia, using a <strong>Mada</strong> debit card or Apple Pay often eliminates the 2%–3% international card processing surcharge altogether.
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Editorial & Strategy Guide -->
+    <div class="editorial-section">
+      <h2>How Online Travel Agencies Structure Checkout Fees</h2>
+      <p>Have you ever found a great flight or hotel deal online, only to watch the price spike right before you click "Confirm &amp; Pay"? This practice, known in the consumer protection industry as <em>drip pricing</em>, separates ancillary fees from the headline quote. Our <strong>Booking Cost &amp; Fee Calculator</strong> illuminates these hidden layers so you can make informed comparisons between booking direct vs. using third-party aggregators.</p>
+
+      <h3>1. Identifying the Anatomy of Booking Charges</h3>
+      <p>Common line-item markups encountered during travel checkout include:</p>
+      <ul>
+        <li><strong>Platform Convenience Fees:</strong> Some budget airlines and travel portals levy non-refundable administration fees (between 25 and 65 SAR per ticket) simply to process digital reservations.</li>
+        <li><strong>Payment Gateway &amp; FX Surcharges:</strong> If the merchant's payment processor is registered outside Saudi Arabia (such as in Dublin, Singapore, or the Netherlands), your local bank may classify the purchase as an international transaction—charging a 1.5% to 2.8% FX conversion fee even if billed in SAR.</li>
+        <li><strong>Opt-Out Add-ons:</strong> Booking sites often pre-check optional items like baggage insurance, SMS notification updates, carbon offsets, or refundable ticket protections. Always uncheck items you do not specifically require.</li>
+      </ul>
+
+      <h3>2. How to Save on Every Travel Transaction</h3>
+      <ul>
+        <li><strong>Check Mada Compatibility:</strong> Use Mada debit cards on Saudi domestic travel portals (like flynas, Saudia, Almosafer) to take advantage of zero-surcharge debit interchange rules.</li>
+        <li><strong>Compare Direct vs Aggregator:</strong> While aggregators offer handy comparison search engines, booking directly on the airline or hotel chain portal typically guarantees fee exemptions and straightforward refunds if plans change.</li>
+      </ul>
+
+      <div class="info-callout">
+        <strong>Neutral Financial Tool:</strong> DailyCalcHubs has zero commercial affiliation with booking portals or airlines. We provide transparent mathematical tools to help you protect your hard-earned travel savings.
+      </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <div class="faq-section">
+      <h2>Frequently Asked Questions About Booking Fees</h2>
+
+      <div class="faq-item">
+        <div class="faq-question">Why do online travel booking sites charge convenience fees? <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-answer">Online travel agents (OTAs) and booking engines charge convenience or platform service fees to cover payment gateway processing, customer support overhead, server maintenance, and transaction clearing fees.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">How can I avoid credit card payment surcharges? <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-answer">In Saudi Arabia, paying with a domestic Mada debit card or Apple Pay linked to Mada often carries zero processing surcharge. In contrast, international credit cards or foreign currency cards usually attract a 2% to 3% FX markup fee.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">Is travel cancellation protection worth the extra cost? <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-answer">Cancellation protection (or refundable waiver) is beneficial for trips planned several months ahead or during volatile weather/work schedules. For non-negotiable fixed dates, standard tickets with travel insurance are typically much more cost-effective.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">What should I do if a booking portal charges fees in foreign currency? <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-answer">Always select to be charged in the merchant's base currency rather than opting into Dynamic Currency Conversion (DCC). DCC rates set by checkout payment terminals frequently embed high markups of 4% to 8% compared to standard interbank rates.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <h4>DailyCalcHubs</h4>
+        <p>Your comprehensive daily life financial, administrative, and travel estimation suite. Reliable, clear calculations for Saudi Arabia, the GCC, and worldwide travelers.</p>
+        <div class="disclaimer-box">
+          <i class="fas fa-shield-alt"></i> <strong>Disclaimer:</strong> DailyCalcHubs provides booking cost and convenience fee estimations for consumer informational purposes only. We do not process payments or issue travel tickets. Verify all final terms with your payment issuer and booking merchant.
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h5>Travel Tools</h5>
+        <ul>
+          <li><a href="/travel-booking-calculator/">Travel Hub Overview</a></li>
+          <li><a href="/travel-booking-calculator/travel-budget/">Travel Budget Planner</a></li>
+          <li><a href="/travel-booking-calculator/flight-cost/">Flight Cost Estimator</a></li>
+          <li><a href="/travel-booking-calculator/hotel-cost/">Hotel Stay Calculator</a></li>
+          <li><a href="/travel-booking-calculator/booking-cost/">Booking Fee Breakdown</a></li>
+          <li><a href="/travel-booking-calculator/expense-split/">Travel Expense Splitter</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Popular Calculators</h5>
+        <ul>
+          <li><a href="/saudi-remittance-calculator/">Remittance Calculator</a></li>
+          <li><a href="/prayer-times-calculator/">Prayer Times</a></li>
+          <li><a href="/saudi-salary-calculator/">Saudi Salary Calculator</a></li>
+          <li><a href="/saudi-iqama-calculator/">Iqama Fee Calculator</a></li>
+          <li><a href="/everyday-smart-calculator/">Everyday Smart Calc</a></li>
+          <li><a href="/shariah-sip-calculator/">Shariah SIP Calculator</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Legal &amp; About</h5>
+        <ul>
+          <li><a href="/about/">About Us</a></li>
+          <li><a href="/contact/">Contact Support</a></li>
+          <li><a href="/privacy-policy/">Privacy Policy</a></li>
+          <li><a href="/terms/">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      &copy; 2026 DailyCalcHubs. All rights reserved. Precision everyday calculation engines.
+    </div>
+  </footer>
+
+  <!-- Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mobile menu toggle
+      const menuBtn = document.getElementById('mobileMenuBtn');
+      const navContainer = document.getElementById('navContainer');
+      if (menuBtn && navContainer) {
+        menuBtn.addEventListener('click', function() {
+          navContainer.classList.toggle('open');
+        });
+      }
+
+      // Calculation elements
+      const baseAmountInput = document.getElementById('baseAmount');
+      const platformFeeTypeSelect = document.getElementById('platformFeeType');
+      const paymentMethodSelect = document.getElementById('paymentMethod');
+      const travelInsuranceInput = document.getElementById('travelInsurance');
+      const cancelWaiverInput = document.getElementById('cancelWaiver');
+      const promoDiscountInput = document.getElementById('promoDiscount');
+
+      // Displays
+      const totalCheckoutAmountDisplay = document.getElementById('totalCheckoutAmount');
+      const checkoutSub = document.getElementById('checkoutSub');
+      const totalSurchargesDisplay = document.getElementById('totalSurcharges');
+      const effectiveSurchargePctDisplay = document.getElementById('effectiveSurchargePct');
+
+      // Table rows
+      const rowBaseFare = document.getElementById('rowBaseFare');
+      const rowPlatformFee = document.getElementById('rowPlatformFee');
+      const rowCardFee = document.getElementById('rowCardFee');
+      const rowInsurance = document.getElementById('rowInsurance');
+      const rowWaiver = document.getElementById('rowWaiver');
+      const rowDiscount = document.getElementById('rowDiscount');
+      const rowFinalBilled = document.getElementById('rowFinalBilled');
+
+      function calculateBooking() {
+        const baseAmount = Math.max(0, parseFloat(baseAmountInput.value) || 0);
+        const cardPct = Math.max(0, parseFloat(paymentMethodSelect.value) || 0);
+        const insurance = Math.max(0, parseFloat(travelInsuranceInput.value) || 0);
+        const waiver = Math.max(0, parseFloat(cancelWaiverInput.value) || 0);
+        const discount = Math.max(0, parseFloat(promoDiscountInput.value) || 0);
+
+        // Platform fee
+        let platformFee = 0;
+        const pVal = platformFeeTypeSelect.value;
+        if (pVal === 'pct3') {
+          platformFee = (baseAmount * 0.03);
+        } else if (pVal === 'pct5') {
+          platformFee = (baseAmount * 0.05);
+        } else if (pVal === 'flat35') {
+          platformFee = 35;
+        } else if (pVal === 'flat50') {
+          platformFee = 50;
+        } else {
+          platformFee = 0;
+        }
+
+        // Subtotal subject to card processing
+        const preCardSubtotal = baseAmount + platformFee + insurance + waiver;
+        const cardFee = (preCardSubtotal * cardPct) / 100;
+
+        // Final checkout price (cannot be negative)
+        const grossTotal = preCardSubtotal + cardFee;
+        const finalPayable = Math.max(0, grossTotal - discount);
+
+        // Extra surcharges & percentage
+        const totalFees = platformFee + cardFee + insurance + waiver;
+        const surchargeRatio = baseAmount > 0 ? ((totalFees - discount) / baseAmount) * 100 : 0;
+        const sign = surchargeRatio >= 0 ? '+' : '';
+
+        // Displays
+        totalCheckoutAmountDisplay.textContent = 'SAR ' + Math.round(finalPayable).toLocaleString();
+        checkoutSub.textContent = `Base SAR ${Math.round(baseAmount).toLocaleString()} + Fees - Voucher`;
+        totalSurchargesDisplay.textContent = 'SAR ' + Math.round(totalFees).toLocaleString();
+        effectiveSurchargePctDisplay.textContent = `${sign}${surchargeRatio.toFixed(1)}%`;
+
+        rowBaseFare.textContent = 'SAR ' + Math.round(baseAmount).toLocaleString();
+        rowPlatformFee.textContent = 'SAR ' + Math.round(platformFee).toLocaleString();
+        rowCardFee.textContent = 'SAR ' + Math.round(cardFee).toLocaleString();
+        rowInsurance.textContent = 'SAR ' + Math.round(insurance).toLocaleString();
+        rowWaiver.textContent = 'SAR ' + Math.round(waiver).toLocaleString();
+        rowDiscount.textContent = '-SAR ' + Math.round(discount).toLocaleString();
+        rowFinalBilled.textContent = 'SAR ' + Math.round(finalPayable).toLocaleString();
+      }
+
+      // Attach event listeners
+      const inputs = [baseAmountInput, platformFeeTypeSelect, paymentMethodSelect, travelInsuranceInput, cancelWaiverInput, promoDiscountInput];
+      inputs.forEach(input => {
+        if (input) {
+          input.addEventListener('input', calculateBooking);
+          input.addEventListener('change', calculateBooking);
+        }
+      });
+
+      const recalcBtn = document.getElementById('recalcBookingBtn');
+      if (recalcBtn) recalcBtn.addEventListener('click', calculateBooking);
+
+      const resetBtn = document.getElementById('resetBookingBtn');
+      if (resetBtn) {
+        resetBtn.addEventListener('click', function() {
+          baseAmountInput.value = 1800;
+          platformFeeTypeSelect.value = "pct3";
+          paymentMethodSelect.value = "2.5";
+          travelInsuranceInput.value = 85;
+          cancelWaiverInput.value = 50;
+          promoDiscountInput.value = 100;
+          calculateBooking();
+        });
+      }
+
+      // Initial run
+      calculateBooking();
+    });
+  </script>
+</body>
+</html>
