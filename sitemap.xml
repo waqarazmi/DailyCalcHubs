@@ -216,27 +216,22 @@
 
   <!-- Legal & Static Pages -->
   <url>
-    <loc>https://dailycalchubs.com/about.html</loc>
+    <loc>https://dailycalchubs.com/about/</loc>
     <lastmod>2026-08-23</lastmod>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://dailycalchubs.com/privacy-policy.html</loc>
+    <loc>https://dailycalchubs.com/privacy-policy/</loc>
     <lastmod>2026-08-23</lastmod>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://dailycalchubs.com/terms.html</loc>
+    <loc>https://dailycalchubs.com/terms/</loc>
     <lastmod>2026-08-23</lastmod>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://dailycalchubs.com/disclaimer.html</loc>
-    <lastmod>2026-08-23</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://dailycalchubs.com/contact.html</loc>
+    <loc>https://dailycalchubs.com/contact/</loc>
     <lastmod>2026-08-23</lastmod>
     <priority>0.80</priority>
   </url>
