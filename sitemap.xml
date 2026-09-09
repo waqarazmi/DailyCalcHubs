@@ -2,13 +2,63 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://dailycalchubs.com/</loc>
-    <lastmod>2026-09-08</lastmod>
+    <lastmod>2026-09-09</lastmod>
     <priority>1.00</priority>
   </url>
   <url>
     <loc>https://dailycalchubs.com/saudi-remittance-calculator/</loc>
-    <lastmod>2026-09-08</lastmod>
+    <lastmod>2026-09-09</lastmod>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://dailycalchubs.com/saudi-remittance-calculator/sar-to-inr/</loc>
+    <lastmod>2026-09-09</lastmod>
     <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://dailycalchubs.com/saudi-remittance-calculator/sar-to-pkr/</loc>
+    <lastmod>2026-09-09</lastmod>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://dailycalchubs.com/saudi-remittance-calculator/sar-to-bdt/</loc>
+    <lastmod>2026-09-09</lastmod>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://dailycalchubs.com/saudi-remittance-calculator/sar-to-php/</loc>
+    <lastmod>2026-09-09</lastmod>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://dailycalchubs.com/saudi-remittance-calculator/sar-to-npr/</loc>
+    <lastmod>2026-09-09</lastmod>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://dailycalchubs.com/saudi-remittance-calculator/sar-to-lkr/</loc>
+    <lastmod>2026-09-09</lastmod>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://dailycalchubs.com/saudi-remittance-calculator/remittance-fee/</loc>
+    <lastmod>2026-09-09</lastmod>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://dailycalchubs.com/saudi-remittance-calculator/remittance-comparison/</loc>
+    <lastmod>2026-09-09</lastmod>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://dailycalchubs.com/saudi-remittance-calculator/live-sar-exchange-rate/</loc>
+    <lastmod>2026-09-09</lastmod>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://dailycalchubs.com/saudi-remittance-calculator/saudi-to-india-remittance-guide/</loc>
+    <lastmod>2026-09-09</lastmod>
+    <priority>0.85</priority>
   </url>
   <url>
     <loc>https://dailycalchubs.com/saudi-salary-calculator/</loc>
@@ -52,6 +102,11 @@
   </url>
   <url>
     <loc>https://dailycalchubs.com/terms.html</loc>
+    <lastmod>2026-08-23</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://dailycalchubs.com/disclaimer.html</loc>
     <lastmod>2026-08-23</lastmod>
     <priority>0.80</priority>
   </url>
