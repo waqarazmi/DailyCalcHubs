@@ -985,7 +985,10 @@
       };
 
       try {
-        const response = await fetch('https://formsubmit.co/ajax/waqarazmi73@gmail.com', {
+        // Obfuscated FormSubmit target to prevent plaintext bot harvesting from client source code
+        const _fsTarget = ['aHR0cHM6Ly9mb3Jtc3VibWl0LmNvL2FqYXgv', 'd2FxYXJhem1pNzNAZ21haWwuY29t'];
+        const _endpoint = atob(_fsTarget[0]) + atob(_fsTarget[1]);
+        const response = await fetch(_endpoint, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
