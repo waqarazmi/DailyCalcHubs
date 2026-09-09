@@ -1,0 +1,591 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saudi Hourly Salary Calculator | Article 98 & 240-Hour MHRSD Standard</title>
+  <meta name="description" content="Compute your hourly wage in Saudi Arabia based on statutory 240-hour monthly standard or 48/40-hour workweeks. Accurate for overtime base and partial-day deductions.">
+  <meta name="keywords" content="hourly salary calculator saudi arabia, hourly rate ksa, hourly wage calculation riyadh, article 98 saudi labor law, hourly wage 240 hours">
+  <link rel="canonical" href="https://dailycalchubs.com/saudi-salary-calculator/hourly-salary/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://dailycalchubs.com/saudi-salary-calculator/hourly-salary/">
+  <meta property="og:title" content="Saudi Hourly Salary Calculator | Article 98 & 240-Hour MHRSD Standard">
+  <meta property="og:description" content="Compute your hourly wage in Saudi Arabia based on statutory 240-hour monthly standard or 48/40-hour workweeks. Accurate for overtime base and partial-day deductions.">
+  <meta property="og:image" content="https://dailycalchubs.com/og-image.jpg">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Saudi Hourly Salary Calculator | Article 98 & 240-Hour MHRSD Standard">
+  <meta name="twitter:description" content="Compute your hourly wage in Saudi Arabia based on statutory 240-hour monthly standard or 48/40-hour workweeks. Accurate for overtime base and partial-day deductions.">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6944579701716470" crossorigin="anonymous"></script>
+
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-18Y3LNHDR8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-18Y3LNHDR8');
+  </script>
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Saudi Hourly Salary Calculator",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "All",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "SAR" },
+  "description": "Calculate hourly wage rates from monthly salaries under Article 98 of Saudi Labor Law with customizable weekly work schedules."
+}
+  </script>
+
+  <style>
+    :root {
+      --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --bg-light: #f8fafc;
+      --bg-white: #ffffff;
+      --navy-dark: #0f172a;
+      --navy-footer: #081024;
+      --purple-saudi: #7c3aed;
+      --purple-dark: #6d28d9;
+      --border-light: #e2e8f0;
+      --text-muted: #64748b;
+      --text-dark: #0f172a;
+      --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+      --card-shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      font-family: var(--font-main);
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    .container { max-width: 1240px; margin: 0 auto; padding: 0 20px; }
+
+    /* Ticker */
+    .top-rates-ticker {
+      background: var(--navy-dark);
+      color: #94a3b8;
+      font-size: 11.5px;
+      font-weight: 600;
+      padding: 7px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      overflow-x: auto;
+      white-space: nowrap;
+      scrollbar-width: none;
+    }
+    .top-rates-ticker::-webkit-scrollbar { display: none; }
+    .ticker-inner { display: flex; align-items: center; justify-content: center; gap: 24px; padding: 0 16px; }
+    .ticker-item { display: inline-flex; align-items: center; gap: 6px; }
+    .ticker-rate { color: #38bdf8; font-weight: 700; }
+    .ticker-tag-green { background: rgba(22, 163, 74, 0.2); color: #4ade80; padding: 1px 6px; border-radius: 4px; font-size: 10px; font-weight: 700; }
+
+    /* Header */
+    .site-header { background: var(--bg-white); border-bottom: 1px solid var(--border-light); position: sticky; top: 0; z-index: 1000; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04); }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; height: 74px; }
+    .brand-logo-area { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .logo-icon-box { width: 42px; height: 42px; background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 20px; box-shadow: 0 4px 10px rgba(124, 58, 237, 0.25); }
+    .logo-title { font-size: 22px; font-weight: 800; letter-spacing: -0.5px; line-height: 1.1; color: var(--navy-dark); }
+    .logo-subtitle { font-size: 11.5px; color: var(--text-muted); font-weight: 600; }
+    .header-nav-links { display: flex; align-items: center; gap: 24px; list-style: none; }
+    .header-nav-links a { color: #334155; text-decoration: none; font-size: 14px; font-weight: 600; transition: color 0.15s; }
+    .header-nav-links a:hover, .header-nav-links a.active { color: var(--purple-saudi); }
+    .saudi-badge-header { display: inline-flex; align-items: center; gap: 6px; background: #f5f3ff; border: 1px solid #ddd6fe; color: #6d28d9; padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; }
+
+    /* Breadcrumbs */
+    .breadcrumbs-bar { background: #fff; border-bottom: 1px solid var(--border-light); padding: 12px 0; font-size: 13px; }
+    .breadcrumbs-bar a { color: var(--text-muted); text-decoration: none; }
+    .breadcrumbs-bar a:hover { color: var(--purple-saudi); }
+    .breadcrumbs-bar span { color: #94a3b8; margin: 0 8px; }
+    .breadcrumbs-bar .current-crumb { color: var(--navy-dark); font-weight: 600; }
+
+    /* Hero */
+    .tool-hero { background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%); padding: 36px 0 28px; border-bottom: 1px solid var(--border-light); }
+    .tool-pill { display: inline-flex; align-items: center; gap: 8px; background: #f5f3ff; border: 1px solid #ddd6fe; color: #6d28d9; padding: 4px 12px; border-radius: 9999px; font-size: 12px; font-weight: 700; margin-bottom: 14px; }
+    .tool-title { font-size: 34px; font-weight: 800; color: var(--navy-dark); letter-spacing: -0.6px; margin-bottom: 10px; line-height: 1.2; }
+    .tool-lead { font-size: 15.5px; color: #475569; max-width: 820px; line-height: 1.6; margin-bottom: 18px; }
+
+    /* Layout */
+    .tool-layout { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 30px; align-items: start; padding: 36px 0; }
+    @media (max-width: 960px) { .tool-layout { grid-template-columns: 1fr; } }
+
+    /* Card */
+    .calc-card { background: #ffffff; border-radius: 16px; border: 1px solid var(--border-light); box-shadow: var(--card-shadow); padding: 28px; }
+    .calc-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid var(--border-light); }
+    .calc-card-title { font-size: 19px; font-weight: 800; color: var(--navy-dark); display: flex; align-items: center; gap: 10px; }
+    .live-status-pill { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 20px; background: #f5f3ff; color: #6d28d9; border: 1px solid #ddd6fe; }
+    .live-pulse { width: 8px; height: 8px; background: #7c3aed; border-radius: 50%; box-shadow: 0 0 0 2px rgba(124, 58, 237, 0.3); animation: pulseAnim 2s infinite; }
+    @keyframes pulseAnim { 0% { box-shadow: 0 0 0 0 rgba(124, 58, 237, 0.6); } 70% { box-shadow: 0 0 0 6px rgba(124, 58, 237, 0); } 100% { box-shadow: 0 0 0 0 rgba(124, 58, 237, 0); } }
+
+    .form-group { margin-bottom: 18px; }
+    .form-label { display: block; font-size: 13.5px; font-weight: 700; color: #1e293b; margin-bottom: 8px; }
+    .input-with-addons { display: flex; align-items: center; border: 2px solid #cbd5e1; border-radius: 10px; background: #fff; overflow: hidden; transition: border-color 0.15s; }
+    .input-with-addons:focus-within { border-color: var(--purple-saudi); box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.15); }
+    .input-addon-badge { background: #f8fafc; padding: 12px 16px; font-size: 14px; font-weight: 800; color: var(--navy-dark); border-right: 1px solid #e2e8f0; display: flex; align-items: center; gap: 6px; }
+    .calc-input { flex: 1; border: none; outline: none; padding: 12px 16px; font-size: 17px; font-weight: 700; color: var(--navy-dark); font-family: inherit; width: 100%; }
+    .select-input-addon { border: none; outline: none; background: #f8fafc; padding: 12px 14px; font-size: 14px; font-weight: 700; color: #0f172a; cursor: pointer; font-family: inherit; width: 100%; }
+
+    .amount-chips-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+    .amount-chip-btn { background: #f1f5f9; border: 1px solid #e2e8f0; color: #334155; font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 6px; cursor: pointer; transition: all 0.15s; }
+    .amount-chip-btn:hover { background: #e2e8f0; color: #0f172a; }
+    .amount-chip-btn.active { background: var(--purple-saudi); color: #ffffff; border-color: var(--purple-saudi); }
+
+    /* Result Box */
+    .result-summary-box { background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%); color: #fff; border-radius: 12px; padding: 22px; margin-top: 24px; }
+    .result-row-top { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 12px; padding-bottom: 14px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+    .result-label { font-size: 12.5px; color: #c4b5fd; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 700; }
+    .result-big-val { font-size: 32px; font-weight: 800; color: #38bdf8; line-height: 1.1; }
+    .result-rate-tag { font-size: 13px; color: #e2e8f0; display: flex; align-items: center; gap: 6px; }
+    .result-meta-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 14px; font-size: 13px; }
+    .meta-box-inner { background: rgba(255, 255, 255, 0.05); padding: 10px 14px; border-radius: 8px; }
+    .meta-box-title { color: #a78bfa; font-size: 11.5px; font-weight: 600; margin-bottom: 3px; }
+    .meta-box-val { color: #f8fafc; font-weight: 700; }
+
+    /* Sidebar */
+    .sidebar-info-card { background: #ffffff; border-radius: 16px; border: 1px solid var(--border-light); box-shadow: var(--card-shadow); padding: 24px; margin-bottom: 24px; }
+    .sidebar-card-heading { font-size: 16px; font-weight: 800; color: var(--navy-dark); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+    .sidebar-card-heading i { color: var(--purple-saudi); }
+    .rules-list { list-style: none; }
+    .rules-item { display: flex; gap: 12px; margin-bottom: 14px; font-size: 13.5px; line-height: 1.5; color: #334155; }
+    .rules-icon { color: var(--purple-saudi); font-size: 14px; margin-top: 3px; flex-shrink: 0; }
+
+    /* Article */
+    .content-article { background: #ffffff; padding: 36px; border-radius: 16px; border: 1px solid var(--border-light); box-shadow: var(--card-shadow); margin-bottom: 36px; }
+    .content-article h2 { font-size: 24px; font-weight: 800; color: var(--navy-dark); margin: 28px 0 14px; letter-spacing: -0.3px; }
+    .content-article h2:first-of-type { margin-top: 0; }
+    .content-article h3 { font-size: 18px; font-weight: 700; color: var(--navy-dark); margin: 20px 0 10px; }
+    .content-article p { font-size: 15px; line-height: 1.7; color: #334155; margin-bottom: 16px; }
+    .content-article ul, .content-article ol { margin-bottom: 18px; padding-left: 24px; }
+    .content-article li { font-size: 14.5px; line-height: 1.6; color: #334155; margin-bottom: 8px; }
+    .content-callout { background: #f8fafc; border-left: 4px solid var(--purple-saudi); padding: 16px 20px; border-radius: 0 8px 8px 0; margin: 20px 0; font-size: 14.5px; color: #334155; }
+    .content-callout strong { color: var(--navy-dark); }
+
+    .data-table { width: 100%; border-collapse: collapse; margin: 18px 0; font-size: 13.5px; }
+    .data-table th { background: #f1f5f9; padding: 10px 14px; text-align: left; font-weight: 700; color: #1e293b; border: 1px solid var(--border-light); }
+    .data-table td { padding: 10px 14px; border: 1px solid var(--border-light); color: #334155; }
+
+    /* FAQs */
+    .faq-item { border: 1px solid var(--border-light); border-radius: 10px; margin-bottom: 12px; background: #ffffff; overflow: hidden; }
+    .faq-question { padding: 16px 20px; font-weight: 700; font-size: 15px; color: var(--navy-dark); cursor: pointer; display: flex; justify-content: space-between; align-items: center; user-select: none; }
+    .faq-question:hover { background: #f8fafc; }
+    .faq-answer { padding: 0 20px 16px; font-size: 14px; line-height: 1.6; color: #475569; }
+
+    /* Related Tools */
+    .related-tools-box { background: #ffffff; border: 1px solid var(--border-light); border-radius: 16px; padding: 28px; margin-bottom: 36px; }
+    .related-title { font-size: 20px; font-weight: 800; color: var(--navy-dark); margin-bottom: 16px; }
+    .related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; }
+    .related-link-card { display: flex; align-items: center; justify-content: space-between; background: #f8fafc; border: 1px solid var(--border-light); padding: 12px 16px; border-radius: 8px; text-decoration: none; color: #1e293b; font-size: 13.5px; font-weight: 700; transition: all 0.15s; }
+    .related-link-card:hover { border-color: var(--purple-saudi); background: #f5f3ff; color: var(--purple-saudi); }
+
+    /* AdSense */
+    .ad-slot-container { max-width: 1240px; margin: 30px auto; min-height: 90px; background: #f1f5f9; border: 1px dashed #cbd5e1; border-radius: 8px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+
+    /* Footer */
+    .site-footer { background: var(--navy-footer); color: #94a3b8; padding: 48px 0 24px; border-top: 1px solid rgba(255, 255, 255, 0.08); font-size: 13.5px; }
+    .footer-columns-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr; gap: 36px; margin-bottom: 36px; }
+    @media (max-width: 840px) { .footer-columns-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 540px) { .footer-columns-grid { grid-template-columns: 1fr; } }
+    .footer-col-heading { color: #fff; font-size: 15px; font-weight: 700; margin-bottom: 16px; }
+    .footer-nav-list { list-style: none; }
+    .footer-nav-list li { margin-bottom: 10px; }
+    .footer-nav-list a { color: #94a3b8; text-decoration: none; transition: color 0.15s; }
+    .footer-nav-list a:hover { color: #38bdf8; }
+    .footer-bottom-bar { border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; font-size: 12.5px; }
+    .footer-legal-links a { color: #94a3b8; text-decoration: none; margin: 0 8px; }
+    .footer-legal-links a:hover { color: #fff; }
+
+    @media (max-width: 640px) {
+      .tool-title { font-size: 26px; }
+      .calc-card { padding: 20px 16px; }
+      .header-nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Top Ticker -->
+  <div class="top-rates-ticker">
+    <div class="container">
+      <div class="ticker-inner">
+        <div class="ticker-item"><span>SAR / INR:</span><span class="ticker-rate" id="tickerSar">â‚¹ 22.45</span></div>
+        <div class="ticker-item"><span class="ticker-tag-green">âš¡ Barq Rate:</span><span class="ticker-rate" id="tickerBarq">â‚¹ 22.18</span></div>
+        <div class="ticker-item"><span>SAR / PKR:</span><span class="ticker-rate" id="tickerPkr">Rs 74.20</span></div>
+        <div class="ticker-item"><span>SAR / BDT:</span><span class="ticker-rate" id="tickerBdt">à§³ 32.10</span></div>
+        <div class="ticker-item"><span>SAR / PHP:</span><span class="ticker-rate" id="tickerPhp">â‚± 15.65</span></div>
+        <div class="ticker-item"><span>Gold 24K KSA:</span><span class="ticker-rate" style="color:#fbbf24;">322.50 SAR</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container">
+      <div class="header-inner">
+        <a href="/" class="brand-logo-area">
+          <div class="logo-icon-box"><i class="fas fa-briefcase"></i></div>
+          <div class="logo-text-group">
+            <div class="logo-title">DailyCalc<span style="color:#7c3aed;">Hubs</span></div>
+            <div class="logo-subtitle">Saudi Tools for a Smarter Tomorrow</div>
+          </div>
+        </a>
+        <nav>
+          <ul class="header-nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/saudi-remittance-calculator/">Remittance</a></li>
+            <li><a href="/prayer-times/">Prayer Times</a></li>
+            <li><a href="/saudi-salary-calculator/" class="active">Salary</a></li>
+            <li><a href="/saudi-iqama-calculator/">Iqama</a></li>
+            <li><a href="/everyday-calculators/">Everyday</a></li>
+          </ul>
+        </nav>
+        <div class="saudi-badge-header">
+          <i class="fas fa-scale-balanced"></i> Saudi Labor Law 2026
+        </div>
+      </div>
+    </div>
+  </header>  <!-- Breadcrumbs -->
+  <div class="breadcrumbs-bar">
+    <div class="container">
+      <a href="/">Home</a> <span>/</span>
+      <a href="/saudi-salary-calculator/">Saudi Salary Calculator</a> <span>/</span>
+      <span class="current-crumb">Hourly Salary Calculator</span>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <section class="tool-hero">
+    <div class="container">
+      <div class="tool-pill"><i class="fas fa-clock"></i> Article 98 Working Hours</div>
+      <h1 class="tool-title">Saudi Hourly Salary &amp; Rate Calculator</h1>
+      <p class="tool-lead">
+        Convert your monthly wage into standard hourly and minute rates under Saudi Labor Law. Accurately verify your overtime baseline, check shift compensation, and calculate tardiness deductions.
+      </p>
+    </div>
+  </section>
+
+  <!-- Main Content Layout -->
+  <main class="container">
+    <div class="tool-layout">
+      <!-- Calculator Column -->
+      <section class="calc-card">
+        <div class="calc-card-header">
+          <div class="calc-card-title"><i class="fas fa-stopwatch" style="color:#7c3aed;"></i> Hourly Wage Breakdown</div>
+          <div class="live-status-pill"><span class="live-pulse"></span> Labor Standard</div>
+        </div>
+
+        <form id="hourlySalaryForm" onsubmit="event.preventDefault(); calculateHourlySalary();">
+          <div class="form-group">
+            <label class="form-label" for="monthlySalaryHourly">Monthly Salary (SAR)</label>
+            <div class="input-with-addons">
+              <span class="input-addon-badge">SAR</span>
+              <input type="number" id="monthlySalaryHourly" class="calc-input" value="9600" min="0" step="100" placeholder="e.g. 9600" required oninput="calculateHourlySalary()">
+            </div>
+            <div class="amount-chips-row">
+              <button type="button" class="amount-chip-btn" onclick="setHourlyAmount(4800)">4,800 SAR</button>
+              <button type="button" class="amount-chip-btn" onclick="setHourlyAmount(7200)">7,200 SAR</button>
+              <button type="button" class="amount-chip-btn active" onclick="setHourlyAmount(9600)">9,600 SAR</button>
+              <button type="button" class="amount-chip-btn" onclick="setHourlyAmount(14400)">14,400 SAR</button>
+              <button type="button" class="amount-chip-btn" onclick="setHourlyAmount(24000)">24,000 SAR</button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="workSchedule">Weekly Working Schedule</label>
+            <div class="input-with-addons">
+              <select id="workSchedule" class="select-input-addon" onchange="calculateHourlySalary()">
+                <option value="240" selected>48 Hours / Week (6 Days Ã— 8 Hours = 240 Hours/Mo Standard)</option>
+                <option value="173.33">40 Hours / Week (5 Days Ã— 8 Hours = 173.3 Hours/Mo)</option>
+                <option value="208">48 Hours (5.5 Days / Variable)</option>
+                <option value="156">Ramadan Schedule (36 Hours / Week for Muslim Staff)</option>
+              </select>
+            </div>
+            <small style="display:block; margin-top:6px; color:#64748b; font-size:12px;">
+              *Standard MHRSD benchmark uses 240 hours per month (30 days Ã— 8 hours daily).
+            </small>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="dailyHours">Daily Work Hours</label>
+            <div class="input-with-addons">
+              <span class="input-addon-badge"><i class="fas fa-business-time"></i></span>
+              <input type="number" id="dailyHours" class="calc-input" value="8" min="1" max="12" step="0.5" oninput="calculateHourlySalary()">
+            </div>
+          </div>
+        </form>
+
+        <!-- Result Box -->
+        <div class="result-summary-box">
+          <div class="result-row-top">
+            <div>
+              <div class="result-label">Standard Hourly Rate</div>
+              <div class="result-big-val" id="resHourlyRate">40.00 SAR</div>
+            </div>
+            <div class="result-rate-tag">
+              <i class="fas fa-clock"></i> <span id="resMonthlyHoursLabel">240 hrs / month</span>
+            </div>
+          </div>
+
+          <div class="result-meta-grid">
+            <div class="meta-box-inner">
+              <div class="meta-box-title">Minute Wage Rate</div>
+              <div class="meta-box-val" id="resMinuteRate">0.67 SAR / min</div>
+            </div>
+            <div class="meta-box-inner">
+              <div class="meta-box-title">Daily Wage (8 Hours)</div>
+              <div class="meta-box-val" id="resDailyRate">320.00 SAR</div>
+            </div>
+            <div class="meta-box-inner">
+              <div class="meta-box-title">Overtime Base Rate (1.5Ã—)</div>
+              <div class="meta-box-val" id="resOvertimeRate" style="color:#38bdf8;">60.00 SAR / hr</div>
+            </div>
+            <div class="meta-box-inner">
+              <div class="meta-box-title">Statutory Weekly Pay</div>
+              <div class="meta-box-val" id="resWeeklyPay">1,920.00 SAR</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sidebar -->
+      <aside>
+        <div class="sidebar-info-card">
+          <div class="sidebar-card-heading">
+            <i class="fas fa-scale-balanced"></i> Article 98 Legal Limits
+          </div>
+          <ul class="rules-list">
+            <li class="rules-item">
+              <i class="fas fa-check-circle rules-icon"></i>
+              <div><strong>Maximum Standard Hours:</strong> An employee may not actually work more than 8 hours a day if the employer adopts the daily criterion, or more than 48 hours a week if the weekly criterion is adopted.</div>
+            </li>
+            <li class="rules-item">
+              <i class="fas fa-check-circle rules-icon"></i>
+              <div><strong>Ramadan Hours Reduction:</strong> Actual working hours during the Holy Month of Ramadan are reduced to a maximum of 6 hours a day or 36 hours a week for Muslim employees.</div>
+            </li>
+            <li class="rules-item">
+              <i class="fas fa-check-circle rules-icon"></i>
+              <div><strong>Rest &amp; Prayer Breaks:</strong> Work hours must be arranged so that no employee works for more than 5 consecutive hours without a break of at least 30 minutes for rest and prayer. Rest breaks are not counted toward paid work hours.</div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="sidebar-info-card">
+          <div class="sidebar-card-heading">
+            <i class="fas fa-table"></i> Hourly Pay Reference
+          </div>
+          <table class="data-table" style="margin:0;">
+            <thead>
+              <tr>
+                <th>Monthly</th>
+                <th>Hourly (240h)</th>
+                <th>Overtime (1.5Ã—)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>4,000 SAR</td><td>16.67 SAR</td><td>25.00 SAR</td></tr>
+              <tr><td>6,000 SAR</td><td>25.00 SAR</td><td>37.50 SAR</td></tr>
+              <tr><td>9,600 SAR</td><td>40.00 SAR</td><td>60.00 SAR</td></tr>
+              <tr><td>12,000 SAR</td><td>50.00 SAR</td><td>75.00 SAR</td></tr>
+              <tr><td>18,000 SAR</td><td>75.00 SAR</td><td>112.50 SAR</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </aside>
+    </div>
+
+    <!-- SEO Article -->
+    <article class="content-article">
+      <h2>How Hourly Pay is Determined in Saudi Arabia</h2>
+      <p>
+        In Saudi Arabia, most employment contracts are structured around monthly salaries rather than hourly rates. However, establishing your precise hourly wage is essential for computing overtime compensation, calculating late arrival penalties, determining shift allowances, and processing prorated payroll.
+      </p>
+
+      <h3>The Standard 240-Hour Divisor</h3>
+      <p>
+        Under Article 98 of Saudi Labor Law, full-time employment is capped at 48 hours per week or 8 hours per day. Because a legal employment month encompasses 30 calendar days (including paid weekly rest days), the standard baseline for wage derivation across government and enterprise organizations is:
+      </p>
+      <div class="content-callout">
+        <code>Hourly Rate = Monthly Salary Ã· 240 Hours</code><br>
+        (Where 240 Hours = 30 Days Ã— 8 Hours/Day)
+      </div>
+
+      <h3>40-Hour Workweeks vs 48-Hour Workweeks</h3>
+      <p>
+        Many international corporations, consulting firms, and banking institutions in Riyadh, Jeddah, and Khobar operate on a 5-day, 40-hour workweek. In such companies, some internal HR policies divide the monthly salary by 173.33 hours (40 hours Ã— 52 weeks Ã· 12 months). However, for statutory compliance and labor dispute adjudications under MHRSD guidelines, the standard 240-hour divisor remains the baseline unless employment contracts specify a more generous internal rate.
+      </p>
+
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>Are prayer and lunch breaks included in paid working hours?</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer" style="display:none;">
+          Under Article 101 of Saudi Labor Law, rest breaks, prayer periods, and meals are not included in actual working hours. If an employee is present in the workplace from 8:00 AM to 5:00 PM with 1 hour of total rest and prayer breaks, the paid working time is 8 hours.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>How is a 15-minute tardiness deduction calculated?</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer" style="display:none;">
+          First, your hourly rate is derived by dividing monthly wage by 240. The minute rate is <code>Hourly Rate Ã· 60</code>. For a 9,600 SAR salary, the minute rate is 0.67 SAR. 15 minutes of unexcused delay equals approximately 10.00 SAR deduction, subject to MHRSD disciplinary infraction guidelines.
+        </div>
+      </div>
+    </article>
+
+        <div class="related-tools-box">
+      <div class="related-title"><i class="fas fa-grid-2" style="color:#7c3aed; margin-right:8px;"></i>Explore Saudi Salary &amp; Labor Tools</div>
+      <div class="related-grid">
+        <a href="/saudi-salary-calculator/" class="related-link-card"><span>Main Salary Hub</span> <i class="fas fa-arrow-right"></i></a>
+        <a href="/saudi-salary-calculator/take-home-salary/" class="related-link-card"><span>Take-Home Salary</span> <i class="fas fa-arrow-right"></i></a>
+        <a href="/saudi-salary-calculator/gosi-calculator/" class="related-link-card"><span>GOSI Calculator</span> <i class="fas fa-arrow-right"></i></a>
+        <a href="/saudi-salary-calculator/basic-salary/" class="related-link-card"><span>Basic Salary</span> <i class="fas fa-arrow-right"></i></a>
+        <a href="/saudi-salary-calculator/salary-allowances/" class="related-link-card"><span>Salary &amp; Allowances</span> <i class="fas fa-arrow-right"></i></a>
+        <a href="/saudi-salary-calculator/daily-salary/" class="related-link-card"><span>Daily Salary</span> <i class="fas fa-arrow-right"></i></a>
+        <a href="/saudi-salary-calculator/hourly-salary/" class="related-link-card"><span>Hourly Salary</span> <i class="fas fa-arrow-right"></i></a>
+        <a href="/saudi-salary-calculator/overtime/" class="related-link-card"><span>Overtime Calculator</span> <i class="fas fa-arrow-right"></i></a>
+        <a href="/saudi-salary-calculator/annual-salary/" class="related-link-card"><span>Annual Salary</span> <i class="fas fa-arrow-right"></i></a>
+        <a href="/saudi-salary-calculator/salary-increment/" class="related-link-card"><span>Salary Increment</span> <i class="fas fa-arrow-right"></i></a>
+        <a href="/saudi-salary-calculator/eosb/" class="related-link-card"><span>EOSB Gratuity</span> <i class="fas fa-arrow-right"></i></a>
+        <a href="/saudi-salary-calculator/final-settlement/" class="related-link-card"><span>Final Settlement</span> <i class="fas fa-arrow-right"></i></a>
+        <a href="/saudi-salary-calculator/resignation-gratuity/" class="related-link-card"><span>Resignation Gratuity</span> <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    function setHourlyAmount(val) {
+      document.getElementById('monthlySalaryHourly').value = val;
+      document.querySelectorAll('.amount-chip-btn').forEach(b => b.classList.remove('active'));
+      if (event && event.target) event.target.classList.add('active');
+      calculateHourlySalary();
+    }
+
+    function calculateHourlySalary() {
+      const monthly = parseFloat(document.getElementById('monthlySalaryHourly').value) || 0;
+      const divisorHours = parseFloat(document.getElementById('workSchedule').value) || 240;
+      const dailyHours = parseFloat(document.getElementById('dailyHours').value) || 8;
+
+      const hourlyRate = monthly > 0 ? (monthly / divisorHours) : 0;
+      const minuteRate = hourlyRate / 60;
+      const dailyRate = hourlyRate * dailyHours;
+      const overtimeRate = hourlyRate * 1.5;
+      const weeklyPay = hourlyRate * (divisorHours === 173.33 ? 40 : 48);
+
+      document.getElementById('resHourlyRate').innerText = hourlyRate.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SAR';
+      document.getElementById('resMonthlyHoursLabel').innerText = Math.round(divisorHours) + ' hrs / month';
+      document.getElementById('resMinuteRate').innerText = minuteRate.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SAR / min';
+      document.getElementById('resDailyRate').innerText = dailyRate.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SAR';
+      document.getElementById('resOvertimeRate').innerText = overtimeRate.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SAR / hr';
+      document.getElementById('resWeeklyPay').innerText = weeklyPay.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SAR';
+    }
+
+    window.addEventListener('DOMContentLoaded', calculateHourlySalary);
+  </script>  <!-- AdSense Container -->
+  <div class="ad-slot-container">
+    <ins class="adsbygoogle"
+         style="display:block; width:100%;"
+         data-ad-client="ca-pub-6944579701716470"
+         data-ad-slot="auto"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-columns-grid">
+        <div>
+          <div style="font-size:20px; font-weight:800; color:#fff; margin-bottom:4px;">
+            DailyCalc<span style="color:#38bdf8;">Hubs</span>
+          </div>
+          <div style="font-size:12px; color:#64748b; margin-bottom:14px;">Saudi Tools for a Smarter Tomorrow</div>
+          <p style="font-size:13.5px; line-height:1.6; color:#94a3b8;">
+            High-precision financial, compensation, remittance, and residency utilities built specifically for citizens and expatriates in the Kingdom of Saudi Arabia.
+          </p>
+        </div>
+        <div>
+          <h4 class="footer-col-heading">Salary &amp; Labor Tools</h4>
+          <ul class="footer-nav-list">
+            <li><a href="/saudi-salary-calculator/take-home-salary/">Take-Home Salary Calculator</a></li>
+            <li><a href="/saudi-salary-calculator/gosi-calculator/">GOSI Contribution Calculator</a></li>
+            <li><a href="/saudi-salary-calculator/overtime/">Overtime Calculator</a></li>
+            <li><a href="/saudi-salary-calculator/eosb/">End of Service (EOSB) Gratuity</a></li>
+            <li><a href="/saudi-salary-calculator/final-settlement/">Final Settlement Calculator</a></li>
+            <li><a href="/saudi-salary-calculator/resignation-gratuity/">Resignation Gratuity</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-col-heading">Our Core Utilities</h4>
+          <ul class="footer-nav-list">
+            <li><a href="/saudi-remittance-calculator/">Saudi Remittance</a></li>
+            <li><a href="/prayer-times/">Prayer Times</a></li>
+            <li><a href="/saudi-salary-calculator/">Saudi Salary &amp; EOSB</a></li>
+            <li><a href="/saudi-iqama-calculator/">Iqama Fee Estimator</a></li>
+            <li><a href="/everyday-calculators/">Everyday Smart Tools</a></li>
+            <li><a href="/shariah-sip-calculator/">Shariah SIP</a></li>
+            <li><a href="/travel-booking/">Travel &amp; Booking</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-col-heading">Legal &amp; Trust</h4>
+          <ul class="footer-nav-list">
+            <li><a href="/about.html">About DailyCalcHubs</a></li>
+            <li><a href="/privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="/disclaimer.html">Terms &amp; Disclaimer</a></li>
+            <li><a href="/contact.html">Contact Support</a></li>
+          </ul>
+          <div style="margin-top:16px; font-size:12px; color:#64748b;">
+            <i class="fas fa-shield-halved" style="color:#7c3aed;"></i> Aligned with MHRSD &amp; GOSI 2026 Guidelines.
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom-bar">
+        <div>&copy; 2026 DailyCalcHubs. All rights reserved.</div>
+        <div class="footer-legal-links">
+          <a href="/privacy-policy.html">Privacy Policy</a>
+          <span>|</span>
+          <a href="/disclaimer.html">Disclaimer</a>
+          <span>|</span>
+          <a href="/terms.html">Terms of Service</a>
+          <span>|</span>
+          <a href="/contact.html">Contact</a>
+        </div>
+        <div style="color:#a78bfa; font-weight:600;">Serving the Saudi Community</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleFaq(el) {
+      const ans = el.nextElementSibling;
+      const icon = el.querySelector('i');
+      if (ans.style.display === 'none' || !ans.style.display) {
+        ans.style.display = 'block';
+        icon.className = 'fas fa-chevron-up';
+      } else {
+        ans.style.display = 'none';
+        icon.className = 'fas fa-chevron-down';
+      }
+    }
+  </script>
+</body>
+</html>
