@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Monthly Investment Calculator — Compounding Schedule & Inflation Adjuster</title>
+  <meta name="description" content="Forecast monthly investment compounding with real inflation adjustments. View your year-by-year portfolio milestone schedule and purchasing power.">
+  <meta name="keywords" content="monthly investment calculator, compounding schedule calculator, inflation adjusted investment return, halal monthly savings projection, saudi riyal compounding schedule">
+  <link rel="canonical" href="https://dailycalchubs.com/shariah-sip-calculator/monthly-investment-calculator/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://dailycalchubs.com/shariah-sip-calculator/monthly-investment-calculator/">
+  <meta property="og:title" content="Monthly Investment Calculator — Compounding Schedule & Inflation Adjuster">
+  <meta property="og:description" content="Forecast monthly investment compounding with real inflation adjustments. View your year-by-year portfolio milestone schedule and purchasing power.">
+  <meta property="og:image" content="https://dailycalchubs.com/og-image.jpg">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Monthly Investment Calculator — Compounding Schedule & Inflation Adjuster">
+  <meta name="twitter:description" content="Forecast monthly investment compounding with real inflation adjustments. View your year-by-year portfolio milestone schedule and purchasing power.">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6944579701716470" crossorigin="anonymous"></script>
+
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-18Y3LNHDR8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-18Y3LNHDR8');
+  </script>
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Monthly Investment Compounding Calculator",
+    "url": "https://dailycalchubs.com/shariah-sip-calculator/monthly-investment-calculator/",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "All",
+    "description": "Forecast monthly investment compounding with custom inflation adjustments and annual milestone tables.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Why is adjusting for inflation critical in long-term investing?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Inflation reduces purchasing power over time. A portfolio worth 1,000,000 SAR in 20 years will not buy the same goods as 1,000,000 SAR today. Adjusting for assumed inflation reveals the true real wealth of your future capital."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the typical inflation rate in Saudi Arabia?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Saudi Arabia historically maintains stable inflation rates, typically ranging between 1.5% and 3.0% annually, anchored by the fixed SAR-to-USD currency peg and government price stability mechanisms."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do automated monthly investments work in Saudi banks?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Through online banking applications (such as Al Rajhi Capital, SNB Capital, Riyad Capital), users can schedule automatic standing orders to purchase mutual fund units or Sukuk on salary payout day."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --bg-light: #fdfbf7;
+      --bg-white: #ffffff;
+      --navy-dark: #0f172a;
+      --navy-footer: #081024;
+      --amber-primary: #b45309;
+      --amber-dark: #92400e;
+      --amber-light: #fef3c7;
+      --amber-border: #fde68a;
+      --text-dark: #1e293b;
+      --text-muted: #64748b;
+      --border-color: #e2e8f0;
+      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.08), 0 2px 4px -2px rgba(0,0,0,0.05);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--font-main); background: var(--bg-light); color: var(--text-dark); line-height: 1.6; }
+    a { color: var(--amber-primary); text-decoration: none; }
+    a:hover { color: var(--amber-dark); }
+
+    /* Header */
+    .site-header { background: var(--bg-white); border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 50; }
+    .header-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; height: 70px; display: flex; align-items: center; justify-content: space-between; }
+    .logo-area { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 20px; color: var(--navy-dark); text-decoration: none; }
+    .logo-icon { width: 36px; height: 36px; background: linear-gradient(135deg, #b45309, #d97706); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: 18px; }
+    .header-nav-container { display: flex; align-items: center; }
+    .header-nav-links { display: flex; align-items: center; gap: 14px; list-style: none; margin: 0; padding: 0; }
+    .header-nav-links a { color: #334155; text-decoration: none; font-size: 13.5px; font-weight: 600; white-space: nowrap; transition: color 0.15s; }
+    .header-nav-links a:hover, .header-nav-links a.active { color: var(--amber-primary); font-weight: 700; }
+    .header-nav-links a.active { border-bottom: 2px solid var(--amber-primary); padding-bottom: 2px; }
+
+    /* Breadcrumbs */
+    .breadcrumb-bar { background: var(--bg-white); border-bottom: 1px solid var(--border-color); padding: 12px 20px; font-size: 13.5px; color: var(--text-muted); }
+    .breadcrumb-container { max-width: 1000px; margin: 0 auto; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .breadcrumb-container a { color: var(--text-muted); }
+    .breadcrumb-container a:hover { color: var(--amber-primary); }
+    .breadcrumb-sep { font-size: 11px; color: #94a3b8; }
+
+    /* Main Container */
+    .page-main { max-width: 1000px; margin: 30px auto; padding: 0 20px; }
+
+    /* Hero */
+    .hero-section { text-align: center; margin-bottom: 30px; background: linear-gradient(180deg, #fffbeb 0%, #ffffff 100%); padding: 36px 24px; border-radius: 16px; border: 1px solid var(--amber-border); }
+    .badge-hero { display: inline-flex; align-items: center; gap: 6px; background: white; border: 1px solid var(--amber-border); color: var(--amber-primary); padding: 6px 14px; border-radius: 20px; font-size: 12.5px; font-weight: 700; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .hero-title { font-size: 32px; font-weight: 800; color: var(--navy-dark); margin-bottom: 10px; }
+    .hero-desc { font-size: 16px; color: var(--text-muted); max-width: 680px; margin: 0 auto; }
+
+    /* Calculator Card */
+    .calc-card { background: var(--bg-white); border-radius: 16px; border: 1px solid var(--border-color); box-shadow: var(--shadow-md); padding: 32px; margin-bottom: 40px; }
+    .form-group { margin-bottom: 22px; }
+    .form-label { display: block; font-weight: 700; font-size: 14px; color: var(--navy-dark); margin-bottom: 8px; }
+    .calc-input { width: 100%; height: 48px; border: 1.5px solid var(--border-color); border-radius: 10px; padding: 0 16px; font-size: 15px; font-family: inherit; color: var(--navy-dark); background: #fdfbf7; transition: all 0.2s; }
+    .calc-input:focus { outline: none; border-color: var(--amber-primary); background: white; box-shadow: 0 0 0 4px rgba(180, 83, 9, 0.12); }
+    .input-with-addons { display: flex; align-items: center; position: relative; }
+    .input-addon-badge { position: absolute; left: 14px; color: var(--amber-primary); font-size: 15px; font-weight: 700; pointer-events: none; }
+    .input-with-addons input { padding-left: 48px; }
+
+    .amount-chips-row { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+    .amount-chip-btn { background: #fffbeb; border: 1px solid #fde68a; color: #92400e; font-size: 12.5px; font-weight: 600; padding: 6px 12px; border-radius: 20px; cursor: pointer; transition: all 0.2s; }
+    .amount-chip-btn:hover { background: var(--amber-primary); color: white; border-color: var(--amber-primary); }
+
+    /* Result Box */
+    .result-summary-box { background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); color: white; border-radius: 14px; padding: 26px; margin-top: 26px; box-shadow: 0 10px 20px rgba(15, 23, 42, 0.15); }
+    .result-row-top { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.12); padding-bottom: 18px; margin-bottom: 20px; flex-wrap: wrap; gap: 12px; }
+    .result-label { font-size: 13px; color: #fde68a; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    .result-big-val { font-size: 34px; font-weight: 800; color: #fbbf24; margin-top: 4px; }
+    .result-real-badge { background: rgba(34, 197, 94, 0.2); border: 1px solid rgba(34, 197, 94, 0.5); color: #86efac; padding: 8px 16px; border-radius: 8px; font-size: 14px; font-weight: 700; }
+    
+    .result-meta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; }
+    .meta-box-inner { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 10px; padding: 14px; }
+    .meta-box-title { font-size: 12px; color: #94a3b8; margin-bottom: 4px; }
+    .meta-box-val { font-size: 17px; font-weight: 700; color: white; }
+
+    /* Milestone Schedule Table */
+    .schedule-table-card { background: white; border: 1px solid var(--border-color); border-radius: 12px; overflow: hidden; margin-top: 24px; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+    .schedule-table-title { padding: 16px 20px; background: #fffbeb; font-weight: 800; font-size: 15px; color: #78350f; border-bottom: 1px solid #fde68a; display: flex; align-items: center; gap: 8px; }
+    .schedule-table-wrap { overflow-x: auto; }
+    .schedule-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+    .schedule-table th { background: #f8fafc; padding: 12px 16px; text-align: left; font-weight: 700; color: var(--navy-dark); border-bottom: 1px solid var(--border-color); }
+    .schedule-table td { padding: 12px 16px; border-bottom: 1px solid #f1f5f9; color: #334155; }
+    .schedule-table tr:last-child td { border-bottom: none; }
+    .schedule-table tr:hover td { background: #fdfbf7; }
+
+    /* SEO Article Section */
+    .seo-article { background: var(--bg-white); border-radius: 16px; border: 1px solid var(--border-color); padding: 36px 30px; margin-bottom: 40px; }
+    .seo-article h2 { font-size: 24px; font-weight: 800; color: var(--navy-dark); margin: 28px 0 14px; }
+    .seo-article h2:first-child { margin-top: 0; }
+    .seo-article h3 { font-size: 18px; font-weight: 700; color: var(--navy-dark); margin: 20px 0 10px; }
+    .seo-article p { font-size: 15px; color: #334155; line-height: 1.75; margin-bottom: 16px; }
+    .seo-article ul { margin-left: 24px; margin-bottom: 18px; font-size: 15px; color: #334155; }
+    .seo-article li { margin-bottom: 8px; }
+
+    .disclaimer-alert { background: #fef2f2; border-left: 4px solid #ef4444; padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 24px 0; font-size: 13.5px; color: #991b1b; line-height: 1.6; }
+
+    /* FAQ */
+    .faq-item { border: 1px solid var(--border-color); border-radius: 10px; margin-bottom: 12px; overflow: hidden; background: white; }
+    .faq-question { padding: 16px 20px; font-weight: 700; font-size: 15px; color: var(--navy-dark); cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: #fdfbf7; }
+    .faq-question:hover { background: #fffbeb; }
+    .faq-answer { padding: 18px 20px; font-size: 14.5px; color: #475569; line-height: 1.7; border-top: 1px solid var(--border-color); background: white; }
+
+    /* Related Tools Grid */
+    .related-section { margin-bottom: 40px; }
+    .related-title { font-size: 20px; font-weight: 800; color: var(--navy-dark); margin-bottom: 16px; }
+    .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+    .related-card { background: white; border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; transition: transform 0.2s, box-shadow 0.2s; display: block; }
+    .related-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); border-color: var(--amber-primary); }
+    .related-card-badge { display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase; padding: 4px 8px; border-radius: 4px; background: #fffbeb; color: #b45309; margin-bottom: 10px; }
+    .related-card-name { font-size: 16px; font-weight: 700; color: var(--navy-dark); margin-bottom: 6px; }
+    .related-card-desc { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+
+    /* Footer */
+    .site-footer { background: var(--navy-footer); color: #94a3b8; padding: 50px 20px 24px; font-size: 14px; }
+    .footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 36px; padding-bottom: 36px; border-bottom: 1px solid #1e293b; }
+    .footer-col h4 { color: white; font-size: 15px; font-weight: 700; margin-bottom: 14px; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 8px; }
+    .footer-col ul li a { color: #94a3b8; font-size: 13.5px; }
+    .footer-col ul li a:hover { color: #fbbf24; }
+    .footer-bottom { max-width: 1200px; margin: 24px auto 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; font-size: 12.5px; }
+
+    @media (max-width: 860px) {
+      .header-container { flex-wrap: wrap; height: auto; padding: 10px 20px; gap: 10px; }
+      .header-nav-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding: 6px 0; }
+      .header-nav-container::-webkit-scrollbar { display: none; }
+      .header-nav-links { gap: 12px; width: max-content; }
+      .header-nav-links a { font-size: 12.5px; padding: 4px 8px; border-radius: 6px; background: #f8fafc; border: 1px solid #e2e8f0; }
+      .footer-container { grid-template-columns: 1fr; gap: 24px; }
+      .hero-title { font-size: 26px; }
+      .calc-card { padding: 20px; }
+      .result-row-top { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="header-container">
+      <a href="/" class="logo-area">
+        <div class="logo-icon"><i class="fas fa-coins"></i></div>
+        <span>DailyCalcHubs</span>
+      </a>
+      <nav class="header-nav-container">
+        <ul class="header-nav-links">
+          <li><a href="/">Home</a></li>
+          <li><a href="/saudi-remittance-calculator/">Remittance</a></li>
+          <li><a href="/prayer-times/">Prayer Times</a></li>
+          <li><a href="/saudi-salary-calculator/">Salary</a></li>
+          <li><a href="/saudi-iqama-calculator/">Iqama</a></li>
+          <li><a href="/everyday-smart-calculator/">Everyday</a></li>
+          <li><a href="/shariah-sip-calculator/" class="active">Shariah SIP</a></li>
+          <li><a href="/travel-booking-calculator/">Travel & Booking</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Breadcrumbs -->
+  <div class="breadcrumb-bar">
+    <div class="breadcrumb-container">
+      <a href="/"><i class="fas fa-home"></i> Home</a>
+      <span class="breadcrumb-sep"><i class="fas fa-chevron-right"></i></span>
+      <a href="/shariah-sip-calculator/">Shariah SIP Hub</a>
+      <span class="breadcrumb-sep"><i class="fas fa-chevron-right"></i></span>
+      <span style="color: var(--navy-dark); font-weight:600;">Monthly Investment Schedule</span>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="page-main">
+
+    <!-- Hero -->
+    <section class="hero-section">
+      <div class="badge-hero"><i class="fas fa-calendar-days"></i> Milestone Compounding Engine</div>
+      <h1 class="hero-title">Monthly Investment Compounding Calculator</h1>
+      <p class="hero-desc">
+        Track your portfolio's year-by-year accumulation and compare nominal projected numbers against true inflation-adjusted purchasing power in Saudi Riyals.
+      </p>
+    </section>
+
+    <!-- Calculator Card -->
+    <div class="calc-card">
+      <form id="schedForm" onsubmit="event.preventDefault(); calculateMonthlySchedule();">
+        <div class="form-group">
+          <label class="form-label" for="schedMonthly">Monthly Investment (SAR)</label>
+          <div class="input-with-addons">
+            <span class="input-addon-badge">SAR</span>
+            <input type="number" id="schedMonthly" class="calc-input" value="2000" min="50" step="50" required oninput="calculateMonthlySchedule()">
+          </div>
+          <div class="amount-chips-row">
+            <button type="button" class="amount-chip-btn" onclick="setSchedMonthly(500)">500 SAR</button>
+            <button type="button" class="amount-chip-btn" onclick="setSchedMonthly(1000)">1,000 SAR</button>
+            <button type="button" class="amount-chip-btn" onclick="setSchedMonthly(2000)">2,000 SAR</button>
+            <button type="button" class="amount-chip-btn" onclick="setSchedMonthly(5000)">5,000 SAR</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="schedReturn">Expected Annual Return Rate (% p.a.)</label>
+          <div class="input-with-addons">
+            <span class="input-addon-badge"><i class="fas fa-percent"></i></span>
+            <input type="number" id="schedReturn" class="calc-input" value="10" min="0" max="30" step="0.5" required oninput="calculateMonthlySchedule()">
+          </div>
+          <div class="amount-chips-row">
+            <button type="button" class="amount-chip-btn" onclick="setSchedReturn(6)">6% Conservative</button>
+            <button type="button" class="amount-chip-btn" onclick="setSchedReturn(8)">8% Balanced</button>
+            <button type="button" class="amount-chip-btn" onclick="setSchedReturn(10)">10% Equity</button>
+            <button type="button" class="amount-chip-btn" onclick="setSchedReturn(12)">12% Growth</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="schedYears">Investment Horizon (Years)</label>
+          <div class="input-with-addons">
+            <span class="input-addon-badge"><i class="fas fa-clock"></i></span>
+            <input type="number" id="schedYears" class="calc-input" value="15" min="1" max="40" step="1" required oninput="calculateMonthlySchedule()">
+          </div>
+          <div class="amount-chips-row">
+            <button type="button" class="amount-chip-btn" onclick="setSchedYears(5)">5 Years</button>
+            <button type="button" class="amount-chip-btn" onclick="setSchedYears(10)">10 Years</button>
+            <button type="button" class="amount-chip-btn" onclick="setSchedYears(15)">15 Years</button>
+            <button type="button" class="amount-chip-btn" onclick="setSchedYears(20)">20 Years</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="schedInflation">Assumed Annual Inflation Rate (%)</label>
+          <div class="input-with-addons">
+            <span class="input-addon-badge"><i class="fas fa-arrow-trend-up"></i></span>
+            <input type="number" id="schedInflation" class="calc-input" value="2.5" min="0" max="15" step="0.1" required oninput="calculateMonthlySchedule()">
+          </div>
+          <small style="display:block; margin-top:6px; color:#64748b; font-size:12.5px;">
+            *Saudi Arabia long-term inflation benchmark is typically ~2.0%–2.5%.
+          </small>
+        </div>
+      </form>
+
+      <!-- Result Box -->
+      <div class="result-summary-box">
+        <div class="result-row-top">
+          <div>
+            <div class="result-label">Nominal Future Portfolio Value</div>
+            <div class="result-big-val" id="resNominalCorpus">835,848 SAR</div>
+          </div>
+          <div class="result-real-badge" id="resRealBadge">
+            Real Value: 577,130 SAR (Today's Buying Power)
+          </div>
+        </div>
+
+        <div class="result-meta-grid">
+          <div class="meta-box-inner">
+            <div class="meta-box-title">Total Capital Invested</div>
+            <div class="meta-box-val" id="resSchedInvested">360,000 SAR</div>
+          </div>
+          <div class="meta-box-inner">
+            <div class="meta-box-title">Nominal Gain</div>
+            <div class="meta-box-val" id="resNominalGain" style="color:#fbbf24;">475,848 SAR</div>
+          </div>
+          <div class="meta-box-inner">
+            <div class="meta-box-title">Real Purchasing Power Gain</div>
+            <div class="meta-box-val" id="resRealGain" style="color:#86efac;">217,130 SAR</div>
+          </div>
+          <div class="meta-box-inner">
+            <div class="meta-box-title">Inflation Drag Impact</div>
+            <div class="meta-box-val" id="resInflationDrag" style="color:#f87171;">-258,718 SAR</div>
+          </div>
+        </div>
+
+        <!-- Schedule Table -->
+        <div class="schedule-table-card">
+          <div class="schedule-table-title">
+            <i class="fas fa-table-list"></i>
+            <span>Year-by-Year Wealth Accumulation Schedule</span>
+          </div>
+          <div class="schedule-table-wrap">
+            <table class="schedule-table">
+              <thead>
+                <tr>
+                  <th>Milestone</th>
+                  <th>Total Invested</th>
+                  <th>Nominal Value</th>
+                  <th>Real Purchasing Power</th>
+                </tr>
+              </thead>
+              <tbody id="scheduleTableBody">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEO & Educational Guide -->
+    <article class="seo-article">
+      <h2>Why Calculating Real Inflation-Adjusted Wealth Matters</h2>
+      <p>
+        Nominal compounding projections look spectacular on paper, but every economy experiences continuous purchasing power erosion due to inflation. If prices of housing, food, and healthcare rise by 2.5% annually over 15 years, a basket of goods costing 100,000 SAR today will cost over 144,000 SAR in the future.
+      </p>
+
+      <h3>Nominal Returns vs. Real Returns</h3>
+      <p>
+        Our calculator computes both figures simultaneously:
+      </p>
+      <ul>
+        <li><strong>Nominal Portfolio Value:</strong> The literal cash balance in your investment brokerage account.</li>
+        <li><strong>Real Purchasing Power:</strong> Deflates the future balance back into today’s currency terms using $FV_{\text{real}} = FV \div (1 + \text{Inflation Rate})^{\text{Years}}$.</li>
+      </ul>
+
+      <div class="disclaimer-alert">
+        <strong><i class="fas fa-triangle-exclamation"></i> Planning Disclaimer</strong>
+        All figures are mathematical projections based on constant compounding and steady inflation assumptions. DailyCalcHubs is not a financial advisor or Shariah certification board. Real market returns fluctuate, and returns on equities and mutual funds are neither guaranteed nor fixed.
+      </div>
+
+      <h2>Automated Monthly Investing in Saudi Arabian Banks</h2>
+      <p>
+        The most reliable method of maintaining a multi-year investment habit is establishing automated standing orders through licensed CMA (Capital Market Authority) investment platforms:
+      </p>
+      <ul>
+        <li><strong>Salary Day Alignment:</strong> Schedule direct debits 1 to 2 days after the standard 27th-of-the-month Saudi government and corporate payroll cycle.</li>
+        <li><strong>Dollar-Cost Discipline:</strong> Automating the investment removes human emotional hesitation during temporary market pullbacks.</li>
+      </ul>
+
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>Why is adjusting for inflation critical in long-term investing?</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer" style="display:none;">
+          Inflation reduces purchasing power over time. A portfolio worth 1,000,000 SAR in 20 years will not buy the same goods as 1,000,000 SAR today. Adjusting for assumed inflation reveals the true real wealth of your future capital.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>What is the typical inflation rate in Saudi Arabia?</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer" style="display:none;">
+          Saudi Arabia historically maintains stable inflation rates, typically ranging between 1.5% and 3.0% annually, anchored by the fixed SAR-to-USD currency peg and government price stability mechanisms.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>How do automated monthly investments work in Saudi banks?</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer" style="display:none;">
+          Through online banking applications (such as Al Rajhi Capital, SNB Capital, Riyad Capital), users can schedule automatic standing orders to purchase mutual fund units or Sukuk on salary payout day.
+        </div>
+      </div>
+    </article>
+
+    <!-- Related Tools Grid -->
+    <div class="related-section">
+      <h2 class="related-title">Explore Related Shariah Wealth Tools</h2>
+      <div class="related-grid">
+        <a href="/shariah-sip-calculator/sip-calculator/" class="related-card">
+          <span class="related-card-badge">Regular Growth</span>
+          <div class="related-card-name">Shariah SIP Calculator</div>
+          <div class="related-card-desc">Calculate projected total wealth and profit gains from custom monthly SIP contributions.</div>
+        </a>
+        <a href="/shariah-sip-calculator/sip-goal-calculator/" class="related-card">
+          <span class="related-card-badge">Goal Planning</span>
+          <div class="related-card-name">SIP Goal Calculator</div>
+          <div class="related-card-desc">Determine the exact monthly investment required to hit a specific future savings milestone.</div>
+        </a>
+        <a href="/shariah-sip-calculator/lump-sum-calculator/" class="related-card">
+          <span class="related-card-badge">Capital Strategy</span>
+          <div class="related-card-name">Lump Sum vs SIP Calculator</div>
+          <div class="related-card-desc">Compare deploying a one-time capital award against systematic monthly dollar-cost averaging.</div>
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    function setSchedMonthly(val) { document.getElementById('schedMonthly').value = val; calculateMonthlySchedule(); }
+    function setSchedReturn(val) { document.getElementById('schedReturn').value = val; calculateMonthlySchedule(); }
+    function setSchedYears(val) { document.getElementById('schedYears').value = val; calculateMonthlySchedule(); }
+
+    function calculateMonthlySchedule() {
+      const p = Math.max(0, parseFloat(document.getElementById('schedMonthly').value) || 0);
+      const r = Math.max(0, parseFloat(document.getElementById('schedReturn').value) || 0);
+      const y = Math.max(1, parseFloat(document.getElementById('schedYears').value) || 1);
+      const inf = Math.max(0, parseFloat(document.getElementById('schedInflation').value) || 0);
+
+      const i = (r / 100) / 12;
+      const n = y * 12;
+      const invested = p * n;
+
+      let nominalFv = 0;
+      if (i > 0) {
+        nominalFv = p * ((Math.pow(1 + i, n) - 1) / i) * (1 + i);
+      } else {
+        nominalFv = invested;
+      }
+
+      // Inflation adjustment
+      const infFactor = Math.pow(1 + (inf / 100), y);
+      const realFv = infFactor > 0 ? (nominalFv / infFactor) : nominalFv;
+
+      const nominalGain = Math.max(0, nominalFv - invested);
+      const realGain = Math.max(0, realFv - invested);
+      const inflationDrag = Math.max(0, nominalFv - realFv);
+
+      document.getElementById('resNominalCorpus').innerText = Math.round(nominalFv).toLocaleString('en-US') + ' SAR';
+      document.getElementById('resSchedInvested').innerText = Math.round(invested).toLocaleString('en-US') + ' SAR';
+      document.getElementById('resNominalGain').innerText = '+' + Math.round(nominalGain).toLocaleString('en-US') + ' SAR';
+      document.getElementById('resRealGain').innerText = '+' + Math.round(realGain).toLocaleString('en-US') + ' SAR';
+      document.getElementById('resInflationDrag').innerText = '-' + Math.round(inflationDrag).toLocaleString('en-US') + ' SAR';
+      document.getElementById('resRealBadge').innerText = 'Real Buying Power: ' + Math.round(realFv).toLocaleString('en-US') + ' SAR';
+
+      // Build Milestone Table
+      const tbody = document.getElementById('scheduleTableBody');
+      tbody.innerHTML = '';
+
+      // Determine step milestones
+      const milestones = [];
+      for (let yr = 1; yr <= y; yr++) {
+        if (yr === 1 || yr === 2 || yr === 3 || yr === 5 || yr === 7 || yr === 10 || yr === 15 || yr === 20 || yr === 25 || yr === 30 || yr === y) {
+          if (!milestones.includes(yr)) milestones.push(yr);
+        }
+      }
+      milestones.sort((a, b) => a - b);
+
+      milestones.forEach(yr => {
+        const mMonths = yr * 12;
+        const mInvested = p * mMonths;
+        let mNomFv = 0;
+        if (i > 0) {
+          mNomFv = p * ((Math.pow(1 + i, mMonths) - 1) / i) * (1 + i);
+        } else {
+          mNomFv = mInvested;
+        }
+        const mInfFactor = Math.pow(1 + (inf / 100), yr);
+        const mRealFv = mInfFactor > 0 ? (mNomFv / mInfFactor) : mNomFv;
+
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td><strong>Year ${yr}</strong> (${mMonths} mos)</td>
+          <td>${Math.round(mInvested).toLocaleString('en-US')} SAR</td>
+          <td style="color:#b45309; font-weight:700;">${Math.round(mNomFv).toLocaleString('en-US')} SAR</td>
+          <td style="color:#15803d; font-weight:700;">${Math.round(mRealFv).toLocaleString('en-US')} SAR</td>
+        `;
+        tbody.appendChild(row);
+      });
+    }
+
+    function toggleFaq(elem) {
+      const answer = elem.nextElementSibling;
+      const icon = elem.querySelector('i');
+      if (answer.style.display === 'block') {
+        answer.style.display = 'none';
+        icon.classList.remove('fa-chevron-up');
+        icon.classList.add('fa-chevron-down');
+      } else {
+        answer.style.display = 'block';
+        icon.classList.remove('fa-chevron-down');
+        icon.classList.add('fa-chevron-up');
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', calculateMonthlySchedule);
+  </script>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-col">
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom:14px;">
+          <div class="logo-icon" style="width:30px; height:30px; font-size:14px;"><i class="fas fa-coins"></i></div>
+          <span style="font-weight:800; font-size:18px; color:white;">DailyCalcHubs</span>
+        </div>
+        <p style="font-size:13.5px; line-height:1.6; color:#94a3b8; margin-bottom:14px;">
+          High-precision financial, remittance, salary, Iqama, and everyday utility calculators designed for expatriates and residents across Saudi Arabia and the GCC.
+        </p>
+        <div style="font-size:12.5px; color:#64748b;">
+          Calculations are for educational and planning estimates. Consult licensed financial advisors for formal transactions.
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Shariah Hub</h4>
+        <ul>
+          <li><a href="/shariah-sip-calculator/">Shariah SIP Hub</a></li>
+          <li><a href="/shariah-sip-calculator/sip-calculator/">SIP Growth Calculator</a></li>
+          <li><a href="/shariah-sip-calculator/sip-goal-calculator/">SIP Goal Planner</a></li>
+          <li><a href="/shariah-sip-calculator/monthly-investment-calculator/">Monthly Compounding</a></li>
+          <li><a href="/shariah-sip-calculator/lump-sum-calculator/">Lump Sum vs SIP</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Saudi Calculator Hubs</h4>
+        <ul>
+          <li><a href="/saudi-remittance-calculator/">Saudi Remittance Hub</a></li>
+          <li><a href="/saudi-salary-calculator/">Saudi Salary Hub</a></li>
+          <li><a href="/saudi-iqama-calculator/">Saudi Iqama Hub</a></li>
+          <li><a href="/everyday-smart-calculator/">Everyday Smart Hub</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Company & Legal</h4>
+        <ul>
+          <li><a href="/about-us/">About Us</a></li>
+          <li><a href="/contact-us/">Contact Us</a></li>
+          <li><a href="/privacy-policy/">Privacy Policy</a></li>
+          <li><a href="/terms-of-service/">Terms of Service</a></li>
+          <li><a href="/disclaimer/">Disclaimer</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>&copy; 2026 DailyCalcHubs.com. All rights reserved.</div>
+      <div>Designed with Precision for Saudi Arabia & GCC Residents</div>
+    </div>
+  </footer>
+
+</body>
+</html>
