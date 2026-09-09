@@ -117,7 +117,7 @@
         "name": "What should I do if my detected location is incorrect?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Ensure device location services are enabled and click 'Detect My Location', or select your city directly from our quick-selection buttons (Makkah, Madinah, Riyadh, Jeddah, Dammam, Al Khobar, Dubai, Azamgarh, Lucknow, Delhi, Hyderabad, Kolkata, Bangalore)."
+          "text": "Ensure device location services are enabled and click 'Detect My Location', or select your city directly from our quick-selection buttons (Makkah, Madinah, Riyadh, Jeddah, Dammam, Al Khobar, Dubai, Azamgarh, Lucknow, Delhi, Mumbai, Hyderabad, Kolkata, Bangalore)."
         }
       }
     ]
@@ -227,9 +227,11 @@
     .timer-colon { font-size: 24px; font-weight: 800; color: #64748b; margin-top: -12px; }
 
     /* City Selector Chips */
-    .city-chips-bar { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 26px; }
-    .city-chip-label { font-size: 12.5px; font-weight: 700; color: var(--text-muted); margin-right: 4px; }
-    .city-btn { background: #f1f5f9; border: 1px solid var(--border-color); color: var(--text-dark); font-size: 12.5px; font-weight: 600; padding: 6px 12px; border-radius: 20px; cursor: pointer; transition: all 0.2s; }
+    .quick-cities-container { margin-bottom: 26px; }
+    .quick-cities-title { font-size: 13px; font-weight: 700; color: var(--text-muted); margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+    .quick-cities-rows { display: flex; flex-direction: column; gap: 8px; }
+    .quick-cities-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .city-btn { background: #f1f5f9; border: 1px solid var(--border-color); color: var(--text-dark); font-size: 12.5px; font-weight: 600; padding: 6px 12px; border-radius: 20px; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
     .city-btn:hover { background: var(--prayer-light); border-color: var(--prayer-primary); color: var(--prayer-primary); }
     .city-btn.active { background: var(--prayer-primary); color: white; border-color: var(--prayer-primary); }
 
@@ -462,21 +464,28 @@
       </div>
 
       <!-- Quick City Selector Chips -->
-      <div class="city-chips-bar">
-        <span class="city-chip-label"><i class="fas fa-city"></i> Quick Cities:</span>
-        <button type="button" class="city-btn" onclick="selectCity(this, 'makkah', 21.4225, 39.8262, 'Makkah, Saudi Arabia')">Makkah</button>
-        <button type="button" class="city-btn" onclick="selectCity(this, 'madinah', 24.4672, 39.6111, 'Madinah, Saudi Arabia')">Madinah</button>
-        <button type="button" class="city-btn" onclick="selectCity(this, 'riyadh', 24.7136, 46.6753, 'Riyadh, Saudi Arabia')">Riyadh</button>
-        <button type="button" class="city-btn" onclick="selectCity(this, 'jeddah', 21.5433, 39.1728, 'Jeddah, Saudi Arabia')">Jeddah</button>
-        <button type="button" class="city-btn" onclick="selectCity(this, 'dammam', 26.4207, 50.0888, 'Dammam, Saudi Arabia')">Dammam</button>
-        <button type="button" class="city-btn" onclick="selectCity(this, 'khobar', 26.2818, 50.2084, 'Al Khobar, Saudi Arabia')">Al Khobar</button>
-        <button type="button" class="city-btn" onclick="selectCity(this, 'dubai', 25.2048, 55.2708, 'Dubai, UAE')">Dubai</button>
-        <button type="button" class="city-btn" onclick="selectCity(this, 'azamgarh', 26.0688, 83.1859, 'Azamgarh, India')">Azamgarh</button>
-        <button type="button" class="city-btn" onclick="selectCity(this, 'lucknow', 26.8467, 80.9462, 'Lucknow, India')">Lucknow</button>
-        <button type="button" class="city-btn" onclick="selectCity(this, 'delhi', 28.6139, 77.2090, 'Delhi, India')">Delhi</button>
-        <button type="button" class="city-btn" onclick="selectCity(this, 'hyderabad', 17.3850, 78.4867, 'Hyderabad, India')">Hyderabad</button>
-        <button type="button" class="city-btn" onclick="selectCity(this, 'kolkata', 22.5726, 88.3639, 'Kolkata, India')">Kolkata</button>
-        <button type="button" class="city-btn" onclick="selectCity(this, 'bangalore', 12.9716, 77.5946, 'Bangalore, India')">Bangalore</button>
+      <div class="quick-cities-container">
+        <div class="quick-cities-title"><i class="fas fa-city" style="color: var(--prayer-primary);"></i> Quick Cities</div>
+        <div class="quick-cities-rows">
+          <div class="quick-cities-row">
+            <button type="button" class="city-btn" onclick="selectCity(this, 'makkah', 21.4225, 39.8262, 'Makkah, Saudi Arabia')">Makkah</button>
+            <button type="button" class="city-btn" onclick="selectCity(this, 'madinah', 24.4672, 39.6111, 'Madinah, Saudi Arabia')">Madinah</button>
+            <button type="button" class="city-btn" onclick="selectCity(this, 'riyadh', 24.7136, 46.6753, 'Riyadh, Saudi Arabia')">Riyadh</button>
+            <button type="button" class="city-btn" onclick="selectCity(this, 'jeddah', 21.5433, 39.1728, 'Jeddah, Saudi Arabia')">Jeddah</button>
+            <button type="button" class="city-btn" onclick="selectCity(this, 'dammam', 26.4207, 50.0888, 'Dammam, Saudi Arabia')">Dammam</button>
+            <button type="button" class="city-btn" onclick="selectCity(this, 'khobar', 26.2818, 50.2084, 'Al Khobar, Saudi Arabia')">Al Khobar</button>
+            <button type="button" class="city-btn" onclick="selectCity(this, 'dubai', 25.2048, 55.2708, 'Dubai, UAE')">Dubai</button>
+          </div>
+          <div class="quick-cities-row">
+            <button type="button" class="city-btn" onclick="selectCity(this, 'azamgarh', 26.0688, 83.1859, 'Azamgarh, India')">Azamgarh</button>
+            <button type="button" class="city-btn" onclick="selectCity(this, 'lucknow', 26.8467, 80.9462, 'Lucknow, India')">Lucknow</button>
+            <button type="button" class="city-btn" onclick="selectCity(this, 'delhi', 28.6139, 77.2090, 'Delhi, India')">Delhi</button>
+            <button type="button" class="city-btn" onclick="selectCity(this, 'mumbai', 19.0760, 72.8777, 'Mumbai, India')">Mumbai</button>
+            <button type="button" class="city-btn" onclick="selectCity(this, 'hyderabad', 17.3850, 78.4867, 'Hyderabad, India')">Hyderabad</button>
+            <button type="button" class="city-btn" onclick="selectCity(this, 'kolkata', 22.5726, 88.3639, 'Kolkata, India')">Kolkata</button>
+            <button type="button" class="city-btn" onclick="selectCity(this, 'bangalore', 12.9716, 77.5946, 'Bangalore, India')">Bangalore</button>
+          </div>
+        </div>
       </div>
 
       <!-- D. Daily 5 Obligatory Prayers + Sunrise Grid -->
@@ -668,7 +677,7 @@
 
       <div class="faq-item">
         <div class="faq-question">What should I do if my detected location is incorrect? <i class="fas fa-chevron-down"></i></div>
-        <div class="faq-answer">Ensure device location services are enabled and click "Detect My Location", or select your city directly from our quick-selection buttons (Makkah, Madinah, Riyadh, Jeddah, Dammam, Al Khobar, Dubai, Azamgarh, Lucknow, Delhi, Hyderabad, Kolkata, Bangalore).</div>
+        <div class="faq-answer">Ensure device location services are enabled and click "Detect My Location", or select your city directly from our quick-selection buttons (Makkah, Madinah, Riyadh, Jeddah, Dammam, Al Khobar, Dubai, Azamgarh, Lucknow, Delhi, Mumbai, Hyderabad, Kolkata, Bangalore).</div>
       </div>
     </div>
 
