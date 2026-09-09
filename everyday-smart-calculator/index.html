@@ -1,0 +1,647 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Everyday Smart Calculator | Free Daily Financial & Life Tools</title>
+  <meta name="description" content="Free everyday smart calculators: Age & Date of Birth calculator, Smart Discount and Sale price estimator, and practical consumer math utilities for daily life.">
+  <meta name="keywords" content="everyday smart calculator, age calculator online, discount calculator, sale price calculator saudi arabia, date of birth calculator, shopping savings math">
+  <link rel="canonical" href="https://dailycalchubs.com/everyday-smart-calculator/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://dailycalchubs.com/everyday-smart-calculator/">
+  <meta property="og:title" content="Everyday Smart Calculator | Free Daily Financial & Life Tools">
+  <meta property="og:description" content="Fast, practical everyday calculators: Age & Date of Birth, Smart Discount & Sale math, and consumer utilities.">
+  <meta property="og:image" content="https://dailycalchubs.com/og-image.jpg">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Everyday Smart Calculator | DailyCalcHubs">
+  <meta name="twitter:description" content="Instant Age & Date of Birth calculations, shopping discount estimators, and everyday smart math tools.">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6944579701716470" crossorigin="anonymous"></script>
+
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-18Y3LNHDR8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-18Y3LNHDR8');
+  </script>
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://dailycalchubs.com/everyday-smart-calculator/#app",
+        "name": "Everyday Smart Calculator",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "All",
+        "url": "https://dailycalchubs.com/everyday-smart-calculator/",
+        "description": "Smart everyday life calculators including precise Age and Date of Birth determination and retail discount shopping calculators.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://dailycalchubs.com/everyday-smart-calculator/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What tools are included in the Everyday Smart Calculator suite?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The Everyday Smart Calculator hub provides focused, dedicated utilities for daily personal and financial calculations, including the Age & Date of Birth Calculator and the Smart Discount & Sale Price Calculator."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does the Smart Discount Calculator handle stacked coupons?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "When combining a store discount (e.g. 20% off) with an extra promotional coupon code (e.g. 10% extra), the calculator compounds them accurately rather than simply adding them, showing your true final price and actual total percentage saved."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does the Age Calculator account for leap years?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. The Age Calculator calculates exact calendar date math, properly accounting for 365 vs 366-day leap years, variable month lengths (28 to 31 days), and precise days until your next birthday."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --bg-light: #f8fafc;
+      --bg-white: #ffffff;
+      --navy-dark: #0f172a;
+      --navy-footer: #081024;
+      --sky-saudi: #0ea5e9;
+      --sky-dark: #0284c7;
+      --sky-light: #f0f9ff;
+      --sky-border: #bae6fd;
+      --border-light: #e2e8f0;
+      --text-muted: #64748b;
+      --text-dark: #0f172a;
+      --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+      --card-shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      font-family: var(--font-main);
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    .container { max-width: 1240px; margin: 0 auto; padding: 0 20px; }
+
+    /* Top Rates Ticker */
+    .top-rates-ticker {
+      background: var(--navy-dark);
+      color: #94a3b8;
+      font-size: 11.5px;
+      font-weight: 600;
+      padding: 7px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      overflow-x: auto;
+      white-space: nowrap;
+      scrollbar-width: none;
+    }
+    .top-rates-ticker::-webkit-scrollbar { display: none; }
+    .ticker-inner { display: flex; align-items: center; justify-content: center; gap: 24px; padding: 0 16px; }
+    .ticker-item { display: inline-flex; align-items: center; gap: 6px; }
+    .ticker-rate { color: #38bdf8; font-weight: 700; }
+    .ticker-tag-green { background: rgba(22, 163, 74, 0.2); color: #4ade80; padding: 1px 6px; border-radius: 4px; font-size: 10px; font-weight: 700; }
+
+    /* Header */
+    .site-header { background: var(--bg-white); border-bottom: 1px solid var(--border-light); position: sticky; top: 0; z-index: 1000; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04); }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; height: 74px; }
+    .brand-logo-area { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .logo-icon-box { width: 42px; height: 42px; background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 20px; box-shadow: 0 4px 10px rgba(14, 165, 233, 0.25); }
+    .logo-title { font-size: 22px; font-weight: 800; letter-spacing: -0.5px; line-height: 1.1; color: var(--navy-dark); }
+    .logo-subtitle { font-size: 11.5px; color: var(--text-muted); font-weight: 600; }
+    .header-nav-links { display: flex; align-items: center; gap: 24px; list-style: none; }
+    .header-nav-links a { color: #334155; text-decoration: none; font-size: 14px; font-weight: 600; transition: color 0.15s; }
+    .header-nav-links a:hover, .header-nav-links a.active { color: var(--sky-saudi); }
+    .saudi-badge-header { display: inline-flex; align-items: center; gap: 6px; background: #f0f9ff; border: 1px solid #bae6fd; color: #0284c7; padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; }
+
+    /* Hero */
+    .hub-hero { background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%); padding: 42px 0 32px; border-bottom: 1px solid var(--border-light); }
+    .hub-pill { display: inline-flex; align-items: center; gap: 8px; background: #f0f9ff; border: 1px solid #bae6fd; color: #0284c7; padding: 4px 12px; border-radius: 9999px; font-size: 12px; font-weight: 700; margin-bottom: 14px; }
+    .hub-title { font-size: 36px; font-weight: 800; color: var(--navy-dark); letter-spacing: -0.8px; margin-bottom: 12px; line-height: 1.2; }
+    .hub-lead { font-size: 16px; color: #475569; max-width: 860px; line-height: 1.6; margin-bottom: 20px; }
+
+    /* Main Tools Grid Section */
+    .featured-tools-section { padding: 40px 0; }
+    .featured-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; margin-bottom: 40px; }
+    @media (max-width: 840px) { .featured-grid { grid-template-columns: 1fr; } }
+
+    .feature-card {
+      background: #ffffff;
+      border: 1px solid var(--border-light);
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: var(--card-shadow);
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+    }
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #0ea5e9, #0284c7);
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+    .feature-card:hover { transform: translateY(-4px); box-shadow: var(--card-shadow-hover); border-color: var(--sky-saudi); }
+    .feature-card:hover::before { opacity: 1; }
+
+    .card-top-icon-box {
+      width: 54px;
+      height: 54px;
+      border-radius: 14px;
+      background: #f0f9ff;
+      color: #0284c7;
+      border: 1px solid #bae6fd;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+    .card-main-title { font-size: 22px; font-weight: 800; color: var(--navy-dark); margin-bottom: 8px; }
+    .card-main-desc { font-size: 14.5px; color: #475569; line-height: 1.6; margin-bottom: 24px; }
+    .card-features-list { list-style: none; margin-bottom: 26px; }
+    .card-features-list li { display: flex; align-items: center; gap: 10px; font-size: 13.5px; font-weight: 600; color: #334155; margin-bottom: 8px; }
+    .card-features-list i { color: #0ea5e9; font-size: 14px; }
+
+    .card-action-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: #0ea5e9;
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 12px 20px;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: all 0.15s ease;
+      width: 100%;
+    }
+    .card-action-btn:hover { background: #0284c7; }
+
+    /* Interactive Showcase Section */
+    .interactive-showcase-section { background: #ffffff; border-radius: 16px; border: 1px solid var(--border-light); box-shadow: var(--card-shadow); padding: 36px; margin-bottom: 48px; }
+    .showcase-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 28px; flex-wrap: wrap; gap: 16px; }
+    .showcase-title { font-size: 22px; font-weight: 800; color: var(--navy-dark); display: flex; align-items: center; gap: 10px; }
+    .tabs-nav { display: flex; gap: 8px; background: #f1f5f9; padding: 4px; border-radius: 10px; }
+    .tab-btn { border: none; background: transparent; padding: 8px 16px; font-size: 13.5px; font-weight: 700; color: #475569; border-radius: 8px; cursor: pointer; transition: all 0.15s ease; font-family: inherit; }
+    .tab-btn.active { background: #ffffff; color: #0284c7; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); }
+
+    /* Quick Mini Tools Inside Showcase */
+    .mini-tool-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: center; }
+    @media (max-width: 800px) { .mini-tool-layout { grid-template-columns: 1fr; } }
+    .mini-form-group { margin-bottom: 16px; }
+    .mini-form-label { display: block; font-size: 13px; font-weight: 700; color: #1e293b; margin-bottom: 6px; }
+    .mini-input-addons { display: flex; align-items: center; border: 2px solid #cbd5e1; border-radius: 10px; background: #fff; overflow: hidden; }
+    .mini-input-addons:focus-within { border-color: var(--sky-saudi); }
+    .mini-calc-input { flex: 1; border: none; outline: none; padding: 10px 14px; font-size: 15px; font-weight: 700; color: var(--navy-dark); font-family: inherit; width: 100%; }
+
+    .mini-result-box { background: linear-gradient(135deg, #0f172a 0%, #0369a1 100%); color: #fff; border-radius: 12px; padding: 22px; }
+    .mini-result-label { font-size: 12px; color: #bae6fd; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 700; margin-bottom: 4px; }
+    .mini-result-val { font-size: 28px; font-weight: 800; color: #38bdf8; line-height: 1.1; margin-bottom: 12px; }
+    .mini-sub-stats { font-size: 13px; color: #e2e8f0; line-height: 1.6; border-top: 1px solid rgba(255, 255, 255, 0.15); padding-top: 10px; }
+
+    /* Article & SEO Content */
+    .content-article { background: #ffffff; padding: 40px; border-radius: 16px; border: 1px solid var(--border-light); box-shadow: var(--card-shadow); margin-bottom: 40px; }
+    .content-article h2 { font-size: 24px; font-weight: 800; color: var(--navy-dark); margin: 32px 0 16px; letter-spacing: -0.3px; }
+    .content-article h2:first-of-type { margin-top: 0; }
+    .content-article h3 { font-size: 18px; font-weight: 700; color: var(--navy-dark); margin: 22px 0 12px; }
+    .content-article p { font-size: 15px; line-height: 1.7; color: #334155; margin-bottom: 18px; }
+    .content-article ul, .content-article ol { margin-bottom: 20px; padding-left: 24px; }
+    .content-article li { font-size: 14.5px; line-height: 1.6; color: #334155; margin-bottom: 8px; }
+    .content-callout { background: #f0f9ff; border-left: 4px solid var(--sky-saudi); padding: 18px 22px; border-radius: 0 8px 8px 0; margin: 22px 0; font-size: 14.5px; color: #334155; }
+    .content-callout strong { color: #0369a1; }
+
+    /* FAQ */
+    .faq-item { border: 1px solid var(--border-light); border-radius: 10px; margin-bottom: 12px; background: #ffffff; overflow: hidden; }
+    .faq-question { padding: 18px 22px; font-weight: 700; font-size: 15px; color: var(--navy-dark); cursor: pointer; display: flex; justify-content: space-between; align-items: center; user-select: none; }
+    .faq-question:hover { background: #f8fafc; }
+    .faq-answer { padding: 0 22px 18px; font-size: 14px; line-height: 1.6; color: #475569; }
+
+    /* AdSense */
+    .ad-slot-container { max-width: 1240px; margin: 30px auto; min-height: 90px; background: #f1f5f9; border: 1px dashed #cbd5e1; border-radius: 8px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+
+    /* Footer */
+    .site-footer { background: var(--navy-footer); color: #94a3b8; padding: 48px 0 24px; border-top: 1px solid rgba(255, 255, 255, 0.08); font-size: 13.5px; }
+    .footer-columns-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr; gap: 36px; margin-bottom: 36px; }
+    @media (max-width: 840px) { .footer-columns-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 540px) { .footer-columns-grid { grid-template-columns: 1fr; } }
+    .footer-col-heading { color: #fff; font-size: 15px; font-weight: 700; margin-bottom: 16px; }
+    .footer-nav-list { list-style: none; }
+    .footer-nav-list li { margin-bottom: 10px; }
+    .footer-nav-list a { color: #94a3b8; text-decoration: none; transition: color 0.15s; }
+    .footer-nav-list a:hover { color: #38bdf8; }
+    .footer-bottom-bar { border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; font-size: 12.5px; }
+    .footer-legal-links a { color: #94a3b8; text-decoration: none; margin: 0 8px; }
+    .footer-legal-links a:hover { color: #fff; }
+
+    @media (max-width: 640px) {
+      .hub-title { font-size: 28px; }
+      .interactive-showcase-section { padding: 22px 18px; }
+      .header-nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Top Rates Ticker -->
+  <div class="top-rates-ticker">
+    <div class="container">
+      <div class="ticker-inner">
+        <div class="ticker-item"><span>SAR / INR:</span><span class="ticker-rate" id="tickerSar">â‚¹ 22.45</span></div>
+        <div class="ticker-item"><span class="ticker-tag-green">âš¡ Barq Rate:</span><span class="ticker-rate" id="tickerBarq">â‚¹ 22.18</span></div>
+        <div class="ticker-item"><span>SAR / PKR:</span><span class="ticker-rate" id="tickerPkr">Rs 74.20</span></div>
+        <div class="ticker-item"><span>SAR / BDT:</span><span class="ticker-rate" id="tickerBdt">à§³ 32.10</span></div>
+        <div class="ticker-item"><span>SAR / PHP:</span><span class="ticker-rate" id="tickerPhp">â‚± 15.65</span></div>
+        <div class="ticker-item"><span>Gold 24K KSA:</span><span class="ticker-rate" style="color:#fbbf24;">322.50 SAR</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container">
+      <div class="header-inner">
+        <a href="/" class="brand-logo-area">
+          <div class="logo-icon-box"><i class="fas fa-calculator"></i></div>
+          <div class="logo-text-group">
+            <div class="logo-title">DailyCalc<span style="color:#0ea5e9;">Hubs</span></div>
+            <div class="logo-subtitle">Saudi Tools for a Smarter Tomorrow</div>
+          </div>
+        </a>
+        <nav>
+          <ul class="header-nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/saudi-remittance-calculator/">Remittance</a></li>
+            <li><a href="/prayer-times/">Prayer Times</a></li>
+            <li><a href="/saudi-salary-calculator/">Salary</a></li>
+            <li><a href="/saudi-iqama-calculator/">Iqama</a></li>
+            <li><a href="/everyday-smart-calculator/" class="active">Everyday</a></li>
+          </ul>
+        </nav>
+        <div class="saudi-badge-header">
+          <i class="fas fa-sparkles"></i> Smart Everyday Math
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hub-hero">
+    <div class="container">
+      <div class="hub-pill"><i class="fas fa-bolt"></i> Practical Daily Utilities</div>
+      <h1 class="hub-title">Everyday Smart Calculator</h1>
+      <p class="hub-lead">
+        Welcome to your essential everyday calculation suite. Whether determining your exact age down to the day, planning milestone birthdays, calculating retail sale discounts, or verifying shopping savings with 15% Saudi VAT, these smart tools make daily math effortless.
+      </p>
+    </div>
+  </section>
+
+  <!-- Main Tools Grid -->
+  <main class="container">
+    <section class="featured-tools-section">
+      <div class="featured-grid">
+        <!-- Card 1: Age Calculator -->
+        <div class="feature-card">
+          <div>
+            <div class="card-top-icon-box"><i class="fas fa-cake-candles"></i></div>
+            <h2 class="card-main-title">Age &amp; Date of Birth Calculator</h2>
+            <p class="card-main-desc">
+              Calculate your exact age in years, months, and days. Discover your upcoming birthday countdown, total days lived, day of birth, and personal milestone statistics.
+            </p>
+            <ul class="card-features-list">
+              <li><i class="fas fa-check-circle"></i> Exact Gregorian calendar date math</li>
+              <li><i class="fas fa-check-circle"></i> Next birthday countdown &amp; day of the week</li>
+              <li><i class="fas fa-check-circle"></i> Total months, weeks, days, and hours lived</li>
+              <li><i class="fas fa-check-circle"></i> Age eligibility verification for jobs &amp; licensing</li>
+            </ul>
+          </div>
+          <a href="/everyday-smart-calculator/age-calculator/" class="card-action-btn">
+            Open Age Calculator <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <!-- Card 2: Discount Calculator -->
+        <div class="feature-card">
+          <div>
+            <div class="card-top-icon-box"><i class="fas fa-tags"></i></div>
+            <h2 class="card-main-title">Smart Discount &amp; Sale Calculator</h2>
+            <p class="card-main-desc">
+              Calculate sale prices, promotional percentage discounts, and stacked coupon savings. Features optional 15% Saudi ZATCA VAT calculations for local retail shoppers.
+            </p>
+            <ul class="card-features-list">
+              <li><i class="fas fa-check-circle"></i> Percentage off &amp; fixed coupon discounts</li>
+              <li><i class="fas fa-check-circle"></i> Double discount &amp; stacked coupon simulator</li>
+              <li><i class="fas fa-check-circle"></i> Saudi 15% VAT addition &amp; breakdown</li>
+              <li><i class="fas fa-check-circle"></i> Instant dollar/SAR savings calculation</li>
+            </ul>
+          </div>
+          <a href="/everyday-smart-calculator/discount-calculator/" class="card-action-btn">
+            Open Discount Calculator <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Interactive Quick Showcase -->
+      <div class="interactive-showcase-section">
+        <div class="showcase-header">
+          <div class="showcase-title">
+            <i class="fas fa-wand-magic-sparkles" style="color:#0ea5e9;"></i> Quick Test Mini-Calculators
+          </div>
+          <div class="tabs-nav">
+            <button type="button" class="tab-btn active" id="tabAgeBtn" onclick="switchTab('age')">Quick Age</button>
+            <button type="button" class="tab-btn" id="tabDiscBtn" onclick="switchTab('disc')">Quick Discount</button>
+          </div>
+        </div>
+
+        <!-- Tab 1: Quick Age -->
+        <div id="quickAgeTab" class="mini-tool-layout">
+          <div>
+            <div class="mini-form-group">
+              <label class="mini-form-label" for="quickDob">Enter Date of Birth</label>
+              <div class="mini-input-addons">
+                <input type="date" id="quickDob" class="mini-calc-input" value="1995-06-15" onchange="runQuickAge()">
+              </div>
+            </div>
+            <div style="font-size:13px; color:#64748b; line-height:1.5;">
+              Want full milestone statistics and hours lived? Visit the <a href="/everyday-smart-calculator/age-calculator/" style="color:#0284c7; font-weight:700;">full Age Calculator page</a>.
+            </div>
+          </div>
+          <div class="mini-result-box">
+            <div class="mini-result-label">Calculated Age Today</div>
+            <div class="mini-result-val" id="quickAgeResult">-- Years Old</div>
+            <div class="mini-sub-stats" id="quickAgeNextBday">Next Birthday: Calculating...</div>
+          </div>
+        </div>
+
+        <!-- Tab 2: Quick Discount -->
+        <div id="quickDiscTab" class="mini-tool-layout" style="display:none;">
+          <div>
+            <div class="mini-form-group">
+              <label class="mini-form-label" for="quickOrigPrice">Original Price (SAR)</label>
+              <div class="mini-input-addons">
+                <input type="number" id="quickOrigPrice" class="mini-calc-input" value="250" min="0" step="10" oninput="runQuickDiscount()">
+              </div>
+            </div>
+            <div class="mini-form-group">
+              <label class="mini-form-label" for="quickDiscPct">Discount Percentage (%)</label>
+              <div class="mini-input-addons">
+                <input type="number" id="quickDiscPct" class="mini-calc-input" value="20" min="0" max="100" step="5" oninput="runQuickDiscount()">
+              </div>
+            </div>
+          </div>
+          <div class="mini-result-box">
+            <div class="mini-result-label">Discounted Final Price</div>
+            <div class="mini-result-val" id="quickDiscResult">200.00 SAR</div>
+            <div class="mini-sub-stats" id="quickDiscSavings">You Save: 50.00 SAR (20% Off)</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Editorial Guide -->
+    <article class="content-article">
+      <h2>Why Practical Everyday Calculators Matter</h2>
+      <p>
+        In our fast-paced daily routines, quick and accurate mathematical calculations save both money and time. From planning personal milestones to evaluating promotional discounts at shopping malls and e-commerce platforms, having reliable calculators simplifies everyday decisions.
+      </p>
+
+      <h3>1. Date &amp; Age Mathematics</h3>
+      <p>
+        Determining exact chronological age is required for passport renewals, school admissions, employment contracts, and insurance policies. Because calendar months vary between 28 and 31 days and leap years introduce extra calendar days, our Age Calculator utilizes exact day-by-day calendar math rather than rough 365-day approximations.
+      </p>
+
+      <h3>2. The True Math of Retail Discounts</h3>
+      <p>
+        Retailers frequently promote seasonal sales during Saudi National Day, Founding Day, Ramadan, and White Friday. Understanding the difference between nominal discounts, stackable coupon codes, and post-VAT pricing ensures you get genuine value for your purchases.
+      </p>
+
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>Are the calculators completely free to use?</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer" style="display:none;">
+          Yes. All tools on DailyCalcHubs are 100% free to use with no account registration or payment required.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>Are my personal dates and financial entries stored on your servers?</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer" style="display:none;">
+          No. All calculations run client-side directly in your web browser. DailyCalcHubs does not store, transmit, or log any personal dates of birth, prices, or calculation inputs.
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <!-- AdSense Container -->
+  <div class="ad-slot-container">
+    <ins class="adsbygoogle"
+         style="display:block; width:100%;"
+         data-ad-client="ca-pub-6944579701716470"
+         data-ad-slot="auto"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-columns-grid">
+        <div>
+          <div style="font-size:20px; font-weight:800; color:#fff; margin-bottom:4px;">
+            DailyCalc<span style="color:#0ea5e9;">Hubs</span>
+          </div>
+          <div style="font-size:12px; color:#64748b; margin-bottom:14px;">Saudi Tools for a Smarter Tomorrow</div>
+          <p style="font-size:13.5px; line-height:1.6; color:#94a3b8;">
+            High-precision lifestyle, compensation, remittance, residency, and everyday utility calculators designed for the modern Gulf household.
+          </p>
+        </div>
+        <div>
+          <h4 class="footer-col-heading">Everyday Smart Tools</h4>
+          <ul class="footer-nav-list">
+            <li><a href="/everyday-smart-calculator/age-calculator/">Age &amp; Date of Birth</a></li>
+            <li><a href="/everyday-smart-calculator/discount-calculator/">Discount &amp; Sale Price</a></li>
+            <li><a href="/everyday-smart-calculator/">Everyday Calculator Hub</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-col-heading">Core Saudi Utilities</h4>
+          <ul class="footer-nav-list">
+            <li><a href="/saudi-remittance-calculator/">Saudi Remittance</a></li>
+            <li><a href="/prayer-times/">Prayer Times</a></li>
+            <li><a href="/saudi-salary-calculator/">Saudi Salary &amp; EOSB</a></li>
+            <li><a href="/saudi-iqama-calculator/">Iqama Fee Estimator</a></li>
+            <li><a href="/everyday-smart-calculator/">Everyday Smart Tools</a></li>
+            <li><a href="/shariah-sip-calculator/">Shariah SIP</a></li>
+            <li><a href="/travel-booking/">Travel &amp; Booking</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-col-heading">Legal &amp; Trust</h4>
+          <ul class="footer-nav-list">
+            <li><a href="/about.html">About DailyCalcHubs</a></li>
+            <li><a href="/privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="/disclaimer.html">Terms &amp; Disclaimer</a></li>
+            <li><a href="/contact.html">Contact Support</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom-bar">
+        <div>&copy; 2026 DailyCalcHubs. All rights reserved.</div>
+        <div class="footer-legal-links">
+          <a href="/privacy-policy.html">Privacy Policy</a>
+          <span>|</span>
+          <a href="/disclaimer.html">Disclaimer</a>
+          <span>|</span>
+          <a href="/terms.html">Terms of Service</a>
+          <span>|</span>
+          <a href="/contact.html">Contact</a>
+        </div>
+        <div style="color:#0ea5e9; font-weight:600;">Everyday Life Made Simpler</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleFaq(el) {
+      const ans = el.nextElementSibling;
+      const icon = el.querySelector('i');
+      if (ans.style.display === 'none' || !ans.style.display) {
+        ans.style.display = 'block';
+        icon.className = 'fas fa-chevron-up';
+      } else {
+        ans.style.display = 'none';
+        icon.className = 'fas fa-chevron-down';
+      }
+    }
+
+    function switchTab(tab) {
+      const ageTab = document.getElementById('quickAgeTab');
+      const discTab = document.getElementById('quickDiscTab');
+      const ageBtn = document.getElementById('tabAgeBtn');
+      const discBtn = document.getElementById('tabDiscBtn');
+
+      if (tab === 'age') {
+        ageTab.style.display = 'grid';
+        discTab.style.display = 'none';
+        ageBtn.classList.add('active');
+        discBtn.classList.remove('active');
+      } else {
+        ageTab.style.display = 'none';
+        discTab.style.display = 'grid';
+        ageBtn.classList.remove('active');
+        discBtn.classList.add('active');
+        runQuickDiscount();
+      }
+    }
+
+    function runQuickAge() {
+      const dobVal = document.getElementById('quickDob').value;
+      if (!dobVal) return;
+      const dob = new Date(dobVal);
+      const today = new Date();
+
+      if (dob > today) {
+        document.getElementById('quickAgeResult').innerText = "Future Date";
+        document.getElementById('quickAgeNextBday').innerText = "Date of birth cannot be in the future.";
+        return;
+      }
+
+      let years = today.getFullYear() - dob.getFullYear();
+      let months = today.getMonth() - dob.getMonth();
+      let days = today.getDate() - dob.getDate();
+
+      if (days < 0) {
+        months--;
+        const prevMonthDays = new Date(today.getFullYear(), today.getMonth(), 0).getDate();
+        days += prevMonthDays;
+      }
+      if (months < 0) {
+        years--;
+        months += 12;
+      }
+
+      document.getElementById('quickAgeResult').innerText = `${years} Yrs, ${months} Mos, ${days} Days`;
+
+      // Next birthday calculation
+      let nextBday = new Date(today.getFullYear(), dob.getMonth(), dob.getDate());
+      if (nextBday < today) {
+        nextBday.setFullYear(today.getFullYear() + 1);
+      }
+      const diffMs = nextBday - today;
+      const daysUntil = Math.ceil(diffMs / (1000 * 60 * 60 * 24));
+      const dayOfWeek = nextBday.toLocaleDateString('en-US', { weekday: 'long' });
+
+      document.getElementById('quickAgeNextBday').innerText = `Next Birthday: In ${daysUntil} days on a ${dayOfWeek}`;
+    }
+
+    function runQuickDiscount() {
+      const orig = parseFloat(document.getElementById('quickOrigPrice').value) || 0;
+      const pct = parseFloat(document.getElementById('quickDiscPct').value) || 0;
+
+      const validPct = Math.min(Math.max(pct, 0), 100);
+      const savings = orig * (validPct / 100);
+      const finalPrice = orig - savings;
+
+      document.getElementById('quickDiscResult').innerText = finalPrice.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SAR';
+      document.getElementById('quickDiscSavings').innerText = `You Save: ${savings.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} SAR (${validPct}% Off)`;
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      runQuickAge();
+      runQuickDiscount();
+    });
+  </script>
+</body>
+</html>
