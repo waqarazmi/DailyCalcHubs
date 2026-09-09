@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travel Budget Calculator — Complete Vacation & Trip Planner in SAR</title>
+  <meta name="description" content="Plan and forecast your total travel budget including flights, hotel, food, local transit, activities, and emergency buffer. Free online vacation budget tool.">
+  <meta name="keywords" content="travel budget calculator, vacation budget planner, trip cost calculator saudi riyal, holiday expense estimator, travel budget breakdown">
+  <link rel="canonical" href="https://dailycalchubs.com/travel-booking-calculator/travel-budget/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://dailycalchubs.com/travel-booking-calculator/travel-budget/">
+  <meta property="og:title" content="Travel Budget Calculator — Complete Vacation & Trip Planner in SAR">
+  <meta property="og:description" content="Plan and forecast your total travel budget including flights, hotel, food, local transit, activities, and emergency buffer. Free online vacation budget tool.">
+  <meta property="og:image" content="https://dailycalchubs.com/og-image.jpg">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Travel Budget Calculator — Complete Vacation & Trip Planner in SAR">
+  <meta name="twitter:description" content="Plan and forecast your total travel budget including flights, hotel, food, local transit, activities, and emergency buffer. Free online vacation budget tool.">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6944579701716470" crossorigin="anonymous"></script>
+
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-18Y3LNHDR8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-18Y3LNHDR8');
+  </script>
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Travel Budget Calculator",
+    "url": "https://dailycalchubs.com/travel-booking-calculator/travel-budget/",
+    "applicationCategory": "TravelApplication",
+    "operatingSystem": "All",
+    "description": "Calculate itemized travel budgets including flights, lodging, meals, transit, and contingency reserve.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Why is a contingency buffer essential in a vacation budget?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Unexpected situations—such as last-minute baggage fees, medical pharmacy needs, airport cab surges, or flight rescheduling fees—regularly happen during travel. A 10% contingency ensures you stay debt-free."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Should I budget for international card transaction fees?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Saudi debit and credit cards typically incur a foreign exchange markup of 1.5% to 2.8% plus 15% VAT on the fee when spending in foreign currencies abroad. Budgeting an extra 3% covers these bank charges."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I use this calculator for domestic Saudi tourism trips?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Whether planning a coastal getaway to Jeddah, exploring AlUla, or driving to Abha, input your domestic fuel, car rental, and chalet costs to calculate the exact total trip budget."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --bg-light: #fff9f9;
+      --bg-white: #ffffff;
+      --navy-dark: #0f172a;
+      --navy-footer: #081024;
+      --crimson-primary: #e11d48;
+      --crimson-dark: #be123c;
+      --crimson-light: #fff1f2;
+      --crimson-border: #fecdd3;
+      --text-dark: #1e293b;
+      --text-muted: #64748b;
+      --border-color: #e2e8f0;
+      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.08), 0 2px 4px -2px rgba(0,0,0,0.05);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--font-main); background: var(--bg-light); color: var(--text-dark); line-height: 1.6; }
+    a { color: var(--crimson-primary); text-decoration: none; }
+    a:hover { color: var(--crimson-dark); }
+
+    /* Header */
+    .site-header { background: var(--bg-white); border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 50; }
+    .header-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; height: 70px; display: flex; align-items: center; justify-content: space-between; }
+    .logo-area { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 20px; color: var(--navy-dark); text-decoration: none; }
+    .logo-icon { width: 36px; height: 36px; background: linear-gradient(135deg, #e11d48, #be123c); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: 18px; }
+    .header-nav-container { display: flex; align-items: center; }
+    .header-nav-links { display: flex; align-items: center; gap: 14px; list-style: none; margin: 0; padding: 0; }
+    .header-nav-links a { color: #334155; text-decoration: none; font-size: 13.5px; font-weight: 600; white-space: nowrap; transition: color 0.15s; }
+    .header-nav-links a:hover, .header-nav-links a.active { color: var(--crimson-primary); font-weight: 700; }
+    .header-nav-links a.active { border-bottom: 2px solid var(--crimson-primary); padding-bottom: 2px; }
+
+    /* Breadcrumbs */
+    .breadcrumb-bar { background: var(--bg-white); border-bottom: 1px solid var(--border-color); padding: 12px 20px; font-size: 13.5px; color: var(--text-muted); }
+    .breadcrumb-container { max-width: 1000px; margin: 0 auto; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .breadcrumb-container a { color: var(--text-muted); }
+    .breadcrumb-container a:hover { color: var(--crimson-primary); }
+    .breadcrumb-sep { font-size: 11px; color: #94a3b8; }
+
+    /* Main Container */
+    .page-main { max-width: 1000px; margin: 30px auto; padding: 0 20px; }
+
+    /* Hero */
+    .hero-section { text-align: center; margin-bottom: 30px; background: linear-gradient(180deg, #fff1f2 0%, #ffffff 100%); padding: 36px 24px; border-radius: 16px; border: 1px solid var(--crimson-border); }
+    .badge-hero { display: inline-flex; align-items: center; gap: 6px; background: white; border: 1px solid var(--crimson-border); color: var(--crimson-primary); padding: 6px 14px; border-radius: 20px; font-size: 12.5px; font-weight: 700; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .hero-title { font-size: 32px; font-weight: 800; color: var(--navy-dark); margin-bottom: 10px; }
+    .hero-desc { font-size: 16px; color: var(--text-muted); max-width: 680px; margin: 0 auto; }
+
+    /* Calculator Card */
+    .calc-card { background: var(--bg-white); border-radius: 16px; border: 1px solid var(--border-color); box-shadow: var(--shadow-md); padding: 32px; margin-bottom: 40px; }
+    .form-group { margin-bottom: 20px; }
+    .form-label { display: block; font-weight: 700; font-size: 14px; color: var(--navy-dark); margin-bottom: 8px; }
+    .calc-input { width: 100%; height: 48px; border: 1.5px solid var(--border-color); border-radius: 10px; padding: 0 16px; font-size: 15px; font-family: inherit; color: var(--navy-dark); background: #fff9f9; transition: all 0.2s; }
+    .calc-input:focus { outline: none; border-color: var(--crimson-primary); background: white; box-shadow: 0 0 0 4px rgba(225, 29, 72, 0.12); }
+    .input-with-addons { display: flex; align-items: center; position: relative; }
+    .input-addon-badge { position: absolute; left: 14px; color: var(--crimson-primary); font-size: 15px; font-weight: 700; pointer-events: none; }
+    .input-with-addons input { padding-left: 48px; }
+
+    .amount-chips-row { display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
+    .amount-chip-btn { background: #fff1f2; border: 1px solid #fecdd3; color: #be123c; font-size: 12.5px; font-weight: 600; padding: 6px 12px; border-radius: 20px; cursor: pointer; transition: all 0.2s; }
+    .amount-chip-btn:hover { background: var(--crimson-primary); color: white; border-color: var(--crimson-primary); }
+
+    /* Result Box */
+    .result-summary-box { background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); color: white; border-radius: 14px; padding: 26px; margin-top: 26px; box-shadow: 0 10px 20px rgba(15, 23, 42, 0.15); }
+    .result-row-top { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.12); padding-bottom: 18px; margin-bottom: 20px; flex-wrap: wrap; gap: 12px; }
+    .result-label { font-size: 13px; color: #fecdd3; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    .result-big-val { font-size: 34px; font-weight: 800; color: #fda4af; margin-top: 4px; }
+    .result-budget-badge { background: rgba(225, 29, 72, 0.2); border: 1px solid rgba(253, 164, 175, 0.4); color: #fecdd3; padding: 8px 16px; border-radius: 8px; font-size: 14px; font-weight: 700; }
+    
+    .result-meta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; }
+    .meta-box-inner { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 10px; padding: 14px; }
+    .meta-box-title { font-size: 12px; color: #94a3b8; margin-bottom: 4px; }
+    .meta-box-val { font-size: 17px; font-weight: 700; color: white; }
+
+    /* Itemized list inside result */
+    .budget-itemized-list { margin-top: 20px; border-top: 1px solid rgba(255,255,255,0.12); padding-top: 16px; font-size: 13.5px; }
+    .itemized-row { display: flex; justify-content: space-between; margin-bottom: 6px; color: #cbd5e1; }
+    .itemized-row strong { color: white; }
+
+    /* SEO Article Section */
+    .seo-article { background: var(--bg-white); border-radius: 16px; border: 1px solid var(--border-color); padding: 36px 30px; margin-bottom: 40px; }
+    .seo-article h2 { font-size: 24px; font-weight: 800; color: var(--navy-dark); margin: 28px 0 14px; }
+    .seo-article h2:first-child { margin-top: 0; }
+    .seo-article h3 { font-size: 18px; font-weight: 700; color: var(--navy-dark); margin: 20px 0 10px; }
+    .seo-article p { font-size: 15px; color: #334155; line-height: 1.75; margin-bottom: 16px; }
+    .seo-article ul { margin-left: 24px; margin-bottom: 18px; font-size: 15px; color: #334155; }
+    .seo-article li { margin-bottom: 8px; }
+
+    .disclaimer-alert { background: #fef2f2; border-left: 4px solid #ef4444; padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 24px 0; font-size: 13.5px; color: #991b1b; line-height: 1.6; }
+
+    /* FAQ */
+    .faq-item { border: 1px solid var(--border-color); border-radius: 10px; margin-bottom: 12px; overflow: hidden; background: white; }
+    .faq-question { padding: 16px 20px; font-weight: 700; font-size: 15px; color: var(--navy-dark); cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: #fff9f9; }
+    .faq-question:hover { background: #fff1f2; }
+    .faq-answer { padding: 18px 20px; font-size: 14.5px; color: #475569; line-height: 1.7; border-top: 1px solid var(--border-color); background: white; }
+
+    /* Related Tools Grid */
+    .related-section { margin-bottom: 40px; }
+    .related-title { font-size: 20px; font-weight: 800; color: var(--navy-dark); margin-bottom: 16px; }
+    .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+    .related-card { background: white; border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; transition: transform 0.2s, box-shadow 0.2s; display: block; }
+    .related-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); border-color: var(--crimson-primary); }
+    .related-card-badge { display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase; padding: 4px 8px; border-radius: 4px; background: #fff1f2; color: #e11d48; margin-bottom: 10px; }
+    .related-card-name { font-size: 16px; font-weight: 700; color: var(--navy-dark); margin-bottom: 6px; }
+    .related-card-desc { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+
+    /* Footer */
+    .site-footer { background: var(--navy-footer); color: #94a3b8; padding: 50px 20px 24px; font-size: 14px; }
+    .footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 36px; padding-bottom: 36px; border-bottom: 1px solid #1e293b; }
+    .footer-col h4 { color: white; font-size: 15px; font-weight: 700; margin-bottom: 14px; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 8px; }
+    .footer-col ul li a { color: #94a3b8; font-size: 13.5px; }
+    .footer-col ul li a:hover { color: #fda4af; }
+    .footer-bottom { max-width: 1200px; margin: 24px auto 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; font-size: 12.5px; }
+
+    @media (max-width: 860px) {
+      .header-container { flex-wrap: wrap; height: auto; padding: 10px 20px; gap: 10px; }
+      .header-nav-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding: 6px 0; }
+      .header-nav-container::-webkit-scrollbar { display: none; }
+      .header-nav-links { gap: 12px; width: max-content; }
+      .header-nav-links a { font-size: 12.5px; padding: 4px 8px; border-radius: 6px; background: #f8fafc; border: 1px solid #e2e8f0; }
+      .footer-container { grid-template-columns: 1fr; gap: 24px; }
+      .hero-title { font-size: 26px; }
+      .calc-card { padding: 20px; }
+      .result-row-top { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="header-container">
+      <a href="/" class="logo-area">
+        <div class="logo-icon"><i class="fas fa-plane-departure"></i></div>
+        <span>DailyCalcHubs</span>
+      </a>
+      <nav class="header-nav-container">
+        <ul class="header-nav-links">
+          <li><a href="/">Home</a></li>
+          <li><a href="/saudi-remittance-calculator/">Remittance</a></li>
+          <li><a href="/prayer-times/">Prayer Times</a></li>
+          <li><a href="/saudi-salary-calculator/">Salary</a></li>
+          <li><a href="/saudi-iqama-calculator/">Iqama</a></li>
+          <li><a href="/everyday-smart-calculator/">Everyday</a></li>
+          <li><a href="/shariah-sip-calculator/">Shariah SIP</a></li>
+          <li><a href="/travel-booking-calculator/" class="active">Travel & Booking</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Breadcrumbs -->
+  <div class="breadcrumb-bar">
+    <div class="breadcrumb-container">
+      <a href="/"><i class="fas fa-home"></i> Home</a>
+      <span class="breadcrumb-sep"><i class="fas fa-chevron-right"></i></span>
+      <a href="/travel-booking-calculator/">Travel & Booking Hub</a>
+      <span class="breadcrumb-sep"><i class="fas fa-chevron-right"></i></span>
+      <span style="color: var(--navy-dark); font-weight:600;">Travel Budget Calculator</span>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="page-main">
+
+    <!-- Hero -->
+    <section class="hero-section">
+      <div class="badge-hero"><i class="fas fa-wallet"></i> Complete Financial Trip Plan</div>
+      <h1 class="hero-title">Travel Budget Calculator</h1>
+      <p class="hero-desc">
+        Calculate your complete estimated vacation budget. Itemize flights, accommodation, food, local transport, activities, and an emergency contingency buffer.
+      </p>
+    </section>
+
+    <!-- Calculator Card -->
+    <div class="calc-card">
+      <form id="travelBudgetForm" onsubmit="event.preventDefault(); calculateDetailedBudget();">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+          <div class="form-group">
+            <label class="form-label" for="tbTravelers">Number of Travelers</label>
+            <div class="input-with-addons">
+              <span class="input-addon-badge"><i class="fas fa-user-group"></i></span>
+              <input type="number" id="tbTravelers" class="calc-input" value="2" min="1" max="50" step="1" required oninput="calculateDetailedBudget()">
+            </div>
+            <div class="amount-chips-row">
+              <button type="button" class="amount-chip-btn" onclick="setTbTravelers(1)">1 Solo</button>
+              <button type="button" class="amount-chip-btn" onclick="setTbTravelers(2)">2 Couple</button>
+              <button type="button" class="amount-chip-btn" onclick="setTbTravelers(4)">4 Family</button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="tbDays">Trip Duration (Days)</label>
+            <div class="input-with-addons">
+              <span class="input-addon-badge"><i class="fas fa-calendar-days"></i></span>
+              <input type="number" id="tbDays" class="calc-input" value="7" min="1" max="180" step="1" required oninput="calculateDetailedBudget()">
+            </div>
+            <div class="amount-chips-row">
+              <button type="button" class="amount-chip-btn" onclick="setTbDays(3)">3 Days</button>
+              <button type="button" class="amount-chip-btn" onclick="setTbDays(7)">7 Days</button>
+              <button type="button" class="amount-chip-btn" onclick="setTbDays(14)">14 Days</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="tbFlightCost">Total Flights Cost for All Travelers (SAR)</label>
+          <div class="input-with-addons">
+            <span class="input-addon-badge">SAR</span>
+            <input type="number" id="tbFlightCost" class="calc-input" value="2400" min="0" step="50" oninput="calculateDetailedBudget()">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="tbHotelCost">Total Lodging / Hotel Cost (SAR)</label>
+          <div class="input-with-addons">
+            <span class="input-addon-badge">SAR</span>
+            <input type="number" id="tbHotelCost" class="calc-input" value="3150" min="0" step="50" oninput="calculateDetailedBudget()">
+          </div>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+          <div class="form-group">
+            <label class="form-label" for="tbDailyFood">Food &amp; Dining / Person / Day (SAR)</label>
+            <div class="input-with-addons">
+              <span class="input-addon-badge">SAR</span>
+              <input type="number" id="tbDailyFood" class="calc-input" value="150" min="0" step="10" oninput="calculateDetailedBudget()">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="tbDailyTransit">Local Taxis / Transit / Day (SAR)</label>
+            <div class="input-with-addons">
+              <span class="input-addon-badge">SAR</span>
+              <input type="number" id="tbDailyTransit" class="calc-input" value="50" min="0" step="10" oninput="calculateDetailedBudget()">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="tbActivities">Activities, Tours &amp; Attractions (SAR Total)</label>
+          <div class="input-with-addons">
+            <span class="input-addon-badge">SAR</span>
+            <input type="number" id="tbActivities" class="calc-input" value="800" min="0" step="25" oninput="calculateDetailedBudget()">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="tbContingencyPct">Emergency Contingency Buffer (%)</label>
+          <div class="input-with-addons">
+            <span class="input-addon-badge"><i class="fas fa-shield-heart"></i></span>
+            <input type="number" id="tbContingencyPct" class="calc-input" value="10" min="0" max="30" step="1" oninput="calculateDetailedBudget()">
+          </div>
+          <div class="amount-chips-row">
+            <button type="button" class="amount-chip-btn" onclick="setTbContingency(0)">0% (None)</button>
+            <button type="button" class="amount-chip-btn" onclick="setTbContingency(5)">5% Light</button>
+            <button type="button" class="amount-chip-btn" onclick="setTbContingency(10)">10% Standard</button>
+            <button type="button" class="amount-chip-btn" onclick="setTbContingency(15)">15% Safe</button>
+          </div>
+        </div>
+      </form>
+
+      <!-- Result Box -->
+      <div class="result-summary-box">
+        <div class="result-row-top">
+          <div>
+            <div class="result-label">Total Estimated Trip Budget</div>
+            <div class="result-big-val" id="resTotalBudget">10,065 SAR</div>
+          </div>
+          <div class="result-budget-badge" id="resPerPersonBadge">
+            5,033 SAR / Person
+          </div>
+        </div>
+
+        <div class="result-meta-grid">
+          <div class="meta-box-inner">
+            <div class="meta-box-title">Cost Per Day (Total Group)</div>
+            <div class="meta-box-val" id="resPerDayTotal">1,438 SAR/day</div>
+          </div>
+          <div class="meta-box-inner">
+            <div class="meta-box-title">Base Cost Before Buffer</div>
+            <div class="meta-box-val" id="resBaseCost">9,150 SAR</div>
+          </div>
+          <div class="meta-box-inner">
+            <div class="meta-box-title">Contingency Reserve</div>
+            <div class="meta-box-val" id="resBufferAmount" style="color:#fda4af;">+915 SAR (10%)</div>
+          </div>
+          <div class="meta-box-inner">
+            <div class="meta-box-title">Trip Duration</div>
+            <div class="meta-box-val" id="resTripTimeline">7 Days (2 Travelers)</div>
+          </div>
+        </div>
+
+        <div class="budget-itemized-list">
+          <div class="itemized-row"><span>Transportation (Flights):</span><strong id="itemFlights">2,400 SAR</strong></div>
+          <div class="itemized-row"><span>Accommodation (Hotel):</span><strong id="itemHotel">3,150 SAR</strong></div>
+          <div class="itemized-row"><span>Food &amp; Dining:</span><strong id="itemFood">2,100 SAR</strong></div>
+          <div class="itemized-row"><span>Local Transit (Cabs/Metro):</span><strong id="itemTransit">700 SAR</strong></div>
+          <div class="itemized-row"><span>Activities &amp; Sightseeing:</span><strong id="itemActivities">800 SAR</strong></div>
+          <div class="itemized-row"><span>Emergency Cushion:</span><strong id="itemBuffer">915 SAR</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEO & Educational Guide -->
+    <article class="seo-article">
+      <h2>How to Plan an Accurate Holiday Travel Budget</h2>
+      <p>
+        Underestimating travel expenses often leads to financial stress during what should be a rejuvenating break. A realistic budget must account for both fixed major commitments and cumulative daily on-ground expenditures:
+      </p>
+      <ul>
+        <li><strong>Fixed Upfront Costs:</strong> Flight tickets, hotel deposits, and visa applications.</li>
+        <li><strong>Per-Diem Living Expenses:</strong> Daily meals, snacks, bottled water, taxis, rideshare apps (Careem/Uber), and tips.</li>
+        <li><strong>Sightseeing &amp; Experiences:</strong> Theme park tickets, historical museum passes, boat tours, and entertainment.</li>
+        <li><strong>Emergency Contingency Reserve:</strong> A vital 10% to 15% cushion to absorb unplanned medical needs, currency conversion fees, or flight schedule adjustments.</li>
+      </ul>
+
+      <div class="disclaimer-alert">
+        <strong><i class="fas fa-triangle-exclamation"></i> Travel Planning Notice</strong>
+        This calculator generates mathematical estimations based entirely on user inputs. DailyCalcHubs is not a travel booking platform, airline, or hotel operator. Real ticket prices and accommodation tariffs fluctuate with seasonal demand, airline yield management algorithms, and holiday peaks.
+      </div>
+
+      <h2>The Vacation Budget Formula</h2>
+      <div style="background:#fff1f2; border:1.5px dashed #fecdd3; border-radius:10px; padding:18px; font-family:monospace; font-size:14px; color:#9f1239; font-weight:700; margin:18px 0;">
+        Total Budget = [ Flights + Lodging + (Daily Food + Daily Transit) × Travelers × Days + Activities ] × (1 + Contingency %)
+      </div>
+
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>Why is a contingency buffer essential in a vacation budget?</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer" style="display:none;">
+          Unexpected situations—such as last-minute baggage fees, medical pharmacy needs, airport cab surges, or flight rescheduling fees—regularly happen during travel. A 10% contingency ensures you stay debt-free.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>Should I budget for international card transaction fees?</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer" style="display:none;">
+          Yes. Saudi debit and credit cards typically incur a foreign exchange markup of 1.5% to 2.8% plus 15% VAT on the fee when spending in foreign currencies abroad. Budgeting an extra 3% covers these bank charges.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>Can I use this calculator for domestic Saudi tourism trips?</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer" style="display:none;">
+          Yes. Whether planning a coastal getaway to Jeddah, exploring AlUla, or driving to Abha, input your domestic fuel, car rental, and chalet costs to calculate the exact total trip budget.
+        </div>
+      </div>
+    </article>
+
+    <!-- Related Tools Grid -->
+    <div class="related-section">
+      <h2 class="related-title">Explore More Travel Tools</h2>
+      <div class="related-grid">
+        <a href="/travel-booking-calculator/flight-cost/" class="related-card">
+          <span class="related-card-badge">Flights</span>
+          <div class="related-card-name">Flight Cost Calculator</div>
+          <div class="related-card-desc">Calculate airfare with baggage, seat selection, and passenger taxes.</div>
+        </a>
+        <a href="/travel-booking-calculator/hotel-cost/" class="related-card">
+          <span class="related-card-badge">Hotels</span>
+          <div class="related-card-name">Hotel Stay Calculator</div>
+          <div class="related-card-desc">Calculate room rates across nights with Saudi 15% VAT and municipality fees.</div>
+        </a>
+        <a href="/travel-booking-calculator/expense-split/" class="related-card">
+          <span class="related-card-badge">Group Travel</span>
+          <div class="related-card-name">Expense Split Calculator</div>
+          <div class="related-card-desc">Split shared vacation bills and restaurant tabs fairly among friends.</div>
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    function setTbTravelers(val) { document.getElementById('tbTravelers').value = val; calculateDetailedBudget(); }
+    function setTbDays(val) { document.getElementById('tbDays').value = val; calculateDetailedBudget(); }
+    function setTbContingency(val) { document.getElementById('tbContingencyPct').value = val; calculateDetailedBudget(); }
+
+    function calculateDetailedBudget() {
+      const travelers = Math.max(1, parseFloat(document.getElementById('tbTravelers').value) || 1);
+      const days = Math.max(1, parseFloat(document.getElementById('tbDays').value) || 1);
+      const flights = Math.max(0, parseFloat(document.getElementById('tbFlightCost').value) || 0);
+      const hotel = Math.max(0, parseFloat(document.getElementById('tbHotelCost').value) || 0);
+      const dailyFood = Math.max(0, parseFloat(document.getElementById('tbDailyFood').value) || 0);
+      const dailyTransit = Math.max(0, parseFloat(document.getElementById('tbDailyTransit').value) || 0);
+      const activities = Math.max(0, parseFloat(document.getElementById('tbActivities').value) || 0);
+      const bufferPct = Math.max(0, parseFloat(document.getElementById('tbContingencyPct').value) || 0);
+
+      const totalFood = dailyFood * travelers * days;
+      const totalTransit = dailyTransit * travelers * days;
+      const baseSubtotal = flights + hotel + totalFood + totalTransit + activities;
+      const bufferAmount = (baseSubtotal * bufferPct) / 100;
+      const grandTotal = baseSubtotal + bufferAmount;
+
+      const perPerson = grandTotal / travelers;
+      const perDay = grandTotal / days;
+
+      document.getElementById('resTotalBudget').innerText = Math.round(grandTotal).toLocaleString('en-US') + ' SAR';
+      document.getElementById('resPerPersonBadge').innerText = Math.round(perPerson).toLocaleString('en-US') + ' SAR / Person';
+      document.getElementById('resPerDayTotal').innerText = Math.round(perDay).toLocaleString('en-US') + ' SAR/day';
+      document.getElementById('resBaseCost').innerText = Math.round(baseSubtotal).toLocaleString('en-US') + ' SAR';
+      document.getElementById('resBufferAmount').innerText = '+' + Math.round(bufferAmount).toLocaleString('en-US') + ' SAR (' + bufferPct + '%)';
+      document.getElementById('resTripTimeline').innerText = days + ' Days (' + travelers + ' Travelers)';
+
+      document.getElementById('itemFlights').innerText = Math.round(flights).toLocaleString('en-US') + ' SAR';
+      document.getElementById('itemHotel').innerText = Math.round(hotel).toLocaleString('en-US') + ' SAR';
+      document.getElementById('itemFood').innerText = Math.round(totalFood).toLocaleString('en-US') + ' SAR';
+      document.getElementById('itemTransit').innerText = Math.round(totalTransit).toLocaleString('en-US') + ' SAR';
+      document.getElementById('itemActivities').innerText = Math.round(activities).toLocaleString('en-US') + ' SAR';
+      document.getElementById('itemBuffer').innerText = Math.round(bufferAmount).toLocaleString('en-US') + ' SAR';
+    }
+
+    function toggleFaq(elem) {
+      const answer = elem.nextElementSibling;
+      const icon = elem.querySelector('i');
+      if (answer.style.display === 'block') {
+        answer.style.display = 'none';
+        icon.classList.remove('fa-chevron-up');
+        icon.classList.add('fa-chevron-down');
+      } else {
+        answer.style.display = 'block';
+        icon.classList.remove('fa-chevron-down');
+        icon.classList.add('fa-chevron-up');
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', calculateDetailedBudget);
+  </script>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-col">
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom:14px;">
+          <div class="logo-icon" style="width:30px; height:30px; font-size:14px;"><i class="fas fa-plane-departure"></i></div>
+          <span style="font-weight:800; font-size:18px; color:white;">DailyCalcHubs</span>
+        </div>
+        <p style="font-size:13.5px; line-height:1.6; color:#94a3b8; margin-bottom:14px;">
+          High-precision financial, remittance, salary, Iqama, travel, and everyday utility calculators designed for expatriates and residents across Saudi Arabia and the GCC.
+        </p>
+        <div style="font-size:12.5px; color:#64748b;">
+          <strong>Disclaimer:</strong> Calculations are for educational and planning estimates. Consult official airlines and hotels for formal reservations.
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Travel Suite</h4>
+        <ul>
+          <li><a href="/travel-booking-calculator/">Travel &amp; Booking Hub</a></li>
+          <li><a href="/travel-booking-calculator/travel-budget/">Travel Budget Planner</a></li>
+          <li><a href="/travel-booking-calculator/flight-cost/">Flight Cost Calculator</a></li>
+          <li><a href="/travel-booking-calculator/hotel-cost/">Hotel Stay Calculator</a></li>
+          <li><a href="/travel-booking-calculator/booking-cost/">Booking Fee Calculator</a></li>
+          <li><a href="/travel-booking-calculator/expense-split/">Expense Split Calculator</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Saudi Hubs</h4>
+        <ul>
+          <li><a href="/saudi-remittance-calculator/">Remittance Hub</a></li>
+          <li><a href="/saudi-salary-calculator/">Salary &amp; GOSI Hub</a></li>
+          <li><a href="/saudi-iqama-calculator/">Iqama Fee Hub</a></li>
+          <li><a href="/everyday-smart-calculator/">Everyday Smart Hub</a></li>
+          <li><a href="/shariah-sip-calculator/">Shariah SIP Hub</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Company & Legal</h4>
+        <ul>
+          <li><a href="/about-us/">About Us</a></li>
+          <li><a href="/contact-us/">Contact Us</a></li>
+          <li><a href="/privacy-policy/">Privacy Policy</a></li>
+          <li><a href="/terms-of-service/">Terms of Service</a></li>
+          <li><a href="/disclaimer/">Disclaimer</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>&copy; 2026 DailyCalcHubs.com. All rights reserved.</div>
+      <div>Designed with Precision for Saudi Arabia & GCC Residents</div>
+    </div>
+  </footer>
+
+</body>
+</html>
