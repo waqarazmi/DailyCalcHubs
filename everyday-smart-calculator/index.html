@@ -57,11 +57,11 @@
       {
         "@type": "WebApplication",
         "@id": "https://dailycalchubs.com/everyday-smart-calculator/#app",
-        "name": "Everyday Smart Calculator",
+        "name": "Everyday Smart Calculator Hub",
         "applicationCategory": "UtilitiesApplication",
         "operatingSystem": "All",
         "url": "https://dailycalchubs.com/everyday-smart-calculator/",
-        "description": "Smart everyday life calculators including precise Age and Date of Birth determination and retail discount shopping calculators.",
+        "description": "Comprehensive suite of 11 everyday life and productivity calculators: Age & DOB, Smart Discount, BMI, Electricity Cost, Tip, Percentage, GPA, Time Duration, Unit Converter, Fuel Cost, and Split Bill calculators.",
         "offers": {
           "@type": "Offer",
           "price": "0",
@@ -74,10 +74,10 @@
         "mainEntity": [
           {
             "@type": "Question",
-            "name": "What tools are included in the Everyday Smart Calculator suite?",
+            "name": "What calculators are included in the Everyday Smart Calculator suite?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "The Everyday Smart Calculator hub provides focused, dedicated utilities for daily personal and financial calculations, including the Age & Date of Birth Calculator and the Smart Discount & Sale Price Calculator."
+              "text": "The Everyday Smart Calculator hub contains 11 practical tools: 1. Age & Date of Birth, 2. Smart Discount & Sale, 3. BMI Calculator, 4. Electricity / Unit Cost, 5. Tip Calculator, 6. Percentage Calculator, 7. GPA / Grade Calculator, 8. Time Duration, 9. Unit Converter, 10. Fuel Cost Calculator, and 11. Split Bill Calculator."
             }
           },
           {
@@ -168,8 +168,8 @@
 
     /* Main Tools Grid Section */
     .featured-tools-section { padding: 40px 0; }
-    .featured-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; margin-bottom: 40px; }
-    @media (max-width: 840px) { .featured-grid { grid-template-columns: 1fr; } }
+    .featured-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 24px; margin-bottom: 40px; }
+    @media (max-width: 768px) { .featured-grid { grid-template-columns: 1fr; } }
 
     .feature-card {
       background: #ffffff;
@@ -396,6 +396,186 @@
             Open Discount Calculator <i class="fas fa-arrow-right"></i>
           </a>
         </div>
+
+        <!-- Card 3: BMI Calculator -->
+        <div class="feature-card">
+          <div>
+            <div class="card-top-icon-box"><i class="fas fa-weight-scale"></i></div>
+            <h2 class="card-main-title">BMI Calculator</h2>
+            <p class="card-main-desc">
+              Calculate Body Mass Index (BMI) for adults. Includes official WHO classification, healthy weight range target, and prime index assessment.
+            </p>
+            <ul class="card-features-list">
+              <li><i class="fas fa-check-circle"></i> Metric (cm/kg) &amp; Imperial (ft/in/lbs) support</li>
+              <li><i class="fas fa-check-circle"></i> Official WHO category breakdown &amp; BMI Prime</li>
+              <li><i class="fas fa-check-circle"></i> Healthy target weight range calculation</li>
+              <li><i class="fas fa-check-circle"></i> Calibrated guidance for wellness planning</li>
+            </ul>
+          </div>
+          <a href="/everyday-smart-calculator/bmi-calculator/" class="card-action-btn">
+            Open BMI Calculator <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <!-- Card 4: Electricity / Unit Cost Calculator -->
+        <div class="feature-card">
+          <div>
+            <div class="card-top-icon-box"><i class="fas fa-bolt"></i></div>
+            <h2 class="card-main-title">Electricity &amp; Unit Cost Calculator</h2>
+            <p class="card-main-desc">
+              Estimate appliance power consumption, kWh units, and electricity costs. Features Saudi SEC residential tiered tariffs and custom rate inputs.
+            </p>
+            <ul class="card-features-list">
+              <li><i class="fas fa-check-circle"></i> Appliance wattage &amp; daily run hours estimator</li>
+              <li><i class="fas fa-check-circle"></i> Saudi SEC residential tariff presets (18 &amp; 30 halalas)</li>
+              <li><i class="fas fa-check-circle"></i> Daily, monthly, and annual utility expense projections</li>
+              <li><i class="fas fa-check-circle"></i> Device power presets (AC, Refrigerator, TV, PC)</li>
+            </ul>
+          </div>
+          <a href="/everyday-smart-calculator/electricity-cost-calculator/" class="card-action-btn">
+            Open Electricity Calculator <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <!-- Card 5: Tip Calculator -->
+        <div class="feature-card">
+          <div>
+            <div class="card-top-icon-box"><i class="fas fa-receipt"></i></div>
+            <h2 class="card-main-title">Tip Calculator</h2>
+            <p class="card-main-desc">
+              Calculate fair dining gratuities, total bill amounts, and per-person split costs with quick percentage presets and optional total rounding.
+            </p>
+            <ul class="card-features-list">
+              <li><i class="fas fa-check-circle"></i> Quick percentage buttons (10%, 15%, 18%, 20%, 25%)</li>
+              <li><i class="fas fa-check-circle"></i> Custom tip percentages and fixed amounts</li>
+              <li><i class="fas fa-check-circle"></i> Group bill splitting with equal share division</li>
+              <li><i class="fas fa-check-circle"></i> Optional total round-up for easy cash payments</li>
+            </ul>
+          </div>
+          <a href="/everyday-smart-calculator/tip-calculator/" class="card-action-btn">
+            Open Tip Calculator <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <!-- Card 6: Percentage Calculator -->
+        <div class="feature-card">
+          <div>
+            <div class="card-top-icon-box"><i class="fas fa-percent"></i></div>
+            <h2 class="card-main-title">Percentage Calculator</h2>
+            <p class="card-main-desc">
+              Solve everyday percentage math: calculate what is X% of Y, percentage increase/decrease, what percentage is X of Y, and base amounts.
+            </p>
+            <ul class="card-features-list">
+              <li><i class="fas fa-check-circle"></i> What is X% of Y (Standard percentage)</li>
+              <li><i class="fas fa-check-circle"></i> Percentage increase and decrease calculation</li>
+              <li><i class="fas fa-check-circle"></i> What percentage is X of Y (Ratio analysis)</li>
+              <li><i class="fas fa-check-circle"></i> Step-by-step arithmetic formulas displayed</li>
+            </ul>
+          </div>
+          <a href="/everyday-smart-calculator/percentage-calculator/" class="card-action-btn">
+            Open Percentage Calculator <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <!-- Card 7: GPA / Grade Calculator -->
+        <div class="feature-card">
+          <div>
+            <div class="card-top-icon-box"><i class="fas fa-graduation-cap"></i></div>
+            <h2 class="card-main-title">GPA &amp; Grade Calculator</h2>
+            <p class="card-main-desc">
+              Calculate high school and university GPA on standard 4.0 or Saudi 5.0 scales. Supports course credit weighting and cumulative averages.
+            </p>
+            <ul class="card-features-list">
+              <li><i class="fas fa-check-circle"></i> Standard 4.0 scale &amp; Saudi university 5.0 scale</li>
+              <li><i class="fas fa-check-circle"></i> Weighted credit hour calculations per course</li>
+              <li><i class="fas fa-check-circle"></i> Dynamic add/remove course rows with letter grades</li>
+              <li><i class="fas fa-check-circle"></i> Prior cumulative GPA integration support</li>
+            </ul>
+          </div>
+          <a href="/everyday-smart-calculator/gpa-calculator/" class="card-action-btn">
+            Open GPA Calculator <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <!-- Card 8: Time Duration Calculator -->
+        <div class="feature-card">
+          <div>
+            <div class="card-top-icon-box"><i class="fas fa-clock"></i></div>
+            <h2 class="card-main-title">Time Duration Calculator</h2>
+            <p class="card-main-desc">
+              Calculate elapsed time between two times or calendar dates. Compute total hours, minutes, seconds, workdays, and weekend days.
+            </p>
+            <ul class="card-features-list">
+              <li><i class="fas fa-check-circle"></i> Time span between clock times with overnight support</li>
+              <li><i class="fas fa-check-circle"></i> Date span between two calendar dates</li>
+              <li><i class="fas fa-check-circle"></i> Total hours, minutes, workdays, and weekend count</li>
+              <li><i class="fas fa-check-circle"></i> Add or subtract hours and days from any date</li>
+            </ul>
+          </div>
+          <a href="/everyday-smart-calculator/time-duration-calculator/" class="card-action-btn">
+            Open Time Calculator <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <!-- Card 9: Unit Converter -->
+        <div class="feature-card">
+          <div>
+            <div class="card-top-icon-box"><i class="fas fa-right-left"></i></div>
+            <h2 class="card-main-title">Unit Converter</h2>
+            <p class="card-main-desc">
+              Convert measurement units instantly across Length, Weight, Temperature, Area, Volume, and Digital Data with high-precision output.
+            </p>
+            <ul class="card-features-list">
+              <li><i class="fas fa-check-circle"></i> 6 categories: Length, Weight, Temp, Area, Volume, Data</li>
+              <li><i class="fas fa-check-circle"></i> Metric, Imperial, and US customary units</li>
+              <li><i class="fas fa-check-circle"></i> Real-time two-way conversion as you type</li>
+              <li><i class="fas fa-check-circle"></i> Exact conversion factor explanations</li>
+            </ul>
+          </div>
+          <a href="/everyday-smart-calculator/unit-converter/" class="card-action-btn">
+            Open Unit Converter <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <!-- Card 10: Fuel Cost Calculator -->
+        <div class="feature-card">
+          <div>
+            <div class="card-top-icon-box"><i class="fas fa-gas-pump"></i></div>
+            <h2 class="card-main-title">Fuel Cost Calculator</h2>
+            <p class="card-main-desc">
+              Calculate trip fuel expenses, required fuel volume, and per-person travel costs using fuel efficiency metrics and Saudi Aramco presets.
+            </p>
+            <ul class="card-features-list">
+              <li><i class="fas fa-check-circle"></i> Trip distance &amp; vehicle efficiency calculation</li>
+              <li><i class="fas fa-check-circle"></i> Saudi Aramco fuel presets (91, 95 Octane, Diesel)</li>
+              <li><i class="fas fa-check-circle"></i> Round-trip calculation &amp; passenger cost splitting</li>
+              <li><i class="fas fa-check-circle"></i> Metric (km, L/100km, km/L) and US (miles, MPG) modes</li>
+            </ul>
+          </div>
+          <a href="/everyday-smart-calculator/fuel-cost-calculator/" class="card-action-btn">
+            Open Fuel Calculator <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <!-- Card 11: Split Bill Calculator -->
+        <div class="feature-card">
+          <div>
+            <div class="card-top-icon-box"><i class="fas fa-users"></i></div>
+            <h2 class="card-main-title">Split Bill Calculator</h2>
+            <p class="card-main-desc">
+              Split restaurant bills and shared group expenses fairly. Supports equal splitting, custom tip and tax additions, and itemized shares.
+            </p>
+            <ul class="card-features-list">
+              <li><i class="fas fa-check-circle"></i> Equal bill splitting with custom headcounts</li>
+              <li><i class="fas fa-check-circle"></i> Tax &amp; gratuity percentage or fixed additions</li>
+              <li><i class="fas fa-check-circle"></i> Itemized individual receipt breakdown mode</li>
+              <li><i class="fas fa-check-circle"></i> Transparent shareable summary per diner</li>
+            </ul>
+          </div>
+          <a href="/everyday-smart-calculator/split-bill-calculator/" class="card-action-btn">
+            Open Split Bill Calculator <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
       </div>
 
       <!-- Interactive Quick Showcase -->
@@ -523,7 +703,16 @@
           <ul class="footer-nav-list">
             <li><a href="/everyday-smart-calculator/age-calculator/">Age &amp; Date of Birth</a></li>
             <li><a href="/everyday-smart-calculator/discount-calculator/">Discount &amp; Sale Price</a></li>
-            <li><a href="/everyday-smart-calculator/">Everyday Calculator Hub</a></li>
+            <li><a href="/everyday-smart-calculator/bmi-calculator/">BMI Calculator</a></li>
+            <li><a href="/everyday-smart-calculator/electricity-cost-calculator/">Electricity &amp; Unit Cost</a></li>
+            <li><a href="/everyday-smart-calculator/tip-calculator/">Tip Calculator</a></li>
+            <li><a href="/everyday-smart-calculator/percentage-calculator/">Percentage Calculator</a></li>
+            <li><a href="/everyday-smart-calculator/gpa-calculator/">GPA &amp; Grade Calculator</a></li>
+            <li><a href="/everyday-smart-calculator/time-duration-calculator/">Time Duration</a></li>
+            <li><a href="/everyday-smart-calculator/unit-converter/">Unit Converter</a></li>
+            <li><a href="/everyday-smart-calculator/fuel-cost-calculator/">Fuel Cost Calculator</a></li>
+            <li><a href="/everyday-smart-calculator/split-bill-calculator/">Split Bill Calculator</a></li>
+            <li><a href="/everyday-smart-calculator/">All Everyday Tools Hub</a></li>
           </ul>
         </div>
         <div>

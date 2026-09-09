@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GPA Calculator — Semester & Cumulative Grade Point Average Tool</title>
+  <meta name="description" content="Calculate high school and university semester GPA, weighted credits, and cumulative grade point average across standard 4.0 and Saudi/Gulf 5.0 scales.">
+  <meta name="keywords" content="gpa calculator, calculate gpa online, 5.0 gpa calculator saudi, 4.0 gpa calculator, cumulative gpa calculator, university grade calculator">
+  <link rel="canonical" href="https://dailycalchubs.com/everyday-smart-calculator/gpa-calculator/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://dailycalchubs.com/everyday-smart-calculator/gpa-calculator/">
+  <meta property="og:title" content="GPA Calculator — Semester & Cumulative Grade Point Average Tool">
+  <meta property="og:description" content="Calculate weighted semester and cumulative Grade Point Average across 4.0 and 5.0 university grading scales with credit hours.">
+  <meta property="og:image" content="https://dailycalchubs.com/og-image.jpg">
+  <meta property="og:width" content="1200">
+  <meta property="og:height" content="630">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="GPA Calculator — DailyCalcHubs">
+  <meta name="twitter:description" content="Instant academic GPA calculation for college, university, and high school students with multi-scale support.">
+  <meta name="twitter:image" content="https://dailycalchubs.com/og-image.jpg">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6944579701716470" crossorigin="anonymous"></script>
+
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-18Y3LNHDR8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-18Y3LNHDR8');
+  </script>
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://dailycalchubs.com/everyday-smart-calculator/gpa-calculator/#app",
+        "name": "GPA & Grade Calculator",
+        "url": "https://dailycalchubs.com/everyday-smart-calculator/gpa-calculator/",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "All",
+        "description": "Calculate weighted semester and cumulative Grade Point Average (GPA) across 4.0 and 5.0 grading scales.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://dailycalchubs.com/everyday-smart-calculator/gpa-calculator/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How does credit hour weighting affect GPA?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Weighted GPA accounts for course rigor and contact hours. A grade in a 4-credit course exerts double the mathematical impact on your GPA compared to the same grade in a 2-credit course: Grade Points = Course Grade Value × Credit Hours."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the difference between a 4.0 and 5.0 GPA scale?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The 4.0 scale is the traditional standard in North American and international universities where an A represents 4.0. In Saudi Arabia and several Gulf universities (such as King Saud University and KFUPM), a 5.0 scale is officially utilized where an exceptional A+ equals 5.0, an A equals 4.75, and a B+ equals 4.5."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How is Cumulative GPA calculated with prior semesters?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Cumulative GPA combines all prior grade points with current semester grade points divided by total accumulated credits: Cumulative GPA = [(Prior GPA × Prior Credits) + Current Grade Points] ÷ (Prior Credits + Current Credits)."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --bg-light: #f8fafc;
+      --bg-white: #ffffff;
+      --navy-dark: #0f172a;
+      --navy-footer: #081024;
+      --sky-saudi: #0ea5e9;
+      --sky-dark: #0284c7;
+      --sky-light: #f0f9ff;
+      --sky-border: #bae6fd;
+      --text-dark: #1e293b;
+      --text-muted: #64748b;
+      --border-color: #e2e8f0;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
+      --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font-main);
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--sky-dark); text-decoration: none; transition: color 0.2s; }
+    a:hover { color: #0369a1; }
+
+    /* Header */
+    .site-header { background: var(--bg-white); border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 50; }
+    .header-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; height: 70px; display: flex; align-items: center; justify-content: space-between; }
+    .logo-area { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 20px; color: var(--navy-dark); }
+    .logo-icon { width: 36px; height: 36px; background: linear-gradient(135deg, #0ea5e9, #0284c7); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: 18px; }
+    .main-nav { display: flex; align-items: center; gap: 20px; }
+    .nav-link { font-weight: 600; font-size: 13.5px; color: var(--text-muted); padding: 6px 10px; border-radius: 6px; }
+    .nav-link:hover { color: var(--navy-dark); background: #f1f5f9; }
+    .nav-link.active { color: var(--sky-dark); background: var(--sky-light); }
+    @media (max-width: 860px) { .main-nav { display: none; } }
+
+    /* Breadcrumbs */
+    .breadcrumb-bar { background: var(--bg-white); border-bottom: 1px solid var(--border-color); padding: 12px 20px; font-size: 13.5px; color: var(--text-muted); }
+    .breadcrumb-container { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .breadcrumb-sep { font-size: 11px; color: #94a3b8; }
+
+    /* Main Container */
+    .page-main { max-width: 1000px; margin: 30px auto; padding: 0 20px; }
+
+    /* Hero */
+    .hero-section { text-align: center; margin-bottom: 30px; background: linear-gradient(180deg, #f0f9ff 0%, #ffffff 100%); padding: 36px 24px; border-radius: 16px; border: 1px solid var(--sky-border); }
+    .badge-hero { display: inline-flex; align-items: center; gap: 6px; background: white; border: 1px solid var(--sky-border); color: var(--sky-dark); padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 700; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .hero-title { font-size: 32px; font-weight: 800; color: var(--navy-dark); margin-bottom: 10px; }
+    .hero-desc { font-size: 15.5px; color: var(--text-muted); max-width: 720px; margin: 0 auto; }
+
+    /* Calculator Card */
+    .calc-card { background: var(--bg-white); border-radius: 16px; border: 1px solid var(--border-color); box-shadow: var(--shadow-md); padding: 30px; margin-bottom: 40px; }
+    
+    .scale-selector-bar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; flex-wrap: wrap; gap: 14px; background: #f8fafc; padding: 14px 20px; border-radius: 12px; border: 1px solid var(--border-color); }
+    .scale-label { font-weight: 700; font-size: 14px; color: var(--navy-dark); }
+    .scale-toggle-wrap { display: flex; gap: 8px; }
+    .scale-btn { border: 1px solid var(--border-color); background: white; padding: 8px 16px; font-size: 13px; font-weight: 700; color: var(--text-muted); border-radius: 8px; cursor: pointer; transition: all 0.2s; font-family: inherit; }
+    .scale-btn.active { background: var(--sky-dark); color: white; border-color: var(--sky-dark); }
+
+    /* Course Rows */
+    .courses-table-wrap { overflow-x: auto; margin-bottom: 20px; }
+    .course-row { display: grid; grid-template-columns: 2fr 1.2fr 1fr 44px; gap: 10px; align-items: center; margin-bottom: 10px; }
+    @media (max-width: 600px) { .course-row { grid-template-columns: 1.5fr 1.2fr 1fr 38px; gap: 6px; } }
+    .course-input, .course-select { width: 100%; border: 1.5px solid var(--border-color); border-radius: 8px; padding: 10px 12px; font-size: 14px; font-weight: 600; font-family: inherit; color: var(--navy-dark); background: #f8fafc; outline: none; }
+    .course-input:focus, .course-select:focus { border-color: var(--sky-saudi); background: white; }
+    .btn-delete-course { background: #fee2e2; border: 1px solid #fecaca; color: #dc2626; width: 38px; height: 38px; border-radius: 8px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.15s; }
+    .btn-delete-course:hover { background: #dc2626; color: white; }
+
+    .table-headers { display: grid; grid-template-columns: 2fr 1.2fr 1fr 44px; gap: 10px; font-size: 12.5px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-bottom: 8px; padding: 0 4px; }
+    @media (max-width: 600px) { .table-headers { grid-template-columns: 1.5fr 1.2fr 1fr 38px; gap: 6px; } }
+
+    .calc-actions-bar { display: flex; gap: 12px; margin-bottom: 24px; flex-wrap: wrap; }
+    .btn-add-course { background: var(--sky-light); border: 1.5px dashed var(--sky-dark); color: var(--sky-dark); font-size: 13.5px; font-weight: 700; padding: 10px 20px; border-radius: 8px; cursor: pointer; transition: all 0.2s; display: inline-flex; align-items: center; gap: 8px; }
+    .btn-add-course:hover { background: var(--sky-dark); color: white; border-style: solid; }
+
+    /* Cumulative Section Toggle */
+    .cumul-box { background: #f8fafc; border: 1px solid var(--border-color); border-radius: 12px; padding: 18px 20px; margin-bottom: 24px; }
+    .cumul-title { font-size: 14px; font-weight: 700; color: var(--navy-dark); margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+    .cumul-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    @media (max-width: 600px) { .cumul-grid { grid-template-columns: 1fr; } }
+
+    /* Result Box */
+    .result-summary-box { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; border-radius: 14px; padding: 26px; margin-top: 24px; box-shadow: 0 10px 20px rgba(15, 23, 42, 0.15); }
+    .result-row-top { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.12); padding-bottom: 18px; margin-bottom: 20px; flex-wrap: wrap; gap: 12px; }
+    .result-label { font-size: 12.5px; color: #94a3b8; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+    .result-big-val { font-size: 38px; font-weight: 800; color: #38bdf8; margin-top: 4px; line-height: 1.1; }
+    .honors-badge { background: rgba(34, 197, 94, 0.2); border: 1px solid rgba(34, 197, 94, 0.4); color: #4ade80; padding: 8px 16px; border-radius: 20px; font-size: 13.5px; font-weight: 800; }
+
+    .result-meta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; }
+    .meta-box-inner { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 10px; padding: 14px; }
+    .meta-box-title { font-size: 11.5px; color: #94a3b8; margin-bottom: 4px; }
+    .meta-box-val { font-size: 16px; font-weight: 700; color: white; }
+
+    /* SEO Article Section */
+    .seo-article { background: var(--bg-white); border-radius: 16px; border: 1px solid var(--border-color); padding: 36px 30px; margin-bottom: 40px; }
+    .seo-article h2 { font-size: 22px; font-weight: 800; color: var(--navy-dark); margin: 28px 0 14px; }
+    .seo-article h2:first-child { margin-top: 0; }
+    .seo-article h3 { font-size: 17px; font-weight: 700; color: var(--navy-dark); margin: 18px 0 10px; }
+    .seo-article p { font-size: 15px; color: #334155; line-height: 1.75; margin-bottom: 16px; }
+    .seo-article ul { margin-left: 22px; margin-bottom: 18px; font-size: 14.5px; color: #334155; }
+    .seo-article li { margin-bottom: 8px; }
+
+    .formula-box { background: #f0f9ff; border: 1.5px solid var(--sky-border); border-radius: 12px; padding: 18px 22px; margin: 20px 0; font-family: monospace; font-size: 14.5px; font-weight: 700; color: #0369a1; line-height: 1.6; }
+
+    /* Table */
+    .data-table-wrap { overflow-x: auto; margin: 20px 0; border: 1px solid var(--border-color); border-radius: 10px; }
+    .data-table { width: 100%; border-collapse: collapse; text-align: left; font-size: 14px; }
+    .data-table th { background: #f8fafc; padding: 12px 16px; font-weight: 700; color: var(--navy-dark); border-bottom: 1px solid var(--border-color); }
+    .data-table td { padding: 12px 16px; border-bottom: 1px solid #f1f5f9; color: #334155; }
+    .data-table tr:last-child td { border-bottom: none; }
+
+    /* Disclaimer Box */
+    .disclaimer-card { background: #fffbeb; border-left: 4px solid #f59e0b; padding: 18px 22px; border-radius: 0 10px 10px 0; margin: 24px 0; }
+    .disclaimer-card h4 { font-size: 14px; font-weight: 800; color: #92400e; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+    .disclaimer-card p { font-size: 13.5px; color: #78350f; line-height: 1.6; margin-bottom: 0; }
+
+    /* FAQ */
+    .faq-item { border: 1px solid var(--border-color); border-radius: 10px; margin-bottom: 12px; overflow: hidden; background: white; }
+    .faq-question { padding: 16px 20px; font-weight: 700; font-size: 15px; color: var(--navy-dark); cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: #f8fafc; transition: background 0.2s; user-select: none; }
+    .faq-question:hover { background: #f1f5f9; }
+    .faq-answer { padding: 16px 20px; font-size: 14px; color: #475569; line-height: 1.7; display: none; border-top: 1px solid var(--border-color); }
+
+    /* Related Tools */
+    .related-tools-box { margin-bottom: 40px; }
+    .related-tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; margin-top: 16px; }
+    .related-card { background: white; border: 1px solid var(--border-color); border-radius: 12px; padding: 18px; transition: transform 0.2s, box-shadow 0.2s; display: block; }
+    .related-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); border-color: var(--sky-saudi); }
+    .related-card-badge { display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase; padding: 3px 8px; border-radius: 4px; background: var(--sky-light); color: var(--sky-dark); margin-bottom: 8px; }
+    .related-card-name { font-size: 15px; font-weight: 700; color: var(--navy-dark); margin-bottom: 4px; }
+    .related-card-desc { font-size: 12.5px; color: var(--text-muted); line-height: 1.5; }
+
+    /* Footer */
+    .site-footer { background: var(--navy-footer); color: #94a3b8; padding: 48px 20px 24px; font-size: 13.5px; }
+    .footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 36px; padding-bottom: 36px; border-bottom: 1px solid #1e293b; }
+    @media (max-width: 768px) { .footer-container { grid-template-columns: 1fr; } }
+    .footer-col h4 { color: white; font-size: 14.5px; font-weight: 700; margin-bottom: 14px; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 8px; }
+    .footer-col ul li a { color: #94a3b8; font-size: 13px; }
+    .footer-col ul li a:hover { color: #38bdf8; }
+    .footer-bottom { max-width: 1200px; margin: 24px auto 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; font-size: 12.5px; }
+  </style>
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="header-container">
+      <a href="/" class="logo-area">
+        <div class="logo-icon"><i class="fas fa-calculator"></i></div>
+        <span>DailyCalcHubs</span>
+      </a>
+      <nav class="main-nav">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/saudi-remittance-calculator/" class="nav-link">Remittance</a>
+        <a href="/prayer-times/" class="nav-link">Prayer Times</a>
+        <a href="/saudi-salary-calculator/" class="nav-link">Salary</a>
+        <a href="/saudi-iqama-calculator/" class="nav-link">Iqama</a>
+        <a href="/everyday-smart-calculator/" class="nav-link active">Everyday Smart</a>
+        <a href="/shariah-sip-calculator/" class="nav-link">Shariah SIP</a>
+        <a href="/travel-booking-calculator/" class="nav-link">Travel & Booking</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Breadcrumbs -->
+  <div class="breadcrumb-bar">
+    <div class="breadcrumb-container">
+      <a href="/"><i class="fas fa-home"></i> Home</a>
+      <span class="breadcrumb-sep"><i class="fas fa-chevron-right"></i></span>
+      <a href="/everyday-smart-calculator/">Everyday Smart Calculator</a>
+      <span class="breadcrumb-sep"><i class="fas fa-chevron-right"></i></span>
+      <span style="color: var(--navy-dark); font-weight:600;">GPA / Grade Calculator</span>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="page-main">
+
+    <!-- Hero -->
+    <section class="hero-section">
+      <div class="badge-hero"><i class="fas fa-graduation-cap"></i> Academic Achievement Tool</div>
+      <h1 class="hero-title">GPA / Grade Calculator</h1>
+      <p class="hero-desc">
+        Calculate your weighted semester Grade Point Average (GPA), incorporate credit hours, and determine your updated cumulative GPA across standard 4.0 and Saudi/Gulf 5.0 scales.
+      </p>
+    </section>
+
+    <!-- Calculator Card -->
+    <div class="calc-card">
+      <div class="scale-selector-bar">
+        <div class="scale-label"><i class="fas fa-sliders" style="color: var(--sky-dark); margin-right: 6px;"></i> Select Grading Scale System:</div>
+        <div class="scale-toggle-wrap">
+          <button type="button" class="scale-btn active" id="btnScale4" onclick="setScale(4)">4.0 Standard Scale</button>
+          <button type="button" class="scale-btn" id="btnScale5" onclick="setScale(5)">5.0 Saudi/Gulf Scale</button>
+        </div>
+      </div>
+
+      <!-- Course Rows Header -->
+      <div class="table-headers">
+        <div>Course Name (Optional)</div>
+        <div>Grade</div>
+        <div>Credits</div>
+        <div></div>
+      </div>
+
+      <!-- Dynamic Course Rows Container -->
+      <div id="courseRowsContainer">
+        <!-- Default Initial 4 Course Rows injected via JS -->
+      </div>
+
+      <div class="calc-actions-bar">
+        <button type="button" class="btn-add-course" onclick="addCourseRow()"><i class="fas fa-plus"></i> Add Another Course</button>
+      </div>
+
+      <!-- Optional Cumulative Section -->
+      <div class="cumul-box">
+        <div class="cumul-title"><i class="fas fa-layer-group" style="color: var(--sky-dark);"></i> Include Prior Semesters (Optional Cumulative Calculation)</div>
+        <div class="cumul-grid">
+          <div class="form-group">
+            <label class="form-label" for="priorGpa" style="font-size:12.5px;">Prior Cumulative GPA</label>
+            <input type="number" id="priorGpa" class="course-input" placeholder="e.g. 3.45" step="0.01" min="0" oninput="calculateGPA()">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="priorCredits" style="font-size:12.5px;">Prior Completed Credits</label>
+            <input type="number" id="priorCredits" class="course-input" placeholder="e.g. 45" step="1" min="0" oninput="calculateGPA()">
+          </div>
+        </div>
+      </div>
+
+      <!-- Result Summary Box -->
+      <div class="result-summary-box">
+        <div class="result-row-top">
+          <div>
+            <div class="result-label">Semester GPA</div>
+            <div class="result-big-val" id="resSemesterGpa">3.65 / 4.00</div>
+          </div>
+          <div>
+            <div class="honors-badge" id="resStandingBadge">
+              <i class="fas fa-medal"></i> <span id="resStandingText">Very Good Standing</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="result-meta-grid">
+          <div class="meta-box-inner">
+            <div class="meta-box-title">Semester Credits</div>
+            <div class="meta-box-val" id="resSemesterCredits">14 Hours</div>
+          </div>
+          <div class="meta-box-inner">
+            <div class="meta-box-title">Total Grade Points</div>
+            <div class="meta-box-val" id="resGradePoints">51.10 Pts</div>
+          </div>
+          <div class="meta-box-inner">
+            <div class="meta-box-title">Cumulative GPA</div>
+            <div class="meta-box-val" id="resCumulativeGpa">--</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEO Content Article -->
+    <article class="seo-article">
+      <h2>How Grade Point Average (GPA) is Calculated</h2>
+      <p>
+        Grade Point Average (GPA) is the universal metric used by secondary schools, colleges, and universities to summarize a student's overall academic performance. Rather than taking a simple unweighted average of letter grades, collegiate GPA systems weight each course by its assigned <strong>credit hours</strong> (semester hours), ensuring that intensive courses exert an appropriately proportionate impact.
+      </p>
+
+      <h3>Mathematically Valid Weighted GPA Formula</h3>
+      <div class="formula-box">
+        Course Grade Points = Letter Grade Numerical Equivalent × Course Credit Hours<br>
+        Semester GPA = Sum of All Course Grade Points ÷ Total Semester Credit Hours<br>
+        Cumulative GPA = [(Prior Cumulative GPA × Prior Credits) + Current Semester Points] ÷ (Prior Credits + Current Credits)
+      </div>
+
+      <h3>Comparison of 4.0 vs 5.0 University Grading Scales</h3>
+      <div class="data-table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Letter Grade</th>
+              <th>Percentage Range</th>
+              <th>4.0 Scale (US / International)</th>
+              <th>5.0 Scale (Saudi Universities / KSU / KFUPM)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>A+</strong> (Exceptional)</td><td>95 – 100%</td><td>4.00</td><td>5.00</td></tr>
+            <tr><td><strong>A</strong> (Excellent)</td><td>90 – 94%</td><td>4.00</td><td>4.75</td></tr>
+            <tr><td><strong>B+</strong> (Superior)</td><td>85 – 89%</td><td>3.30 – 3.50</td><td>4.50</td></tr>
+            <tr><td><strong>B</strong> (Very Good)</td><td>80 – 84%</td><td>3.00</td><td>4.00</td></tr>
+            <tr><td><strong>C+</strong> (Above Average)</td><td>75 – 79%</td><td>2.30 – 2.50</td><td>3.50</td></tr>
+            <tr><td><strong>C</strong> (Good)</td><td>70 – 74%</td><td>2.00</td><td>3.00</td></tr>
+            <tr><td><strong>D+</strong> (Pass High)</td><td>65 – 69%</td><td>1.30 – 1.50</td><td>2.50</td></tr>
+            <tr><td><strong>D</strong> (Pass)</td><td>60 – 64%</td><td>1.00</td><td>2.00</td></tr>
+            <tr><td><strong>F</strong> (Fail)</td><td>&lt; 60%</td><td>0.00</td><td>1.00 / 0.00</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Institutional Disclaimer -->
+      <div class="disclaimer-card">
+        <h4><i class="fas fa-school-flag"></i> Academic Standards Disclaimer</h4>
+        <p>
+          Grading standards, grade point weightings, and honors thresholds vary across academic institutions, faculties, and ministries of education. While this tool models the most prevalent standard 4.0 and Saudi 5.0 systems, students should verify their specific degree requirements against their official university registrar handbook.
+        </p>
+      </div>
+
+      <!-- FAQ Section -->
+      <h2>Frequently Asked Questions</h2>
+      
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">How does credit hour weighting affect GPA? <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-answer">Credit hours represent course weight. An "A" in a 4-credit course yields 16 grade points (on a 4.0 scale), whereas an "A" in a 1-credit lab produces 4 grade points. The total grade points are divided by total credits.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">Why do Saudi universities use a 5.0 GPA scale? <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-answer">Public universities in Saudi Arabia (such as King Saud University, King Abdulaziz University, and KFUPM) follow a 5.0 grading scale established by the Ministry of Education to provide granular distinction between A+ (5.00), A (4.75), and B+ (4.50) levels of achievement.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">How do I calculate cumulative GPA? <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-answer">Enter your previous cumulative GPA and previous completed credits in the optional cumulative box. The calculator mathematically merges your past credits with your current semester grades to produce your updated cumulative standing.</div>
+      </div>
+    </article>
+
+    <!-- Related Calculators -->
+    <div class="related-tools-box">
+      <h3 style="font-size: 18px; font-weight: 800; color: var(--navy-dark);"><i class="fas fa-calculator" style="color: var(--sky-saudi); margin-right: 8px;"></i> Explore Other Everyday Smart Calculators</h3>
+      <div class="related-tools-grid">
+        <a href="/everyday-smart-calculator/percentage-calculator/" class="related-card">
+          <span class="related-card-badge">Math</span>
+          <div class="related-card-name">Percentage Calculator</div>
+          <div class="related-card-desc">Solve percentage change, ratios, and grade proportion formulas.</div>
+        </a>
+
+        <a href="/everyday-smart-calculator/age-calculator/" class="related-card">
+          <span class="related-card-badge">Date Math</span>
+          <div class="related-card-name">Age &amp; Date of Birth</div>
+          <div class="related-card-desc">Calculate exact age for school enrollment and job qualifications.</div>
+        </a>
+
+        <a href="/everyday-smart-calculator/" class="related-card">
+          <span class="related-card-badge">Main Hub</span>
+          <div class="related-card-name">Everyday Smart Hub</div>
+          <div class="related-card-desc">Access all 11 daily life calculators for productivity, school, and home.</div>
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    let currentScale = 4;
+
+    const gradesScale4 = [
+      { label: 'A+ (4.0)', val: 4.0 },
+      { label: 'A (4.0)', val: 4.0 },
+      { label: 'A- (3.7)', val: 3.7 },
+      { label: 'B+ (3.3)', val: 3.3 },
+      { label: 'B (3.0)', val: 3.0 },
+      { label: 'B- (2.7)', val: 2.7 },
+      { label: 'C+ (2.3)', val: 2.3 },
+      { label: 'C (2.0)', val: 2.0 },
+      { label: 'C- (1.7)', val: 1.7 },
+      { label: 'D+ (1.3)', val: 1.3 },
+      { label: 'D (1.0)', val: 1.0 },
+      { label: 'F (0.0)', val: 0.0 }
+    ];
+
+    const gradesScale5 = [
+      { label: 'A+ (5.00)', val: 5.0 },
+      { label: 'A (4.75)', val: 4.75 },
+      { label: 'B+ (4.50)', val: 4.5 },
+      { label: 'B (4.00)', val: 4.0 },
+      { label: 'C+ (3.50)', val: 3.5 },
+      { label: 'C (3.00)', val: 3.0 },
+      { label: 'D+ (2.50)', val: 2.5 },
+      { label: 'D (2.00)', val: 2.0 },
+      { label: 'F (1.00)', val: 1.0 }
+    ];
+
+    function setScale(scale) {
+      currentScale = scale;
+      document.getElementById('btnScale4').classList.toggle('active', scale === 4);
+      document.getElementById('btnScale5').classList.toggle('active', scale === 5);
+
+      // Re-populate grade dropdowns
+      const selects = document.querySelectorAll('.course-grade-select');
+      selects.forEach(sel => {
+        const curIdx = sel.selectedIndex;
+        populateGradeSelect(sel);
+        if (curIdx < sel.options.length) sel.selectedIndex = curIdx;
+      });
+      calculateGPA();
+    }
+
+    function populateGradeSelect(sel) {
+      sel.innerHTML = '';
+      const list = currentScale === 4 ? gradesScale4 : gradesScale5;
+      list.forEach(g => {
+        const opt = document.createElement('option');
+        opt.value = g.val;
+        opt.textContent = g.label;
+        sel.appendChild(opt);
+      });
+    }
+
+    function addCourseRow(title = '', gradeIdx = 1, credits = 3) {
+      const container = document.getElementById('courseRowsContainer');
+      const row = document.createElement('div');
+      row.className = 'course-row';
+
+      const titleInput = document.createElement('input');
+      titleInput.type = 'text';
+      titleInput.className = 'course-input';
+      titleInput.placeholder = 'e.g. Mathematics';
+      titleInput.value = title;
+
+      const gradeSelect = document.createElement('select');
+      gradeSelect.className = 'course-select course-grade-select';
+      populateGradeSelect(gradeSelect);
+      if (gradeIdx < gradeSelect.options.length) gradeSelect.selectedIndex = gradeIdx;
+      gradeSelect.onchange = calculateGPA;
+
+      const creditsInput = document.createElement('input');
+      creditsInput.type = 'number';
+      creditsInput.className = 'course-input course-credits-input';
+      creditsInput.min = '0';
+      creditsInput.max = '20';
+      creditsInput.step = '1';
+      creditsInput.value = credits;
+      creditsInput.oninput = calculateGPA;
+
+      const delBtn = document.createElement('button');
+      delBtn.type = 'button';
+      delBtn.className = 'btn-delete-course';
+      delBtn.innerHTML = '<i class="fas fa-trash-can"></i>';
+      delBtn.title = 'Remove Course';
+      delBtn.onclick = function() {
+        if (document.querySelectorAll('.course-row').length > 1) {
+          row.remove();
+          calculateGPA();
+        }
+      };
+
+      row.appendChild(titleInput);
+      row.appendChild(gradeSelect);
+      row.appendChild(creditsInput);
+      row.appendChild(delBtn);
+      container.appendChild(row);
+
+      calculateGPA();
+    }
+
+    function calculateGPA() {
+      const rows = document.querySelectorAll('.course-row');
+      let totalPts = 0;
+      let totalCredits = 0;
+
+      rows.forEach(r => {
+        const gradeVal = parseFloat(r.querySelector('.course-grade-select').value) || 0;
+        const credVal = parseFloat(r.querySelector('.course-credits-input').value) || 0;
+        if (credVal > 0) {
+          totalPts += (gradeVal * credVal);
+          totalCredits += credVal;
+        }
+      });
+
+      const maxScaleStr = currentScale === 4 ? '4.00' : '5.00';
+      let gpa = 0;
+      if (totalCredits > 0) {
+        gpa = totalPts / totalCredits;
+      }
+
+      document.getElementById('resSemesterGpa').innerText = totalCredits > 0 ? `${gpa.toFixed(2)} / ${maxScaleStr}` : `-- / ${maxScaleStr}`;
+      document.getElementById('resSemesterCredits').innerText = `${totalCredits} Hours`;
+      document.getElementById('resGradePoints').innerText = `${totalPts.toFixed(2)} Pts`;
+
+      // Standing label
+      let standing = 'Satisfactory';
+      let badgeColor = '#4ade80';
+      if (currentScale === 4) {
+        if (gpa >= 3.8) { standing = 'First Honors (Summa Cum Laude)'; badgeColor = '#38bdf8'; }
+        else if (gpa >= 3.5) { standing = 'Second Honors (Magna Cum Laude)'; badgeColor = '#4ade80'; }
+        else if (gpa >= 3.0) { standing = 'Good Standing'; badgeColor = '#a3e635'; }
+        else if (gpa >= 2.0) { standing = 'Satisfactory'; badgeColor = '#facc15'; }
+        else { standing = 'Academic Warning'; badgeColor = '#f87171'; }
+      } else {
+        if (gpa >= 4.75) { standing = 'First Class Distinction (ممتاز مرتفع)'; badgeColor = '#38bdf8'; }
+        else if (gpa >= 4.5) { standing = 'Excellent (ممتاز)'; badgeColor = '#4ade80'; }
+        else if (gpa >= 3.75) { standing = 'Very Good (جيد جداً)'; badgeColor = '#a3e635'; }
+        else if (gpa >= 2.75) { standing = 'Good (جيد)'; badgeColor = '#facc15'; }
+        else { standing = 'Pass / Warning (مقبول / إنذار)'; badgeColor = '#f87171'; }
+      }
+
+      const badgeText = document.getElementById('resStandingText');
+      badgeText.innerText = totalCredits > 0 ? standing : 'Enter Courses';
+      badgeText.style.color = totalCredits > 0 ? badgeColor : '#94a3b8';
+
+      // Cumulative GPA calculation
+      const priorGpa = parseFloat(document.getElementById('priorGpa').value);
+      const priorCredits = parseFloat(document.getElementById('priorCredits').value);
+
+      if (!isNaN(priorGpa) && !isNaN(priorCredits) && priorCredits > 0) {
+        const priorPts = priorGpa * priorCredits;
+        const cumCredits = priorCredits + totalCredits;
+        const cumPts = priorPts + totalPts;
+        const cumGpa = cumCredits > 0 ? (cumPts / cumCredits) : 0;
+        document.getElementById('resCumulativeGpa').innerText = `${cumGpa.toFixed(2)} (${cumCredits} hrs)`;
+      } else {
+        document.getElementById('resCumulativeGpa').innerText = '--';
+      }
+    }
+
+    function toggleFaq(el) {
+      const ans = el.nextElementSibling;
+      const icon = el.querySelector('i');
+      if (ans.style.display === 'block') {
+        ans.style.display = 'none';
+        icon.className = 'fas fa-chevron-down';
+      } else {
+        ans.style.display = 'block';
+        icon.className = 'fas fa-chevron-up';
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      // Initialize with 4 sample courses
+      addCourseRow('Course 1', 1, 3);
+      addCourseRow('Course 2', 0, 4);
+      addCourseRow('Course 3', 3, 3);
+      addCourseRow('Course 4', 2, 4);
+      calculateGPA();
+    });
+  </script>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-col">
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom:14px;">
+          <div class="logo-icon" style="width:30px; height:30px; font-size:14px;"><i class="fas fa-calculator"></i></div>
+          <span style="font-weight:800; font-size:18px; color:white;">DailyCalcHubs</span>
+        </div>
+        <p style="font-size:13.5px; line-height:1.6; color:#94a3b8; margin-bottom:14px;">
+          High-precision financial, remittance, salary, Iqama, and everyday utility calculators designed for students, expatriates, and residents worldwide.
+        </p>
+        <div style="font-size:12.5px; color:#64748b;">
+          Academic results are for planning estimates. Official academic records must be verified with your university registrar.
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Everyday Smart Hub</h4>
+        <ul>
+          <li><a href="/everyday-smart-calculator/">Everyday Smart Hub</a></li>
+          <li><a href="/everyday-smart-calculator/age-calculator/">Age &amp; Date of Birth</a></li>
+          <li><a href="/everyday-smart-calculator/discount-calculator/">Discount &amp; Sale</a></li>
+          <li><a href="/everyday-smart-calculator/gpa-calculator/">GPA Calculator</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Saudi Calculator Hubs</h4>
+        <ul>
+          <li><a href="/saudi-remittance-calculator/">Saudi Remittance Hub</a></li>
+          <li><a href="/prayer-times/">Prayer Times</a></li>
+          <li><a href="/saudi-salary-calculator/">Saudi Salary Hub</a></li>
+          <li><a href="/saudi-iqama-calculator/">Saudi Iqama Hub</a></li>
+          <li><a href="/shariah-sip-calculator/">Shariah SIP Calculator</a></li>
+          <li><a href="/travel-booking-calculator/">Travel &amp; Booking</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Trust &amp; Legal</h4>
+        <ul>
+          <li><a href="/about/">About Us</a></li>
+          <li><a href="/contact/">Contact Support</a></li>
+          <li><a href="/privacy-policy/">Privacy Policy</a></li>
+          <li><a href="/terms/">Terms of Service</a></li>
+          <li><a href="/disclaimer/">Disclaimer</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>&copy; 2026 DailyCalcHubs.com. All rights reserved.</div>
+      <div>Designed with Precision for Academic Excellence</div>
+    </div>
+  </footer>
+
+</body>
+</html>

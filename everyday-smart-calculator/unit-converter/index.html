@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit Converter — Length, Weight, Temp, Area & Digital Storage</title>
+  <meta name="description" content="Convert measurements accurately with our fast everyday Unit Converter. Supports length, weight, temperature, area, volume, speed, time, and digital data.">
+  <meta name="keywords" content="unit converter, metric to imperial converter, length converter, weight converter, temperature converter celsius to fahrenheit, digital storage converter">
+  <link rel="canonical" href="https://dailycalchubs.com/everyday-smart-calculator/unit-converter/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://dailycalchubs.com/everyday-smart-calculator/unit-converter/">
+  <meta property="og:title" content="Unit Converter — Length, Weight, Temp, Area & Digital Storage">
+  <meta property="og:description" content="Convert everyday measurements across 8 core categories: length, weight, temperature, area, volume, speed, time, and digital data.">
+  <meta property="og:image" content="https://dailycalchubs.com/og-image.jpg">
+  <meta property="og:width" content="1200">
+  <meta property="og:height" content="630">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Unit Converter — DailyCalcHubs">
+  <meta name="twitter:description" content="Fast, two-way conversion for metric and imperial units across 8 essential measurement categories.">
+  <meta name="twitter:image" content="https://dailycalchubs.com/og-image.jpg">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6944579701716470" crossorigin="anonymous"></script>
+
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-18Y3LNHDR8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-18Y3LNHDR8');
+  </script>
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://dailycalchubs.com/everyday-smart-calculator/unit-converter/#app",
+        "name": "Everyday Unit Converter",
+        "url": "https://dailycalchubs.com/everyday-smart-calculator/unit-converter/",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "All",
+        "description": "Convert measurements across 8 major categories including length, mass, temperature, area, volume, speed, and digital data.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://dailycalchubs.com/everyday-smart-calculator/unit-converter/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How do you convert Celsius to Fahrenheit?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Multiply the temperature in Celsius by 9/5 (1.8) and add 32: °F = (°C × 1.8) + 32. To convert Fahrenheit to Celsius: °C = (°F - 32) ÷ 1.8."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is a tola in weight measurement?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A tola is a traditional South Asian and Gulf bullion mass unit officially standardized as 11.6638038 grams (or 180 troy grains), commonly used in gold and jewelry markets."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are binary (1024) or decimal (1000) prefixes used for digital storage?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "This converter utilizes standard binary byte multiples (1 KB = 1,024 Bytes, 1 MB = 1,024 KB, 1 GB = 1,024 MB), which represents operating system and RAM architecture standard."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --bg-light: #f8fafc;
+      --bg-white: #ffffff;
+      --navy-dark: #0f172a;
+      --navy-footer: #081024;
+      --sky-saudi: #0ea5e9;
+      --sky-dark: #0284c7;
+      --sky-light: #f0f9ff;
+      --sky-border: #bae6fd;
+      --text-dark: #1e293b;
+      --text-muted: #64748b;
+      --border-color: #e2e8f0;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
+      --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font-main);
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--sky-dark); text-decoration: none; transition: color 0.2s; }
+    a:hover { color: #0369a1; }
+
+    /* Header */
+    .site-header { background: var(--bg-white); border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 50; }
+    .header-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; height: 70px; display: flex; align-items: center; justify-content: space-between; }
+    .logo-area { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 20px; color: var(--navy-dark); }
+    .logo-icon { width: 36px; height: 36px; background: linear-gradient(135deg, #0ea5e9, #0284c7); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: 18px; }
+    .main-nav { display: flex; align-items: center; gap: 20px; }
+    .nav-link { font-weight: 600; font-size: 13.5px; color: var(--text-muted); padding: 6px 10px; border-radius: 6px; }
+    .nav-link:hover { color: var(--navy-dark); background: #f1f5f9; }
+    .nav-link.active { color: var(--sky-dark); background: var(--sky-light); }
+    @media (max-width: 860px) { .main-nav { display: none; } }
+
+    /* Breadcrumbs */
+    .breadcrumb-bar { background: var(--bg-white); border-bottom: 1px solid var(--border-color); padding: 12px 20px; font-size: 13.5px; color: var(--text-muted); }
+    .breadcrumb-container { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .breadcrumb-sep { font-size: 11px; color: #94a3b8; }
+
+    /* Main Container */
+    .page-main { max-width: 1000px; margin: 30px auto; padding: 0 20px; }
+
+    /* Hero */
+    .hero-section { text-align: center; margin-bottom: 30px; background: linear-gradient(180deg, #f0f9ff 0%, #ffffff 100%); padding: 36px 24px; border-radius: 16px; border: 1px solid var(--sky-border); }
+    .badge-hero { display: inline-flex; align-items: center; gap: 6px; background: white; border: 1px solid var(--sky-border); color: var(--sky-dark); padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 700; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .hero-title { font-size: 32px; font-weight: 800; color: var(--navy-dark); margin-bottom: 10px; }
+    .hero-desc { font-size: 15.5px; color: var(--text-muted); max-width: 720px; margin: 0 auto; }
+
+    /* Category Tabs */
+    .category-pills-bar { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 10px; margin-bottom: 24px; scrollbar-width: none; }
+    .category-pills-bar::-webkit-scrollbar { display: none; }
+    .cat-pill-btn { border: 1px solid var(--border-color); background: white; padding: 9px 16px; font-size: 13.5px; font-weight: 700; color: var(--text-muted); border-radius: 20px; cursor: pointer; transition: all 0.2s; white-space: nowrap; display: inline-flex; align-items: center; gap: 6px; font-family: inherit; }
+    .cat-pill-btn:hover { border-color: var(--sky-dark); color: var(--sky-dark); }
+    .cat-pill-btn.active { background: var(--sky-dark); color: white; border-color: var(--sky-dark); }
+
+    /* Calculator Card */
+    .calc-card { background: var(--bg-white); border-radius: 16px; border: 1px solid var(--border-color); box-shadow: var(--shadow-md); padding: 32px; margin-bottom: 40px; }
+    
+    .converter-row { display: grid; grid-template-columns: 1fr 50px 1fr; gap: 16px; align-items: center; margin-bottom: 24px; }
+    @media (max-width: 680px) { .converter-row { grid-template-columns: 1fr; gap: 12px; } }
+    
+    .converter-col { display: flex; flex-direction: column; gap: 8px; }
+    .converter-label { font-size: 13px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; }
+
+    .calc-input-wrap, .calc-select { display: flex; align-items: center; border: 1.5px solid var(--border-color); border-radius: 10px; background: #f8fafc; overflow: hidden; transition: all 0.2s; }
+    .calc-input-wrap:focus-within, .calc-select:focus-within { border-color: var(--sky-saudi); background: #ffffff; box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.12); }
+    .calc-input { flex: 1; border: none; outline: none; padding: 14px 16px; font-size: 18px; font-weight: 800; color: var(--navy-dark); font-family: inherit; background: transparent; width: 100%; }
+    .calc-select select { width: 100%; border: none; outline: none; padding: 12px 14px; font-size: 14px; font-weight: 700; color: var(--navy-dark); font-family: inherit; background: transparent; }
+
+    .btn-swap-wrap { display: flex; align-items: center; justify-content: center; margin-top: 22px; }
+    @media (max-width: 680px) { .btn-swap-wrap { margin: 0; } }
+    .btn-swap { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--border-color); background: #f1f5f9; color: var(--sky-dark); font-size: 16px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s; }
+    .btn-swap:hover { background: var(--sky-dark); color: white; transform: rotate(180deg); }
+
+    /* Result Box */
+    .result-summary-box { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; border-radius: 14px; padding: 26px; box-shadow: 0 10px 20px rgba(15, 23, 42, 0.15); }
+    .result-row-top { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.12); padding-bottom: 18px; margin-bottom: 18px; flex-wrap: wrap; gap: 12px; }
+    .result-label { font-size: 12.5px; color: #94a3b8; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+    .result-big-val { font-size: 32px; font-weight: 800; color: #38bdf8; margin-top: 4px; line-height: 1.2; word-break: break-all; }
+    .unit-badge { background: rgba(14, 165, 233, 0.2); border: 1px solid rgba(56, 189, 248, 0.4); color: #bae6fd; padding: 8px 16px; border-radius: 8px; font-size: 13.5px; font-weight: 700; }
+
+    .formula-banner { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 10px; padding: 12px 18px; font-size: 13.5px; color: #e2e8f0; }
+    .formula-banner strong { color: #38bdf8; }
+
+    /* SEO Article Section */
+    .seo-article { background: var(--bg-white); border-radius: 16px; border: 1px solid var(--border-color); padding: 36px 30px; margin-bottom: 40px; }
+    .seo-article h2 { font-size: 22px; font-weight: 800; color: var(--navy-dark); margin: 28px 0 14px; }
+    .seo-article h2:first-child { margin-top: 0; }
+    .seo-article h3 { font-size: 17px; font-weight: 700; color: var(--navy-dark); margin: 18px 0 10px; }
+    .seo-article p { font-size: 15px; color: #334155; line-height: 1.75; margin-bottom: 16px; }
+    .seo-article ul { margin-left: 22px; margin-bottom: 18px; font-size: 14.5px; color: #334155; }
+    .seo-article li { margin-bottom: 8px; }
+
+    /* Table */
+    .data-table-wrap { overflow-x: auto; margin: 20px 0; border: 1px solid var(--border-color); border-radius: 10px; }
+    .data-table { width: 100%; border-collapse: collapse; text-align: left; font-size: 14px; }
+    .data-table th { background: #f8fafc; padding: 12px 16px; font-weight: 700; color: var(--navy-dark); border-bottom: 1px solid var(--border-color); }
+    .data-table td { padding: 12px 16px; border-bottom: 1px solid #f1f5f9; color: #334155; }
+    .data-table tr:last-child td { border-bottom: none; }
+
+    /* Disclaimer Box */
+    .disclaimer-card { background: #fffbeb; border-left: 4px solid #f59e0b; padding: 18px 22px; border-radius: 0 10px 10px 0; margin: 24px 0; }
+    .disclaimer-card h4 { font-size: 14px; font-weight: 800; color: #92400e; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+    .disclaimer-card p { font-size: 13.5px; color: #78350f; line-height: 1.6; margin-bottom: 0; }
+
+    /* FAQ */
+    .faq-item { border: 1px solid var(--border-color); border-radius: 10px; margin-bottom: 12px; overflow: hidden; background: white; }
+    .faq-question { padding: 16px 20px; font-weight: 700; font-size: 15px; color: var(--navy-dark); cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: #f8fafc; transition: background 0.2s; user-select: none; }
+    .faq-question:hover { background: #f1f5f9; }
+    .faq-answer { padding: 16px 20px; font-size: 14px; color: #475569; line-height: 1.7; display: none; border-top: 1px solid var(--border-color); }
+
+    /* Related Tools */
+    .related-tools-box { margin-bottom: 40px; }
+    .related-tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; margin-top: 16px; }
+    .related-card { background: white; border: 1px solid var(--border-color); border-radius: 12px; padding: 18px; transition: transform 0.2s, box-shadow 0.2s; display: block; }
+    .related-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); border-color: var(--sky-saudi); }
+    .related-card-badge { display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase; padding: 3px 8px; border-radius: 4px; background: var(--sky-light); color: var(--sky-dark); margin-bottom: 8px; }
+    .related-card-name { font-size: 15px; font-weight: 700; color: var(--navy-dark); margin-bottom: 4px; }
+    .related-card-desc { font-size: 12.5px; color: var(--text-muted); line-height: 1.5; }
+
+    /* Footer */
+    .site-footer { background: var(--navy-footer); color: #94a3b8; padding: 48px 20px 24px; font-size: 13.5px; }
+    .footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 36px; padding-bottom: 36px; border-bottom: 1px solid #1e293b; }
+    @media (max-width: 768px) { .footer-container { grid-template-columns: 1fr; } }
+    .footer-col h4 { color: white; font-size: 14.5px; font-weight: 700; margin-bottom: 14px; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 8px; }
+    .footer-col ul li a { color: #94a3b8; font-size: 13px; }
+    .footer-col ul li a:hover { color: #38bdf8; }
+    .footer-bottom { max-width: 1200px; margin: 24px auto 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; font-size: 12.5px; }
+  </style>
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="header-container">
+      <a href="/" class="logo-area">
+        <div class="logo-icon"><i class="fas fa-calculator"></i></div>
+        <span>DailyCalcHubs</span>
+      </a>
+      <nav class="main-nav">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/saudi-remittance-calculator/" class="nav-link">Remittance</a>
+        <a href="/prayer-times/" class="nav-link">Prayer Times</a>
+        <a href="/saudi-salary-calculator/" class="nav-link">Salary</a>
+        <a href="/saudi-iqama-calculator/" class="nav-link">Iqama</a>
+        <a href="/everyday-smart-calculator/" class="nav-link active">Everyday Smart</a>
+        <a href="/shariah-sip-calculator/" class="nav-link">Shariah SIP</a>
+        <a href="/travel-booking-calculator/" class="nav-link">Travel & Booking</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Breadcrumbs -->
+  <div class="breadcrumb-bar">
+    <div class="breadcrumb-container">
+      <a href="/"><i class="fas fa-home"></i> Home</a>
+      <span class="breadcrumb-sep"><i class="fas fa-chevron-right"></i></span>
+      <a href="/everyday-smart-calculator/">Everyday Smart Calculator</a>
+      <span class="breadcrumb-sep"><i class="fas fa-chevron-right"></i></span>
+      <span style="color: var(--navy-dark); font-weight:600;">Unit Converter</span>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="page-main">
+
+    <!-- Hero -->
+    <section class="hero-section">
+      <div class="badge-hero"><i class="fas fa-arrows-rotate"></i> Universal Conversion Tool</div>
+      <h1 class="hero-title">Unit Converter</h1>
+      <p class="hero-desc">
+        Quickly convert everyday measurements across 8 primary categories: length, weight/mass, temperature, area, volume, speed, time, and digital storage.
+      </p>
+    </section>
+
+    <!-- Category Pills Bar -->
+    <div class="category-pills-bar">
+      <button type="button" class="cat-pill-btn active" onclick="selectCategory('length', this)"><i class="fas fa-ruler"></i> Length</button>
+      <button type="button" class="cat-pill-btn" onclick="selectCategory('weight', this)"><i class="fas fa-weight-scale"></i> Weight / Mass</button>
+      <button type="button" class="cat-pill-btn" onclick="selectCategory('temp', this)"><i class="fas fa-temperature-half"></i> Temperature</button>
+      <button type="button" class="cat-pill-btn" onclick="selectCategory('area', this)"><i class="fas fa-chart-area"></i> Area</button>
+      <button type="button" class="cat-pill-btn" onclick="selectCategory('volume', this)"><i class="fas fa-flask"></i> Volume</button>
+      <button type="button" class="cat-pill-btn" onclick="selectCategory('speed', this)"><i class="fas fa-gauge-high"></i> Speed</button>
+      <button type="button" class="cat-pill-btn" onclick="selectCategory('time', this)"><i class="fas fa-clock"></i> Time</button>
+      <button type="button" class="cat-pill-btn" onclick="selectCategory('digital', this)"><i class="fas fa-hard-drive"></i> Digital Data</button>
+    </div>
+
+    <!-- Calculator Card -->
+    <div class="calc-card">
+      <div class="converter-row">
+        <!-- From Col -->
+        <div class="converter-col">
+          <div class="converter-label">From Value &amp; Unit</div>
+          <div class="calc-input-wrap">
+            <input type="number" id="valFrom" class="calc-input" value="10" step="any" oninput="convertFrom()">
+          </div>
+          <div class="calc-select">
+            <select id="unitFrom" onchange="convertFrom()"></select>
+          </div>
+        </div>
+
+        <!-- Swap Button -->
+        <div class="btn-swap-wrap">
+          <button type="button" class="btn-swap" onclick="swapUnits()" title="Swap Units"><i class="fas fa-right-left"></i></button>
+        </div>
+
+        <!-- To Col -->
+        <div class="converter-col">
+          <div class="converter-label">Converted Value &amp; Unit</div>
+          <div class="calc-input-wrap">
+            <input type="number" id="valTo" class="calc-input" value="0" step="any" oninput="convertTo()">
+          </div>
+          <div class="calc-select">
+            <select id="unitTo" onchange="convertFrom()"></select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Result Summary Box -->
+      <div class="result-summary-box">
+        <div class="result-row-top">
+          <div>
+            <div class="result-label">Conversion Output</div>
+            <div class="result-big-val" id="resDisplayStr">10 km = 6.2137 mi</div>
+          </div>
+          <div>
+            <div class="unit-badge" id="resCategoryBadge">
+              <i class="fas fa-check"></i> <span id="resCatName">Length Conversion</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="formula-banner" id="resFormulaNote">
+          Formula: Multiply length in kilometers by 0.621371 to get miles.
+        </div>
+      </div>
+    </div>
+
+    <!-- SEO Content Article -->
+    <article class="seo-article">
+      <h2>How Modern Unit Conversion Works</h2>
+      <p>
+        The global scientific and commercial community relies on the <strong>International System of Units (SI / Metric System)</strong>, whereas specific countries including the United States, the UK, and historical regional markets continue to employ Imperial and customary units. Converting between these standards requires mathematically exact multiplication factors established by international metrology agreements.
+      </p>
+
+      <h3>Common Essential Conversion Ratios</h3>
+      <div class="data-table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Measurement</th>
+              <th>Metric Standard</th>
+              <th>Imperial / Customary</th>
+              <th>Exact Standard Factor</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Length</strong></td><td>1 Kilometer (km)</td><td>0.621371 Miles (mi)</td><td>1 mi = 1.609344 km</td></tr>
+            <tr><td><strong>Weight</strong></td><td>1 Kilogram (kg)</td><td>2.20462 Pounds (lbs)</td><td>1 lb = 0.45359237 kg</td></tr>
+            <tr><td><strong>Gold Mass</strong></td><td>1 Tola (KSA/South Asia)</td><td>11.6638 Grams (g)</td><td>1 Tola = 180 troy grains</td></tr>
+            <tr><td><strong>Area</strong></td><td>1 Hectare (ha)</td><td>2.47105 Acres</td><td>1 ha = 10,000 m²</td></tr>
+            <tr><td><strong>Volume</strong></td><td>1 Liter (L)</td><td>0.264172 Gallons (US)</td><td>1 gal (US) = 3.78541 L</td></tr>
+            <tr><td><strong>Speed</strong></td><td>100 km/h</td><td>62.1371 mph</td><td>1 m/s = 3.6 km/h</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Temperature Conversion Explained</h2>
+      <p>
+        Unlike length or mass, temperature scales do not share a common zero point. Water freezes at <strong>0°C</strong> but at <strong>32°F</strong>, and boils at <strong>100°C</strong> versus <strong>212°F</strong>:
+      </p>
+      <ul>
+        <li><strong>Celsius to Fahrenheit:</strong> °F = (°C × 1.8) + 32</li>
+        <li><strong>Fahrenheit to Celsius:</strong> °C = (°F - 32) ÷ 1.8</li>
+        <li><strong>Celsius to Kelvin:</strong> K = °C + 273.15</li>
+      </ul>
+
+      <!-- Disclaimer -->
+      <div class="disclaimer-card">
+        <h4><i class="fas fa-circle-exclamation"></i> Metrology &amp; Rounding Notice</h4>
+        <p>
+          Calculated conversions use official international NIST and ISO conversion coefficients rounded for everyday display. For precision scientific engineering, certified trade weights, or legal custody transfer, use lab-calibrated instrumentation.
+        </p>
+      </div>
+
+      <!-- FAQ Section -->
+      <h2>Frequently Asked Questions</h2>
+      
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">How do you convert Celsius to Fahrenheit? <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-answer">Multiply the Celsius temperature by 1.8 and add 32: °F = (°C × 1.8) + 32. For example, 25°C becomes (25 × 1.8) + 32 = 77°F.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">What is a tola in weight measurement? <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-answer">A tola is a traditional Asian and Gulf bullion mass unit officially standardized as 11.6638038 grams, widely utilized in the jewelry and precious metals trade across Saudi Arabia, the UAE, and South Asia.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">Are digital storage units based on 1000 or 1024? <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-answer">In this calculator, digital storage follows the computer memory binary standard where 1 Kilobyte (KB) = 1,024 Bytes, 1 Megabyte (MB) = 1,024 KB, and 1 Gigabyte (GB) = 1,024 MB.</div>
+      </div>
+    </article>
+
+    <!-- Related Calculators -->
+    <div class="related-tools-box">
+      <h3 style="font-size: 18px; font-weight: 800; color: var(--navy-dark);"><i class="fas fa-calculator" style="color: var(--sky-saudi); margin-right: 8px;"></i> Explore Other Everyday Smart Calculators</h3>
+      <div class="related-tools-grid">
+        <a href="/everyday-smart-calculator/percentage-calculator/" class="related-card">
+          <span class="related-card-badge">Math</span>
+          <div class="related-card-name">Percentage Calculator</div>
+          <div class="related-card-desc">Calculate percentage increase, decrease, ratios, and fractions.</div>
+        </a>
+
+        <a href="/everyday-smart-calculator/bmi-calculator/" class="related-card">
+          <span class="related-card-badge">Health</span>
+          <div class="related-card-name">BMI Calculator</div>
+          <div class="related-card-desc">Check your Body Mass Index using metric or imperial measurements.</div>
+        </a>
+
+        <a href="/everyday-smart-calculator/" class="related-card">
+          <span class="related-card-badge">Main Hub</span>
+          <div class="related-card-name">Everyday Smart Hub</div>
+          <div class="related-card-desc">Access all 11 daily life calculators for productivity, school, and home.</div>
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    const unitDefinitions = {
+      length: {
+        base: 'm',
+        name: 'Length',
+        units: {
+          mm: { name: 'Millimeters (mm)', factor: 0.001 },
+          cm: { name: 'Centimeters (cm)', factor: 0.01 },
+          m: { name: 'Meters (m)', factor: 1 },
+          km: { name: 'Kilometers (km)', factor: 1000 },
+          in: { name: 'Inches (in)', factor: 0.0254 },
+          ft: { name: 'Feet (ft)', factor: 0.3048 },
+          yd: { name: 'Yards (yd)', factor: 0.9144 },
+          mi: { name: 'Miles (mi)', factor: 1609.344 }
+        },
+        defaultFrom: 'km',
+        defaultTo: 'mi'
+      },
+      weight: {
+        base: 'kg',
+        name: 'Weight / Mass',
+        units: {
+          mg: { name: 'Milligrams (mg)', factor: 0.000001 },
+          g: { name: 'Grams (g)', factor: 0.001 },
+          kg: { name: 'Kilograms (kg)', factor: 1 },
+          t: { name: 'Metric Tons (t)', factor: 1000 },
+          oz: { name: 'Ounces (oz)', factor: 0.0283495 },
+          lb: { name: 'Pounds (lbs)', factor: 0.45359237 },
+          st: { name: 'Stone (st)', factor: 6.35029 },
+          tola: { name: 'Tola (Gold / Gulf)', factor: 0.0116638 }
+        },
+        defaultFrom: 'kg',
+        defaultTo: 'lb'
+      },
+      temp: {
+        base: 'c',
+        name: 'Temperature',
+        units: {
+          c: { name: 'Celsius (°C)' },
+          f: { name: 'Fahrenheit (°F)' },
+          k: { name: 'Kelvin (K)' }
+        },
+        defaultFrom: 'c',
+        defaultTo: 'f'
+      },
+      area: {
+        base: 'sqm',
+        name: 'Area',
+        units: {
+          sqm: { name: 'Square Meters (m²)', factor: 1 },
+          sqft: { name: 'Square Feet (sq ft)', factor: 0.092903 },
+          sqyd: { name: 'Square Yards (sq yd)', factor: 0.836127 },
+          acre: { name: 'Acres (ac)', factor: 4046.86 },
+          ha: { name: 'Hectares (ha)', factor: 10000 },
+          sqkm: { name: 'Square Kilometers (km²)', factor: 1000000 }
+        },
+        defaultFrom: 'sqm',
+        defaultTo: 'sqft'
+      },
+      volume: {
+        base: 'l',
+        name: 'Volume',
+        units: {
+          ml: { name: 'Milliliters (mL)', factor: 0.001 },
+          l: { name: 'Liters (L)', factor: 1 },
+          m3: { name: 'Cubic Meters (m³)', factor: 1000 },
+          gal_us: { name: 'Gallons (US liquid)', factor: 3.78541 },
+          gal_uk: { name: 'Gallons (UK imperial)', factor: 4.54609 },
+          floz: { name: 'Fluid Ounces (US fl oz)', factor: 0.0295735 }
+        },
+        defaultFrom: 'l',
+        defaultTo: 'gal_us'
+      },
+      speed: {
+        base: 'kmh',
+        name: 'Speed',
+        units: {
+          kmh: { name: 'Kilometers per hour (km/h)', factor: 1 },
+          mph: { name: 'Miles per hour (mph)', factor: 1.609344 },
+          ms: { name: 'Meters per second (m/s)', factor: 3.6 },
+          knot: { name: 'Knots (kn)', factor: 1.852 }
+        },
+        defaultFrom: 'kmh',
+        defaultTo: 'mph'
+      },
+      time: {
+        base: 's',
+        name: 'Time',
+        units: {
+          s: { name: 'Seconds (s)', factor: 1 },
+          min: { name: 'Minutes (min)', factor: 60 },
+          h: { name: 'Hours (h)', factor: 3600 },
+          d: { name: 'Days (d)', factor: 86400 },
+          wk: { name: 'Weeks (wk)', factor: 604800 },
+          mo: { name: 'Months (avg 30.44d)', factor: 2629746 },
+          yr: { name: 'Years (365d)', factor: 31536000 }
+        },
+        defaultFrom: 'h',
+        defaultTo: 'min'
+      },
+      digital: {
+        base: 'byte',
+        name: 'Digital Storage',
+        units: {
+          bit: { name: 'Bits (b)', factor: 0.125 },
+          byte: { name: 'Bytes (B)', factor: 1 },
+          kb: { name: 'Kilobytes (KB)', factor: 1024 },
+          mb: { name: 'Megabytes (MB)', factor: 1048576 },
+          gb: { name: 'Gigabytes (GB)', factor: 1073741824 },
+          tb: { name: 'Terabytes (TB)', factor: 1099511627776 }
+        },
+        defaultFrom: 'gb',
+        defaultTo: 'mb'
+      }
+    };
+
+    let curCat = 'length';
+
+    function selectCategory(catKey, btn) {
+      curCat = catKey;
+      document.querySelectorAll('.cat-pill-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+
+      populateSelects();
+      convertFrom();
+    }
+
+    function populateSelects() {
+      const def = unitDefinitions[curCat];
+      const selFrom = document.getElementById('unitFrom');
+      const selTo = document.getElementById('unitTo');
+
+      selFrom.innerHTML = '';
+      selTo.innerHTML = '';
+
+      for (const [key, u] of Object.entries(def.units)) {
+        const o1 = document.createElement('option');
+        o1.value = key;
+        o1.textContent = u.name;
+        selFrom.appendChild(o1);
+
+        const o2 = document.createElement('option');
+        o2.value = key;
+        o2.textContent = u.name;
+        selTo.appendChild(o2);
+      }
+
+      selFrom.value = def.defaultFrom;
+      selTo.value = def.defaultTo;
+    }
+
+    function convertFrom() {
+      const val = parseFloat(document.getElementById('valFrom').value);
+      if (isNaN(val)) {
+        document.getElementById('valTo').value = '';
+        document.getElementById('resDisplayStr').innerText = '--';
+        return;
+      }
+
+      const uFromKey = document.getElementById('unitFrom').value;
+      const uToKey = document.getElementById('unitTo').value;
+      const def = unitDefinitions[curCat];
+
+      let res = 0;
+      if (curCat === 'temp') {
+        res = convertTemperature(val, uFromKey, uToKey);
+      } else {
+        const f1 = def.units[uFromKey].factor;
+        const f2 = def.units[uToKey].factor;
+        const baseVal = val * f1;
+        res = baseVal / f2;
+      }
+
+      document.getElementById('valTo').value = formatFloat(res);
+      updateDisplayBanner(val, uFromKey, res, uToKey);
+    }
+
+    function convertTo() {
+      const val = parseFloat(document.getElementById('valTo').value);
+      if (isNaN(val)) {
+        document.getElementById('valFrom').value = '';
+        document.getElementById('resDisplayStr').innerText = '--';
+        return;
+      }
+
+      const uFromKey = document.getElementById('unitFrom').value;
+      const uToKey = document.getElementById('unitTo').value;
+      const def = unitDefinitions[curCat];
+
+      let res = 0;
+      if (curCat === 'temp') {
+        res = convertTemperature(val, uToKey, uFromKey);
+      } else {
+        const f1 = def.units[uFromKey].factor;
+        const f2 = def.units[uToKey].factor;
+        const baseVal = val * f2;
+        res = baseVal / f1;
+      }
+
+      document.getElementById('valFrom').value = formatFloat(res);
+      updateDisplayBanner(res, uFromKey, val, uToKey);
+    }
+
+    function convertTemperature(v, from, to) {
+      if (from === to) return v;
+      let c = v;
+      if (from === 'f') c = (v - 32) / 1.8;
+      else if (from === 'k') c = v - 273.15;
+
+      if (to === 'c') return c;
+      if (to === 'f') return (c * 1.8) + 32;
+      if (to === 'k') return c + 273.15;
+      return v;
+    }
+
+    function swapUnits() {
+      const selFrom = document.getElementById('unitFrom');
+      const selTo = document.getElementById('unitTo');
+      const temp = selFrom.value;
+      selFrom.value = selTo.value;
+      selTo.value = temp;
+      convertFrom();
+    }
+
+    function updateDisplayBanner(v1, u1Key, v2, u2Key) {
+      const def = unitDefinitions[curCat];
+      const u1Name = def.units[u1Key].name.split(' (')[0];
+      const u2Name = def.units[u2Key].name.split(' (')[0];
+
+      document.getElementById('resDisplayStr').innerText = `${formatFloat(v1)} ${u1Key} = ${formatFloat(v2)} ${u2Key}`;
+      document.getElementById('resCatName').innerText = `${def.name} Conversion`;
+      document.getElementById('resFormulaNote').innerHTML = `Converting from <strong>${u1Name}</strong> to <strong>${u2Name}</strong>.`;
+    }
+
+    function formatFloat(n) {
+      if (Number.isInteger(n)) return n.toString();
+      if (Math.abs(n) < 0.0001 || Math.abs(n) > 1e7) return n.toExponential(4);
+      return parseFloat(n.toFixed(6)).toString();
+    }
+
+    function toggleFaq(el) {
+      const ans = el.nextElementSibling;
+      const icon = el.querySelector('i');
+      if (ans.style.display === 'block') {
+        ans.style.display = 'none';
+        icon.className = 'fas fa-chevron-down';
+      } else {
+        ans.style.display = 'block';
+        icon.className = 'fas fa-chevron-up';
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      populateSelects();
+      convertFrom();
+    });
+  </script>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-col">
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom:14px;">
+          <div class="logo-icon" style="width:30px; height:30px; font-size:14px;"><i class="fas fa-calculator"></i></div>
+          <span style="font-weight:800; font-size:18px; color:white;">DailyCalcHubs</span>
+        </div>
+        <p style="font-size:13.5px; line-height:1.6; color:#94a3b8; margin-bottom:14px;">
+          High-precision financial, remittance, salary, Iqama, and everyday utility calculators designed for expatriates and residents across Saudi Arabia and the GCC.
+        </p>
+        <div style="font-size:12.5px; color:#64748b;">
+          Unit conversion figures utilize international metric and customary SI conversion constants.
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Everyday Smart Hub</h4>
+        <ul>
+          <li><a href="/everyday-smart-calculator/">Everyday Smart Hub</a></li>
+          <li><a href="/everyday-smart-calculator/age-calculator/">Age &amp; Date of Birth</a></li>
+          <li><a href="/everyday-smart-calculator/discount-calculator/">Discount &amp; Sale</a></li>
+          <li><a href="/everyday-smart-calculator/unit-converter/">Unit Converter</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Saudi Calculator Hubs</h4>
+        <ul>
+          <li><a href="/saudi-remittance-calculator/">Saudi Remittance Hub</a></li>
+          <li><a href="/prayer-times/">Prayer Times</a></li>
+          <li><a href="/saudi-salary-calculator/">Saudi Salary Hub</a></li>
+          <li><a href="/saudi-iqama-calculator/">Saudi Iqama Hub</a></li>
+          <li><a href="/shariah-sip-calculator/">Shariah SIP Calculator</a></li>
+          <li><a href="/travel-booking-calculator/">Travel &amp; Booking</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Trust &amp; Legal</h4>
+        <ul>
+          <li><a href="/about/">About Us</a></li>
+          <li><a href="/contact/">Contact Support</a></li>
+          <li><a href="/privacy-policy/">Privacy Policy</a></li>
+          <li><a href="/terms/">Terms of Service</a></li>
+          <li><a href="/disclaimer/">Disclaimer</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>&copy; 2026 DailyCalcHubs.com. All rights reserved.</div>
+      <div>Designed with Precision for Measurement &amp; Metrology</div>
+    </div>
+  </footer>
+
+</body>
+</html>
