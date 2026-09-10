@@ -1576,8 +1576,8 @@
       <div class="trust-values-bar">
         <div class="trust-values-grid">
           <div class="trust-value-item">
-            <i class="fas fa-users val-icon-green"></i>
-            <span>Trusted by Thousands</span>
+            <i class="fas fa-scale-balanced val-icon-green"></i>
+            <span>Independent &amp; Transparent</span>
           </div>
           <div class="trust-value-item">
             <i class="fas fa-shield-halved val-icon-blue"></i>
@@ -1906,7 +1906,7 @@
       { title: "Remittance Fee Calculator", url: "/saudi-remittance-calculator/remittance-fee/", cat: "Remittance", desc: "Calculate transfer fees and total cost of remittance from KSA" },
 
       // Iqama Suite
-      { title: "Saudi Iqama Calculator Hub", url: "/saudi-iqama-calculator/", cat: "Iqama", desc: "Official Jawazat renewal fees, dependent levy, and expat levy" },
+      { title: "Saudi Iqama Calculator Hub", url: "/saudi-iqama-calculator/", cat: "Iqama", desc: "Estimate Jawazat renewal fees, dependent levy, and expat levy" },
       { title: "Iqama Renewal Cost Calculator", url: "/saudi-iqama-calculator/iqama-cost/", cat: "Iqama", desc: "Full annual Iqama renewal cost breakdown with work permit fee" },
       { title: "3-Month Iqama Cost Calculator", url: "/saudi-iqama-calculator/3-month-cost/", cat: "Iqama", desc: "Quarterly Iqama renewal under flexible payment scheme" },
       { title: "6-Month Iqama Cost Calculator", url: "/saudi-iqama-calculator/6-month-cost/", cat: "Iqama", desc: "Half-yearly Iqama renewal under flexible payment scheme" },
@@ -1936,8 +1936,8 @@
       { title: "Travel & Booking Calculator", url: "/travel-booking-calculator/", cat: "Travel", desc: "Estimate flight budgets, hotel expenses, and itinerary cost planning" },
 
       // Support & Trust
-      { title: "Contact Support & Inquiries", url: "/contact.html", cat: "Support", desc: "Official customer helpdesk and feedback submission form" },
-      { title: "About DailyCalcHubs", url: "/about.html", cat: "About", desc: "Mission, methodology, and editorial principles of DailyCalcHubs" }
+      { title: "Contact Support & Inquiries", url: "/contact/", cat: "Support", desc: "Customer helpdesk and feedback submission form" },
+      { title: "About DailyCalcHubs", url: "/about/", cat: "About", desc: "Mission, methodology, and editorial principles of DailyCalcHubs" }
     ];
 
     function openSiteSearch() {
@@ -2080,5 +2080,109 @@
       </div>
     </div>
   </div>
+
+  <!-- Cookie Consent Banner -->
+  <div id="cookieConsentBanner" class="cookie-consent-banner" style="display:none;" role="region" aria-label="Cookie Preferences">
+    <div class="cookie-consent-container">
+      <div class="cookie-consent-text">
+        <i class="fas fa-cookie-bite" style="color:#38bdf8; margin-right:6px;"></i>
+        We use cookies and anonymized analytics to ensure proper functionality and support our free calculation tools per our <a href="/privacy-policy/">Privacy Policy</a>.
+      </div>
+      <div class="cookie-consent-actions">
+        <button type="button" class="cookie-btn cookie-btn-secondary" onclick="handleCookieChoice('essential')">Essential Only</button>
+        <button type="button" class="cookie-btn cookie-btn-primary" onclick="handleCookieChoice('all')">Accept All</button>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .cookie-consent-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(15, 23, 42, 0.96);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      color: #f8fafc;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 12px 20px;
+      z-index: 9999;
+      box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.2);
+      font-size: 13px;
+    }
+    .cookie-consent-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .cookie-consent-text {
+      flex: 1;
+      min-width: 260px;
+      line-height: 1.5;
+      color: #cbd5e1;
+    }
+    .cookie-consent-text a {
+      color: #38bdf8;
+      text-decoration: underline;
+    }
+    .cookie-consent-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .cookie-btn {
+      padding: 7px 14px;
+      border-radius: 6px;
+      font-size: 12.5px;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      transition: all 0.15s;
+      font-family: inherit;
+      white-space: nowrap;
+    }
+    .cookie-btn-primary {
+      background: #0284c7;
+      color: #ffffff;
+    }
+    .cookie-btn-primary:hover {
+      background: #0369a1;
+    }
+    .cookie-btn-secondary {
+      background: rgba(255, 255, 255, 0.12);
+      color: #f1f5f9;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .cookie-btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+  </style>
+  <script>
+    function initCookieConsent() {
+      try {
+        if (!localStorage.getItem('dch_cookie_consent')) {
+          const banner = document.getElementById('cookieConsentBanner');
+          if (banner) banner.style.display = 'block';
+        }
+      } catch (e) {}
+    }
+    function handleCookieChoice(choice) {
+      try {
+        localStorage.setItem('dch_cookie_consent', choice);
+      } catch (e) {}
+      const banner = document.getElementById('cookieConsentBanner');
+      if (banner) banner.style.display = 'none';
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initCookieConsent);
+    } else {
+      initCookieConsent();
+    }
+  </script>
 </body>
 </html>
