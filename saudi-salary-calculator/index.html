@@ -521,6 +521,8 @@
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 8px 12px;
       margin-bottom: 12px;
       padding-bottom: 14px;
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -560,11 +562,19 @@
     .meta-box-title { color: #a78bfa; font-size: 11.5px; font-weight: 600; margin-bottom: 3px; }
     .meta-box-val { color: #f8fafc; font-weight: 700; }
 
+    .other-inputs-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
     /* Breakdown Table */
     .breakdown-table-wrap {
       margin-top: 20px;
       border-top: 1px solid var(--border-light);
       padding-top: 18px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
     }
     .salary-table {
       width: 100%;
@@ -859,6 +869,11 @@
       .calc-card-title { font-size: 18px; }
       .calc-card-header { gap: 8px 10px; }
     }
+    @media (max-width: 480px) {
+      .other-inputs-grid { grid-template-columns: 1fr; gap: 12px; }
+      .result-meta-grid { grid-template-columns: 1fr; gap: 8px; }
+      .result-row-top { flex-direction: column; align-items: flex-start; gap: 8px; }
+    }
     @media (max-width: 400px) {
       .calc-card { padding: 16px 12px; }
       .calc-card-title { font-size: 17px; }
@@ -1016,7 +1031,7 @@
           </div>
 
           <!-- Other Allowances & Deductions -->
-          <div style="display:grid; grid-template-columns: 1fr 1fr; gap:16px;">
+          <div class="other-inputs-grid">
             <div class="form-group">
               <label class="form-label" for="otherAllowances">Other Allowances:</label>
               <div class="input-with-addons">
