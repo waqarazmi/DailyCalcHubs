@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -347,11 +347,15 @@
       border: 1px solid var(--border-light);
       box-shadow: var(--card-shadow);
       padding: 28px;
+      box-sizing: border-box;
+      max-width: 100%;
     }
     .calc-card-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 12px;
       margin-bottom: 20px;
       padding-bottom: 16px;
       border-bottom: 1px solid var(--border-light);
@@ -375,6 +379,9 @@
       background: #f5f3ff;
       color: #6d28d9;
       border: 1px solid #ddd6fe;
+      flex-shrink: 0;
+      white-space: nowrap;
+      max-width: 100%;
     }
     .live-pulse {
       width: 8px;
@@ -398,6 +405,23 @@
       color: #1e293b;
       margin-bottom: 8px;
     }
+    .form-label-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 4px 8px;
+      margin-bottom: 6px;
+    }
+    .form-label-action {
+      font-size: 12px;
+      color: #7c3aed;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+      margin-left: auto;
+      flex-shrink: 0;
+    }
     .input-with-addons {
       display: flex;
       align-items: center;
@@ -406,6 +430,9 @@
       background: #fff;
       overflow: hidden;
       transition: border-color 0.15s;
+      max-width: 100%;
+      width: 100%;
+      box-sizing: border-box;
     }
     .input-with-addons:focus-within {
       border-color: var(--purple-saudi);
@@ -421,9 +448,14 @@
       display: flex;
       align-items: center;
       gap: 6px;
+      flex-shrink: 0;
+      white-space: nowrap;
     }
     .calc-input {
-      flex: 1;
+      flex: 1 1 auto;
+      min-width: 0;
+      max-width: 100%;
+      box-sizing: border-box;
       border: none;
       outline: none;
       padding: 12px 16px;
@@ -434,6 +466,10 @@
       width: 100%;
     }
     .select-input-addon {
+      flex: 1 1 auto;
+      min-width: 0;
+      max-width: 100%;
+      box-sizing: border-box;
       border: none;
       outline: none;
       background: #f8fafc;
@@ -444,6 +480,9 @@
       cursor: pointer;
       font-family: inherit;
       width: 100%;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
     }
 
     .amount-chips-row {
@@ -815,8 +854,18 @@
 
     @media (max-width: 640px) {
       .hub-title { font-size: 28px; }
-      .calc-card { padding: 20px 16px; }
+      .calc-card { padding: 18px 14px; }
       .header-nav-links { display: none; }
+      .calc-card-title { font-size: 18px; }
+      .calc-card-header { gap: 8px 10px; }
+    }
+    @media (max-width: 400px) {
+      .calc-card { padding: 16px 12px; }
+      .calc-card-title { font-size: 17px; }
+      .live-status-pill { font-size: 11px; padding: 3px 8px; }
+      .input-addon-badge { padding: 10px 10px; font-size: 13px; }
+      .calc-input { padding: 10px 10px; font-size: 15px; }
+      .select-input-addon { padding: 10px 10px; font-size: 13px; }
     }
   </style>
 </head>
@@ -944,9 +993,9 @@
 
           <!-- Housing Allowance -->
           <div class="form-group">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+            <div class="form-label-row">
               <label class="form-label" for="housingAllowance" style="margin-bottom:0;">Housing Allowance (SAR):</label>
-              <span style="font-size:12px; color:#7c3aed; font-weight:700; cursor:pointer;" onclick="setHousingPercent(25)">Auto 25% Basic</span>
+              <span class="form-label-action" onclick="setHousingPercent(25)">Auto 25% Basic</span>
             </div>
             <div class="input-with-addons">
               <div class="input-addon-badge"><i class="fas fa-house" style="color:#0284c7;"></i> SAR</div>
@@ -956,9 +1005,9 @@
 
           <!-- Transportation Allowance -->
           <div class="form-group">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+            <div class="form-label-row">
               <label class="form-label" for="transportAllowance" style="margin-bottom:0;">Transportation Allowance (SAR):</label>
-              <span style="font-size:12px; color:#7c3aed; font-weight:700; cursor:pointer;" onclick="setTransportPercent(10)">Auto 10% Basic</span>
+              <span class="form-label-action" onclick="setTransportPercent(10)">Auto 10% Basic</span>
             </div>
             <div class="input-with-addons">
               <div class="input-addon-badge"><i class="fas fa-car" style="color:#f59e0b;"></i> SAR</div>
