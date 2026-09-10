@@ -862,12 +862,45 @@
     }
     .footer-legal-links a:hover { color: #fff; }
 
+    html, body {
+      width: 100%;
+      max-width: 100vw;
+      overflow-x: hidden;
+    }
+    .calc-main-layout {
+      min-width: 0;
+    }
+    .calc-main-layout > * {
+      min-width: 0;
+      max-width: 100%;
+    }
+    .calc-card {
+      min-width: 0;
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+    .breakdown-table-wrap {
+      width: 100%;
+      max-width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
     @media (max-width: 640px) {
+      .container { padding: 0 14px; }
+      .saudi-badge-header { display: none !important; }
+      .brand-logo-area { max-width: 100%; }
+      .logo-title { font-size: 19px; }
+      .logo-subtitle { font-size: 10px; }
+      .logo-icon-box { width: 36px; height: 36px; font-size: 17px; }
+      .header-inner { height: 60px; }
+      .ticker-inner { justify-content: flex-start; }
       .hub-title { font-size: 28px; }
-      .calc-card { padding: 18px 14px; }
+      .calc-card { padding: 16px 12px; }
       .header-nav-links { display: none; }
       .calc-card-title { font-size: 18px; }
       .calc-card-header { gap: 8px 10px; }
+      .salary-table th, .salary-table td { padding: 8px 6px; font-size: 11.5px; }
     }
     @media (max-width: 480px) {
       .other-inputs-grid { grid-template-columns: 1fr; gap: 12px; }
@@ -875,12 +908,17 @@
       .result-row-top { flex-direction: column; align-items: flex-start; gap: 8px; }
     }
     @media (max-width: 400px) {
-      .calc-card { padding: 16px 12px; }
+      .container { padding: 0 10px; }
+      .calc-card { padding: 14px 10px; }
+      .brand-logo-area { gap: 8px; }
+      .logo-title { font-size: 17px; }
+      .logo-icon-box { width: 32px; height: 32px; font-size: 15px; }
       .calc-card-title { font-size: 17px; }
       .live-status-pill { font-size: 11px; padding: 3px 8px; }
       .input-addon-badge { padding: 10px 10px; font-size: 13px; }
       .calc-input { padding: 10px 10px; font-size: 15px; }
       .select-input-addon { padding: 10px 10px; font-size: 13px; }
+      .amount-chip-btn { font-size: 11px; padding: 4px 7px; }
     }
   </style>
 </head>
@@ -888,15 +926,13 @@
 
   <!-- Top Rates Ticker -->
   <div class="top-rates-ticker">
-    <div class="container">
-      <div class="ticker-inner">
-        <div class="ticker-item"><span>SAR / INR:</span><span class="ticker-rate" id="tickerSar">&#8377; 22.45</span></div>
-        <div class="ticker-item"><span class="ticker-tag-green"><i class="fas fa-bolt" style="color:#fbbf24;"></i> Barq Rate:</span><span class="ticker-rate" id="tickerBarq">&#8377; 22.18</span></div>
-        <div class="ticker-item"><span>SAR / PKR:</span><span class="ticker-rate" id="tickerPkr">Rs 74.20</span></div>
-        <div class="ticker-item"><span>SAR / BDT:</span><span class="ticker-rate" id="tickerBdt">&#2547; 32.10</span></div>
-        <div class="ticker-item"><span>SAR / PHP:</span><span class="ticker-rate" id="tickerPhp">&#8369; 15.65</span></div>
-        <div class="ticker-item"><span>Gold 24K KSA:</span><span class="ticker-rate" style="color:#fbbf24;">322.50 SAR</span></div>
-      </div>
+    <div class="ticker-inner">
+      <div class="ticker-item"><span>SAR / INR:</span><span class="ticker-rate" id="tickerSar">&#8377; 22.45</span></div>
+      <div class="ticker-item"><span class="ticker-tag-green"><i class="fas fa-bolt" style="color:#fbbf24;"></i> Barq Rate:</span><span class="ticker-rate" id="tickerBarq">&#8377; 22.18</span></div>
+      <div class="ticker-item"><span>SAR / PKR:</span><span class="ticker-rate" id="tickerPkr">Rs 74.20</span></div>
+      <div class="ticker-item"><span>SAR / BDT:</span><span class="ticker-rate" id="tickerBdt">&#2547; 32.10</span></div>
+      <div class="ticker-item"><span>SAR / PHP:</span><span class="ticker-rate" id="tickerPhp">&#8369; 15.65</span></div>
+      <div class="ticker-item"><span>Gold 24K KSA:</span><span class="ticker-rate" style="color:#fbbf24;">322.50 SAR</span></div>
     </div>
   </div>
 
