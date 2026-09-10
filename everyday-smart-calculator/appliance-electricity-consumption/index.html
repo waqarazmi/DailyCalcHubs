@@ -1,0 +1,1339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Appliance Electricity Consumption Calculator — Power, kWh & Cost</title>
+  <meta name="description" content="Calculate electrical appliance energy consumption in Watts, kWh, electricity units, and estimated electricity bills with our free Appliance Electricity Consumption Calculator.">
+  <meta name="keywords" content="appliance electricity consumption calculator, calculate electricity bill per appliance, watts to kwh calculator, electricity unit calculator, appliance power consumption in kwh">
+  <link rel="canonical" href="https://dailycalchubs.com/everyday-smart-calculator/appliance-electricity-consumption/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://dailycalchubs.com/everyday-smart-calculator/appliance-electricity-consumption/">
+  <meta property="og:title" content="Appliance Electricity Consumption Calculator — Power, kWh & Cost">
+  <meta property="og:description" content="Convert appliance wattage to daily and monthly kWh, calculate total electricity units, and estimate running costs across any electricity tariff.">
+  <meta property="og:image" content="https://dailycalchubs.com/og-image.jpg">
+  <meta property="og:width" content="1200">
+  <meta property="og:height" content="630">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Appliance Electricity Consumption Calculator — DailyCalcHubs">
+  <meta name="twitter:description" content="Estimate electricity consumption in Wh, kWh, units, and power costs for home appliances.">
+  <meta name="twitter:image" content="https://dailycalchubs.com/og-image.jpg">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6944579701716470" crossorigin="anonymous"></script>
+
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-18Y3LNHDR8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-18Y3LNHDR8');
+  </script>
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://dailycalchubs.com/everyday-smart-calculator/appliance-electricity-consumption/#app",
+        "name": "Appliance Electricity Consumption Calculator",
+        "url": "https://dailycalchubs.com/everyday-smart-calculator/appliance-electricity-consumption/",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "All",
+        "description": "Calculate individual and multiple household electrical appliance power consumption in Watts, Wh, kWh, electricity units, and power bills.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://dailycalchubs.com/everyday-smart-calculator/appliance-electricity-consumption/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is an electricity unit?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "One electricity unit is equal to 1 kilowatt-hour (kWh). It represents the amount of energy consumed when an electrical appliance rated at 1,000 Watts runs continuously for one hour (1,000 W × 1 hour = 1,000 Wh = 1 kWh = 1 unit)."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How is appliance electricity consumption calculated?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Appliance consumption is calculated using the formula: Daily kWh = (Watts ÷ 1,000) × Hours used per day. Total units equal total kWh. Total estimated cost is calculated by multiplying total units by your local electricity rate per unit."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why does actual electricity consumption differ from the calculator estimate?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Actual consumption varies because appliances like refrigerators and air conditioners cycle their compressors on and off via thermostats, motors operate at variable loads, fan speeds change, and electricity tariffs feature slab tiers, fixed meter fees, and statutory duties."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How much electricity does a 1000 Watt water motor consume?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A 1,000 Watt motor consumes 1 kWh (1 unit) per hour of operation. Running it for 1 hour daily over a 30-day month consumes exactly 30 kWh (30 units). At an electricity rate of ₹8 per unit, the estimated monthly cost is ₹240."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I estimate electricity consumption for my entire home?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Use our Home / Multi-Appliance mode to add fans, lights, refrigerator, television, AC, and water motor together to calculate combined daily kWh, monthly units, and total household electricity cost."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --bg-light: #f8fafc;
+      --bg-white: #ffffff;
+      --navy-dark: #0f172a;
+      --navy-footer: #081024;
+      --sky-saudi: #0ea5e9;
+      --sky-dark: #0284c7;
+      --sky-light: #f0f9ff;
+      --sky-border: #bae6fd;
+      --text-dark: #1e293b;
+      --text-muted: #64748b;
+      --border-color: #e2e8f0;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
+      --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1);
+      --amber-saudi: #f59e0b;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      font-family: var(--font-main);
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      width: 100%;
+      max-width: 100vw;
+      overflow-x: hidden;
+    }
+    a { color: var(--sky-dark); text-decoration: none; transition: color 0.2s; }
+    a:hover { color: #0369a1; }
+
+    /* Header */
+    .site-header { background: var(--bg-white); border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 50; }
+    .header-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; height: 70px; display: flex; align-items: center; justify-content: space-between; }
+    .logo-area { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 20px; color: var(--navy-dark); }
+    .logo-icon { width: 36px; height: 36px; background: linear-gradient(135deg, #0ea5e9, #0284c7); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: 18px; }
+    .main-nav { display: flex; align-items: center; gap: 20px; }
+    .nav-link { font-weight: 600; font-size: 13.5px; color: var(--text-muted); padding: 6px 10px; border-radius: 6px; }
+    .nav-link:hover { color: var(--navy-dark); background: #f1f5f9; }
+    .nav-link.active { color: var(--sky-dark); background: var(--sky-light); }
+    @media (max-width: 860px) { .main-nav { display: none; } }
+
+    /* Breadcrumbs */
+    .breadcrumb-bar { background: var(--bg-white); border-bottom: 1px solid var(--border-color); padding: 12px 20px; font-size: 13.5px; color: var(--text-muted); }
+    .breadcrumb-container { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .breadcrumb-sep { font-size: 11px; color: #94a3b8; }
+
+    /* Main Container */
+    .page-main { max-width: 1000px; margin: 30px auto; padding: 0 20px; }
+
+    /* Hero */
+    .hero-section { text-align: center; margin-bottom: 30px; background: linear-gradient(180deg, #f0f9ff 0%, #ffffff 100%); padding: 36px 20px; border-radius: 16px; border: 1px solid var(--sky-border); }
+    .badge-hero { display: inline-flex; align-items: center; gap: 6px; background: white; border: 1px solid var(--sky-border); color: var(--sky-dark); padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 700; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .hero-title { font-size: 30px; font-weight: 800; color: var(--navy-dark); margin-bottom: 10px; line-height: 1.25; }
+    .hero-desc { font-size: 15px; color: var(--text-muted); max-width: 760px; margin: 0 auto; line-height: 1.6; }
+
+    /* Mode Tabs */
+    .calc-mode-tabs { display: flex; gap: 10px; margin-bottom: 22px; background: #e2e8f0; padding: 4px; border-radius: 12px; }
+    .mode-tab-btn { flex: 1; border: none; background: transparent; padding: 10px 16px; font-size: 14px; font-weight: 700; color: #475569; border-radius: 8px; cursor: pointer; transition: all 0.2s; font-family: inherit; display: flex; align-items: center; justify-content: center; gap: 8px; }
+    .mode-tab-btn.active { background: white; color: var(--sky-dark); box-shadow: var(--shadow-sm); }
+
+    /* Calculator Card */
+    .calc-card { background: var(--bg-white); border-radius: 16px; border: 1px solid var(--border-color); box-shadow: var(--shadow-md); padding: 28px 24px; margin-bottom: 40px; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+    @media (max-width: 650px) { .form-grid { grid-template-columns: 1fr; gap: 16px; } }
+    .form-group { margin-bottom: 16px; }
+    .form-label { display: block; font-weight: 700; font-size: 13.5px; color: var(--navy-dark); margin-bottom: 8px; }
+
+    .calc-select, .calc-input-wrap { display: flex; align-items: center; border: 1.5px solid var(--border-color); border-radius: 10px; background: #f8fafc; overflow: hidden; transition: all 0.2s; }
+    .calc-select select, .calc-input-wrap input { flex: 1; min-width: 0; border: none; outline: none; padding: 12px 14px; font-size: 14.5px; font-weight: 700; color: var(--navy-dark); font-family: inherit; background: transparent; width: 100%; }
+    .calc-input-wrap:focus-within, .calc-select:focus-within { border-color: var(--sky-saudi); background: #ffffff; box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.12); }
+    .calc-input-addon { padding: 12px 14px; background: #e2e8f0; color: #475569; font-size: 13px; font-weight: 700; border-left: 1px solid var(--border-color); white-space: nowrap; }
+
+    /* Preset Chips */
+    .preset-chips { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+    .preset-chip { background: #f1f5f9; border: 1px solid var(--border-color); color: #334155; font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 14px; cursor: pointer; transition: all 0.15s; font-family: inherit; }
+    .preset-chip:hover, .preset-chip.active { background: var(--sky-light); border-color: var(--sky-dark); color: var(--sky-dark); }
+
+    /* Note Banner */
+    .tariff-info-note { background: #f0fdf4; border: 1px solid #bbf7d0; color: #166534; padding: 12px 16px; border-radius: 10px; font-size: 13px; margin: 16px 0; display: flex; align-items: flex-start; gap: 10px; line-height: 1.5; }
+    .tariff-info-note i { color: #16a34a; font-size: 16px; margin-top: 2px; flex-shrink: 0; }
+
+    /* Validation Error Msg */
+    .validation-msg { display: none; background: #fef2f2; border: 1px solid #fecaca; color: #991b1b; padding: 10px 14px; border-radius: 8px; font-size: 13px; font-weight: 600; margin-bottom: 16px; align-items: center; gap: 8px; }
+
+    /* Result Box */
+    .result-summary-box { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; border-radius: 14px; padding: 24px; margin-top: 24px; box-shadow: 0 10px 20px rgba(15, 23, 42, 0.15); }
+    .result-row-top { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.12); padding-bottom: 18px; margin-bottom: 18px; flex-wrap: wrap; gap: 12px; }
+    .result-label { font-size: 12.5px; color: #94a3b8; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+    .result-big-val { font-size: 34px; font-weight: 800; color: #38bdf8; margin-top: 4px; line-height: 1.1; }
+    .energy-badge { background: rgba(14, 165, 233, 0.2); border: 1px solid rgba(56, 189, 248, 0.4); color: #bae6fd; padding: 8px 14px; border-radius: 8px; font-size: 13px; font-weight: 700; display: inline-flex; align-items: center; gap: 6px; }
+
+    .result-meta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-top: 14px; }
+    .meta-box-inner { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 10px; padding: 12px 14px; }
+    .meta-box-title { font-size: 11.5px; color: #94a3b8; margin-bottom: 4px; }
+    .meta-box-val { font-size: 15.5px; font-weight: 700; color: white; }
+
+    .result-accuracy-note { margin-top: 18px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 12px; color: #cbd5e1; line-height: 1.5; }
+
+    /* Multi-Appliance Styles */
+    .multi-table-wrap { overflow-x: auto; margin: 18px 0; border: 1px solid var(--border-color); border-radius: 10px; }
+    .multi-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .multi-table th { background: #f8fafc; padding: 10px 12px; font-weight: 700; color: var(--navy-dark); text-align: left; border-bottom: 1px solid var(--border-color); white-space: nowrap; }
+    .multi-table td { padding: 10px 12px; border-bottom: 1px solid #f1f5f9; vertical-align: middle; }
+    .multi-table tr:last-child td { border-bottom: none; }
+    .table-num-input { width: 75px; padding: 6px 8px; border: 1px solid var(--border-color); border-radius: 6px; font-size: 13px; font-weight: 700; }
+    .btn-delete-item { background: #fee2e2; border: 1px solid #fca5a5; color: #dc2626; border-radius: 6px; width: 30px; height: 30px; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.15s; }
+    .btn-delete-item:hover { background: #fecaca; }
+
+    .add-appliance-bar { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; align-items: center; }
+    .btn-add-item { background: var(--sky-dark); color: white; border: none; padding: 10px 18px; border-radius: 8px; font-size: 13.5px; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; transition: background 0.15s; font-family: inherit; }
+    .btn-add-item:hover { background: #0369a1; }
+    .btn-reset-list { background: #f1f5f9; color: #475569; border: 1px solid var(--border-color); padding: 10px 14px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; font-family: inherit; }
+    .btn-reset-list:hover { background: #e2e8f0; }
+
+    /* SEO Article Section */
+    .seo-article { background: var(--bg-white); border-radius: 16px; border: 1px solid var(--border-color); padding: 36px 30px; margin-bottom: 40px; }
+    @media (max-width: 600px) { .seo-article { padding: 26px 18px; } }
+    .seo-article h2 { font-size: 22px; font-weight: 800; color: var(--navy-dark); margin: 30px 0 14px; }
+    .seo-article h2:first-child { margin-top: 0; }
+    .seo-article h3 { font-size: 17px; font-weight: 700; color: var(--navy-dark); margin: 20px 0 10px; }
+    .seo-article p { font-size: 15px; color: #334155; line-height: 1.75; margin-bottom: 16px; }
+    .seo-article ul { margin-left: 22px; margin-bottom: 18px; font-size: 14.5px; color: #334155; }
+    .seo-article li { margin-bottom: 8px; }
+
+    .formula-box { background: #f0f9ff; border: 1.5px solid var(--sky-border); border-radius: 12px; padding: 18px 22px; margin: 20px 0; font-family: monospace; font-size: 14.5px; font-weight: 700; color: #0369a1; line-height: 1.8; }
+    
+    /* Table */
+    .data-table-wrap { overflow-x: auto; margin: 20px 0; border: 1px solid var(--border-color); border-radius: 10px; }
+    .data-table { width: 100%; border-collapse: collapse; text-align: left; font-size: 13.5px; }
+    .data-table th { background: #f8fafc; padding: 12px 14px; font-weight: 700; color: var(--navy-dark); border-bottom: 1px solid var(--border-color); white-space: nowrap; }
+    .data-table td { padding: 12px 14px; border-bottom: 1px solid #f1f5f9; color: #334155; }
+    .data-table tr:last-child td { border-bottom: none; }
+
+    /* Disclaimer Box */
+    .disclaimer-card { background: #fffbeb; border-left: 4px solid #f59e0b; padding: 18px 22px; border-radius: 0 10px 10px 0; margin: 24px 0; }
+    .disclaimer-card h4 { font-size: 14px; font-weight: 800; color: #92400e; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+    .disclaimer-card p { font-size: 13.5px; color: #78350f; line-height: 1.6; margin-bottom: 0; }
+
+    /* FAQ */
+    .faq-item { border: 1px solid var(--border-color); border-radius: 10px; margin-bottom: 12px; overflow: hidden; background: white; }
+    .faq-question { padding: 16px 20px; font-weight: 700; font-size: 15px; color: var(--navy-dark); cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: #f8fafc; transition: background 0.2s; user-select: none; }
+    .faq-question:hover { background: #f1f5f9; }
+    .faq-answer { padding: 16px 20px; font-size: 14px; color: #475569; line-height: 1.7; display: none; border-top: 1px solid var(--border-color); }
+
+    /* Related Tools */
+    .related-tools-box { margin-bottom: 40px; }
+    .related-tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; margin-top: 16px; }
+    .related-card { background: white; border: 1px solid var(--border-color); border-radius: 12px; padding: 18px; transition: transform 0.2s, box-shadow 0.2s; display: block; }
+    .related-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); border-color: var(--sky-saudi); }
+    .related-card-badge { display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase; padding: 3px 8px; border-radius: 4px; background: var(--sky-light); color: var(--sky-dark); margin-bottom: 8px; }
+    .related-card-name { font-size: 15px; font-weight: 700; color: var(--navy-dark); margin-bottom: 4px; }
+    .related-card-desc { font-size: 12.5px; color: var(--text-muted); line-height: 1.5; }
+
+    /* Footer */
+    .site-footer { background: var(--navy-footer); color: #94a3b8; padding: 48px 20px 24px; font-size: 13.5px; }
+    .footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 36px; padding-bottom: 36px; border-bottom: 1px solid #1e293b; }
+    @media (max-width: 768px) { .footer-container { grid-template-columns: 1fr; } }
+    .footer-col h4 { color: white; font-size: 14.5px; font-weight: 700; margin-bottom: 14px; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 8px; }
+    .footer-col ul li a { color: #94a3b8; font-size: 13px; }
+    .footer-col ul li a:hover { color: #38bdf8; }
+    .footer-bottom { max-width: 1200px; margin: 24px auto 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; font-size: 12.5px; }
+
+    @media (max-width: 480px) {
+      .hero-title { font-size: 24px; }
+      .calc-card { padding: 20px 14px; }
+      .result-summary-box { padding: 18px 14px; }
+      .result-big-val { font-size: 28px; }
+      .preset-chip { font-size: 11px; padding: 4px 8px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="header-container">
+      <a href="/" class="logo-area">
+        <div class="logo-icon"><i class="fas fa-calculator"></i></div>
+        <span>DailyCalcHubs</span>
+      </a>
+      <nav class="main-nav">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/saudi-remittance-calculator/" class="nav-link">Remittance</a>
+        <a href="/prayer-times/" class="nav-link">Prayer Times</a>
+        <a href="/saudi-salary-calculator/" class="nav-link">Salary</a>
+        <a href="/saudi-iqama-calculator/" class="nav-link">Iqama</a>
+        <a href="/everyday-smart-calculator/" class="nav-link active">Everyday Smart</a>
+        <a href="/shariah-sip-calculator/" class="nav-link">Shariah SIP</a>
+        <a href="/travel-booking-calculator/" class="nav-link">Travel & Booking</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Breadcrumbs -->
+  <div class="breadcrumb-bar">
+    <div class="breadcrumb-container">
+      <a href="/"><i class="fas fa-home"></i> Home</a>
+      <span class="breadcrumb-sep"><i class="fas fa-chevron-right"></i></span>
+      <a href="/everyday-smart-calculator/">Everyday Smart Calculator</a>
+      <span class="breadcrumb-sep"><i class="fas fa-chevron-right"></i></span>
+      <span style="color: var(--navy-dark); font-weight:600;">Appliance Electricity Consumption</span>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="page-main">
+
+    <!-- Hero -->
+    <section class="hero-section">
+      <div class="badge-hero"><i class="fas fa-bolt"></i> Appliance Energy Math</div>
+      <h1 class="hero-title">Appliance Electricity Consumption Calculator</h1>
+      <p class="hero-desc">
+        Estimate how much electricity individual or multiple home appliances consume in Watts, Watt-hours (Wh), Kilowatt-hours (kWh), and electricity units, and calculate your estimated energy bill.
+      </p>
+    </section>
+
+    <!-- Mode Tabs -->
+    <div class="calc-mode-tabs">
+      <button type="button" class="mode-tab-btn active" id="tabSingle" onclick="switchMode('single')">
+        <i class="fas fa-tv"></i> Single Appliance Mode
+      </button>
+      <button type="button" class="mode-tab-btn" id="tabMulti" onclick="switchMode('multi')">
+        <i class="fas fa-house-laptop"></i> Home / Multi-Appliance Mode
+      </button>
+    </div>
+
+    <!-- Calculator Card -->
+    <div class="calc-card">
+      
+      <!-- Validation Message -->
+      <div class="validation-msg" id="validationMsg">
+        <i class="fas fa-circle-exclamation"></i>
+        <span id="validationText">Please enter valid positive numbers for power, hours, and days.</span>
+      </div>
+
+      <!-- ================= SINGLE APPLIANCE VIEW ================= -->
+      <div id="singleView">
+        <div class="form-grid">
+          
+          <!-- Appliance Selector -->
+          <div class="form-group">
+            <label class="form-label" for="applianceSelect">Select Appliance Preset</label>
+            <div class="calc-select">
+              <select id="applianceSelect" onchange="onAppliancePresetChange()">
+                <option value="75">Ceiling Fan (~75W)</option>
+                <option value="50">Table Fan (~50W)</option>
+                <option value="150">Refrigerator (~150W)</option>
+                <option value="500">Washing Machine (~500W)</option>
+                <option value="200">Air Cooler (~200W)</option>
+                <option value="1500">Air Conditioner (1.5 Ton Split) (~1,500W)</option>
+                <option value="1000" selected>Water Pump / Motor (~1,000W)</option>
+                <option value="100">Television (LED Smart TV) (~100W)</option>
+                <option value="200">Computer / Desktop PC (~200W)</option>
+                <option value="65">Laptop Computer (~65W)</option>
+                <option value="1000">Microwave Oven (~1,000W)</option>
+                <option value="1200">Electric Iron (~1,200W)</option>
+                <option value="2000">Geyser / Water Heater (~2,000W)</option>
+                <option value="1500">Electric Kettle (~1,500W)</option>
+                <option value="100">Water Dispenser (~100W)</option>
+                <option value="15">Light / LED Bulb (~15W)</option>
+                <option value="1200">Dishwasher (~1,200W)</option>
+                <option value="1000">Vacuum Cleaner (~1,000W)</option>
+                <option value="50">Air Purifier (~50W)</option>
+                <option value="2000">Room Heater (~2,000W)</option>
+                <option value="custom">Other / Custom Appliance</option>
+              </select>
+            </div>
+            <div class="preset-chips" id="customNameGroup" style="display:none; margin-top:8px;">
+              <input type="text" id="customApplianceName" placeholder="Enter custom appliance name (e.g. Air Fryer)" style="width:100%; padding:8px 12px; border:1.5px solid var(--border-color); border-radius:8px; font-size:13.5px; font-family:inherit;" oninput="recalcSingle()">
+            </div>
+          </div>
+
+          <!-- Rated Power (Watts) -->
+          <div class="form-group">
+            <label class="form-label" for="powerInput">Appliance Power (Watts)</label>
+            <div class="calc-input-wrap">
+              <input type="number" id="powerInput" value="1000" min="1" max="100000" step="1" oninput="recalcSingle()">
+              <span class="calc-input-addon">Watts (W)</span>
+            </div>
+            <div class="preset-chips">
+              <button type="button" class="preset-chip" onclick="setPowerPreset(75)">75W</button>
+              <button type="button" class="preset-chip" onclick="setPowerPreset(200)">200W</button>
+              <button type="button" class="preset-chip" onclick="setPowerPreset(500)">500W</button>
+              <button type="button" class="preset-chip" onclick="setPowerPreset(1000)">1,000W</button>
+              <button type="button" class="preset-chip" onclick="setPowerPreset(1500)">1,500W</button>
+              <button type="button" class="preset-chip" onclick="setPowerPreset(2000)">2,000W</button>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="form-grid">
+          
+          <!-- Hours per day -->
+          <div class="form-group">
+            <label class="form-label" for="hoursInput">Daily Usage (Hours / Day)</label>
+            <div class="calc-input-wrap">
+              <input type="number" id="hoursInput" value="1" min="0.1" max="24" step="0.5" oninput="recalcSingle()">
+              <span class="calc-input-addon">Hours / Day</span>
+            </div>
+            <div class="preset-chips">
+              <button type="button" class="preset-chip" onclick="setHoursPreset(1)">1 hr</button>
+              <button type="button" class="preset-chip" onclick="setHoursPreset(4)">4 hrs</button>
+              <button type="button" class="preset-chip" onclick="setHoursPreset(8)">8 hrs</button>
+              <button type="button" class="preset-chip" onclick="setHoursPreset(12)">12 hrs</button>
+              <button type="button" class="preset-chip" onclick="setHoursPreset(24)">24 hrs</button>
+            </div>
+          </div>
+
+          <!-- Billing Days -->
+          <div class="form-group">
+            <label class="form-label" for="daysInput">Number of Days</label>
+            <div class="calc-input-wrap">
+              <input type="number" id="daysInput" value="30" min="1" max="365" step="1" oninput="recalcSingle()">
+              <span class="calc-input-addon">Days</span>
+            </div>
+            <div class="preset-chips">
+              <button type="button" class="preset-chip" onclick="setDaysPreset(1)">1 Day</button>
+              <button type="button" class="preset-chip" onclick="setDaysPreset(7)">7 Days</button>
+              <button type="button" class="preset-chip" onclick="setDaysPreset(30)">30 Days (Month)</button>
+              <button type="button" class="preset-chip" onclick="setDaysPreset(365)">365 Days (Year)</button>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="form-grid">
+          
+          <!-- Electricity Rate -->
+          <div class="form-group">
+            <label class="form-label" for="rateInput">Electricity Rate (per Unit / kWh)</label>
+            <div class="calc-input-wrap">
+              <input type="number" id="rateInput" value="8" min="0" max="500" step="0.25" oninput="recalcSingle()">
+              <span class="calc-input-addon" id="rateUnitLabel">₹ / Unit</span>
+            </div>
+            <div class="preset-chips">
+              <button type="button" class="preset-chip" onclick="setRatePreset(6)">6</button>
+              <button type="button" class="preset-chip" onclick="setRatePreset(8)">8</button>
+              <button type="button" class="preset-chip" onclick="setRatePreset(10)">10</button>
+              <button type="button" class="preset-chip" onclick="setRatePreset(12)">12</button>
+            </div>
+          </div>
+
+          <!-- Currency Selector -->
+          <div class="form-group">
+            <label class="form-label" for="currSelect">Currency Unit Label</label>
+            <div class="calc-select">
+              <select id="currSelect" onchange="onCurrencyChange()">
+                <option value="₹" selected>₹ — Indian Rupee (INR)</option>
+                <option value="SAR">SAR — Saudi Riyal</option>
+                <option value="$">$ — US Dollar (USD)</option>
+                <option value="AED">AED — UAE Dirham</option>
+                <option value="PKR">Rs — Pakistani Rupee (PKR)</option>
+                <option value="€">€ — Euro (EUR)</option>
+                <option value="£">£ — British Pound (GBP)</option>
+                <option value="BDT">৳ — Bangladeshi Taka (BDT)</option>
+              </select>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Tariff Advice Note -->
+        <div class="tariff-info-note">
+          <i class="fas fa-info-circle"></i>
+          <div>
+            <strong>Tariff Guidance:</strong> Electricity rates vary by location, DISCOM, and tariff plan. Enter your applicable rate per unit for a more accurate cost estimate.
+          </div>
+        </div>
+
+        <!-- Result Box Single -->
+        <div class="result-summary-box">
+          <div class="result-row-top">
+            <div>
+              <div class="result-label">Estimated Electricity Cost</div>
+              <div class="result-big-val" id="resTotalCost">₹240.00</div>
+            </div>
+            <div>
+              <div class="energy-badge">
+                <i class="fas fa-plug-circle-bolt"></i> <span id="resTotalKwhBadge">30.00 kWh (30.00 Units)</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="result-meta-grid">
+            <div class="meta-box-inner">
+              <div class="meta-box-title">Appliance Power in kW</div>
+              <div class="meta-box-val" id="resKw">1.00 kW</div>
+            </div>
+            <div class="meta-box-inner">
+              <div class="meta-box-title">Daily Consumption</div>
+              <div class="meta-box-val" id="resDailyKwh">1.00 kWh (1,000 Wh)</div>
+            </div>
+            <div class="meta-box-inner">
+              <div class="meta-box-title">Daily Electricity Cost</div>
+              <div class="meta-box-val" id="resDailyCost">₹8.00 / day</div>
+            </div>
+            <div class="meta-box-inner">
+              <div class="meta-box-title">Total Electricity Units</div>
+              <div class="meta-box-val" id="resTotalUnits">30.00 Units</div>
+            </div>
+            <div class="meta-box-inner">
+              <div class="meta-box-title">Total Consumption</div>
+              <div class="meta-box-val" id="resTotalKwh">30.00 kWh</div>
+            </div>
+            <div class="meta-box-inner">
+              <div class="meta-box-title">Projected Annual Cost</div>
+              <div class="meta-box-val" id="resAnnualCost">₹2,920.00 / yr</div>
+            </div>
+          </div>
+
+          <div class="result-accuracy-note">
+            <i class="fas fa-triangle-exclamation" style="color:#fbbf24; margin-right:4px;"></i>
+            <strong>Real-World Accuracy Note:</strong> Actual electricity consumption may vary by appliance model, rated power, efficiency, operating cycle and usage. For appliances such as refrigerators, washing machines, and air conditioners that cycle on and off, the result is an estimate based on the entered/assumed power and usage.
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= MULTI-APPLIANCE VIEW ================= -->
+      <div id="multiView" style="display:none;">
+        <p style="font-size:14px; color:#475569; margin-bottom:16px;">
+          Add multiple household appliances to estimate your combined daily consumption, total monthly electricity units, and cumulative electricity cost.
+        </p>
+
+        <div class="form-grid" style="margin-bottom:12px;">
+          <div class="form-group">
+            <label class="form-label" for="multiRateInput">Electricity Rate (per Unit / kWh)</label>
+            <div class="calc-input-wrap">
+              <input type="number" id="multiRateInput" value="8" min="0" step="0.25" oninput="recalcMulti()">
+              <span class="calc-input-addon" id="multiRateUnitLabel">₹ / Unit</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="multiDaysInput">Calculation Period (Days)</label>
+            <div class="calc-input-wrap">
+              <input type="number" id="multiDaysInput" value="30" min="1" max="365" step="1" oninput="recalcMulti()">
+              <span class="calc-input-addon">Days</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="multi-table-wrap">
+          <table class="multi-table" id="multiTable">
+            <thead>
+              <tr>
+                <th>Appliance</th>
+                <th>Watts (W)</th>
+                <th>Hours / Day</th>
+                <th>Daily kWh</th>
+                <th>Period Units</th>
+                <th>Cost</th>
+                <th style="width:40px; text-align:center;">Action</th>
+              </tr>
+            </thead>
+            <tbody id="multiTableBody">
+              <!-- Rendered via JS -->
+            </tbody>
+          </table>
+        </div>
+
+        <div class="add-appliance-bar">
+          <div class="calc-select" style="min-width:240px; flex:1;">
+            <select id="addPresetSelect">
+              <option value="Ceiling Fan|75|10">Ceiling Fan (75W — 10h/day)</option>
+              <option value="Table Fan|50|8">Table Fan (50W — 8h/day)</option>
+              <option value="Refrigerator|150|24">Refrigerator (150W — 24h/day cycled)</option>
+              <option value="Washing Machine|500|1">Washing Machine (500W — 1h/day)</option>
+              <option value="Air Cooler|200|8">Air Cooler (200W — 8h/day)</option>
+              <option value="Air Conditioner|1500|8">Air Conditioner (1,500W — 8h/day)</option>
+              <option value="Water Pump / Motor|1000|1">Water Motor / Pump (1,000W — 1h/day)</option>
+              <option value="Television|100|5">Television (100W — 5h/day)</option>
+              <option value="Computer PC|200|6">Computer PC (200W — 6h/day)</option>
+              <option value="Laptop|65|6">Laptop (65W — 6h/day)</option>
+              <option value="Microwave Oven|1000|0.5">Microwave (1,000W — 0.5h/day)</option>
+              <option value="Electric Iron|1200|0.5">Electric Iron (1,200W — 0.5h/day)</option>
+              <option value="Geyser / Heater|2000|2">Geyser / Water Heater (2,000W — 2h/day)</option>
+              <option value="Electric Kettle|1500|0.3">Electric Kettle (1,500W — 0.3h/day)</option>
+              <option value="LED Bulb|15|6">LED Light Bulb (15W — 6h/day)</option>
+              <option value="Custom Appliance|100|2">Custom / Other Appliance</option>
+            </select>
+          </div>
+          <button type="button" class="btn-add-item" onclick="addMultiAppliance()">
+            <i class="fas fa-plus"></i> Add Appliance
+          </button>
+          <button type="button" class="btn-reset-list" onclick="resetMultiDefaults()">
+            <i class="fas fa-rotate-left"></i> Reset Defaults
+          </button>
+        </div>
+
+        <!-- Result Box Multi -->
+        <div class="result-summary-box">
+          <div class="result-row-top">
+            <div>
+              <div class="result-label">Combined Estimated Electricity Cost</div>
+              <div class="result-big-val" id="multiTotalCost">₹0.00</div>
+            </div>
+            <div>
+              <div class="energy-badge">
+                <i class="fas fa-layer-group"></i> <span id="multiTotalUnitsBadge">0.00 Total Units</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="result-meta-grid">
+            <div class="meta-box-inner">
+              <div class="meta-box-title">Total Daily Consumption</div>
+              <div class="meta-box-val" id="multiDailyKwh">0.00 kWh / day</div>
+            </div>
+            <div class="meta-box-inner">
+              <div class="meta-box-title">Daily Electricity Cost</div>
+              <div class="meta-box-val" id="multiDailyCost">₹0.00 / day</div>
+            </div>
+            <div class="meta-box-inner">
+              <div class="meta-box-title">Total Monthly Consumption</div>
+              <div class="meta-box-val" id="multiPeriodKwh">0.00 kWh</div>
+            </div>
+            <div class="meta-box-inner">
+              <div class="meta-box-title">Total Electricity Units</div>
+              <div class="meta-box-val" id="multiPeriodUnits">0.00 Units</div>
+            </div>
+          </div>
+
+          <div class="result-accuracy-note">
+            <i class="fas fa-info-circle" style="color:#38bdf8; margin-right:4px;"></i>
+            Total units equal total kWh. Combined estimates assume entered daily runtimes. Adjust wattage and hours to reflect your household's actual seasonal patterns.
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- SEO Content Article -->
+    <article class="seo-article">
+      <h2>Understanding Appliance Electricity Consumption: Watts, Kilowatts, and Units</h2>
+      <p>
+        Every electrical appliance in your home consumes energy to perform its function, whether cooling your room, illuminating a workspace, heating water, or pumping water into an overhead tank. However, electric utility bills are not charged based on power alone; they are billed based on <strong>energy transferred over time</strong>.
+      </p>
+
+      <h3>What is an Electricity Unit?</h3>
+      <p>
+        In residential electricity billing, <strong>one electricity unit is mathematically identical to one kilowatt-hour (1 kWh)</strong>.
+      </p>
+      <ul>
+        <li><strong>Watt (W):</strong> The instantaneous rate of electrical power. (1,000 Watts = 1 Kilowatt).</li>
+        <li><strong>Watt-hour (Wh):</strong> The energy used when 1 Watt runs for 1 hour.</li>
+        <li><strong>Kilowatt-hour (kWh):</strong> 1,000 Watt-hours. Exactly <strong>1 electricity unit</strong> on your utility meter.</li>
+      </ul>
+      <p>
+        For instance, if you run a <strong>1,000 Watt</strong> electrical appliance continuously for <strong>1 hour</strong>:
+      </p>
+      <div class="formula-box">
+        1,000 W × 1 hour = 1,000 Watt-hours = 1 kWh = 1 Electricity Unit
+      </div>
+      <p>
+        If that same 1,000 W appliance runs for 1 hour every day across a 30-day month:
+      </p>
+      <div class="formula-box">
+        1 kWh/day × 30 days = 30 kWh = 30 Electricity Units / Month
+      </div>
+
+      <h2>Core Electricity Calculation Formulas</h2>
+      <p>
+        To determine how much any device adds to your power bill, utility engineers and energy auditors utilize standard electrical physics formulas:
+      </p>
+      <div class="formula-box">
+        Power in Kilowatts (kW) = Power in Watts (W) ÷ 1,000<br>
+        Daily Energy (kWh) = (Watts ÷ 1,000) × Hours Used per Day<br>
+        Total Energy (kWh) = Daily Energy (kWh) × Number of Days<br>
+        Electricity Units = Total Energy in kWh (1 kWh = 1 Unit)<br>
+        Estimated Cost = Total Electricity Units × Rate per Unit<br>
+        Daily Cost = Daily kWh × Rate per Unit
+      </div>
+
+      <h2>Step-by-Step Worked Example</h2>
+      <p>
+        Let us walk through a practical example for an agricultural or residential <strong>1,000 Watt water pump motor</strong> used for <strong>1 hour per day</strong> for a <strong>30-day billing cycle</strong>, with an applicable electricity tariff of <strong>₹8.00 per unit</strong>:
+      </p>
+      <ul>
+        <li><strong>Step 1 (Convert Watts to Kilowatts):</strong> 1,000 W ÷ 1,000 = <strong>1.0 kW</strong>.</li>
+        <li><strong>Step 2 (Calculate Daily Energy):</strong> 1.0 kW × 1 hour = <strong>1.0 kWh per day</strong> (1,000 Wh).</li>
+        <li><strong>Step 3 (Calculate Monthly Energy):</strong> 1.0 kWh/day × 30 days = <strong>30.0 kWh</strong>.</li>
+        <li><strong>Step 4 (Determine Electricity Units):</strong> Because 1 kWh = 1 unit, 30.0 kWh equals exactly <strong>30.0 units</strong>.</li>
+        <li><strong>Step 5 (Calculate Estimated Power Bill):</strong> 30.0 units × ₹8.00/unit = <strong>₹240.00</strong> estimated electricity cost.</li>
+      </ul>
+
+      <h2>Typical Household Appliance Power &amp; Consumption Reference</h2>
+      <p>
+        The table below outlines standard electrical ratings and estimated monthly units for typical home appliances operating under customary duty cycles. Note that preset wattages are only representative benchmarks:
+      </p>
+
+      <div class="data-table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Appliance Name</th>
+              <th>Typical Rated Power</th>
+              <th>Avg. Usage (Hrs/Day)</th>
+              <th>Est. Daily kWh</th>
+              <th>Est. Monthly Units (30 Days)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>LED Light Bulb</strong></td>
+              <td>9 – 15 W</td>
+              <td>6.0 hrs</td>
+              <td>0.09 kWh</td>
+              <td>~2.7 units</td>
+            </tr>
+            <tr>
+              <td><strong>Ceiling Fan (BLDC / Normal)</strong></td>
+              <td>28 – 75 W</td>
+              <td>10.0 hrs</td>
+              <td>0.75 kWh</td>
+              <td>~22.5 units</td>
+            </tr>
+            <tr>
+              <td><strong>Table / Stand Fan</strong></td>
+              <td>50 – 60 W</td>
+              <td>8.0 hrs</td>
+              <td>0.40 kWh</td>
+              <td>~12.0 units</td>
+            </tr>
+            <tr>
+              <td><strong>Television (LED Smart TV 43"-55")</strong></td>
+              <td>80 – 120 W</td>
+              <td>5.0 hrs</td>
+              <td>0.50 kWh</td>
+              <td>~15.0 units</td>
+            </tr>
+            <tr>
+              <td><strong>Refrigerator (Frost-Free 250L)</strong></td>
+              <td>150 – 250 W</td>
+              <td>24.0 hrs (Cycled)</td>
+              <td>1.50 kWh</td>
+              <td>~45.0 units</td>
+            </tr>
+            <tr>
+              <td><strong>Air Cooler (Evaporative)</strong></td>
+              <td>150 – 250 W</td>
+              <td>8.0 hrs</td>
+              <td>1.60 kWh</td>
+              <td>~48.0 units</td>
+            </tr>
+            <tr>
+              <td><strong>Split Air Conditioner (1.5 Ton 3-Star)</strong></td>
+              <td>1,400 – 1,800 W</td>
+              <td>8.0 hrs (Thermostat cycle)</td>
+              <td>8.00 – 12.00 kWh</td>
+              <td>~240 – 360 units</td>
+            </tr>
+            <tr>
+              <td><strong>Water Pump / Submersible Motor (1 HP)</strong></td>
+              <td>750 – 1,000 W</td>
+              <td>1.0 hr</td>
+              <td>1.00 kWh</td>
+              <td>~30.0 units</td>
+            </tr>
+            <tr>
+              <td><strong>Washing Machine (Semi / Fully Auto)</strong></td>
+              <td>350 – 600 W</td>
+              <td>1.0 hr</td>
+              <td>0.50 kWh</td>
+              <td>~15.0 units</td>
+            </tr>
+            <tr>
+              <td><strong>Geyser / Storage Water Heater</strong></td>
+              <td>1,500 – 2,500 W</td>
+              <td>1.5 hrs</td>
+              <td>3.00 kWh</td>
+              <td>~90.0 units</td>
+            </tr>
+            <tr>
+              <td><strong>Microwave Oven</strong></td>
+              <td>900 – 1,300 W</td>
+              <td>0.5 hr (30 mins)</td>
+              <td>0.50 kWh</td>
+              <td>~15.0 units</td>
+            </tr>
+            <tr>
+              <td><strong>Electric Clothes Iron</strong></td>
+              <td>1,000 – 1,500 W</td>
+              <td>0.5 hr (30 mins)</td>
+              <td>0.60 kWh</td>
+              <td>~18.0 units</td>
+            </tr>
+            <tr>
+              <td><strong>Desktop Computer with Monitor</strong></td>
+              <td>150 – 300 W</td>
+              <td>6.0 hrs</td>
+              <td>1.20 kWh</td>
+              <td>~36.0 units</td>
+            </tr>
+            <tr>
+              <td><strong>Laptop Computer</strong></td>
+              <td>45 – 90 W</td>
+              <td>6.0 hrs</td>
+              <td>0.39 kWh</td>
+              <td>~11.7 units</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Why Actual Metered Electricity Bills Differ from Raw Estimates</h2>
+      <p>
+        While mathematical formulas provide a dependable baseline, real-world utility bills frequently differ due to several engineering and regulatory factors:
+      </p>
+      <ul>
+        <li><strong>Thermostat &amp; Duty Cycles:</strong> Refrigerators, inverter air conditioners, water dispensers, and geysers do not draw peak power continuously. Their cooling compressors and heating coils turn on and off based on internal thermostat settings. An AC rated at 1,500 W may only consume an average of 900 to 1,100 Watts per hour once the room reaches the target temperature.</li>
+        <li><strong>Motor Load Variations:</strong> Washing machines use different power during gentle wash agitation compared to high-speed spin extraction. Similarly, water motors draw more current under heavy head pressure.</li>
+        <li><strong>Tiered Tariff Brackets:</strong> Most regional power distribution companies (DISCOMs) implement tiered consumption slabs (e.g. 0–100 units at a subsidized rate, 101–300 units at a standard rate, and >300 units at peak rates). Entering higher consumption brackets increases your marginal cost per unit.</li>
+        <li><strong>Fixed Charges, Fuel Adjustment &amp; Taxes:</strong> Actual invoices contain fixed meter charges, electricity duty fees, fuel surcharge adjustments (FSA), and statutory taxes that are added independent of pure unit consumption.</li>
+      </ul>
+
+      <!-- Disclaimer Box -->
+      <div class="disclaimer-card">
+        <h4><i class="fas fa-shield-halved"></i> Practical Utility Disclaimer</h4>
+        <p>
+          This calculator provides educational estimates based on entered power ratings, hours of operation, and user-specified electricity tariffs. It does not replace an official electricity meter reading. Always consult your appliance's nameplate technical specification label and your official electricity distribution utility invoice for precise billing data.
+        </p>
+      </div>
+
+      <!-- FAQ Section -->
+      <h2>Frequently Asked Questions</h2>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          What is the difference between Watts (W) and Kilowatt-hours (kWh)? <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          Watts measure the instantaneous power demand of an appliance (how much electricity it requires right now), whereas kilowatt-hours measure energy consumption over time (power multiplied by operating duration). One kilowatt-hour equals 1,000 Watts consumed for one hour.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          How do I find the wattage of an electrical appliance? <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          Every electrical appliance has a manufacturer label or metal nameplate located on the back, bottom, or near the power cord. Look for the power rating printed as "W" (Watts) or "kW". If only Voltage (V) and Current (Amps / A) are listed, multiply Voltage by Amps (Watts = Volts × Amperes).
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          Does a refrigerator consume full power 24 hours a day? <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          No. Although a refrigerator is plugged in 24 hours a day, its compressor operates on an automated duty cycle, running only when the internal temperature rises above the thermostat setpoint. Most modern refrigerators run their compressor between 30% and 50% of the day (roughly 8 to 12 effective hours).
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          What electricity rate should I enter in the calculator? <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          You should enter your actual cost per unit (per kWh) as indicated on your latest electricity bill. In India, residential rates generally range between ₹4.00 and ₹12.00 per unit depending on the state and tariff slab tier. In Saudi Arabia, residential SEC rates are 0.18 SAR/kWh (Tier 1) and 0.30 SAR/kWh (Tier 2). Enter the applicable rate for your area.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          How can I reduce appliance electricity consumption? <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          Upgrade to 5-star energy rated appliances, switch standard ceiling fans to energy-efficient BLDC motors (saving ~60% power), set air conditioner thermostats to 24°C–26°C, clean AC filters regularly, keep refrigerator coils dust-free, and unplug electronics to eliminate phantom standby power draw.
+        </div>
+      </div>
+
+    </article>
+
+    <!-- Related Calculators -->
+    <div class="related-tools-box">
+      <h3 style="font-size: 18px; font-weight: 800; color: var(--navy-dark);">
+        <i class="fas fa-calculator" style="color: var(--sky-saudi); margin-right: 8px;"></i> Explore Other Everyday Smart Calculators
+      </h3>
+      <div class="related-tools-grid">
+        <a href="/everyday-smart-calculator/electricity-cost-calculator/" class="related-card">
+          <span class="related-card-badge">Utilities</span>
+          <div class="related-card-name">Electricity &amp; Unit Cost</div>
+          <div class="related-card-desc">Calculate overall electricity costs with SEC tiered tariffs and utility bill projections.</div>
+        </a>
+
+        <a href="/everyday-smart-calculator/discount-calculator/" class="related-card">
+          <span class="related-card-badge">Shopping</span>
+          <div class="related-card-name">Smart Discount &amp; Sale</div>
+          <div class="related-card-desc">Calculate retail sale discounts, stacked coupons, and 15% VAT savings.</div>
+        </a>
+
+        <a href="/everyday-smart-calculator/fuel-cost-calculator/" class="related-card">
+          <span class="related-card-badge">Travel</span>
+          <div class="related-card-name">Fuel Cost Calculator</div>
+          <div class="related-card-desc">Calculate road trip fuel expenses, vehicle efficiency, and passenger splitting.</div>
+        </a>
+
+        <a href="/everyday-smart-calculator/unit-converter/" class="related-card">
+          <span class="related-card-badge">Math</span>
+          <div class="related-card-name">Unit Converter</div>
+          <div class="related-card-desc">Convert Length, Weight, Temperature, Area, Volume, and Digital Data units.</div>
+        </a>
+
+        <a href="/everyday-smart-calculator/split-bill-calculator/" class="related-card">
+          <span class="related-card-badge">Finance</span>
+          <div class="related-card-name">Split Bill Calculator</div>
+          <div class="related-card-desc">Split group expenses, dining bills, and shared apartment utilities fairly.</div>
+        </a>
+
+        <a href="/everyday-smart-calculator/" class="related-card">
+          <span class="related-card-badge">Main Hub</span>
+          <div class="related-card-name">Everyday Smart Hub</div>
+          <div class="related-card-desc">Access all 12 everyday productivity, household, and lifestyle calculators.</div>
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-col">
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:12px; font-weight:800; color:white; font-size:18px;">
+          <i class="fas fa-calculator" style="color:#38bdf8;"></i> DailyCalcHubs
+        </div>
+        <div style="font-size:12px; color:#64748b; margin-bottom:14px;">Smart Tools for a Smarter Tomorrow</div>
+        <p style="font-size:13.5px; line-height:1.6; color:#94a3b8;">
+          High-precision lifestyle, utility, energy, salary, and everyday smart calculators built for transparency, accuracy, and ease of use.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Everyday Smart Tools</h4>
+        <ul>
+          <li><a href="/everyday-smart-calculator/age-calculator/">Age &amp; Date of Birth</a></li>
+          <li><a href="/everyday-smart-calculator/discount-calculator/">Smart Discount &amp; Sale</a></li>
+          <li><a href="/everyday-smart-calculator/bmi-calculator/">BMI Calculator</a></li>
+          <li><a href="/everyday-smart-calculator/electricity-cost-calculator/">Electricity &amp; Unit Cost</a></li>
+          <li><a href="/everyday-smart-calculator/appliance-electricity-consumption/">Appliance Electricity Consumption</a></li>
+          <li><a href="/everyday-smart-calculator/tip-calculator/">Tip Calculator</a></li>
+          <li><a href="/everyday-smart-calculator/percentage-calculator/">Percentage Calculator</a></li>
+          <li><a href="/everyday-smart-calculator/gpa-calculator/">GPA &amp; Grade Calculator</a></li>
+          <li><a href="/everyday-smart-calculator/time-duration-calculator/">Time Duration</a></li>
+          <li><a href="/everyday-smart-calculator/unit-converter/">Unit Converter</a></li>
+          <li><a href="/everyday-smart-calculator/fuel-cost-calculator/">Fuel Cost Calculator</a></li>
+          <li><a href="/everyday-smart-calculator/split-bill-calculator/">Split Bill Calculator</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Core Hubs</h4>
+        <ul>
+          <li><a href="/saudi-remittance-calculator/">Remittance Calculator</a></li>
+          <li><a href="/prayer-times/">Prayer Times</a></li>
+          <li><a href="/saudi-salary-calculator/">Saudi Salary Calculator</a></li>
+          <li><a href="/saudi-iqama-calculator/">Iqama Fee Calculator</a></li>
+          <li><a href="/everyday-smart-calculator/">Everyday Smart Hub</a></li>
+          <li><a href="/shariah-sip-calculator/">Shariah SIP</a></li>
+          <li><a href="/travel-booking-calculator/">Travel &amp; Booking</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Transparency &amp; Legal</h4>
+        <ul>
+          <li><a href="/about-us/">About Us</a></li>
+          <li><a href="/contact/">Contact Us</a></li>
+          <li><a href="/privacy-policy/">Privacy Policy</a></li>
+          <li><a href="/terms-of-service/">Terms of Service</a></li>
+          <li><a href="/disclaimer/">Disclaimer</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>&copy; 2026 DailyCalcHubs. All rights reserved. Mathematical &amp; utility estimation models.</div>
+      <div>
+        <a href="/privacy-policy/" style="color:#94a3b8; margin-right:12px;">Privacy</a>
+        <a href="/terms-of-service/" style="color:#94a3b8; margin-right:12px;">Terms</a>
+        <a href="/disclaimer/" style="color:#94a3b8;">Disclaimer</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript Calculator Logic -->
+  <script>
+    let activeCurrency = '₹';
+    let currentMode = 'single';
+
+    // Multi-appliance initial default dataset
+    let multiAppliances = [
+      { id: 1, name: 'Ceiling Fan', watts: 75, hours: 10 },
+      { id: 2, name: 'Refrigerator', watts: 150, hours: 24 },
+      { id: 3, name: 'Washing Machine', watts: 500, hours: 1 },
+      { id: 4, name: 'Water Motor / Pump', watts: 1000, hours: 1 }
+    ];
+    let nextApplianceId = 5;
+
+    // Toggle Single vs Multi Mode
+    function switchMode(mode) {
+      currentMode = mode;
+      const tabSingle = document.getElementById('tabSingle');
+      const tabMulti = document.getElementById('tabMulti');
+      const viewSingle = document.getElementById('singleView');
+      const viewMulti = document.getElementById('multiView');
+
+      if (mode === 'single') {
+        tabSingle.classList.add('active');
+        tabMulti.classList.remove('active');
+        viewSingle.style.display = 'block';
+        viewMulti.style.display = 'none';
+        recalcSingle();
+      } else {
+        tabMulti.classList.add('active');
+        tabSingle.classList.remove('active');
+        viewMulti.style.display = 'block';
+        viewSingle.style.display = 'none';
+        renderMultiTable();
+        recalcMulti();
+      }
+    }
+
+    // Currency Switcher
+    function onCurrencyChange() {
+      activeCurrency = document.getElementById('currSelect').value;
+      document.getElementById('rateUnitLabel').innerText = activeCurrency + ' / Unit';
+      document.getElementById('multiRateUnitLabel').innerText = activeCurrency + ' / Unit';
+      recalcSingle();
+      recalcMulti();
+    }
+
+    // Single Appliance Preset
+    function onAppliancePresetChange() {
+      const select = document.getElementById('applianceSelect');
+      const customGroup = document.getElementById('customNameGroup');
+      const val = select.value;
+
+      if (val === 'custom') {
+        customGroup.style.display = 'block';
+        document.getElementById('customApplianceName').focus();
+      } else {
+        customGroup.style.display = 'none';
+        document.getElementById('powerInput').value = val;
+      }
+      recalcSingle();
+    }
+
+    // Preset Chip Setters
+    function setPowerPreset(val) {
+      document.getElementById('powerInput').value = val;
+      recalcSingle();
+    }
+
+    function setHoursPreset(val) {
+      document.getElementById('hoursInput').value = val;
+      recalcSingle();
+    }
+
+    function setDaysPreset(val) {
+      document.getElementById('daysInput').value = val;
+      recalcSingle();
+    }
+
+    function setRatePreset(val) {
+      document.getElementById('rateInput').value = val;
+      recalcSingle();
+    }
+
+    // Format numbers cleanly
+    function formatMoney(num, curr) {
+      if (isNaN(num) || !isFinite(num)) return curr + '0.00';
+      return curr + num.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    function formatNumber(num, decimals = 2) {
+      if (isNaN(num) || !isFinite(num)) return '0.00';
+      return num.toLocaleString('en-US', { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+    }
+
+    // Single Appliance Calculation
+    function recalcSingle() {
+      const powerRaw = document.getElementById('powerInput').value.trim();
+      const hoursRaw = document.getElementById('hoursInput').value.trim();
+      const daysRaw = document.getElementById('daysInput').value.trim();
+      const rateRaw = document.getElementById('rateInput').value.trim();
+
+      const valMsg = document.getElementById('validationMsg');
+      const valText = document.getElementById('validationText');
+
+      // Validation
+      if (powerRaw === '' || hoursRaw === '' || daysRaw === '' || rateRaw === '') {
+        showValidation('Please fill in all fields with valid numbers.');
+        clearSingleOutputs();
+        return;
+      }
+
+      const watts = parseFloat(powerRaw);
+      const hours = parseFloat(hoursRaw);
+      const days = parseFloat(daysRaw);
+      const rate = parseFloat(rateRaw);
+
+      if (isNaN(watts) || isNaN(hours) || isNaN(days) || isNaN(rate)) {
+        showValidation('Invalid input: please enter valid numeric values.');
+        clearSingleOutputs();
+        return;
+      }
+
+      if (watts <= 0) {
+        showValidation('Appliance power in Watts must be greater than zero.');
+        clearSingleOutputs();
+        return;
+      }
+
+      if (hours <= 0 || hours > 24) {
+        showValidation('Daily usage must be between 0.1 and 24 hours per day.');
+        clearSingleOutputs();
+        return;
+      }
+
+      if (days <= 0 || days > 3650) {
+        showValidation('Number of days must be at least 1 day.');
+        clearSingleOutputs();
+        return;
+      }
+
+      if (rate < 0) {
+        showValidation('Electricity rate per unit cannot be negative.');
+        clearSingleOutputs();
+        return;
+      }
+
+      // Input valid: hide validation error
+      valMsg.style.display = 'none';
+
+      // Core Standard Electrical Formulas
+      const kw = watts / 1000;
+      const dailyKwh = kw * hours;
+      const dailyWh = watts * hours;
+      const totalKwh = dailyKwh * days;
+      const totalUnits = totalKwh; // 1 unit = 1 kWh
+      const totalCost = totalUnits * rate;
+      const dailyCost = dailyKwh * rate;
+      const annualCost = dailyKwh * 365 * rate;
+
+      // Update UI
+      document.getElementById('resTotalCost').innerText = formatMoney(totalCost, activeCurrency);
+      document.getElementById('resTotalKwhBadge').innerText = formatNumber(totalKwh) + ' kWh (' + formatNumber(totalUnits) + ' Units)';
+      document.getElementById('resKw').innerText = formatNumber(kw, 3) + ' kW';
+      document.getElementById('resDailyKwh').innerText = formatNumber(dailyKwh) + ' kWh (' + formatNumber(dailyWh, 0) + ' Wh)';
+      document.getElementById('resDailyCost').innerText = formatMoney(dailyCost, activeCurrency) + ' / day';
+      document.getElementById('resTotalUnits').innerText = formatNumber(totalUnits) + ' Units';
+      document.getElementById('resTotalKwh').innerText = formatNumber(totalKwh) + ' kWh';
+      document.getElementById('resAnnualCost').innerText = formatMoney(annualCost, activeCurrency) + ' / yr';
+    }
+
+    function showValidation(msg) {
+      const valMsg = document.getElementById('validationMsg');
+      const valText = document.getElementById('validationText');
+      valText.innerText = msg;
+      valMsg.style.display = 'flex';
+    }
+
+    function clearSingleOutputs() {
+      document.getElementById('resTotalCost').innerText = formatMoney(0, activeCurrency);
+      document.getElementById('resTotalKwhBadge').innerText = '0.00 kWh (0.00 Units)';
+      document.getElementById('resKw').innerText = '0.00 kW';
+      document.getElementById('resDailyKwh').innerText = '0.00 kWh (0 Wh)';
+      document.getElementById('resDailyCost').innerText = formatMoney(0, activeCurrency) + ' / day';
+      document.getElementById('resTotalUnits').innerText = '0.00 Units';
+      document.getElementById('resTotalKwh').innerText = '0.00 kWh';
+      document.getElementById('resAnnualCost').innerText = formatMoney(0, activeCurrency) + ' / yr';
+    }
+
+    // ================= MULTI-APPLIANCE ENGINE =================
+    function renderMultiTable() {
+      const tbody = document.getElementById('multiTableBody');
+      tbody.innerHTML = '';
+
+      const rate = parseFloat(document.getElementById('multiRateInput').value) || 0;
+      const days = parseFloat(document.getElementById('multiDaysInput').value) || 30;
+
+      multiAppliances.forEach((item, index) => {
+        const kw = item.watts / 1000;
+        const dailyKwh = kw * item.hours;
+        const periodKwh = dailyKwh * days;
+        const periodCost = periodKwh * rate;
+
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td><strong>${item.name}</strong></td>
+          <td>
+            <input type="number" class="table-num-input" value="${item.watts}" min="1" max="100000" step="10" onchange="updateMultiItemWatts(${item.id}, this.value)">
+          </td>
+          <td>
+            <input type="number" class="table-num-input" value="${item.hours}" min="0.1" max="24" step="0.5" onchange="updateMultiItemHours(${item.id}, this.value)">
+          </td>
+          <td>${formatNumber(dailyKwh)} kWh</td>
+          <td>${formatNumber(periodKwh)} Units</td>
+          <td><strong>${formatMoney(periodCost, activeCurrency)}</strong></td>
+          <td style="text-align:center;">
+            <button type="button" class="btn-delete-item" onclick="deleteMultiItem(${item.id})" title="Remove appliance">
+              <i class="fas fa-trash-can"></i>
+            </button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function updateMultiItemWatts(id, val) {
+      const item = multiAppliances.find(a => a.id === id);
+      if (item) {
+        const parsed = parseFloat(val);
+        if (!isNaN(parsed) && parsed > 0) {
+          item.watts = parsed;
+        }
+      }
+      renderMultiTable();
+      recalcMulti();
+    }
+
+    function updateMultiItemHours(id, val) {
+      const item = multiAppliances.find(a => a.id === id);
+      if (item) {
+        const parsed = parseFloat(val);
+        if (!isNaN(parsed) && parsed > 0 && parsed <= 24) {
+          item.hours = parsed;
+        }
+      }
+      renderMultiTable();
+      recalcMulti();
+    }
+
+    function deleteMultiItem(id) {
+      multiAppliances = multiAppliances.filter(a => a.id !== id);
+      renderMultiTable();
+      recalcMulti();
+    }
+
+    function addMultiAppliance() {
+      const select = document.getElementById('addPresetSelect');
+      const parts = select.value.split('|');
+      const name = parts[0];
+      const watts = parseFloat(parts[1]) || 100;
+      const hours = parseFloat(parts[2]) || 1;
+
+      multiAppliances.push({
+        id: nextApplianceId++,
+        name: name,
+        watts: watts,
+        hours: hours
+      });
+
+      renderMultiTable();
+      recalcMulti();
+    }
+
+    function resetMultiDefaults() {
+      multiAppliances = [
+        { id: 1, name: 'Ceiling Fan', watts: 75, hours: 10 },
+        { id: 2, name: 'Refrigerator', watts: 150, hours: 24 },
+        { id: 3, name: 'Washing Machine', watts: 500, hours: 1 },
+        { id: 4, name: 'Water Motor / Pump', watts: 1000, hours: 1 }
+      ];
+      renderMultiTable();
+      recalcMulti();
+    }
+
+    function recalcMulti() {
+      const rate = parseFloat(document.getElementById('multiRateInput').value) || 0;
+      const days = parseFloat(document.getElementById('multiDaysInput').value) || 30;
+
+      let totalDailyKwh = 0;
+
+      multiAppliances.forEach(item => {
+        const kw = (item.watts || 0) / 1000;
+        const dailyKwh = kw * (item.hours || 0);
+        totalDailyKwh += dailyKwh;
+      });
+
+      const totalPeriodKwh = totalDailyKwh * days;
+      const totalUnits = totalPeriodKwh;
+      const totalCost = totalUnits * rate;
+      const dailyCost = totalDailyKwh * rate;
+
+      document.getElementById('multiTotalCost').innerText = formatMoney(totalCost, activeCurrency);
+      document.getElementById('multiTotalUnitsBadge').innerText = formatNumber(totalUnits) + ' Total Units';
+      document.getElementById('multiDailyKwh').innerText = formatNumber(totalDailyKwh) + ' kWh / day';
+      document.getElementById('multiDailyCost').innerText = formatMoney(dailyCost, activeCurrency) + ' / day';
+      document.getElementById('multiPeriodKwh').innerText = formatNumber(totalPeriodKwh) + ' kWh';
+      document.getElementById('multiPeriodUnits').innerText = formatNumber(totalUnits) + ' Units';
+    }
+
+    // FAQ Accordion
+    function toggleFaq(el) {
+      const ans = el.nextElementSibling;
+      const icon = el.querySelector('i');
+      if (ans.style.display === 'block') {
+        ans.style.display = 'none';
+        icon.className = 'fas fa-chevron-down';
+      } else {
+        ans.style.display = 'block';
+        icon.className = 'fas fa-chevron-up';
+      }
+    }
+
+    // Initialize on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      recalcSingle();
+    });
+  </script>
+
+</body>
+</html>
