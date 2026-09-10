@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -341,7 +341,8 @@
       align-items: start;
     }
     @media (max-width: 960px) {
-      .calc-main-layout { grid-template-columns: 1fr; }
+      .calc-main-layout { grid-template-columns: minmax(0, 1fr); }
+      .calc-main-layout > * { min-width: 0; max-width: 100%; }
     }
 
     /* Calculator Card */
@@ -351,6 +352,9 @@
       border: 1px solid var(--border-light);
       box-shadow: var(--card-shadow);
       padding: 28px;
+      min-width: 0;
+      max-width: 100%;
+      box-sizing: border-box;
     }
     .calc-card-header {
       display: flex;
@@ -545,9 +549,13 @@
     }
     .provider-table-wrap {
       width: 100%;
+      max-width: 100%;
+      min-width: 0;
       overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
     }
     .provider-table {
+      min-width: 360px;
       width: 100%;
       border-collapse: collapse;
       font-size: 13px;
