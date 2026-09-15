@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -509,12 +509,38 @@
     </div>
 
     <!-- Educational & Strategy Guide -->
-    <div class="editorial-section">
+    <article class="editorial-section content-article">
       <h2>How to Accurately Estimate Air Travel Costs</h2>
-      <p>Flight booking is notorious for price fragmentation. What starts as an appealing 499 SAR promotional fare often balloons to over 900 SAR by the time you select seating, register checked luggage, and pay government departure surcharges. Our <strong>Flight Cost Calculator</strong> empowers travelers to forecast the genuine checkout total before committing card details.</p>
+      <p>Flight booking is notorious for price fragmentation. What starts as an appealing promotional fare often balloons substantially by the time you select seating, register checked luggage, and pay airport departure surcharges. Our <strong>Flight Cost Calculator</strong> empowers travelers to forecast the genuine checkout total before committing card details.</p>
+
+      <h2>The Airfare &amp; Ancillary Computation Formula</h2>
+      <div style="background:#fff1f2; border:1.5px dashed #fecdd3; border-radius:10px; padding:18px; font-family:monospace; font-size:14px; color:#9f1239; font-weight:700; margin:18px 0;">
+        Total Flight Cost = Base Fares (Adults + Children + Infants) + Airport Taxes + Add-ons (Baggage + Seats + Meals)
+      </div>
+      <p style="font-size:14px; color:#475569; line-height:1.6;">
+        Where adult fares reflect the published ticket price, children (2–11 yrs) typically follow a 75% tier, lap infants are billed at 10%, airport passenger taxes apply per ticket, and optional ancillaries (luggage, seat selection, hot meals) are summed based on user selection.
+      </p>
+
+      <h3>Worked Flight Booking Example: Family of 3 (Round-Trip)</h3>
+      <div style="background:#fff9f9; border:1px solid #fecdd3; border-left:4px solid var(--crimson-primary); border-radius:0 10px 10px 0; padding:18px 22px; margin:20px 0;">
+        <h4 style="font-size:15px; font-weight:700; color:var(--navy-dark); margin-bottom:8px;"><i class="fas fa-plane-departure" style="color:var(--crimson-primary); margin-right:6px;"></i> Illustrative Airfare Cost Breakdown (User-Entered Inputs)</h4>
+        <p style="font-size:13.5px; color:#64748b; margin-bottom:12px;">This scenario illustrates how base fares and ancillaries combine. All rates reflect user-entered estimates rather than live carrier inventory:</p>
+        <ul style="margin-bottom:12px; padding-left:20px; font-size:14px; line-height:1.65; color:#334155;">
+          <li><strong>Adult Base Airfare:</strong> 1,250 SAR × 2 Adults = <strong>2,500 SAR</strong></li>
+          <li><strong>Child Airfare (75% Tier):</strong> 1,250 SAR × 0.75 × 1 Child = <strong>937.50 SAR</strong></li>
+          <li><strong>Base Fares Subtotal:</strong> 2,500 + 937.50 = <strong>3,437.50 SAR</strong></li>
+          <li><strong>Mandatory Airport Taxes:</strong> 240 SAR/ticket × 3 passengers = <strong>720 SAR</strong></li>
+          <li><strong>Checked Luggage (2 Bags):</strong> 180 SAR/bag × 2 = <strong>360 SAR</strong></li>
+          <li><strong>Seat Selection (3 Seated Pax):</strong> 65 SAR/seat × 3 = <strong>195 SAR</strong></li>
+          <li><strong>In-flight Meals (3 Seated Pax):</strong> 45 SAR/meal × 3 = <strong>135 SAR</strong></li>
+          <li><strong>Total Ancillary Add-ons:</strong> 360 + 195 + 135 = <strong>690 SAR</strong></li>
+          <li><strong>Total Estimated Flight Cost:</strong> 3,437.50 + 720 + 690 = <strong>4,847.50 SAR (~4,848 SAR)</strong></li>
+          <li><strong>Average Cost Per Passenger:</strong> 4,847.50 SAR ÷ 3 = <strong>1,615.83 SAR / passenger</strong></li>
+        </ul>
+      </div>
 
       <h3>1. Base Fare vs Ancillary Add-Ons</h3>
-      <p>Modern airlines operate under an unbundled pricing model. Traditional flag carriers (like Saudia, Emirates, or Qatar Airways) frequently bundle 23kg–30kg of checked luggage and seat selection into their standard economy tickets. In contrast, budget carriers (such as flyadeal, flynas, or Wizz Air) strip away all services to advertise rock-bottom base fares.</p>
+      <p>Modern airlines operate under an unbundled pricing model. Traditional flag carriers (like Saudia, Emirates, or Qatar Airways) frequently bundle checked luggage and seat selection into their standard economy tickets. In contrast, budget carriers (such as flyadeal, flynas, or Wizz Air) strip away all services to advertise lower base fares.</p>
       <ul>
         <li><strong>Checked Baggage:</strong> Purchasing extra baggage online 24 hours prior to departure typically saves 50% compared to paying desk counter penalties.</li>
         <li><strong>Seat Selection:</strong> While randomized assignment at check-in is free, family groups who need contiguous seating should budget 40 to 120 SAR per sector.</li>
@@ -528,10 +554,15 @@
         <li><strong>Children aged 2 to 11:</strong> Children require their own seat and are billed between 75% and 100% of adult base fare depending on the fare class and carrier.</li>
       </ul>
 
+      <h3>3. Connecting Flights into Your Overall Travel Plan</h3>
+      <p>
+        After determining your airfare commitment, incorporate flight costs into your complete vacation budget—including accommodation, daily dining, local transit, and contingency reserves—using our comprehensive <a href="/travel-booking-calculator/travel-budget/" style="color:var(--crimson-primary); font-weight:700;">Travel Budget Planner</a>. If you are booking through an online travel aggregator or third-party portal, inspect card processing surcharges and platform convenience fees with the <a href="/travel-booking-calculator/booking-cost/" style="color:var(--crimson-primary); font-weight:700;">Booking Fee Breakdown</a>.
+      </p>
+
       <div class="info-callout">
-        <strong>Important Booking Note:</strong> DailyCalcHubs is an independent travel calculation suite and not an airline or online travel agency (OTA). Calculations are estimations based on user-entered values and standard commercial aviation fare patterns.
+        <strong>Important Booking &amp; Transparency Notice:</strong> DailyCalcHubs is an independent travel calculation suite and not an airline, hotel operator, or online travel agency (OTA). We do not sell airline tickets, book flights, or access live airline reservation systems. Calculations are mathematical estimations based on user-entered values and standard commercial aviation fare patterns. Fares, seat availability, and baggage surcharges vary dynamically; always confirm final ticket pricing on the official airline booking engine.
       </div>
-    </div>
+    </article>
 
     <!-- FAQ Section -->
     <div class="faq-section">
