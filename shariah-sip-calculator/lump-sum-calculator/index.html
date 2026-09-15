@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -230,6 +230,9 @@
     .seo-article ul { margin-left: 24px; margin-bottom: 18px; font-size: 15px; color: #334155; }
     .seo-article li { margin-bottom: 8px; }
 
+    .formula-card { background: #fffbeb; border: 1.5px dashed #fde68a; border-radius: 10px; padding: 18px; font-family: monospace; font-size: 14.5px; color: #78350f; font-weight: 700; margin: 18px 0; line-height: 1.6; }
+    .example-box { background: #fdfbf7; border: 1px solid var(--border-color); border-left: 4px solid var(--amber-primary); border-radius: 0 12px 12px 0; padding: 18px 22px; margin: 20px 0; }
+
     .disclaimer-alert { background: #fef2f2; border-left: 4px solid #ef4444; padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 24px 0; font-size: 13.5px; color: #991b1b; line-height: 1.6; }
 
     /* FAQ */
@@ -426,30 +429,63 @@
     <article class="seo-article">
       <h2>Lump Sum vs. Systematic Investment Plan: The Strategic Trade-off</h2>
       <p>
-        When expatriates or Saudi citizens receive a substantial capital allocation—such as an <strong>End of Service Benefit (EOSB)</strong> payout, annual corporate bonus, or inheritance—a critical financial decision arises: should the entire amount be invested immediately as a lump sum, or staged gradually via monthly SIP contributions?
+        When expatriates or Saudi citizens receive a substantial capital allocation—such as an <a href="/saudi-salary-calculator/eosb/" style="color:var(--amber-primary); font-weight:700;">End-of-Service Benefits (EOSB) gratuity payout</a>, annual corporate bonus, or family inheritance—a critical financial decision arises: should the entire amount be invested immediately as a lump sum, or staged gradually via monthly SIP contributions?
       </p>
+
+      <h3>One-Time Lump-Sum Compounding Formula</h3>
+      <p>
+        The mathematical growth of a single one-time capital investment compounding annually is modeled using the standard future value formula:
+      </p>
+      <div class="formula-card">
+        FV = PV × (1 + r)^t
+        <br><br>
+        Where:
+        <br>• PV = Starting lump-sum principal deposit (in SAR)
+        <br>• r = Annual assumed compound return rate (decimal: Return % ÷ 100)
+        <br>• t = Number of investment years (holding period)
+        <br>• FV = Projected future portfolio value
+      </div>
+
+      <h3>Worked Calculation Example</h3>
+      <div class="example-box">
+        <h4 style="font-size:15px; font-weight:700; color:var(--navy-dark); margin-bottom:10px;"><i class="fas fa-coins" style="color:var(--amber-primary); margin-right:6px;"></i> Illustrative 10-Year Lump Sum Projection</h4>
+        <ul style="margin-bottom:10px; padding-left:20px; font-size:14px; line-height:1.6; color:#334155;">
+          <li><strong>Starting Principal ($PV$):</strong> 100,000.00 SAR</li>
+          <li><strong>Investment Duration ($t$):</strong> 10 Years</li>
+          <li><strong>Illustrative Annual Return Assumption ($r$):</strong> 8.0% per annum</li>
+          <li><strong>Compounding Calculation:</strong> 100,000 × (1 + 0.08)<sup>10</sup> = 100,000 × 2.158925</li>
+          <li><strong>Projected Future Value ($FV$):</strong> <strong>215,892.50 SAR</strong></li>
+          <li><strong>Projected Compounded Gain:</strong> 215,892.50 − 100,000 = <strong>+115,892.50 SAR (115.9% total return)</strong></li>
+        </ul>
+        <p style="font-size:13px; color:#64748b; margin-bottom:0;">
+          <em>*Important Reality Check: This simulation is a mathematical projection for educational modeling. Real-world financial markets do not follow a constant, smooth 8% annual return every single year; actual portfolio performance will fluctuate based on annual market volatility, dividend distributions, and macroeconomic cycles.</em>
+        </p>
+      </div>
 
       <h3>1. The Case for Lump Sum Investing</h3>
       <p>
-        Academic finance research demonstrates that over 10-to-20-year horizons, stock markets trend upward far more frequently than they decline. By deploying capital immediately:
+        Academic finance research demonstrates that over 10-to-20-year horizons, diversified equity markets historically spend more time expanding than contracting. By deploying capital immediately:
       </p>
       <ul>
-        <li><strong>Full Time Horizon Exposure:</strong> Every riyal compounds for the complete investment duration.</li>
-        <li><strong>Dividend Accumulation:</strong> You begin receiving full corporate dividend yields from day one.</li>
+        <li><strong>Full Time Horizon Exposure:</strong> 100% of your capital begins compounding from day one, rather than sitting in cash.</li>
+        <li><strong>Dividend Accumulation:</strong> You begin receiving full corporate dividend yields across all holdings immediately.</li>
       </ul>
 
       <h3>2. The Case for Monthly SIP (Dollar-Cost Averaging)</h3>
       <p>
-        While lump sum investing historically wins mathematically over very long horizons under constant upward drift, monthly SIP provides indispensable psychological and risk-mitigation benefits:
+        While lump sum investing mathematically outperforms gradual investing under steady upward market drift, recurring monthly contributions provide indispensable risk-mitigation advantages:
       </p>
       <ul>
-        <li><strong>Crash Protection:</strong> Prevents investing all your savings immediately prior to a major macroeconomic market correction.</li>
-        <li><strong>Peace of Mind:</strong> If markets decline shortly after starting, your subsequent monthly installments buy shares at discounted bargain prices.</li>
+        <li><strong>Timing Risk Mitigation:</strong> Staggering deposits protects you against deploying all capital right before an unforeseen cyclical market peak.</li>
+        <li><strong>Emotional Discipline:</strong> If markets decline shortly after starting, regular installments acquire more fund units at discounted prices.</li>
       </ul>
+      <p style="font-size:14.5px; color:#334155; line-height:1.7;">
+        To model gradual monthly allocations or salary-linked wealth accumulation instead of a single deposit, use our dedicated <a href="/shariah-sip-calculator/sip-calculator/" style="color:var(--amber-primary); font-weight:700;">Shariah Systematic Investment Plan (SIP) Calculator</a>.
+      </p>
 
       <div class="disclaimer-alert">
-        <strong><i class="fas fa-triangle-exclamation"></i> Strategy Disclaimer</strong>
-        Calculations assume steady annual compounding for comparative mathematical modeling. Real asset values fluctuate daily. DailyCalcHubs is not a financial advisor or Shariah certification board. Consult licensed wealth professionals for portfolio construction.
+        <strong><i class="fas fa-triangle-exclamation"></i> Strategy &amp; Shariah Disclaimer</strong>
+        All figures produced by this tool are mathematical projections based on constant annual compounding assumptions for comparative educational modeling. DailyCalcHubs is an independent technology service and not a licensed financial advisor, fund manager, or Shariah certification board. We do not issue fatwas, certify financial products as halal, or guarantee investment profits. Capital invested in equities, ETFs, and Sukuk is subject to market fluctuation. Users should independently verify the Shariah credentials of specific financial products through qualified scholars or recognized screening standards such as AAOIFI.
       </div>
 
       <h2>Frequently Asked Questions</h2>
