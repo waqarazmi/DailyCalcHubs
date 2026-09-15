@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -221,6 +221,9 @@
     .seo-article ul { margin-left: 24px; margin-bottom: 18px; font-size: 15px; color: #334155; }
     .seo-article li { margin-bottom: 8px; }
 
+    .formula-card { background: #fffbeb; border: 1.5px dashed #fde68a; border-radius: 10px; padding: 18px; font-family: monospace; font-size: 14.5px; color: #78350f; font-weight: 700; margin: 18px 0; line-height: 1.6; }
+    .example-box { background: #fdfbf7; border: 1px solid var(--border-color); border-left: 4px solid var(--amber-primary); border-radius: 0 12px 12px 0; padding: 18px 22px; margin: 20px 0; }
+
     .disclaimer-alert { background: #fef2f2; border-left: 4px solid #ef4444; padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 24px 0; font-size: 13.5px; color: #991b1b; line-height: 1.6; }
 
     /* FAQ */
@@ -426,21 +429,57 @@
     <article class="seo-article">
       <h2>Why Calculating Real Inflation-Adjusted Wealth Matters</h2>
       <p>
-        Nominal compounding projections look spectacular on paper, but every economy experiences continuous purchasing power erosion due to inflation. If prices of housing, food, and healthcare rise by 2.5% annually over 15 years, a basket of goods costing 100,000 SAR today will cost over 144,000 SAR in the future.
+        Nominal compounding projections look spectacular on paper, but every economy experiences continuous purchasing power erosion due to inflation. If prices of housing, food, and healthcare rise by 2.5% to 3% annually over 15 years, a basket of goods costing 100,000 SAR today will cost over 155,000 SAR in the future. To determine your net monthly disposable income after social insurance and deductions before automating savings, consult our <a href="/saudi-salary-calculator/take-home-salary/" style="color:var(--amber-primary); font-weight:700;">Saudi Take-Home Salary Calculator</a>.
       </p>
+
+      <h3>Inflation-Adjusted Real Return Formula</h3>
+      <p>
+        In financial economics, the exact real rate of return is determined by the Fisher equation:
+      </p>
+      <div class="formula-card">
+        Real Return Rate = [ (1 + Nominal Return Rate) / (1 + Inflation Rate) ] − 1
+        <br><br>
+        Simple Linear Approximation:
+        <br>Real Return ≈ Nominal Return − Inflation Rate
+      </div>
+      <p style="font-size:14px; color:#475569; line-height:1.6;">
+        <em>Note: The simple subtraction approximation (Nominal − Inflation) is commonly used for quick estimations, but the exact compounding formula accounts for purchasing power drag on both accumulated principal and compounded gains.</em>
+      </p>
+
+      <h3>Worked Calculation Example</h3>
+      <div class="example-box">
+        <h4 style="font-size:15px; font-weight:700; color:var(--navy-dark); margin-bottom:10px;"><i class="fas fa-chart-line" style="color:var(--amber-primary); margin-right:6px;"></i> Illustrative 15-Year Wealth Accumulation Scenario</h4>
+        <ul style="margin-bottom:10px; padding-left:20px; font-size:14px; line-height:1.6; color:#334155;">
+          <li><strong>Monthly Investment Contribution:</strong> 3,000 SAR per month</li>
+          <li><strong>Investment Horizon:</strong> 15 Years (180 months)</li>
+          <li><strong>Total Principal Invested:</strong> 3,000 SAR × 180 = <strong>540,000 SAR</strong></li>
+          <li><strong>Illustrative Nominal Return Assumption:</strong> 9.0% per annum</li>
+          <li><strong>Illustrative Inflation Assumption:</strong> 3.0% per annum</li>
+          <li><strong>Projected Nominal Future Value:</strong> <strong>~1,143,731 SAR</strong> (+603,731 SAR nominal gain)</li>
+          <li><strong>Real Purchasing Power (Today's SAR):</strong> <strong>~734,118 SAR</strong> (+194,118 SAR real gain)</li>
+          <li><strong>Estimated Inflation Drag Impact:</strong> <strong>-409,614 SAR</strong></li>
+          <li><strong>Exact Real Annual Return Rate:</strong> [(1 + 0.09) ÷ (1 + 0.03)] − 1 = <strong>5.83%</strong> (vs. 6.00% simple approximation)</li>
+        </ul>
+        <p style="font-size:13px; color:#64748b; margin-bottom:0;">
+          <em>*This simulation is a mathematical projection for educational planning. Real equity and sukuk returns fluctuate over time and are neither guaranteed nor fixed.</em>
+        </p>
+      </div>
 
       <h3>Nominal Returns vs. Real Returns</h3>
       <p>
-        Our calculator computes both figures simultaneously:
+        Our calculator computes both perspectives simultaneously so you can assess true wealth accumulation:
       </p>
       <ul>
         <li><strong>Nominal Portfolio Value:</strong> The literal cash balance in your investment brokerage account.</li>
         <li><strong>Real Purchasing Power:</strong> Deflates the future balance back into today’s currency terms using $FV_{\text{real}} = FV \div (1 + \text{Inflation Rate})^{\text{Years}}$.</li>
       </ul>
+      <p style="font-size:14.5px; color:#334155; line-height:1.7;">
+        For standard systematic investment projections focused on gross compounding without inflation deflation, explore our companion <a href="/shariah-sip-calculator/sip-calculator/" style="color:var(--amber-primary); font-weight:700;">Shariah SIP Calculator</a>.
+      </p>
 
       <div class="disclaimer-alert">
-        <strong><i class="fas fa-triangle-exclamation"></i> Planning Disclaimer</strong>
-        All figures are mathematical projections based on constant compounding and steady inflation assumptions. DailyCalcHubs is not a financial advisor or Shariah certification board. Real market returns fluctuate, and returns on equities and mutual funds are neither guaranteed nor fixed.
+        <strong><i class="fas fa-triangle-exclamation"></i> Financial &amp; Shariah Disclaimer</strong>
+        All figures produced by this tool are mathematical projections based on assumed compounding rates and constant inflation scenarios for educational planning. DailyCalcHubs is an independent technology platform, not an Islamic financial institution, broker, or fatwa-issuing body. We do not provide religious certifications or guarantee investment yields. Actual market returns vary materially, and investments in equities or mutual funds are subject to market risk. Users must independently verify the Shariah compliance credentials of any specific investment product through licensed advisors or recognized standards like AAOIFI.
       </div>
 
       <h2>Automated Monthly Investing in Saudi Arabian Banks</h2>
