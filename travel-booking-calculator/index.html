@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -322,8 +322,8 @@
           <span>Saudi Riyal Reference Rates for Travel &amp; Bookings</span>
         </div>
         <div class="ticker-rates-row">
-          <div class="ticker-item"><span>SAR / AED:</span><span class="ticker-rate">0.98 AED</span></div>
-          <div class="ticker-item"><span>SAR / USD:</span><span class="ticker-rate">$ 0.2667</span></div>
+          <div class="ticker-item"><span>SAR / AED:</span><span class="ticker-rate" id="tickerSarAed">--.-- AED</span></div>
+          <div class="ticker-item"><span>SAR / USD:</span><span class="ticker-rate" id="tickerSarUsd">$ --.--</span></div>
           <div class="ticker-item"><span>SAR / EUR:</span><span class="ticker-rate">€ 0.2450</span></div>
           <div class="ticker-item"><span>KSA Tourism VAT:</span><span class="ticker-rate" style="color:#86efac;">15% Standard</span></div>
         </div>
@@ -906,5 +906,6 @@
     });
   </script>
 
+  <script src="/live-ticker.js" defer></script>
 </body>
 </html>

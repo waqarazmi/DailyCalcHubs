@@ -273,11 +273,11 @@
   <div class="top-rates-ticker">
     <div class="container">
       <div class="ticker-inner">
-        <div class="ticker-item"><span>SAR / INR:</span><span class="ticker-rate" id="tickerSar">&#8377; 22.45</span></div>
-        <div class="ticker-item"><span class="ticker-tag-green"><i class="fas fa-bolt" style="color:#fbbf24;"></i> Barq Rate:</span><span class="ticker-rate" id="tickerBarq">&#8377; 22.18</span></div>
-        <div class="ticker-item"><span>SAR / PKR:</span><span class="ticker-rate" id="tickerPkr">Rs 74.20</span></div>
-        <div class="ticker-item"><span>SAR / BDT:</span><span class="ticker-rate" id="tickerBdt">&#2547; 32.10</span></div>
-        <div class="ticker-item"><span>SAR / PHP:</span><span class="ticker-rate" id="tickerPhp">&#8369; 15.65</span></div>
+        <div class="ticker-item"><span>SAR / INR:</span><span class="ticker-rate" id="tickerSar">&#8377; --.--</span></div>
+        <div class="ticker-item"><span class="ticker-tag-green"><i class="fas fa-bolt" style="color:#fbbf24;"></i> Barq Rate:</span><span class="ticker-rate" id="tickerBarq">&#8377; --.--</span></div>
+        <div class="ticker-item"><span>SAR / PKR:</span><span class="ticker-rate" id="tickerPkr">Rs --.--</span></div>
+        <div class="ticker-item"><span>SAR / BDT:</span><span class="ticker-rate" id="tickerBdt">&#2547; --.--</span></div>
+        <div class="ticker-item"><span>SAR / PHP:</span><span class="ticker-rate" id="tickerPhp">&#8369; --.--</span></div>
         <div class="ticker-item"><span>Gold 24K KSA:</span><span class="ticker-rate" style="color:#fbbf24;">322.50 SAR</span></div>
       </div>
     </div>
@@ -368,11 +368,11 @@
           <div class="result-row-top">
             <div>
               <div class="result-label">Net In-Hand Beneficiary Receives</div>
-              <div class="result-big-val" id="inrPayout">&#8377; 22,450.00</div>
+              <div class="result-big-val" id="inrPayout">&#8377; --.--</div>
             </div>
             <div class="result-rate-tag" id="inrRateTag">
               <i class="fas fa-bolt" style="color:#fbbf24;"></i>
-              <span>1 SAR = 22.4500 INR</span>
+              <span>Fetching live rate...</span>
             </div>
           </div>
           <div class="result-meta-grid">
@@ -475,7 +475,7 @@
 
       <h3>Practical Worked Example: Sending 3,000 SAR to India</h3>
       <p>
-        Let us calculate the net payout for an expat sending 3,000 SAR to an Indian bank account under typical market pricing (Live Spot: 1 SAR = 22.45 INR):
+        Let us calculate the net payout for an expat sending 3,000 SAR to an Indian bank account under typical market pricing (Illustrative Scenario Benchmark: 1 SAR = 22.45 INR):
       </p>
       <table class="data-table">
         <thead>
@@ -606,7 +606,7 @@
         }
         throw new Error('Incomplete data');
       } catch (e) {
-        liveSarInrRate = 22.45;
+        liveSarInrRate = 25.21;
         badge.style.background = '#fef2f2';
         badge.style.color = '#991b1b';
         badge.style.border = '1px solid #fecaca';
@@ -628,7 +628,7 @@
 
     function recalcInr() {
       const amt = parseFloat(document.getElementById('inrAmount').value) || 0;
-      const rate = liveSarInrRate || 22.45;
+      const rate = liveSarInrRate || 25.21;
 
       const payoutEl = document.getElementById('inrPayout');
       const tagEl = document.getElementById('inrRateTag');
@@ -773,5 +773,6 @@
       }
     }
   </script>
+  <script src="/live-ticker.js" defer></script>
 </body>
 </html>
