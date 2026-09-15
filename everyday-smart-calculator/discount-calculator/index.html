@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -395,6 +395,9 @@
     .seo-article ul { margin-left: 24px; margin-bottom: 18px; font-size: 15px; color: #334155; }
     .seo-article li { margin-bottom: 8px; }
 
+    .formula-box { background: #f0f9ff; border: 1.5px solid var(--sky-border); border-radius: 12px; padding: 18px 22px; margin: 20px 0; font-family: monospace; font-size: 14.5px; font-weight: 700; color: #0369a1; line-height: 1.6; }
+    .example-box { background: #f8fafc; border: 1px solid var(--border-color); border-left: 4px solid var(--sky-saudi); border-radius: 0 12px 12px 0; padding: 18px 22px; margin: 20px 0; }
+
     /* FAQ */
     .faq-item {
       border: 1px solid var(--border-color);
@@ -646,6 +649,41 @@
 
     <!-- SEO & Educational Guide -->
     <article class="seo-article">
+      <h2>How Smart Retail Discounts &amp; VAT Are Calculated</h2>
+      <p>
+        Evaluating promotional markdowns during shopping sales requires understanding the mathematical relationship between initial retail prices, percentage discounts, and statutory taxes. For general percentage increases, decreases, or percentage-of-value calculations that do not involve retail sales tax or stacked promo codes, use our dedicated <a href="/everyday-smart-calculator/percentage-calculator/" style="color:var(--sky-dark); font-weight:700;">Percentage Calculator</a>.
+      </p>
+
+      <h3>Mathematically Valid Discount &amp; VAT Formulas</h3>
+      <div class="formula-box">
+        Discount Amount = Original Price × (Discount % ÷ 100)<br>
+        Discounted Price = Original Price × (1 − [Discount % ÷ 100])<br>
+        Final Price with Standard 15% VAT (where applicable) = Discounted Price × 1.15
+      </div>
+      <p style="font-size:13.5px; color:#64748b; margin-top:-8px; margin-bottom:18px;">
+        <em>*Note: Under Saudi ZATCA guidelines, the standard 15% VAT rate applies to taxable commercial goods and services. Certain qualifying essential goods or cross-border items may follow zero-rated or exempt tax treatments.</em>
+      </p>
+
+      <h3>Worked Calculation Example</h3>
+      <div class="example-box">
+        <h4 style="font-size:15px; font-weight:700; color:var(--navy-dark); margin-bottom:10px;"><i class="fas fa-receipt" style="color:var(--sky-saudi); margin-right:6px;"></i> Illustrative Retail Checkout Example</h4>
+        <ul style="margin-bottom:0; padding-left:20px;">
+          <li><strong>Original Retail Price:</strong> 400.00 SAR</li>
+          <li><strong>Promotional Discount (25%):</strong> 25% off</li>
+          <li><strong>Discount Amount Saved:</strong> 400 SAR × 0.25 = <strong>100.00 SAR</strong></li>
+          <li><strong>Discounted Net Price:</strong> 400 SAR − 100 SAR = <strong>300.00 SAR</strong></li>
+          <li><strong>Standard 15% Saudi VAT (on 300 SAR):</strong> 300 SAR × 0.15 = <strong>45.00 SAR</strong></li>
+          <li><strong>Illustrative Final Total Payable:</strong> 300 SAR + 45 SAR = <strong>345.00 SAR</strong></li>
+        </ul>
+      </div>
+
+      <h3>How to Use This Calculator in 3 Simple Steps</h3>
+      <ol style="margin-left: 24px; margin-bottom: 22px; font-size: 15px; color: #334155; line-height: 1.7;">
+        <li><strong>Enter Original Price:</strong> Input the regular retail shelf tag price in SAR (or your local currency).</li>
+        <li><strong>Set Primary &amp; Extra Discounts:</strong> Enter the storewide discount percentage and add any extra stackable app coupon or bank promo code.</li>
+        <li><strong>Select VAT Treatment:</strong> Choose whether the displayed price is already VAT-inclusive, requires 15% VAT added, or is tax-exempt to view your total money saved.</li>
+      </ol>
+
       <h2>Understanding Stacked Discounts: Percentage Math Explained</h2>
       <p>
         During major sales campaigns, retailers frequently advertise stacking promotions, such as "50% Off Storewide PLUS an Extra 20% Off at Checkout". Many consumers assume this equals a 70% total discount. In reality, discounts compound multiplicatively rather than additively:
