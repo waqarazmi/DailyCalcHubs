@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -366,6 +366,9 @@
     .seo-article ul { margin-left: 24px; margin-bottom: 18px; font-size: 15px; color: #334155; }
     .seo-article li { margin-bottom: 8px; }
 
+    .formula-box { background: #f0f9ff; border: 1.5px solid var(--sky-border); border-radius: 12px; padding: 18px 22px; margin: 20px 0; font-family: monospace; font-size: 14.5px; font-weight: 700; color: #0369a1; line-height: 1.6; }
+    .example-box { background: #f8fafc; border: 1px solid var(--border-color); border-left: 4px solid var(--sky-saudi); border-radius: 0 12px 12px 0; padding: 18px 22px; margin: 20px 0; }
+
     /* FAQ */
     .faq-item {
       border: 1px solid var(--border-color);
@@ -594,8 +597,32 @@
     <article class="seo-article">
       <h2>How Chronological Age is Calculated</h2>
       <p>
-        Chronological age represents the precise measure of time elapsed from an individual's birth to a specified target date. While casual approximations often divide total days lived by 365 or 365.25, high-precision calculations require handling variable calendar month lengths (28, 29, 30, and 31 days) and leap year cycles.
+        Chronological age represents the precise measure of time elapsed from an individual's birth to a specified target date. While casual approximations often divide total days lived by 365 or 365.25, high-precision calculations require handling variable calendar month lengths (28, 29, 30, and 31 days) and leap year cycles. To calculate hours, minutes, or duration spans between specific shift times and workdays, use the <a href="/everyday-smart-calculator/time-duration-calculator/" style="color:var(--sky-dark); font-weight:700;">Time Duration Calculator</a>.
       </p>
+
+      <h3>Chronological Calendar Difference Logic</h3>
+      <div class="formula-box">
+        Elapsed Days = Target Day − Birth Day (if negative, borrow calendar days from previous month)<br>
+        Elapsed Months = Target Month − Birth Month (if negative, borrow 12 months from Target Year)<br>
+        Elapsed Years = Target Year − Birth Year (after accounting for month/day borrowing)
+      </div>
+
+      <h3>Worked Calculation Example</h3>
+      <div class="example-box">
+        <h4 style="font-size:15px; font-weight:700; color:var(--navy-dark); margin-bottom:10px;"><i class="fas fa-calendar-day" style="color:var(--sky-saudi); margin-right:6px;"></i> Illustrative Date Breakdown (Birth Date: 14 August 1995)</h4>
+        <p style="font-size:14px; color:#334155; margin-bottom:10px; line-height:1.6;">
+          Consider an individual born on <strong>14 August 1995</strong> evaluated against an illustrative target date:
+        </p>
+        <ul style="margin-bottom:10px; padding-left:20px; font-size:14px; line-height:1.6;">
+          <li><strong>Completed Full Years:</strong> On 14 August 2026, the individual completes exactly <strong>31 solar years</strong> (2026 − 1995).</li>
+          <li><strong>Elapsed Calendar Months:</strong> Any calendar months past August 14th increment the completed month count (e.g., reaching 1 month on September 14).</li>
+          <li><strong>Elapsed Days:</strong> Days elapsed beyond the most recent monthly anniversary date are counted day-by-day.</li>
+          <li><strong>Total Days Lived &amp; Leap Years:</strong> Because leap years occurred in 1996, 2000, 2004, 2008, 2012, 2016, 2020, and 2024, the total days lived calculation dynamically incorporates these 8 intercalary leap days rather than assuming static 365-day years.</li>
+        </ul>
+        <p style="font-size:13px; color:#64748b; margin-bottom:0;">
+          <em>*The calculator above evaluates your birth date dynamically against today's live calendar date or any customized target date you select in the date picker.</em>
+        </p>
+      </div>
 
       <h3>Exact Year, Month, and Day Breakdown</h3>
       <p>
