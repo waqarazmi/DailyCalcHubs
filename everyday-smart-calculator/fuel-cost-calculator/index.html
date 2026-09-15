@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -349,6 +349,7 @@
           <div class="preset-chips">
             <button type="button" class="preset-chip" onclick="setPricePreset(2.18)">KSA 91 Octane (2.18 SAR)</button>
             <button type="button" class="preset-chip" onclick="setPricePreset(2.33)">KSA 95 Octane (2.33 SAR)</button>
+            <button type="button" class="preset-chip" onclick="setPricePreset(1.79)">KSA Diesel (1.79 SAR)</button>
             <button type="button" class="preset-chip" onclick="setPricePreset(3.00)">UAE Special 95 (~3.00 AED)</button>
           </div>
         </div>
@@ -460,11 +461,58 @@
         </table>
       </div>
 
+      <h2>Saudi Aramco Domestic Retail Fuel Prices</h2>
+      <p>
+        Domestic fuel prices across the Kingdom of Saudi Arabia are regulated by Saudi Aramco and subject to periodic official review. For travel and daily commuting calculations, the current listed retail fuel benchmarks are:
+      </p>
+      <div class="data-table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Fuel Grade / Type</th>
+              <th>Current Retail Price</th>
+              <th>Applicable Vehicle Category</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Gasoline 91 Octane</strong></td>
+              <td><strong>2.18 SAR / Liter</strong></td>
+              <td>Standard economy passenger cars, sedans, compact crossovers</td>
+            </tr>
+            <tr>
+              <td><strong>Gasoline 95 Octane</strong></td>
+              <td><strong>2.33 SAR / Liter</strong></td>
+              <td>High-performance engines, premium sports vehicles, luxury sedans</td>
+            </tr>
+            <tr>
+              <td><strong>Diesel</strong></td>
+              <td><strong>1.79 SAR / Liter</strong></td>
+              <td>Commercial trucks, heavy transport, utility fleet vehicles</td>
+            </tr>
+            <tr>
+              <td><strong>Gasoline 98 Octane</strong></td>
+              <td><strong>4.64 SAR / Liter</strong></td>
+              <td>Specialty track vehicles, high-compression exotic performance cars</td>
+            </tr>
+            <tr>
+              <td><strong>Kerosene</strong></td>
+              <td><strong>1.75 SAR / Liter</strong></td>
+              <td>Domestic heating and industrial applications</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p style="font-size:14.5px; color:#334155; line-height:1.7;">
+        Planning an extended vacation or road trip across Saudi Arabia or the GCC? Combine your fuel cost estimates with accommodation, dining, and activity budgeting using our comprehensive <a href="/travel-booking-calculator/travel-budget/" style="color:var(--sky-dark); font-weight:700;">Travel Budget Calculator</a>.
+      </p>
+
       <!-- Driving Conditions Disclaimer -->
       <div class="disclaimer-card">
         <h4><i class="fas fa-route"></i> Travel &amp; Fuel Pricing Notice</h4>
         <p>
-          Fuel consumption figures are mathematical planning estimates. Actual fuel usage depends on driving style, headwind resistance, tire pressure, AC compressor load, road gradients, and city stop-and-go traffic. Fuel pump prices vary across regional energy authorities; adjust the rate per liter to match your specific local gas station invoice.
+          Fuel consumption figures are mathematical planning estimates. Actual fuel usage depends on driving style, headwind resistance, tire pressure, AC compressor load, road gradients, and city stop-and-go traffic. Domestic retail fuel prices are officially published by Saudi Aramco and subject to periodic government review; adjust the rate per liter in the calculator to match your specific local gas station invoice.
         </p>
       </div>
 
@@ -477,8 +525,8 @@
       </div>
 
       <div class="faq-item">
-        <div class="faq-question" onclick="toggleFaq(this)">What is the petrol price in Saudi Arabia? <i class="fas fa-chevron-down"></i></div>
-        <div class="faq-answer">Saudi Aramco domestic fuel pricing currently stands at approximately 2.18 SAR per liter for 91 Octane gasoline and 2.33 SAR per liter for 95 Octane. You can adjust the price in the calculator to match any current local pump rate.</div>
+        <div class="faq-question" onclick="toggleFaq(this)">What are the official petrol and diesel prices in Saudi Arabia? <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-answer">Official Saudi Aramco domestic retail fuel pricing stands at 2.18 SAR/L for 91 Octane gasoline, 2.33 SAR/L for 95 Octane, and 1.79 SAR/L for Diesel (with 98 Octane at 4.64 SAR/L and Kerosene at 1.75 SAR/L). Because pump rates are subject to periodic review by Saudi Aramco, you can customize the price field in the calculator to match any current local pump rate.</div>
       </div>
 
       <div class="faq-item">
