@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -478,9 +478,38 @@
     </div>
 
     <!-- Editorial & Strategy Guide -->
-    <div class="editorial-section">
+    <article class="editorial-section content-article">
       <h2>How Online Travel Agencies Structure Checkout Fees</h2>
       <p>Have you ever found a great flight or hotel deal online, only to watch the price spike right before you click "Confirm &amp; Pay"? This practice, known in the consumer protection industry as <em>drip pricing</em>, separates ancillary fees from the headline quote. Our <strong>Booking Cost &amp; Fee Calculator</strong> illuminates these hidden layers so you can make informed comparisons between booking direct vs. using third-party aggregators.</p>
+
+      <h2>The Travel Checkout Fee Formula</h2>
+      <div style="background:#fff1f2; border:1.5px dashed #fecdd3; border-radius:10px; padding:18px; font-family:monospace; font-size:14px; color:#9f1239; font-weight:700; margin:18px 0;">
+        Pre-Card Subtotal = Base Reservation + Platform Convenience Fee + Insurance + Waiver<br>
+        Payment Surcharge = Pre-Card Subtotal × Selected Payment Card Rate %<br>
+        Net Final Checkout Amount = (Pre-Card Subtotal + Payment Surcharge) − Promotional Voucher
+      </div>
+      <p style="font-size:14px; color:#475569; line-height:1.6;">
+        Where platform fees reflect the OTA convenience percentage or flat fee, card processing varies by payment method (e.g. 0% for domestic Mada vs. 2.5% for international credit cards), and voluntary protection add-ons are included based on traveler preference.
+      </p>
+
+      <h3>Worked Checkout Example: 1,800 SAR Package Reservation</h3>
+      <div style="background:#fff9f9; border:1px solid #fecdd3; border-left:4px solid var(--crimson-primary); border-radius:0 10px 10px 0; padding:18px 22px; margin:20px 0;">
+        <h4 style="font-size:15px; font-weight:700; color:var(--navy-dark); margin-bottom:8px;"><i class="fas fa-receipt" style="color:var(--crimson-primary); margin-right:6px;"></i> Illustrative Booking Surcharge Breakdown (User-Entered Estimates)</h4>
+        <p style="font-size:13.5px; color:#64748b; margin-bottom:12px;">The figures below demonstrate how portal markups accumulate before checkout. All fee percentages and base amounts are user-selected estimates rather than fixed universal laws:</p>
+        <ul style="margin-bottom:12px; padding-left:20px; font-size:14px; line-height:1.65; color:#334155;">
+          <li><strong>Base Reservation Amount:</strong> <strong>1,800.00 SAR</strong></li>
+          <li><strong>Platform Convenience Fee (3% User Assumption):</strong> 1,800 SAR × 0.03 = <strong>54.00 SAR</strong></li>
+          <li><strong>Optional Travel Medical Insurance:</strong> <strong>85.00 SAR</strong></li>
+          <li><strong>Flexible Cancellation Protection Waiver:</strong> <strong>50.00 SAR</strong></li>
+          <li><strong>Pre-Card Subtotal:</strong> 1,800 + 54 + 85 + 50 = <strong>1,989.00 SAR</strong></li>
+          <li><strong>Payment Processing (2.5% Credit Card Rate):</strong> 1,989 SAR × 0.025 = <strong>49.73 SAR (~50 SAR)</strong></li>
+          <li><strong>Gross Cart Value:</strong> 1,989 + 49.73 = <strong>2,038.73 SAR</strong></li>
+          <li><strong>Promotional Voucher Coupon:</strong> <strong>-100.00 SAR</strong></li>
+          <li><strong>Final Net Checkout Amount:</strong> 2,038.73 − 100 = <strong>1,938.73 SAR (~1,939 SAR)</strong></li>
+          <li><strong>Total Extra Surcharges Incurred:</strong> 54 + 49.73 + 85 + 50 = <strong>238.73 SAR (~239 SAR)</strong></li>
+          <li><strong>Net Surcharge Impact:</strong> (238.73 − 100) ÷ 1,800 = <strong>+7.7% effective fee ratio</strong></li>
+        </ul>
+      </div>
 
       <h3>1. Identifying the Anatomy of Booking Charges</h3>
       <p>Common line-item markups encountered during travel checkout include:</p>
@@ -496,10 +525,15 @@
         <li><strong>Compare Direct vs Aggregator:</strong> While aggregators offer handy comparison search engines, booking directly on the airline or hotel chain portal typically guarantees fee exemptions and straightforward refunds if plans change.</li>
       </ul>
 
+      <h3>3. Coordinating Booking Fees with Your Overall Itinerary</h3>
+      <p>
+        Before committing card details at checkout, compare whether bundling via an OTA provides genuine savings against booking directly. Estimate base airfares using our <a href="/travel-booking-calculator/flight-cost/" style="color:var(--crimson-primary); font-weight:700;">Flight Cost Estimator</a> and calculate hotel stay tariffs with statutory taxes using our <a href="/travel-booking-calculator/hotel-cost/" style="color:var(--crimson-primary); font-weight:700;">Hotel Stay Calculator</a>. To consolidate your complete vacation expenses—including living allowances and contingency reserves—use the <a href="/travel-booking-calculator/travel-budget/" style="color:var(--crimson-primary); font-weight:700;">Travel Budget Planner</a>.
+      </p>
+
       <div class="info-callout">
-        <strong>Neutral Financial Tool:</strong> DailyCalcHubs has zero commercial affiliation with booking portals or airlines. We provide transparent mathematical tools to help you protect your hard-earned travel savings.
+        <strong>Important Neutrality &amp; Platform Notice:</strong> DailyCalcHubs is an independent consumer estimation calculator with zero commercial affiliation to any airline, hotel chain, payment processor, or online travel agency (OTA). We do not provide live ticket inventory, process credit card payments, or guarantee fare availability. All fee structures and promotional deductions represent user-entered planning simulations. Always verify final transaction amounts on your merchant's checkout screen before payment.
       </div>
-    </div>
+    </article>
 
     <!-- FAQ Section -->
     <div class="faq-section">
