@@ -373,7 +373,7 @@
               <div class="input-wrap">
                 <input type="number" id="numChildren" value="1" min="0" max="10">
               </div>
-              <span class="field-hint">Standard 75% child fare tier</span>
+              <span class="field-hint">Illustrative 75% child fare preset (varies by carrier)</span>
             </div>
           </div>
 
@@ -383,7 +383,7 @@
               <div class="input-wrap">
                 <input type="number" id="numInfants" value="0" min="0" max="5">
               </div>
-              <span class="field-hint">Typically 10% base fare + taxes</span>
+              <span class="field-hint">Illustrative 10% lap infant preset (varies by carrier)</span>
             </div>
 
             <div class="input-group">
@@ -417,12 +417,12 @@
 
           <div class="input-row">
             <div class="input-group">
-              <label for="airportTax">Airport Taxes &amp; Fuel Surcharges (Per Ticket)</label>
+              <label for="airportTax">Airport / ticket taxes &amp; fees (user input)</label>
               <div class="input-wrap">
                 <span class="unit">SAR</span>
                 <input type="number" id="airportTax" class="has-unit" value="240" min="0" step="10">
               </div>
-              <span class="field-hint">Mandatory civil aviation &amp; terminal fees</span>
+              <span class="field-hint">Applicable airport, carrier, or ticket-related taxes and fees, where included in the fare or entered by the user</span>
             </div>
 
             <div class="input-group">
@@ -518,7 +518,7 @@
         Total Flight Cost = Base Fares (Adults + Children + Infants) + Airport Taxes + Add-ons (Baggage + Seats + Meals)
       </div>
       <p style="font-size:14px; color:#475569; line-height:1.6;">
-        Where adult fares reflect the published ticket price, children (2–11 yrs) typically follow a 75% tier, lap infants are billed at 10%, airport passenger taxes apply per ticket, and optional ancillaries (luggage, seat selection, hot meals) are summed based on user selection.
+        Passenger fare percentages shown in this calculator are illustrative assumptions. Actual airline child and infant fares vary by carrier, route, fare family, and ticket rules. Airport and ticket taxes reflect user-entered estimates or carrier breakdowns, and optional ancillaries (luggage, seat selection, meals) are summed based on user input.
       </p>
 
       <h3>Worked Flight Booking Example: Family of 3 (Round-Trip)</h3>
@@ -527,9 +527,9 @@
         <p style="font-size:13.5px; color:#64748b; margin-bottom:12px;">This scenario illustrates how base fares and ancillaries combine. All rates reflect user-entered estimates rather than live carrier inventory:</p>
         <ul style="margin-bottom:12px; padding-left:20px; font-size:14px; line-height:1.65; color:#334155;">
           <li><strong>Adult Base Airfare:</strong> 1,250 SAR × 2 Adults = <strong>2,500 SAR</strong></li>
-          <li><strong>Child Airfare (75% Tier):</strong> 1,250 SAR × 0.75 × 1 Child = <strong>937.50 SAR</strong></li>
+          <li><strong>Child Airfare (Illustrative 75% Preset):</strong> 1,250 SAR × 0.75 × 1 Child = <strong>937.50 SAR</strong></li>
           <li><strong>Base Fares Subtotal:</strong> 2,500 + 937.50 = <strong>3,437.50 SAR</strong></li>
-          <li><strong>Mandatory Airport Taxes:</strong> 240 SAR/ticket × 3 passengers = <strong>720 SAR</strong></li>
+          <li><strong>Airport &amp; Ticket Taxes (User-Entered Estimate):</strong> 240 SAR/ticket × 3 passengers = <strong>720 SAR</strong></li>
           <li><strong>Checked Luggage (2 Bags):</strong> 180 SAR/bag × 2 = <strong>360 SAR</strong></li>
           <li><strong>Seat Selection (3 Seated Pax):</strong> 65 SAR/seat × 3 = <strong>195 SAR</strong></li>
           <li><strong>In-flight Meals (3 Seated Pax):</strong> 45 SAR/meal × 3 = <strong>135 SAR</strong></li>
@@ -544,14 +544,14 @@
       <ul>
         <li><strong>Checked Baggage:</strong> Purchasing extra baggage online 24 hours prior to departure typically saves 50% compared to paying desk counter penalties.</li>
         <li><strong>Seat Selection:</strong> While randomized assignment at check-in is free, family groups who need contiguous seating should budget 40 to 120 SAR per sector.</li>
-        <li><strong>Aviation Surcharges:</strong> Passenger facility charges, safety taxes, and terminal security fees are non-negotiable and set by international civil aviation authorities.</li>
+        <li><strong>Aviation Taxes &amp; Surcharges:</strong> Applicable airport passenger facility charges, security fees, and government ticket levies depend on the departure airport and destination country. Actual amounts should be entered directly into the calculator based on your flight quote.</li>
       </ul>
 
-      <h3>2. Calculating Child and Infant Airfare Rates</h3>
-      <p>Airline ticketing rules distinguish between infants and young children:</p>
+      <h3>2. Child and Infant Airfare Presets</h3>
+      <p>Passenger fare percentages shown in this calculator are illustrative assumptions. Actual airline child and infant fares vary by carrier, route, fare family, and ticket rules:</p>
       <ul>
-        <li><strong>Infants under 2 years:</strong> When traveling on an adult’s lap without a dedicated seat, infant tickets are usually calculated at 10% to 15% of the full adult fare plus basic security taxes.</li>
-        <li><strong>Children aged 2 to 11:</strong> Children require their own seat and are billed between 75% and 100% of adult base fare depending on the fare class and carrier.</li>
+        <li><strong>Infants under 2 years:</strong> When traveling on an adult’s lap without a dedicated seat, many international carriers charge approximately 10% of the adult base fare plus ticket taxes, though certain promotional fares or low-cost carriers may charge flat infant fees.</li>
+        <li><strong>Children aged 2 to 11:</strong> Children occupying their own seat frequently receive a discount (often around 75% of base adult fare on legacy full-service airlines), whereas many budget carriers charge 100% of adult fare.</li>
       </ul>
 
       <h3>3. Connecting Flights into Your Overall Travel Plan</h3>
@@ -560,7 +560,7 @@
       </p>
 
       <div class="info-callout">
-        <strong>Important Booking &amp; Transparency Notice:</strong> DailyCalcHubs is an independent travel calculation suite and not an airline, hotel operator, or online travel agency (OTA). We do not sell airline tickets, book flights, or access live airline reservation systems. Calculations are mathematical estimations based on user-entered values and standard commercial aviation fare patterns. Fares, seat availability, and baggage surcharges vary dynamically; always confirm final ticket pricing on the official airline booking engine.
+        <strong>Important Booking &amp; Estimation Notice:</strong> DailyCalcHubs is an independent travel calculation suite and not an airline, hotel operator, or online travel agency (OTA). We do not sell airline tickets, book flights, or access live reservation inventory. All calculations represent planning estimates based on user-entered values and illustrative presets. Actual checkout totals vary by airline, route, departure dates, fare families, baggage rules, and applicable government taxes. Always confirm final ticket pricing directly with the carrier or authorized booking engine.
       </div>
     </article>
 
