@@ -1,4 +1,4 @@
-﻿/**
+/**
  * DailyCalcHubs - Global Live Forex Ticker
  * Synchronizes top-rates ticker across all internal and hub pages
  * Data source: open.er-api.com (USD base)
@@ -23,7 +23,8 @@
     NPR: 138.40,  // ~36.90 SAR/NPR
     LKR: 302.50,  // ~80.66 SAR/LKR
     USD: 1.0,
-    EUR: 0.92
+    EUR: 0.92,
+    GBP: 0.79
   };
 
   function updateTickerDOM(rates) {

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -14,7 +14,7 @@
     document.head.appendChild(script);
   })();
   </script>
-  <title>Age Calculator â€” Exact Chronological Age, Days & Next Birthday</title>
+  <title>Age Calculator — Exact Chronological Age, Days & Next Birthday</title>
   <meta name="description" content="Calculate your exact chronological age in years, months, and days with our free Smart Age Calculator. Includes next birthday countdown, total days lived, and weekday born.">
   <meta name="keywords" content="age calculator, date of birth calculator, calculate age online, exact age in days, birthday countdown, chronological age calculator">
   <link rel="canonical" href="https://dailycalchubs.com/everyday-smart-calculator/age-calculator/">
@@ -29,7 +29,7 @@
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://dailycalchubs.com/everyday-smart-calculator/age-calculator/">
-  <meta property="og:title" content="Age Calculator â€” Exact Chronological Age, Days & Next Birthday">
+  <meta property="og:title" content="Age Calculator — Exact Chronological Age, Days & Next Birthday">
   <meta property="og:description" content="Calculate your exact chronological age in years, months, and days with our free Smart Age Calculator. Includes next birthday countdown, total days lived, and weekday born.">
   <meta property="og:image" content="https://dailycalchubs.com/og-image.jpg">
   <meta property="og:image:secure_url" content="https://dailycalchubs.com/og-image.jpg">
@@ -39,7 +39,7 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Age Calculator â€” Exact Chronological Age, Days & Next Birthday">
+  <meta name="twitter:title" content="Age Calculator — Exact Chronological Age, Days & Next Birthday">
   <meta name="twitter:description" content="Calculate your exact chronological age in years, months, and days with our free Smart Age Calculator. Includes next birthday countdown, total days lived, and weekday born.">
   <meta name="twitter:image" content="https://dailycalchubs.com/og-image.jpg">
 
@@ -124,7 +124,7 @@
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "Why is my age in days different from simple multiplication (Years Ã— 365)?",
+        "name": "Why is my age in days different from simple multiplication (Years × 365)?",
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "A calendar year contains leap years every 4 years (366 days). Multiplying years by 365 ignores the extra days accumulated during leap years and differences in month lengths, producing an inaccurate total."
@@ -632,6 +632,14 @@
             <div class="meta-box-val" id="resTotalHours">248,136 Hours</div>
           </div>
           <div class="meta-box-inner">
+            <div class="meta-box-title">Total Minutes Lived (Approx)</div>
+            <div class="meta-box-val" id="resTotalMinutes">14,888,160 Minutes</div>
+          </div>
+          <div class="meta-box-inner">
+            <div class="meta-box-title">Total Seconds Lived (Approx)</div>
+            <div class="meta-box-val" id="resTotalSeconds">893,289,600 Seconds</div>
+          </div>
+          <div class="meta-box-inner">
             <div class="meta-box-title">Total Weeks Lived</div>
             <div class="meta-box-val" id="resTotalWeeks">1,477 Weeks</div>
           </div>
@@ -652,9 +660,9 @@
 
       <h3>Chronological Calendar Difference Logic</h3>
       <div class="formula-box">
-        Elapsed Days = Target Day âˆ’ Birth Day (if negative, borrow calendar days from previous month)<br>
-        Elapsed Months = Target Month âˆ’ Birth Month (if negative, borrow 12 months from Target Year)<br>
-        Elapsed Years = Target Year âˆ’ Birth Year (after accounting for month/day borrowing)
+        Elapsed Days = Target Day − Birth Day (if negative, borrow calendar days from previous month)<br>
+        Elapsed Months = Target Month − Birth Month (if negative, borrow 12 months from Target Year)<br>
+        Elapsed Years = Target Year − Birth Year (after accounting for month/day borrowing)
       </div>
 
       <h3>Worked Calculation Example</h3>
@@ -664,7 +672,7 @@
           Consider an individual born on <strong>14 August 1995</strong> evaluated against an illustrative target date:
         </p>
         <ul style="margin-bottom:10px; padding-left:20px; font-size:14px; line-height:1.6;">
-          <li><strong>Completed Full Years:</strong> On 14 August 2026, the individual completes exactly <strong>31 solar years</strong> (2026 âˆ’ 1995).</li>
+          <li><strong>Completed Full Years:</strong> On 14 August 2026, the individual completes exactly <strong>31 solar years</strong> (2026 − 1995).</li>
           <li><strong>Elapsed Calendar Months:</strong> Any calendar months past August 14th increment the completed month count (e.g., reaching 1 month on September 14).</li>
           <li><strong>Elapsed Days:</strong> Days elapsed beyond the most recent monthly anniversary date are counted day-by-day.</li>
           <li><strong>Total Days Lived &amp; Leap Years:</strong> Because leap years occurred in 1996, 2000, 2004, 2008, 2012, 2016, 2020, and 2024, the total days lived calculation dynamically incorporates these 8 intercalary leap days rather than assuming static 365-day years.</li>
@@ -707,7 +715,7 @@
       <h2>Frequently Asked Questions</h2>
       <div class="faq-item">
         <div class="faq-question" onclick="toggleFaq(this)">
-          <span>Why is my age in days different from simple multiplication (Years Ã— 365)?</span>
+          <span>Why is my age in days different from simple multiplication (Years × 365)?</span>
           <i class="fas fa-chevron-down"></i>
         </div>
         <div class="faq-answer" style="display:none;">
@@ -831,7 +839,7 @@
       let bdayRemDays = Math.round(diffDays % 30.4375);
       
       if (diffDays === 0) {
-        document.getElementById('resNextBdayCountdown').innerText = "Happy Birthday Today! ðŸŽ‰";
+        document.getElementById('resNextBdayCountdown').innerText = "Happy Birthday Today! \u{1F389}";
       } else if (bdayMonths > 0) {
         document.getElementById('resNextBdayCountdown').innerText = bdayMonths + ' Mos, ' + bdayRemDays + ' Days';
       } else {
@@ -844,11 +852,15 @@
       const totalDiffMs = asOf - dob;
       const totalDays = Math.floor(totalDiffMs / (1000 * 60 * 60 * 24));
       const totalHours = totalDays * 24;
+      const totalMinutes = totalHours * 60;
+      const totalSeconds = totalMinutes * 60;
       const totalWeeks = Math.floor(totalDays / 7);
       const totalMonths = (years * 12) + months;
 
       document.getElementById('resTotalDays').innerText = totalDays.toLocaleString('en-US') + ' Days';
       document.getElementById('resTotalHours').innerText = totalHours.toLocaleString('en-US') + ' Hours';
+      document.getElementById('resTotalMinutes').innerText = totalMinutes.toLocaleString('en-US') + ' Minutes';
+      document.getElementById('resTotalSeconds').innerText = totalSeconds.toLocaleString('en-US') + ' Seconds';
       document.getElementById('resTotalWeeks').innerText = totalWeeks.toLocaleString('en-US') + ' Weeks';
       document.getElementById('resTotalMonths').innerText = totalMonths.toLocaleString('en-US') + ' Months';
     }
