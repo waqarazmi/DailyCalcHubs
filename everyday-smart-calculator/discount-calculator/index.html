@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Discount Calculator — Sale Price, Stacked Vouchers & 15% Saudi VAT</title>
+  <title>Discount Calculator â€” Sale Price, Stacked Vouchers & 15% Saudi VAT</title>
   <meta name="description" content="Calculate final sale prices, double stacked promo discounts, and 15% Saudi VAT with our free Smart Discount Calculator. Perfect for KSA sales and shopping.">
   <meta name="keywords" content="discount calculator, sale price calculator, percent off calculator, saudi vat discount calculator, stacked promo discount, ksa shopping calculator">
   <link rel="canonical" href="https://dailycalchubs.com/everyday-smart-calculator/discount-calculator/">
@@ -17,7 +17,7 @@
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://dailycalchubs.com/everyday-smart-calculator/discount-calculator/">
-  <meta property="og:title" content="Discount Calculator — Sale Price, Stacked Vouchers & 15% Saudi VAT">
+  <meta property="og:title" content="Discount Calculator â€” Sale Price, Stacked Vouchers & 15% Saudi VAT">
   <meta property="og:description" content="Calculate final sale prices, double stacked promo discounts, and 15% Saudi VAT with our free Smart Discount Calculator. Perfect for KSA sales and shopping.">
   <meta property="og:image" content="https://dailycalchubs.com/og-image.jpg">
   <meta property="og:image:secure_url" content="https://dailycalchubs.com/og-image.jpg">
@@ -27,10 +27,48 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Discount Calculator — Sale Price, Stacked Vouchers & 15% Saudi VAT">
+  <meta name="twitter:title" content="Discount Calculator â€” Sale Price, Stacked Vouchers & 15% Saudi VAT">
   <meta name="twitter:description" content="Calculate final sale prices, double stacked promo discounts, and 15% Saudi VAT with our free Smart Discount Calculator. Perfect for KSA sales and shopping.">
   <meta name="twitter:image" content="https://dailycalchubs.com/og-image.jpg">
 
+  <!-- DailyCalcHubs Owner Admin Exclusion Mode (Zero GA4 Views / Zero AdSense Impressions) -->
+  <script>
+    (function() {
+      try {
+        var params = new URLSearchParams(window.location.search);
+        var owner = params.get('owner');
+        if (owner === 'waqar_lock') {
+          localStorage.setItem('dch_owner_mode', 'active');
+          params.delete('owner');
+          var newSearch = params.toString();
+          var cleanUrl = window.location.pathname + (newSearch ? '?' + newSearch : '') + window.location.hash;
+          window.history.replaceState({}, document.title, cleanUrl);
+        } else if (owner === 'off') {
+          localStorage.removeItem('dch_owner_mode');
+          params.delete('owner');
+          var newSearch = params.toString();
+          var cleanUrl = window.location.pathname + (newSearch ? '?' + newSearch : '') + window.location.hash;
+          window.history.replaceState({}, document.title, cleanUrl);
+        }
+
+        if (localStorage.getItem('dch_owner_mode') === 'active') {
+          window['ga-disable-G-18Y3LNHDR8'] = true;
+          window.adsbygoogle = window.adsbygoogle || [];
+          window.adsbygoogle.pauseAdRequests = 1;
+
+          window.addEventListener('DOMContentLoaded', function() {
+            if (!document.getElementById('dch-owner-mode-badge')) {
+              var badge = document.createElement('div');
+              badge.id = 'dch-owner-mode-badge';
+              badge.innerHTML = '&#128274; Owner Mode: Tracking &amp; Ads Disabled';
+              badge.style.cssText = 'position:fixed;bottom:14px;left:14px;background:rgba(17,24,39,0.92);color:#10b981;font-size:11.5px;font-weight:600;font-family:system-ui,-apple-system,sans-serif;padding:6px 12px;border-radius:20px;border:1px solid rgba(16,185,129,0.35);box-shadow:0 4px 12px rgba(0,0,0,0.25);z-index:99999;pointer-events:none;letter-spacing:0.2px;backdrop-filter:blur(4px);';
+              document.body.appendChild(badge);
+            }
+          });
+        }
+      } catch (e) {}
+    })();
+  </script>
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6944579701716470" crossorigin="anonymous"></script>
 
@@ -656,9 +694,9 @@
 
       <h3>Mathematically Valid Discount &amp; VAT Formulas</h3>
       <div class="formula-box">
-        Discount Amount = Original Price × (Discount % ÷ 100)<br>
-        Discounted Price = Original Price × (1 − [Discount % ÷ 100])<br>
-        Final Price with Standard 15% VAT (where applicable) = Discounted Price × 1.15
+        Discount Amount = Original Price Ã— (Discount % Ã· 100)<br>
+        Discounted Price = Original Price Ã— (1 âˆ’ [Discount % Ã· 100])<br>
+        Final Price with Standard 15% VAT (where applicable) = Discounted Price Ã— 1.15
       </div>
       <p style="font-size:13.5px; color:#64748b; margin-top:-8px; margin-bottom:18px;">
         <em>*Note: Under Saudi ZATCA guidelines, the standard 15% VAT rate applies to taxable commercial goods and services. Certain qualifying essential goods or cross-border items may follow zero-rated or exempt tax treatments.</em>
@@ -670,9 +708,9 @@
         <ul style="margin-bottom:0; padding-left:20px;">
           <li><strong>Original Retail Price:</strong> 400.00 SAR</li>
           <li><strong>Promotional Discount (25%):</strong> 25% off</li>
-          <li><strong>Discount Amount Saved:</strong> 400 SAR × 0.25 = <strong>100.00 SAR</strong></li>
-          <li><strong>Discounted Net Price:</strong> 400 SAR − 100 SAR = <strong>300.00 SAR</strong></li>
-          <li><strong>Standard 15% Saudi VAT (on 300 SAR):</strong> 300 SAR × 0.15 = <strong>45.00 SAR</strong></li>
+          <li><strong>Discount Amount Saved:</strong> 400 SAR Ã— 0.25 = <strong>100.00 SAR</strong></li>
+          <li><strong>Discounted Net Price:</strong> 400 SAR âˆ’ 100 SAR = <strong>300.00 SAR</strong></li>
+          <li><strong>Standard 15% Saudi VAT (on 300 SAR):</strong> 300 SAR Ã— 0.15 = <strong>45.00 SAR</strong></li>
           <li><strong>Illustrative Final Total Payable:</strong> 300 SAR + 45 SAR = <strong>345.00 SAR</strong></li>
         </ul>
       </div>
@@ -701,7 +739,7 @@
       <ul>
         <li><strong>All-Inclusive Price Display:</strong> Any price shown on retail shelves, online checkout pages, or promotional banners must explicitly include the 15% VAT. Retailers cannot add unexpected VAT fees at the cash register.</li>
         <li><strong>Tax Invoices:</strong> Official receipts must itemize the pre-VAT taxable value, the 15% VAT rate, and the final inclusive total.</li>
-        <li><strong>Calculating Pre-VAT Base:</strong> When a price is VAT-inclusive, the base taxable value is calculated as <code>Price ÷ 1.15</code>, with the remaining balance constituting the 15% VAT.</li>
+        <li><strong>Calculating Pre-VAT Base:</strong> When a price is VAT-inclusive, the base taxable value is calculated as <code>Price Ã· 1.15</code>, with the remaining balance constituting the 15% VAT.</li>
       </ul>
 
       <h2>Key Shopping Seasons to Maximize Savings in Saudi Arabia</h2>
@@ -709,7 +747,7 @@
         Savvy consumers plan major purchases around official Saudi shopping holidays:
       </p>
       <ul>
-        <li><strong>Saudi National Day (September 23):</strong> Traditional heavy markdowns across electronics, fashion, airlines, and home goods with 20%–70% promotional rates.</li>
+        <li><strong>Saudi National Day (September 23):</strong> Traditional heavy markdowns across electronics, fashion, airlines, and home goods with 20%â€“70% promotional rates.</li>
         <li><strong>Founding Day (February 22):</strong> Nationwide heritage sales with extensive retail and restaurant discounts.</li>
         <li><strong>White Friday / Yellow Friday (November):</strong> The Middle Eastern equivalent of Black Friday featuring massive e-commerce flash sales on Amazon KSA, Noon, and local retail giants.</li>
         <li><strong>Ramadan & Eid Seasons:</strong> Major promotions on family groceries, clothing, perfumes, and consumer goods.</li>

@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Flight Cost Calculator — Airfare, Baggage & Passenger Tax Estimator</title>
+  <title>Flight Cost Calculator â€” Airfare, Baggage & Passenger Tax Estimator</title>
   <meta name="description" content="Calculate your total flight ticket cost including base airfare, passenger counts, checked baggage add-ons, seat selection, airport taxes, and fuel surcharges.">
   <meta name="keywords" content="flight cost calculator, airfare estimator, flight baggage fee calculator, flight ticket cost breakdown, airline passenger price estimator">
   <link rel="canonical" href="https://dailycalchubs.com/travel-booking-calculator/flight-cost/">
@@ -17,7 +17,7 @@
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://dailycalchubs.com/travel-booking-calculator/flight-cost/">
-  <meta property="og:title" content="Flight Cost Calculator — Airfare, Baggage & Passenger Tax Estimator">
+  <meta property="og:title" content="Flight Cost Calculator â€” Airfare, Baggage & Passenger Tax Estimator">
   <meta property="og:description" content="Calculate your total flight ticket cost including base airfare, passenger counts, checked baggage add-ons, seat selection, airport taxes, and fuel surcharges.">
   <meta property="og:image" content="https://dailycalchubs.com/og-image.jpg">
   <meta property="og:image:secure_url" content="https://dailycalchubs.com/og-image.jpg">
@@ -27,10 +27,48 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Flight Cost Calculator — Airfare, Baggage & Passenger Tax Estimator">
+  <meta name="twitter:title" content="Flight Cost Calculator â€” Airfare, Baggage & Passenger Tax Estimator">
   <meta name="twitter:description" content="Calculate your total flight ticket cost including base airfare, passenger counts, checked baggage add-ons, seat selection, airport taxes, and fuel surcharges.">
   <meta name="twitter:image" content="https://dailycalchubs.com/og-image.jpg">
 
+  <!-- DailyCalcHubs Owner Admin Exclusion Mode (Zero GA4 Views / Zero AdSense Impressions) -->
+  <script>
+    (function() {
+      try {
+        var params = new URLSearchParams(window.location.search);
+        var owner = params.get('owner');
+        if (owner === 'waqar_lock') {
+          localStorage.setItem('dch_owner_mode', 'active');
+          params.delete('owner');
+          var newSearch = params.toString();
+          var cleanUrl = window.location.pathname + (newSearch ? '?' + newSearch : '') + window.location.hash;
+          window.history.replaceState({}, document.title, cleanUrl);
+        } else if (owner === 'off') {
+          localStorage.removeItem('dch_owner_mode');
+          params.delete('owner');
+          var newSearch = params.toString();
+          var cleanUrl = window.location.pathname + (newSearch ? '?' + newSearch : '') + window.location.hash;
+          window.history.replaceState({}, document.title, cleanUrl);
+        }
+
+        if (localStorage.getItem('dch_owner_mode') === 'active') {
+          window['ga-disable-G-18Y3LNHDR8'] = true;
+          window.adsbygoogle = window.adsbygoogle || [];
+          window.adsbygoogle.pauseAdRequests = 1;
+
+          window.addEventListener('DOMContentLoaded', function() {
+            if (!document.getElementById('dch-owner-mode-badge')) {
+              var badge = document.createElement('div');
+              badge.id = 'dch-owner-mode-badge';
+              badge.innerHTML = '&#128274; Owner Mode: Tracking &amp; Ads Disabled';
+              badge.style.cssText = 'position:fixed;bottom:14px;left:14px;background:rgba(17,24,39,0.92);color:#10b981;font-size:11.5px;font-weight:600;font-family:system-ui,-apple-system,sans-serif;padding:6px 12px;border-radius:20px;border:1px solid rgba(16,185,129,0.35);box-shadow:0 4px 12px rgba(0,0,0,0.25);z-index:99999;pointer-events:none;letter-spacing:0.2px;backdrop-filter:blur(4px);';
+              document.body.appendChild(badge);
+            }
+          });
+        }
+      } catch (e) {}
+    })();
+  </script>
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6944579701716470" crossorigin="anonymous"></script>
 
@@ -369,7 +407,7 @@
             </div>
 
             <div class="input-group">
-              <label for="numChildren">Children (2–11 yrs)</label>
+              <label for="numChildren">Children (2â€“11 yrs)</label>
               <div class="input-wrap">
                 <input type="number" id="numChildren" value="1" min="0" max="10">
               </div>
@@ -526,16 +564,16 @@
         <h4 style="font-size:15px; font-weight:700; color:var(--navy-dark); margin-bottom:8px;"><i class="fas fa-plane-departure" style="color:var(--crimson-primary); margin-right:6px;"></i> Illustrative Airfare Cost Breakdown (User-Entered Inputs)</h4>
         <p style="font-size:13.5px; color:#64748b; margin-bottom:12px;">This scenario illustrates how base fares and ancillaries combine. All rates reflect user-entered estimates rather than live carrier inventory:</p>
         <ul style="margin-bottom:12px; padding-left:20px; font-size:14px; line-height:1.65; color:#334155;">
-          <li><strong>Adult Base Airfare:</strong> 1,250 SAR × 2 Adults = <strong>2,500 SAR</strong></li>
-          <li><strong>Child Airfare (Illustrative 75% Preset):</strong> 1,250 SAR × 0.75 × 1 Child = <strong>937.50 SAR</strong></li>
+          <li><strong>Adult Base Airfare:</strong> 1,250 SAR Ã— 2 Adults = <strong>2,500 SAR</strong></li>
+          <li><strong>Child Airfare (Illustrative 75% Preset):</strong> 1,250 SAR Ã— 0.75 Ã— 1 Child = <strong>937.50 SAR</strong></li>
           <li><strong>Base Fares Subtotal:</strong> 2,500 + 937.50 = <strong>3,437.50 SAR</strong></li>
-          <li><strong>Airport &amp; Ticket Taxes (User-Entered Estimate):</strong> 240 SAR/ticket × 3 passengers = <strong>720 SAR</strong></li>
-          <li><strong>Checked Luggage (2 Bags):</strong> 180 SAR/bag × 2 = <strong>360 SAR</strong></li>
-          <li><strong>Seat Selection (3 Seated Pax):</strong> 65 SAR/seat × 3 = <strong>195 SAR</strong></li>
-          <li><strong>In-flight Meals (3 Seated Pax):</strong> 45 SAR/meal × 3 = <strong>135 SAR</strong></li>
+          <li><strong>Airport &amp; Ticket Taxes (User-Entered Estimate):</strong> 240 SAR/ticket Ã— 3 passengers = <strong>720 SAR</strong></li>
+          <li><strong>Checked Luggage (2 Bags):</strong> 180 SAR/bag Ã— 2 = <strong>360 SAR</strong></li>
+          <li><strong>Seat Selection (3 Seated Pax):</strong> 65 SAR/seat Ã— 3 = <strong>195 SAR</strong></li>
+          <li><strong>In-flight Meals (3 Seated Pax):</strong> 45 SAR/meal Ã— 3 = <strong>135 SAR</strong></li>
           <li><strong>Total Ancillary Add-ons:</strong> 360 + 195 + 135 = <strong>690 SAR</strong></li>
           <li><strong>Total Estimated Flight Cost:</strong> 3,437.50 + 720 + 690 = <strong>4,847.50 SAR (~4,848 SAR)</strong></li>
-          <li><strong>Average Cost Per Passenger:</strong> 4,847.50 SAR ÷ 3 = <strong>1,615.83 SAR / passenger</strong></li>
+          <li><strong>Average Cost Per Passenger:</strong> 4,847.50 SAR Ã· 3 = <strong>1,615.83 SAR / passenger</strong></li>
         </ul>
       </div>
 
@@ -550,13 +588,13 @@
       <h3>2. Child and Infant Airfare Presets</h3>
       <p>Passenger fare percentages shown in this calculator are illustrative assumptions. Actual airline child and infant fares vary by carrier, route, fare family, and ticket rules:</p>
       <ul>
-        <li><strong>Infants under 2 years:</strong> When traveling on an adult’s lap without a dedicated seat, many international carriers charge approximately 10% of the adult base fare plus ticket taxes, though certain promotional fares or low-cost carriers may charge flat infant fees.</li>
+        <li><strong>Infants under 2 years:</strong> When traveling on an adultâ€™s lap without a dedicated seat, many international carriers charge approximately 10% of the adult base fare plus ticket taxes, though certain promotional fares or low-cost carriers may charge flat infant fees.</li>
         <li><strong>Children aged 2 to 11:</strong> Children occupying their own seat frequently receive a discount (often around 75% of base adult fare on legacy full-service airlines), whereas many budget carriers charge 100% of adult fare.</li>
       </ul>
 
       <h3>3. Connecting Flights into Your Overall Travel Plan</h3>
       <p>
-        After determining your airfare commitment, incorporate flight costs into your complete vacation budget—including accommodation, daily dining, local transit, and contingency reserves—using our comprehensive <a href="/travel-booking-calculator/travel-budget/" style="color:var(--crimson-primary); font-weight:700;">Travel Budget Planner</a>. If you are booking through an online travel aggregator or third-party portal, inspect card processing surcharges and platform convenience fees with the <a href="/travel-booking-calculator/booking-cost/" style="color:var(--crimson-primary); font-weight:700;">Booking Fee Breakdown</a>.
+        After determining your airfare commitment, incorporate flight costs into your complete vacation budgetâ€”including accommodation, daily dining, local transit, and contingency reservesâ€”using our comprehensive <a href="/travel-booking-calculator/travel-budget/" style="color:var(--crimson-primary); font-weight:700;">Travel Budget Planner</a>. If you are booking through an online travel aggregator or third-party portal, inspect card processing surcharges and platform convenience fees with the <a href="/travel-booking-calculator/booking-cost/" style="color:var(--crimson-primary); font-weight:700;">Booking Fee Breakdown</a>.
       </p>
 
       <div class="info-callout">

@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lump Sum Wealth Calculator — Compound Growth vs Monthly SIP Comparison</title>
+  <title>Lump Sum Wealth Calculator â€” Compound Growth vs Monthly SIP Comparison</title>
   <meta name="description" content="Calculate the future value of a one-time lump sum investment and compare it directly against systematic monthly SIP investing over any time period.">
   <meta name="keywords" content="lump sum calculator, lump sum vs sip calculator, compound interest lumpsum saudi riyal, eosb investment calculator, halal lumpsum return calculator">
   <link rel="canonical" href="https://dailycalchubs.com/shariah-sip-calculator/lump-sum-calculator/">
@@ -17,7 +17,7 @@
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://dailycalchubs.com/shariah-sip-calculator/lump-sum-calculator/">
-  <meta property="og:title" content="Lump Sum Wealth Calculator — Compound Growth vs Monthly SIP Comparison">
+  <meta property="og:title" content="Lump Sum Wealth Calculator â€” Compound Growth vs Monthly SIP Comparison">
   <meta property="og:description" content="Calculate the future value of a one-time lump sum investment and compare it directly against systematic monthly SIP investing over any time period.">
   <meta property="og:image" content="https://dailycalchubs.com/og-image.jpg">
   <meta property="og:image:secure_url" content="https://dailycalchubs.com/og-image.jpg">
@@ -27,10 +27,48 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Lump Sum Wealth Calculator — Compound Growth vs Monthly SIP Comparison">
+  <meta name="twitter:title" content="Lump Sum Wealth Calculator â€” Compound Growth vs Monthly SIP Comparison">
   <meta name="twitter:description" content="Calculate the future value of a one-time lump sum investment and compare it directly against systematic monthly SIP investing over any time period.">
   <meta name="twitter:image" content="https://dailycalchubs.com/og-image.jpg">
 
+  <!-- DailyCalcHubs Owner Admin Exclusion Mode (Zero GA4 Views / Zero AdSense Impressions) -->
+  <script>
+    (function() {
+      try {
+        var params = new URLSearchParams(window.location.search);
+        var owner = params.get('owner');
+        if (owner === 'waqar_lock') {
+          localStorage.setItem('dch_owner_mode', 'active');
+          params.delete('owner');
+          var newSearch = params.toString();
+          var cleanUrl = window.location.pathname + (newSearch ? '?' + newSearch : '') + window.location.hash;
+          window.history.replaceState({}, document.title, cleanUrl);
+        } else if (owner === 'off') {
+          localStorage.removeItem('dch_owner_mode');
+          params.delete('owner');
+          var newSearch = params.toString();
+          var cleanUrl = window.location.pathname + (newSearch ? '?' + newSearch : '') + window.location.hash;
+          window.history.replaceState({}, document.title, cleanUrl);
+        }
+
+        if (localStorage.getItem('dch_owner_mode') === 'active') {
+          window['ga-disable-G-18Y3LNHDR8'] = true;
+          window.adsbygoogle = window.adsbygoogle || [];
+          window.adsbygoogle.pauseAdRequests = 1;
+
+          window.addEventListener('DOMContentLoaded', function() {
+            if (!document.getElementById('dch-owner-mode-badge')) {
+              var badge = document.createElement('div');
+              badge.id = 'dch-owner-mode-badge';
+              badge.innerHTML = '&#128274; Owner Mode: Tracking &amp; Ads Disabled';
+              badge.style.cssText = 'position:fixed;bottom:14px;left:14px;background:rgba(17,24,39,0.92);color:#10b981;font-size:11.5px;font-weight:600;font-family:system-ui,-apple-system,sans-serif;padding:6px 12px;border-radius:20px;border:1px solid rgba(16,185,129,0.35);box-shadow:0 4px 12px rgba(0,0,0,0.25);z-index:99999;pointer-events:none;letter-spacing:0.2px;backdrop-filter:blur(4px);';
+              document.body.appendChild(badge);
+            }
+          });
+        }
+      } catch (e) {}
+    })();
+  </script>
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6944579701716470" crossorigin="anonymous"></script>
 
@@ -429,7 +467,7 @@
     <article class="seo-article">
       <h2>Lump Sum vs. Systematic Investment Plan: The Strategic Trade-off</h2>
       <p>
-        When expatriates or Saudi citizens receive a substantial capital allocation—such as an <a href="/saudi-salary-calculator/eosb/" style="color:var(--amber-primary); font-weight:700;">End-of-Service Benefits (EOSB) gratuity payout</a>, annual corporate bonus, or family inheritance—a critical financial decision arises: should the entire amount be invested immediately as a lump sum, or staged gradually via monthly SIP contributions?
+        When expatriates or Saudi citizens receive a substantial capital allocationâ€”such as an <a href="/saudi-salary-calculator/eosb/" style="color:var(--amber-primary); font-weight:700;">End-of-Service Benefits (EOSB) gratuity payout</a>, annual corporate bonus, or family inheritanceâ€”a critical financial decision arises: should the entire amount be invested immediately as a lump sum, or staged gradually via monthly SIP contributions?
       </p>
 
       <h3>One-Time Lump-Sum Compounding Formula</h3>
@@ -437,13 +475,13 @@
         The mathematical growth of a single one-time capital investment compounding annually is modeled using the standard future value formula:
       </p>
       <div class="formula-card">
-        FV = PV × (1 + r)^t
+        FV = PV Ã— (1 + r)^t
         <br><br>
         Where:
-        <br>• PV = Starting lump-sum principal deposit (in SAR)
-        <br>• r = Annual assumed compound return rate (decimal: Return % ÷ 100)
-        <br>• t = Number of investment years (holding period)
-        <br>• FV = Projected future portfolio value
+        <br>â€¢ PV = Starting lump-sum principal deposit (in SAR)
+        <br>â€¢ r = Annual assumed compound return rate (decimal: Return % Ã· 100)
+        <br>â€¢ t = Number of investment years (holding period)
+        <br>â€¢ FV = Projected future portfolio value
       </div>
 
       <h3>Worked Calculation Example</h3>
@@ -453,9 +491,9 @@
           <li><strong>Starting Principal ($PV$):</strong> 100,000.00 SAR</li>
           <li><strong>Investment Duration ($t$):</strong> 10 Years</li>
           <li><strong>Illustrative Annual Return Assumption ($r$):</strong> 8.0% per annum</li>
-          <li><strong>Compounding Calculation:</strong> 100,000 × (1 + 0.08)<sup>10</sup> = 100,000 × 2.158925</li>
+          <li><strong>Compounding Calculation:</strong> 100,000 Ã— (1 + 0.08)<sup>10</sup> = 100,000 Ã— 2.158925</li>
           <li><strong>Projected Future Value ($FV$):</strong> <strong>215,892.50 SAR</strong></li>
-          <li><strong>Projected Compounded Gain:</strong> 215,892.50 − 100,000 = <strong>+115,892.50 SAR (115.9% total return)</strong></li>
+          <li><strong>Projected Compounded Gain:</strong> 215,892.50 âˆ’ 100,000 = <strong>+115,892.50 SAR (115.9% total return)</strong></li>
         </ul>
         <p style="font-size:13px; color:#64748b; margin-bottom:0;">
           <em>*Important Reality Check: This simulation is a mathematical projection for educational modeling. Real-world financial markets do not follow a constant, smooth 8% annual return every single year; actual portfolio performance will fluctuate based on annual market volatility, dividend distributions, and macroeconomic cycles.</em>

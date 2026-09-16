@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Appliance Electricity Consumption Calculator — Power, kWh & Cost</title>
+  <title>Appliance Electricity Consumption Calculator â€” Power, kWh & Cost</title>
   <meta name="description" content="Calculate electrical appliance energy consumption in Watts, kWh, electricity units, and estimated electricity bills with our free Appliance Electricity Consumption Calculator.">
   <meta name="keywords" content="appliance electricity consumption calculator, calculate electricity bill per appliance, watts to kwh calculator, electricity unit calculator, appliance power consumption in kwh">
   <link rel="canonical" href="https://dailycalchubs.com/everyday-smart-calculator/appliance-electricity-consumption/">
@@ -17,7 +17,7 @@
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://dailycalchubs.com/everyday-smart-calculator/appliance-electricity-consumption/">
-  <meta property="og:title" content="Appliance Electricity Consumption Calculator — Power, kWh & Cost">
+  <meta property="og:title" content="Appliance Electricity Consumption Calculator â€” Power, kWh & Cost">
   <meta property="og:description" content="Convert appliance wattage to daily and monthly kWh, calculate total electricity units, and estimate running costs across any electricity tariff.">
   <meta property="og:image" content="https://dailycalchubs.com/og-image.jpg">
   <meta property="og:width" content="1200">
@@ -25,10 +25,48 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Appliance Electricity Consumption Calculator — DailyCalcHubs">
+  <meta name="twitter:title" content="Appliance Electricity Consumption Calculator â€” DailyCalcHubs">
   <meta name="twitter:description" content="Estimate electricity consumption in Wh, kWh, units, and power costs for home appliances.">
   <meta name="twitter:image" content="https://dailycalchubs.com/og-image.jpg">
 
+  <!-- DailyCalcHubs Owner Admin Exclusion Mode (Zero GA4 Views / Zero AdSense Impressions) -->
+  <script>
+    (function() {
+      try {
+        var params = new URLSearchParams(window.location.search);
+        var owner = params.get('owner');
+        if (owner === 'waqar_lock') {
+          localStorage.setItem('dch_owner_mode', 'active');
+          params.delete('owner');
+          var newSearch = params.toString();
+          var cleanUrl = window.location.pathname + (newSearch ? '?' + newSearch : '') + window.location.hash;
+          window.history.replaceState({}, document.title, cleanUrl);
+        } else if (owner === 'off') {
+          localStorage.removeItem('dch_owner_mode');
+          params.delete('owner');
+          var newSearch = params.toString();
+          var cleanUrl = window.location.pathname + (newSearch ? '?' + newSearch : '') + window.location.hash;
+          window.history.replaceState({}, document.title, cleanUrl);
+        }
+
+        if (localStorage.getItem('dch_owner_mode') === 'active') {
+          window['ga-disable-G-18Y3LNHDR8'] = true;
+          window.adsbygoogle = window.adsbygoogle || [];
+          window.adsbygoogle.pauseAdRequests = 1;
+
+          window.addEventListener('DOMContentLoaded', function() {
+            if (!document.getElementById('dch-owner-mode-badge')) {
+              var badge = document.createElement('div');
+              badge.id = 'dch-owner-mode-badge';
+              badge.innerHTML = '&#128274; Owner Mode: Tracking &amp; Ads Disabled';
+              badge.style.cssText = 'position:fixed;bottom:14px;left:14px;background:rgba(17,24,39,0.92);color:#10b981;font-size:11.5px;font-weight:600;font-family:system-ui,-apple-system,sans-serif;padding:6px 12px;border-radius:20px;border:1px solid rgba(16,185,129,0.35);box-shadow:0 4px 12px rgba(0,0,0,0.25);z-index:99999;pointer-events:none;letter-spacing:0.2px;backdrop-filter:blur(4px);';
+              document.body.appendChild(badge);
+            }
+          });
+        }
+      } catch (e) {}
+    })();
+  </script>
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6944579701716470" crossorigin="anonymous"></script>
 
@@ -75,7 +113,7 @@
             "name": "What is an electricity unit?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "One electricity unit is equal to 1 kilowatt-hour (kWh). It represents the amount of energy consumed when an electrical appliance rated at 1,000 Watts runs continuously for one hour (1,000 W × 1 hour = 1,000 Wh = 1 kWh = 1 unit)."
+              "text": "One electricity unit is equal to 1 kilowatt-hour (kWh). It represents the amount of energy consumed when an electrical appliance rated at 1,000 Watts runs continuously for one hour (1,000 W Ã— 1 hour = 1,000 Wh = 1 kWh = 1 unit)."
             }
           },
           {
@@ -83,7 +121,7 @@
             "name": "How is appliance electricity consumption calculated?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Appliance consumption is calculated using the formula: Daily kWh = (Watts ÷ 1,000) × Hours used per day. Total units equal total kWh. Total estimated cost is calculated by multiplying total units by your local electricity rate per unit."
+              "text": "Appliance consumption is calculated using the formula: Daily kWh = (Watts Ã· 1,000) Ã— Hours used per day. Total units equal total kWh. Total estimated cost is calculated by multiplying total units by your local electricity rate per unit."
             }
           },
           {
@@ -99,7 +137,7 @@
             "name": "How much electricity does a 1000 Watt water motor consume?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "A 1,000 Watt motor consumes 1 kWh (1 unit) per hour of operation. Running it for 1 hour daily over a 30-day month consumes exactly 30 kWh (30 units). At an electricity rate of ₹8 per unit, the estimated monthly cost is ₹240."
+              "text": "A 1,000 Watt motor consumes 1 kWh (1 unit) per hour of operation. Running it for 1 hour daily over a 30-day month consumes exactly 30 kWh (30 units). At an electricity rate of â‚¹8 per unit, the estimated monthly cost is â‚¹240."
             }
           },
           {
@@ -483,7 +521,7 @@
             <label class="form-label" for="rateInput">Electricity Rate (per Unit / kWh)</label>
             <div class="calc-input-wrap">
               <input type="number" id="rateInput" value="8" min="0" max="500" step="0.25" oninput="recalcSingle()">
-              <span class="calc-input-addon" id="rateUnitLabel">₹ / Unit</span>
+              <span class="calc-input-addon" id="rateUnitLabel">â‚¹ / Unit</span>
             </div>
             <div class="preset-chips">
               <button type="button" class="preset-chip" onclick="setRatePreset(6)">6</button>
@@ -498,14 +536,14 @@
             <label class="form-label" for="currSelect">Currency Unit Label</label>
             <div class="calc-select">
               <select id="currSelect" onchange="onCurrencyChange()">
-                <option value="₹" selected>₹ — Indian Rupee (INR)</option>
-                <option value="SAR">SAR — Saudi Riyal</option>
-                <option value="$">$ — US Dollar (USD)</option>
-                <option value="AED">AED — UAE Dirham</option>
-                <option value="PKR">Rs — Pakistani Rupee (PKR)</option>
-                <option value="€">€ — Euro (EUR)</option>
-                <option value="£">£ — British Pound (GBP)</option>
-                <option value="BDT">৳ — Bangladeshi Taka (BDT)</option>
+                <option value="â‚¹" selected>â‚¹ â€” Indian Rupee (INR)</option>
+                <option value="SAR">SAR â€” Saudi Riyal</option>
+                <option value="$">$ â€” US Dollar (USD)</option>
+                <option value="AED">AED â€” UAE Dirham</option>
+                <option value="PKR">Rs â€” Pakistani Rupee (PKR)</option>
+                <option value="â‚¬">â‚¬ â€” Euro (EUR)</option>
+                <option value="Â£">Â£ â€” British Pound (GBP)</option>
+                <option value="BDT">à§³ â€” Bangladeshi Taka (BDT)</option>
               </select>
             </div>
           </div>
@@ -525,7 +563,7 @@
           <div class="result-row-top">
             <div>
               <div class="result-label">Estimated Electricity Cost</div>
-              <div class="result-big-val" id="resTotalCost">₹240.00</div>
+              <div class="result-big-val" id="resTotalCost">â‚¹240.00</div>
             </div>
             <div>
               <div class="energy-badge">
@@ -545,7 +583,7 @@
             </div>
             <div class="meta-box-inner">
               <div class="meta-box-title">Daily Electricity Cost</div>
-              <div class="meta-box-val" id="resDailyCost">₹8.00 / day</div>
+              <div class="meta-box-val" id="resDailyCost">â‚¹8.00 / day</div>
             </div>
             <div class="meta-box-inner">
               <div class="meta-box-title">Total Electricity Units</div>
@@ -557,7 +595,7 @@
             </div>
             <div class="meta-box-inner">
               <div class="meta-box-title">Projected Annual Cost</div>
-              <div class="meta-box-val" id="resAnnualCost">₹2,920.00 / yr</div>
+              <div class="meta-box-val" id="resAnnualCost">â‚¹2,920.00 / yr</div>
             </div>
           </div>
 
@@ -579,7 +617,7 @@
             <label class="form-label" for="multiRateInput">Electricity Rate (per Unit / kWh)</label>
             <div class="calc-input-wrap">
               <input type="number" id="multiRateInput" value="8" min="0" step="0.25" oninput="recalcMulti()">
-              <span class="calc-input-addon" id="multiRateUnitLabel">₹ / Unit</span>
+              <span class="calc-input-addon" id="multiRateUnitLabel">â‚¹ / Unit</span>
             </div>
           </div>
           <div class="form-group">
@@ -613,21 +651,21 @@
         <div class="add-appliance-bar">
           <div class="calc-select" style="min-width:240px; flex:1;">
             <select id="addPresetSelect">
-              <option value="Ceiling Fan|75|10">Ceiling Fan (75W — 10h/day)</option>
-              <option value="Table Fan|50|8">Table Fan (50W — 8h/day)</option>
-              <option value="Refrigerator|150|24">Refrigerator (150W — 24h/day cycled)</option>
-              <option value="Washing Machine|500|1">Washing Machine (500W — 1h/day)</option>
-              <option value="Air Cooler|200|8">Air Cooler (200W — 8h/day)</option>
-              <option value="Air Conditioner|1500|8">Air Conditioner (1,500W — 8h/day)</option>
-              <option value="Water Pump / Motor|1000|1">Water Motor / Pump (1,000W — 1h/day)</option>
-              <option value="Television|100|5">Television (100W — 5h/day)</option>
-              <option value="Computer PC|200|6">Computer PC (200W — 6h/day)</option>
-              <option value="Laptop|65|6">Laptop (65W — 6h/day)</option>
-              <option value="Microwave Oven|1000|0.5">Microwave (1,000W — 0.5h/day)</option>
-              <option value="Electric Iron|1200|0.5">Electric Iron (1,200W — 0.5h/day)</option>
-              <option value="Geyser / Heater|2000|2">Geyser / Water Heater (2,000W — 2h/day)</option>
-              <option value="Electric Kettle|1500|0.3">Electric Kettle (1,500W — 0.3h/day)</option>
-              <option value="LED Bulb|15|6">LED Light Bulb (15W — 6h/day)</option>
+              <option value="Ceiling Fan|75|10">Ceiling Fan (75W â€” 10h/day)</option>
+              <option value="Table Fan|50|8">Table Fan (50W â€” 8h/day)</option>
+              <option value="Refrigerator|150|24">Refrigerator (150W â€” 24h/day cycled)</option>
+              <option value="Washing Machine|500|1">Washing Machine (500W â€” 1h/day)</option>
+              <option value="Air Cooler|200|8">Air Cooler (200W â€” 8h/day)</option>
+              <option value="Air Conditioner|1500|8">Air Conditioner (1,500W â€” 8h/day)</option>
+              <option value="Water Pump / Motor|1000|1">Water Motor / Pump (1,000W â€” 1h/day)</option>
+              <option value="Television|100|5">Television (100W â€” 5h/day)</option>
+              <option value="Computer PC|200|6">Computer PC (200W â€” 6h/day)</option>
+              <option value="Laptop|65|6">Laptop (65W â€” 6h/day)</option>
+              <option value="Microwave Oven|1000|0.5">Microwave (1,000W â€” 0.5h/day)</option>
+              <option value="Electric Iron|1200|0.5">Electric Iron (1,200W â€” 0.5h/day)</option>
+              <option value="Geyser / Heater|2000|2">Geyser / Water Heater (2,000W â€” 2h/day)</option>
+              <option value="Electric Kettle|1500|0.3">Electric Kettle (1,500W â€” 0.3h/day)</option>
+              <option value="LED Bulb|15|6">LED Light Bulb (15W â€” 6h/day)</option>
               <option value="Custom Appliance|100|2">Custom / Other Appliance</option>
             </select>
           </div>
@@ -644,7 +682,7 @@
           <div class="result-row-top">
             <div>
               <div class="result-label">Combined Estimated Electricity Cost</div>
-              <div class="result-big-val" id="multiTotalCost">₹0.00</div>
+              <div class="result-big-val" id="multiTotalCost">â‚¹0.00</div>
             </div>
             <div>
               <div class="energy-badge">
@@ -660,7 +698,7 @@
             </div>
             <div class="meta-box-inner">
               <div class="meta-box-title">Daily Electricity Cost</div>
-              <div class="meta-box-val" id="multiDailyCost">₹0.00 / day</div>
+              <div class="meta-box-val" id="multiDailyCost">â‚¹0.00 / day</div>
             </div>
             <div class="meta-box-inner">
               <div class="meta-box-title">Total Monthly Consumption</div>
@@ -701,13 +739,13 @@
         For instance, if you run a <strong>1,000 Watt</strong> electrical appliance continuously for <strong>1 hour</strong>:
       </p>
       <div class="formula-box">
-        1,000 W × 1 hour = 1,000 Watt-hours = 1 kWh = 1 Electricity Unit
+        1,000 W Ã— 1 hour = 1,000 Watt-hours = 1 kWh = 1 Electricity Unit
       </div>
       <p>
         If that same 1,000 W appliance runs for 1 hour every day across a 30-day month:
       </p>
       <div class="formula-box">
-        1 kWh/day × 30 days = 30 kWh = 30 Electricity Units / Month
+        1 kWh/day Ã— 30 days = 30 kWh = 30 Electricity Units / Month
       </div>
 
       <h2>Core Electricity Calculation Formulas</h2>
@@ -715,24 +753,24 @@
         To determine how much any device adds to your power bill, utility engineers and energy auditors utilize standard electrical physics formulas:
       </p>
       <div class="formula-box">
-        Power in Kilowatts (kW) = Power in Watts (W) ÷ 1,000<br>
-        Daily Energy (kWh) = (Watts ÷ 1,000) × Hours Used per Day<br>
-        Total Energy (kWh) = Daily Energy (kWh) × Number of Days<br>
+        Power in Kilowatts (kW) = Power in Watts (W) Ã· 1,000<br>
+        Daily Energy (kWh) = (Watts Ã· 1,000) Ã— Hours Used per Day<br>
+        Total Energy (kWh) = Daily Energy (kWh) Ã— Number of Days<br>
         Electricity Units = Total Energy in kWh (1 kWh = 1 Unit)<br>
-        Estimated Cost = Total Electricity Units × Rate per Unit<br>
-        Daily Cost = Daily kWh × Rate per Unit
+        Estimated Cost = Total Electricity Units Ã— Rate per Unit<br>
+        Daily Cost = Daily kWh Ã— Rate per Unit
       </div>
 
       <h2>Step-by-Step Worked Example</h2>
       <p>
-        Let us walk through a practical example for an agricultural or residential <strong>1,000 Watt water pump motor</strong> used for <strong>1 hour per day</strong> for a <strong>30-day billing cycle</strong>, with an applicable electricity tariff of <strong>₹8.00 per unit</strong>:
+        Let us walk through a practical example for an agricultural or residential <strong>1,000 Watt water pump motor</strong> used for <strong>1 hour per day</strong> for a <strong>30-day billing cycle</strong>, with an applicable electricity tariff of <strong>â‚¹8.00 per unit</strong>:
       </p>
       <ul>
-        <li><strong>Step 1 (Convert Watts to Kilowatts):</strong> 1,000 W ÷ 1,000 = <strong>1.0 kW</strong>.</li>
-        <li><strong>Step 2 (Calculate Daily Energy):</strong> 1.0 kW × 1 hour = <strong>1.0 kWh per day</strong> (1,000 Wh).</li>
-        <li><strong>Step 3 (Calculate Monthly Energy):</strong> 1.0 kWh/day × 30 days = <strong>30.0 kWh</strong>.</li>
+        <li><strong>Step 1 (Convert Watts to Kilowatts):</strong> 1,000 W Ã· 1,000 = <strong>1.0 kW</strong>.</li>
+        <li><strong>Step 2 (Calculate Daily Energy):</strong> 1.0 kW Ã— 1 hour = <strong>1.0 kWh per day</strong> (1,000 Wh).</li>
+        <li><strong>Step 3 (Calculate Monthly Energy):</strong> 1.0 kWh/day Ã— 30 days = <strong>30.0 kWh</strong>.</li>
         <li><strong>Step 4 (Determine Electricity Units):</strong> Because 1 kWh = 1 unit, 30.0 kWh equals exactly <strong>30.0 units</strong>.</li>
-        <li><strong>Step 5 (Calculate Estimated Power Bill):</strong> 30.0 units × ₹8.00/unit = <strong>₹240.00</strong> estimated electricity cost.</li>
+        <li><strong>Step 5 (Calculate Estimated Power Bill):</strong> 30.0 units Ã— â‚¹8.00/unit = <strong>â‚¹240.00</strong> estimated electricity cost.</li>
       </ul>
 
       <h2>Typical Household Appliance Power &amp; Consumption Reference</h2>
@@ -754,98 +792,98 @@
           <tbody>
             <tr>
               <td><strong>LED Light Bulb</strong></td>
-              <td>9 – 15 W</td>
+              <td>9 â€“ 15 W</td>
               <td>6.0 hrs</td>
               <td>0.09 kWh</td>
               <td>~2.7 units</td>
             </tr>
             <tr>
               <td><strong>Ceiling Fan (BLDC / Normal)</strong></td>
-              <td>28 – 75 W</td>
+              <td>28 â€“ 75 W</td>
               <td>10.0 hrs</td>
               <td>0.75 kWh</td>
               <td>~22.5 units</td>
             </tr>
             <tr>
               <td><strong>Table / Stand Fan</strong></td>
-              <td>50 – 60 W</td>
+              <td>50 â€“ 60 W</td>
               <td>8.0 hrs</td>
               <td>0.40 kWh</td>
               <td>~12.0 units</td>
             </tr>
             <tr>
               <td><strong>Television (LED Smart TV 43"-55")</strong></td>
-              <td>80 – 120 W</td>
+              <td>80 â€“ 120 W</td>
               <td>5.0 hrs</td>
               <td>0.50 kWh</td>
               <td>~15.0 units</td>
             </tr>
             <tr>
               <td><strong>Refrigerator (Frost-Free 250L)</strong></td>
-              <td>150 – 250 W</td>
+              <td>150 â€“ 250 W</td>
               <td>24.0 hrs (Cycled)</td>
               <td>1.50 kWh</td>
               <td>~45.0 units</td>
             </tr>
             <tr>
               <td><strong>Air Cooler (Evaporative)</strong></td>
-              <td>150 – 250 W</td>
+              <td>150 â€“ 250 W</td>
               <td>8.0 hrs</td>
               <td>1.60 kWh</td>
               <td>~48.0 units</td>
             </tr>
             <tr>
               <td><strong>Split Air Conditioner (1.5 Ton 3-Star)</strong></td>
-              <td>1,400 – 1,800 W</td>
+              <td>1,400 â€“ 1,800 W</td>
               <td>8.0 hrs (Thermostat cycle)</td>
-              <td>8.00 – 12.00 kWh</td>
-              <td>~240 – 360 units</td>
+              <td>8.00 â€“ 12.00 kWh</td>
+              <td>~240 â€“ 360 units</td>
             </tr>
             <tr>
               <td><strong>Water Pump / Submersible Motor (1 HP)</strong></td>
-              <td>750 – 1,000 W</td>
+              <td>750 â€“ 1,000 W</td>
               <td>1.0 hr</td>
               <td>1.00 kWh</td>
               <td>~30.0 units</td>
             </tr>
             <tr>
               <td><strong>Washing Machine (Semi / Fully Auto)</strong></td>
-              <td>350 – 600 W</td>
+              <td>350 â€“ 600 W</td>
               <td>1.0 hr</td>
               <td>0.50 kWh</td>
               <td>~15.0 units</td>
             </tr>
             <tr>
               <td><strong>Geyser / Storage Water Heater</strong></td>
-              <td>1,500 – 2,500 W</td>
+              <td>1,500 â€“ 2,500 W</td>
               <td>1.5 hrs</td>
               <td>3.00 kWh</td>
               <td>~90.0 units</td>
             </tr>
             <tr>
               <td><strong>Microwave Oven</strong></td>
-              <td>900 – 1,300 W</td>
+              <td>900 â€“ 1,300 W</td>
               <td>0.5 hr (30 mins)</td>
               <td>0.50 kWh</td>
               <td>~15.0 units</td>
             </tr>
             <tr>
               <td><strong>Electric Clothes Iron</strong></td>
-              <td>1,000 – 1,500 W</td>
+              <td>1,000 â€“ 1,500 W</td>
               <td>0.5 hr (30 mins)</td>
               <td>0.60 kWh</td>
               <td>~18.0 units</td>
             </tr>
             <tr>
               <td><strong>Desktop Computer with Monitor</strong></td>
-              <td>150 – 300 W</td>
+              <td>150 â€“ 300 W</td>
               <td>6.0 hrs</td>
               <td>1.20 kWh</td>
               <td>~36.0 units</td>
             </tr>
             <tr>
               <td><strong>Laptop Computer</strong></td>
-              <td>45 – 90 W</td>
+              <td>45 â€“ 90 W</td>
               <td>6.0 hrs</td>
               <td>0.39 kWh</td>
               <td>~11.7 units</td>
@@ -861,7 +899,7 @@
       <ul>
         <li><strong>Thermostat &amp; Duty Cycles:</strong> Refrigerators, inverter air conditioners, water dispensers, and geysers do not draw peak power continuously. Their cooling compressors and heating coils turn on and off based on internal thermostat settings. An AC rated at 1,500 W may only consume an average of 900 to 1,100 Watts per hour once the room reaches the target temperature.</li>
         <li><strong>Motor Load Variations:</strong> Washing machines use different power during gentle wash agitation compared to high-speed spin extraction. Similarly, water motors draw more current under heavy head pressure.</li>
-        <li><strong>Tiered Tariff Brackets:</strong> Most regional power distribution companies (DISCOMs) implement tiered consumption slabs (e.g. 0–100 units at a subsidized rate, 101–300 units at a standard rate, and >300 units at peak rates). Entering higher consumption brackets increases your marginal cost per unit.</li>
+        <li><strong>Tiered Tariff Brackets:</strong> Most regional power distribution companies (DISCOMs) implement tiered consumption slabs (e.g. 0â€“100 units at a subsidized rate, 101â€“300 units at a standard rate, and >300 units at peak rates). Entering higher consumption brackets increases your marginal cost per unit.</li>
         <li><strong>Fixed Charges, Fuel Adjustment &amp; Taxes:</strong> Actual invoices contain fixed meter charges, electricity duty fees, fuel surcharge adjustments (FSA), and statutory taxes that are added independent of pure unit consumption.</li>
       </ul>
 
@@ -890,7 +928,7 @@
           How do I find the wattage of an electrical appliance? <i class="fas fa-chevron-down"></i>
         </div>
         <div class="faq-answer">
-          Every electrical appliance has a manufacturer label or metal nameplate located on the back, bottom, or near the power cord. Look for the power rating printed as "W" (Watts) or "kW". If only Voltage (V) and Current (Amps / A) are listed, multiply Voltage by Amps (Watts = Volts × Amperes).
+          Every electrical appliance has a manufacturer label or metal nameplate located on the back, bottom, or near the power cord. Look for the power rating printed as "W" (Watts) or "kW". If only Voltage (V) and Current (Amps / A) are listed, multiply Voltage by Amps (Watts = Volts Ã— Amperes).
         </div>
       </div>
 
@@ -908,7 +946,7 @@
           What electricity rate should I enter in the calculator? <i class="fas fa-chevron-down"></i>
         </div>
         <div class="faq-answer">
-          You should enter your actual cost per unit (per kWh) as indicated on your latest electricity bill. In India, residential rates generally range between ₹4.00 and ₹12.00 per unit depending on the state and tariff slab tier. In Saudi Arabia, residential SEC rates are 0.18 SAR/kWh (Tier 1) and 0.30 SAR/kWh (Tier 2). Enter the applicable rate for your area.
+          You should enter your actual cost per unit (per kWh) as indicated on your latest electricity bill. In India, residential rates generally range between â‚¹4.00 and â‚¹12.00 per unit depending on the state and tariff slab tier. In Saudi Arabia, residential SEC rates are 0.18 SAR/kWh (Tier 1) and 0.30 SAR/kWh (Tier 2). Enter the applicable rate for your area.
         </div>
       </div>
 
@@ -917,7 +955,7 @@
           How can I reduce appliance electricity consumption? <i class="fas fa-chevron-down"></i>
         </div>
         <div class="faq-answer">
-          Upgrade to 5-star energy rated appliances, switch standard ceiling fans to energy-efficient BLDC motors (saving ~60% power), set air conditioner thermostats to 24°C–26°C, clean AC filters regularly, keep refrigerator coils dust-free, and unplug electronics to eliminate phantom standby power draw.
+          Upgrade to 5-star energy rated appliances, switch standard ceiling fans to energy-efficient BLDC motors (saving ~60% power), set air conditioner thermostats to 24Â°Câ€“26Â°C, clean AC filters regularly, keep refrigerator coils dust-free, and unplug electronics to eliminate phantom standby power draw.
         </div>
       </div>
 
@@ -1037,7 +1075,7 @@
 
   <!-- JavaScript Calculator Logic -->
   <script>
-    let activeCurrency = '₹';
+    let activeCurrency = 'â‚¹';
     let currentMode = 'single';
 
     // Multi-appliance initial default dataset

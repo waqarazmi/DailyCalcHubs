@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Travel Budget Calculator — Complete Vacation & Trip Planner in SAR</title>
+  <title>Travel Budget Calculator â€” Complete Vacation & Trip Planner in SAR</title>
   <meta name="description" content="Plan and forecast your total travel budget including flights, hotel, food, local transit, activities, and emergency buffer. Free online vacation budget tool.">
   <meta name="keywords" content="travel budget calculator, vacation budget planner, trip cost calculator saudi riyal, holiday expense estimator, travel budget breakdown">
   <link rel="canonical" href="https://dailycalchubs.com/travel-booking-calculator/travel-budget/">
@@ -17,7 +17,7 @@
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://dailycalchubs.com/travel-booking-calculator/travel-budget/">
-  <meta property="og:title" content="Travel Budget Calculator — Complete Vacation & Trip Planner in SAR">
+  <meta property="og:title" content="Travel Budget Calculator â€” Complete Vacation & Trip Planner in SAR">
   <meta property="og:description" content="Plan and forecast your total travel budget including flights, hotel, food, local transit, activities, and emergency buffer. Free online vacation budget tool.">
   <meta property="og:image" content="https://dailycalchubs.com/og-image.jpg">
   <meta property="og:image:secure_url" content="https://dailycalchubs.com/og-image.jpg">
@@ -27,10 +27,48 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Travel Budget Calculator — Complete Vacation & Trip Planner in SAR">
+  <meta name="twitter:title" content="Travel Budget Calculator â€” Complete Vacation & Trip Planner in SAR">
   <meta name="twitter:description" content="Plan and forecast your total travel budget including flights, hotel, food, local transit, activities, and emergency buffer. Free online vacation budget tool.">
   <meta name="twitter:image" content="https://dailycalchubs.com/og-image.jpg">
 
+  <!-- DailyCalcHubs Owner Admin Exclusion Mode (Zero GA4 Views / Zero AdSense Impressions) -->
+  <script>
+    (function() {
+      try {
+        var params = new URLSearchParams(window.location.search);
+        var owner = params.get('owner');
+        if (owner === 'waqar_lock') {
+          localStorage.setItem('dch_owner_mode', 'active');
+          params.delete('owner');
+          var newSearch = params.toString();
+          var cleanUrl = window.location.pathname + (newSearch ? '?' + newSearch : '') + window.location.hash;
+          window.history.replaceState({}, document.title, cleanUrl);
+        } else if (owner === 'off') {
+          localStorage.removeItem('dch_owner_mode');
+          params.delete('owner');
+          var newSearch = params.toString();
+          var cleanUrl = window.location.pathname + (newSearch ? '?' + newSearch : '') + window.location.hash;
+          window.history.replaceState({}, document.title, cleanUrl);
+        }
+
+        if (localStorage.getItem('dch_owner_mode') === 'active') {
+          window['ga-disable-G-18Y3LNHDR8'] = true;
+          window.adsbygoogle = window.adsbygoogle || [];
+          window.adsbygoogle.pauseAdRequests = 1;
+
+          window.addEventListener('DOMContentLoaded', function() {
+            if (!document.getElementById('dch-owner-mode-badge')) {
+              var badge = document.createElement('div');
+              badge.id = 'dch-owner-mode-badge';
+              badge.innerHTML = '&#128274; Owner Mode: Tracking &amp; Ads Disabled';
+              badge.style.cssText = 'position:fixed;bottom:14px;left:14px;background:rgba(17,24,39,0.92);color:#10b981;font-size:11.5px;font-weight:600;font-family:system-ui,-apple-system,sans-serif;padding:6px 12px;border-radius:20px;border:1px solid rgba(16,185,129,0.35);box-shadow:0 4px 12px rgba(0,0,0,0.25);z-index:99999;pointer-events:none;letter-spacing:0.2px;backdrop-filter:blur(4px);';
+              document.body.appendChild(badge);
+            }
+          });
+        }
+      } catch (e) {}
+    })();
+  </script>
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6944579701716470" crossorigin="anonymous"></script>
 
@@ -77,7 +115,7 @@
         "name": "Why is a contingency buffer essential in a vacation budget?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Unexpected situations—such as last-minute baggage fees, medical pharmacy needs, airport cab surges, or flight rescheduling fees—regularly happen during travel. A 10% contingency ensures you stay debt-free."
+          "text": "Unexpected situationsâ€”such as last-minute baggage fees, medical pharmacy needs, airport cab surges, or flight rescheduling feesâ€”regularly happen during travel. A 10% contingency ensures you stay debt-free."
         }
       },
       {
@@ -454,7 +492,7 @@
 
       <h2>The Vacation Budget Formula</h2>
       <div style="background:#fff1f2; border:1.5px dashed #fecdd3; border-radius:10px; padding:18px; font-family:monospace; font-size:14px; color:#9f1239; font-weight:700; margin:18px 0;">
-        Total Budget = [ Flights + Lodging + (Daily Food + Daily Transit) × Travelers × Days + Activities ] × (1 + Contingency %)
+        Total Budget = [ Flights + Lodging + (Daily Food + Daily Transit) Ã— Travelers Ã— Days + Activities ] Ã— (1 + Contingency %)
       </div>
       <p style="font-size:14px; color:#475569; line-height:1.6;">
         Where <em>Flights</em> and <em>Lodging</em> reflect total upfront bookings, <em>Daily Food</em> and <em>Daily Transit</em> scale with duration and party size, <em>Activities</em> accounts for tours and tickets, and <em>Contingency %</em> adds a protective liquidity buffer (typically 10% to 15%).
@@ -467,14 +505,14 @@
         <ul style="margin-bottom:12px; padding-left:20px; font-size:14px; line-height:1.65; color:#334155;">
           <li><strong>Flight Transportation:</strong> 2 return tickets = <strong>2,400 SAR</strong> (detailed via <a href="/travel-booking-calculator/flight-cost/" style="color:var(--crimson-primary); font-weight:700;">Flight Cost Calculator</a>)</li>
           <li><strong>Hotel Accommodation:</strong> 6 nights lodging = <strong>3,150 SAR</strong> (detailed via <a href="/travel-booking-calculator/hotel-cost/" style="color:var(--crimson-primary); font-weight:700;">Hotel Stay Calculator</a>)</li>
-          <li><strong>Food &amp; Dining:</strong> 150 SAR/person/day × 2 travelers × 7 days = <strong>2,100 SAR</strong></li>
-          <li><strong>Local Transit (Taxis &amp; Metro):</strong> 50 SAR/person/day × 2 travelers × 7 days = <strong>700 SAR</strong></li>
+          <li><strong>Food &amp; Dining:</strong> 150 SAR/person/day Ã— 2 travelers Ã— 7 days = <strong>2,100 SAR</strong></li>
+          <li><strong>Local Transit (Taxis &amp; Metro):</strong> 50 SAR/person/day Ã— 2 travelers Ã— 7 days = <strong>700 SAR</strong></li>
           <li><strong>Activities &amp; Sightseeing:</strong> Guided tours and museum passes = <strong>800 SAR</strong></li>
           <li><strong>Base Subtotal Before Buffer:</strong> 2,400 + 3,150 + 2,100 + 700 + 800 = <strong>9,150 SAR</strong></li>
-          <li><strong>Emergency Contingency (10% Buffer):</strong> 9,150 SAR × 0.10 = <strong>+915 SAR</strong></li>
+          <li><strong>Emergency Contingency (10% Buffer):</strong> 9,150 SAR Ã— 0.10 = <strong>+915 SAR</strong></li>
           <li><strong>Total Estimated Trip Budget:</strong> 9,150 + 915 = <strong>10,065 SAR</strong></li>
-          <li><strong>Per-Person Share:</strong> 10,065 SAR ÷ 2 = <strong>5,033 SAR / person</strong> (for multi-friend group breakdowns, use the <a href="/travel-booking-calculator/expense-split/" style="color:var(--crimson-primary); font-weight:700;">Travel Expense Splitter</a>)</li>
-          <li><strong>Average Daily Burn Rate:</strong> 10,065 SAR ÷ 7 days = <strong>1,438 SAR / day (total party)</strong></li>
+          <li><strong>Per-Person Share:</strong> 10,065 SAR Ã· 2 = <strong>5,033 SAR / person</strong> (for multi-friend group breakdowns, use the <a href="/travel-booking-calculator/expense-split/" style="color:var(--crimson-primary); font-weight:700;">Travel Expense Splitter</a>)</li>
+          <li><strong>Average Daily Burn Rate:</strong> 10,065 SAR Ã· 7 days = <strong>1,438 SAR / day (total party)</strong></li>
         </ul>
       </div>
 
@@ -485,7 +523,7 @@
           <i class="fas fa-chevron-down"></i>
         </div>
         <div class="faq-answer" style="display:none;">
-          Unexpected situations—such as last-minute baggage fees, medical pharmacy needs, airport cab surges, or flight rescheduling fees—regularly happen during travel. A 10% contingency ensures you stay debt-free.
+          Unexpected situationsâ€”such as last-minute baggage fees, medical pharmacy needs, airport cab surges, or flight rescheduling feesâ€”regularly happen during travel. A 10% contingency ensures you stay debt-free.
         </div>
       </div>
 

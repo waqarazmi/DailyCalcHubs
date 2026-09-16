@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Legal Disclaimer | DailyCalcHubs — Mathematical &amp; Utility Estimation Tools</title>
+  <title>Legal Disclaimer | DailyCalcHubs â€” Mathematical &amp; Utility Estimation Tools</title>
   <meta name="description" content="Comprehensive Legal Disclaimer for DailyCalcHubs. Informational estimation disclosures regarding financial models, foreign exchange benchmarks, Saudi labor law calculations, and non-affiliation.">
   <meta name="keywords" content="dailycalchubs legal disclaimer, calculator disclaimer, financial estimation disclaimer, saudi labor law calculation disclaimer, non-affiliation notice">
   <link rel="canonical" href="https://dailycalchubs.com/disclaimer/">
@@ -17,7 +17,7 @@
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://dailycalchubs.com/disclaimer/">
-  <meta property="og:title" content="Legal Disclaimer | DailyCalcHubs — Mathematical &amp; Utility Estimation Tools">
+  <meta property="og:title" content="Legal Disclaimer | DailyCalcHubs â€” Mathematical &amp; Utility Estimation Tools">
   <meta property="og:description" content="Review the Legal Disclaimer for DailyCalcHubs. Important notices regarding computational estimation tools, market feeds, and non-affiliation.">
   <meta property="og:image" content="https://dailycalchubs.com/og-image.jpg">
   <meta property="og:image:secure_url" content="https://dailycalchubs.com/og-image.jpg">
@@ -27,10 +27,48 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Legal Disclaimer | DailyCalcHubs — Mathematical &amp; Utility Estimation Tools">
+  <meta name="twitter:title" content="Legal Disclaimer | DailyCalcHubs â€” Mathematical &amp; Utility Estimation Tools">
   <meta name="twitter:description" content="Review the Legal Disclaimer for DailyCalcHubs. Important notices regarding computational estimation tools, market feeds, and non-affiliation.">
   <meta name="twitter:image" content="https://dailycalchubs.com/og-image.jpg">
 
+  <!-- DailyCalcHubs Owner Admin Exclusion Mode (Zero GA4 Views / Zero AdSense Impressions) -->
+  <script>
+    (function() {
+      try {
+        var params = new URLSearchParams(window.location.search);
+        var owner = params.get('owner');
+        if (owner === 'waqar_lock') {
+          localStorage.setItem('dch_owner_mode', 'active');
+          params.delete('owner');
+          var newSearch = params.toString();
+          var cleanUrl = window.location.pathname + (newSearch ? '?' + newSearch : '') + window.location.hash;
+          window.history.replaceState({}, document.title, cleanUrl);
+        } else if (owner === 'off') {
+          localStorage.removeItem('dch_owner_mode');
+          params.delete('owner');
+          var newSearch = params.toString();
+          var cleanUrl = window.location.pathname + (newSearch ? '?' + newSearch : '') + window.location.hash;
+          window.history.replaceState({}, document.title, cleanUrl);
+        }
+
+        if (localStorage.getItem('dch_owner_mode') === 'active') {
+          window['ga-disable-G-18Y3LNHDR8'] = true;
+          window.adsbygoogle = window.adsbygoogle || [];
+          window.adsbygoogle.pauseAdRequests = 1;
+
+          window.addEventListener('DOMContentLoaded', function() {
+            if (!document.getElementById('dch-owner-mode-badge')) {
+              var badge = document.createElement('div');
+              badge.id = 'dch-owner-mode-badge';
+              badge.innerHTML = '&#128274; Owner Mode: Tracking &amp; Ads Disabled';
+              badge.style.cssText = 'position:fixed;bottom:14px;left:14px;background:rgba(17,24,39,0.92);color:#10b981;font-size:11.5px;font-weight:600;font-family:system-ui,-apple-system,sans-serif;padding:6px 12px;border-radius:20px;border:1px solid rgba(16,185,129,0.35);box-shadow:0 4px 12px rgba(0,0,0,0.25);z-index:99999;pointer-events:none;letter-spacing:0.2px;backdrop-filter:blur(4px);';
+              document.body.appendChild(badge);
+            }
+          });
+        }
+      } catch (e) {}
+    })();
+  </script>
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6944579701716470" crossorigin="anonymous"></script>
 
@@ -252,7 +290,7 @@
 
       <h2><i class="fas fa-shield-halved"></i> 7. Limitation of Liability &amp; "As Is" Warranty</h2>
       <p>All content, calculation scripts, tools, and software on DailyCalcHubs are provided on an <strong>"as is"</strong> and <strong>"as available"</strong> basis without warranties of any kind, whether express or implied, including but not limited to implied warranties of accuracy, completeness, fitness for a particular purpose, or uninterrupted service.</p>
-      <p>To the fullest extent permitted by applicable law, in no event shall <strong>DailyCalcHubs</strong>, its founders, operators, writers, or affiliates be liable for any direct, indirect, incidental, consequential, special, or punitive damages—including loss of profits, unexpected banking fees, immigration penalties, or labor dispute outcomes—arising from or in connection with your access to or reliance upon any calculation or guide on this site.</p>
+      <p>To the fullest extent permitted by applicable law, in no event shall <strong>DailyCalcHubs</strong>, its founders, operators, writers, or affiliates be liable for any direct, indirect, incidental, consequential, special, or punitive damagesâ€”including loss of profits, unexpected banking fees, immigration penalties, or labor dispute outcomesâ€”arising from or in connection with your access to or reliance upon any calculation or guide on this site.</p>
 
       <h2><i class="fas fa-link"></i> 8. External Links &amp; Third-Party Services</h2>
       <p>DailyCalcHubs may provide informational links to external government websites, official portals, airlines, or booking engines. These links are provided solely for user reference. DailyCalcHubs has no control over the content, uptime, security policies, or operational standards of external websites.</p>

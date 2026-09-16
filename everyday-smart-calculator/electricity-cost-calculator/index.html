@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -29,6 +29,44 @@
   <meta name="twitter:description" content="Calculate monthly electricity bills and kWh power consumption based on tariff rates. Estimate appliance energy costs and household electric utility expenses.">>
   <meta name="twitter:image" content="https://dailycalchubs.com/og-image.jpg">
 
+  <!-- DailyCalcHubs Owner Admin Exclusion Mode (Zero GA4 Views / Zero AdSense Impressions) -->
+  <script>
+    (function() {
+      try {
+        var params = new URLSearchParams(window.location.search);
+        var owner = params.get('owner');
+        if (owner === 'waqar_lock') {
+          localStorage.setItem('dch_owner_mode', 'active');
+          params.delete('owner');
+          var newSearch = params.toString();
+          var cleanUrl = window.location.pathname + (newSearch ? '?' + newSearch : '') + window.location.hash;
+          window.history.replaceState({}, document.title, cleanUrl);
+        } else if (owner === 'off') {
+          localStorage.removeItem('dch_owner_mode');
+          params.delete('owner');
+          var newSearch = params.toString();
+          var cleanUrl = window.location.pathname + (newSearch ? '?' + newSearch : '') + window.location.hash;
+          window.history.replaceState({}, document.title, cleanUrl);
+        }
+
+        if (localStorage.getItem('dch_owner_mode') === 'active') {
+          window['ga-disable-G-18Y3LNHDR8'] = true;
+          window.adsbygoogle = window.adsbygoogle || [];
+          window.adsbygoogle.pauseAdRequests = 1;
+
+          window.addEventListener('DOMContentLoaded', function() {
+            if (!document.getElementById('dch-owner-mode-badge')) {
+              var badge = document.createElement('div');
+              badge.id = 'dch-owner-mode-badge';
+              badge.innerHTML = '&#128274; Owner Mode: Tracking &amp; Ads Disabled';
+              badge.style.cssText = 'position:fixed;bottom:14px;left:14px;background:rgba(17,24,39,0.92);color:#10b981;font-size:11.5px;font-weight:600;font-family:system-ui,-apple-system,sans-serif;padding:6px 12px;border-radius:20px;border:1px solid rgba(16,185,129,0.35);box-shadow:0 4px 12px rgba(0,0,0,0.25);z-index:99999;pointer-events:none;letter-spacing:0.2px;backdrop-filter:blur(4px);';
+              document.body.appendChild(badge);
+            }
+          });
+        }
+      } catch (e) {}
+    })();
+  </script>
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6944579701716470" crossorigin="anonymous"></script>
 
@@ -75,7 +113,7 @@
             "name": "How do you calculate kilowatt-hours (kWh) from appliance wattage?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Kilowatt-hours are calculated by multiplying an appliance's power rating in Watts by the hours used per day, then dividing by 1,000: kWh = (Watts × Hours) ÷ 1,000."
+              "text": "Kilowatt-hours are calculated by multiplying an appliance's power rating in Watts by the hours used per day, then dividing by 1,000: kWh = (Watts Ã— Hours) Ã· 1,000."
             }
           },
           {
@@ -313,15 +351,15 @@
           <label class="form-label" for="applianceSelect">Select Common Appliance Preset</label>
           <div class="calc-select">
             <select id="applianceSelect" onchange="applyAppliancePreset()">
-              <option value="1800">Split AC (1.5 Ton / 18,000 BTU) — ~1,800W</option>
-              <option value="2200">Window AC (1.5 Ton) — ~2,200W</option>
-              <option value="200" selected>Double-Door Refrigerator — ~200W</option>
-              <option value="1500">Water Heater (Geyser 50L) — ~1,500W</option>
-              <option value="500">Washing Machine (Front Load) — ~500W</option>
-              <option value="120">LED Smart TV (55-Inch) — ~120W</option>
-              <option value="65">Laptop Computer — ~65W</option>
-              <option value="1000">Microwave Oven — ~1,000W</option>
-              <option value="1200">Clothes Steam Iron — ~1,200W</option>
+              <option value="1800">Split AC (1.5 Ton / 18,000 BTU) â€” ~1,800W</option>
+              <option value="2200">Window AC (1.5 Ton) â€” ~2,200W</option>
+              <option value="200" selected>Double-Door Refrigerator â€” ~200W</option>
+              <option value="1500">Water Heater (Geyser 50L) â€” ~1,500W</option>
+              <option value="500">Washing Machine (Front Load) â€” ~500W</option>
+              <option value="120">LED Smart TV (55-Inch) â€” ~120W</option>
+              <option value="65">Laptop Computer â€” ~65W</option>
+              <option value="1000">Microwave Oven â€” ~1,000W</option>
+              <option value="1200">Clothes Steam Iron â€” ~1,200W</option>
               <option value="custom">Custom Wattage</option>
             </select>
           </div>
@@ -383,12 +421,12 @@
           <label class="form-label" for="currencySelect">Currency Label</label>
           <div class="calc-select">
             <select id="currencySelect" onchange="updateCurrencyLabel()">
-              <option value="SAR" selected>SAR — Saudi Riyal</option>
-              <option value="AED">AED — UAE Dirham</option>
-              <option value="USD">USD — US Dollar ($)</option>
-              <option value="EUR">EUR — Euro (€)</option>
-              <option value="INR">INR — Indian Rupee (₹)</option>
-              <option value="PKR">PKR — Pakistani Rupee</option>
+              <option value="SAR" selected>SAR â€” Saudi Riyal</option>
+              <option value="AED">AED â€” UAE Dirham</option>
+              <option value="USD">USD â€” US Dollar ($)</option>
+              <option value="EUR">EUR â€” Euro (â‚¬)</option>
+              <option value="INR">INR â€” Indian Rupee (â‚¹)</option>
+              <option value="PKR">PKR â€” Pakistani Rupee</option>
             </select>
           </div>
         </div>
@@ -434,9 +472,9 @@
 
       <h3>Mathematically Valid Electricity Formulas</h3>
       <div class="formula-box">
-        Daily Energy (kWh) = [Power (Watts) ÷ 1,000] × Hours Used Per Day<br>
-        Billing Period Energy = Daily Energy (kWh) × Number of Days<br>
-        Estimated Cost = Billing Period Energy (kWh) × Tariff Rate per kWh
+        Daily Energy (kWh) = [Power (Watts) Ã· 1,000] Ã— Hours Used Per Day<br>
+        Billing Period Energy = Daily Energy (kWh) Ã— Number of Days<br>
+        Estimated Cost = Billing Period Energy (kWh) Ã— Tariff Rate per kWh
       </div>
 
       <h3>Worked Calculation Example</h3>
@@ -444,10 +482,10 @@
         Consider a standard <strong>1.5-ton split air conditioner</strong> running for <strong>8 hours per day</strong> during the summer in Riyadh, under the Saudi SEC residential Tier 1 tariff of <strong>0.18 SAR/kWh</strong>:
       </p>
       <ul>
-        <li><strong>Step 1 (Convert watts to kW):</strong> 1,800 Watts ÷ 1,000 = 1.8 kW.</li>
-        <li><strong>Step 2 (Determine daily consumption):</strong> 1.8 kW × 8 hours = <strong>14.4 kWh per day</strong>.</li>
-        <li><strong>Step 3 (Calculate 30-day monthly consumption):</strong> 14.4 kWh × 30 days = <strong>432 kWh per month</strong>.</li>
-        <li><strong>Step 4 (Multiply by tariff rate):</strong> 432 kWh × 0.18 SAR = <strong>77.76 SAR per month</strong>.</li>
+        <li><strong>Step 1 (Convert watts to kW):</strong> 1,800 Watts Ã· 1,000 = 1.8 kW.</li>
+        <li><strong>Step 2 (Determine daily consumption):</strong> 1.8 kW Ã— 8 hours = <strong>14.4 kWh per day</strong>.</li>
+        <li><strong>Step 3 (Calculate 30-day monthly consumption):</strong> 14.4 kWh Ã— 30 days = <strong>432 kWh per month</strong>.</li>
+        <li><strong>Step 4 (Multiply by tariff rate):</strong> 432 kWh Ã— 0.18 SAR = <strong>77.76 SAR per month</strong>.</li>
       </ul>
 
       <h2>Common Household Appliance Power Ratings</h2>
@@ -464,39 +502,39 @@
           <tbody>
             <tr>
               <td><strong>Split Air Conditioner (1.5 Ton)</strong></td>
-              <td>1,800 – 2,000 W</td>
-              <td>8 – 12 hours</td>
-              <td>430 – 650 kWh</td>
+              <td>1,800 â€“ 2,000 W</td>
+              <td>8 â€“ 12 hours</td>
+              <td>430 â€“ 650 kWh</td>
             </tr>
             <tr>
               <td><strong>Refrigerator (Frost Free)</strong></td>
-              <td>150 – 300 W</td>
+              <td>150 â€“ 300 W</td>
               <td>24 hours (cycled)</td>
-              <td>110 – 180 kWh</td>
+              <td>110 â€“ 180 kWh</td>
             </tr>
             <tr>
               <td><strong>Electric Water Heater (50L)</strong></td>
-              <td>1,500 – 2,000 W</td>
-              <td>2 – 3 hours</td>
-              <td>90 – 180 kWh</td>
+              <td>1,500 â€“ 2,000 W</td>
+              <td>2 â€“ 3 hours</td>
+              <td>90 â€“ 180 kWh</td>
             </tr>
             <tr>
               <td><strong>Front-Load Washing Machine</strong></td>
-              <td>500 – 800 W</td>
+              <td>500 â€“ 800 W</td>
               <td>1 hour</td>
-              <td>15 – 24 kWh</td>
+              <td>15 â€“ 24 kWh</td>
             </tr>
             <tr>
               <td><strong>Smart LED Television (55")</strong></td>
-              <td>90 – 130 W</td>
+              <td>90 â€“ 130 W</td>
               <td>5 hours</td>
-              <td>14 – 20 kWh</td>
+              <td>14 â€“ 20 kWh</td>
             </tr>
             <tr>
               <td><strong>Laptop Computer</strong></td>
-              <td>50 – 90 W</td>
+              <td>50 â€“ 90 W</td>
               <td>8 hours</td>
-              <td>12 – 22 kWh</td>
+              <td>12 â€“ 22 kWh</td>
             </tr>
           </tbody>
         </table>
@@ -515,7 +553,7 @@
       
       <div class="faq-item">
         <div class="faq-question" onclick="toggleFaq(this)">How do you calculate kilowatt-hours (kWh) from appliance wattage? <i class="fas fa-chevron-down"></i></div>
-        <div class="faq-answer">Multiply the appliance wattage by daily hours of operation and divide by 1,000: kWh = (Watts × Hours) ÷ 1,000.</div>
+        <div class="faq-answer">Multiply the appliance wattage by daily hours of operation and divide by 1,000: kWh = (Watts Ã— Hours) Ã· 1,000.</div>
       </div>
 
       <div class="faq-item">

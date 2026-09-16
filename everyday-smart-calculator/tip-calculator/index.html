@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tip Calculator — Bill Gratuity & Group Share Estimator</title>
+  <title>Tip Calculator â€” Bill Gratuity & Group Share Estimator</title>
   <meta name="description" content="Calculate tip amount, total restaurant bill, and equal split per person with custom percentage options. Culturally neutral and voluntary gratuity guidance.">
   <meta name="keywords" content="tip calculator, gratuity calculator, calculate tip online, bill split tip calculator, restaurant tip calculator, voluntary tip saudi">
   <link rel="canonical" href="https://dailycalchubs.com/everyday-smart-calculator/tip-calculator/">
@@ -17,7 +17,7 @@
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://dailycalchubs.com/everyday-smart-calculator/tip-calculator/">
-  <meta property="og:title" content="Tip Calculator — Bill Gratuity & Group Share Estimator">
+  <meta property="og:title" content="Tip Calculator â€” Bill Gratuity & Group Share Estimator">
   <meta property="og:description" content="Calculate tip amount, total restaurant bill, and equal split per person with custom percentage options. Culturally neutral and voluntary gratuity guidance.">
   <meta property="og:image" content="https://dailycalchubs.com/og-image.jpg">
   <meta property="og:width" content="1200">
@@ -25,10 +25,48 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Tip Calculator — DailyCalcHubs">
+  <meta name="twitter:title" content="Tip Calculator â€” DailyCalcHubs">
   <meta name="twitter:description" content="Calculate bill gratuity, total payable amount, and split shares per diner effortlessly.">
   <meta name="twitter:image" content="https://dailycalchubs.com/og-image.jpg">
 
+  <!-- DailyCalcHubs Owner Admin Exclusion Mode (Zero GA4 Views / Zero AdSense Impressions) -->
+  <script>
+    (function() {
+      try {
+        var params = new URLSearchParams(window.location.search);
+        var owner = params.get('owner');
+        if (owner === 'waqar_lock') {
+          localStorage.setItem('dch_owner_mode', 'active');
+          params.delete('owner');
+          var newSearch = params.toString();
+          var cleanUrl = window.location.pathname + (newSearch ? '?' + newSearch : '') + window.location.hash;
+          window.history.replaceState({}, document.title, cleanUrl);
+        } else if (owner === 'off') {
+          localStorage.removeItem('dch_owner_mode');
+          params.delete('owner');
+          var newSearch = params.toString();
+          var cleanUrl = window.location.pathname + (newSearch ? '?' + newSearch : '') + window.location.hash;
+          window.history.replaceState({}, document.title, cleanUrl);
+        }
+
+        if (localStorage.getItem('dch_owner_mode') === 'active') {
+          window['ga-disable-G-18Y3LNHDR8'] = true;
+          window.adsbygoogle = window.adsbygoogle || [];
+          window.adsbygoogle.pauseAdRequests = 1;
+
+          window.addEventListener('DOMContentLoaded', function() {
+            if (!document.getElementById('dch-owner-mode-badge')) {
+              var badge = document.createElement('div');
+              badge.id = 'dch-owner-mode-badge';
+              badge.innerHTML = '&#128274; Owner Mode: Tracking &amp; Ads Disabled';
+              badge.style.cssText = 'position:fixed;bottom:14px;left:14px;background:rgba(17,24,39,0.92);color:#10b981;font-size:11.5px;font-weight:600;font-family:system-ui,-apple-system,sans-serif;padding:6px 12px;border-radius:20px;border:1px solid rgba(16,185,129,0.35);box-shadow:0 4px 12px rgba(0,0,0,0.25);z-index:99999;pointer-events:none;letter-spacing:0.2px;backdrop-filter:blur(4px);';
+              document.body.appendChild(badge);
+            }
+          });
+        }
+      } catch (e) {}
+    })();
+  </script>
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6944579701716470" crossorigin="anonymous"></script>
 
@@ -83,7 +121,7 @@
             "name": "How is the tip amount calculated?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "The tip amount is computed by multiplying the bill amount by the selected tip percentage: Tip = Bill Amount × (Tip Percentage ÷ 100). The total bill equals the original bill plus the tip."
+              "text": "The tip amount is computed by multiplying the bill amount by the selected tip percentage: Tip = Bill Amount Ã— (Tip Percentage Ã· 100). The total bill equals the original bill plus the tip."
             }
           },
           {
@@ -315,12 +353,12 @@
           <label class="form-label" for="currencySelect">Currency</label>
           <div class="calc-select">
             <select id="currencySelect" style="flex:1; border:none; outline:none; padding:12px 14px; font-weight:700; background:transparent;" onchange="updateCurrency()">
-              <option value="SAR" selected>SAR — Saudi Riyal</option>
-              <option value="AED">AED — UAE Dirham</option>
-              <option value="$">USD — US Dollar ($)</option>
-              <option value="€">EUR — Euro (€)</option>
-              <option value="£">GBP — British Pound (£)</option>
-              <option value="₹">INR — Indian Rupee (₹)</option>
+              <option value="SAR" selected>SAR â€” Saudi Riyal</option>
+              <option value="AED">AED â€” UAE Dirham</option>
+              <option value="$">USD â€” US Dollar ($)</option>
+              <option value="â‚¬">EUR â€” Euro (â‚¬)</option>
+              <option value="Â£">GBP â€” British Pound (Â£)</option>
+              <option value="â‚¹">INR â€” Indian Rupee (â‚¹)</option>
             </select>
           </div>
         </div>
@@ -389,10 +427,10 @@
 
       <h3>Mathematically Valid Gratuity Formulas</h3>
       <div class="formula-box">
-        Tip Amount = Bill Amount × (Tip Percentage ÷ 100)<br>
+        Tip Amount = Bill Amount Ã— (Tip Percentage Ã· 100)<br>
         Total Bill = Bill Amount + Tip Amount<br>
-        Total Per Person = Total Bill ÷ Number of Diners<br>
-        Tip Per Person = Tip Amount ÷ Number of Diners
+        Total Per Person = Total Bill Ã· Number of Diners<br>
+        Tip Per Person = Tip Amount Ã· Number of Diners
       </div>
 
       <h3>Worked Calculation Example</h3>
@@ -400,9 +438,9 @@
         Imagine a family dinner at a restaurant in Riyadh with a total bill of <strong>200 SAR</strong>, 4 diners, and a voluntary tip of <strong>10%</strong>:
       </p>
       <ul>
-        <li><strong>Step 1 (Calculate Tip):</strong> 200 SAR × 0.10 = <strong>20 SAR</strong>.</li>
+        <li><strong>Step 1 (Calculate Tip):</strong> 200 SAR Ã— 0.10 = <strong>20 SAR</strong>.</li>
         <li><strong>Step 2 (Calculate Grand Total):</strong> 200 SAR + 20 SAR = <strong>220 SAR</strong>.</li>
-        <li><strong>Step 3 (Divide Evenly):</strong> 220 SAR ÷ 4 people = <strong>55 SAR per person</strong> (consisting of 50 SAR food share + 5 SAR tip share).</li>
+        <li><strong>Step 3 (Divide Evenly):</strong> 220 SAR Ã· 4 people = <strong>55 SAR per person</strong> (consisting of 50 SAR food share + 5 SAR tip share).</li>
       </ul>
       <p style="font-size:14.5px; color:#334155; line-height:1.7;">
         When dining in larger groups where patrons need itemized shares or custom halala reconciliation, use the <a href="/everyday-smart-calculator/split-bill-calculator/" style="color:var(--sky-dark); font-weight:700;">Split Bill Calculator</a> to distribute shared restaurant checks equitably.
@@ -436,7 +474,7 @@
 
       <div class="faq-item">
         <div class="faq-question" onclick="toggleFaq(this)">How is the tip amount calculated? <i class="fas fa-chevron-down"></i></div>
-        <div class="faq-answer">The tip is calculated by multiplying the bill subtotal by the chosen percentage: Tip = Bill × (Percentage ÷ 100). The total amount payable is the bill plus the tip.</div>
+        <div class="faq-answer">The tip is calculated by multiplying the bill subtotal by the chosen percentage: Tip = Bill Ã— (Percentage Ã· 100). The total amount payable is the bill plus the tip.</div>
       </div>
 
       <div class="faq-item">

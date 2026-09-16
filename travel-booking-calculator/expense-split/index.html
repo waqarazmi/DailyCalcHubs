@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Travel Expense Splitter — Group Vacation &amp; Trip Bill Settlement Calculator</title>
+  <title>Travel Expense Splitter â€” Group Vacation &amp; Trip Bill Settlement Calculator</title>
   <meta name="description" content="Split group vacation costs fairly among friends and family. Calculate shared lodging, meals, transport, and activities with per-person shares and who owes whom.">
   <meta name="keywords" content="travel expense splitter, trip cost divider, group vacation expense calculator, split bill travel tool, vacation settlement tracker">
   <link rel="canonical" href="https://dailycalchubs.com/travel-booking-calculator/expense-split/">
@@ -17,7 +17,7 @@
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://dailycalchubs.com/travel-booking-calculator/expense-split/">
-  <meta property="og:title" content="Travel Expense Splitter — Group Vacation &amp; Trip Bill Settlement Calculator">
+  <meta property="og:title" content="Travel Expense Splitter â€” Group Vacation &amp; Trip Bill Settlement Calculator">
   <meta property="og:description" content="Split group vacation costs fairly among friends and family. Calculate shared lodging, meals, transport, and activities with per-person shares and who owes whom.">
   <meta property="og:image" content="https://dailycalchubs.com/og-image.jpg">
   <meta property="og:image:secure_url" content="https://dailycalchubs.com/og-image.jpg">
@@ -27,10 +27,48 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Travel Expense Splitter — Group Vacation &amp; Trip Bill Settlement Calculator">
+  <meta name="twitter:title" content="Travel Expense Splitter â€” Group Vacation &amp; Trip Bill Settlement Calculator">
   <meta name="twitter:description" content="Split group vacation costs fairly among friends and family. Calculate shared lodging, meals, transport, and activities with per-person shares and who owes whom.">
   <meta name="twitter:image" content="https://dailycalchubs.com/og-image.jpg">
 
+  <!-- DailyCalcHubs Owner Admin Exclusion Mode (Zero GA4 Views / Zero AdSense Impressions) -->
+  <script>
+    (function() {
+      try {
+        var params = new URLSearchParams(window.location.search);
+        var owner = params.get('owner');
+        if (owner === 'waqar_lock') {
+          localStorage.setItem('dch_owner_mode', 'active');
+          params.delete('owner');
+          var newSearch = params.toString();
+          var cleanUrl = window.location.pathname + (newSearch ? '?' + newSearch : '') + window.location.hash;
+          window.history.replaceState({}, document.title, cleanUrl);
+        } else if (owner === 'off') {
+          localStorage.removeItem('dch_owner_mode');
+          params.delete('owner');
+          var newSearch = params.toString();
+          var cleanUrl = window.location.pathname + (newSearch ? '?' + newSearch : '') + window.location.hash;
+          window.history.replaceState({}, document.title, cleanUrl);
+        }
+
+        if (localStorage.getItem('dch_owner_mode') === 'active') {
+          window['ga-disable-G-18Y3LNHDR8'] = true;
+          window.adsbygoogle = window.adsbygoogle || [];
+          window.adsbygoogle.pauseAdRequests = 1;
+
+          window.addEventListener('DOMContentLoaded', function() {
+            if (!document.getElementById('dch-owner-mode-badge')) {
+              var badge = document.createElement('div');
+              badge.id = 'dch-owner-mode-badge';
+              badge.innerHTML = '&#128274; Owner Mode: Tracking &amp; Ads Disabled';
+              badge.style.cssText = 'position:fixed;bottom:14px;left:14px;background:rgba(17,24,39,0.92);color:#10b981;font-size:11.5px;font-weight:600;font-family:system-ui,-apple-system,sans-serif;padding:6px 12px;border-radius:20px;border:1px solid rgba(16,185,129,0.35);box-shadow:0 4px 12px rgba(0,0,0,0.25);z-index:99999;pointer-events:none;letter-spacing:0.2px;backdrop-filter:blur(4px);';
+              document.body.appendChild(badge);
+            }
+          });
+        }
+      } catch (e) {}
+    })();
+  </script>
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6944579701716470" crossorigin="anonymous"></script>
 
@@ -435,7 +473,7 @@
             <div class="result-header">
               <div class="result-badge">Equal Share Per Person</div>
               <div class="total-amount-display" id="perPersonShare">SAR 1,625</div>
-              <div class="total-sub" id="splitSummarySub">Total Trip SAR 6,500 ÷ 4 Travelers</div>
+              <div class="total-sub" id="splitSummarySub">Total Trip SAR 6,500 Ã· 4 Travelers</div>
             </div>
 
             <div class="result-stats-grid">
@@ -510,9 +548,9 @@
       <h2>The Group Travel Expense Allocation Formula</h2>
       <div style="background:#fff1f2; border:1.5px dashed #fecdd3; border-radius:10px; padding:18px; font-family:monospace; font-size:14px; color:#9f1239; font-weight:700; margin:18px 0;">
         Total Shared Spend = Communal Lodging + Group Dining + Shared Transit + Shared Activities<br>
-        Equal Per-Person Share = Total Shared Spend ÷ Number of Travelers<br>
-        Daily Cost Per Person = Equal Per-Person Share ÷ Trip Duration in Days<br>
-        Net Member Settlement Balance = Amount Paid Upfront by Member − Equal Per-Person Share
+        Equal Per-Person Share = Total Shared Spend Ã· Number of Travelers<br>
+        Daily Cost Per Person = Equal Per-Person Share Ã· Trip Duration in Days<br>
+        Net Member Settlement Balance = Amount Paid Upfront by Member âˆ’ Equal Per-Person Share
       </div>
       <p style="font-size:14px; color:#475569; line-height:1.6;">
         Where positive settlement balances indicate a traveler is owed a reimbursement from the pool, while negative balances indicate outstanding contributions owed to the communal group.
@@ -529,11 +567,11 @@
           <li><strong>Shared Excursions (Boat Charter &amp; Desert Safari):</strong> <strong>750 SAR</strong></li>
           <li><strong>Total Group Expenditure:</strong> 3,200 + 1,600 + 950 + 750 = <strong>6,500 SAR</strong></li>
           <li><strong>Number of Travelers Sharing:</strong> 4 Companions</li>
-          <li><strong>Equal Share Per Person:</strong> 6,500 SAR ÷ 4 = <strong>1,625 SAR / person</strong></li>
-          <li><strong>Daily Spend Per Person:</strong> 1,625 SAR ÷ 5 days = <strong>325 SAR / person / day</strong></li>
+          <li><strong>Equal Share Per Person:</strong> 6,500 SAR Ã· 4 = <strong>1,625 SAR / person</strong></li>
+          <li><strong>Daily Spend Per Person:</strong> 1,625 SAR Ã· 5 days = <strong>325 SAR / person / day</strong></li>
           <li><strong>Upfront Settlement Tracking:</strong>
-            <br>• Traveler A paid <strong>4,150 SAR</strong> upfront for the chalet and rental car &rarr; <strong>Owed +2,525 SAR</strong>
-            <br>• Other 3 companions paid <strong>2,350 SAR</strong> combined upfront &rarr; Each companion transfers their remaining balance to Traveler A upon checkout
+            <br>â€¢ Traveler A paid <strong>4,150 SAR</strong> upfront for the chalet and rental car &rarr; <strong>Owed +2,525 SAR</strong>
+            <br>â€¢ Other 3 companions paid <strong>2,350 SAR</strong> combined upfront &rarr; Each companion transfers their remaining balance to Traveler A upon checkout
           </li>
         </ul>
       </div>
@@ -554,7 +592,7 @@
 
       <h3>3. Connecting Shared Expenses to Your Personal Budget</h3>
       <p>
-        Remember that this tool splits <em>communal group expenses</em>. To plan your complete individual vacation—incorporating your personal flight airfare, individual shopping, visa fees, and an emergency cushion—use our comprehensive <a href="/travel-booking-calculator/travel-budget/" style="color:var(--crimson-primary); font-weight:700;">Travel Budget Planner</a>. For single restaurant dining tabs, voluntary service tips, or individual dish itemization with rounding reconciliation, explore our dedicated <a href="/everyday-smart-calculator/split-bill-calculator/" style="color:var(--crimson-primary); font-weight:700;">Everyday Split Bill Calculator</a>.
+        Remember that this tool splits <em>communal group expenses</em>. To plan your complete individual vacationâ€”incorporating your personal flight airfare, individual shopping, visa fees, and an emergency cushionâ€”use our comprehensive <a href="/travel-booking-calculator/travel-budget/" style="color:var(--crimson-primary); font-weight:700;">Travel Budget Planner</a>. For single restaurant dining tabs, voluntary service tips, or individual dish itemization with rounding reconciliation, explore our dedicated <a href="/everyday-smart-calculator/split-bill-calculator/" style="color:var(--crimson-primary); font-weight:700;">Everyday Split Bill Calculator</a>.
       </p>
 
       <div class="info-callout">
@@ -698,7 +736,7 @@
 
         // Displays
         perPersonShareDisplay.textContent = 'SAR ' + Math.round(fairShare).toLocaleString();
-        splitSummarySub.textContent = `Total Trip SAR ${Math.round(totalSpend).toLocaleString()} ÷ ${travelers} Travelers`;
+        splitSummarySub.textContent = `Total Trip SAR ${Math.round(totalSpend).toLocaleString()} Ã· ${travelers} Travelers`;
         totalGroupSpendDisplay.textContent = 'SAR ' + Math.round(totalSpend).toLocaleString();
         costPerPaxPerDayDisplay.textContent = 'SAR ' + Math.round(perDayPerPax).toLocaleString();
 

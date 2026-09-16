@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fuel Cost Calculator — Gas & Trip Travel Expense Estimator</title>
+  <title>Fuel Cost Calculator â€” Gas & Trip Travel Expense Estimator</title>
   <meta name="description" content="Calculate road trip fuel costs, liters required, fuel efficiency in L/100km or MPG, and carpool split costs with our free Fuel Cost Calculator.">
   <meta name="keywords" content="fuel cost calculator, gas trip calculator, petrol cost calculator saudi, calculate fuel consumption, carpool gas calculator, trip fuel cost">
   <link rel="canonical" href="https://dailycalchubs.com/everyday-smart-calculator/fuel-cost-calculator/">
@@ -17,7 +17,7 @@
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://dailycalchubs.com/everyday-smart-calculator/fuel-cost-calculator/">
-  <meta property="og:title" content="Fuel Cost Calculator — Gas & Trip Travel Expense Estimator">
+  <meta property="og:title" content="Fuel Cost Calculator â€” Gas & Trip Travel Expense Estimator">
   <meta property="og:description" content="Calculate road trip fuel costs, liters required, fuel efficiency in L/100km or MPG, and carpool split costs with our free Fuel Cost Calculator.">
   <meta property="og:image" content="https://dailycalchubs.com/og-image.jpg">
   <meta property="og:width" content="1200">
@@ -25,10 +25,48 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Fuel Cost Calculator — DailyCalcHubs">
+  <meta name="twitter:title" content="Fuel Cost Calculator â€” DailyCalcHubs">
   <meta name="twitter:description" content="Instant trip fuel expenditure calculation, consumption analysis, and carpool cost division.">
   <meta name="twitter:image" content="https://dailycalchubs.com/og-image.jpg">
 
+  <!-- DailyCalcHubs Owner Admin Exclusion Mode (Zero GA4 Views / Zero AdSense Impressions) -->
+  <script>
+    (function() {
+      try {
+        var params = new URLSearchParams(window.location.search);
+        var owner = params.get('owner');
+        if (owner === 'waqar_lock') {
+          localStorage.setItem('dch_owner_mode', 'active');
+          params.delete('owner');
+          var newSearch = params.toString();
+          var cleanUrl = window.location.pathname + (newSearch ? '?' + newSearch : '') + window.location.hash;
+          window.history.replaceState({}, document.title, cleanUrl);
+        } else if (owner === 'off') {
+          localStorage.removeItem('dch_owner_mode');
+          params.delete('owner');
+          var newSearch = params.toString();
+          var cleanUrl = window.location.pathname + (newSearch ? '?' + newSearch : '') + window.location.hash;
+          window.history.replaceState({}, document.title, cleanUrl);
+        }
+
+        if (localStorage.getItem('dch_owner_mode') === 'active') {
+          window['ga-disable-G-18Y3LNHDR8'] = true;
+          window.adsbygoogle = window.adsbygoogle || [];
+          window.adsbygoogle.pauseAdRequests = 1;
+
+          window.addEventListener('DOMContentLoaded', function() {
+            if (!document.getElementById('dch-owner-mode-badge')) {
+              var badge = document.createElement('div');
+              badge.id = 'dch-owner-mode-badge';
+              badge.innerHTML = '&#128274; Owner Mode: Tracking &amp; Ads Disabled';
+              badge.style.cssText = 'position:fixed;bottom:14px;left:14px;background:rgba(17,24,39,0.92);color:#10b981;font-size:11.5px;font-weight:600;font-family:system-ui,-apple-system,sans-serif;padding:6px 12px;border-radius:20px;border:1px solid rgba(16,185,129,0.35);box-shadow:0 4px 12px rgba(0,0,0,0.25);z-index:99999;pointer-events:none;letter-spacing:0.2px;backdrop-filter:blur(4px);';
+              document.body.appendChild(badge);
+            }
+          });
+        }
+      } catch (e) {}
+    })();
+  </script>
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6944579701716470" crossorigin="anonymous"></script>
 
@@ -75,7 +113,7 @@
             "name": "How is total fuel consumption calculated for a road trip?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Using metric units (L/100km): Total Fuel (Liters) = (Trip Distance in km ÷ 100) × Vehicle Consumption Rate (L/100km). Total Trip Cost = Total Fuel (Liters) × Fuel Price per Liter."
+              "text": "Using metric units (L/100km): Total Fuel (Liters) = (Trip Distance in km Ã· 100) Ã— Vehicle Consumption Rate (L/100km). Total Trip Cost = Total Fuel (Liters) Ã— Fuel Price per Liter."
             }
           },
           {
@@ -409,10 +447,10 @@
 
       <h3>Mathematically Valid Fuel Formulas</h3>
       <div class="formula-box">
-        Total Distance = One-Way Distance × (2 if Round Trip, else 1)<br>
-        Fuel Volume (Liters) = (Total Distance in km ÷ 100) × Vehicle Efficiency (L/100km)<br>
-        Total Fuel Cost = Fuel Volume (Liters) × Pump Price per Liter<br>
-        Cost per Passenger = Total Fuel Cost ÷ Number of Diners/Passengers
+        Total Distance = One-Way Distance Ã— (2 if Round Trip, else 1)<br>
+        Fuel Volume (Liters) = (Total Distance in km Ã· 100) Ã— Vehicle Efficiency (L/100km)<br>
+        Total Fuel Cost = Fuel Volume (Liters) Ã— Pump Price per Liter<br>
+        Cost per Passenger = Total Fuel Cost Ã· Number of Diners/Passengers
       </div>
 
       <h3>Worked Calculation Example</h3>
@@ -420,10 +458,10 @@
         Consider a round-trip road trip between <strong>Riyadh and Dammam</strong> (400 km each way, 800 km total) in a midsize SUV consuming <strong>8.5 L/100km</strong>, fueled with 91 Octane petrol at <strong>2.18 SAR/liter</strong>, shared among <strong>4 passengers</strong>:
       </p>
       <ul>
-        <li><strong>Step 1 (Total distance):</strong> 400 km × 2 = <strong>800 km</strong>.</li>
-        <li><strong>Step 2 (Calculate fuel volume):</strong> (800 ÷ 100) × 8.5 = <strong>68 Liters of gasoline</strong>.</li>
-        <li><strong>Step 3 (Calculate total fuel expense):</strong> 68 Liters × 2.18 SAR = <strong>148.24 SAR total fuel cost</strong>.</li>
-        <li><strong>Step 4 (Divide by carpool passengers):</strong> 148.24 SAR ÷ 4 people = <strong>37.06 SAR per passenger</strong>.</li>
+        <li><strong>Step 1 (Total distance):</strong> 400 km Ã— 2 = <strong>800 km</strong>.</li>
+        <li><strong>Step 2 (Calculate fuel volume):</strong> (800 Ã· 100) Ã— 8.5 = <strong>68 Liters of gasoline</strong>.</li>
+        <li><strong>Step 3 (Calculate total fuel expense):</strong> 68 Liters Ã— 2.18 SAR = <strong>148.24 SAR total fuel cost</strong>.</li>
+        <li><strong>Step 4 (Divide by carpool passengers):</strong> 148.24 SAR Ã· 4 people = <strong>37.06 SAR per passenger</strong>.</li>
       </ul>
 
       <h2>Factors That Impact Highway Fuel Efficiency</h2>
@@ -440,7 +478,7 @@
             <tr>
               <td><strong>Vehicle Speed &gt; 120 km/h</strong></td>
               <td>+15% to +25% consumption</td>
-              <td>Use cruise control around 110–120 km/h on expressways</td>
+              <td>Use cruise control around 110â€“120 km/h on expressways</td>
             </tr>
             <tr>
               <td><strong>Summer Air Conditioning</strong></td>
@@ -521,7 +559,7 @@
       
       <div class="faq-item">
         <div class="faq-question" onclick="toggleFaq(this)">How do you calculate fuel needed for a trip? <i class="fas fa-chevron-down"></i></div>
-        <div class="faq-answer">Divide the trip distance by 100 and multiply by your car's fuel consumption rate in liters per 100 km: Liters = (Distance ÷ 100) × (L/100km). Multiply liters by your local fuel price to get the total cost.</div>
+        <div class="faq-answer">Divide the trip distance by 100 and multiply by your car's fuel consumption rate in liters per 100 km: Liters = (Distance Ã· 100) Ã— (L/100km). Multiply liters by your local fuel price to get the total cost.</div>
       </div>
 
       <div class="faq-item">

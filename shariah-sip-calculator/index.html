@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shariah SIP Calculator — Halal Wealth & Investment Projection Engine</title>
+  <title>Shariah SIP Calculator â€” Halal Wealth & Investment Projection Engine</title>
   <meta name="description" content="Plan your wealth accumulation with our free Shariah SIP Calculator. Forecast monthly investments, calculate target financial goals, and simulate ethical compounding.">
   <meta name="keywords" content="shariah sip calculator, halal sip calculator, islamic mutual fund calculator, monthly investment projection, ethical investing ksa, sukuk return calculator">
   <link rel="canonical" href="https://dailycalchubs.com/shariah-sip-calculator/">
@@ -17,7 +17,7 @@
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://dailycalchubs.com/shariah-sip-calculator/">
-  <meta property="og:title" content="Shariah SIP Calculator — Halal Wealth & Investment Projection Engine">
+  <meta property="og:title" content="Shariah SIP Calculator â€” Halal Wealth & Investment Projection Engine">
   <meta property="og:description" content="Plan your wealth accumulation with our free Shariah SIP Calculator. Forecast monthly investments, calculate target financial goals, and simulate ethical compounding.">
   <meta property="og:image" content="https://dailycalchubs.com/og-image.jpg">
   <meta property="og:image:secure_url" content="https://dailycalchubs.com/og-image.jpg">
@@ -27,10 +27,48 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Shariah SIP Calculator — Halal Wealth & Investment Projection Engine">
+  <meta name="twitter:title" content="Shariah SIP Calculator â€” Halal Wealth & Investment Projection Engine">
   <meta name="twitter:description" content="Plan your wealth accumulation with our free Shariah SIP Calculator. Forecast monthly investments, calculate target financial goals, and simulate ethical compounding.">
   <meta name="twitter:image" content="https://dailycalchubs.com/og-image.jpg">
 
+  <!-- DailyCalcHubs Owner Admin Exclusion Mode (Zero GA4 Views / Zero AdSense Impressions) -->
+  <script>
+    (function() {
+      try {
+        var params = new URLSearchParams(window.location.search);
+        var owner = params.get('owner');
+        if (owner === 'waqar_lock') {
+          localStorage.setItem('dch_owner_mode', 'active');
+          params.delete('owner');
+          var newSearch = params.toString();
+          var cleanUrl = window.location.pathname + (newSearch ? '?' + newSearch : '') + window.location.hash;
+          window.history.replaceState({}, document.title, cleanUrl);
+        } else if (owner === 'off') {
+          localStorage.removeItem('dch_owner_mode');
+          params.delete('owner');
+          var newSearch = params.toString();
+          var cleanUrl = window.location.pathname + (newSearch ? '?' + newSearch : '') + window.location.hash;
+          window.history.replaceState({}, document.title, cleanUrl);
+        }
+
+        if (localStorage.getItem('dch_owner_mode') === 'active') {
+          window['ga-disable-G-18Y3LNHDR8'] = true;
+          window.adsbygoogle = window.adsbygoogle || [];
+          window.adsbygoogle.pauseAdRequests = 1;
+
+          window.addEventListener('DOMContentLoaded', function() {
+            if (!document.getElementById('dch-owner-mode-badge')) {
+              var badge = document.createElement('div');
+              badge.id = 'dch-owner-mode-badge';
+              badge.innerHTML = '&#128274; Owner Mode: Tracking &amp; Ads Disabled';
+              badge.style.cssText = 'position:fixed;bottom:14px;left:14px;background:rgba(17,24,39,0.92);color:#10b981;font-size:11.5px;font-weight:600;font-family:system-ui,-apple-system,sans-serif;padding:6px 12px;border-radius:20px;border:1px solid rgba(16,185,129,0.35);box-shadow:0 4px 12px rgba(0,0,0,0.25);z-index:99999;pointer-events:none;letter-spacing:0.2px;backdrop-filter:blur(4px);';
+              document.body.appendChild(badge);
+            }
+          });
+        }
+      } catch (e) {}
+    })();
+  </script>
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6944579701716470" crossorigin="anonymous"></script>
 
@@ -565,7 +603,7 @@
           <div class="card-top-icon-box"><i class="fas fa-bullseye"></i></div>
           <h3 class="card-main-title">SIP Goal Calculator</h3>
           <p class="card-main-desc">
-            Reverse plan your monthly savings. Enter your future target corpus (Hajj, children’s university, down payment) to discover exactly how much to invest each month.
+            Reverse plan your monthly savings. Enter your future target corpus (Hajj, childrenâ€™s university, down payment) to discover exactly how much to invest each month.
           </p>
           <ul class="card-features-list">
             <li><i class="fas fa-circle-check"></i> Reverse annuity engineering formula</li>
@@ -621,7 +659,7 @@
         In modern financial planning, a Systematic Investment Plan (SIP) represents an algorithmic method of wealth accumulation. Instead of attempting to time volatile equity markets, an investor commits a fixed financial allocation at regular monthly intervals into diversified investment vehicles.
       </p>
       <p>
-        Within Islamic financial principles, wealth generation must adhere to ethical criteria established under Shariah governance frameworks (such as the Accounting and Auditing Organization for Islamic Financial Institutions — AAOIFI):
+        Within Islamic financial principles, wealth generation must adhere to ethical criteria established under Shariah governance frameworks (such as the Accounting and Auditing Organization for Islamic Financial Institutions â€” AAOIFI):
       </p>
       <ul>
         <li><strong>Prohibition of Riba (Usury/Interest):</strong> Capital appreciation is derived from equity participation, profit-and-loss sharing (Mudarabah/Musharakah), or asset-backed lease returns (Ijarah Sukuk), rather than guaranteed interest-bearing debt instruments.</li>
@@ -640,14 +678,14 @@
       </p>
 
       <div class="formula-highlight-card">
-        FV = P × [ ((1 + i)^n - 1) / i ] × (1 + i)
+        FV = P Ã— [ ((1 + i)^n - 1) / i ] Ã— (1 + i)
         <br><br>
         Where:
-        <br>• P = Monthly investment deposit (in SAR)
-        <br>• i = Periodic monthly return rate = (Annual Expected Return % ÷ 100) ÷ 12
-        <br>• n = Total number of compounding periods = Investment Duration in Years × 12
-        <br>• Total Invested Capital = P × n
-        <br>• Estimated Wealth Gain = FV - Total Invested Capital
+        <br>â€¢ P = Monthly investment deposit (in SAR)
+        <br>â€¢ i = Periodic monthly return rate = (Annual Expected Return % Ã· 100) Ã· 12
+        <br>â€¢ n = Total number of compounding periods = Investment Duration in Years Ã— 12
+        <br>â€¢ Total Invested Capital = P Ã— n
+        <br>â€¢ Estimated Wealth Gain = FV - Total Invested Capital
       </div>
 
       <h3>Worked Example: 2,000 SAR Monthly Investment for 10 Years</h3>
@@ -655,8 +693,8 @@
         Consider an expatriate or resident in Saudi Arabia committing <strong>2,000 SAR per month</strong> over a <strong>10-year horizon (120 months)</strong> into a diversified Shariah equity portfolio with an assumed historical average return of <strong>10% per annum</strong>:
       </p>
       <ul>
-        <li><strong>Total Capital Invested:</strong> 2,000 SAR × 120 months = <strong>240,000 SAR</strong></li>
-        <li><strong>Monthly Periodic Rate ($i$):</strong> 0.10 ÷ 12 = 0.008333</li>
+        <li><strong>Total Capital Invested:</strong> 2,000 SAR Ã— 120 months = <strong>240,000 SAR</strong></li>
+        <li><strong>Monthly Periodic Rate ($i$):</strong> 0.10 Ã· 12 = 0.008333</li>
         <li><strong>Projected Future Value ($FV$):</strong> <strong>~413,104 SAR</strong></li>
         <li><strong>Estimated Compounded Profit:</strong> 413,104 SAR - 240,000 SAR = <strong>+173,104 SAR (72.1% net gain on principal)</strong></li>
       </ul>

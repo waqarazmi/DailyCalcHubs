@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Monthly Investment Calculator — Compounding Schedule & Inflation Adjuster</title>
+  <title>Monthly Investment Calculator â€” Compounding Schedule & Inflation Adjuster</title>
   <meta name="description" content="Forecast monthly investment compounding with real inflation adjustments. View your year-by-year portfolio milestone schedule and purchasing power.">
   <meta name="keywords" content="monthly investment calculator, compounding schedule calculator, inflation adjusted investment return, halal monthly savings projection, saudi riyal compounding schedule">
   <link rel="canonical" href="https://dailycalchubs.com/shariah-sip-calculator/monthly-investment-calculator/">
@@ -17,7 +17,7 @@
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://dailycalchubs.com/shariah-sip-calculator/monthly-investment-calculator/">
-  <meta property="og:title" content="Monthly Investment Calculator — Compounding Schedule & Inflation Adjuster">
+  <meta property="og:title" content="Monthly Investment Calculator â€” Compounding Schedule & Inflation Adjuster">
   <meta property="og:description" content="Forecast monthly investment compounding with real inflation adjustments. View your year-by-year portfolio milestone schedule and purchasing power.">
   <meta property="og:image" content="https://dailycalchubs.com/og-image.jpg">
   <meta property="og:image:secure_url" content="https://dailycalchubs.com/og-image.jpg">
@@ -27,10 +27,48 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Monthly Investment Calculator — Compounding Schedule & Inflation Adjuster">
+  <meta name="twitter:title" content="Monthly Investment Calculator â€” Compounding Schedule & Inflation Adjuster">
   <meta name="twitter:description" content="Forecast monthly investment compounding with real inflation adjustments. View your year-by-year portfolio milestone schedule and purchasing power.">
   <meta name="twitter:image" content="https://dailycalchubs.com/og-image.jpg">
 
+  <!-- DailyCalcHubs Owner Admin Exclusion Mode (Zero GA4 Views / Zero AdSense Impressions) -->
+  <script>
+    (function() {
+      try {
+        var params = new URLSearchParams(window.location.search);
+        var owner = params.get('owner');
+        if (owner === 'waqar_lock') {
+          localStorage.setItem('dch_owner_mode', 'active');
+          params.delete('owner');
+          var newSearch = params.toString();
+          var cleanUrl = window.location.pathname + (newSearch ? '?' + newSearch : '') + window.location.hash;
+          window.history.replaceState({}, document.title, cleanUrl);
+        } else if (owner === 'off') {
+          localStorage.removeItem('dch_owner_mode');
+          params.delete('owner');
+          var newSearch = params.toString();
+          var cleanUrl = window.location.pathname + (newSearch ? '?' + newSearch : '') + window.location.hash;
+          window.history.replaceState({}, document.title, cleanUrl);
+        }
+
+        if (localStorage.getItem('dch_owner_mode') === 'active') {
+          window['ga-disable-G-18Y3LNHDR8'] = true;
+          window.adsbygoogle = window.adsbygoogle || [];
+          window.adsbygoogle.pauseAdRequests = 1;
+
+          window.addEventListener('DOMContentLoaded', function() {
+            if (!document.getElementById('dch-owner-mode-badge')) {
+              var badge = document.createElement('div');
+              badge.id = 'dch-owner-mode-badge';
+              badge.innerHTML = '&#128274; Owner Mode: Tracking &amp; Ads Disabled';
+              badge.style.cssText = 'position:fixed;bottom:14px;left:14px;background:rgba(17,24,39,0.92);color:#10b981;font-size:11.5px;font-weight:600;font-family:system-ui,-apple-system,sans-serif;padding:6px 12px;border-radius:20px;border:1px solid rgba(16,185,129,0.35);box-shadow:0 4px 12px rgba(0,0,0,0.25);z-index:99999;pointer-events:none;letter-spacing:0.2px;backdrop-filter:blur(4px);';
+              document.body.appendChild(badge);
+            }
+          });
+        }
+      } catch (e) {}
+    })();
+  </script>
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6944579701716470" crossorigin="anonymous"></script>
 
@@ -364,7 +402,7 @@
             <input type="number" id="schedInflation" class="calc-input" value="2.5" min="0" max="15" step="0.1" required oninput="calculateMonthlySchedule()">
           </div>
           <small style="display:block; margin-top:6px; color:#64748b; font-size:12.5px;">
-            *Saudi Arabia long-term inflation benchmark is typically ~2.0%–2.5%.
+            *Saudi Arabia long-term inflation benchmark is typically ~2.0%â€“2.5%.
           </small>
         </div>
       </form>
@@ -437,13 +475,13 @@
         In financial economics, the exact real rate of return is determined by the Fisher equation:
       </p>
       <div class="formula-card">
-        Real Return Rate = [ (1 + Nominal Return Rate) / (1 + Inflation Rate) ] − 1
+        Real Return Rate = [ (1 + Nominal Return Rate) / (1 + Inflation Rate) ] âˆ’ 1
         <br><br>
         Simple Linear Approximation:
-        <br>Real Return ≈ Nominal Return − Inflation Rate
+        <br>Real Return â‰ˆ Nominal Return âˆ’ Inflation Rate
       </div>
       <p style="font-size:14px; color:#475569; line-height:1.6;">
-        <em>Note: The simple subtraction approximation (Nominal − Inflation) is commonly used for quick estimations, but the exact compounding formula accounts for purchasing power drag on both accumulated principal and compounded gains.</em>
+        <em>Note: The simple subtraction approximation (Nominal âˆ’ Inflation) is commonly used for quick estimations, but the exact compounding formula accounts for purchasing power drag on both accumulated principal and compounded gains.</em>
       </p>
 
       <h3>Worked Calculation Example</h3>
@@ -452,13 +490,13 @@
         <ul style="margin-bottom:10px; padding-left:20px; font-size:14px; line-height:1.6; color:#334155;">
           <li><strong>Monthly Investment Contribution:</strong> 3,000 SAR per month</li>
           <li><strong>Investment Horizon:</strong> 15 Years (180 months)</li>
-          <li><strong>Total Principal Invested:</strong> 3,000 SAR × 180 = <strong>540,000 SAR</strong></li>
+          <li><strong>Total Principal Invested:</strong> 3,000 SAR Ã— 180 = <strong>540,000 SAR</strong></li>
           <li><strong>Illustrative Nominal Return Assumption:</strong> 9.0% per annum</li>
           <li><strong>Illustrative Inflation Assumption:</strong> 3.0% per annum</li>
           <li><strong>Projected Nominal Future Value:</strong> <strong>~1,143,731 SAR</strong> (+603,731 SAR nominal gain)</li>
           <li><strong>Real Purchasing Power (Today's SAR):</strong> <strong>~734,118 SAR</strong> (+194,118 SAR real gain)</li>
           <li><strong>Estimated Inflation Drag Impact:</strong> <strong>-409,614 SAR</strong></li>
-          <li><strong>Exact Real Annual Return Rate:</strong> [(1 + 0.09) ÷ (1 + 0.03)] − 1 = <strong>5.83%</strong> (vs. 6.00% simple approximation)</li>
+          <li><strong>Exact Real Annual Return Rate:</strong> [(1 + 0.09) Ã· (1 + 0.03)] âˆ’ 1 = <strong>5.83%</strong> (vs. 6.00% simple approximation)</li>
         </ul>
         <p style="font-size:13px; color:#64748b; margin-bottom:0;">
           <em>*This simulation is a mathematical projection for educational planning. Real equity and sukuk returns fluctuate over time and are neither guaranteed nor fixed.</em>
@@ -471,7 +509,7 @@
       </p>
       <ul>
         <li><strong>Nominal Portfolio Value:</strong> The literal cash balance in your investment brokerage account.</li>
-        <li><strong>Real Purchasing Power:</strong> Deflates the future balance back into today’s currency terms using $FV_{\text{real}} = FV \div (1 + \text{Inflation Rate})^{\text{Years}}$.</li>
+        <li><strong>Real Purchasing Power:</strong> Deflates the future balance back into todayâ€™s currency terms using $FV_{\text{real}} = FV \div (1 + \text{Inflation Rate})^{\text{Years}}$.</li>
       </ul>
       <p style="font-size:14.5px; color:#334155; line-height:1.7;">
         For standard systematic investment projections focused on gross compounding without inflation deflation, explore our companion <a href="/shariah-sip-calculator/sip-calculator/" style="color:var(--amber-primary); font-weight:700;">Shariah SIP Calculator</a>.

@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shariah SIP Calculator — Monthly Investment & Wealth Growth Planner</title>
+  <title>Shariah SIP Calculator â€” Monthly Investment & Wealth Growth Planner</title>
   <meta name="description" content="Calculate projected returns on periodic monthly investments with our free Shariah SIP Calculator. View invested capital, estimated gains, and future wealth corpus.">
   <meta name="keywords" content="shariah sip calculator, islamic mutual fund sip, halal monthly investment, ethical sip calculator saudi arabia, sukuk monthly investment">
   <link rel="canonical" href="https://dailycalchubs.com/shariah-sip-calculator/sip-calculator/">
@@ -17,7 +17,7 @@
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://dailycalchubs.com/shariah-sip-calculator/sip-calculator/">
-  <meta property="og:title" content="Shariah SIP Calculator — Monthly Investment & Wealth Growth Planner">
+  <meta property="og:title" content="Shariah SIP Calculator â€” Monthly Investment & Wealth Growth Planner">
   <meta property="og:description" content="Calculate projected returns on periodic monthly investments with our free Shariah SIP Calculator. View invested capital, estimated gains, and future wealth corpus.">
   <meta property="og:image" content="https://dailycalchubs.com/og-image.jpg">
   <meta property="og:image:secure_url" content="https://dailycalchubs.com/og-image.jpg">
@@ -27,10 +27,48 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Shariah SIP Calculator — Monthly Investment & Wealth Growth Planner">
+  <meta name="twitter:title" content="Shariah SIP Calculator â€” Monthly Investment & Wealth Growth Planner">
   <meta name="twitter:description" content="Calculate projected returns on periodic monthly investments with our free Shariah SIP Calculator. View invested capital, estimated gains, and future wealth corpus.">
   <meta name="twitter:image" content="https://dailycalchubs.com/og-image.jpg">
 
+  <!-- DailyCalcHubs Owner Admin Exclusion Mode (Zero GA4 Views / Zero AdSense Impressions) -->
+  <script>
+    (function() {
+      try {
+        var params = new URLSearchParams(window.location.search);
+        var owner = params.get('owner');
+        if (owner === 'waqar_lock') {
+          localStorage.setItem('dch_owner_mode', 'active');
+          params.delete('owner');
+          var newSearch = params.toString();
+          var cleanUrl = window.location.pathname + (newSearch ? '?' + newSearch : '') + window.location.hash;
+          window.history.replaceState({}, document.title, cleanUrl);
+        } else if (owner === 'off') {
+          localStorage.removeItem('dch_owner_mode');
+          params.delete('owner');
+          var newSearch = params.toString();
+          var cleanUrl = window.location.pathname + (newSearch ? '?' + newSearch : '') + window.location.hash;
+          window.history.replaceState({}, document.title, cleanUrl);
+        }
+
+        if (localStorage.getItem('dch_owner_mode') === 'active') {
+          window['ga-disable-G-18Y3LNHDR8'] = true;
+          window.adsbygoogle = window.adsbygoogle || [];
+          window.adsbygoogle.pauseAdRequests = 1;
+
+          window.addEventListener('DOMContentLoaded', function() {
+            if (!document.getElementById('dch-owner-mode-badge')) {
+              var badge = document.createElement('div');
+              badge.id = 'dch-owner-mode-badge';
+              badge.innerHTML = '&#128274; Owner Mode: Tracking &amp; Ads Disabled';
+              badge.style.cssText = 'position:fixed;bottom:14px;left:14px;background:rgba(17,24,39,0.92);color:#10b981;font-size:11.5px;font-weight:600;font-family:system-ui,-apple-system,sans-serif;padding:6px 12px;border-radius:20px;border:1px solid rgba(16,185,129,0.35);box-shadow:0 4px 12px rgba(0,0,0,0.25);z-index:99999;pointer-events:none;letter-spacing:0.2px;backdrop-filter:blur(4px);';
+              document.body.appendChild(badge);
+            }
+          });
+        }
+      } catch (e) {}
+    })();
+  </script>
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6944579701716470" crossorigin="anonymous"></script>
 
@@ -391,8 +429,8 @@
           <div class="ratio-bar-gain" id="barGain" style="width: 42%;"></div>
         </div>
         <div class="ratio-labels-row">
-          <span><span style="color:#38bdf8;">■</span> Invested Principal: <strong id="lblInvestedPct">58%</strong></span>
-          <span><span style="color:#4ade80;">■</span> Estimated Gain: <strong id="lblGainPct">42%</strong></span>
+          <span><span style="color:#38bdf8;">â– </span> Invested Principal: <strong id="lblInvestedPct">58%</strong></span>
+          <span><span style="color:#4ade80;">â– </span> Estimated Gain: <strong id="lblGainPct">42%</strong></span>
         </div>
       </div>
     </div>
@@ -419,12 +457,12 @@
       </p>
 
       <div class="formula-card">
-        FV = P × [ ((1 + i)^n - 1) / i ] × (1 + i)
+        FV = P Ã— [ ((1 + i)^n - 1) / i ] Ã— (1 + i)
         <br><br>
         Where:
         <br>P = Monthly deposit (e.g. 2,500 SAR)
-        <br>i = Monthly return rate (Annual Return ÷ 12 ÷ 100)
-        <br>n = Total months (Years × 12)
+        <br>i = Monthly return rate (Annual Return Ã· 12 Ã· 100)
+        <br>n = Total months (Years Ã— 12)
       </div>
 
       <h3>Example: 2,500 SAR Monthly for 10 Years at 10%</h3>

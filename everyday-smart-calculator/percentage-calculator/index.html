@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Percentage Calculator — 4 Multi-Mode Math & Percent Change Tool</title>
+  <title>Percentage Calculator â€” 4 Multi-Mode Math & Percent Change Tool</title>
   <meta name="description" content="Calculate percentages, percentage increase and decrease, percent change between two values, and find what percent X is of Y with our free instant Percentage Calculator.">
   <meta name="keywords" content="percentage calculator, percent change calculator, percentage increase calculator, calculate percentage of a number, percentage formula, free math tool">
   <link rel="canonical" href="https://dailycalchubs.com/everyday-smart-calculator/percentage-calculator/">
@@ -17,7 +17,7 @@
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://dailycalchubs.com/everyday-smart-calculator/percentage-calculator/">
-  <meta property="og:title" content="Percentage Calculator — 4 Multi-Mode Math & Percent Change Tool">
+  <meta property="og:title" content="Percentage Calculator â€” 4 Multi-Mode Math & Percent Change Tool">
   <meta property="og:description" content="Calculate percentages, percentage increase and decrease, percent change between two values, and find what percent X is of Y with our free instant Percentage Calculator.">
   <meta property="og:image" content="https://dailycalchubs.com/og-image.jpg">
   <meta property="og:width" content="1200">
@@ -25,10 +25,48 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Percentage Calculator — DailyCalcHubs">
+  <meta name="twitter:title" content="Percentage Calculator â€” DailyCalcHubs">
   <meta name="twitter:description" content="Instant multi-mode percentage calculations, percentage change, and step-by-step math formulas.">
   <meta name="twitter:image" content="https://dailycalchubs.com/og-image.jpg">
 
+  <!-- DailyCalcHubs Owner Admin Exclusion Mode (Zero GA4 Views / Zero AdSense Impressions) -->
+  <script>
+    (function() {
+      try {
+        var params = new URLSearchParams(window.location.search);
+        var owner = params.get('owner');
+        if (owner === 'waqar_lock') {
+          localStorage.setItem('dch_owner_mode', 'active');
+          params.delete('owner');
+          var newSearch = params.toString();
+          var cleanUrl = window.location.pathname + (newSearch ? '?' + newSearch : '') + window.location.hash;
+          window.history.replaceState({}, document.title, cleanUrl);
+        } else if (owner === 'off') {
+          localStorage.removeItem('dch_owner_mode');
+          params.delete('owner');
+          var newSearch = params.toString();
+          var cleanUrl = window.location.pathname + (newSearch ? '?' + newSearch : '') + window.location.hash;
+          window.history.replaceState({}, document.title, cleanUrl);
+        }
+
+        if (localStorage.getItem('dch_owner_mode') === 'active') {
+          window['ga-disable-G-18Y3LNHDR8'] = true;
+          window.adsbygoogle = window.adsbygoogle || [];
+          window.adsbygoogle.pauseAdRequests = 1;
+
+          window.addEventListener('DOMContentLoaded', function() {
+            if (!document.getElementById('dch-owner-mode-badge')) {
+              var badge = document.createElement('div');
+              badge.id = 'dch-owner-mode-badge';
+              badge.innerHTML = '&#128274; Owner Mode: Tracking &amp; Ads Disabled';
+              badge.style.cssText = 'position:fixed;bottom:14px;left:14px;background:rgba(17,24,39,0.92);color:#10b981;font-size:11.5px;font-weight:600;font-family:system-ui,-apple-system,sans-serif;padding:6px 12px;border-radius:20px;border:1px solid rgba(16,185,129,0.35);box-shadow:0 4px 12px rgba(0,0,0,0.25);z-index:99999;pointer-events:none;letter-spacing:0.2px;backdrop-filter:blur(4px);';
+              document.body.appendChild(badge);
+            }
+          });
+        }
+      } catch (e) {}
+    })();
+  </script>
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6944579701716470" crossorigin="anonymous"></script>
 
@@ -75,7 +113,7 @@
             "name": "How do you calculate what percentage one number is of another?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "To find what percentage X is of Y, divide X by Y and multiply the result by 100: Percentage = (X ÷ Y) × 100. For example, 25 out of 200 is (25 ÷ 200) × 100 = 12.5%."
+              "text": "To find what percentage X is of Y, divide X by Y and multiply the result by 100: Percentage = (X Ã· Y) Ã— 100. For example, 25 out of 200 is (25 Ã· 200) Ã— 100 = 12.5%."
             }
           },
           {
@@ -83,7 +121,7 @@
             "name": "What is the difference between percentage change and percentage difference?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Percentage change measures the relative change from an older starting value to a newer final value: [(New - Old) ÷ Old] × 100. Percentage difference compares two numbers without a designated before-and-after chronological direction by dividing by their average: [|A - B| ÷ ((A + B) / 2)] × 100."
+              "text": "Percentage change measures the relative change from an older starting value to a newer final value: [(New - Old) Ã· Old] Ã— 100. Percentage difference compares two numbers without a designated before-and-after chronological direction by dividing by their average: [|A - B| Ã· ((A + B) / 2)] Ã— 100."
             }
           },
           {
@@ -404,7 +442,7 @@
         </div>
 
         <div class="result-steps-box" id="resStepsText">
-          Formula: (15 ÷ 100) × 500 = <strong>75.00</strong>
+          Formula: (15 Ã· 100) Ã— 500 = <strong>75.00</strong>
         </div>
       </div>
     </div>
@@ -418,18 +456,18 @@
 
       <h3>Mathematically Valid Percentage Formulas</h3>
       <div class="formula-box">
-        1. Value of a Percentage: Result = (P ÷ 100) × Total<br>
-        2. Ratio as a Percentage: Percentage = (Part ÷ Whole) × 100<br>
-        3. Percentage Change: % Change = [(New Value - Old Value) ÷ |Old Value|] × 100<br>
-        4. Value After Percentage Increase: Result = Base × (1 + [P ÷ 100])<br>
-        5. Value After Percentage Decrease: Result = Base × (1 - [P ÷ 100])
+        1. Value of a Percentage: Result = (P Ã· 100) Ã— Total<br>
+        2. Ratio as a Percentage: Percentage = (Part Ã· Whole) Ã— 100<br>
+        3. Percentage Change: % Change = [(New Value - Old Value) Ã· |Old Value|] Ã— 100<br>
+        4. Value After Percentage Increase: Result = Base Ã— (1 + [P Ã· 100])<br>
+        5. Value After Percentage Decrease: Result = Base Ã— (1 - [P Ã· 100])
       </div>
 
       <h3>Worked Calculation Examples</h3>
       <ul>
-        <li><strong>Example 1 (Retail VAT):</strong> Finding 15% Saudi VAT on a 400 SAR purchase: (15 ÷ 100) × 400 = <strong>60 SAR</strong>.</li>
-        <li><strong>Example 2 (Test Score Ratio):</strong> Scoring 36 correct answers out of 45 questions: (36 ÷ 45) × 100 = <strong>80.00%</strong>.</li>
-        <li><strong>Example 3 (Salary Raise):</strong> An employee earning 8,000 SAR per month receives a 1,200 SAR increase to 9,200 SAR: [(9,200 - 8,000) ÷ 8,000] × 100 = <strong>+15.00% growth</strong>.</li>
+        <li><strong>Example 1 (Retail VAT):</strong> Finding 15% Saudi VAT on a 400 SAR purchase: (15 Ã· 100) Ã— 400 = <strong>60 SAR</strong>.</li>
+        <li><strong>Example 2 (Test Score Ratio):</strong> Scoring 36 correct answers out of 45 questions: (36 Ã· 45) Ã— 100 = <strong>80.00%</strong>.</li>
+        <li><strong>Example 3 (Salary Raise):</strong> An employee earning 8,000 SAR per month receives a 1,200 SAR increase to 9,200 SAR: [(9,200 - 8,000) Ã· 8,000] Ã— 100 = <strong>+15.00% growth</strong>.</li>
       </ul>
       <p style="font-size:14.5px; color:#334155; line-height:1.7;">
         For commercial shopping markdowns, stacked promotional vouchers, and itemized post-VAT checkout totals, use our dedicated <a href="/everyday-smart-calculator/discount-calculator/" style="color:var(--sky-dark); font-weight:700;">Smart Discount Calculator</a>.
@@ -457,12 +495,12 @@
       
       <div class="faq-item">
         <div class="faq-question" onclick="toggleFaq(this)">How do you calculate what percentage one number is of another? <i class="fas fa-chevron-down"></i></div>
-        <div class="faq-answer">Divide the partial number by the total whole number, and multiply by 100: Percentage = (Part ÷ Whole) × 100.</div>
+        <div class="faq-answer">Divide the partial number by the total whole number, and multiply by 100: Percentage = (Part Ã· Whole) Ã— 100.</div>
       </div>
 
       <div class="faq-item">
         <div class="faq-question" onclick="toggleFaq(this)">How do you calculate percentage increase or decrease? <i class="fas fa-chevron-down"></i></div>
-        <div class="faq-answer">Subtract the old value from the new value, divide the result by the absolute value of the old value, and multiply by 100: % Change = [(New - Old) ÷ |Old|] × 100. A positive result denotes an increase; a negative result denotes a decrease.</div>
+        <div class="faq-answer">Subtract the old value from the new value, divide the result by the absolute value of the old value, and multiply by 100: % Change = [(New - Old) Ã· |Old|] Ã— 100. A positive result denotes an increase; a negative result denotes a decrease.</div>
       </div>
 
       <div class="faq-item">
@@ -526,7 +564,7 @@
       document.getElementById('resHeadingLabel').innerText = `What is ${p}% of ${y}?`;
       document.getElementById('resPrimaryVal').innerText = formatNum(res);
       document.getElementById('resBadgeTag').innerText = `${p}% of ${y}`;
-      document.getElementById('resStepsText').innerHTML = `Formula: (${p} ÷ 100) × ${y} = <strong>${formatNum(res)}</strong>`;
+      document.getElementById('resStepsText').innerHTML = `Formula: (${p} Ã· 100) Ã— ${y} = <strong>${formatNum(res)}</strong>`;
     }
 
     function calcMode2() {
@@ -545,7 +583,7 @@
       document.getElementById('resHeadingLabel').innerText = `${x} is What % of ${y}?`;
       document.getElementById('resPrimaryVal').innerText = formatNum(res) + '%';
       document.getElementById('resBadgeTag').innerText = `${x} of ${y}`;
-      document.getElementById('resStepsText').innerHTML = `Formula: (${x} ÷ ${y}) × 100 = <strong>${formatNum(res)}%</strong>`;
+      document.getElementById('resStepsText').innerHTML = `Formula: (${x} Ã· ${y}) Ã— 100 = <strong>${formatNum(res)}%</strong>`;
     }
 
     function calcMode3() {
@@ -568,7 +606,7 @@
       document.getElementById('resHeadingLabel').innerText = `% Change from ${oldVal} to ${newVal}`;
       document.getElementById('resPrimaryVal').innerText = (isUp ? '+' : '') + formatNum(pctChange) + '%';
       document.getElementById('resBadgeTag').innerText = isUp ? 'Increase' : 'Decrease';
-      document.getElementById('resStepsText').innerHTML = `Difference: ${diff >= 0 ? '+' : ''}${formatNum(diff)} | Formula: [(${newVal} - ${oldVal}) ÷ |${oldVal}|] × 100 = <strong>${(isUp ? '+' : '') + formatNum(pctChange)}%</strong>`;
+      document.getElementById('resStepsText').innerHTML = `Difference: ${diff >= 0 ? '+' : ''}${formatNum(diff)} | Formula: [(${newVal} - ${oldVal}) Ã· |${oldVal}|] Ã— 100 = <strong>${(isUp ? '+' : '') + formatNum(pctChange)}%</strong>`;
     }
 
     function calcMode4() {

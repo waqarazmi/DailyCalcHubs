@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Age Calculator — Exact Chronological Age, Days & Next Birthday</title>
+  <title>Age Calculator â€” Exact Chronological Age, Days & Next Birthday</title>
   <meta name="description" content="Calculate your exact chronological age in years, months, and days with our free Smart Age Calculator. Includes next birthday countdown, total days lived, and weekday born.">
   <meta name="keywords" content="age calculator, date of birth calculator, calculate age online, exact age in days, birthday countdown, chronological age calculator">
   <link rel="canonical" href="https://dailycalchubs.com/everyday-smart-calculator/age-calculator/">
@@ -17,7 +17,7 @@
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://dailycalchubs.com/everyday-smart-calculator/age-calculator/">
-  <meta property="og:title" content="Age Calculator — Exact Chronological Age, Days & Next Birthday">
+  <meta property="og:title" content="Age Calculator â€” Exact Chronological Age, Days & Next Birthday">
   <meta property="og:description" content="Calculate your exact chronological age in years, months, and days with our free Smart Age Calculator. Includes next birthday countdown, total days lived, and weekday born.">
   <meta property="og:image" content="https://dailycalchubs.com/og-image.jpg">
   <meta property="og:image:secure_url" content="https://dailycalchubs.com/og-image.jpg">
@@ -27,10 +27,48 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Age Calculator — Exact Chronological Age, Days & Next Birthday">
+  <meta name="twitter:title" content="Age Calculator â€” Exact Chronological Age, Days & Next Birthday">
   <meta name="twitter:description" content="Calculate your exact chronological age in years, months, and days with our free Smart Age Calculator. Includes next birthday countdown, total days lived, and weekday born.">
   <meta name="twitter:image" content="https://dailycalchubs.com/og-image.jpg">
 
+  <!-- DailyCalcHubs Owner Admin Exclusion Mode (Zero GA4 Views / Zero AdSense Impressions) -->
+  <script>
+    (function() {
+      try {
+        var params = new URLSearchParams(window.location.search);
+        var owner = params.get('owner');
+        if (owner === 'waqar_lock') {
+          localStorage.setItem('dch_owner_mode', 'active');
+          params.delete('owner');
+          var newSearch = params.toString();
+          var cleanUrl = window.location.pathname + (newSearch ? '?' + newSearch : '') + window.location.hash;
+          window.history.replaceState({}, document.title, cleanUrl);
+        } else if (owner === 'off') {
+          localStorage.removeItem('dch_owner_mode');
+          params.delete('owner');
+          var newSearch = params.toString();
+          var cleanUrl = window.location.pathname + (newSearch ? '?' + newSearch : '') + window.location.hash;
+          window.history.replaceState({}, document.title, cleanUrl);
+        }
+
+        if (localStorage.getItem('dch_owner_mode') === 'active') {
+          window['ga-disable-G-18Y3LNHDR8'] = true;
+          window.adsbygoogle = window.adsbygoogle || [];
+          window.adsbygoogle.pauseAdRequests = 1;
+
+          window.addEventListener('DOMContentLoaded', function() {
+            if (!document.getElementById('dch-owner-mode-badge')) {
+              var badge = document.createElement('div');
+              badge.id = 'dch-owner-mode-badge';
+              badge.innerHTML = '&#128274; Owner Mode: Tracking &amp; Ads Disabled';
+              badge.style.cssText = 'position:fixed;bottom:14px;left:14px;background:rgba(17,24,39,0.92);color:#10b981;font-size:11.5px;font-weight:600;font-family:system-ui,-apple-system,sans-serif;padding:6px 12px;border-radius:20px;border:1px solid rgba(16,185,129,0.35);box-shadow:0 4px 12px rgba(0,0,0,0.25);z-index:99999;pointer-events:none;letter-spacing:0.2px;backdrop-filter:blur(4px);';
+              document.body.appendChild(badge);
+            }
+          });
+        }
+      } catch (e) {}
+    })();
+  </script>
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6944579701716470" crossorigin="anonymous"></script>
 
@@ -74,7 +112,7 @@
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "Why is my age in days different from simple multiplication (Years × 365)?",
+        "name": "Why is my age in days different from simple multiplication (Years Ã— 365)?",
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "A calendar year contains leap years every 4 years (366 days). Multiplying years by 365 ignores the extra days accumulated during leap years and differences in month lengths, producing an inaccurate total."
@@ -602,9 +640,9 @@
 
       <h3>Chronological Calendar Difference Logic</h3>
       <div class="formula-box">
-        Elapsed Days = Target Day − Birth Day (if negative, borrow calendar days from previous month)<br>
-        Elapsed Months = Target Month − Birth Month (if negative, borrow 12 months from Target Year)<br>
-        Elapsed Years = Target Year − Birth Year (after accounting for month/day borrowing)
+        Elapsed Days = Target Day âˆ’ Birth Day (if negative, borrow calendar days from previous month)<br>
+        Elapsed Months = Target Month âˆ’ Birth Month (if negative, borrow 12 months from Target Year)<br>
+        Elapsed Years = Target Year âˆ’ Birth Year (after accounting for month/day borrowing)
       </div>
 
       <h3>Worked Calculation Example</h3>
@@ -614,7 +652,7 @@
           Consider an individual born on <strong>14 August 1995</strong> evaluated against an illustrative target date:
         </p>
         <ul style="margin-bottom:10px; padding-left:20px; font-size:14px; line-height:1.6;">
-          <li><strong>Completed Full Years:</strong> On 14 August 2026, the individual completes exactly <strong>31 solar years</strong> (2026 − 1995).</li>
+          <li><strong>Completed Full Years:</strong> On 14 August 2026, the individual completes exactly <strong>31 solar years</strong> (2026 âˆ’ 1995).</li>
           <li><strong>Elapsed Calendar Months:</strong> Any calendar months past August 14th increment the completed month count (e.g., reaching 1 month on September 14).</li>
           <li><strong>Elapsed Days:</strong> Days elapsed beyond the most recent monthly anniversary date are counted day-by-day.</li>
           <li><strong>Total Days Lived &amp; Leap Years:</strong> Because leap years occurred in 1996, 2000, 2004, 2008, 2012, 2016, 2020, and 2024, the total days lived calculation dynamically incorporates these 8 intercalary leap days rather than assuming static 365-day years.</li>
@@ -657,7 +695,7 @@
       <h2>Frequently Asked Questions</h2>
       <div class="faq-item">
         <div class="faq-question" onclick="toggleFaq(this)">
-          <span>Why is my age in days different from simple multiplication (Years × 365)?</span>
+          <span>Why is my age in days different from simple multiplication (Years Ã— 365)?</span>
           <i class="fas fa-chevron-down"></i>
         </div>
         <div class="faq-answer" style="display:none;">
@@ -781,7 +819,7 @@
       let bdayRemDays = Math.round(diffDays % 30.4375);
       
       if (diffDays === 0) {
-        document.getElementById('resNextBdayCountdown').innerText = "Happy Birthday Today! 🎉";
+        document.getElementById('resNextBdayCountdown').innerText = "Happy Birthday Today! ðŸŽ‰";
       } else if (bdayMonths > 0) {
         document.getElementById('resNextBdayCountdown').innerText = bdayMonths + ' Mos, ' + bdayRemDays + ' Days';
       } else {
