@@ -321,6 +321,13 @@
       gap: 28px;
       align-items: center;
     }
+    @media (min-width: 769px) {
+      .qibla-hero-content {
+        grid-template-columns: auto auto;
+        justify-content: center;
+        gap: 32px;
+      }
+    }
     @media (max-width: 768px) {
       .qibla-hero-content {
         grid-template-columns: 1fr;
@@ -1555,6 +1562,9 @@
     // ==========================================
     let activeWeatherRequestId = 0;
     const weatherCache = {};
+    const WEATHER_REFRESH_INTERVAL_MS = 900000; // 15 minutes
+    let weatherRefreshTimerId = null;
+    let lastWeatherFetchTimestamp = 0;
 
     function mapWmoToWeatherIcon(code) {
       if (code === 0) return 'fas fa-sun';
@@ -1591,6 +1601,7 @@
         badgeEl.setAttribute('aria-label', 'Current temperature: ' + cached.temp + '°C');
         badgeEl.title = 'Current temperature: ' + cached.temp + '°C';
         badgeEl.style.opacity = '1';
+        lastWeatherFetchTimestamp = cached.timestamp;
         return;
       }
 
@@ -1625,6 +1636,7 @@
           iconEl.className = iconClass;
           badgeEl.setAttribute('aria-label', 'Current temperature: ' + tempC + '°C');
           badgeEl.title = 'Current temperature: ' + tempC + '°C';
+          lastWeatherFetchTimestamp = now;
         }
       } catch (err) {
         console.warn('Weather fetch fallback:', err);
@@ -1633,6 +1645,22 @@
           badgeEl.style.opacity = '1';
         }
       }
+    }
+
+    function triggerPeriodicWeatherRefresh() {
+      if (document.hidden) return;
+      if (typeof currentLatitude === 'number' && typeof currentLongitude === 'number' &&
+          isFinite(currentLatitude) && isFinite(currentLongitude)) {
+        fetchWeatherForCoords(currentLatitude, currentLongitude);
+      }
+    }
+
+    function startWeatherPeriodicRefresh() {
+      if (weatherRefreshTimerId) {
+        clearInterval(weatherRefreshTimerId);
+        weatherRefreshTimerId = null;
+      }
+      weatherRefreshTimerId = setInterval(triggerPeriodicWeatherRefresh, WEATHER_REFRESH_INTERVAL_MS);
     }
 
     // ==========================================
@@ -1869,11 +1897,19 @@
       }
     }
 
-    // Battery saver: pause animation frame when tab is hidden
+    // Battery saver & tab visibility synchronization
     document.addEventListener('visibilitychange', function() {
-      if (document.hidden && orientationRafId) {
-        cancelAnimationFrame(orientationRafId);
-        orientationRafId = null;
+      if (document.hidden) {
+        if (orientationRafId) {
+          cancelAnimationFrame(orientationRafId);
+          orientationRafId = null;
+        }
+      } else {
+        // Tab became visible again: refresh temperature if stale (>= 15 minutes)
+        const now = Date.now();
+        if (now - lastWeatherFetchTimestamp >= WEATHER_REFRESH_INTERVAL_MS) {
+          triggerPeriodicWeatherRefresh();
+        }
       }
     });
 
@@ -1959,6 +1995,9 @@
       // Start live clock ticking
       updateLiveClocks();
       setInterval(updateLiveClocks, 1000);
+
+      // Start periodic 15-minute live temperature refresh timer
+      startWeatherPeriodicRefresh();
 
       // 2. Fetch IP Geolocation baseline for instant display
       let lat = 26.42;
