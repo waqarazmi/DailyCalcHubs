@@ -234,6 +234,27 @@
     .amount-chip-btn:hover { background: #e2e8f0; color: #0f172a; }
     .amount-chip-btn.active { background: var(--purple-saudi); color: #ffffff; border-color: var(--purple-saudi); }
 
+    /* Service Dates & Duration Styles */
+    .service-dates-card { background: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: 12px; padding: 18px 20px; margin-bottom: 20px; }
+    .service-dates-header { margin-bottom: 12px; }
+    .service-dates-title { font-size: 13.5px; font-weight: 700; color: var(--navy-dark); display: flex; align-items: center; gap: 8px; }
+    .date-error-banner { margin-top: 12px; padding: 10px 14px; background: #fef2f2; border: 1px solid #fca5a5; color: #b91c1c; border-radius: 8px; font-size: 13px; font-weight: 600; display: flex; align-items: center; gap: 8px; }
+    .service-duration-pill { margin-top: 14px; background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 14px 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+    .duration-pill-body { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+    .duration-icon { font-size: 24px; color: #7c3aed; flex-shrink: 0; }
+    .duration-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); }
+    .duration-value { font-size: 17px; font-weight: 800; color: #0f172a; margin-top: 2px; }
+    .duration-reference-note { font-size: 11.5px; color: #64748b; line-height: 1.45; border-top: 1px dashed #e2e8f0; padding-top: 8px; }
+    @media (max-width: 640px) {
+      .service-dates-card .grid-2col-dates { grid-template-columns: 1fr !important; }
+    }
+
+    /* EOSB Helper Link */
+    .eosb-helper-row { margin-top: 6px; font-size: 12px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 6px; }
+    .eosb-helper-prompt { color: var(--text-muted); font-weight: 500; }
+    .eosb-helper-link { color: #7c3aed; font-weight: 700; text-decoration: underline; transition: color 0.15s; }
+    .eosb-helper-link:hover { color: #5b21b6; }
+
     /* Result Box */
     .result-summary-box { background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%); color: #fff; border-radius: 12px; padding: 22px; margin-top: 24px; }
     .result-row-top { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 12px; padding-bottom: 14px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
@@ -391,12 +412,58 @@
             </div>
           </div>
 
+          <!-- Service Dates & Duration Section -->
+          <div class="service-dates-card">
+            <div class="service-dates-header">
+              <span class="service-dates-title"><i class="fas fa-calendar-alt" style="color:#7c3aed;"></i> Employment Service Period (Optional)</span>
+            </div>
+            <div class="grid-2col-dates" style="display:grid; grid-template-columns: 1fr 1fr; gap:16px;">
+              <div class="form-group" style="margin-bottom: 0;">
+                <label class="form-label" for="joiningDate">Joining Date</label>
+                <div class="input-with-addons">
+                  <span class="input-addon-badge"><i class="fas fa-calendar-plus"></i></span>
+                  <input type="date" id="joiningDate" class="calc-input" onchange="calculateServiceDuration()" oninput="calculateServiceDuration()">
+                </div>
+              </div>
+              <div class="form-group" style="margin-bottom: 0;">
+                <label class="form-label" for="exitDate">Exit Date</label>
+                <div class="input-with-addons">
+                  <span class="input-addon-badge"><i class="fas fa-calendar-check"></i></span>
+                  <input type="date" id="exitDate" class="calc-input" onchange="calculateServiceDuration()" oninput="calculateServiceDuration()">
+                </div>
+              </div>
+            </div>
+
+            <!-- Error message if exit date < joining date or invalid -->
+            <div id="dateValidationError" class="date-error-banner" style="display:none;" role="alert"></div>
+
+            <!-- Duration result display -->
+            <div id="serviceDurationBadge" class="service-duration-pill" style="display:none;">
+              <div class="duration-pill-body">
+                <i class="fas fa-business-time duration-icon"></i>
+                <div>
+                  <div class="duration-label">CALCULATED SERVICE DURATION (INCLUSIVE)</div>
+                  <div class="duration-value" id="durationText">--</div>
+                </div>
+              </div>
+              <div class="duration-reference-note">
+                Calendar service duration for reference. Actual entitlement may depend on applicable law, contract terms, and verified employment records.
+              </div>
+            </div>
+          </div>
+
           <div style="display:grid; grid-template-columns: 1fr 1fr; gap:16px;">
             <div class="form-group">
               <label class="form-label" for="settlementEosb">Approved EOSB Gratuity (SAR)</label>
               <div class="input-with-addons">
                 <span class="input-addon-badge">SAR</span>
                 <input type="number" id="settlementEosb" class="calc-input" value="45000" min="0" step="1000" oninput="calculateSettlement()">
+              </div>
+              <div class="eosb-helper-row">
+                <span class="eosb-helper-prompt">Don’t know your gratuity?</span>
+                <a href="/saudi-salary-calculator/eosb/?ref=settlement&wage=12000" id="linkCalcEosb" class="eosb-helper-link">
+                  Calculate EOSB Gratuity &rarr;
+                </a>
               </div>
             </div>
 
@@ -631,10 +698,136 @@
       document.getElementById('settlementGrossWage').value = val;
       document.querySelectorAll('.amount-chip-btn').forEach(b => b.classList.remove('active'));
       if (event && event.target) event.target.classList.add('active');
+      updateEosbHelperLink();
       calculateSettlement();
     }
 
+    function updateEosbHelperLink() {
+      const link = document.getElementById('linkCalcEosb');
+      if (!link) return;
+      const wageVal = parseFloat(document.getElementById('settlementGrossWage').value);
+      if (isFinite(wageVal) && wageVal > 0) {
+        link.href = '/saudi-salary-calculator/eosb/?ref=settlement&wage=' + encodeURIComponent(wageVal);
+      } else {
+        link.href = '/saudi-salary-calculator/eosb/?ref=settlement';
+      }
+    }
+
+    function calculateServiceDuration() {
+      const joiningVal = document.getElementById('joiningDate').value;
+      const exitVal = document.getElementById('exitDate').value;
+      const errorEl = document.getElementById('dateValidationError');
+      const badgeEl = document.getElementById('serviceDurationBadge');
+      const textEl = document.getElementById('durationText');
+
+      if (!joiningVal || !exitVal) {
+        if (errorEl) errorEl.style.display = 'none';
+        if (badgeEl) badgeEl.style.display = 'none';
+        return;
+      }
+
+      const start = new Date(joiningVal + 'T00:00:00');
+      const end = new Date(exitVal + 'T00:00:00');
+
+      if (isNaN(start.getTime()) || isNaN(end.getTime())) {
+        if (badgeEl) badgeEl.style.display = 'none';
+        if (errorEl) {
+          errorEl.innerHTML = '<i class="fas fa-exclamation-circle"></i> Please enter valid calendar dates.';
+          errorEl.style.display = 'flex';
+        }
+        return;
+      }
+
+      if (end < start) {
+        if (badgeEl) badgeEl.style.display = 'none';
+        if (errorEl) {
+          errorEl.innerHTML = '<i class="fas fa-exclamation-circle"></i> Exit Date cannot be earlier than Joining Date.';
+          errorEl.style.display = 'flex';
+        }
+        return;
+      }
+
+      if (errorEl) errorEl.style.display = 'none';
+
+      // Inclusive duration: add 1 day to end date
+      const d1 = start.getDate();
+      const m1 = start.getMonth();
+      const y1 = start.getFullYear();
+
+      const inclusiveEnd = new Date(end.getTime());
+      inclusiveEnd.setDate(inclusiveEnd.getDate() + 1);
+
+      let d2 = inclusiveEnd.getDate();
+      let m2 = inclusiveEnd.getMonth();
+      let y2 = inclusiveEnd.getFullYear();
+
+      let days = d2 - d1;
+      let months = m2 - m1;
+      let years = y2 - y1;
+
+      if (days < 0) {
+        const prevMonthDays = new Date(y2, m2, 0).getDate();
+        days += prevMonthDays;
+        months--;
+      }
+
+      if (months < 0) {
+        months += 12;
+        years--;
+      }
+
+      const yrLabel = years === 1 ? '1 Year' : years + ' Years';
+      const moLabel = months === 1 ? '1 Month' : months + ' Months';
+      const daLabel = days === 1 ? '1 Day' : days + ' Days';
+
+      if (textEl) {
+        textEl.textContent = yrLabel + ', ' + moLabel + ', ' + daLabel;
+      }
+      if (badgeEl) {
+        badgeEl.style.display = 'block';
+      }
+    }
+
+    function checkIncomingUrlParams() {
+      try {
+        const params = new URLSearchParams(window.location.search);
+        let paramsApplied = false;
+
+        if (params.has('eosb')) {
+          const rawEosb = parseFloat(params.get('eosb'));
+          if (isFinite(rawEosb) && !isNaN(rawEosb) && rawEosb >= 0 && rawEosb <= 100000000) {
+            const eosbInput = document.getElementById('settlementEosb');
+            if (eosbInput) {
+              eosbInput.value = rawEosb.toFixed(2);
+              paramsApplied = true;
+            }
+          }
+        }
+
+        if (params.has('wage')) {
+          const rawWage = parseFloat(params.get('wage'));
+          if (isFinite(rawWage) && !isNaN(rawWage) && rawWage > 0 && rawWage <= 10000000) {
+            const wageInput = document.getElementById('settlementGrossWage');
+            if (wageInput) {
+              wageInput.value = rawWage;
+              document.querySelectorAll('.amount-chip-btn').forEach(b => {
+                b.classList.toggle('active', parseFloat(b.innerText.replace(/[^0-9]/g, '')) === rawWage);
+              });
+              paramsApplied = true;
+            }
+          }
+        }
+
+        if (paramsApplied) {
+          calculateSettlement();
+        }
+      } catch (e) {
+        console.warn('URL param reading error:', e);
+      }
+    }
+
     function calculateSettlement() {
+      updateEosbHelperLink();
       const wage = parseFloat(document.getElementById('settlementGrossWage').value) || 0;
       const eosb = parseFloat(document.getElementById('settlementEosb').value) || 0;
       const leaveDays = parseFloat(document.getElementById('unusedLeaveDays').value) || 0;
@@ -656,7 +849,21 @@
       document.getElementById('resTotalDeductions').innerText = '-' + deductions.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SAR';
     }
 
-    window.addEventListener('DOMContentLoaded', calculateSettlement);
+    // Run immediately and listen for DOM and navigation events
+    checkIncomingUrlParams();
+    calculateSettlement();
+    updateEosbHelperLink();
+
+    window.addEventListener('DOMContentLoaded', function() {
+      checkIncomingUrlParams();
+      calculateSettlement();
+      updateEosbHelperLink();
+    });
+    window.addEventListener('popstate', function() {
+      checkIncomingUrlParams();
+      calculateSettlement();
+      updateEosbHelperLink();
+    });
   </script>  <!-- AdSense Container -->
   <div class="ad-slot-container">
     <ins class="adsbygoogle"

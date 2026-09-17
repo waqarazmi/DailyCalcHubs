@@ -263,7 +263,13 @@
     .loc-name-display { font-size: 19px; font-weight: 800; color: var(--navy-dark); display: flex; align-items: center; gap: 8px; }
     .pulse-dot { width: 9px; height: 9px; border-radius: 50%; background: #10b981; box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.25); display: inline-block; }
 
-    .location-actions { display: flex; align-items: center; gap: 8px; }
+    .location-actions { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .weather-temp-badge { background: var(--prayer-light); border: 1.5px solid var(--prayer-border); color: var(--prayer-dark); font-size: 13px; font-weight: 700; padding: 8px 12px; border-radius: 8px; display: inline-flex; align-items: center; gap: 6px; user-select: none; transition: opacity 0.2s, background-color 0.2s; }
+    .weather-temp-badge i { color: #f59e0b; font-size: 14px; }
+    @media (max-width: 480px) {
+      .weather-temp-badge { font-size: 12px; padding: 7px 10px; }
+      .btn-gps-refresh { font-size: 12px; padding: 7px 10px; }
+    }
     .btn-gps-refresh { background: var(--prayer-light); border: 1.5px solid var(--prayer-border); color: var(--prayer-dark); font-size: 13px; font-weight: 700; padding: 8px 14px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: all 0.2s; }
     .btn-gps-refresh:hover { background: var(--prayer-primary); color: white; border-color: var(--prayer-primary); }
 
@@ -721,6 +727,10 @@
         </div>
 
         <div class="location-actions">
+          <div class="weather-temp-badge" id="prayerWeatherBadge" title="Current temperature" aria-label="Current temperature">
+            <i class="fas fa-sun" id="prayerWeatherIcon"></i>
+            <span id="prayerTempVal">--°C</span>
+          </div>
           <button class="btn-gps-refresh" id="btnDetectLoc" onclick="triggerGpsRefresh()" title="Detect exact device coordinates">
             <i class="fas fa-crosshairs"></i> Detect My Location
           </button>
@@ -1541,6 +1551,91 @@
     }
 
     // ==========================================
+    // LIVE CURRENT TEMPERATURE ENGINE (OPEN-METEO)
+    // ==========================================
+    let activeWeatherRequestId = 0;
+    const weatherCache = {};
+
+    function mapWmoToWeatherIcon(code) {
+      if (code === 0) return 'fas fa-sun';
+      if (code === 1 || code === 2) return 'fas fa-cloud-sun';
+      if (code === 3) return 'fas fa-cloud';
+      if (code === 45 || code === 48) return 'fas fa-smog';
+      if (code >= 51 && code <= 57) return 'fas fa-cloud-rain';
+      if (code >= 61 && code <= 67) return 'fas fa-cloud-showers-heavy';
+      if (code >= 71 && code <= 77) return 'fas fa-snowflake';
+      if (code >= 80 && code <= 82) return 'fas fa-cloud-rain';
+      if (code >= 85 && code <= 86) return 'fas fa-snowflake';
+      if (code >= 95 && code <= 99) return 'fas fa-bolt';
+      return 'fas fa-temperature-half';
+    }
+
+    async function fetchWeatherForCoords(lat, lng) {
+      const tempEl = document.getElementById('prayerTempVal');
+      const iconEl = document.getElementById('prayerWeatherIcon');
+      const badgeEl = document.getElementById('prayerWeatherBadge');
+      if (!tempEl || !iconEl || !badgeEl) return;
+
+      const numLat = parseFloat(lat);
+      const numLng = parseFloat(lng);
+      if (!isFinite(numLat) || !isFinite(numLng) || numLat < -90 || numLat > 90 || numLng < -180 || numLng > 180) {
+        return;
+      }
+
+      const cacheKey = numLat.toFixed(2) + ',' + numLng.toFixed(2);
+      const now = Date.now();
+      if (weatherCache[cacheKey] && (now - weatherCache[cacheKey].timestamp < 600000)) {
+        const cached = weatherCache[cacheKey];
+        tempEl.textContent = cached.temp + '°C';
+        iconEl.className = cached.iconClass;
+        badgeEl.setAttribute('aria-label', 'Current temperature: ' + cached.temp + '°C');
+        badgeEl.title = 'Current temperature: ' + cached.temp + '°C';
+        badgeEl.style.opacity = '1';
+        return;
+      }
+
+      const reqId = ++activeWeatherRequestId;
+      badgeEl.style.opacity = '0.75';
+
+      try {
+        const url = 'https://api.open-meteo.com/v1/forecast?latitude=' + encodeURIComponent(numLat.toFixed(4)) + '&longitude=' + encodeURIComponent(numLng.toFixed(4)) + '&current=temperature_2m,weather_code';
+        const res = await fetch(url);
+        if (reqId !== activeWeatherRequestId) return;
+
+        if (!res.ok) {
+          console.warn('Weather API returned status:', res.status);
+          badgeEl.style.opacity = '1';
+          return;
+        }
+
+        const data = await res.json();
+        if (reqId !== activeWeatherRequestId) return;
+
+        if (data && data.current && typeof data.current.temperature_2m === 'number') {
+          const tempC = Math.round(data.current.temperature_2m);
+          const iconClass = mapWmoToWeatherIcon(data.current.weather_code);
+
+          weatherCache[cacheKey] = {
+            temp: tempC,
+            iconClass: iconClass,
+            timestamp: now
+          };
+
+          tempEl.textContent = tempC + '°C';
+          iconEl.className = iconClass;
+          badgeEl.setAttribute('aria-label', 'Current temperature: ' + tempC + '°C');
+          badgeEl.title = 'Current temperature: ' + tempC + '°C';
+        }
+      } catch (err) {
+        console.warn('Weather fetch fallback:', err);
+      } finally {
+        if (reqId === activeWeatherRequestId) {
+          badgeEl.style.opacity = '1';
+        }
+      }
+    }
+
+    // ==========================================
     // QIBLA COMPASS & DEVICE ORIENTATION ENGINE
     // ==========================================
     const KAABA_LAT = 21.422487;
@@ -1790,6 +1885,7 @@
         event.target.classList.add('active');
       }
       updateQiblaDisplay(lat, lng, 'City Selection (' + label.split(',')[0] + ')');
+      fetchWeatherForCoords(lat, lng);
       fetchPrayerForCoords(lat, lng, label);
     }
 
@@ -1816,6 +1912,7 @@
               const gpsLng = pos.coords.longitude;
               const preciseLabel = await reverseGeocodeWithOSM(gpsLat, gpsLng, 'Local Area', '');
               updateQiblaDisplay(gpsLat, gpsLng, 'GPS Precision');
+              fetchWeatherForCoords(gpsLat, gpsLng);
               await fetchPrayerForCoords(gpsLat, gpsLng, preciseLabel);
               document.querySelectorAll('.city-btn').forEach(b => b.classList.remove('active'));
             }
@@ -1856,6 +1953,7 @@
       // 1. Initial display with local fallback
       applyPrayerTimesToDOM(defaultPrayerMap.dammam);
       updateQiblaDisplay(26.4207, 50.0888, 'Baseline Fallback');
+      fetchWeatherForCoords(26.4207, 50.0888);
       setupDeviceOrientation();
 
       // Start live clock ticking
@@ -1879,6 +1977,7 @@
             country = ipData.country_name || 'Saudi Arabia';
             currentCityLabel = city + ', ' + country;
             updateQiblaDisplay(lat, lng, 'Approximate Location (IP)');
+            fetchWeatherForCoords(lat, lng);
           }
         }
       } catch (err) {

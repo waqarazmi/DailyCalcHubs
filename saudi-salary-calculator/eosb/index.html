@@ -245,6 +245,20 @@
     .meta-box-title { color: #a78bfa; font-size: 11.5px; font-weight: 600; margin-bottom: 3px; }
     .meta-box-val { color: #f8fafc; font-weight: 700; }
 
+    /* Return to Final Settlement Action Card */
+    .settlement-return-card { background: #f5f3ff; border: 2px solid #c4b5fd; border-radius: 12px; padding: 16px 20px; margin-top: 18px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; box-shadow: 0 4px 6px -1px rgba(124, 58, 237, 0.1); }
+    .settlement-return-info { display: flex; align-items: center; gap: 14px; }
+    .settlement-return-icon { font-size: 24px; color: #7c3aed; flex-shrink: 0; }
+    .settlement-return-title { font-size: 14.5px; font-weight: 800; color: #5b21b6; }
+    .settlement-return-sub { font-size: 12.5px; color: #475569; margin-top: 2px; }
+    .btn-apply-settlement { background: #7c3aed; color: #ffffff; border: none; font-size: 13px; font-weight: 700; padding: 10px 18px; border-radius: 8px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; transition: background 0.15s, transform 0.1s; white-space: nowrap; }
+    .btn-apply-settlement:hover { background: #6d28d9; transform: translateY(-1px); }
+    .btn-apply-settlement:active { transform: translateY(0); }
+    @media (max-width: 640px) {
+      .settlement-return-card { flex-direction: column; align-items: stretch; text-align: left; }
+      .btn-apply-settlement { justify-content: center; width: 100%; }
+    }
+
     /* Sidebar */
     .sidebar-info-card { background: #ffffff; border-radius: 16px; border: 1px solid var(--border-light); box-shadow: var(--card-shadow); padding: 24px; margin-bottom: 24px; }
     .sidebar-card-heading { font-size: 16px; font-weight: 800; color: var(--navy-dark); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
@@ -460,6 +474,20 @@
             </div>
           </div>
         </div>
+
+        <!-- Return to Final Settlement Action (Revealed only when ref=settlement) -->
+        <div id="settlementReturnBanner" class="settlement-return-card" style="display:none;">
+          <div class="settlement-return-info">
+            <i class="fas fa-receipt settlement-return-icon"></i>
+            <div>
+              <div class="settlement-return-title">Return to Final Settlement</div>
+              <div class="settlement-return-sub">Apply this calculated gratuity (<strong id="returnEosbAmount">46,666.67 SAR</strong>) directly to your Final Settlement calculation.</div>
+            </div>
+          </div>
+          <button type="button" class="btn-apply-settlement" onclick="applyGratuityToSettlement()">
+            <i class="fas fa-check-circle"></i> Apply to Final Settlement &rarr;
+          </button>
+        </div>
       </section>
 
       <!-- Sidebar -->
@@ -621,6 +649,8 @@
   </main>
 
   <script>
+    let latestCalculatedEosb = 46666.67;
+
     function setEosbAmount(val) {
       document.getElementById('lastGrossSalary').value = val;
       document.querySelectorAll('.amount-chip-btn').forEach(b => b.classList.remove('active'));
@@ -670,16 +700,78 @@
       }
 
       let finalAward = fullStatutoryAward * entitlementRatio;
+      latestCalculatedEosb = finalAward;
 
-      document.getElementById('resEosbTotal').innerText = finalAward.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SAR';
+      const formattedAward = finalAward.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SAR';
+      document.getElementById('resEosbTotal').innerText = formattedAward;
       document.getElementById('resEosbRateTier').innerText = ratioLabel;
       document.getElementById('resTotalTenureText').innerText = years + ' Yrs, ' + months + ' Mos, ' + days + ' Days';
       document.getElementById('resTier1Val').innerText = tier1Award.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SAR';
       document.getElementById('resTier2Val').innerText = tier2Award.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SAR';
       document.getElementById('resGrossAward').innerText = fullStatutoryAward.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SAR';
+
+      const returnAmountEl = document.getElementById('returnEosbAmount');
+      if (returnAmountEl) {
+        returnAmountEl.innerText = formattedAward;
+      }
     }
 
-    window.addEventListener('DOMContentLoaded', calculateEosb);
+    function applyGratuityToSettlement() {
+      const wageInput = document.getElementById('lastGrossSalary');
+      const rawWage = wageInput ? parseFloat(wageInput.value) : 0;
+      let targetUrl = '/saudi-salary-calculator/final-settlement/';
+      const qParams = [];
+
+      if (isFinite(latestCalculatedEosb) && !isNaN(latestCalculatedEosb) && latestCalculatedEosb >= 0 && latestCalculatedEosb <= 100000000) {
+        qParams.push('eosb=' + encodeURIComponent(latestCalculatedEosb.toFixed(2)));
+      }
+      if (isFinite(rawWage) && !isNaN(rawWage) && rawWage > 0 && rawWage <= 10000000) {
+        qParams.push('wage=' + encodeURIComponent(rawWage.toFixed(2)));
+      }
+      if (qParams.length > 0) {
+        targetUrl += '?' + qParams.join('&');
+      }
+      window.location.href = targetUrl;
+    }
+
+    function checkSettlementReturnMode() {
+      try {
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('ref') === 'settlement') {
+          const banner = document.getElementById('settlementReturnBanner');
+          if (banner) banner.style.display = 'flex';
+
+          if (params.has('wage')) {
+            const rawWage = parseFloat(params.get('wage'));
+            if (isFinite(rawWage) && !isNaN(rawWage) && rawWage > 0 && rawWage <= 10000000) {
+              const wageInput = document.getElementById('lastGrossSalary');
+              if (wageInput) {
+                wageInput.value = rawWage;
+                document.querySelectorAll('.amount-chip-btn').forEach(b => {
+                  b.classList.toggle('active', parseFloat(b.innerText.replace(/[^0-9]/g, '')) === rawWage);
+                });
+              }
+            }
+          }
+          calculateEosb();
+        }
+      } catch (e) {
+        console.warn('Settlement return mode error:', e);
+      }
+    }
+
+    // Run immediately and listen for DOM and navigation events
+    calculateEosb();
+    checkSettlementReturnMode();
+
+    window.addEventListener('DOMContentLoaded', function() {
+      calculateEosb();
+      checkSettlementReturnMode();
+    });
+    window.addEventListener('popstate', function() {
+      calculateEosb();
+      checkSettlementReturnMode();
+    });
   </script>  <!-- AdSense Container -->
   <div class="ad-slot-container">
     <ins class="adsbygoogle"
