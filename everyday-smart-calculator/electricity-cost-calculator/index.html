@@ -125,7 +125,7 @@
             "name": "How do you calculate kilowatt-hours (kWh) from appliance wattage?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Kilowatt-hours are calculated by multiplying an appliance's power rating in Watts by the hours used per day, then dividing by 1,000: kWh = (Watts Ã— Hours) Ã· 1,000."
+              "text": "Kilowatt-hours are calculated by multiplying an appliance's power rating in Watts by the hours used per day, then dividing by 1,000: kWh = (Watts × Hours) Ã· 1,000."
             }
           },
           {
@@ -363,15 +363,15 @@
           <label class="form-label" for="applianceSelect">Select Common Appliance Preset</label>
           <div class="calc-select">
             <select id="applianceSelect" onchange="applyAppliancePreset()">
-              <option value="1800">Split AC (1.5 Ton / 18,000 BTU) â€” ~1,800W</option>
-              <option value="2200">Window AC (1.5 Ton) â€” ~2,200W</option>
-              <option value="200" selected>Double-Door Refrigerator â€” ~200W</option>
-              <option value="1500">Water Heater (Geyser 50L) â€” ~1,500W</option>
-              <option value="500">Washing Machine (Front Load) â€” ~500W</option>
-              <option value="120">LED Smart TV (55-Inch) â€” ~120W</option>
-              <option value="65">Laptop Computer â€” ~65W</option>
-              <option value="1000">Microwave Oven â€” ~1,000W</option>
-              <option value="1200">Clothes Steam Iron â€” ~1,200W</option>
+              <option value="1800">Split AC (1.5 Ton / 18,000 BTU) — ~1,800W</option>
+              <option value="2200">Window AC (1.5 Ton) — ~2,200W</option>
+              <option value="200" selected>Double-Door Refrigerator — ~200W</option>
+              <option value="1500">Water Heater (Geyser 50L) — ~1,500W</option>
+              <option value="500">Washing Machine (Front Load) — ~500W</option>
+              <option value="120">LED Smart TV (55-Inch) — ~120W</option>
+              <option value="65">Laptop Computer — ~65W</option>
+              <option value="1000">Microwave Oven — ~1,000W</option>
+              <option value="1200">Clothes Steam Iron — ~1,200W</option>
               <option value="custom">Custom Wattage</option>
             </select>
           </div>
@@ -433,12 +433,12 @@
           <label class="form-label" for="currencySelect">Currency Label</label>
           <div class="calc-select">
             <select id="currencySelect" onchange="updateCurrencyLabel()">
-              <option value="SAR" selected>SAR â€” Saudi Riyal</option>
-              <option value="AED">AED â€” UAE Dirham</option>
-              <option value="USD">USD â€” US Dollar ($)</option>
-              <option value="EUR">EUR â€” Euro (â‚¬)</option>
-              <option value="INR">INR â€” Indian Rupee (â‚¹)</option>
-              <option value="PKR">PKR â€” Pakistani Rupee</option>
+              <option value="SAR" selected>SAR — Saudi Riyal</option>
+              <option value="AED">AED — UAE Dirham</option>
+              <option value="USD">USD — US Dollar ($)</option>
+              <option value="EUR">EUR — Euro (â‚¬)</option>
+              <option value="INR">INR — Indian Rupee (â‚¹)</option>
+              <option value="PKR">PKR — Pakistani Rupee</option>
             </select>
           </div>
         </div>
@@ -484,9 +484,9 @@
 
       <h3>Mathematically Valid Electricity Formulas</h3>
       <div class="formula-box">
-        Daily Energy (kWh) = [Power (Watts) Ã· 1,000] Ã— Hours Used Per Day<br>
-        Billing Period Energy = Daily Energy (kWh) Ã— Number of Days<br>
-        Estimated Cost = Billing Period Energy (kWh) Ã— Tariff Rate per kWh
+        Daily Energy (kWh) = [Power (Watts) Ã· 1,000] × Hours Used Per Day<br>
+        Billing Period Energy = Daily Energy (kWh) × Number of Days<br>
+        Estimated Cost = Billing Period Energy (kWh) × Tariff Rate per kWh
       </div>
 
       <h3>Worked Calculation Example</h3>
@@ -495,9 +495,9 @@
       </p>
       <ul>
         <li><strong>Step 1 (Convert watts to kW):</strong> 1,800 Watts Ã· 1,000 = 1.8 kW.</li>
-        <li><strong>Step 2 (Determine daily consumption):</strong> 1.8 kW Ã— 8 hours = <strong>14.4 kWh per day</strong>.</li>
-        <li><strong>Step 3 (Calculate 30-day monthly consumption):</strong> 14.4 kWh Ã— 30 days = <strong>432 kWh per month</strong>.</li>
-        <li><strong>Step 4 (Multiply by tariff rate):</strong> 432 kWh Ã— 0.18 SAR = <strong>77.76 SAR per month</strong>.</li>
+        <li><strong>Step 2 (Determine daily consumption):</strong> 1.8 kW × 8 hours = <strong>14.4 kWh per day</strong>.</li>
+        <li><strong>Step 3 (Calculate 30-day monthly consumption):</strong> 14.4 kWh × 30 days = <strong>432 kWh per month</strong>.</li>
+        <li><strong>Step 4 (Multiply by tariff rate):</strong> 432 kWh × 0.18 SAR = <strong>77.76 SAR per month</strong>.</li>
       </ul>
 
       <h2>Common Household Appliance Power Ratings</h2>
@@ -565,7 +565,7 @@
       
       <div class="faq-item">
         <div class="faq-question" onclick="toggleFaq(this)">How do you calculate kilowatt-hours (kWh) from appliance wattage? <i class="fas fa-chevron-down"></i></div>
-        <div class="faq-answer">Multiply the appliance wattage by daily hours of operation and divide by 1,000: kWh = (Watts Ã— Hours) Ã· 1,000.</div>
+        <div class="faq-answer">Multiply the appliance wattage by daily hours of operation and divide by 1,000: kWh = (Watts × Hours) Ã· 1,000.</div>
       </div>
 
       <div class="faq-item">
