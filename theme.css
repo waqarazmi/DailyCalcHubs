@@ -1038,3 +1038,302 @@ html[data-theme="dark"] .ticker-item strong {
     display: none !important;
   }
 }
+
+/* ==========================================================================
+   CALCULATION RESULT ACTION BAR & PRINT STYLES
+   Features: Print / Save Summary (PDF) + Share on WhatsApp
+   ========================================================================== */
+
+/* Action Bar Container */
+.calc-action-bar {
+  display: flex;
+  gap: 12px;
+  align-items: stretch;
+  margin-top: 22px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(226, 232, 240, 0.8);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+html[data-theme="dark"] .calc-action-bar {
+  border-top-color: #1e293b;
+}
+
+/* Action Buttons Base */
+.btn-action-print,
+.btn-action-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 18px;
+  font-size: 13.5px;
+  font-weight: 600;
+  font-family: inherit;
+  border-radius: 9px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  min-height: 44px;
+  flex: 1 1 0;
+  min-width: 0;
+  box-sizing: border-box;
+  line-height: 1.3;
+  text-align: center;
+}
+
+/* Light Mode: Print Button */
+.btn-action-print {
+  background: #ffffff;
+  color: #1e293b;
+  border: 1.5px solid #cbd5e1;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.btn-action-print i {
+  color: #dc2626;
+  font-size: 15px;
+  flex-shrink: 0;
+}
+
+.btn-action-print:hover {
+  background: #f8fafc;
+  border-color: #0284c7;
+  color: #0284c7;
+  transform: translateY(-1px);
+}
+
+/* WhatsApp Button (Official Brand Green) */
+.btn-action-whatsapp {
+  background: #25D366;
+  color: #ffffff;
+  border: 1.5px solid #25D366;
+  box-shadow: 0 1px 3px rgba(37, 211, 102, 0.25);
+}
+
+.btn-action-whatsapp i {
+  color: #ffffff;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.btn-action-whatsapp:hover {
+  background: #20bd5a;
+  border-color: #20bd5a;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.35);
+  transform: translateY(-1px);
+}
+
+.btn-action-print:focus-visible,
+.btn-action-whatsapp:focus-visible {
+  outline: 2px solid #0284c7;
+  outline-offset: 2px;
+}
+
+/* Dark Mode: Print Button */
+html[data-theme="dark"] .btn-action-print {
+  background: #1a233a;
+  color: #f8fafc;
+  border-color: #334155;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+html[data-theme="dark"] .btn-action-print i {
+  color: #f87171;
+}
+
+html[data-theme="dark"] .btn-action-print:hover {
+  background: #202d4a;
+  border-color: #38bdf8;
+  color: #38bdf8;
+}
+
+html[data-theme="dark"] .btn-action-whatsapp {
+  background: #25D366;
+  color: #ffffff;
+  border-color: #25D366;
+}
+
+html[data-theme="dark"] .btn-action-whatsapp:hover {
+  background: #20bd5a;
+  border-color: #20bd5a;
+}
+
+/* Mobile Responsive Stacking */
+@media (max-width: 640px) {
+  .calc-action-bar {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 18px;
+    padding-top: 14px;
+  }
+  .btn-action-print,
+  .btn-action-whatsapp {
+    width: 100%;
+    flex: none;
+    min-height: 44px;
+  }
+}
+
+/* Print Only Document Header (Hidden on Screen) */
+.dch-print-header {
+  display: none;
+}
+
+/* ==========================================================================
+   BROWSER NATIVE PRINT STYLES (@media print)
+   Forces clean light background, hides clutter, preserves result tables
+   ========================================================================== */
+@media print {
+  /* Force light theme on paper */
+  html, body {
+    background: #ffffff !important;
+    color: #0f172a !important;
+    font-size: 11pt !important;
+    line-height: 1.4 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Hide website navigation, footers, ads, tickers, buttons, sidebars */
+  .site-header,
+  header.site-header,
+  .site-footer,
+  footer,
+  .rates-ticker-bar,
+  .ticker-wrap,
+  .breadcrumbs-bar,
+  .theme-toggle-btn,
+  .mobile-menu-toggle,
+  .sidebar-info-card,
+  aside,
+  .ad-unit,
+  ins.adsbygoogle,
+  .faq-item,
+  .faq-section,
+  #searchModal,
+  .search-modal,
+  .tool-pill,
+  .live-status-pill,
+  .calc-action-bar,
+  .btn-action-print,
+  .btn-action-whatsapp,
+  .settlement-return-card,
+  .chips-row,
+  .mini-chips-row,
+  .tools-nav-bar,
+  .related-tools-box,
+  .content-article,
+  .seo-article,
+  article,
+  #dch-owner-mode-badge,
+  .header-actions {
+    display: none !important;
+  }
+
+  /* Print Header Display */
+  .dch-print-header {
+    display: block !important;
+    border-bottom: 2px solid #0284c7 !important;
+    padding-bottom: 10px !important;
+    margin-bottom: 18px !important;
+  }
+
+  .dch-print-header .print-brand {
+    font-size: 18pt !important;
+    font-weight: 800 !important;
+    color: #0284c7 !important;
+    margin-bottom: 4px !important;
+  }
+
+  .dch-print-header .print-subtitle {
+    font-size: 10pt !important;
+    color: #64748b !important;
+  }
+
+  /* Full Width Containers */
+  .container,
+  .main-container,
+  .tool-layout,
+  .calc-grid {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: block !important;
+  }
+
+  /* Printable Cards & Result Panels */
+  .calc-card,
+  .calculator-card,
+  .result-summary-box,
+  .results-panel,
+  .mini-result-box {
+    background: #ffffff !important;
+    color: #0f172a !important;
+    border: 1px solid #cbd5e1 !important;
+    border-radius: 6px !important;
+    box-shadow: none !important;
+    margin: 0 0 16px 0 !important;
+    padding: 16px !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  /* Ensure result highlights are bold and legible */
+  .result-big-val,
+  .total-amount-display,
+  .mini-result-val,
+  .meta-box-val,
+  .stat-val {
+    color: #0284c7 !important;
+    font-weight: 700 !important;
+  }
+
+  .result-label,
+  .meta-box-title,
+  .stat-label {
+    color: #475569 !important;
+    font-size: 9pt !important;
+  }
+
+  .meta-box-inner,
+  .stat-pill,
+  .meta-box {
+    background: #f8fafc !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 4px !important;
+  }
+
+  /* Tables */
+  table,
+  .breakdown-table,
+  .data-table {
+    border-collapse: collapse !important;
+    width: 100% !important;
+    color: #0f172a !important;
+  }
+
+  table th,
+  .breakdown-table th {
+    background: #f1f5f9 !important;
+    color: #0f172a !important;
+    border: 1px solid #cbd5e1 !important;
+    font-weight: 700 !important;
+  }
+
+  table td,
+  .breakdown-table td {
+    border: 1px solid #e2e8f0 !important;
+    color: #0f172a !important;
+    background: #ffffff !important;
+  }
+
+  /* Form inputs in print */
+  input, select, textarea {
+    border: 1px solid #cbd5e1 !important;
+    background: #ffffff !important;
+    color: #0f172a !important;
+  }
+}

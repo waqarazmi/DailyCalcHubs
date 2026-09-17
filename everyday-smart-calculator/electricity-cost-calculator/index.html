@@ -492,7 +492,19 @@
             <div class="meta-box-val" id="resAnnualCost">315.36 SAR / year</div>
           </div>
         </div>
-      </div>
+      
+          <!-- Calculation Result Actions: Print/PDF & WhatsApp Share -->
+          <div class="calc-action-bar">
+            <button type="button" class="btn-action-print" onclick="dchPrintSummary(this)" aria-label="Print or save calculation summary as PDF">
+              <i class="fas fa-file-pdf"></i>
+              <span>Print / Save Summary (PDF)</span>
+            </button>
+            <button type="button" class="btn-action-whatsapp" onclick="dchShareWhatsApp(this)" aria-label="Share calculation summary on WhatsApp">
+              <i class="fab fa-whatsapp"></i>
+              <span>Share on WhatsApp</span>
+            </button>
+          </div>
+        </div>
     </div>
 
     <!-- SEO Content Article -->
@@ -762,5 +774,6 @@
   </footer>
 
   <script src="/theme.js" defer></script>
+  <script src="/share.js" defer></script>
 </body>
 </html>

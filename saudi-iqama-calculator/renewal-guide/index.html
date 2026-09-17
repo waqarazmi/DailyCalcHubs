@@ -467,6 +467,18 @@
           <p id="resStatusDesc" style="font-size:13.5px; color:#e2e8f0; line-height:1.6; margin-top:6px;">
             Work permit, Jawazat fee, and dependent fees must still be paid before your sponsor can execute the renewal on Absher Business or Muqeem.
           </p>
+        
+          <!-- Calculation Result Actions: Print/PDF & WhatsApp Share -->
+          <div class="calc-action-bar">
+            <button type="button" class="btn-action-print" onclick="dchPrintSummary(this)" aria-label="Print or save calculation summary as PDF">
+              <i class="fas fa-file-pdf"></i>
+              <span>Print / Save Summary (PDF)</span>
+            </button>
+            <button type="button" class="btn-action-whatsapp" onclick="dchShareWhatsApp(this)" aria-label="Share calculation summary on WhatsApp">
+              <i class="fab fa-whatsapp"></i>
+              <span>Share on WhatsApp</span>
+            </button>
+          </div>
         </div>
       </section>
 
@@ -706,5 +718,6 @@
   </script>
   <script src="/live-ticker.js" defer></script>
   <script src="/theme.js" defer></script>
+  <script src="/share.js" defer></script>
 </body>
 </html>

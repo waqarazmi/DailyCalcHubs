@@ -636,6 +636,18 @@
             <i class="fas fa-triangle-exclamation" style="color:#fbbf24; margin-right:4px;"></i>
             <strong>Real-World Accuracy Note:</strong> Actual electricity consumption may vary by appliance model, rated power, efficiency, operating cycle and usage. For appliances such as refrigerators, washing machines, and air conditioners that cycle on and off, the result is an estimate based on the entered/assumed power and usage.
           </div>
+        
+          <!-- Calculation Result Actions: Print/PDF & WhatsApp Share -->
+          <div class="calc-action-bar">
+            <button type="button" class="btn-action-print" onclick="dchPrintSummary(this)" aria-label="Print or save calculation summary as PDF">
+              <i class="fas fa-file-pdf"></i>
+              <span>Print / Save Summary (PDF)</span>
+            </button>
+            <button type="button" class="btn-action-whatsapp" onclick="dchShareWhatsApp(this)" aria-label="Share calculation summary on WhatsApp">
+              <i class="fab fa-whatsapp"></i>
+              <span>Share on WhatsApp</span>
+            </button>
+          </div>
         </div>
       </div>
 
@@ -1517,5 +1529,6 @@
   </script>
 
   <script src="/theme.js" defer></script>
+  <script src="/share.js" defer></script>
 </body>
 </html>
