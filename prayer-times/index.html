@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -392,6 +392,45 @@
     .footer-col a:hover { color: var(--prayer-primary); }
     .footer-bottom { border-top: 1px solid #1e293b; padding-top: 24px; text-align: center; font-size: 12.5px; color: #64748b; }
     .disclaimer-box { background: rgba(2, 132, 199, 0.08); border: 1px solid rgba(2, 132, 199, 0.25); border-radius: 8px; padding: 12px; font-size: 12px; color: #bae6fd; margin-top: 16px; text-align: left; }
+
+    /* Mobile Navigation (<= 992px) */
+    @media (max-width: 992px) {
+      .mobile-menu-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 8px;
+        border: 1px solid var(--border-color);
+        background: var(--bg-white);
+      }
+      .header-nav-container {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: var(--bg-white);
+        border-bottom: 1px solid var(--border-color);
+        box-shadow: var(--shadow-md);
+        padding: 16px 20px;
+        z-index: 100;
+      }
+      .header-nav-container.open {
+        display: block;
+      }
+      .main-nav {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 6px;
+      }
+      .nav-link {
+        padding: 10px 14px;
+        width: 100%;
+        font-size: 14px;
+      }
+    }
 
     /* Mobile 390px Safeguards */
     @media (max-width: 480px) {
