@@ -1,0 +1,698 @@
+/**
+ * DailyCalcHubs — Global Night Mode Design System
+ * Theme Tokens, Component Overrides & Dark Mode Styles
+ * Pilot Phase: Prayer Times, EOSB, Split Bill
+ */
+
+:root {
+  /* Theme Tokens */
+  --dch-bg-page: #f8fafc;
+  --dch-bg-surface: #ffffff;
+  --dch-bg-subtle: #f1f5f9;
+  --dch-text-primary: #0f172a;
+  --dch-text-secondary: #475569;
+  --dch-text-muted: #64748b;
+  --dch-border: #e2e8f0;
+  --dch-border-subtle: #cbd5e1;
+  --dch-input-bg: #ffffff;
+}
+
+/* Base Theme Toggle Button */
+.theme-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  min-width: 38px;
+  border-radius: 9px;
+  border: 1.5px solid #cbd5e1;
+  background: #ffffff;
+  color: #475569;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 0;
+  outline: none;
+  flex-shrink: 0;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.theme-toggle-btn:hover {
+  color: #0284c7;
+  border-color: #0284c7;
+  background: #f0f9ff;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(2, 132, 199, 0.15);
+}
+
+.theme-toggle-btn:focus-visible {
+  outline: 2px solid #0284c7;
+  outline-offset: 2px;
+}
+
+/* ==========================================================================
+   Dark Theme (html[data-theme="dark"])
+   ========================================================================== */
+
+html[data-theme="dark"] {
+  --bg-light: #0b0f19;
+  --bg-white: #131b2e;
+  --text-dark: #f8fafc;
+  --text-muted: #94a3b8;
+  --border-color: #1e293b;
+  --border-light: #1e293b;
+  --navy-dark: #f8fafc;
+  --sky-light: rgba(14, 165, 233, 0.15);
+  --prayer-light: rgba(2, 132, 199, 0.15);
+  --prayer-border: #1e3a5f;
+  --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.35);
+  color-scheme: dark;
+}
+
+/* Smooth color transitions on key layout elements */
+body,
+.site-header,
+.prayer-main-card,
+.calc-card,
+.sidebar-info-card,
+.content-article,
+.seo-article,
+.editorial-section,
+.faq-section,
+.related-tools-box,
+.theme-toggle-btn {
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+/* Dark Mode Toggle Button State */
+html[data-theme="dark"] .theme-toggle-btn {
+  background: #1e293b;
+  border-color: #334155;
+  color: #f59e0b;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+html[data-theme="dark"] .theme-toggle-btn:hover {
+  color: #fbbf24;
+  border-color: #f59e0b;
+  background: #25334d;
+  box-shadow: 0 3px 10px rgba(245, 158, 11, 0.2);
+}
+
+/* Body & Document Base */
+html[data-theme="dark"] body {
+  background: #0b0f19 !important;
+  color: #cbd5e1 !important;
+}
+
+/* Site Header & Navigation */
+html[data-theme="dark"] .site-header {
+  background: #0f172a !important;
+  border-bottom: 1px solid #1e293b !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3) !important;
+}
+
+html[data-theme="dark"] .logo-area,
+html[data-theme="dark"] .logo-area span,
+html[data-theme="dark"] .logo-title,
+html[data-theme="dark"] .brand-logo-area {
+  color: #f8fafc !important;
+}
+
+html[data-theme="dark"] .logo-subtitle {
+  color: #94a3b8 !important;
+}
+
+html[data-theme="dark"] .nav-link,
+html[data-theme="dark"] .header-nav-links a {
+  color: #94a3b8 !important;
+}
+
+html[data-theme="dark"] .nav-link:hover,
+html[data-theme="dark"] .header-nav-links a:hover {
+  color: #38bdf8 !important;
+  background: rgba(56, 189, 248, 0.1) !important;
+}
+
+html[data-theme="dark"] .nav-link.active,
+html[data-theme="dark"] .header-nav-links a.active {
+  color: #38bdf8 !important;
+  background: rgba(56, 189, 248, 0.15) !important;
+}
+
+html[data-theme="dark"] .mobile-menu-toggle {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+  color: #cbd5e1 !important;
+}
+
+html[data-theme="dark"] .header-nav-container {
+  background: #0f172a !important;
+  border-color: #1e293b !important;
+}
+
+/* Top Ticker (EOSB) */
+html[data-theme="dark"] .top-rates-ticker {
+  background: #020617 !important;
+  border-bottom-color: #1e293b !important;
+}
+
+html[data-theme="dark"] .ticker-item {
+  color: #cbd5e1 !important;
+}
+
+/* Header Saudi Badge */
+html[data-theme="dark"] .saudi-badge-header {
+  background: rgba(124, 58, 237, 0.2) !important;
+  border-color: rgba(124, 58, 237, 0.4) !important;
+  color: #c4b5fd !important;
+}
+
+/* Breadcrumbs */
+html[data-theme="dark"] .breadcrumbs-section,
+html[data-theme="dark"] .breadcrumbs-bar,
+html[data-theme="dark"] .breadcrumb-bar {
+  background: #0d1322 !important;
+  border-bottom: 1px solid #1e293b !important;
+  color: #94a3b8 !important;
+}
+
+html[data-theme="dark"] .breadcrumbs-wrap a,
+html[data-theme="dark"] .breadcrumb-container a,
+html[data-theme="dark"] .breadcrumbs-bar a {
+  color: #94a3b8 !important;
+}
+
+html[data-theme="dark"] .breadcrumbs-wrap a:hover,
+html[data-theme="dark"] .breadcrumb-container a:hover,
+html[data-theme="dark"] .breadcrumbs-bar a:hover {
+  color: #38bdf8 !important;
+}
+
+html[data-theme="dark"] .breadcrumbs-wrap span,
+html[data-theme="dark"] .current-crumb {
+  color: #e2e8f0 !important;
+}
+
+/* Hero Sections */
+html[data-theme="dark"] .calc-hero,
+html[data-theme="dark"] .tool-hero,
+html[data-theme="dark"] .hero-section {
+  background: linear-gradient(180deg, #0f172a 0%, #0b0f19 100%) !important;
+  border-color: #1e293b !important;
+  border-bottom: 1px solid #1e293b !important;
+}
+
+html[data-theme="dark"] .calc-hero h1,
+html[data-theme="dark"] .tool-title,
+html[data-theme="dark"] .hero-title {
+  color: #f8fafc !important;
+}
+
+html[data-theme="dark"] .calc-hero p,
+html[data-theme="dark"] .tool-lead,
+html[data-theme="dark"] .hero-desc {
+  color: #94a3b8 !important;
+}
+
+html[data-theme="dark"] .badge-pill,
+html[data-theme="dark"] .tool-pill,
+html[data-theme="dark"] .badge-hero {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+  color: #38bdf8 !important;
+}
+
+/* Primary Content Cards */
+html[data-theme="dark"] .prayer-main-card,
+html[data-theme="dark"] .calc-card,
+html[data-theme="dark"] .sidebar-info-card,
+html[data-theme="dark"] .content-article,
+html[data-theme="dark"] .seo-article,
+html[data-theme="dark"] .editorial-section,
+html[data-theme="dark"] .faq-section,
+html[data-theme="dark"] .related-tools-box {
+  background: #131b2e !important;
+  border: 1px solid #1e293b !important;
+  color: #cbd5e1 !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35) !important;
+}
+
+html[data-theme="dark"] .location-header-bar,
+html[data-theme="dark"] .calc-card-header {
+  border-bottom: 1px solid #1e293b !important;
+}
+
+html[data-theme="dark"] .loc-name-display,
+html[data-theme="dark"] .calc-card-title,
+html[data-theme="dark"] h2,
+html[data-theme="dark"] h3,
+html[data-theme="dark"] h4 {
+  color: #f8fafc !important;
+}
+
+html[data-theme="dark"] .loc-meta-title {
+  color: #94a3b8 !important;
+}
+
+/* Forms, Inputs & Form Elements */
+html[data-theme="dark"] .form-label {
+  color: #e2e8f0 !important;
+}
+
+html[data-theme="dark"] .input-with-addons,
+html[data-theme="dark"] .calc-input-wrap,
+html[data-theme="dark"] .calc-select {
+  background: #1a233a !important;
+  border: 1.5px solid #334155 !important;
+}
+
+html[data-theme="dark"] .input-with-addons:focus-within,
+html[data-theme="dark"] .calc-input-wrap:focus-within,
+html[data-theme="dark"] .calc-select:focus-within {
+  border-color: #38bdf8 !important;
+  background: #1e293b !important;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2) !important;
+}
+
+html[data-theme="dark"] .input-addon-badge,
+html[data-theme="dark"] .calc-input-addon {
+  background: #131b2e !important;
+  border-color: #334155 !important;
+  color: #cbd5e1 !important;
+}
+
+html[data-theme="dark"] .calc-input,
+html[data-theme="dark"] input[type="text"],
+html[data-theme="dark"] input[type="number"],
+html[data-theme="dark"] select,
+html[data-theme="dark"] textarea {
+  background: transparent !important;
+  color: #f8fafc !important;
+}
+
+html[data-theme="dark"] .select-input-addon {
+  background: #131b2e !important;
+  color: #f8fafc !important;
+}
+
+html[data-theme="dark"] input::placeholder,
+html[data-theme="dark"] textarea::placeholder {
+  color: #64748b !important;
+}
+
+/* ==========================================================================
+   Pilot 1 Specifics: Prayer Times
+   ========================================================================== */
+
+html[data-theme="dark"] .loc-icon-circle {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+  color: #38bdf8 !important;
+}
+
+html[data-theme="dark"] .weather-temp-badge {
+  background: #1a233a !important;
+  border-color: #334155 !important;
+  color: #e2e8f0 !important;
+}
+
+html[data-theme="dark"] .btn-gps-refresh {
+  background: #1a233a !important;
+  border-color: #334155 !important;
+  color: #e2e8f0 !important;
+}
+
+html[data-theme="dark"] .btn-gps-refresh:hover {
+  background: #0284c7 !important;
+  border-color: #0284c7 !important;
+  color: #ffffff !important;
+}
+
+html[data-theme="dark"] .date-card {
+  background: #1a233a !important;
+  border-color: #1e293b !important;
+}
+
+html[data-theme="dark"] .date-card strong {
+  color: #f8fafc !important;
+}
+
+html[data-theme="dark"] .date-card span {
+  color: #94a3b8 !important;
+}
+
+html[data-theme="dark"] .date-icon-greg {
+  background: rgba(2, 132, 199, 0.2) !important;
+  color: #38bdf8 !important;
+}
+
+html[data-theme="dark"] .date-icon-hijri {
+  background: rgba(16, 185, 129, 0.2) !important;
+  color: #34d399 !important;
+}
+
+html[data-theme="dark"] .city-btn {
+  background: #1a233a !important;
+  border-color: #334155 !important;
+  color: #cbd5e1 !important;
+}
+
+html[data-theme="dark"] .city-btn:hover {
+  background: rgba(2, 132, 199, 0.2) !important;
+  border-color: #0284c7 !important;
+  color: #38bdf8 !important;
+}
+
+html[data-theme="dark"] .city-btn.active {
+  background: #0284c7 !important;
+  color: #ffffff !important;
+  border-color: #0284c7 !important;
+}
+
+html[data-theme="dark"] .prayer-card-item {
+  background: #1a233a !important;
+  border-color: #243048 !important;
+}
+
+html[data-theme="dark"] .prayer-card-item:hover {
+  border-color: #38bdf8 !important;
+  transform: translateY(-2px);
+}
+
+html[data-theme="dark"] .prayer-card-item.active-prayer {
+  background: #1e2c48 !important;
+  border-color: #0284c7 !important;
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.3) !important;
+}
+
+html[data-theme="dark"] .slot-icon {
+  background: #243048 !important;
+  color: #38bdf8 !important;
+}
+
+html[data-theme="dark"] .prayer-card-item.active-prayer .slot-icon {
+  background: #0284c7 !important;
+  color: #ffffff !important;
+}
+
+html[data-theme="dark"] .prayer-card-item .prayer-name {
+  color: #94a3b8 !important;
+}
+
+html[data-theme="dark"] .prayer-card-item .prayer-time {
+  color: #f8fafc !important;
+}
+
+html[data-theme="dark"] .prayer-card-item .prayer-arabic {
+  color: #64748b !important;
+}
+
+html[data-theme="dark"] .prayer-card-item.active-prayer .prayer-name {
+  color: #38bdf8 !important;
+}
+
+html[data-theme="dark"] .nawafil-container {
+  background: #17182e !important;
+  border-color: #3b2064 !important;
+}
+
+html[data-theme="dark"] .nawafil-card {
+  background: #1e1d38 !important;
+  border-color: #4c2882 !important;
+}
+
+html[data-theme="dark"] .nawafil-title {
+  color: #e2e8f0 !important;
+}
+
+html[data-theme="dark"] .nawafil-time {
+  color: #f8fafc !important;
+}
+
+html[data-theme="dark"] .nawafil-desc {
+  color: #94a3b8 !important;
+}
+
+html[data-theme="dark"] .nawafil-icon {
+  background: rgba(147, 51, 234, 0.2) !important;
+  color: #c084fc !important;
+}
+
+html[data-theme="dark"] .nawafil-tag {
+  background: rgba(147, 51, 234, 0.25) !important;
+  color: #d8b4fe !important;
+}
+
+html[data-theme="dark"] .method-standard-box {
+  background: #1a233a !important;
+  border-color: #1e293b !important;
+  color: #94a3b8 !important;
+}
+
+html[data-theme="dark"] .step-item-card {
+  background: #1a233a !important;
+  border-color: #1e293b !important;
+}
+
+html[data-theme="dark"] .step-item-card h3,
+html[data-theme="dark"] .step-item-card strong {
+  color: #f8fafc !important;
+}
+
+html[data-theme="dark"] .info-callout {
+  background: rgba(2, 132, 199, 0.12) !important;
+  border-left-color: #0284c7 !important;
+  color: #cbd5e1 !important;
+}
+
+html[data-theme="dark"] .qibla-card,
+html[data-theme="dark"] .qibla-subbox {
+  background: #1a233a !important;
+  border-color: #243048 !important;
+}
+
+html[data-theme="dark"] .compass-wrapper {
+  background: #0f172a !important;
+  border-color: #334155 !important;
+}
+
+/* ==========================================================================
+   Pilot 2 Specifics: Saudi EOSB Calculator
+   ========================================================================== */
+
+html[data-theme="dark"] .amount-chip-btn {
+  background: #1a233a !important;
+  border-color: #334155 !important;
+  color: #cbd5e1 !important;
+}
+
+html[data-theme="dark"] .amount-chip-btn:hover {
+  background: #243048 !important;
+  color: #f8fafc !important;
+}
+
+html[data-theme="dark"] .amount-chip-btn.active {
+  background: #7c3aed !important;
+  border-color: #7c3aed !important;
+  color: #ffffff !important;
+}
+
+html[data-theme="dark"] .live-status-pill {
+  background: rgba(124, 58, 237, 0.2) !important;
+  border-color: rgba(124, 58, 237, 0.4) !important;
+  color: #c4b5fd !important;
+}
+
+html[data-theme="dark"] .settlement-return-card {
+  background: #17182e !important;
+  border-color: #4c2882 !important;
+}
+
+html[data-theme="dark"] .settlement-return-card span {
+  color: #e2e8f0 !important;
+}
+
+html[data-theme="dark"] .content-callout {
+  background: #1a233a !important;
+  border-left-color: #7c3aed !important;
+  color: #cbd5e1 !important;
+}
+
+html[data-theme="dark"] .data-table th {
+  background: #1a233a !important;
+  border-color: #334155 !important;
+  color: #f8fafc !important;
+}
+
+html[data-theme="dark"] .data-table td {
+  border-color: #1e293b !important;
+  color: #cbd5e1 !important;
+}
+
+html[data-theme="dark"] .data-table tr[style*="background:#f5f3ff"],
+html[data-theme="dark"] .data-table tr[style*="background: #f5f3ff"] {
+  background: #1e1d38 !important;
+}
+
+html[data-theme="dark"] .related-link-card {
+  background: #1a233a !important;
+  border-color: #1e293b !important;
+  color: #e2e8f0 !important;
+}
+
+html[data-theme="dark"] .related-link-card:hover {
+  border-color: #7c3aed !important;
+  background: #231b40 !important;
+  color: #c4b5fd !important;
+}
+
+html[data-theme="dark"] .ad-slot-container {
+  background: #131b2e !important;
+  border-color: #1e293b !important;
+}
+
+/* ==========================================================================
+   Pilot 3 Specifics: Split Bill Calculator
+   ========================================================================== */
+
+html[data-theme="dark"] .mode-tabs-wrap {
+  background: #1a233a !important;
+}
+
+html[data-theme="dark"] .mode-tab-btn {
+  color: #94a3b8 !important;
+}
+
+html[data-theme="dark"] .mode-tab-btn.active {
+  background: #131b2e !important;
+  color: #38bdf8 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4) !important;
+}
+
+html[data-theme="dark"] .btn-add-diner {
+  background: rgba(14, 165, 233, 0.15) !important;
+  border-color: #0284c7 !important;
+  color: #38bdf8 !important;
+}
+
+html[data-theme="dark"] .btn-add-diner:hover {
+  background: #0284c7 !important;
+  color: #ffffff !important;
+}
+
+html[data-theme="dark"] .btn-del-diner {
+  background: rgba(220, 38, 38, 0.2) !important;
+  border-color: rgba(220, 38, 38, 0.4) !important;
+  color: #f87171 !important;
+}
+
+html[data-theme="dark"] .btn-del-diner:hover {
+  background: #dc2626 !important;
+  color: #ffffff !important;
+}
+
+html[data-theme="dark"] .formula-box {
+  background: #101e33 !important;
+  border-color: #1e3a5f !important;
+  color: #38bdf8 !important;
+}
+
+html[data-theme="dark"] .disclaimer-card {
+  background: #261d0f !important;
+  border-left-color: #f59e0b !important;
+  color: #fde68a !important;
+}
+
+html[data-theme="dark"] .example-box {
+  background: #1a233a !important;
+  border-color: #1e293b !important;
+  color: #cbd5e1 !important;
+}
+
+html[data-theme="dark"] .related-card {
+  background: #131b2e !important;
+  border-color: #1e293b !important;
+  color: #cbd5e1 !important;
+}
+
+html[data-theme="dark"] .related-card:hover {
+  border-color: #0284c7 !important;
+}
+
+html[data-theme="dark"] .related-card-badge {
+  background: rgba(14, 165, 233, 0.15) !important;
+  color: #38bdf8 !important;
+}
+
+/* ==========================================================================
+   FAQ Section Overrides (All 3 Pilot Pages)
+   ========================================================================== */
+
+html[data-theme="dark"] .faq-item {
+  background: #131b2e !important;
+  border-color: #1e293b !important;
+}
+
+html[data-theme="dark"] .faq-question {
+  background: #1a233a !important;
+  color: #f8fafc !important;
+}
+
+html[data-theme="dark"] .faq-question:hover {
+  background: #202d4a !important;
+}
+
+html[data-theme="dark"] .faq-answer {
+  background: #131b2e !important;
+  color: #94a3b8 !important;
+  border-top-color: #1e293b !important;
+}
+
+/* Related Tools Box (Shared) */
+html[data-theme="dark"] .rel-tool-card {
+  background: #1a233a !important;
+  border-color: #1e293b !important;
+}
+
+html[data-theme="dark"] .rel-tool-card:hover {
+  background: #202d4a !important;
+  border-color: #0284c7 !important;
+}
+
+html[data-theme="dark"] .rel-tool-card strong {
+  color: #f8fafc !important;
+}
+
+html[data-theme="dark"] .rel-tool-card span {
+  color: #94a3b8 !important;
+}
+
+/* Footer Overrides (Shared) */
+html[data-theme="dark"] .site-footer {
+  background: #060911 !important;
+  border-top: 1px solid #1e293b !important;
+  color: #94a3b8 !important;
+}
+
+html[data-theme="dark"] .footer-col-heading,
+html[data-theme="dark"] .site-footer h4 {
+  color: #f8fafc !important;
+}
+
+html[data-theme="dark"] .footer-nav-list a,
+html[data-theme="dark"] .site-footer a {
+  color: #94a3b8 !important;
+}
+
+html[data-theme="dark"] .footer-nav-list a:hover,
+html[data-theme="dark"] .site-footer a:hover {
+  color: #38bdf8 !important;
+}
+
+html[data-theme="dark"] .footer-bottom-bar,
+html[data-theme="dark"] .footer-bottom {
+  border-top: 1px solid #1e293b !important;
+}
