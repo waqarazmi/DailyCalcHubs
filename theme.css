@@ -696,3 +696,345 @@ html[data-theme="dark"] .footer-bottom-bar,
 html[data-theme="dark"] .footer-bottom {
   border-top: 1px solid #1e293b !important;
 }
+
+
+/* ==========================================================================
+   GLOBAL NIGHT MODE OVERRIDES - SITE-WIDE EXPANSION (ALL 67 PAGES)
+   ========================================================================== */
+
+/* 1. Universal Layout & Typography */
+html[data-theme="dark"] body {
+  background-color: #0b0f19 !important;
+  color: #cbd5e1 !important;
+}
+
+html[data-theme="dark"] h1,
+html[data-theme="dark"] h2,
+html[data-theme="dark"] h3,
+html[data-theme="dark"] h4,
+html[data-theme="dark"] h5,
+html[data-theme="dark"] h6 {
+  color: #f8fafc !important;
+}
+
+html[data-theme="dark"] p,
+html[data-theme="dark"] li,
+html[data-theme="dark"] label {
+  color: #cbd5e1 !important;
+}
+
+html[data-theme="dark"] a {
+  color: #38bdf8;
+}
+
+html[data-theme="dark"] code {
+  background: #1e293b !important;
+  color: #38bdf8 !important;
+}
+
+/* 2. Header & Navigation (Universal) */
+html[data-theme="dark"] .site-header,
+html[data-theme="dark"] header.site-header {
+  background: #0d1526 !important;
+  border-bottom: 1px solid #1e293b !important;
+}
+
+html[data-theme="dark"] .header-nav-links a,
+html[data-theme="dark"] .main-nav a,
+html[data-theme="dark"] .nav-link {
+  color: #cbd5e1 !important;
+}
+
+html[data-theme="dark"] .header-nav-links a:hover,
+html[data-theme="dark"] .main-nav a:hover,
+html[data-theme="dark"] .nav-link:hover,
+html[data-theme="dark"] .header-nav-links a.active,
+html[data-theme="dark"] .main-nav a.active,
+html[data-theme="dark"] .nav-link.active {
+  color: #38bdf8 !important;
+}
+
+html[data-theme="dark"] .search-btn-circle {
+  background: #1e293b !important;
+  color: #cbd5e1 !important;
+  border: 1px solid #334155 !important;
+}
+
+html[data-theme="dark"] .search-btn-circle:hover {
+  background: #25334d !important;
+  color: #38bdf8 !important;
+}
+
+html[data-theme="dark"] .mobile-menu-toggle {
+  background: #1e293b !important;
+  color: #f8fafc !important;
+  border-color: #334155 !important;
+}
+
+/* 3. Homepage Specific Cards & Elements */
+html[data-theme="dark"] .hero-section {
+  background: linear-gradient(135deg, #0d1526 0%, #060911 100%) !important;
+  border-bottom: 1px solid #1e293b !important;
+}
+
+html[data-theme="dark"] .hero-sub,
+html[data-theme="dark"] .hero-subtitle {
+  color: #94a3b8 !important;
+}
+
+html[data-theme="dark"] .calc-card,
+html[data-theme="dark"] .tool-card,
+html[data-theme="dark"] .feature-card,
+html[data-theme="dark"] .stat-card,
+html[data-theme="dark"] .category-card {
+  background: #131b2e !important;
+  border-color: #1e293b !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3) !important;
+}
+
+html[data-theme="dark"] .calc-card:hover,
+html[data-theme="dark"] .tool-card:hover,
+html[data-theme="dark"] .feature-card:hover,
+html[data-theme="dark"] .category-card:hover {
+  border-color: #0284c7 !important;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5) !important;
+}
+
+html[data-theme="dark"] .calc-card-title,
+html[data-theme="dark"] .tool-card h3,
+html[data-theme="dark"] .feature-card h3 {
+  color: #f8fafc !important;
+}
+
+html[data-theme="dark"] .calc-card-desc,
+html[data-theme="dark"] .tool-card p,
+html[data-theme="dark"] .feature-card p {
+  color: #94a3b8 !important;
+}
+
+html[data-theme="dark"] .category-tab,
+html[data-theme="dark"] .tab-btn,
+html[data-theme="dark"] .filter-btn {
+  background: #1a233a !important;
+  color: #cbd5e1 !important;
+  border-color: #1e293b !important;
+}
+
+html[data-theme="dark"] .category-tab:hover,
+html[data-theme="dark"] .tab-btn:hover,
+html[data-theme="dark"] .filter-btn:hover {
+  background: #25334d !important;
+  color: #f8fafc !important;
+}
+
+html[data-theme="dark"] .category-tab.active,
+html[data-theme="dark"] .tab-btn.active,
+html[data-theme="dark"] .filter-btn.active {
+  background: #0284c7 !important;
+  color: #ffffff !important;
+  border-color: #0284c7 !important;
+}
+
+html[data-theme="dark"] .quick-link-pill {
+  background: #1a233a !important;
+  color: #94a3b8 !important;
+  border: 1px solid #1e293b !important;
+}
+
+html[data-theme="dark"] .quick-link-pill:hover {
+  background: #25334d !important;
+  color: #38bdf8 !important;
+  border-color: #0284c7 !important;
+}
+
+/* 4. Calculator Hubs & Subtool Cards */
+html[data-theme="dark"] .hub-hero,
+html[data-theme="dark"] .page-hero,
+html[data-theme="dark"] .calculator-hero {
+  background: linear-gradient(135deg, #0d1526 0%, #060911 100%) !important;
+  border-bottom: 1px solid #1e293b !important;
+}
+
+html[data-theme="dark"] .calculator-card,
+html[data-theme="dark"] .calc-box,
+html[data-theme="dark"] .calc-container,
+html[data-theme="dark"] .calc-wrapper,
+html[data-theme="dark"] .main-calc-card,
+html[data-theme="dark"] .calculator-section,
+html[data-theme="dark"] .guide-card,
+html[data-theme="dark"] .info-card,
+html[data-theme="dark"] .legal-card,
+html[data-theme="dark"] .article-container {
+  background: #131b2e !important;
+  border-color: #1e293b !important;
+}
+
+html[data-theme="dark"] .formula-box,
+html[data-theme="dark"] .worked-example,
+html[data-theme="dark"] .example-box {
+  background: #1a233a !important;
+  border-color: #1e293b !important;
+  color: #cbd5e1 !important;
+}
+
+html[data-theme="dark"] .meta-box-inner,
+html[data-theme="dark"] .summary-box,
+html[data-theme="dark"] .stat-box {
+  background: #1a233a !important;
+  border-color: #1e293b !important;
+}
+
+html[data-theme="dark"] .meta-box-title {
+  color: #94a3b8 !important;
+}
+
+html[data-theme="dark"] .meta-box-val {
+  color: #f8fafc !important;
+}
+
+/* 5. Inputs, Selects, Sliders & Forms */
+html[data-theme="dark"] input[type="text"],
+html[data-theme="dark"] input[type="number"],
+html[data-theme="dark"] input[type="email"],
+html[data-theme="dark"] input[type="date"],
+html[data-theme="dark"] select,
+html[data-theme="dark"] textarea {
+  background: #1a233a !important;
+  border-color: #334155 !important;
+  color: #f8fafc !important;
+}
+
+html[data-theme="dark"] input:focus,
+html[data-theme="dark"] select:focus,
+html[data-theme="dark"] textarea:focus {
+  border-color: #0284c7 !important;
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.25) !important;
+}
+
+html[data-theme="dark"] .input-prefix,
+html[data-theme="dark"] .input-suffix,
+html[data-theme="dark"] .input-addon {
+  background: #25334d !important;
+  border-color: #334155 !important;
+  color: #94a3b8 !important;
+}
+
+/* Range Sliders */
+html[data-theme="dark"] input[type="range"] {
+  background: #334155 !important;
+}
+
+html[data-theme="dark"] input[type="range"]::-webkit-slider-runnable-track {
+  background: #334155 !important;
+}
+
+html[data-theme="dark"] input[type="range"]::-moz-range-track {
+  background: #334155 !important;
+}
+
+/* 6. Results Panels & Callouts */
+html[data-theme="dark"] .result-card,
+html[data-theme="dark"] .calc-result-box,
+html[data-theme="dark"] .results-panel,
+html[data-theme="dark"] .result-display {
+  background: #1a233a !important;
+  border-color: #1e293b !important;
+}
+
+html[data-theme="dark"] .result-main-val,
+html[data-theme="dark"] .result-value,
+html[data-theme="dark"] .big-amount {
+  color: #38bdf8 !important;
+}
+
+html[data-theme="dark"] .result-row,
+html[data-theme="dark"] .summary-row,
+html[data-theme="dark"] .breakdown-item {
+  border-bottom-color: #1e293b !important;
+}
+
+/* 7. Tables & Grids */
+html[data-theme="dark"] table {
+  border-color: #1e293b !important;
+}
+
+html[data-theme="dark"] th {
+  background: #1a233a !important;
+  color: #f8fafc !important;
+  border-color: #1e293b !important;
+}
+
+html[data-theme="dark"] td {
+  border-color: #1e293b !important;
+  color: #cbd5e1 !important;
+}
+
+html[data-theme="dark"] tr:nth-child(even) td {
+  background: rgba(255, 255, 255, 0.02) !important;
+}
+
+html[data-theme="dark"] tr:hover td {
+  background: rgba(255, 255, 255, 0.04) !important;
+}
+
+/* 8. Search Modal */
+html[data-theme="dark"] .search-modal,
+html[data-theme="dark"] #searchModal {
+  background: rgba(11, 15, 25, 0.85) !important;
+}
+
+html[data-theme="dark"] .search-modal-content,
+html[data-theme="dark"] .search-dialog {
+  background: #131b2e !important;
+  border: 1px solid #1e293b !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7) !important;
+}
+
+html[data-theme="dark"] .search-modal-header {
+  border-bottom: 1px solid #1e293b !important;
+}
+
+html[data-theme="dark"] .search-modal-body input {
+  background: #1a233a !important;
+  border-color: #334155 !important;
+  color: #f8fafc !important;
+}
+
+html[data-theme="dark"] .search-result-item {
+  border-bottom: 1px solid #1e293b !important;
+}
+
+html[data-theme="dark"] .search-result-item:hover {
+  background: #1a233a !important;
+}
+
+html[data-theme="dark"] .search-result-item h4 {
+  color: #f8fafc !important;
+}
+
+html[data-theme="dark"] .search-result-item p {
+  color: #94a3b8 !important;
+}
+
+/* 9. Live Ticker */
+html[data-theme="dark"] .rates-ticker-bar,
+html[data-theme="dark"] .ticker-wrap,
+html[data-theme="dark"] .live-ticker-wrap {
+  background: #060911 !important;
+  border-bottom: 1px solid #1e293b !important;
+}
+
+html[data-theme="dark"] .ticker-item {
+  color: #94a3b8 !important;
+}
+
+html[data-theme="dark"] .ticker-item strong {
+  color: #f8fafc !important;
+}
+
+/* 10. Mobile Responsive Header Actions */
+@media (max-width: 480px) {
+  .header-right-actions .saudi-badge-header {
+    display: none !important;
+  }
+}

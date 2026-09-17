@@ -3,6 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Theme Early Init (Prevent Flash of Unstyled Content) -->
+  <script>
+    (function() {
+      try {
+        var t = localStorage.getItem('dch_theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
 
   <!-- Travelpayouts Partner Script (Flight & Umrah Integration) -->
   <script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
@@ -313,6 +322,7 @@
     .footer-col ul li a:hover { color: #38bdf8; }
     .footer-bottom { max-width: 1200px; margin: 24px auto 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; font-size: 12.5px; }
   </style>
+  <link rel="stylesheet" href="/theme.css">
 </head>
 <body>
 
@@ -323,7 +333,9 @@
         <div class="logo-icon"><i class="fas fa-calculator"></i></div>
         <span>DailyCalcHubs</span>
       </a>
-      <nav class="main-nav">
+      <div class="header-nav-wrap" style="display:flex;align-items:center;gap:16px;">
+
+        <nav class="main-nav">
         <a href="/" class="nav-link">Home</a>
         <a href="/saudi-remittance-calculator/" class="nav-link">Remittance</a>
         <a href="/prayer-times/" class="nav-link">Prayer Times</a>
@@ -333,6 +345,14 @@
         <a href="/shariah-sip-calculator/" class="nav-link">Shariah SIP</a>
         <a href="/travel-booking-calculator/" class="nav-link">Travel & Booking</a>
       </nav>
+
+        <button type="button" class="theme-toggle-btn" id="dchThemeToggle" aria-label="Toggle dark mode" title="Toggle Dark/Light Mode">
+
+          <i class="fas fa-moon"></i>
+
+        </button>
+
+      </div>
     </div>
   </header>
 
@@ -731,5 +751,6 @@
     </div>
   </footer>
 
+  <script src="/theme.js" defer></script>
 </body>
 </html>

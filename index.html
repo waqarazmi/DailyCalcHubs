@@ -3,6 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Theme Early Init (Prevent Flash of Unstyled Content) -->
+  <script>
+    (function() {
+      try {
+        var t = localStorage.getItem('dch_theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
 
   <!-- Travelpayouts Partner Script (Flight & Umrah Integration) -->
   <script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
@@ -1270,6 +1279,7 @@
       }
     }
   </style>
+  <link rel="stylesheet" href="/theme.css">
 </head>
 <body>
 
@@ -1335,6 +1345,9 @@
 
       <!-- Right Actions -->
       <div class="header-actions">
+        <button type="button" class="theme-toggle-btn" id="dchThemeToggle" aria-label="Toggle dark mode" title="Toggle Dark/Light Mode">
+          <i class="fas fa-moon"></i>
+        </button>
         <button class="search-btn-circle" id="siteSearchBtn" title="Search Calculators" onclick="openSiteSearch()" aria-label="Open Search Calculators">
           <i class="fas fa-magnifying-glass"></i>
         </button>
@@ -2235,5 +2248,6 @@
     }
   </script>
   <script src="/live-ticker.js" defer></script>
+  <script src="/theme.js" defer></script>
 </body>
 </html>

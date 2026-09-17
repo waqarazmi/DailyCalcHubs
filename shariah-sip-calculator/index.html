@@ -3,6 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Theme Early Init (Prevent Flash of Unstyled Content) -->
+  <script>
+    (function() {
+      try {
+        var t = localStorage.getItem('dch_theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
 
   <!-- Travelpayouts Partner Script (Flight & Umrah Integration) -->
   <script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
@@ -370,6 +379,7 @@
       .header-nav-links a.active { background: #fef3c7; border-color: #fde68a; }
     }
   </style>
+  <link rel="stylesheet" href="/theme.css">
 </head>
 <body>
 
@@ -415,8 +425,13 @@
             <li><a href="/travel-booking-calculator/">Travel & Booking</a></li>
           </ul>
         </nav>
-        <div class="saudi-badge-header">
-          <i class="fas fa-chart-line"></i> Ethical Planning
+        <div class="header-right-actions" style="display:flex;align-items:center;gap:12px;">
+          <button type="button" class="theme-toggle-btn" id="dchThemeToggle" aria-label="Toggle dark mode" title="Toggle Dark/Light Mode">
+            <i class="fas fa-moon"></i>
+          </button>
+          <div class="saudi-badge-header">
+            <i class="fas fa-chart-line"></i> Ethical Planning
+          </div>
         </div>
       </div>
     </div>
@@ -970,5 +985,6 @@
   </script>
 
   <script src="/live-ticker.js" defer></script>
+  <script src="/theme.js" defer></script>
 </body>
 </html>

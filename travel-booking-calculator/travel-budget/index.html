@@ -3,6 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Theme Early Init (Prevent Flash of Unstyled Content) -->
+  <script>
+    (function() {
+      try {
+        var t = localStorage.getItem('dch_theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
 
   <!-- Travelpayouts Partner Script (Flight & Umrah Integration) -->
   <script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
@@ -306,6 +315,7 @@
       .result-row-top { flex-direction: column; align-items: flex-start; }
     }
   </style>
+  <link rel="stylesheet" href="/theme.css">
 </head>
 <body>
 
@@ -316,7 +326,9 @@
         <div class="logo-icon"><i class="fas fa-plane-departure"></i></div>
         <span>DailyCalcHubs</span>
       </a>
-      <nav class="header-nav-container">
+      <div class="header-nav-wrap" style="display:flex;align-items:center;gap:16px;">
+
+        <nav class="header-nav-container">
         <ul class="header-nav-links">
           <li><a href="/">Home</a></li>
           <li><a href="/saudi-remittance-calculator/">Remittance</a></li>
@@ -328,6 +340,14 @@
           <li><a href="/travel-booking-calculator/" class="active">Travel & Booking</a></li>
         </ul>
       </nav>
+
+        <button type="button" class="theme-toggle-btn" id="dchThemeToggle" aria-label="Toggle dark mode" title="Toggle Dark/Light Mode">
+
+          <i class="fas fa-moon"></i>
+
+        </button>
+
+      </div>
     </div>
   </header>
 
@@ -697,5 +717,6 @@
     </div>
   </footer>
 
+  <script src="/theme.js" defer></script>
 </body>
 </html>
