@@ -1636,3 +1636,241 @@ html[data-theme="dark"] .site-header .header-nav-container a.active {
 .mini-chips-row {
   flex-wrap: wrap !important;
 }
+
+/* ==========================================================================
+   GLOBAL MULTILINGUAL & RTL FOUNDATION (PHASE 2)
+   Scoped strictly under html[dir="rtl"] and .lang-switch-btn
+   Zero effect on existing English site
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Language Switcher Component Style System (.lang-switch-btn)
+   Dormant styles for future EN | العربية header & mobile drawer component
+   -------------------------------------------------------------------------- */
+.lang-switch-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 38px;
+  min-height: 38px;
+  padding: 0 12px;
+  border-radius: 9px;
+  border: 1.5px solid #cbd5e1;
+  background: #ffffff;
+  color: #475569;
+  font-size: 13.5px;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  outline: none;
+  flex-shrink: 0;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  box-sizing: border-box;
+  line-height: 1;
+}
+
+.lang-switch-btn i {
+  font-size: 14px;
+  color: #0284c7;
+  transition: color 0.2s ease;
+}
+
+.lang-switch-btn:hover {
+  color: #0284c7;
+  border-color: #0284c7;
+  background: #f0f9ff;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(2, 132, 199, 0.15);
+}
+
+.lang-switch-btn:hover i {
+  color: #0369a1;
+}
+
+.lang-switch-btn:focus-visible {
+  outline: 2px solid #0284c7;
+  outline-offset: 2px;
+}
+
+.lang-switch-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+/* Night Mode: Language Switcher */
+html[data-theme="dark"] .lang-switch-btn {
+  background: #1e293b;
+  border-color: #334155;
+  color: #cbd5e1;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+html[data-theme="dark"] .lang-switch-btn i {
+  color: #38bdf8;
+}
+
+html[data-theme="dark"] .lang-switch-btn:hover {
+  color: #38bdf8;
+  border-color: #38bdf8;
+  background: #25334d;
+  box-shadow: 0 3px 10px rgba(56, 189, 248, 0.2);
+}
+
+html[data-theme="dark"] .lang-switch-btn:hover i {
+  color: #7dd3fc;
+}
+
+/* Mobile Drawer Variant: Full-width adaptation */
+.mobile-lang-switch-wrap {
+  width: 100%;
+  padding-top: 10px;
+  margin-top: 6px;
+  border-top: 1px solid #e2e8f0;
+}
+
+html[data-theme="dark"] .mobile-lang-switch-wrap {
+  border-top-color: #1e293b;
+}
+
+.mobile-lang-switch-wrap .lang-switch-btn {
+  width: 100%;
+  height: 42px;
+  font-size: 14px;
+}
+
+/* --------------------------------------------------------------------------
+   2. RTL Document Foundation (html[dir="rtl"])
+   Prepares layout, typography flow, and directionality for future Arabic pages
+   -------------------------------------------------------------------------- */
+html[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+}
+
+html[dir="rtl"] body {
+  direction: rtl;
+  text-align: right;
+}
+
+/* RTL Form Controls & Input Addon Direction */
+html[dir="rtl"] .input-addon-badge,
+html[dir="rtl"] .calc-input-addon {
+  border-right: none !important;
+  border-left: 1px solid #e2e8f0 !important;
+}
+
+html[dir="rtl"][data-theme="dark"] .input-addon-badge,
+html[dir="rtl"][data-theme="dark"] .calc-input-addon {
+  border-right: none !important;
+  border-left: 1px solid #334155 !important;
+}
+
+html[dir="rtl"] .calc-input,
+html[dir="rtl"] input[type="text"],
+html[dir="rtl"] input[type="number"],
+html[dir="rtl"] textarea {
+  text-align: right;
+}
+
+html[dir="rtl"] select.calc-select,
+html[dir="rtl"] select {
+  text-align: right;
+}
+
+/* RTL Directional Callouts (Flip left-accent border to right) */
+html[dir="rtl"] .info-callout,
+html[dir="rtl"] .content-callout,
+html[dir="rtl"] .disclaimer-card,
+html[dir="rtl"] .callout-box,
+html[dir="rtl"] .alert-banner {
+  border-left: none !important;
+  border-right: 4px solid #0284c7 !important;
+}
+
+html[dir="rtl"] .content-callout {
+  border-right-color: #7c3aed !important;
+}
+
+html[dir="rtl"] .disclaimer-card {
+  border-right-color: #f59e0b !important;
+}
+
+html[dir="rtl"][data-theme="dark"] .info-callout {
+  border-left: none !important;
+  border-right-color: #0284c7 !important;
+}
+
+html[dir="rtl"][data-theme="dark"] .content-callout {
+  border-left: none !important;
+  border-right-color: #7c3aed !important;
+}
+
+html[dir="rtl"][data-theme="dark"] .disclaimer-card {
+  border-left: none !important;
+  border-right-color: #f59e0b !important;
+}
+
+/* RTL Direction-Sensitive Icons (Chevrons and arrows mirror horizontally) */
+html[dir="rtl"] .breadcrumbs-bar .fa-chevron-right,
+html[dir="rtl"] .breadcrumbs-wrap .fa-chevron-right,
+html[dir="rtl"] .breadcrumb-container .fa-chevron-right,
+html[dir="rtl"] .fa-arrow-right,
+html[dir="rtl"] .fa-chevron-right,
+html[dir="rtl"] .rtl-mirror {
+  transform: scaleX(-1);
+  display: inline-block;
+}
+
+/* RTL Text Alignment & Card Headers */
+html[dir="rtl"] .brand-logo-area {
+  text-align: right;
+}
+
+html[dir="rtl"] .site-header .main-nav a,
+html[dir="rtl"] .site-header .header-nav-links a {
+  text-align: right;
+}
+
+html[dir="rtl"] .site-header #navContainer.open a,
+html[dir="rtl"] .site-header .header-nav-container.open a {
+  text-align: right !important;
+}
+
+html[dir="rtl"] .calc-card-title,
+html[dir="rtl"] .card-main-title,
+html[dir="rtl"] .tool-title,
+html[dir="rtl"] .hero-title,
+html[dir="rtl"] .form-label,
+html[dir="rtl"] .footer-col-heading {
+  text-align: right;
+}
+
+/* RTL Table Alignment */
+html[dir="rtl"] .data-table th,
+html[dir="rtl"] .provider-table th,
+html[dir="rtl"] .salary-table th,
+html[dir="rtl"] .schedule-table th,
+html[dir="rtl"] .breakdown-table th {
+  text-align: right;
+}
+
+html[dir="rtl"] .data-table td,
+html[dir="rtl"] .provider-table td,
+html[dir="rtl"] .salary-table td,
+html[dir="rtl"] .schedule-table td,
+html[dir="rtl"] .breakdown-table td {
+  text-align: right;
+}
+
+/* --------------------------------------------------------------------------
+   3. Scoped RTL Utilities (Change 3)
+   Minimal reusable utilities for future Arabic templates
+   -------------------------------------------------------------------------- */
+html[dir="rtl"] .text-start { text-align: right !important; }
+html[dir="rtl"] .text-end { text-align: left !important; }
+html[dir="rtl"] .rtl-flip { transform: scaleX(-1); display: inline-block; }
+html[dir="rtl"] .rtl-only { display: block !important; }
+html:not([dir="rtl"]) .rtl-only { display: none !important; }
+html[dir="rtl"] .ltr-only { display: none !important; }
