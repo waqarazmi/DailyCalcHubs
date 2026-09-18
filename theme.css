@@ -1176,8 +1176,9 @@ html[data-theme="dark"] .btn-action-whatsapp:hover {
   }
 }
 
-/* Print Only Document Header (Hidden on Screen) */
-.dch-print-header {
+/* Print Only Document Header & Footer (Hidden on Screen) */
+.dch-print-header,
+.dch-print-footer {
   display: none;
 }
 
@@ -1186,6 +1187,14 @@ html[data-theme="dark"] .btn-action-whatsapp:hover {
    Forces clean light background, hides clutter, preserves result tables
    ========================================================================== */
 @media print {
+  /* Physical Page Margins: reserves space at top and bottom for running headers/footers */
+  @page {
+    margin-top: 14mm;
+    margin-bottom: 18mm;
+    margin-left: 12mm;
+    margin-right: 12mm;
+  }
+
   /* Force light theme on paper */
   html, body {
     background: #ffffff !important;
@@ -1193,7 +1202,7 @@ html[data-theme="dark"] .btn-action-whatsapp:hover {
     font-size: 11pt !important;
     line-height: 1.4 !important;
     margin: 0 !important;
-    padding: 0 !important;
+    padding: 0 0 6mm 0 !important;
   }
 
   /* Hide website navigation, footers, ads, tickers, buttons, sidebars */
@@ -1201,14 +1210,20 @@ html[data-theme="dark"] .btn-action-whatsapp:hover {
   header.site-header,
   .site-footer,
   footer,
+  .top-rates-ticker,
   .rates-ticker-bar,
   .ticker-wrap,
   .breadcrumbs-bar,
+  .breadcrumbs-section,
+  .breadcrumbs-wrap,
+  .breadcrumb-bar,
+  .breadcrumb-container,
   .theme-toggle-btn,
   .mobile-menu-toggle,
   .sidebar-info-card,
   aside,
   .ad-unit,
+  .ad-slot-container,
   ins.adsbygoogle,
   .faq-item,
   .faq-section,
@@ -1222,8 +1237,12 @@ html[data-theme="dark"] .btn-action-whatsapp:hover {
   .settlement-return-card,
   .chips-row,
   .mini-chips-row,
+  .amount-chips-row,
+  .preset-chips,
+  .tip-chips-row,
   .tools-nav-bar,
   .related-tools-box,
+  .related-section,
   .content-article,
   .seo-article,
   article,
@@ -1262,6 +1281,31 @@ html[data-theme="dark"] .btn-action-whatsapp:hover {
     padding: 0 !important;
     margin: 0 !important;
     display: block !important;
+  }
+
+  /* Compact Hero in Print */
+  .calc-hero,
+  .tool-hero,
+  .hero-section {
+    padding: 4px 0 10px 0 !important;
+    margin: 0 0 12px 0 !important;
+    border-bottom: 1px solid #cbd5e1 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+  .calc-hero h1,
+  .tool-title,
+  .hero-title {
+    font-size: 15pt !important;
+    color: #0f172a !important;
+    margin-bottom: 4px !important;
+  }
+  .calc-hero p,
+  .tool-lead,
+  .hero-desc {
+    font-size: 8.5pt !important;
+    color: #475569 !important;
+    margin-bottom: 0 !important;
   }
 
   /* Printable Cards & Result Panels */
@@ -1335,5 +1379,52 @@ html[data-theme="dark"] .btn-action-whatsapp:hover {
     border: 1px solid #cbd5e1 !important;
     background: #ffffff !important;
     color: #0f172a !important;
+  }
+
+  /* Print Footer Display: Repeats on every physical printed/PDF page */
+  .dch-print-footer {
+    display: block !important;
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    height: 12mm !important;
+    max-height: 12mm !important;
+    line-height: 1.3 !important;
+    text-align: center !important;
+    background: #ffffff !important;
+    color: #64748b !important;
+    font-size: 8.5pt !important;
+    border-top: 1px solid #e2e8f0 !important;
+    padding-top: 4px !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+    z-index: 99999 !important;
+  }
+
+  .dch-print-footer .dch-print-footer-label {
+    color: #475569 !important;
+    font-weight: 500 !important;
+    margin-right: 6px !important;
+    font-size: 8.5pt !important;
+  }
+
+  .dch-print-footer a.dch-print-canonical-link,
+  .dch-print-footer .dch-print-canonical-link {
+    color: #0284c7 !important;
+    text-decoration: underline !important;
+    text-underline-offset: 2px !important;
+    font-weight: 600 !important;
+    font-size: 8.5pt !important;
+    word-break: break-all !important;
+  }
+
+  /* Avoid breaking table rows across page splits */
+  tr,
+  .breakdown-table tr,
+  .data-table tr {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
   }
 }

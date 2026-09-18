@@ -13,16 +13,87 @@
   }
 
   /**
+   * Safe Canonical Calculator URL Extractor
+   * Returns clean https://dailycalchubs.com URL strictly for the current calculator.
+   * Strips all query strings, analytics, owner/debug params, fragments, and index.html.
+   */
+  function getCanonicalCalculatorUrl() {
+    var canonicalEl = document.querySelector('link[rel="canonical"]');
+    var rawUrl = (canonicalEl && canonicalEl.getAttribute('href')) ? canonicalEl.getAttribute('href') : (window.location.origin + window.location.pathname);
+
+    // Enforce production HTTPS origin
+    if (!rawUrl || rawUrl.indexOf('http') !== 0 || rawUrl.indexOf('file:') === 0) {
+      rawUrl = 'https://dailycalchubs.com' + window.location.pathname;
+    } else if (rawUrl.indexOf('dailycalchubs.com') === -1) {
+      try {
+        var parsed = new URL(rawUrl);
+        rawUrl = 'https://dailycalchubs.com' + parsed.pathname;
+      } catch (e) {
+        rawUrl = 'https://dailycalchubs.com' + window.location.pathname;
+      }
+    }
+
+    // Strip query parameters
+    rawUrl = rawUrl.split('?')[0];
+    // Strip fragment hashes
+    rawUrl = rawUrl.split('#')[0];
+    // Strip trailing index.html so canonical directory format is preserved
+    rawUrl = rawUrl.replace(/index\.html$/, '');
+    // Ensure ends with /
+    if (!rawUrl.endsWith('/')) {
+      rawUrl += '/';
+    }
+    return rawUrl;
+  }
+
+  /**
+   * Idempotently create or update the print-only canonical footer
+   */
+  function ensurePrintFooter(url) {
+    var footer = document.getElementById('dch-print-footer');
+    if (!footer) {
+      footer = document.createElement('div');
+      footer.id = 'dch-print-footer';
+      footer.className = 'dch-print-footer';
+      document.body.appendChild(footer);
+    }
+    footer.innerHTML = '<span class="dch-print-footer-label">Verify / Recalculate:</span> ' +
+                       '<a href="' + url + '" class="dch-print-canonical-link" target="_blank" rel="noopener">' +
+                       url +
+                       '</a>';
+    return footer;
+  }
+
+  /**
    * Print / Save Summary as PDF
    * Uses browser-native printing with zero external libraries.
+   * Inserts an active clickable canonical blue link repeated on every printed page.
    */
   window.dchPrintSummary = function(btn) {
     try {
+      var canonicalUrl = getCanonicalCalculatorUrl();
+      ensurePrintFooter(canonicalUrl);
       window.print();
     } catch (e) {
       console.error('DailyCalcHubs: Print error', e);
     }
   };
+
+  // Pre-mount print footer defensively so browser shortcuts (Ctrl+P / Cmd+P) also carry the canonical link
+  function initPrintFooter() {
+    try {
+      var url = getCanonicalCalculatorUrl();
+      ensurePrintFooter(url);
+    } catch (e) {
+      // Non-critical
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initPrintFooter);
+  } else {
+    initPrintFooter();
+  }
 
   /**
    * Share Calculation Summary on WhatsApp
