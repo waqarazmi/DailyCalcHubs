@@ -243,20 +243,36 @@
     .amount-chip-btn:hover { background: #e2e8f0; color: #0f172a; }
     .amount-chip-btn.active { background: var(--purple-saudi); color: #ffffff; border-color: var(--purple-saudi); }
 
-    /* Service Dates & Duration Styles */
+    /* Service Dates Styles */
     .service-dates-card { background: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: 12px; padding: 18px 20px; margin-bottom: 20px; }
     .service-dates-header { margin-bottom: 12px; }
     .service-dates-title { font-size: 13.5px; font-weight: 700; color: var(--navy-dark); display: flex; align-items: center; gap: 8px; }
     .date-error-banner { margin-top: 12px; padding: 10px 14px; background: #fef2f2; border: 1px solid #fca5a5; color: #b91c1c; border-radius: 8px; font-size: 13px; font-weight: 600; display: flex; align-items: center; gap: 8px; }
-    .service-duration-pill { margin-top: 14px; background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 14px 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
-    .duration-pill-body { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
-    .duration-icon { font-size: 24px; color: #7c3aed; flex-shrink: 0; }
-    .duration-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); }
-    .duration-value { font-size: 17px; font-weight: 800; color: #0f172a; margin-top: 2px; }
-    .duration-reference-note { font-size: 11.5px; color: #64748b; line-height: 1.45; border-top: 1px dashed #e2e8f0; padding-top: 8px; }
+    .date-input-wrap { position: relative; flex: 1; display: flex; align-items: center; min-width: 0; }
+    .date-mobile-hint { display: none; }
     @media (max-width: 640px) {
       .service-dates-card .grid-2col-dates { grid-template-columns: 1fr !important; }
+      .date-mobile-hint {
+        position: absolute;
+        left: 16px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #94a3b8;
+        font-size: 15px;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+        pointer-events: none;
+        user-select: none;
+        z-index: 2;
+      }
+      .date-input-wrap input:not(.has-val) + .date-mobile-hint {
+        display: block;
+      }
+      .date-input-wrap input[type="date"]:not(.has-val)::-webkit-datetime-edit {
+        color: transparent;
+      }
     }
+    html[data-theme="dark"] .date-mobile-hint { color: #94a3b8; }
 
     /* EOSB Helper Link */
     .eosb-helper-row { margin-top: 6px; font-size: 12px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 6px; }
@@ -441,34 +457,26 @@
                 <label class="form-label" for="joiningDate">Joining Date</label>
                 <div class="input-with-addons">
                   <span class="input-addon-badge"><i class="fas fa-calendar-plus"></i></span>
-                  <input type="date" id="joiningDate" class="calc-input" onchange="calculateServiceDuration()" oninput="calculateServiceDuration()">
+                  <div class="date-input-wrap">
+                    <input type="date" id="joiningDate" class="calc-input" onchange="calculateServiceDuration()" oninput="calculateServiceDuration()">
+                    <span class="date-mobile-hint" aria-hidden="true">DD-MM-YYYY</span>
+                  </div>
                 </div>
               </div>
               <div class="form-group" style="margin-bottom: 0;">
                 <label class="form-label" for="exitDate">Exit Date</label>
                 <div class="input-with-addons">
                   <span class="input-addon-badge"><i class="fas fa-calendar-check"></i></span>
-                  <input type="date" id="exitDate" class="calc-input" onchange="calculateServiceDuration()" oninput="calculateServiceDuration()">
+                  <div class="date-input-wrap">
+                    <input type="date" id="exitDate" class="calc-input" onchange="calculateServiceDuration()" oninput="calculateServiceDuration()">
+                    <span class="date-mobile-hint" aria-hidden="true">DD-MM-YYYY</span>
+                  </div>
                 </div>
               </div>
             </div>
 
             <!-- Error message if exit date < joining date or invalid -->
             <div id="dateValidationError" class="date-error-banner" style="display:none;" role="alert"></div>
-
-            <!-- Duration result display -->
-            <div id="serviceDurationBadge" class="service-duration-pill" style="display:none;">
-              <div class="duration-pill-body">
-                <i class="fas fa-business-time duration-icon"></i>
-                <div>
-                  <div class="duration-label">CALCULATED SERVICE DURATION (INCLUSIVE)</div>
-                  <div class="duration-value" id="durationText">--</div>
-                </div>
-              </div>
-              <div class="duration-reference-note">
-                Calendar service duration for reference. Actual entitlement may depend on applicable law, contract terms, and verified employment records.
-              </div>
-            </div>
           </div>
 
           <div style="display:grid; grid-template-columns: 1fr 1fr; gap:16px;">
@@ -749,17 +757,19 @@
     }
 
     function calculateServiceDuration() {
-      const joiningVal = document.getElementById('joiningDate').value;
-      const exitVal = document.getElementById('exitDate').value;
+      const joiningEl = document.getElementById('joiningDate');
+      const exitEl = document.getElementById('exitDate');
+      const joiningVal = joiningEl ? joiningEl.value : '';
+      const exitVal = exitEl ? exitEl.value : '';
+
+      if (joiningEl) joiningEl.classList.toggle('has-val', !!joiningVal);
+      if (exitEl) exitEl.classList.toggle('has-val', !!exitVal);
+
       const errorEl = document.getElementById('dateValidationError');
-      const badgeEl = document.getElementById('serviceDurationBadge');
-      const textEl = document.getElementById('durationText');
       const resDurationEl = document.getElementById('resServiceDuration');
 
       if (!joiningVal || !exitVal) {
         if (errorEl) errorEl.style.display = 'none';
-        if (badgeEl) badgeEl.style.display = 'none';
-        if (textEl) textEl.textContent = '--';
         if (resDurationEl) resDurationEl.textContent = '--';
         return;
       }
@@ -768,8 +778,6 @@
       const end = new Date(exitVal + 'T00:00:00');
 
       if (isNaN(start.getTime()) || isNaN(end.getTime())) {
-        if (badgeEl) badgeEl.style.display = 'none';
-        if (textEl) textEl.textContent = '--';
         if (resDurationEl) resDurationEl.textContent = '--';
         if (errorEl) {
           errorEl.innerHTML = '<i class="fas fa-exclamation-circle"></i> Please enter valid calendar dates.';
@@ -779,8 +787,6 @@
       }
 
       if (end < start) {
-        if (badgeEl) badgeEl.style.display = 'none';
-        if (textEl) textEl.textContent = '--';
         if (resDurationEl) resDurationEl.textContent = '--';
         if (errorEl) {
           errorEl.innerHTML = '<i class="fas fa-exclamation-circle"></i> Exit Date cannot be earlier than Joining Date.';
@@ -823,14 +829,8 @@
       const daLabel = days === 1 ? '1 Day' : days + ' Days';
       const durationStr = yrLabel + ', ' + moLabel + ', ' + daLabel;
 
-      if (textEl) {
-        textEl.textContent = durationStr;
-      }
       if (resDurationEl) {
         resDurationEl.textContent = durationStr;
-      }
-      if (badgeEl) {
-        badgeEl.style.display = 'block';
       }
     }
 
