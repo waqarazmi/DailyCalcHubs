@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Theme Early Init (Prevent Flash of Unstyled Content) -->
+  <script>
+    (function() {
+      try {
+        var t = localStorage.getItem('dch_theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+
+  <!-- Travelpayouts Partner Script (Flight & Umrah Integration) -->
+  <script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
+  (function () {
+    var script = document.createElement("script");
+    script.async = 1;
+    script.setAttribute("data-cmp-ab", "2");
+    script.src = "https://emrldtp.com/NTczNDc0.js?t=573474";
+    document.head.appendChild(script);
+  })();
+  </script>
+  <title>حاسبة السفر والحجوزات | تخطيط ميزانية الرحلات وتكاليف الطيران والفنادق</title>
+  <meta name="description" content="خطط وقدّر تكلفة عطلتك ورحلاتك بدقة مع حاسبة السفر والحجوزات المجانية. احسب أسعار تذاكر الطيران، الإقامة الفندقية، رسوم الحجز، وتقسيم المصاريف الجماعية بالريال السعودي.">
+  <link rel="canonical" href="https://dailycalchubs.com/ar/travel-booking-calculator/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://dailycalchubs.com/ar/travel-booking-calculator/">
+  <meta property="og:title" content="حاسبة السفر والحجوزات | تخطيط ميزانية الرحلات وتكاليف الطيران والفنادق">
+  <meta property="og:description" content="محاكي تفاعلي لتخطيط ميزانية السفر الداخلي والدولي من السعودية، وحساب تكاليف الطيران والفنادق وتقسيم الفواتير المشتركة.">
+  <meta property="og:image" content="https://dailycalchubs.com/og-image.jpg">
+  <meta property="og:image:secure_url" content="https://dailycalchubs.com/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:locale" content="ar_SA">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="حاسبة السفر والحجوزات | تخطيط ميزانية الرحلات وتكاليف الطيران والفنادق">
+  <meta name="twitter:description" content="محاكي تفاعلي لتخطيط ميزانية السفر الداخلي والدولي من السعودية.">
+  <meta name="twitter:image" content="https://dailycalchubs.com/og-image.jpg">
+
+  <!-- DailyCalcHubs Owner Admin Exclusion Mode -->
+  <script>
+    (function() {
+      try {
+        var params = new URLSearchParams(window.location.search);
+        var owner = params.get('owner');
+        if (owner === 'waqar_lock') {
+          sessionStorage.setItem('dch_admin_traffic', 'true');
+        }
+      } catch (e) {}
+    })();
+  </script>
+
+  <!-- Google Analytics 4 & AdSense -->
+  <script>
+    (function() {
+      if (sessionStorage.getItem('dch_admin_traffic') === 'true') {
+        window['ga-disable-G-P94Z6BP2CV'] = true;
+        console.warn('DailyCalcHubs: Analytics & AdSense disabled for Admin Session');
+      } else {
+        var gtm = document.createElement('script');
+        gtm.async = true;
+        gtm.src = 'https://www.googletagmanager.com/gtag/js?id=G-P94Z6BP2CV';
+        document.head.appendChild(gtm);
+
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-P94Z6BP2CV');
+
+        var ads = document.createElement('script');
+        ads.async = true;
+        ads.crossOrigin = 'anonymous';
+        ads.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6944579701716470';
+        document.head.appendChild(ads);
+      }
+    })();
+  </script>
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="/theme.css">
+
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "حاسبة السفر والحجوزات - DailyCalcHubs",
+    "url": "https://dailycalchubs.com/ar/travel-booking-calculator/",
+    "inLanguage": "ar-SA",
+    "applicationCategory": "TravelApplication",
+    "operatingSystem": "All",
+    "description": "حاسبة شاملة لتخطيط ميزانية الإجازات، أسعار الطيران، الإقامة الفندقية مع الضرائب، وتقسيم مصاريف السفر الجماعي بالريال السعودي.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "SAR"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "@id": "https://dailycalchubs.com/ar/travel-booking-calculator/#faq",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "هل تقوم منصة DailyCalcHubs بحجز تذاكر الطيران أو الفنادق مباشرة؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "كلا، تقدم DailyCalcHubs حاسبات تقديرية مالية مستقلة للمساعدة في التخطيط للميزانية. نحن لسنا شركة طيران أو فندق أو وكالة سفر أو محرك حجز تذاكر. جميع الحسابات مبنية على أرقام يدخلها المستخدم لتقدير تكاليف الرحلة ومقارنتها قبل تأكيد الحجز الفعلي."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "ما هي التكاليف الإضافية التي ينبغي مراعاتها عند التخطيط لرحلة من السعودية؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "تشمل التكاليف التي قد لا ينتبه لها المسافر: ضريبة القيمة المضافة (15%) على الحجوزات الداخلية، رسوم الخدمة أو البلدية في بعض الوجهات، رسوم وزن الأمتعة الإضافي في شركات الطيران الاقتصادي، رسوم استخدام البطاقات البنكية الدولية بالعملات الأجنبية (عادة بين 1.5% إلى 2.8%)، ورسوم بوابات الطرق والمواصلات المحلية."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "ما هي نسبة مبلغ الطوارئ الاحتياطي الموصى بها في ميزانية السفر؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "يوصي خبراء التخطيط المالي للسفر برصد هامش احتياطي للطوارئ يتراوح بين 10% إلى 15% إضافية فوق إجمالي التكاليف المتوقعة، وذلك لتغطية أية ظروف غير متوقعة مثل تعديل مواعيد الرحلات، الاحتياجات الطبية الطارئة، أو الرغبة في خوض جولات محلية إضافية."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    /* Local styles matching English hub */
+    .hub-hero {
+      background: linear-gradient(135deg, #4c0519 0%, #1e1b4b 50%, #0f172a 100%);
+      color: #ffffff;
+      padding: 48px 0 40px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .hub-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(244, 63, 94, 0.18);
+      border: 1px solid rgba(251, 113, 133, 0.35);
+      color: #fb7185;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      margin-bottom: 16px;
+    }
+    .hub-title {
+      font-size: clamp(26px, 4vw, 38px);
+      font-weight: 800;
+      line-height: 1.25;
+      margin-bottom: 14px;
+      color: #ffffff;
+      letter-spacing: -0.5px;
+    }
+    .hub-lead {
+      font-size: 16px;
+      line-height: 1.7;
+      color: #cbd5e1;
+      max-width: 780px;
+      margin-bottom: 24px;
+    }
+    .hub-stats-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .hub-stat-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 12px 18px;
+      min-width: 140px;
+    }
+    .hub-stat-num {
+      font-size: 20px;
+      font-weight: 800;
+      color: #fb7185;
+      display: block;
+    }
+    .hub-stat-label {
+      font-size: 12px;
+      color: #94a3b8;
+      font-weight: 600;
+    }
+
+    /* Showcase Section */
+    .interactive-showcase-section {
+      background: var(--bg-white, #ffffff);
+      border: 1px solid var(--border-light, #e2e8f0);
+      border-radius: 16px;
+      padding: 28px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      margin: -24px auto 40px;
+      max-width: 1240px;
+      position: relative;
+      z-index: 2;
+    }
+    .showcase-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      border-bottom: 1px solid #f1f5f9;
+      padding-bottom: 16px;
+      margin-bottom: 20px;
+    }
+    .showcase-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: #0f172a;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .interactive-tabs {
+      display: flex;
+      gap: 8px;
+      background: #f1f5f9;
+      padding: 4px;
+      border-radius: 10px;
+    }
+    .tab-btn {
+      border: none;
+      background: transparent;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #475569;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .tab-btn.active {
+      background: #ffffff;
+      color: #e11d48;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    }
+    .interactive-panel {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      align-items: start;
+    }
+    .calc-input-group label {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      color: #475569;
+      margin-bottom: 8px;
+    }
+    .calc-input-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    .calc-input-wrap input {
+      width: 100%;
+      height: 48px;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 10px;
+      padding: 0 14px;
+      font-size: 15px;
+      font-weight: 700;
+      color: #0f172a;
+      background: #f8fafc;
+      transition: all 0.2s ease;
+      box-sizing: border-box;
+    }
+    .calc-input-wrap input:focus {
+      outline: none;
+      border-color: #e11d48;
+      background: #ffffff;
+      box-shadow: 0 0 0 3px rgba(225,29,72,0.15);
+    }
+    .quick-chips-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .amount-chip-btn {
+      background: #f1f5f9;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 4px 10px;
+      font-size: 11.5px;
+      font-weight: 700;
+      color: #334155;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .amount-chip-btn:hover, .amount-chip-btn.active {
+      background: #e11d48;
+      color: #ffffff;
+      border-color: #e11d48;
+    }
+
+    /* Result Cards */
+    .travel-results-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+    }
+    .travel-result-card {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .travel-result-card.highlight {
+      background: linear-gradient(135deg, #fff1f2 0%, #ffe4e6 100%);
+      border: 1.5px solid #fecdd3;
+    }
+    .travel-result-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: #64748b;
+      margin-bottom: 4px;
+    }
+    .travel-result-card.highlight .travel-result-label {
+      color: #9f1239;
+    }
+    .travel-result-val {
+      font-size: 24px;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.5px;
+    }
+    .travel-result-card.highlight .travel-result-val {
+      color: #e11d48;
+    }
+    .travel-result-sub {
+      font-size: 11.5px;
+      color: #64748b;
+      margin-top: 4px;
+      font-weight: 600;
+    }
+
+    /* Tools Grid */
+    .featured-tools-section {
+      padding: 20px 0 50px;
+    }
+    .section-pill {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 800;
+      color: #e11d48;
+      background: #ffe4e6;
+      border: 1px solid #fecdd3;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      margin-bottom: 8px;
+    }
+    .section-title {
+      font-size: clamp(22px, 3vw, 30px);
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.5px;
+      margin-bottom: 6px;
+    }
+    .section-subtitle {
+      font-size: 14.5px;
+      color: #64748b;
+      margin-bottom: 26px;
+    }
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 20px;
+    }
+    .tool-card {
+      background: #ffffff;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.25s ease;
+      text-decoration: none;
+      color: inherit;
+    }
+    .tool-card:hover {
+      border-color: #f43f5e;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 24px rgba(244, 63, 94, 0.12);
+    }
+    .tool-card-top {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+    .tool-card-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
+      background: #fff1f2;
+      color: #e11d48;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+    .card-main-title {
+      font-size: 16px;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 4px;
+      line-height: 1.35;
+    }
+    .tool-card-badge {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 6px;
+      background: #f1f5f9;
+      color: #475569;
+      display: inline-block;
+      margin-bottom: 6px;
+    }
+    .tool-card-desc {
+      font-size: 13px;
+      color: #64748b;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+    .tool-card-action {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid #f1f5f9;
+      padding-top: 12px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #e11d48;
+    }
+
+    /* Content & FAQ Guide Section */
+    .guide-content-section {
+      background: #f8fafc;
+      padding: 60px 0;
+      border-top: 1px solid #e2e8f0;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .guide-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 40px;
+    }
+    @media (max-width: 900px) {
+      .guide-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .guide-article {
+      color: #334155;
+      font-size: 15px;
+      line-height: 1.8;
+    }
+    .guide-article h2 {
+      font-size: 24px;
+      font-weight: 800;
+      color: #0f172a;
+      margin: 32px 0 16px;
+      letter-spacing: -0.3px;
+    }
+    .guide-article h3 {
+      font-size: 18px;
+      font-weight: 800;
+      color: #0f172a;
+      margin: 24px 0 12px;
+    }
+    .guide-article p {
+      margin-bottom: 18px;
+    }
+    .faq-accordion-item {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      margin-bottom: 12px;
+      overflow: hidden;
+    }
+    .faq-accordion-question {
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 15px;
+      color: #0f172a;
+      transition: background 0.15s;
+    }
+    .faq-accordion-question:hover {
+      background: #f8fafc;
+    }
+    .faq-accordion-answer {
+      display: none;
+      padding: 0 20px 18px;
+      color: #475569;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    /* Sidebar info */
+    .sidebar-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+    .sidebar-card-heading {
+      font-size: 16px;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .sidebar-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .sidebar-list li {
+      padding: 10px 0;
+      border-bottom: 1px solid #f1f5f9;
+      font-size: 13.5px;
+      color: #475569;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .sidebar-list li:last-child {
+      border-bottom: none;
+    }
+    .sidebar-list li i {
+      color: #e11d48;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container">
+      <div class="header-inner">
+        <a href="/ar/" class="brand-logo-area">
+          <div class="logo-icon-box"><i class="fas fa-plane-departure"></i></div>
+          <div class="logo-text-group">
+            <div class="logo-title">DailyCalc<span style="color:#e11d48;">Hubs</span></div>
+            <div class="logo-subtitle">أدوات سعودية لغدٍ أكثر ذكاءً</div>
+          </div>
+        </a>
+
+        <nav class="header-nav-container" id="navContainer">
+          <ul class="header-nav-links">
+            <li><a href="/ar/">الرئيسية</a></li>
+            <li><a href="/saudi-remittance-calculator/">تحويل الأموال</a></li>
+            <li><a href="/prayer-times/">مواقيت الصلاة</a></li>
+            <li><a href="/saudi-salary-calculator/">الرواتب</a></li>
+            <li><a href="/saudi-iqama-calculator/">الإقامة</a></li>
+            <li><a href="/everyday-smart-calculator/">أدوات يومية</a></li>
+            <li><a href="/shariah-sip-calculator/">استثمار شرعي</a></li>
+            <li><a href="/travel-booking-calculator/" class="active">السفر والحجوزات</a></li>
+          </ul>
+        </nav>
+
+        <div class="header-right-actions" style="display:flex;align-items:center;gap:12px;">
+          <a href="/travel-booking-calculator/" class="lang-switch-btn" lang="en" hreflang="en" title="Switch to English" aria-label="Switch to English">
+            <i class="fas fa-globe" aria-hidden="true"></i> <span>English</span>
+          </a>
+          <button type="button" class="theme-toggle-btn" id="dchThemeToggle" aria-label="تبديل الوضع الليلي" title="تبديل الوضع الليلي / النهاري">
+            <i class="fas fa-moon"></i>
+          </button>
+          <button class="mobile-menu-toggle" id="mobileMenuBtn" aria-label="تبديل القائمة">
+            <i class="fas fa-bars"></i>
+          </button>
+          <div class="saudi-badge-header">
+            <i class="fas fa-compass"></i> مخطط ميزانية السفر
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hub-hero">
+    <div class="container">
+      <div class="hub-pill"><i class="fas fa-map-location-dot"></i> تخطيط ميزانية السفر الداخلي والدولي</div>
+      <h1 class="hub-title">حاسبة السفر والحجوزات</h1>
+      <p class="hub-lead">
+        قدّر تكاليف رحلتك القادمة بدقة وشفافية بالريال السعودي. احسب ميزانية تذاكر الطيران، تكلفة الإقامة الفندقية، مصاريف الإعاشة اليومية، وتقسيم فواتير السفر المشتركة بين المسافرين قبل إتمام الحجز.
+      </p>
+
+      <div class="hub-stats-row">
+        <div class="hub-stat-card">
+          <span class="hub-stat-num">ميزانية شاملة</span>
+          <span class="hub-stat-label">طيران + فندق + إعاشة</span>
+        </div>
+        <div class="hub-stat-card">
+          <span class="hub-stat-num">تقسيم المصاريف</span>
+          <span class="hub-stat-label">توزيع التكلفة بين الأصدقاء</span>
+        </div>
+        <div class="hub-stat-card">
+          <span class="hub-stat-num">15% ضريبة</span>
+          <span class="hub-stat-label">احتساب ضرائب الحجز المحلي</span>
+        </div>
+        <div class="hub-stat-card">
+          <span class="hub-stat-num">بالريال (SAR)</span>
+          <span class="hub-stat-label">تسعير مالي واضح ومباشر</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Container -->
+  <main class="container">
+
+    <!-- Interactive Showcase Section -->
+    <div class="interactive-showcase-section">
+      <div class="showcase-header">
+        <div class="showcase-title">
+          <i class="fas fa-suitcase-rolling" style="color:#e11d48;"></i>
+          <span>محاكي تكاليف الإجازة وتقسيم الفواتير</span>
+        </div>
+        <div class="interactive-tabs">
+          <button type="button" class="tab-btn active" id="tabBtnTrip" onclick="switchTravelTab('trip')">
+            <i class="fas fa-umbrella-beach"></i> ميزانية العطلة
+          </button>
+          <button type="button" class="tab-btn" id="tabBtnSplit" onclick="switchTravelTab('split')">
+            <i class="fas fa-users"></i> تقسيم المصاريف المشتركة
+          </button>
+        </div>
+      </div>
+
+      <!-- Tab 1: Vacation Trip Budget -->
+      <div class="interactive-panel" id="tabContentTrip">
+        <div class="calc-input-group">
+          <label for="hubTravelers">عدد المسافرين</label>
+          <div class="calc-input-wrap">
+            <input type="number" id="hubTravelers" value="2" min="1" max="20" step="1" oninput="calculateHubTrip()" dir="ltr">
+          </div>
+          <div class="quick-chips-row">
+            <button type="button" class="amount-chip-btn" onclick="setHubTravelers(1)">مسافر واحد</button>
+            <button type="button" class="amount-chip-btn active" onclick="setHubTravelers(2)">شخصان</button>
+            <button type="button" class="amount-chip-btn" onclick="setHubTravelers(4)">عائلة (4)</button>
+          </div>
+        </div>
+
+        <div class="calc-input-group">
+          <label for="hubDays">مدة الإقامة (عدد الأيام / الليالي)</label>
+          <div class="calc-input-wrap">
+            <input type="number" id="hubDays" value="7" min="1" max="90" step="1" oninput="calculateHubTrip()" dir="ltr">
+          </div>
+          <div class="quick-chips-row">
+            <button type="button" class="amount-chip-btn" onclick="setHubDays(3)">عطلة نهاية الأسبوع (3)</button>
+            <button type="button" class="amount-chip-btn active" onclick="setHubDays(7)">أسبوع كامل (7)</button>
+            <button type="button" class="amount-chip-btn" onclick="setHubDays(14)">أسبوعان (14)</button>
+          </div>
+        </div>
+
+        <div class="calc-input-group">
+          <label for="hubFlightPerPerson">سعر تذكرة الطيران للشخص (SAR)</label>
+          <div class="calc-input-wrap">
+            <input type="number" id="hubFlightPerPerson" value="1200" min="0" step="50" oninput="calculateHubTrip()" dir="ltr">
+          </div>
+        </div>
+
+        <div class="calc-input-group">
+          <label for="hubHotelPerNight">تكلفة الفندق في الليلة (SAR)</label>
+          <div class="calc-input-wrap">
+            <input type="number" id="hubHotelPerNight" value="500" min="0" step="50" oninput="calculateHubTrip()" dir="ltr">
+          </div>
+        </div>
+
+        <div class="calc-input-group">
+          <label for="hubDailyFoodPerPerson">المصاريف اليومية للشخص (طعام ومواصلات)</label>
+          <div class="calc-input-wrap">
+            <input type="number" id="hubDailyFoodPerPerson" value="200" min="0" step="25" oninput="calculateHubTrip()" dir="ltr">
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 2: Group Expense Split -->
+      <div class="interactive-panel" id="tabContentSplit" style="display:none;">
+        <div class="calc-input-group">
+          <label for="hubSplitTotalBill">إجمالي الفاتورة أو المصروف (SAR)</label>
+          <div class="calc-input-wrap">
+            <input type="number" id="hubSplitTotalBill" value="1800" min="10" step="50" oninput="calculateHubSplit()" dir="ltr">
+          </div>
+          <div class="quick-chips-row">
+            <button type="button" class="amount-chip-btn" onclick="setHubSplitBill(500)">500 ر.س</button>
+            <button type="button" class="amount-chip-btn" onclick="setHubSplitBill(1000)">1,000 ر.س</button>
+            <button type="button" class="amount-chip-btn active" onclick="setHubSplitBill(1800)">1,800 ر.س</button>
+            <button type="button" class="amount-chip-btn" onclick="setHubSplitBill(3000)">3,000 ر.س</button>
+          </div>
+        </div>
+
+        <div class="calc-input-group">
+          <label for="hubSplitPeople">عدد الأشخاص المشاركين في الدفع</label>
+          <div class="calc-input-wrap">
+            <input type="number" id="hubSplitPeople" value="4" min="1" max="50" step="1" oninput="calculateHubSplit()" dir="ltr">
+          </div>
+          <div class="quick-chips-row">
+            <button type="button" class="amount-chip-btn" onclick="setHubSplitPeople(2)">شخصان</button>
+            <button type="button" class="amount-chip-btn" onclick="setHubSplitPeople(3)">3 أشخاص</button>
+            <button type="button" class="amount-chip-btn active" onclick="setHubSplitPeople(4)">4 أشخاص</button>
+            <button type="button" class="amount-chip-btn" onclick="setHubSplitPeople(6)">6 أشخاص</button>
+          </div>
+        </div>
+
+        <div class="calc-input-group">
+          <label for="hubSplitTipPct">نسبة الإكرامية أو الخدمة (%)</label>
+          <div class="calc-input-wrap">
+            <input type="number" id="hubSplitTipPct" value="0" min="0" max="30" step="1" oninput="calculateHubSplit()" dir="ltr">
+          </div>
+        </div>
+      </div>
+
+      <!-- Results Display (Switched dynamically) -->
+      <div id="resultsTripWrap">
+        <div class="travel-results-row">
+          <div class="travel-result-card highlight">
+            <span class="travel-result-label">إجمالي الميزانية التقديرية للرحلة</span>
+            <span class="travel-result-val" id="resHubTripTotal">8,700 ر.س</span>
+            <span class="travel-result-sub" id="resHubTripPerDay">1,243 ر.س / يوم</span>
+          </div>
+          <div class="travel-result-card">
+            <span class="travel-result-label">نصيب الشخص الواحد</span>
+            <span class="travel-result-val" id="resHubTripPerPerson" style="font-size:18px;">4,350 ر.س</span>
+            <span class="travel-result-sub">شامل الطيران والفندق والمصاريف</span>
+          </div>
+          <div class="travel-result-card">
+            <span class="travel-result-label">إجمالي تذاكر الطيران</span>
+            <span class="travel-result-val" id="resHubFlightsSub" style="font-size:18px;">2,400 ر.س</span>
+            <span class="travel-result-sub">لكل المسافرين</span>
+          </div>
+          <div class="travel-result-card">
+            <span class="travel-result-label">إجمالي تكلفة الفندق</span>
+            <span class="travel-result-val" id="resHubHotelSub" style="font-size:18px;">3,500 ر.س</span>
+            <span class="travel-result-sub">لإجمالي عدد الليالي</span>
+          </div>
+          <div class="travel-result-card">
+            <span class="travel-result-label">إجمالي مصاريف الإعاشة</span>
+            <span class="travel-result-val" id="resHubFoodSub" style="font-size:18px;">2,800 ر.س</span>
+            <span class="travel-result-sub">طعام ومواصلات وأنشطة</span>
+          </div>
+        </div>
+      </div>
+
+      <div id="resultsSplitWrap" style="display:none;">
+        <div class="travel-results-row">
+          <div class="travel-result-card highlight">
+            <span class="travel-result-label">نصيب كل شخص من الفاتورة</span>
+            <span class="travel-result-val" id="resHubPerPersonSplit">450.00 ر.س</span>
+            <span class="travel-result-sub" id="resHubSplitCount">4 أشخاص</span>
+          </div>
+          <div class="travel-result-card">
+            <span class="travel-result-label">إجمالي الفاتورة بعد الإكرامية</span>
+            <span class="travel-result-val" id="resHubSplitGrandTotal" style="font-size:18px;">1,800.00 ر.س</span>
+            <span class="travel-result-sub" id="resHubSplitTipAmount">0.00 ر.س (0%)</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Featured Tools Grid Section -->
+    <section class="featured-tools-section">
+      <span class="section-pill"><i class="fas fa-grid-2"></i> أدوات السفر المتخصصة</span>
+      <h2 class="section-title">حاسبات السفر وتكاليف الحجز</h2>
+      <p class="section-subtitle">أدوات متخصصة تساعدك على تقدير أسعار تذاكر الطيران، الإقامة الفندقية، رسوم الحجز والضرائب، وتقسيم المصاريف.</p>
+
+      <div class="tools-grid">
+
+        <!-- Tool 1: Travel Budget -->
+        <a href="/travel-booking-calculator/travel-budget/" class="tool-card">
+          <div>
+            <div class="tool-card-top">
+              <div class="tool-card-icon"><i class="fas fa-suitcase"></i></div>
+              <div>
+                <span class="tool-card-badge">الأكثر استخداماً</span>
+                <h3 class="card-main-title">حاسبة ميزانية السفر المتكاملة</h3>
+              </div>
+            </div>
+            <p class="tool-card-desc">
+              تخطيط شامل لكافة مصاريف الرحلة بما في ذلك التأشيرات، التأمين الطبي للسفر، الأنشطة، والتسوق.
+            </p>
+          </div>
+          <div class="tool-card-action">
+            <span>فتح الحاسبة المتخصصة</span>
+            <i class="fas fa-arrow-left"></i>
+          </div>
+        </a>
+
+        <!-- Tool 2: Flight Cost -->
+        <a href="/travel-booking-calculator/flight-cost/" class="tool-card">
+          <div>
+            <div class="tool-card-top">
+              <div class="tool-card-icon" style="background:#eff6ff; color:#2563eb;"><i class="fas fa-plane"></i></div>
+              <div>
+                <span class="tool-card-badge">تذاكر الطيران</span>
+                <h3 class="card-main-title">حاسبة تكلفة تذاكر الطيران</h3>
+              </div>
+            </div>
+            <p class="tool-card-desc">
+              حساب تكلفة تذاكر الطيران ذهاباً وإياباً مع رسوم الأمتعة الإضافية والضرائب ورسوم المقاعد.
+            </p>
+          </div>
+          <div class="tool-card-action">
+            <span>فتح الحاسبة المتخصصة</span>
+            <i class="fas fa-arrow-left"></i>
+          </div>
+        </a>
+
+        <!-- Tool 3: Hotel Cost -->
+        <a href="/travel-booking-calculator/hotel-cost/" class="tool-card">
+          <div>
+            <div class="tool-card-top">
+              <div class="tool-card-icon" style="background:#f0fdf4; color:#16a34a;"><i class="fas fa-hotel"></i></div>
+              <div>
+                <span class="tool-card-badge">الإقامة الفندقية</span>
+                <h3 class="card-main-title">حاسبة تكلفة الإقامة الفندقية</h3>
+              </div>
+            </div>
+            <p class="tool-card-desc">
+              حساب سعر الإقامة لعدد الليالي والغرف مع احتساب ضريبة القيمة المضافة ورسوم الخدمة ورسوم البلدية.
+            </p>
+          </div>
+          <div class="tool-card-action">
+            <span>فتح الحاسبة المتخصصة</span>
+            <i class="fas fa-arrow-left"></i>
+          </div>
+        </a>
+
+        <!-- Tool 4: Booking Cost -->
+        <a href="/travel-booking-calculator/booking-cost/" class="tool-card">
+          <div>
+            <div class="tool-card-top">
+              <div class="tool-card-icon" style="background:#fffbeb; color:#d97706;"><i class="fas fa-receipt"></i></div>
+              <div>
+                <span class="tool-card-badge">رسوم الحجز والضرائب</span>
+                <h3 class="card-main-title">حاسبة رسوم الحجز وضريبة السفر</h3>
+              </div>
+            </div>
+            <p class="tool-card-desc">
+              كشف الرسوم الخفية وفروق العملات الأجنبية ورسوم البطاقات الائتمانية في مواقع وتطبيقات الحجز.
+            </p>
+          </div>
+          <div class="tool-card-action">
+            <span>فتح الحاسبة المتخصصة</span>
+            <i class="fas fa-arrow-left"></i>
+          </div>
+        </a>
+
+        <!-- Tool 5: Expense Split -->
+        <a href="/travel-booking-calculator/expense-split/" class="tool-card">
+          <div>
+            <div class="tool-card-top">
+              <div class="tool-card-icon" style="background:#fdf2f8; color:#db2777;"><i class="fas fa-users-viewfinder"></i></div>
+              <div>
+                <span class="tool-card-badge">الرحلات الجماعية</span>
+                <h3 class="card-main-title">حاسبة تقسيم مصاريف السفر الجماعي</h3>
+              </div>
+            </div>
+            <p class="tool-card-desc">
+              حساب عادل لتقسيم مصاريف استئجار السيارات، الوقود، السكن المشترك، والوجبات بين الأصدقاء.
+            </p>
+          </div>
+          <div class="tool-card-action">
+            <span>فتح الحاسبة المتخصصة</span>
+            <i class="fas fa-arrow-left"></i>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Educational Guide & FAQ Section -->
+  <section class="guide-content-section">
+    <div class="container guide-grid">
+      
+      <!-- Left Article -->
+      <article class="guide-article">
+        <h2>التخطيط الاستراتيجي لتكاليف السفر في السعودية ودول الخليج</h2>
+        <p>
+          يمثل السفر والسياحة الداخلية والخارجية جانباً أساسياً من حياة المواطنين والمقيمين في المملكة العربية السعودية. ومع تعدد خيارات الطيران الاقتصادي ووجهات العطلات في دول مجلس التعاون الخليجي والشرق الأوسط والعالم، يصبح التخطيط المالي المبكر عاملاً حاسماً للاستمتاع برحلة مريحة دون تجاوز الميزانية المحددة.
+        </p>
+
+        <h2>هندسة ميزانية السفر: قاعدة 50/30/20 للعطلات</h2>
+        <p>
+          ينصح خبراء السياحة والاقتصاد بتوزيع ميزانية الرحلة وفق نموذج مرن ومتوازن:
+        </p>
+        <ul style="padding-right: 20px; margin-bottom: 18px;">
+          <li><strong>50% للأساسيات الثابتة:</strong> تشمل تذاكر الطيران، الإقامة الفندقية، والتأشيرات والتأمين الطبي الإلزامي.</li>
+          <li><strong>30% للتجارب اليومية:</strong> الوجبات، المواصلات الداخلية، تذاكر الفعاليات والمزارات السياحية.</li>
+          <li><strong>20% للتسوق والطوارئ:</strong> الهدايا التذكارية، ومبلغ احتياطي نقدي لتغطية أية تكاليف غير متوقعة.</li>
+        </ul>
+
+        <h3>مثال عملي: رحلة سياحية لمدة 7 أيام لشخصين إلى دبي</h3>
+        <p>
+          إذا خطط شخصان لقضاء عطلة لمدة أسبوع (7 ليالٍ) في مدينة دبي بميزانية متوسطة:
+        </p>
+        <ul style="padding-right: 20px; margin-bottom: 18px;">
+          <li>تذاكر الطيران (شخصان): 2,400 ريال سعودي.</li>
+          <li>فندق 4 نجوم (7 ليالٍ &times; 500 ر.س): 3,500 ريال سعودي.</li>
+          <li>المصاريف اليومية (طعام، مترو، وأنشطة): 2,800 ريال سعودي.</li>
+          <li>إجمالي الميزانية المتوقعة: <strong>8,700 ريال سعودي</strong> (نحو 4,350 ريال للشخص الواحد).</li>
+        </ul>
+
+        <h2>كيف تخطط لميزانية السفر في 3 خطوات عملية</h2>
+        <p>
+          1. <strong>قارن مبكراً:</strong> احجز تذاكر الطيران قبل السفر بـ 4 إلى 8 أسابيع للحصول على أفضل الأسعار.<br>
+          2. <strong>احسب الرسوم الإضافية:</strong> تأكد من شمول أسعار الفنادق لضريبة القيمة المضافة ورسوم البلدية.<br>
+          3. <strong>استخدم بطاقات سفر منخفضة الرسوم:</strong> استخدم بطاقات العملات متعددة الحسابات لتجنب هوامش التحويل المرتفعة في البطاقات الائتمانية العادية.
+        </p>
+
+        <h2>الأسئلة الشائعة حول حاسبة السفر والحجوزات</h2>
+
+        <!-- FAQ 1 -->
+        <div class="faq-accordion-item">
+          <div class="faq-accordion-question" onclick="toggleFaq(this)">
+            <span>هل تقوم منصة DailyCalcHubs بحجز تذاكر الطيران أو الفنادق مباشرة؟</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-accordion-answer">
+            كلا، تقدم DailyCalcHubs حاسبات تقديرية مالية مستقلة للمساعدة في التخطيط للميزانية. نحن لسنا شركة طيران أو فندق أو وكالة سفر أو محرك حجز تذاكر. جميع الحسابات مبنية على أرقام يدخلها المستخدم لتقدير تكاليف الرحلة ومقارنتها قبل تأكيد الحجز الفعلي.
+          </div>
+        </div>
+
+        <!-- FAQ 2 -->
+        <div class="faq-accordion-item">
+          <div class="faq-accordion-question" onclick="toggleFaq(this)">
+            <span>ما هي التكاليف الإضافية التي ينبغي مراعاتها عند التخطيط لرحلة من السعودية؟</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-accordion-answer">
+            تشمل التكاليف التي قد لا ينتبه لها المسافر: ضريبة القيمة المضافة (15%) على الحجوزات الداخلية، رسوم الخدمة أو البلدية في بعض الوجهات، رسوم وزن الأمتعة الإضافي في شركات الطيران الاقتصادي، رسوم استخدام البطاقات البنكية الدولية بالعملات الأجنبية (عادة بين 1.5% إلى 2.8%)، ورسوم بوابات الطرق والمواصلات المحلية.
+          </div>
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="faq-accordion-item">
+          <div class="faq-accordion-question" onclick="toggleFaq(this)">
+            <span>ما هي نسبة مبلغ الطوارئ الاحتياطي الموصى بها في ميزانية السفر؟</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-accordion-answer">
+            يوصي خبراء التخطيط المالي للسفر برصد هامش احتياطي للطوارئ يتراوح بين 10% إلى 15% إضافية فوق إجمالي التكاليف المتوقعة، وذلك لتغطية أية ظروف غير متوقعة مثل تعديل مواعيد الرحلات، الاحتياجات الطبية الطارئة، أو الرغبة في خوض جولات محلية إضافية.
+          </div>
+        </div>
+
+      </article>
+
+      <!-- Right Sidebar -->
+      <aside>
+        <div class="sidebar-card">
+          <h3 class="sidebar-card-heading">
+            <i class="fas fa-shield-halved" style="color:#e11d48;"></i>
+            <span>إرشادات التخطيط للسفر 2026</span>
+          </h3>
+          <ul class="sidebar-list">
+            <li><i class="fas fa-check"></i> <span>تأكد من سريان جواز السفر لأكثر من 6 أشهر قبل موعد السفر.</span></li>
+            <li><i class="fas fa-check"></i> <span>استخرج تأمين السفر الدولي لتغطية الحالات الصحية الطارئة.</span></li>
+            <li><i class="fas fa-check"></i> <span>تحقق من متطلبات التأشيرة السياحية لوجهتك بوقت كافٍ.</span></li>
+            <li><i class="fas fa-check"></i> <span>راقب سياسة الإلغاء والاسترداد قبل الدفع النهائي.</span></li>
+            <li><i class="fas fa-check"></i> <span>احتفظ بنسخ إلكترونية من وثائق السفر والحجوزات في هاتفك.</span></li>
+          </ul>
+        </div>
+
+        <div class="sidebar-card">
+          <h3 class="sidebar-card-heading" style="color:#9f1239;">
+            <i class="fas fa-compass"></i>
+            <span>أدوات السفر الأكثر طلباً</span>
+          </h3>
+          <ul class="sidebar-list">
+            <li><i class="fas fa-arrow-left"></i> <a href="/travel-booking-calculator/travel-budget/" style="color:inherit;text-decoration:none;">حاسبة ميزانية السفر الشاملة</a></li>
+            <li><i class="fas fa-arrow-left"></i> <a href="/travel-booking-calculator/flight-cost/" style="color:inherit;text-decoration:none;">حاسبة تكاليف تذاكر الطيران</a></li>
+            <li><i class="fas fa-arrow-left"></i> <a href="/travel-booking-calculator/hotel-cost/" style="color:inherit;text-decoration:none;">حاسبة تكاليف الفنادق والإقامة</a></li>
+            <li><i class="fas fa-arrow-left"></i> <a href="/travel-booking-calculator/booking-cost/" style="color:inherit;text-decoration:none;">حاسبة رسوم الحجز والضرائب</a></li>
+            <li><i class="fas fa-arrow-left"></i> <a href="/travel-booking-calculator/expense-split/" style="color:inherit;text-decoration:none;">حاسبة تقسيم مصاريف السفر الجماعي</a></li>
+          </ul>
+        </div>
+      </aside>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-columns-grid">
+        <!-- Col 1: Brand -->
+        <div class="footer-col-brand">
+          <div class="logo-title">DailyCalc<span style="color:#38bdf8;">Hubs</span></div>
+          <div class="logo-subtitle">أدوات سعودية لغدٍ أكثر ذكاءً</div>
+          <p class="footer-brand-desc">
+            حاسبات وأدلة إرشادية مفيدة لحياة أفضل في المملكة العربية السعودية. بسيطة. دقيقة. موثوقة.
+          </p>
+        </div>
+
+        <!-- Col 2: Quick Links -->
+        <div>
+          <h4 class="footer-col-heading">روابط سريعة</h4>
+          <ul class="footer-nav-list">
+            <li><a href="/ar/">الرئيسية</a></li>
+            <li><a href="/saudi-remittance-calculator/">حاسبة تحويل الأموال</a></li>
+            <li><a href="/saudi-salary-calculator/">حاسبة الرواتب</a></li>
+            <li><a href="/saudi-iqama-calculator/">حاسبة الإقامة</a></li>
+            <li><a href="/about/">من نحن</a></li>
+            <li><a href="/contact/">اتصل بنا</a></li>
+            <li><a href="/privacy-policy/">سياسة الخصوصية</a></li>
+            <li><a href="/terms/">شروط الاستخدام</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Our Calculators -->
+        <div>
+          <h4 class="footer-col-heading">حاسباتنا</h4>
+          <ul class="footer-nav-list">
+            <li><a href="/saudi-remittance-calculator/">حاسبة تحويل الأموال في السعودية</a></li>
+            <li><a href="/prayer-times/">حاسبة مواقيت الصلاة (تقويم أم القرى)</a></li>
+            <li><a href="/saudi-salary-calculator/">حاسبة الرواتب ومستحقات نهاية الخدمة</a></li>
+            <li><a href="/saudi-iqama-calculator/">حاسبة رسوم الإقامة والمرافقين</a></li>
+            <li><a href="/everyday-smart-calculator/">الحاسبة اليومية الذكية</a></li>
+            <li><a href="/shariah-sip-calculator/">حاسبة الاستثمار الشرعي (SIP)</a></li>
+            <li><a href="/travel-booking-calculator/">حاسبة السفر والحجوزات</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Support & Community -->
+        <div>
+          <h4 class="footer-col-heading">الدعم والمجتمع</h4>
+          <p class="footer-social-text">هل تحتاج إلى مساعدة أو لديك اقتراحات أو استفسارات؟</p>
+          <div class="footer-social-row" id="officialContactRow">
+            <a href="/contact/" class="footer-contact-link">
+              <i class="fas fa-envelope" style="color: #38bdf8;"></i> تواصل مع فريق الدعم
+            </a>
+          </div>
+          <div class="footer-saudi-community-btn" style="cursor:default;">
+            <svg viewBox="0 0 100 100" fill="#34d399">
+              <path d="M50 15 C52 20 54 28 50 48 C46 28 48 20 50 15 Z"/>
+              <path d="M49 22 C42 16 32 18 24 26 C33 26 42 25 48 25 Z"/>
+              <path d="M49 26 C40 24 28 30 22 40 C31 37 41 33 48 30 Z"/>
+              <path d="M49 31 C40 33 32 42 30 52 C37 46 44 39 49 35 Z"/>
+              <path d="M51 22 C58 16 68 18 76 26 C67 26 58 25 52 25 Z"/>
+              <path d="M51 26 C60 24 72 30 78 40 C69 37 59 33 52 30 Z"/>
+              <path d="M51 31 C60 33 68 42 70 52 C63 46 56 39 51 35 Z"/>
+              <path d="M22 80 L76 56 C79 55 81 57 80 59 L26 84 Z"/>
+              <circle cx="17" cy="85" r="2.5"/>
+              <path d="M78 80 L24 56 C21 55 19 57 20 59 L74 84 Z"/>
+              <circle cx="83" cy="85" r="2.5"/>
+            </svg>
+            <span class="saudi-community-title">فخورون بخدمة<br>المجتمع السعودي</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="footer-bottom-bar">
+        <div>&copy; 2026 DailyCalcHubs. جميع الحقوق محفوظة.</div>
+        <div class="footer-legal-links">
+          <a href="/privacy-policy/">سياسة الخصوصية</a>
+          <span>|</span>
+          <a href="/disclaimer/">إخلاء المسؤولية</a>
+          <span>|</span>
+          <a href="/terms/">شروط الاستخدام</a>
+          <span>|</span>
+          <a href="/contact/">اتصل بنا</a>
+        </div>
+        <div class="inshallah-phrase">
+          إن شاء الله لغدٍ أفضل
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="/mobile-nav.js" defer></script>
+  <script>
+    // Tab switching
+    function switchTravelTab(tabId) {
+      const tripBtn = document.getElementById('tabBtnTrip');
+      const splitBtn = document.getElementById('tabBtnSplit');
+      const tripContent = document.getElementById('tabContentTrip');
+      const splitContent = document.getElementById('tabContentSplit');
+      const tripResults = document.getElementById('resultsTripWrap');
+      const splitResults = document.getElementById('resultsSplitWrap');
+
+      if (tabId === 'trip') {
+        tripBtn.classList.add('active');
+        splitBtn.classList.remove('active');
+        tripContent.style.display = 'grid';
+        splitContent.style.display = 'none';
+        tripResults.style.display = 'block';
+        splitResults.style.display = 'none';
+        calculateHubTrip();
+      } else {
+        splitBtn.classList.add('active');
+        tripBtn.classList.remove('active');
+        splitContent.style.display = 'grid';
+        tripContent.style.display = 'none';
+        splitResults.style.display = 'block';
+        tripResults.style.display = 'none';
+        calculateHubSplit();
+      }
+    }
+
+    // Tab 1: Vacation Budget
+    function setHubTravelers(val) { document.getElementById('hubTravelers').value = val; calculateHubTrip(); }
+    function setHubDays(val) { document.getElementById('hubDays').value = val; calculateHubTrip(); }
+
+    function calculateHubTrip() {
+      const travelers = Math.max(1, parseFloat(document.getElementById('hubTravelers').value) || 1);
+      const days = Math.max(1, parseFloat(document.getElementById('hubDays').value) || 1);
+      const flightPerPerson = Math.max(0, parseFloat(document.getElementById('hubFlightPerPerson').value) || 0);
+      const hotelPerNight = Math.max(0, parseFloat(document.getElementById('hubHotelPerNight').value) || 0);
+      const foodPerPersonDaily = Math.max(0, parseFloat(document.getElementById('hubDailyFoodPerPerson').value) || 0);
+
+      const totalFlights = flightPerPerson * travelers;
+      const totalHotel = hotelPerNight * days;
+      const totalFood = foodPerPersonDaily * travelers * days;
+      const totalTrip = totalFlights + totalHotel + totalFood;
+
+      const perPerson = totalTrip / travelers;
+      const perDay = totalTrip / days;
+
+      document.getElementById('resHubTripTotal').innerText = Math.round(totalTrip).toLocaleString('en-US') + ' ر.س';
+      document.getElementById('resHubTripPerPerson').innerText = Math.round(perPerson).toLocaleString('en-US') + ' ر.س';
+      document.getElementById('resHubTripPerDay').innerText = Math.round(perDay).toLocaleString('en-US') + ' ر.س / يوم';
+      document.getElementById('resHubFlightsSub').innerText = Math.round(totalFlights).toLocaleString('en-US') + ' ر.س';
+      document.getElementById('resHubHotelSub').innerText = Math.round(totalHotel).toLocaleString('en-US') + ' ر.س (' + days + ' ليالٍ)';
+      document.getElementById('resHubFoodSub').innerText = Math.round(totalFood).toLocaleString('en-US') + ' ر.س';
+    }
+
+    // Tab 2: Group Expense Split
+    function setHubSplitBill(val) { document.getElementById('hubSplitTotalBill').value = val; calculateHubSplit(); }
+    function setHubSplitPeople(val) { document.getElementById('hubSplitPeople').value = val; calculateHubSplit(); }
+
+    function calculateHubSplit() {
+      const bill = Math.max(0, parseFloat(document.getElementById('hubSplitTotalBill').value) || 0);
+      const people = Math.max(1, parseFloat(document.getElementById('hubSplitPeople').value) || 1);
+      const tipPct = Math.max(0, parseFloat(document.getElementById('hubSplitTipPct').value) || 0);
+
+      const tipAmount = (bill * tipPct) / 100;
+      const grandTotal = bill + tipAmount;
+      const perPerson = grandTotal / people;
+
+      document.getElementById('resHubPerPersonSplit').innerText = Math.round(perPerson).toLocaleString('en-US') + ' ر.س';
+      document.getElementById('resHubSplitGrandTotal').innerText = Math.round(grandTotal).toLocaleString('en-US') + ' ر.س';
+      document.getElementById('resHubSplitCount').innerText = people + ' أشخاص';
+      document.getElementById('resHubSplitTipAmount').innerText = tipAmount.toFixed(2) + ' ر.س (' + tipPct + '%)';
+    }
+
+    function toggleFaq(elem) {
+      const answer = elem.nextElementSibling;
+      const icon = elem.querySelector('i');
+      if (answer.style.display === 'block') {
+        answer.style.display = 'none';
+        icon.classList.remove('fa-chevron-up');
+        icon.classList.add('fa-chevron-down');
+      } else {
+        answer.style.display = 'block';
+        icon.classList.remove('fa-chevron-down');
+        icon.classList.add('fa-chevron-up');
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      calculateHubTrip();
+    });
+  </script>
+  <script src="/live-ticker.js" defer></script>
+  <script src="/theme.js" defer></script>
+  <script src="/share.js" defer></script>
+</body>
+</html>
