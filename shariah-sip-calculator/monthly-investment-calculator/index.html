@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -324,6 +324,7 @@
     }
   </style>
   <link rel="stylesheet" href="/theme.css">
+  <script src="/mobile-nav.js" defer></script>
 </head>
 <body>
 
@@ -334,9 +335,7 @@
         <div class="logo-icon"><i class="fas fa-coins"></i></div>
         <span>DailyCalcHubs</span>
       </a>
-      <div class="header-nav-wrap" style="display:flex;align-items:center;gap:16px;">
-
-        <nav class="header-nav-container">
+            <div class="header-nav-container" id="navContainer">
         <ul class="header-nav-links">
           <li><a href="/">Home</a></li>
           <li><a href="/saudi-remittance-calculator/">Remittance</a></li>
@@ -347,14 +346,17 @@
           <li><a href="/shariah-sip-calculator/" class="active">Shariah SIP</a></li>
           <li><a href="/travel-booking-calculator/">Travel & Booking</a></li>
         </ul>
-      </nav>
+      </div>
 
+      <div class="header-right-actions" style="display: flex; align-items: center; gap: 10px;">
         <button type="button" class="theme-toggle-btn" id="dchThemeToggle" aria-label="Toggle dark mode" title="Toggle Dark/Light Mode">
 
           <i class="fas fa-moon"></i>
 
         </button>
-
+        <button class="mobile-menu-toggle" id="mobileMenuBtn" aria-label="Toggle navigation">
+          <i class="fas fa-bars"></i>
+        </button>
       </div>
     </div>
   </header>

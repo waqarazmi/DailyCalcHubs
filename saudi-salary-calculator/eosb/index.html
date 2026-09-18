@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -329,6 +329,7 @@
     }
   </style>
   <link rel="stylesheet" href="/theme.css">
+  <script src="/mobile-nav.js" defer></script>
 </head>
 <body>
   <!-- Top Ticker -->
@@ -356,7 +357,7 @@
             <div class="logo-subtitle">Saudi Tools for a Smarter Tomorrow</div>
           </div>
         </a>
-        <nav>
+        <nav class="header-nav-container" id="navContainer">
           <ul class="header-nav-links">
             <li><a href="/">Home</a></li>
             <li><a href="/saudi-remittance-calculator/">Remittance</a></li>
@@ -369,6 +370,9 @@
         <div class="header-right-actions" style="display:flex;align-items:center;gap:12px;">
           <button type="button" class="theme-toggle-btn" id="dchThemeToggle" aria-label="Toggle dark mode" title="Toggle Dark/Light Mode">
             <i class="fas fa-moon"></i>
+          </button>
+          <button class="mobile-menu-toggle" id="mobileMenuBtn" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
           </button>
           <div class="saudi-badge-header">
             <i class="fas fa-scale-balanced"></i> Saudi Labor Law 2026
@@ -893,3 +897,5 @@
   <script src="/share.js" defer></script>
 </body>
 </html>
+
+

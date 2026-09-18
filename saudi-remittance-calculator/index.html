@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -930,6 +930,7 @@
     }
   </style>
   <link rel="stylesheet" href="/theme.css">
+  <script src="/mobile-nav.js" defer></script>
 </head>
 <body>
 
@@ -977,7 +978,7 @@
           </div>
         </a>
 
-        <nav>
+        <nav class="header-nav-container" id="navContainer">
           <ul class="header-nav-links">
             <li><a href="/">Home</a></li>
             <li><a href="/saudi-remittance-calculator/" class="active">Remittance</a></li>
@@ -996,6 +997,9 @@
 
             <i class="fas fa-moon"></i>
 
+          </button>
+          <button class="mobile-menu-toggle" id="mobileMenuBtn" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
           </button>
 
           <div class="saudi-badge-header">
