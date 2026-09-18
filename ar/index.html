@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,9 +23,9 @@
     document.head.appendChild(script);
   })();
   </script>
-  <title>DailyCalcHubs — Saudi Tools &amp; Calculators for Expats, Residents &amp; Families</title>
-  <meta name="description" content="Explore free everyday calculators for Saudi Arabia: accurate salary and GOSI tools, expat remittance rates, Iqama fees, prayer times, and financial planners.">
-  <link rel="canonical" href="https://dailycalchubs.com/">
+  <title>DailyCalcHubs — أدوات وحاسبات سعودية ذكية للمقيمين والمواطنين والعائلات</title>
+  <meta name="description" content="استكشف حاسبات وأدوات يومية مجانية للمملكة العربية السعودية: حساب الرواتب، مكافأة نهاية الخدمة، التأمينات (GOSI)، رسوم الإقامة والمرافقين، أسعار تحويل العملات ومواقيت الصلاة.">
+  <link rel="canonical" href="https://dailycalchubs.com/ar/">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -36,88 +36,34 @@
 
   <!-- Open Graph / Social -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://dailycalchubs.com/">
-  <meta property="og:title" content="DailyCalcHubs — Saudi Tools &amp; Calculators for Expats, Residents &amp; Families">
-  <meta property="og:description" content="Accurate, easy, reliable calculators for life and work in Saudi Arabia. 100% free with live forex, prayer times, salary &amp; Iqama estimators.">
+  <meta property="og:url" content="https://dailycalchubs.com/ar/">
+  <meta property="og:title" content="DailyCalcHubs — أدوات وحاسبات سعودية ذكية للمقيمين والمواطنين والعائلات">
+  <meta property="og:description" content="حاسبات دقيقة ومجانية للحياة والعمل في المملكة العربية السعودية: الرواتب، نهاية الخدمة، الإقامة، تحويل الأموال ومواقيت الصلاة.">
   <meta property="og:image" content="https://dailycalchubs.com/og-image.jpg">
   <meta property="og:image:secure_url" content="https://dailycalchubs.com/og-image.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:locale" content="ar_SA">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="DailyCalcHubs — Saudi Tools &amp; Calculators for Expats, Residents &amp; Families">
-  <meta name="twitter:description" content="Accurate, easy, reliable calculators for life and work in Saudi Arabia.">
+  <meta name="twitter:title" content="DailyCalcHubs — أدوات وحاسبات سعودية ذكية للمقيمين والمواطنين والعائلات">
+  <meta name="twitter:description" content="حاسبات دقيقة ومجانية للحياة والعمل في المملكة العربية السعودية: الرواتب، نهاية الخدمة، الإقامة، تحويل الأموال ومواقيت الصلاة.">
   <meta name="twitter:image" content="https://dailycalchubs.com/og-image.jpg">
 
-  <!-- DailyCalcHubs Owner Admin Exclusion Mode (Zero GA4 Views / Zero AdSense Impressions) -->
-  <script>
-    (function() {
-      try {
-        var params = new URLSearchParams(window.location.search);
-        var owner = params.get('owner');
-        if (owner === 'waqar_lock') {
-          localStorage.setItem('dch_owner_mode', 'active');
-          params.delete('owner');
-          var newSearch = params.toString();
-          var cleanUrl = window.location.pathname + (newSearch ? '?' + newSearch : '') + window.location.hash;
-          window.history.replaceState({}, document.title, cleanUrl);
-        } else if (owner === 'off') {
-          localStorage.removeItem('dch_owner_mode');
-          params.delete('owner');
-          var newSearch = params.toString();
-          var cleanUrl = window.location.pathname + (newSearch ? '?' + newSearch : '') + window.location.hash;
-          window.history.replaceState({}, document.title, cleanUrl);
-        }
-
-        if (localStorage.getItem('dch_owner_mode') === 'active') {
-          window['ga-disable-G-18Y3LNHDR8'] = true;
-          window.adsbygoogle = window.adsbygoogle || [];
-          window.adsbygoogle.pauseAdRequests = 1;
-
-          window.addEventListener('DOMContentLoaded', function() {
-            if (!document.getElementById('dch-owner-mode-badge')) {
-              var badge = document.createElement('div');
-              badge.id = 'dch-owner-mode-badge';
-              badge.innerHTML = '&#128274; Owner Mode: Tracking &amp; Ads Disabled';
-              badge.style.cssText = 'position:fixed;bottom:14px;left:14px;background:rgba(17,24,39,0.92);color:#10b981;font-size:11.5px;font-weight:600;font-family:system-ui,-apple-system,sans-serif;padding:6px 12px;border-radius:20px;border:1px solid rgba(16,185,129,0.35);box-shadow:0 4px 12px rgba(0,0,0,0.25);z-index:99999;pointer-events:none;letter-spacing:0.2px;backdrop-filter:blur(4px);';
-              document.body.appendChild(badge);
-            }
-          });
-        }
-      } catch (e) {}
-    })();
-  </script>
-  <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6944579701716470" crossorigin="anonymous"></script>
-
-  <!-- Google Analytics (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-18Y3LNHDR8"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-18Y3LNHDR8');
-  </script>
-
-  <!-- Google Fonts & FontAwesome -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-  <!-- Schema.org JSON-LD -->
+  <!-- Structured Data (JSON-LD) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "WebSite",
-        "@id": "https://dailycalchubs.com/#website",
-        "url": "https://dailycalchubs.com/",
+        "@id": "https://dailycalchubs.com/ar/#website",
+        "url": "https://dailycalchubs.com/ar/",
         "name": "DailyCalcHubs",
-        "description": "Simple Calculators for a Smarter Life in Saudi Arabia",
+        "inLanguage": "ar-SA",
+        "description": "أدوات وحاسبات سعودية ذكية للمقيمين والمواطنين والعائلات",
         "publisher": {
           "@id": "https://dailycalchubs.com/#organization"
         },
@@ -134,7 +80,50 @@
   }
   </script>
 
+  <!-- DailyCalcHubs Owner Admin Exclusion Mode -->
+  <script>
+    (function() {
+      try {
+        var params = new URLSearchParams(window.location.search);
+        var owner = params.get('owner');
+        if (owner === 'waqar_lock') {
+          sessionStorage.setItem('dch_admin_traffic', 'true');
+        }
+      } catch (e) {}
+    })();
+  </script>
+
+  <!-- Google Analytics 4 & AdSense -->
+  <script>
+    (function() {
+      if (sessionStorage.getItem('dch_admin_traffic') === 'true') {
+        window['ga-disable-G-P94Z6BP2CV'] = true;
+        console.warn('DailyCalcHubs: Analytics & AdSense disabled for Admin Session');
+      } else {
+        var gtm = document.createElement('script');
+        gtm.async = true;
+        gtm.src = 'https://www.googletagmanager.com/gtag/js?id=G-P94Z6BP2CV';
+        document.head.appendChild(gtm);
+
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-P94Z6BP2CV');
+
+        var ads = document.createElement('script');
+        ads.async = true;
+        ads.crossOrigin = 'anonymous';
+        ads.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6944579701716470';
+        document.head.appendChild(ads);
+      }
+    })();
+  </script>
+
+  <!-- Fonts & Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
   <style>
+
     :root {
       --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       --bg-light: #f8fafc;
@@ -1278,6 +1267,50 @@
         padding: 10px 12px 12px;
       }
     }
+  
+    /* Arabic RTL Specific Enhancements */
+    html[dir="rtl"] body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Tahoma, Arial, sans-serif;
+      line-height: 1.5;
+    }
+    html[dir="rtl"] .hero-main-title {
+      line-height: 1.35;
+      letter-spacing: normal;
+    }
+    html[dir="rtl"] .hero-sub-text {
+      line-height: 1.65;
+    }
+    html[dir="rtl"] .card-num-circle {
+      left: 14px;
+      right: auto;
+    }
+    html[dir="rtl"] .site-search-icon {
+      right: 18px;
+      left: auto;
+    }
+    html[dir="rtl"] .site-search-input {
+      padding: 14px 44px 14px 18px;
+      text-align: right;
+    }
+    html[dir="rtl"] .site-search-close {
+      left: 16px;
+      right: auto;
+    }
+    html[dir="rtl"] .search-tag-chip {
+      text-align: right;
+    }
+    html[dir="rtl"] .search-item-result {
+      text-align: right;
+    }
+    html[dir="rtl"] .search-item-arrow {
+      transform: scaleX(-1);
+      margin-right: auto;
+      margin-left: 0;
+    }
+    html[dir="rtl"] .cookie-consent-actions {
+      flex-direction: row-reverse;
+    }
+
   </style>
   <link rel="stylesheet" href="/theme.css">
 </head>
@@ -1288,30 +1321,41 @@
     <div class="ticker-inner">
       <div class="ticker-item">
         <img src="https://flagcdn.com/w20/sa.png" alt="SAR" width="16" height="11">
-        <span>SAR/INR:</span> <span class="ticker-rate" id="tickerSar">&#8377;25.21</span>
+        <span>ريال / روبية هندية:</span> <span class="ticker-rate" id="tickerSar">&#8377;25.21</span>
       </div>
       <div class="ticker-item">
-        <i class="fas fa-bolt" style="color: #f59e0b;"></i>
-        <span>BARQ (SAR):</span> <span class="ticker-rate" id="tickerBarq">&#8377;24.94</span>
-        <span class="ticker-tag-green">In-Hand Live</span>
+        <i class="fas fa-bolt" style="color:#fbbf24;"></i>
+        <span>سعر برق (Barq):</span> <span class="ticker-rate" id="tickerBarq">&#8377;24.94</span>
+      </div>
+      <div class="ticker-item">
+        <img src="https://flagcdn.com/w20/pk.png" alt="PKR" width="16" height="11">
+        <span>ريال / روبية باكستانية:</span> <span class="ticker-rate" id="tickerPkr">Rs 74.27</span>
+      </div>
+      <div class="ticker-item">
+        <img src="https://flagcdn.com/w20/bd.png" alt="BDT" width="16" height="11">
+        <span>ريال / تاكا بنغلاديشية:</span> <span class="ticker-rate" id="tickerBdt">&#2547;32.32</span>
+      </div>
+      <div class="ticker-item">
+        <img src="https://flagcdn.com/w20/ph.png" alt="PHP" width="16" height="11">
+        <span>ريال / بيزو فلبيني:</span> <span class="ticker-rate" id="tickerPhp">&#8369;15.65</span>
       </div>
       <div class="ticker-item">
         <img src="https://flagcdn.com/w20/ae.png" alt="AED" width="16" height="11">
-        <span>AED/INR:</span> <span class="ticker-rate" id="tickerAed">&#8377;25.74</span>
+        <span>درهم / روبية هندية:</span> <span class="ticker-rate" id="tickerAed">&#8377;25.74</span>
       </div>
       <div class="ticker-item">
         <img src="https://flagcdn.com/w20/kw.png" alt="KWD" width="16" height="11">
-        <span>KWD/INR:</span> <span class="ticker-rate" id="tickerKwd">&#8377;306.33</span>
+        <span>دينار كويتي / روبية:</span> <span class="ticker-rate" id="tickerKwd">&#8377;306.33</span>
       </div>
-      <div class="ticker-item" id="tickerGoldItem" title="Delhi 24K (999 Purity) Gold Market Reference Rate">
+      <div class="ticker-item" id="tickerGoldItem" title="سعر الذهب عيار 24">
         <img src="https://flagcdn.com/w20/in.png" alt="INR" width="16" height="11">
-        <span>INDIA GOLD 24K (DELHI):</span>
+        <span>ذهب 24 قيراط (دلهي):</span>
         <span class="ticker-rate" id="tickerDelhiGold">&#8377;15,380/g</span>
-        <span class="ticker-time" id="tickerGoldTime" style="font-size: 10px; color: #94a3b8; font-weight: 500; margin-left: 2px;"></span>
+        <span class="ticker-time" id="tickerGoldTime" style="font-size: 10px; color: #94a3b8; font-weight: 500; margin-right: 2px;"></span>
       </div>
       <div class="ticker-item">
         <i class="fas fa-mosque" style="color: #38bdf8;"></i>
-        <span>UMM AL-QURA SALAH:</span> <span class="ticker-rate">Synchronized</span>
+        <span>مواقيت الصلاة:</span> <span class="ticker-rate">متزامنة وفق تقويم أم القرى</span>
       </div>
     </div>
   </div>
@@ -1321,41 +1365,43 @@
     <div class="container header-inner">
       
       <!-- Brand Logo -->
-      <a href="/" class="brand-logo-area">
+      <a href="/ar/" class="brand-logo-area">
         <div class="logo-icon-box">
           <i class="fas fa-calculator"></i>
         </div>
         <div class="logo-text-group">
           <span class="logo-title">DailyCalc<span>Hubs</span></span>
-          <span class="logo-subtitle">Saudi Tools for a Smarter Tomorrow</span>
+          <span class="logo-subtitle">أدوات سعودية لغدٍ أكثر ذكاءً</span>
         </div>
       </a>
 
       <!-- Navigation Links -->
       <nav class="main-navigation">
-        <a href="/" class="nav-link-item active">Home</a>
-        <a href="/saudi-remittance-calculator/" class="nav-link-item">Remittance</a>
-        <a href="/prayer-times/" class="nav-link-item">Prayer Times</a>
-        <a href="/saudi-salary-calculator/" class="nav-link-item">Salary</a>
-        <a href="/saudi-iqama-calculator/" class="nav-link-item">Iqama</a>
-        <a href="/everyday-smart-calculator/" class="nav-link-item">Everyday</a>
-        <a href="/shariah-sip-calculator/" class="nav-link-item">Shariah SIP</a>
-        <a href="/travel-booking-calculator/" class="nav-link-item">Travel & Booking</a>
+        <a href="/ar/" class="nav-link-item active">الرئيسية</a>
+        <a href="/saudi-remittance-calculator/" class="nav-link-item">تحويل الأموال</a>
+        <a href="/prayer-times/" class="nav-link-item">مواقيت الصلاة</a>
+        <a href="/saudi-salary-calculator/" class="nav-link-item">الرواتب</a>
+        <a href="/saudi-iqama-calculator/" class="nav-link-item">الإقامة</a>
+        <a href="/everyday-smart-calculator/" class="nav-link-item">أدوات يومية</a>
+        <a href="/shariah-sip-calculator/" class="nav-link-item">استثمار شرعي</a>
+        <a href="/travel-booking-calculator/" class="nav-link-item">السفر والحجوزات</a>
       </nav>
 
       <!-- Right Actions -->
       <div class="header-actions">
-        <a href="/ar/" class="lang-switch-btn" lang="ar" hreflang="ar" title="التحويل إلى اللغة العربية" aria-label="التحويل إلى اللغة العربية">
-          <i class="fas fa-globe" aria-hidden="true"></i> <span>العربية</span>
+        <a href="/" class="lang-switch-btn" lang="en" hreflang="en" title="Switch to English" aria-label="Switch to English">
+          <i class="fas fa-globe" aria-hidden="true"></i> <span>English</span>
         </a>
-        <button type="button" class="theme-toggle-btn" id="dchThemeToggle" aria-label="Toggle dark mode" title="Toggle Dark/Light Mode">
+
+        <button type="button" class="theme-toggle-btn" id="dchThemeToggle" aria-label="تبديل الوضع الليلي" title="تبديل الوضع النهاري / الليلي">
           <i class="fas fa-moon"></i>
         </button>
-        <button class="search-btn-circle" id="siteSearchBtn" title="Search Calculators" onclick="openSiteSearch()" aria-label="Open Search Calculators">
+
+        <button class="search-btn-circle" id="siteSearchBtn" title="البحث في الحاسبات" onclick="openSiteSearch()" aria-label="البحث في الحاسبات">
           <i class="fas fa-magnifying-glass"></i>
         </button>
 
-        <a href="#popular-calculators" class="saudi-badge-btn" title="Saudi Arabia Dedicated Platform">
+        <a href="#popular-calculators" class="saudi-badge-btn" title="منصة مخصصة للمملكة العربية السعودية">
           <!-- Saudi Palm & Crossed Swords SVG -->
           <svg viewBox="0 0 100 100" fill="#ffffff" width="22" height="22">
             <path d="M50 15 C52 20 54 28 50 48 C46 28 48 20 50 15 Z"/>
@@ -1371,8 +1417,8 @@
             <circle cx="83" cy="85" r="2.5"/>
           </svg>
           <div class="saudi-badge-text">
-            <span class="saudi-badge-title">Saudi Arabia <i class="fas fa-chevron-down" style="font-size: 9px;"></i></span>
-            <span class="saudi-badge-sub">Our Focus. Your Future.</span>
+            <span class="saudi-badge-title">المملكة العربية السعودية <i class="fas fa-chevron-down" style="font-size: 9px;"></i></span>
+            <span class="saudi-badge-sub">تركيزنا. مستقبلك.</span>
           </div>
         </a>
       </div>
@@ -1384,7 +1430,7 @@
   <section class="hero-saudi-section">
     <div class="container hero-grid">
       
-      <!-- Left Column -->
+      <!-- Right/Primary Content Column (RTL Start) -->
       <div>
         <div class="hero-badge-pill">
           <!-- Saudi Palm & Swords SVG -->
@@ -1402,43 +1448,43 @@
             <circle cx="83" cy="85" r="2.5"/>
           </svg>
           <div>
-            <span class="hero-badge-text-top">Built for Saudi Arabia</span>
+            <span class="hero-badge-text-top">مصممة للمملكة العربية السعودية</span>
             <span style="color:rgba(255,255,255,0.4); margin: 0 4px;">&bull;</span>
-            <span class="hero-badge-text-sub">Trusted Tools for Expats, Residents & Families</span>
+            <span class="hero-badge-text-sub">أدوات موثوقة للمقيمين والمواطنين والعائلات</span>
           </div>
         </div>
 
         <h1 class="hero-main-title">
-          Smart Saudi Tools &amp; Calculators for<br>
-          <span class="highlight-green">Expats, Residents &amp; Families</span>
+          أدوات وحاسبات سعودية ذكية<br>
+          <span class="highlight-green">للمقيمين والمواطنين والعائلات</span>
         </h1>
 
         <p class="hero-sub-text">
-          Practical Saudi calculators and everyday tools for expats, residents &amp; families &mdash; from salary, Iqama and remittance to prayer times, Shariah SIP, travel and daily calculations.
+          حاسبات سعودية عملية وأدوات يومية للمقيمين والمواطنين والعائلات &mdash; من الرواتب والإقامة وتحويل الأموال إلى مواقيت الصلاة والاستثمار والسفر والحسابات اليومية.
         </p>
 
         <!-- 4 Feature Checklist Pills -->
         <div class="hero-pills-row">
           <div class="feature-pill-item">
-            <i class="fas fa-check-circle" style="color: #22c55e;"></i> 100% Free to Use
+            <i class="fas fa-check-circle" style="color: #22c55e;"></i> مجاني 100% بدون رسوم
           </div>
           <div class="feature-pill-item">
-            <i class="fas fa-shield-halved" style="color: #38bdf8;"></i> No Registration
+            <i class="fas fa-shield-halved" style="color: #38bdf8;"></i> بدون تسجيل أو بيانات شخصية
           </div>
           <div class="feature-pill-item">
-            <i class="fas fa-mobile-screen-button" style="color: #f59e0b;"></i> Mobile Friendly
+            <i class="fas fa-mobile-screen-button" style="color: #f59e0b;"></i> متوافق بالكامل مع الجوال
           </div>
           <div class="feature-pill-item">
-            <i class="fas fa-users" style="color: #c084fc;"></i> Trusted Information
+            <i class="fas fa-users" style="color: #c084fc;"></i> معلومات دقيقة وموثوقة
           </div>
         </div>
       </div>
 
-      <!-- Right Column Showcase Card -->
+      <!-- Left Column Showcase Card (RTL End) -->
       <div>
         <div class="hero-showcase-card">
-          <div class="showcase-heading">Live. Work. Plan.</div>
-          <div class="showcase-highlight">A Brighter Tomorrow in Saudi Arabia.</div>
+          <div class="showcase-heading">عش. اعمل. خطط.</div>
+          <div class="showcase-highlight">لغدٍ أكثر إشراقاً في المملكة العربية السعودية.</div>
 
           <div class="showcase-emblem-wrap">
             <svg viewBox="0 0 100 100" fill="#ffffff" width="68" height="68">
@@ -1457,9 +1503,9 @@
           </div>
 
           <div class="showcase-tags-group">
-            <div class="showcase-tag-1">Your Daily Tools</div>
-            <div class="showcase-tag-2">Our Support</div>
-            <div class="showcase-tag-3">A Smarter You</div>
+            <div class="showcase-tag-1">أدواتك اليومية</div>
+            <div class="showcase-tag-2">دعمنا المستمر</div>
+            <div class="showcase-tag-3">حياة أكثر ذكاءً</div>
           </div>
         </div>
       </div>
@@ -1474,8 +1520,8 @@
       <!-- Top Title Row -->
       <div class="section-title-bar">
         <div>
-          <h2 class="section-title">Popular Calculators</h2>
-          <p class="section-subtitle">Essential tools for your daily life in Saudi Arabia</p>
+          <h2 class="section-title">الحاسبات الأكثر استخداماً</h2>
+          <p class="section-subtitle">أدوات أساسية لا غنى عنها لحياتك اليومية في المملكة</p>
         </div>
 
         <div class="section-top-badge">
@@ -1483,8 +1529,8 @@
             <i class="fas fa-chart-column"></i>
           </div>
           <div>
-            <div class="top-badge-text-title">Accurate Calculations | Useful Guides | Saudi Focused</div>
-            <div class="top-badge-text-sub">Everything you need, in one place.</div>
+            <div class="top-badge-text-title">حسابات دقيقة | أدلة إرشادية مفيدة | مخصصة للمملكة</div>
+            <div class="top-badge-text-sub">كل ما تحتاجه في مكان واحد.</div>
           </div>
         </div>
       </div>
@@ -1492,7 +1538,7 @@
       <!-- Tools & Sidebar Layout -->
       <div class="tools-sidebar-layout">
         
-        <!-- Left: 7 Tools Grid -->
+        <!-- 7 Tools Grid -->
         <div class="seven-tools-grid">
           
           <!-- Tool 1: Remittance -->
@@ -1501,9 +1547,9 @@
             <div class="card-icon-box">
               <i class="fas fa-money-bill-transfer"></i>
             </div>
-            <h3 class="card-tool-name">Saudi Remittance Calculator</h3>
-            <p class="card-tool-desc">Get the best exchange rates for your transfers</p>
-            <a href="/saudi-remittance-calculator/" class="card-use-btn">Use Now <i class="fas fa-arrow-right"></i></a>
+            <h3 class="card-tool-name">حاسبة تحويل الأموال في السعودية</h3>
+            <p class="card-tool-desc">تعرف على أفضل أسعار الصرف لتحويلاتك المالية</p>
+            <a href="/saudi-remittance-calculator/" class="card-use-btn">استخدم الآن <i class="fas fa-arrow-right"></i></a>
           </div>
 
           <!-- Tool 2: Prayer Times -->
@@ -1512,9 +1558,9 @@
             <div class="card-icon-box">
               <i class="fas fa-mosque"></i>
             </div>
-            <h3 class="card-tool-name">Prayer Times Calculator</h3>
-            <p class="card-tool-desc">Get accurate prayer times for Saudi Arabia</p>
-            <a href="/prayer-times/" class="card-use-btn">Use Now <i class="fas fa-arrow-right"></i></a>
+            <h3 class="card-tool-name">حاسبة مواقيت الصلاة (تقويم أم القرى)</h3>
+            <p class="card-tool-desc">مواقيت دقيقة لجميع مدن المملكة وفق تقويم أم القرى</p>
+            <a href="/prayer-times/" class="card-use-btn">استخدم الآن <i class="fas fa-arrow-right"></i></a>
           </div>
 
           <!-- Tool 3: Salary -->
@@ -1523,9 +1569,9 @@
             <div class="card-icon-box">
               <i class="fas fa-sack-dollar"></i>
             </div>
-            <h3 class="card-tool-name">Saudi Salary Calculator</h3>
-            <p class="card-tool-desc">Calculate your salary, EOSB and more</p>
-            <a href="/saudi-salary-calculator/" class="card-use-btn">Use Now <i class="fas fa-arrow-right"></i></a>
+            <h3 class="card-tool-name">حاسبة الرواتب ومستحقات نهاية الخدمة</h3>
+            <p class="card-tool-desc">احسب راتبك الصافي، مكافأة نهاية الخدمة، وحسم التأمينات</p>
+            <a href="/saudi-salary-calculator/" class="card-use-btn">استخدم الآن <i class="fas fa-arrow-right"></i></a>
           </div>
 
           <!-- Tool 4: Iqama -->
@@ -1534,9 +1580,9 @@
             <div class="card-icon-box">
               <i class="fas fa-id-card"></i>
             </div>
-            <h3 class="card-tool-name">Saudi Iqama Calculator</h3>
-            <p class="card-tool-desc">Calculate renewal fees and more</p>
-            <a href="/saudi-iqama-calculator/" class="card-use-btn">Use Now <i class="fas fa-arrow-right"></i></a>
+            <h3 class="card-tool-name">حاسبة رسوم الإقامة والمرافقين</h3>
+            <p class="card-tool-desc">احسب رسوم التجديد، المقابل المالي، ورسوم رخصة العمل</p>
+            <a href="/saudi-iqama-calculator/" class="card-use-btn">استخدم الآن <i class="fas fa-arrow-right"></i></a>
           </div>
 
           <!-- Tool 5: Everyday -->
@@ -1545,9 +1591,9 @@
             <div class="card-icon-box">
               <i class="fas fa-calculator"></i>
             </div>
-            <h3 class="card-tool-name">Everyday Smart Calculator</h3>
-            <p class="card-tool-desc">Age, date, days, units, discounts and more</p>
-            <a href="/everyday-smart-calculator/" class="card-use-btn">Use Now <i class="fas fa-arrow-right"></i></a>
+            <h3 class="card-tool-name">الحاسبة اليومية الذكية</h3>
+            <p class="card-tool-desc">حاسبات العمر، الخصومات، الوقود، فواتير الكهرباء والمزيد</p>
+            <a href="/everyday-smart-calculator/" class="card-use-btn">استخدم الآن <i class="fas fa-arrow-right"></i></a>
           </div>
 
           <!-- Tool 6: Shariah SIP -->
@@ -1556,9 +1602,9 @@
             <div class="card-icon-box">
               <i class="fas fa-coins"></i>
             </div>
-            <h3 class="card-tool-name">Shariah SIP Calculator</h3>
-            <p class="card-tool-desc">Plan your investments the halal way</p>
-            <a href="/shariah-sip-calculator/" class="card-use-btn">Use Now <i class="fas fa-arrow-right"></i></a>
+            <h3 class="card-tool-name">حاسبة الاستثمار الشرعي (SIP)</h3>
+            <p class="card-tool-desc">خطط لاستثماراتك ونمو ثروتك بطرق متوافقة مع الشريعة</p>
+            <a href="/shariah-sip-calculator/" class="card-use-btn">استخدم الآن <i class="fas fa-arrow-right"></i></a>
           </div>
 
           <!-- Tool 7: Travel -->
@@ -1567,9 +1613,9 @@
             <div class="card-icon-box">
               <i class="fas fa-plane-departure"></i>
             </div>
-            <h3 class="card-tool-name">Travel & Booking Calculator</h3>
-            <p class="card-tool-desc">Plan your trips with ease</p>
-            <a href="/travel-booking-calculator/" class="card-use-btn">Use Now <i class="fas fa-arrow-right"></i></a>
+            <h3 class="card-tool-name">حاسبة السفر والحجوزات</h3>
+            <p class="card-tool-desc">خطط لمصاريف رحلاتك وتذاكر الطيران والفنادق بسهولة</p>
+            <a href="/travel-booking-calculator/" class="card-use-btn">استخدم الآن <i class="fas fa-arrow-right"></i></a>
           </div>
 
         </div>
@@ -1579,37 +1625,37 @@
           
           <!-- Sidebar Card 1: Why DailyCalcHubs? -->
           <div class="sidebar-card-box">
-            <h4 class="sidebar-card-title">Why DailyCalcHubs?</h4>
+            <h4 class="sidebar-card-title">لماذا DailyCalcHubs؟</h4>
             <ul class="sidebar-checklist">
-              <li class="sidebar-check-item"><i class="fas fa-circle-check"></i> Saudi-focused calculators</li>
-              <li class="sidebar-check-item"><i class="fas fa-circle-check"></i> Easy to use and accurate</li>
-              <li class="sidebar-check-item"><i class="fas fa-circle-check"></i> Helpful guides and FAQs</li>
-              <li class="sidebar-check-item"><i class="fas fa-circle-check"></i> Mobile friendly design</li>
-              <li class="sidebar-check-item"><i class="fas fa-circle-check"></i> Free for everyone</li>
-              <li class="sidebar-check-item"><i class="fas fa-circle-check"></i> Regularly updated</li>
+              <li class="sidebar-check-item"><i class="fas fa-circle-check"></i> حاسبات مخصصة للأنظمة السعودية</li>
+              <li class="sidebar-check-item"><i class="fas fa-circle-check"></i> سهلة الاستخدام ودقيقة بنسبة 100%</li>
+              <li class="sidebar-check-item"><i class="fas fa-circle-check"></i> أدلة إرشادية وإجابات شاملة للأسئلة الشائعة</li>
+              <li class="sidebar-check-item"><i class="fas fa-circle-check"></i> تصميم متوافق مع كافة الهواتف والأجهزة</li>
+              <li class="sidebar-check-item"><i class="fas fa-circle-check"></i> مجانية بالكامل لجميع المستخدمين</li>
+              <li class="sidebar-check-item"><i class="fas fa-circle-check"></i> تحديثات مستمرة وفق القرارات الرسمية</li>
             </ul>
           </div>
 
           <!-- Sidebar Card 2: Quick Guide -->
           <div class="sidebar-card-box">
             <h4 class="sidebar-card-title">
-              <i class="fas fa-lightbulb" style="color: #f59e0b;"></i> Quick Guide
+              <i class="fas fa-lightbulb" style="color: #f59e0b;"></i> دليل الاستخدام السريع
             </h4>
             <ul class="quick-guide-list">
               <li class="quick-guide-step">
-                <span class="step-badge-circle">1</span> Choose a calculator
+                <span class="step-badge-circle">1</span> اختر الحاسبة المطلوبة من القائمة
               </li>
               <li class="quick-guide-step">
-                <span class="step-badge-circle">2</span> Enter the required details
+                <span class="step-badge-circle">2</span> أدخل البيانات أو المبالغ المحددة
               </li>
               <li class="quick-guide-step">
-                <span class="step-badge-circle">3</span> Get instant results
+                <span class="step-badge-circle">3</span> احصل على تفاصيل الحساب الفورية
               </li>
               <li class="quick-guide-step">
-                <span class="step-badge-circle">4</span> Read guides and FAQs
+                <span class="step-badge-circle">4</span> اطلع على الأنظمة والأدلة المرتبطة
               </li>
               <li class="quick-guide-step">
-                <span class="step-badge-circle">5</span> Plan your life smarter
+                <span class="step-badge-circle">5</span> خطط لأمورك المالية والعملية بذكاء
               </li>
             </ul>
           </div>
@@ -1630,7 +1676,7 @@
               <circle cx="83" cy="85" r="2.5"/>
             </svg>
             <div class="quote-text-title">
-              "Small Tools<br>Big Solutions"
+              "أدوات بسيطة..<br>حلول كبيرة"
             </div>
           </div>
 
@@ -1643,23 +1689,23 @@
         <div class="trust-values-grid">
           <div class="trust-value-item">
             <i class="fas fa-scale-balanced val-icon-green"></i>
-            <span>Independent &amp; Transparent</span>
+            <span>منصة مستقلة وشفافة</span>
           </div>
           <div class="trust-value-item">
             <i class="fas fa-shield-halved val-icon-blue"></i>
-            <span>Accurate &amp; Reliable Tools</span>
+            <span>أدوات حسابية دقيقة وموثوقة</span>
           </div>
           <div class="trust-value-item">
             <i class="fas fa-mobile-screen val-icon-blue"></i>
-            <span>Works on All Devices</span>
+            <span>تعمل بكفاءة على كافة الأجهزة</span>
           </div>
           <div class="trust-value-item">
             <i class="fas fa-clock val-icon-dark"></i>
-            <span>Updated for Saudi Arabia</span>
+            <span>محدثة وفق أحدث الأنظمة السعودية</span>
           </div>
           <div class="trust-value-item">
             <i class="fas fa-heart val-icon-red"></i>
-            <span>Made for a Better Tomorrow</span>
+            <span>صُممت لغدٍ أفضل</span>
           </div>
         </div>
       </div>
@@ -1678,7 +1724,7 @@
     </div>
   </section>
 
-  <!-- ================= 7. FOOTER (EXACT SCREENSHOT) ================= -->
+  <!-- ================= 7. FOOTER ================= -->
   <footer class="site-footer">
     <div class="container">
       
@@ -1687,49 +1733,48 @@
         <!-- Col 1: Brand -->
         <div class="footer-col-brand">
           <div class="logo-title">DailyCalc<span style="color:#38bdf8;">Hubs</span></div>
-          <div class="logo-subtitle">Saudi Tools for a Smarter Tomorrow</div>
+          <div class="logo-subtitle">أدوات سعودية لغدٍ أكثر ذكاءً</div>
           <p class="footer-brand-desc">
-            Useful calculators and guides for a better life in Saudi Arabia. Simple. Accurate. Reliable.
+            حاسبات وأدلة إرشادية مفيدة لحياة أفضل في المملكة العربية السعودية. بسيطة. دقيقة. موثوقة.
           </p>
         </div>
 
         <!-- Col 2: Quick Links -->
         <div>
-          <h4 class="footer-col-heading">Quick Links</h4>
+          <h4 class="footer-col-heading">روابط سريعة</h4>
           <ul class="footer-nav-list">
-            <li><a href="/">Home</a></li>
-            <li><a href="#popular-calculators">Calculators</a></li>
-            <li><a href="#guides-area">Guides</a></li>
-            <li><a href="/about/">About</a></li>
-            <li><a href="/contact/">Contact</a></li>
-            <li><a href="/privacy-policy/">Privacy Policy</a></li>
-            <li><a href="/terms/">Terms of Use</a></li>
+            <li><a href="/ar/">الرئيسية</a></li>
+            <li><a href="#popular-calculators">الحاسبات</a></li>
+            <li><a href="#guides-area">الأدلة الإرشادية</a></li>
+            <li><a href="/about/">من نحن</a></li>
+            <li><a href="/contact/">اتصل بنا</a></li>
+            <li><a href="/privacy-policy/">سياسة الخصوصية</a></li>
+            <li><a href="/terms/">شروط الاستخدام</a></li>
           </ul>
         </div>
 
         <!-- Col 3: Our Calculators -->
         <div>
-          <h4 class="footer-col-heading">Our Calculators</h4>
+          <h4 class="footer-col-heading">حاسباتنا</h4>
           <ul class="footer-nav-list">
-            <li><a href="/saudi-remittance-calculator/">Saudi Remittance</a></li>
-            <li><a href="/prayer-times/">Prayer Times</a></li>
-            <li><a href="/saudi-salary-calculator/">Saudi Salary</a></li>
-            <li><a href="/saudi-iqama-calculator/">Saudi Iqama</a></li>
-            <li><a href="/everyday-smart-calculator/">Everyday Smart Calculator</a></li>
-            <li><a href="/shariah-sip-calculator/">Shariah SIP</a></li>
-            <li><a href="/travel-booking-calculator/">Travel &amp; Booking</a></li>
+            <li><a href="/saudi-remittance-calculator/">حاسبة تحويل الأموال في السعودية</a></li>
+            <li><a href="/prayer-times/">حاسبة مواقيت الصلاة (تقويم أم القرى)</a></li>
+            <li><a href="/saudi-salary-calculator/">حاسبة الرواتب ومستحقات نهاية الخدمة</a></li>
+            <li><a href="/saudi-iqama-calculator/">حاسبة رسوم الإقامة والمرافقين</a></li>
+            <li><a href="/everyday-smart-calculator/">الحاسبة اليومية الذكية</a></li>
+            <li><a href="/shariah-sip-calculator/">حاسبة الاستثمار الشرعي (SIP)</a></li>
+            <li><a href="/travel-booking-calculator/">حاسبة السفر والحجوزات</a></li>
           </ul>
         </div>
 
-        <!-- Col 4: Stay Connected & Saudi Community -->
+        <!-- Col 4: Support & Community -->
         <div>
-          <h4 class="footer-col-heading">Support &amp; Feedback</h4>
-          <p class="footer-social-text">Need help, have suggestions, or want to report an issue?</p>
+          <h4 class="footer-col-heading">الدعم والمجتمع</h4>
+          <p class="footer-social-text">هل تحتاج إلى مساعدة أو لديك اقتراحات أو استفسارات؟</p>
           
-          <!-- Official Support & Inquiries -->
           <div class="footer-social-row" id="officialContactRow">
             <a href="/contact/" class="footer-contact-link">
-              <i class="fas fa-envelope" style="color: #38bdf8;"></i> Contact Support &amp; Feedback
+              <i class="fas fa-envelope" style="color: #38bdf8;"></i> تواصل مع فريق الدعم
             </a>
           </div>
 
@@ -1747,7 +1792,7 @@
               <path d="M78 80 L24 56 C21 55 19 57 20 59 L74 84 Z"/>
               <circle cx="83" cy="85" r="2.5"/>
             </svg>
-            <span class="saudi-community-title">Proud to Serve<br>the Saudi Community</span>
+            <span class="saudi-community-title">فخورون بخدمة<br>المجتمع السعودي</span>
           </a>
         </div>
 
@@ -1755,408 +1800,201 @@
 
       <!-- Bottom Bar -->
       <div class="footer-bottom-bar">
-        <div>&copy; 2026 DailyCalcHubs. All rights reserved.</div>
+        <div>&copy; 2026 DailyCalcHubs. جميع الحقوق محفوظة.</div>
         
         <div class="footer-legal-links">
-          <a href="/privacy-policy/">Privacy Policy</a>
+          <a href="/privacy-policy/">سياسة الخصوصية</a>
           <span>|</span>
-          <a href="/disclaimer/">Disclaimer</a>
+          <a href="/disclaimer/">إخلاء المسؤولية</a>
           <span>|</span>
-          <a href="/terms/">Terms of Use</a>
+          <a href="/terms/">شروط الاستخدام</a>
           <span>|</span>
-          <a href="/contact/">Contact</a>
+          <a href="/contact/">اتصل بنا</a>
         </div>
 
         <div class="inshallah-phrase">
-          InshaAllah A Better Tomorrow
+          إن شاء الله لغدٍ أفضل
         </div>
       </div>
 
     </div>
   </footer>
 
-  <!-- Background Script to keep ticker live & zero errors -->
-  <script>
-    const FX_API_URL = 'https://open.er-api.com/v6/latest/USD';
-    let liveUsdRates = { USD: 1, SAR: 3.75, AED: 3.6725, KWD: 0.306, INR: 94.54, PKR: 278.5, BDT: 119.5 };
-
-    async function fetchLiveForex() {
-      try {
-        const res = await fetch(FX_API_URL + '?ts=' + Date.now(), { cache: 'no-store' });
-        const data = await res.json();
-        if (data && data.rates && data.rates.INR) {
-          liveUsdRates = data.rates;
-          updateTicker();
-        }
-      } catch (e) {
-        updateTicker();
-      }
-    }
-
-    function getFxRate(base, target) {
-      if (!liveUsdRates || !liveUsdRates[base] || !liveUsdRates[target]) return null;
-      return (liveUsdRates[target] / liveUsdRates[base]);
-    }
-
-    function updateTicker() {
-      const sarInr = getFxRate('SAR', 'INR') || 25.21;
-      const aedInr = getFxRate('AED', 'INR') || 25.74;
-      const kwdInr = getFxRate('KWD', 'INR') || 306.33;
-      const barqRate = (sarInr - 0.27).toFixed(2);
-
-      const sEl = document.getElementById('tickerSar');
-      if (sEl) sEl.textContent = '\u20B9' + sarInr.toFixed(2);
-      const bEl = document.getElementById('tickerBarq');
-      if (bEl) bEl.textContent = '\u20B9' + barqRate;
-      const aEl = document.getElementById('tickerAed');
-      if (aEl) aEl.textContent = '\u20B9' + aedInr.toFixed(2);
-      const kEl = document.getElementById('tickerKwd');
-      if (kEl) kEl.textContent = '\u20B9' + kwdInr.toFixed(2);
-    }
-
-    // Gold Price State & Cache Tracking
-    const goldTracker = {
-      source: 'api.gold-api.com',
-      rate: null,
-      fetchedAt: null,
-      freshness: 'INITIALIZING'
-    };
-
-    function applyGoldRateToDOM(delhiRef, timeStr, isFromCache) {
-      const gEl = document.getElementById('tickerDelhiGold');
-      const tEl = document.getElementById('tickerGoldTime');
-      const itemEl = document.getElementById('tickerGoldItem');
-      if (gEl) gEl.textContent = '\u20B9' + delhiRef.toLocaleString('en-IN') + '/g';
-      if (tEl && timeStr) tEl.textContent = '\u2022 Updated ' + timeStr + ' IST';
-      if (itemEl) {
-        itemEl.title = 'Delhi 24K (999 Purity) Market Reference: \u20B9' + delhiRef.toLocaleString('en-IN') + '/g (' + (isFromCache ? 'Cached ' : 'Live ') + timeStr + ' IST)';
-      }
-    }
-
-    async function fetchLiveGold() {
-      const gEl = document.getElementById('tickerDelhiGold');
-      
-      // 1. Check same-day cache first for instant zero-delay display
-      try {
-        const cachedRaw = localStorage.getItem('dch_delhi_gold_cache');
-        if (cachedRaw) {
-          const cached = JSON.parse(cachedRaw);
-          const todayIso = new Date().toISOString().slice(0, 10);
-          if (cached && cached.rate && cached.dateStr === todayIso) {
-            goldTracker.rate = cached.rate;
-            goldTracker.fetchedAt = cached.fetchedAt;
-            goldTracker.source = cached.source || 'Same-day Verified Cache';
-            goldTracker.freshness = 'SAME_DAY_CACHE';
-            applyGoldRateToDOM(cached.rate, cached.timeStr, true);
-          }
-        }
-      } catch (ce) {}
-
-      // 2. Primary Source: Direct XAU in INR from api.gold-api.com (without broken query params)
-      let priceInr = null;
-      let sourceName = 'Gold-API (XAU/INR)';
-      
-      try {
-        const res = await fetch('https://api.gold-api.com/price/XAU/INR', { cache: 'no-store' });
-        if (res.ok) {
-          const data = await res.json();
-          if (data && typeof data.price === 'number' && data.price > 0) {
-            priceInr = data.price;
-          }
-        }
-      } catch (err1) {
-        console.warn('Primary Gold API fetch error:', err1);
-      }
-
-      // 3. Secondary Fallback: XAU in USD converted via live forex INR rate
-      if (!priceInr) {
-        try {
-          const resUsd = await fetch('https://api.gold-api.com/price/XAU', { cache: 'no-store' });
-          if (resUsd.ok) {
-            const dataUsd = await resUsd.json();
-            if (dataUsd && typeof dataUsd.price === 'number' && dataUsd.price > 0) {
-              const usdInr = (liveUsdRates && liveUsdRates.INR) ? liveUsdRates.INR : 94.8;
-              priceInr = dataUsd.price * usdInr;
-              sourceName = 'Gold-API (XAU/USD converted)';
-            }
-          }
-        } catch (err2) {
-          console.warn('Secondary Gold API fetch error:', err2);
-        }
-      }
-
-      // 4. If price obtained, calculate landed Delhi 24K reference benchmark
-      if (priceInr && priceInr > 0) {
-        const spotGram = priceInr / 31.1034768; // 1 troy oz = 31.1034768g
-        // Landed Delhi 24K retail benchmark: 6% customs + 3% GST + 4.9% Delhi bullion spread = factor 1.1453
-        const delhiRef = Math.round(spotGram * 1.1453);
-        
-        let istTimeStr = '';
-        try {
-          istTimeStr = new Date().toLocaleTimeString('en-IN', {
-            timeZone: 'Asia/Kolkata',
-            hour: 'numeric',
-            minute: '2-digit',
-            hour12: true
-          });
-        } catch (te) {
-          istTimeStr = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-        }
-
-        goldTracker.rate = delhiRef;
-        goldTracker.fetchedAt = Date.now();
-        goldTracker.source = sourceName;
-        goldTracker.freshness = 'LIVE';
-
-        applyGoldRateToDOM(delhiRef, istTimeStr, false);
-
-        // Save to same-day cache
-        try {
-          const cachePayload = {
-            rate: delhiRef,
-            timeStr: istTimeStr,
-            fetchedAt: Date.now(),
-            dateStr: new Date().toISOString().slice(0, 10),
-            source: sourceName
-          };
-          localStorage.setItem('dch_delhi_gold_cache', JSON.stringify(cachePayload));
-        } catch (se) {}
-        return;
-      }
-
-      // 5. If all network requests failed, check if we already have a valid rate rendered
-      if (goldTracker.rate) {
-        return; // Keep existing rate and timestamp
-      }
-
-      // 6. Only as last resort if zero data available
-      if (gEl && !gEl.textContent.includes('/g')) {
-        gEl.textContent = 'Temporarily unavailable';
-      }
-    }
-
-    // Auto-init on page load
-    window.addEventListener('DOMContentLoaded', () => {
-      fetchLiveForex();
-      fetchLiveGold();
-      setInterval(fetchLiveForex, 60000);
-      setInterval(fetchLiveGold, 180000); // 3 minutes interval
-    });
-
-    // ================= SITE SEARCH ENGINE =================
-    const siteSearchIndex = [
-      // Saudi Salary Suite
-      { title: "Saudi Salary Calculator", url: "/saudi-salary-calculator/", cat: "Salary", desc: "Gross vs net salary, GOSI contributions, allowances, and EOSB" },
-      { title: "Net Take-Home Salary Calculator", url: "/saudi-salary-calculator/take-home-salary/", cat: "Salary", desc: "Calculate exact net pay after GOSI pension and authorized deductions" },
-      { title: "GOSI Contribution Calculator", url: "/saudi-salary-calculator/gosi-calculator/", cat: "Salary", desc: "Employee 9.75% and employer 11.75% pension, SANED, and hazards" },
-      { title: "End of Service (EOSB) Gratuity", url: "/saudi-salary-calculator/eosb/", cat: "Salary", desc: "Statutory severance gratuity under Saudi Labor Law Article 84" },
-      { title: "Overtime Calculator (Article 107)", url: "/saudi-salary-calculator/overtime/", cat: "Salary", desc: "1.5x regular hourly wage overtime compensation for extra hours" },
-      { title: "Final Settlement Calculator", url: "/saudi-salary-calculator/final-settlement/", cat: "Salary", desc: "Complete exit package with EOSB, leave encashment, and deductions" },
-      { title: "Basic Salary Calculator", url: "/saudi-salary-calculator/basic-salary/", cat: "Salary", desc: "Reverse calculate contractual base salary from total package offers" },
-      { title: "Salary & Allowances Calculator", url: "/saudi-salary-calculator/salary-allowances/", cat: "Salary", desc: "Structure package with 25% housing, 10% transport, food and perks" },
-      { title: "Daily Salary Calculator", url: "/saudi-salary-calculator/daily-salary/", cat: "Salary", desc: "Statutory 30-day month wage deductions and unpaid leave calculation" },
-      { title: "Hourly Salary Calculator", url: "/saudi-salary-calculator/hourly-salary/", cat: "Salary", desc: "Hourly pay for 8-hr days (240 hrs/mo) or 6-hr Ramadan shifts" },
-      { title: "Annual Salary Calculator", url: "/saudi-salary-calculator/annual-salary/", cat: "Salary", desc: "12 months gross wages, performance perks, and medical benefits" },
-      { title: "Salary Increment Calculator", url: "/saudi-salary-calculator/salary-increment/", cat: "Salary", desc: "Annual appraisal percentage raises and fixed SAR wage hikes" },
-      { title: "Resignation Gratuity Calculator", url: "/saudi-salary-calculator/resignation-gratuity/", cat: "Salary", desc: "Article 85 severance entitlement: 0%, 1/3rd, 2/3rds, or 100%" },
-
-      // Remittance Suite
-      { title: "Saudi Remittance Calculator Hub", url: "/saudi-remittance-calculator/", cat: "Remittance", desc: "Compare live bank vs fintech exchange rates from SAR to Asian currencies" },
-      { title: "SAR to INR Remittance Calculator", url: "/saudi-remittance-calculator/sar-to-inr/", cat: "Remittance", desc: "Live Saudi Riyal to Indian Rupee bank & app exchange rates" },
-      { title: "SAR to PKR Remittance Calculator", url: "/saudi-remittance-calculator/sar-to-pkr/", cat: "Remittance", desc: "Live Saudi Riyal to Pakistani Rupee live exchange rates" },
-      { title: "SAR to BDT Remittance Calculator", url: "/saudi-remittance-calculator/sar-to-bdt/", cat: "Remittance", desc: "Live Saudi Riyal to Bangladeshi Taka live exchange rates" },
-      { title: "SAR to PHP Remittance Calculator", url: "/saudi-remittance-calculator/sar-to-php/", cat: "Remittance", desc: "Live Saudi Riyal to Philippine Peso live exchange rates" },
-      { title: "SAR to NPR Remittance Calculator", url: "/saudi-remittance-calculator/sar-to-npr/", cat: "Remittance", desc: "Live Saudi Riyal to Nepalese Rupee live exchange rates" },
-      { title: "SAR to LKR Remittance Calculator", url: "/saudi-remittance-calculator/sar-to-lkr/", cat: "Remittance", desc: "Live Saudi Riyal to Sri Lankan Rupee live exchange rates" },
-      { title: "Live SAR Exchange Rate Tracker", url: "/saudi-remittance-calculator/live-sar-exchange-rate/", cat: "Remittance", desc: "Live mid-market and transfer provider currency comparisons" },
-      { title: "Remittance Fee Calculator", url: "/saudi-remittance-calculator/remittance-fee/", cat: "Remittance", desc: "Calculate transfer fees and total cost of remittance from KSA" },
-
-      // Iqama Suite
-      { title: "Saudi Iqama Calculator Hub", url: "/saudi-iqama-calculator/", cat: "Iqama", desc: "Estimate Jawazat renewal fees, dependent levy, and expat levy" },
-      { title: "Iqama Renewal Cost Calculator", url: "/saudi-iqama-calculator/iqama-cost/", cat: "Iqama", desc: "Full annual Iqama renewal cost breakdown with work permit fee" },
-      { title: "3-Month Iqama Cost Calculator", url: "/saudi-iqama-calculator/3-month-cost/", cat: "Iqama", desc: "Quarterly Iqama renewal under flexible payment scheme" },
-      { title: "6-Month Iqama Cost Calculator", url: "/saudi-iqama-calculator/6-month-cost/", cat: "Iqama", desc: "Half-yearly Iqama renewal under flexible payment scheme" },
-      { title: "9-Month Iqama Cost Calculator", url: "/saudi-iqama-calculator/9-month-cost/", cat: "Iqama", desc: "9-Month Iqama renewal under flexible payment scheme" },
-      { title: "12-Month Iqama Cost Calculator", url: "/saudi-iqama-calculator/12-month-cost/", cat: "Iqama", desc: "Full year residency and dependent fee calculation" },
-
-      // Prayer Times
-      { title: "Saudi Prayer Times Calculator", url: "/prayer-times/", cat: "Prayer", desc: "Real-time GPS astronomical prayer times, Fajr, Dhuhr, Asr, Maghrib, Isha" },
-
-      // Everyday Smart Calculators
-      { title: "Everyday Smart Calculator Hub", url: "/everyday-smart-calculator/", cat: "Everyday", desc: "12 practical daily calculators for personal finance, health, and utilities" },
-      { title: "Age & Date of Birth Calculator", url: "/everyday-smart-calculator/age-calculator/", cat: "Everyday", desc: "Calculate exact age in years, months, days and next birthday" },
-      { title: "Smart Discount & Sale Calculator", url: "/everyday-smart-calculator/discount-calculator/", cat: "Everyday", desc: "Calculate sale prices, percentage discounts, coupons, and savings" },
-      { title: "BMI Calculator", url: "/everyday-smart-calculator/bmi-calculator/", cat: "Everyday", desc: "Body Mass Index estimator with WHO weight classification categories" },
-      { title: "Electricity / Unit Cost Calculator", url: "/everyday-smart-calculator/electricity-cost-calculator/", cat: "Everyday", desc: "Calculate power bills based on kWh power consumption" },
-      { title: "Appliance Electricity Consumption Calculator", url: "/everyday-smart-calculator/appliance-electricity-consumption/", cat: "Everyday", desc: "Calculate power usage and running costs for single or multiple home appliances" },
-      { title: "Tip Calculator", url: "/everyday-smart-calculator/tip-calculator/", cat: "Everyday", desc: "Calculate dining gratuity and split bill evenly across people" },
-      { title: "Percentage Calculator", url: "/everyday-smart-calculator/percentage-calculator/", cat: "Everyday", desc: "Instant percentage increase, decrease, and fractions calculator" },
-      { title: "GPA / Grade Calculator", url: "/everyday-smart-calculator/gpa-calculator/", cat: "Everyday", desc: "Calculate university grade point average on 4.0 and 5.0 scales" },
-      { title: "Time Duration Calculator", url: "/everyday-smart-calculator/time-duration-calculator/", cat: "Everyday", desc: "Calculate elapsed hours, minutes, and days between dates" },
-      { title: "Fuel Cost Calculator", url: "/everyday-smart-calculator/fuel-cost-calculator/", cat: "Everyday", desc: "Trip fuel cost based on distance, vehicle mileage, and petrol rates" },
-      { title: "Split Bill Calculator", url: "/everyday-smart-calculator/split-bill-calculator/", cat: "Everyday", desc: "Evenly distribute dining, accommodation, and shared expenses" },
-      { title: "Unit Converter", url: "/everyday-smart-calculator/unit-converter/", cat: "Everyday", desc: "Convert length, mass, temperature, area, volume, and digital units" },
-
-      // Islamic Finance & Travel
-      { title: "Shariah SIP Calculator", url: "/shariah-sip-calculator/", cat: "Finance", desc: "Halal compound wealth projection compliant with Islamic principles" },
-      { title: "Travel & Booking Calculator", url: "/travel-booking-calculator/", cat: "Travel", desc: "Estimate flight budgets, hotel expenses, and itinerary cost planning" },
-
-      // Support & Trust
-      { title: "Contact Support & Inquiries", url: "/contact/", cat: "Support", desc: "Customer helpdesk and feedback submission form" },
-      { title: "About DailyCalcHubs", url: "/about/", cat: "About", desc: "Mission, methodology, and editorial principles of DailyCalcHubs" }
-    ];
-
-    function openSiteSearch() {
-      const modal = document.getElementById('siteSearchModal');
-      const input = document.getElementById('siteSearchInput');
-      if (modal && input) {
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-        setTimeout(() => {
-          input.focus();
-          input.select();
-          renderSearchResults(input.value.trim());
-        }, 50);
-      }
-    }
-
-    function closeSiteSearch() {
-      const modal = document.getElementById('siteSearchModal');
-      if (modal) {
-        modal.classList.remove('active');
-        document.body.style.overflow = '';
-      }
-    }
-
-    function handleSearchBackdropClick(e) {
-      if (e.target && e.target.id === 'siteSearchModal') {
-        closeSiteSearch();
-      }
-    }
-
-    function handleSearchInput(e) {
-      renderSearchResults(e.target.value.trim());
-    }
-
-    function handleSearchKeyDown(e) {
-      if (e.key === 'Escape') {
-        closeSiteSearch();
-      } else if (e.key === 'Enter') {
-        const firstResult = document.querySelector('.search-result-item');
-        if (firstResult) {
-          firstResult.click();
-        }
-      }
-    }
-
-    function setQuickSearch(term) {
-      const input = document.getElementById('siteSearchInput');
-      if (input) {
-        input.value = term;
-        input.focus();
-        renderSearchResults(term);
-      }
-    }
-
-    function renderSearchResults(query) {
-      const container = document.getElementById('siteSearchResults');
-      if (!container) return;
-
-      if (!query) {
-        container.innerHTML = `
-          <div style="padding: 10px 4px 6px;">
-            <div style="font-size: 11.5px; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;">Popular Searches</div>
-            <div class="search-quick-tags">
-              <button type="button" class="search-quick-chip" onclick="setQuickSearch('salary')"><i class="fas fa-money-bill-wave"></i> Salary</button>
-              <button type="button" class="search-quick-chip" onclick="setQuickSearch('gosi')"><i class="fas fa-shield-alt"></i> GOSI</button>
-              <button type="button" class="search-quick-chip" onclick="setQuickSearch('remittance')"><i class="fas fa-exchange-alt"></i> Remittance</button>
-              <button type="button" class="search-quick-chip" onclick="setQuickSearch('iqama')"><i class="fas fa-id-card"></i> Iqama</button>
-              <button type="button" class="search-quick-chip" onclick="setQuickSearch('prayer')"><i class="fas fa-mosque"></i> Prayer Times</button>
-              <button type="button" class="search-quick-chip" onclick="setQuickSearch('age')"><i class="fas fa-calendar-alt"></i> Age</button>
-              <button type="button" class="search-quick-chip" onclick="setQuickSearch('discount')"><i class="fas fa-percent"></i> Discount</button>
-            </div>
-          </div>
-        `;
-        return;
-      }
-
-      const q = query.toLowerCase();
-      const matched = siteSearchIndex.filter(item => {
-        return item.title.toLowerCase().includes(q) ||
-               item.cat.toLowerCase().includes(q) ||
-               item.desc.toLowerCase().includes(q) ||
-               item.url.toLowerCase().includes(q);
-      });
-
-      if (matched.length === 0) {
-        container.innerHTML = `
-          <div class="search-empty-state">
-            <i class="fas fa-magnifying-glass" style="font-size: 28px; color: #cbd5e1; margin-bottom: 12px; display: block;"></i>
-            <div style="font-weight: 700; color: #334155; margin-bottom: 4px;">No calculators found. Try another search.</div>
-            <div style="font-size: 12.5px; color: #94a3b8;">Try searching for "salary", "gosi", "remittance", "iqama", "prayer", or "age"</div>
-          </div>
-        `;
-        return;
-      }
-
-      container.innerHTML = matched.map((item, idx) => `
-        <a href="${item.url}" class="search-result-item ${idx === 0 ? 'selected' : ''}">
-          <div class="search-result-info">
-            <div class="search-result-title">${escapeSearchHtml(item.title)}</div>
-            <div class="search-result-desc">${escapeSearchHtml(item.desc)}</div>
-          </div>
-          <div style="display:flex; align-items:center;">
-            <span class="search-result-badge">${escapeSearchHtml(item.cat)}</span>
-            <i class="fas fa-chevron-right" style="font-size: 11px; color: #94a3b8; margin-left: 10px;"></i>
-          </div>
-        </a>
-      `).join('');
-    }
-
-    function escapeSearchHtml(str) {
-      return str.replace(/[&<>'"]/g, tag => ({
-        '&': '&amp;',
-        '<': '&lt;',
-        '>': '&gt;',
-        "'": '&#39;',
-        '"': '&quot;'
-      }[tag] || tag));
-    }
-
-    document.addEventListener('keydown', function(e) {
-      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
-        e.preventDefault();
-        openSiteSearch();
-      }
-    });
-  </script>
-
-  <!-- Site Search Modal Overlay -->
-  <div id="siteSearchModal" class="site-search-overlay" onclick="handleSearchBackdropClick(event)" role="dialog" aria-modal="true" aria-label="Search Calculators">
-    <div class="site-search-modal" onclick="event.stopPropagation()">
+  <!-- Site Search Modal Overlay (Arabic Indexed) -->
+  <div class="site-search-overlay" id="siteSearchModal" onclick="handleSearchOverlayClick(event)" role="dialog" aria-modal="true" aria-labelledby="siteSearchTitle">
+    <div class="site-search-modal">
       <div class="site-search-header">
         <i class="fas fa-magnifying-glass site-search-icon"></i>
-        <input type="search" id="siteSearchInput" class="site-search-input" placeholder="Search calculators (e.g. salary, gosi, remittance, age, iqama)..." autocomplete="off" spellcheck="false" oninput="handleSearchInput(event)" onkeydown="handleSearchKeyDown(event)">
-        <button type="button" class="site-search-close-btn" onclick="closeSiteSearch()" title="Close search (Esc)" aria-label="Close search">
+        <input type="text"
+               class="site-search-input"
+               id="siteSearchInput"
+               placeholder="ابحث عن حاسبة (مثال: راتب، نهاية خدمة، إقامة، تحويل، صلاة)..."
+               autocomplete="off"
+               oninput="handleSearchQuery(this.value)">
+        <button class="site-search-close" onclick="closeSiteSearch()" aria-label="إغلاق نافذة البحث">
           <i class="fas fa-xmark"></i>
         </button>
       </div>
-      <div class="site-search-body" id="siteSearchResults">
-        <!-- Injected via JavaScript -->
+
+      <div class="site-search-body">
+        <div class="search-category-tags">
+          <span class="search-tag-chip active" onclick="filterSearchTag('all', this)">الكل</span>
+          <span class="search-tag-chip" onclick="filterSearchTag('salary', this)">الرواتب</span>
+          <span class="search-tag-chip" onclick="filterSearchTag('iqama', this)">الإقامة</span>
+          <span class="search-tag-chip" onclick="filterSearchTag('remittance', this)">التحويل</span>
+          <span class="search-tag-chip" onclick="filterSearchTag('everyday', this)">أدوات يومية</span>
+          <span class="search-tag-chip" onclick="filterSearchTag('travel', this)">السفر</span>
+        </div>
+
+        <div class="site-search-results" id="siteSearchResults">
+          <!-- Populated by JavaScript -->
+        </div>
       </div>
     </div>
   </div>
 
+  <script>
+    const SITE_TOOLS_ARABIC = [
+      { name: "حاسبة مكافأة نهاية الخدمة (EOSB)", cat: "salary", url: "/saudi-salary-calculator/eosb/", desc: "حساب مكافأة نهاية الخدمة وفق المادتين 84 و85 من نظام العمل السعودي", keys: "مكافأة نهاية الخدمة استقالة فصل عقد عمل محدد غير محدد عمالة مستحقات" },
+      { name: "حاسبة تصفية المستحقات النهائية", cat: "salary", url: "/saudi-salary-calculator/final-settlement/", desc: "حساب شامل لمستحقات نهاية الخدمة وبدل الإجازات وكسور الشهر والاستقطاعات", keys: "مستحقات نهائية تصفية إجازات رصيد استقطاعات سلفة مدة خدمة" },
+      { name: "حاسبة الراتب الصافي وحسم التأمينات (GOSI)", cat: "salary", url: "/saudi-salary-calculator/gosi-calculator/", desc: "حساب استقطاع التأمينات الاجتماعية ونظام ساند للمواطنين والمقيمين", keys: "تأمينات اجتماعية ساند راتب تقاعد حسم مشترك صاحب عمل" },
+      { name: "حاسبة الراتب الصافي الشهري", cat: "salary", url: "/saudi-salary-calculator/take-home-salary/", desc: "تقدير صافي الراتب المستلم بعد البدلات والاستقطاعات الرسمية", keys: "صافي الراتب استلام بدلات سكن نقل حسميات" },
+      { name: "حاسبة العمل الإضافي", cat: "salary", url: "/saudi-salary-calculator/overtime/", desc: "حساب ساعات العمل الإضافي وفق المادة 107 (أجر الساعة + 50%)", keys: "عمل إضافي أوفر تايم ساعات إضافية إجازات رسمية عطلات" },
+      { name: "حاسبة الراتب الأساسي والبدلات", cat: "salary", url: "/saudi-salary-calculator/basic-salary/", desc: "توزيع الراتب الإجمالي إلى أساسي وبدل سكن وبدل مواصلات", keys: "راتب أساسي بدل سكن بدل مواصلات نسبة إجمالي" },
+      { name: "حاسبة الراتب اليومي", cat: "salary", url: "/saudi-salary-calculator/daily-salary/", desc: "حساب أجر اليوم وفق معيار قسمة 30 يوماً المعتمد في الموارد البشرية", keys: "راتب يومي أجر يوم قسمة 30 غياب خصم" },
+      { name: "حاسبة أجر الساعة", cat: "salary", url: "/saudi-salary-calculator/hourly-salary/", desc: "حساب أجر الساعة وفق معيار 240 ساعة شهرياً", keys: "أجر ساعة ساعات عمل معيار 240 تأخير" },
+      { name: "حاسبة العلاوة وزيادة الراتب", cat: "salary", url: "/saudi-salary-calculator/salary-increment/", desc: "محاكاة نسبة الزيادة السنوية ومبلغ الزيادة الصافي في الراتب", keys: "علاوة زيادة راتب نسبة سنوية ترقية" },
+      { name: "حاسبة مكافأة الاستقالة", cat: "salary", url: "/saudi-salary-calculator/resignation-gratuity/", desc: "حساب نسب استحقاق المكافأة عند الاستقالة وفق سنوات الخدمة", keys: "استقالة ثلث ثلثين مكافأة سنتين 5 سنوات 10 سنوات" },
+
+      { name: "حاسبة المقابل المالي للمرافقين", cat: "iqama", url: "/saudi-iqama-calculator/dependent-fee/", desc: "حساب رسوم المرافقين والتابعين (400 ريال شهرياً لكل مرافق)", keys: "رسوم مرافقين تابعين عائلة زوجة أبناء 400 ريال تجديد إقامة" },
+      { name: "حاسبة رسوم تجديد الإقامة الشاملة", cat: "iqama", url: "/saudi-iqama-calculator/renewal-fee/", desc: "حساب رسوم الإقامة ورخصة العمل والمرافقين والتأمين الصحي", keys: "تجديد إقامة رسوم رخصة عمل مكتب عمل كفالة" },
+      { name: "حاسبة المقابل المالي لرخصة العمل (مكتب العمل)", cat: "iqama", url: "/saudi-iqama-calculator/maktab-amal/", desc: "حساب رسوم رخصة العمل الشهرية والسنوية حسب نسبة التوطين ونطاقات", keys: "مكتب عمل رخصة عمل نطاقات 800 ريال 9600 عمالة وافدة" },
+      { name: "حاسبة تكلفة الإقامة لمدة 3 أشهر", cat: "iqama", url: "/saudi-iqama-calculator/3-month-cost/", desc: "حساب التجديد الربع سنوي للإقامة ورخصة العمل", keys: "3 أشهر ربع سنوي تجديد إقامة مقسم" },
+      { name: "حاسبة تكلفة الإقامة لمدة 6 أشهر", cat: "iqama", url: "/saudi-iqama-calculator/6-month-cost/", desc: "حساب التجديد النصف سنوي للإقامة والمرافقين", keys: "6 أشهر نصف سنوي تجديد إقامة" },
+      { name: "حاسبة تكلفة الإقامة لمدة 9 أشهر", cat: "iqama", url: "/saudi-iqama-calculator/9-month-cost/", desc: "حساب تكلفة التجديد لمدة 9 أشهر للعمالة والمرافقين", keys: "9 أشهر تجديد إقامة رسوم" },
+      { name: "حاسبة تكلفة الإقامة السنوية (12 شهراً)", cat: "iqama", url: "/saudi-iqama-calculator/12-month-cost/", desc: "التكلفة السنوية الكاملة للإقامة ورسوم المرافقين ورخصة العمل", keys: "12 شهر سنة كاملة تجديد إقامة سنوي" },
+      { name: "حاسبة إصدار رخصة العمل", cat: "iqama", url: "/saudi-iqama-calculator/work-permit/", desc: "حساب رسوم إصدار وتجديد رخص العمل", keys: "رخصة عمل إصدار تجديد سداد مقيم" },
+
+      { name: "حاسبة تحويل الريال السعودي إلى الروبية الهندية (SAR to INR)", cat: "remittance", url: "/saudi-remittance-calculator/sar-to-inr/", desc: "متابعة أسعار الصرف الحية ومقارنة العروض وتكلفة التحويل للهند", keys: "تحويل روبية هندية sar inr سعر صرف بنك تحويل الراجحي stc pay" },
+      { name: "حاسبة تحويل الريال إلى الروبية الباكستانية (SAR to PKR)", cat: "remittance", url: "/saudi-remittance-calculator/sar-to-pkr/", desc: "أسعار التحويل الحية لباكستان ومقارنة منصات التحويل الفوري", keys: "تحويل باكستان sar pkr روبية باكستانية فوري" },
+      { name: "حاسبة تحويل الريال إلى التاكا البنغلاديشية (SAR to BDT)", cat: "remittance", url: "/saudi-remittance-calculator/sar-to-bdt/", desc: "أسعار صرف الريال للتاكا مع احتساب حافز التحويل الحكومي 2.5%", keys: "تحويل بنغلاديش تاكا bdt حافز 2.5%" },
+      { name: "حاسبة تحويل الريال إلى البيزو الفلبيني (SAR to PHP)", cat: "remittance", url: "/saudi-remittance-calculator/sar-to-php/", desc: "حساب التحويلات للفلبين ومقارنة الرسوم وأسعار الصرف", keys: "تحويل فلبين بيزو php ofw مانيلا" },
+      { name: "مقارنة رسوم ومنصات تحويل الأموال", cat: "remittance", url: "/saudi-remittance-calculator/remittance-comparison/", desc: "مقارنة شاملة بين تحويل الراجحي، برق، STC Pay، إنجاز، ويورباي", keys: "مقارنة تحويل رسوم صرافة stc pay urpay barq انجاز الراجحي" },
+      { name: "أسعار صرف العملات الحية مقابل الريال", cat: "remittance", url: "/saudi-remittance-calculator/live-sar-exchange-rate/", desc: "جدول حي لأسعار صرف العملات الأجنبية مقابل الريال السعودي", keys: "أسعار صرف عملات دولار يورو جنيه ريال حي" },
+
+      { name: "حاسبة مواقيت الصلاة (تقويم أم القرى)", cat: "prayer", url: "/prayer-times/", desc: "مواقيت دقيقة لكافة مدن ومحافظات المملكة مع اتجاه القبلة والعد التنازلي للأذان", keys: "صلاة مواقيت أذان فجر ظهر عصر مغرب عشاء أم القرى الرياض جدة مكة قبلة" },
+
+      { name: "حاسبة العمر والتواريخ", cat: "everyday", url: "/everyday-smart-calculator/age-calculator/", desc: "حساب العمر الدقيق بالسنوات والأشهر والأيام والتحويل بين الهجري والميلادي", keys: "عمر حساب عمر هجري ميلادي كم عمري تاريخ ميلاد" },
+      { name: "حاسبة تقسيم الفاتورة والمصاريف المشتركة", cat: "everyday", url: "/everyday-smart-calculator/split-bill-calculator/", desc: "تقسيم فواتير المطاعم والمصاريف بين الأصدقاء مع الضريبة والإكرامية", keys: "تقسيم فاتورة قطة مطعم حساب أصدقاء مشاركة" },
+      { name: "حاسبة تكلفة الوقود والبنزين في السعودية", cat: "everyday", url: "/everyday-smart-calculator/fuel-cost-calculator/", desc: "حساب تكلفة تعبئة البنزين 91 و95 واستهلاك الرحلات في المملكة", keys: "وقود بنزين 91 بنزين 95 لتر تعبئة استهلاك سيارة مسافة" },
+      { name: "حاسبة فاتورة الكهرباء السعودية", cat: "everyday", url: "/everyday-smart-calculator/electricity-cost-calculator/", desc: "حساب فاتورة الكهرباء وفق شرائح التعرفة السكنية لشركة الكهرباء", keys: "كهرباء فاتورة شركة الكهرباء شرائح 18 هللة 30 هللة استهلاك كيلوواط" },
+      { name: "حاسبة الخصم وضريبة القيمة المضافة 15%", cat: "everyday", url: "/everyday-smart-calculator/discount-calculator/", desc: "حساب السعر النهائي بعد الخصومات وإضافة ضريبة 15% (ZATCA)", keys: "خصم تخفيض ضريبة 15 قيمة مضافة فاتورة زاتكا عروض" },
+      { name: "حاسبة مؤشر كتلة الجسم (BMI)", cat: "everyday", url: "/everyday-smart-calculator/bmi-calculator/", desc: "حساب الوزن المثالي ومؤشر كتلة الجسم والتصنيف الصحي", keys: "كتلة جسم bmi وزن مثالي سمنة نحافة طول وزن صحة" },
+      { name: "حاسبة النسبة المئوية", cat: "everyday", url: "/everyday-smart-calculator/percentage-calculator/", desc: "حل كافة مسائل النسب المئوية والزيادة والنقصان بسهولة", keys: "نسبة مئوية احسب نسبة ربح خسارة زيادة" },
+      { name: "محول الوحدات القياسية الشامل", cat: "everyday", url: "/everyday-smart-calculator/unit-converter/", desc: "تحويل الأوزان والأطوال والمساحات ودرجات الحرارة", keys: "تحويل وحدات متر قدم كيلو غرام باوند ميل" },
+
+      { name: "حاسبة الاستثمار الشرعي التراكمي (SIP)", cat: "sip", url: "/shariah-sip-calculator/sip-calculator/", desc: "حساب العوائد التراكمية الشهرية للاستثمارات المتوافقة مع الشريعة", keys: "استثمار شرعي sip عوائد أسهم صناديق حلال ثروة نمو" },
+      { name: "حاسبة الهدف المالي الاستثماري", cat: "sip", url: "/shariah-sip-calculator/sip-goal-calculator/", desc: "تحديد مبلغ الادخار الشهري المطلوب للوصول إلى هدف مالي محدد", keys: "هدف مالي ادخار تقاعد خطة مستقبلية شراء منزل" },
+      { name: "حاسبة الاستثمار بمبلغ مقطوع (Lump Sum)", cat: "sip", url: "/shariah-sip-calculator/lump-sum-calculator/", desc: "حساب نمو مبلغ مستثمر دفعة واحدة على المدى المتوسط والبعيد", keys: "مبلغ مقطوع استثمار سنوي عوائد مركبة أرباح" },
+
+      { name: "حاسبة ميزانية السفر الشاملة", cat: "travel", url: "/travel-booking-calculator/travel-budget/", desc: "تخطيط ميزانية الرحلات السياحية والعائلية بالريال السعودي", keys: "ميزانية سفر رحلة طيران فندق مصاريف سياحة عطلة" },
+      { name: "حاسبة تكلفة تذاكر الطيران", cat: "travel", url: "/travel-booking-calculator/flight-cost/", desc: "حساب إجمالي أسعار التذاكر مع الوزن الزائد ورسوم المقاعد والضرائب", keys: "طيران تذاكر وزن حقائب رسوم مطار حجز رحلة" },
+      { name: "حاسبة تكلفة الفنادق والإقامة", cat: "travel", url: "/travel-booking-calculator/hotel-cost/", desc: "حساب تكلفة الإقامة الفندقية مع ضريبة 15% ورسوم البلدية", keys: "فندق سكن حجز ليالي ضريبة سياحة غرفة" },
+      { name: "حاسبة تقسيم مصاريف السفر الجماعي", cat: "travel", url: "/travel-booking-calculator/expense-split/", desc: "تسوية المصاريف المشتركة في الرحلات الجماعية وتحديد المبالغ المطلوبة", keys: "تقسيم سفر قطة رحلة تسوية مبالغ مشاركة قروب" }
+    ];
+
+    let currentSearchTag = 'all';
+
+    function openSiteSearch() {
+      const modal = document.getElementById('siteSearchModal');
+      if (!modal) return;
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      const input = document.getElementById('siteSearchInput');
+      if (input) {
+        input.value = '';
+        setTimeout(() => input.focus(), 80);
+      }
+      renderSearchResults(SITE_TOOLS_ARABIC);
+    }
+
+    function closeSiteSearch() {
+      const modal = document.getElementById('siteSearchModal');
+      if (!modal) return;
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function handleSearchOverlayClick(e) {
+      if (e.target.id === 'siteSearchModal') {
+        closeSiteSearch();
+      }
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeSiteSearch();
+      if ((e.key === '/' || e.key === 'k' && (e.metaKey || e.ctrlKey)) && !['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) {
+        e.preventDefault();
+        openSiteSearch();
+      }
+    });
+
+    function filterSearchTag(tag, el) {
+      currentSearchTag = tag;
+      document.querySelectorAll('.search-tag-chip').forEach(c => c.classList.remove('active'));
+      if (el) el.classList.add('active');
+      const input = document.getElementById('siteSearchInput');
+      handleSearchQuery(input ? input.value : '');
+    }
+
+    function handleSearchQuery(query) {
+      const q = (query || '').trim().toLowerCase();
+      let filtered = SITE_TOOLS_ARABIC;
+      if (currentSearchTag !== 'all') {
+        filtered = filtered.filter(t => t.cat === currentSearchTag);
+      }
+      if (q) {
+        filtered = filtered.filter(t => 
+          t.name.toLowerCase().includes(q) || 
+          t.desc.toLowerCase().includes(q) || 
+          t.keys.toLowerCase().includes(q)
+        );
+      }
+      renderSearchResults(filtered);
+    }
+
+    function renderSearchResults(items) {
+      const container = document.getElementById('siteSearchResults');
+      if (!container) return;
+      if (items.length === 0) {
+        container.innerHTML = '<div style="padding:28px 16px; text-align:center; color:#64748b; font-size:14px;">لم يتم العثور على حاسبات مطابقة لبحثك. جرب كلمة بحث أخرى.</div>';
+        return;
+      }
+      container.innerHTML = items.map(tool => `
+        <a href="${tool.url}" class="search-item-result">
+          <div class="search-item-icon">
+            <i class="fas fa-calculator"></i>
+          </div>
+          <div class="search-item-text">
+            <div class="search-item-name">${tool.name}</div>
+            <div class="search-item-desc">${tool.desc}</div>
+          </div>
+          <i class="fas fa-chevron-left search-item-arrow"></i>
+        </a>
+      `).join('');
+    }
+  </script>
+
   <!-- Cookie Consent Banner -->
-  <div id="cookieConsentBanner" class="cookie-consent-banner" style="display:none;" role="region" aria-label="Cookie Preferences">
+  <div id="cookieConsentBanner" class="cookie-consent-banner" style="display:none;" role="region" aria-label="تفضيلات ملفات تعريف الارتباط">
     <div class="cookie-consent-container">
       <div class="cookie-consent-text">
-        <i class="fas fa-cookie-bite" style="color:#38bdf8; margin-right:6px;"></i>
-        We use cookies and anonymized analytics to ensure proper functionality and support our free calculation tools per our <a href="/privacy-policy/">Privacy Policy</a>.
+        <i class="fas fa-cookie-bite" style="color:#38bdf8; margin-left:6px;"></i>
+        نستخدم ملفات تعريف الارتباط والتحليلات مجهولة المصدر لضمان عمل الأدوات الحسابية المجانية وفقاً لـ <a href="/privacy-policy/">سياسة الخصوصية</a>.
       </div>
       <div class="cookie-consent-actions">
-        <button type="button" id="cookieConsentEssential" class="cookie-btn cookie-btn-secondary" onclick="handleCookieChoice('essential')">Essential Only</button>
-        <button type="button" id="cookieConsentAccept" class="cookie-btn cookie-btn-primary" onclick="handleCookieChoice('all')">Accept All</button>
+        <button type="button" id="cookieConsentEssential" class="cookie-btn cookie-btn-secondary" onclick="handleCookieChoice('essential')">الضرورية فقط</button>
+        <button type="button" id="cookieConsentAccept" class="cookie-btn cookie-btn-primary" onclick="handleCookieChoice('all')">قبول الكل</button>
       </div>
     </div>
   </div>
@@ -2167,14 +2005,11 @@
       bottom: 0;
       left: 0;
       right: 0;
-      background: rgba(15, 23, 42, 0.96);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      color: #f8fafc;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 12px 20px;
+      background: #0f172a;
+      border-top: 1px solid #1e293b;
+      padding: 14px 20px;
       z-index: 9999;
-      box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.25);
       font-size: 13px;
     }
     .cookie-consent-container {
@@ -2250,6 +2085,8 @@
       initCookieConsent();
     }
   </script>
+
+  <!-- Live Ticker & Theme Engine -->
   <script src="/live-ticker.js" defer></script>
   <script src="/theme.js" defer></script>
 </body>
