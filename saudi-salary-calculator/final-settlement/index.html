@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -551,6 +551,10 @@
               <div class="meta-box-title">Total Company Deductions</div>
               <div class="meta-box-val" id="resTotalDeductions" style="color:#f87171;">-2,500.00 SAR</div>
             </div>
+            <div class="meta-box-inner" id="resDurationBox" style="grid-column: 1 / -1;">
+              <div class="meta-box-title">Service Duration</div>
+              <div class="meta-box-val" id="resServiceDuration" style="word-break: break-word;">--</div>
+            </div>
           </div>
         
           <!-- Calculation Result Actions: Print/PDF & WhatsApp Share -->
@@ -750,10 +754,13 @@
       const errorEl = document.getElementById('dateValidationError');
       const badgeEl = document.getElementById('serviceDurationBadge');
       const textEl = document.getElementById('durationText');
+      const resDurationEl = document.getElementById('resServiceDuration');
 
       if (!joiningVal || !exitVal) {
         if (errorEl) errorEl.style.display = 'none';
         if (badgeEl) badgeEl.style.display = 'none';
+        if (textEl) textEl.textContent = '--';
+        if (resDurationEl) resDurationEl.textContent = '--';
         return;
       }
 
@@ -762,6 +769,8 @@
 
       if (isNaN(start.getTime()) || isNaN(end.getTime())) {
         if (badgeEl) badgeEl.style.display = 'none';
+        if (textEl) textEl.textContent = '--';
+        if (resDurationEl) resDurationEl.textContent = '--';
         if (errorEl) {
           errorEl.innerHTML = '<i class="fas fa-exclamation-circle"></i> Please enter valid calendar dates.';
           errorEl.style.display = 'flex';
@@ -771,6 +780,8 @@
 
       if (end < start) {
         if (badgeEl) badgeEl.style.display = 'none';
+        if (textEl) textEl.textContent = '--';
+        if (resDurationEl) resDurationEl.textContent = '--';
         if (errorEl) {
           errorEl.innerHTML = '<i class="fas fa-exclamation-circle"></i> Exit Date cannot be earlier than Joining Date.';
           errorEl.style.display = 'flex';
@@ -810,9 +821,13 @@
       const yrLabel = years === 1 ? '1 Year' : years + ' Years';
       const moLabel = months === 1 ? '1 Month' : months + ' Months';
       const daLabel = days === 1 ? '1 Day' : days + ' Days';
+      const durationStr = yrLabel + ', ' + moLabel + ', ' + daLabel;
 
       if (textEl) {
-        textEl.textContent = yrLabel + ', ' + moLabel + ', ' + daLabel;
+        textEl.textContent = durationStr;
+      }
+      if (resDurationEl) {
+        resDurationEl.textContent = durationStr;
       }
       if (badgeEl) {
         badgeEl.style.display = 'block';
@@ -883,16 +898,19 @@
     // Run immediately and listen for DOM and navigation events
     checkIncomingUrlParams();
     calculateSettlement();
+    calculateServiceDuration();
     updateEosbHelperLink();
 
     window.addEventListener('DOMContentLoaded', function() {
       checkIncomingUrlParams();
       calculateSettlement();
+      calculateServiceDuration();
       updateEosbHelperLink();
     });
     window.addEventListener('popstate', function() {
       checkIncomingUrlParams();
       calculateSettlement();
+      calculateServiceDuration();
       updateEosbHelperLink();
     });
   </script>  <!-- AdSense Container -->
