@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
@@ -462,15 +462,15 @@
         <div class="result-summary-box" style="margin-top:24px;">
           <div class="result-row-top">
             <div>
-              <div class="result-label">Readiness Status</div>
-              <div class="result-big-val" id="resReadinessTitle" style="font-size:24px; color:#fbbf24;">مطلوب استكمال المتطلبات (3/6 Completed)</div>
+              <div class="result-label">حالة الجاهزية</div>
+              <div class="result-big-val" id="resReadinessTitle" style="font-size:24px; color:#fbbf24;">مطلوب استكمال المتطلبات (3/6)</div>
             </div>
             <div class="result-rate-tag">
-              <i class="fas fa-check-circle" id="resStatusIcon" style="color:#fbbf24;"></i> <span id="resScoreText">50% Complete</span>
+              <i class="fas fa-check-circle" id="resStatusIcon" style="color:#fbbf24;"></i> <span id="resScoreText">مكتمل بنسبة 50%</span>
             </div>
           </div>
           <p id="resStatusDesc" style="font-size:13.5px; color:#e2e8f0; line-height:1.6; margin-top:6px;">
-            Work permit, Jawazat fee, and dependent fees must still be paid before your sponsor can execute the renewal on Absher Business or Muqeem.
+            لا يزال يتعين سداد رسوم تصريح العمل ورسوم الجوازات ورسوم المرافقين قبل أن يتمكن الكفيل من تنفيذ التجديد عبر أبشر أعمال أو مقيم.
           </p>
         
           <!-- Calculation Result Actions: Print/PDF & WhatsApp Share -->
@@ -609,26 +609,26 @@
       const scoreEl = document.getElementById('resScoreText');
       const descEl = document.getElementById('resStatusDesc');
 
-      scoreEl.innerText = pct + '% Complete (' + checkedCount + '/6)';
+      scoreEl.innerText = 'مكتمل بنسبة ' + pct + '% (' + checkedCount + '/6)';
 
       if (checkedCount === 6) {
-        titleEl.innerText = '100% Ready for Electronic Renewal!';
+        titleEl.innerText = '100% جاهز للتجديد الإلكتروني!';
         titleEl.style.color = '#4ade80';
         iconEl.className = 'fas fa-circle-check';
         iconEl.style.color = '#4ade80';
-        descEl.innerText = 'All prerequisites and payments are verified! Your sponsor can now execute the electronic renewal instantly on Muqeem or Absher Business.';
+        descEl.innerText = 'تم التحقق من جميع المتطلبات والمدفوعات! يمكن للكفيل الآن تنفيذ التجديد الإلكتروني فورًا عبر مقيم أو أبشر أعمال.';
       } else if (checkedCount >= 4) {
-        titleEl.innerText = 'Almost Ready (' + checkedCount + '/6 Completed)';
+        titleEl.innerText = 'أوشك على الاكتمال (' + checkedCount + '/6 مكتمل)';
         titleEl.style.color = '#38bdf8';
         iconEl.className = 'fas fa-spinner';
         iconEl.style.color = '#38bdf8';
-        descEl.innerText = 'Ensure the remaining unchecked items are settled to allow the Jawazat system to approve electronic renewal.';
+        descEl.innerText = 'يُرجى استكمال المتطلبات المتبقية للسماح لنظام الجوازات بالموافقة على التجديد الإلكتروني.';
       } else {
-        titleEl.innerText = 'مطلوب استكمال المتطلبات (' + checkedCount + '/6 Completed)';
+        titleEl.innerText = 'مطلوب استكمال المتطلبات (' + checkedCount + '/6)';
         titleEl.style.color = '#fbbf24';
         iconEl.className = 'fas fa-circle-exclamation';
         iconEl.style.color = '#fbbf24';
-        descEl.innerText = 'Critical prerequisites are still pending. Please verify insurance, fines, and government fee payments.';
+        descEl.innerText = 'لا تزال هناك متطلبات أساسية معلقة. يُرجى التحقق من التأمين والغرامات وسداد الرسوم الحكومية.';
       }
     }
 
