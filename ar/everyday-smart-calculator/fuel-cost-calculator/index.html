@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Theme Early Init (Prevent Flash of Unstyled Content) -->
+  <script>
+    (function() {
+      try {
+        var t = localStorage.getItem('dch_theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+
+  <!-- Travelpayouts Partner Script (Flight & Umrah Integration) -->
+  <script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
+  (function () {
+    var script = document.createElement("script");
+    script.async = 1;
+    script.setAttribute("data-cmp-ab", "2");
+    script.src = "https://emrldtp.com/NTczNDc0.js?t=573474";
+    document.head.appendChild(script);
+  })();
+  </script>
+  <title>حاسبة تكلفة استهلاك الوقود للرحلات — حساب لترات البنزين ومشاركة تكلفة السفر 2026</title>
+  <meta name="description" content="احسب تكلفة استهلاك الوقود لرحلتك باللترات مع أسعار بنزين أرامكو 91 و95 والديزل. احسب تكلفة الكيلومتر ومشاركة نفقات السفر بين الركاب بدقة.">
+  <meta name="keywords" content="حاسبة تكلفة الوقود, حساب بنزين السفر, استهلاك الوقود باللتر, أسعار البنزين السعودية, أرامكو 91, أرامكو 95, مشاركة تكاليف السفر, حاسبة الوقود">
+  <link rel="canonical" href="https://dailycalchubs.com/ar/everyday-smart-calculator/fuel-cost-calculator/">
+  <link rel="alternate" hreflang="ar" href="https://dailycalchubs.com/ar/everyday-smart-calculator/fuel-cost-calculator/">
+  <link rel="alternate" hreflang="en" href="https://dailycalchubs.com/everyday-smart-calculator/fuel-cost-calculator/">
+  <link rel="alternate" hreflang="x-default" href="https://dailycalchubs.com/everyday-smart-calculator/fuel-cost-calculator/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="robots" content="index, follow">
+  <meta name='impact-site-verification' value='2e43243f-51bd-4f28-b3e6-af63945bcd2c'>
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://dailycalchubs.com/ar/everyday-smart-calculator/fuel-cost-calculator/">
+  <meta property="og:title" content="حاسبة تكلفة استهلاك الوقود للرحلات — حساب لترات البنزين ومشاركة تكلفة السفر 2026">
+  <meta property="og:description" content="احسب تكلفة استهلاك الوقود لرحلتك باللترات مع أسعار بنزين أرامكو 91 و95 والديزل. احسب تكلفة الكيلومتر ومشاركة نفقات السفر بين الركاب بدقة.">
+  <meta property="og:image" content="https://dailycalchubs.com/og-image.jpg">
+  <meta property="og:image:secure_url" content="https://dailycalchubs.com/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/jpeg">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="حاسبة تكلفة استهلاك الوقود للرحلات — حساب لترات البنزين ومشاركة تكلفة السفر 2026">
+  <meta name="twitter:description" content="احسب تكلفة استهلاك الوقود لرحلتك باللترات مع أسعار بنزين أرامكو 91 و95 والديزل. احسب تكلفة الكيلومتر ومشاركة نفقات السفر بين الركاب بدقة.">
+  <meta name="twitter:image" content="https://dailycalchubs.com/og-image.jpg">
+
+  <!-- DailyCalcHubs Owner Admin Exclusion Mode (Zero GA4 Views / Zero AdSense Impressions) -->
+  <script>
+    (function() {
+      try {
+        var params = new URLSearchParams(window.location.search);
+        var owner = params.get('owner');
+        if (owner === 'waqar_lock') {
+          localStorage.setItem('dch_owner_mode', 'active');
+          params.delete('owner');
+          var newSearch = params.toString();
+          var cleanUrl = window.location.pathname + (newSearch ? '?' + newSearch : '') + window.location.hash;
+          window.history.replaceState({}, document.title, cleanUrl);
+        } else if (owner === 'off') {
+          localStorage.removeItem('dch_owner_mode');
+          params.delete('owner');
+          var newSearch = params.toString();
+          var cleanUrl = window.location.pathname + (newSearch ? '?' + newSearch : '') + window.location.hash;
+          window.history.replaceState({}, document.title, cleanUrl);
+        }
+
+        if (localStorage.getItem('dch_owner_mode') === 'active') {
+          window['ga-disable-G-18Y3LNHDR8'] = true;
+          window.adsbygoogle = window.adsbygoogle || [];
+          window.adsbygoogle.pauseAdRequests = 1;
+
+          window.addEventListener('DOMContentLoaded', function() {
+            if (!document.getElementById('dch-owner-mode-badge')) {
+              var badge = document.createElement('div');
+              badge.id = 'dch-owner-mode-badge';
+              badge.innerHTML = '&#128274; وضع المالك: تم تعطيل التتبع والإعلانات';
+              badge.style.cssText = 'position:fixed;bottom:14px;left:14px;background:rgba(17,24,39,0.92);color:#10b981;font-size:11.5px;font-weight:600;font-family:system-ui,-apple-system,sans-serif;padding:6px 12px;border-radius:20px;border:1px solid rgba(16,185,129,0.35);box-shadow:0 4px 12px rgba(0,0,0,0.25);z-index:99999;pointer-events:none;letter-spacing:0.2px;backdrop-filter:blur(4px);';
+              document.body.appendChild(badge);
+            }
+          });
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6944579701716470" crossorigin="anonymous"></script>
+
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-18Y3LNHDR8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-18Y3LNHDR8');
+  </script>
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://dailycalchubs.com/ar/everyday-smart-calculator/fuel-cost-calculator/#app",
+        "name": "حاسبة تكلفة الوقود للرحلات",
+        "url": "https://dailycalchubs.com/ar/everyday-smart-calculator/fuel-cost-calculator/",
+        "applicationCategory": "TravelApplication",
+        "operatingSystem": "All",
+        "description": "احسب تكلفة وقود الرحلة، واللترات المستهلكة، واقتصاديات المسافة وتوزيع التكلفة بين الركاب.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://dailycalchubs.com/ar/everyday-smart-calculator/fuel-cost-calculator/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "كيف يتم حساب إجمالي استهلاك الوقود لرحلة برية؟",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "باستخدام الوحدات المترية (لتر/100 كم): إجمالي الوقود (باللترات) = (مسافة الرحلة بالكيلومتر ÷ 100) × معدل استهلاك المركبة (لتر/100 كم). إجمالي تكلفة الرحلة = إجمالي الوقود (باللترات) × سعر لتر الوقود."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "ما هي أسعار الوقود المرجعية الحالية في المملكة العربية السعودية؟",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "في المملكة العربية السعودية، تحدد شركة أرامكو السعودية أسعار الوقود المرجعية بنحو 2.18 ريال سعودي للتر لبنزين 91، و2.33 ريال للتر لبنزين 95، و1.79 ريال للتر للديزل. وتتيح الحاسبة إدخال السعر الدقيق لمحطتك."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "كيف يؤثر مكيف الهواء على كفاءة استهلاك الوقود على الطرق السريعة؟",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "يمكن أن يؤدي تشغيل مكيف الهواء، خاصة خلال ذروة درجات الحرارة الصيفية في منطقة الخليج، إلى زيادة استهلاك الوقود بنسبة تتراوح بين 10% إلى 20% بسبب الحمل الميكانيكي على المحرك بواسطة ضاغط التبريد."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <!-- BreadcrumbList Schema JSON-LD -->
+  <script type="application/ld+json">
+{
+    "@context":  "https://schema.org",
+    "@type":  "BreadcrumbList",
+    "itemListElement":  [
+                            {
+                                "@type":  "ListItem",
+                                "position":  1,
+                                "name":  "الرئيسية",
+                                "item":  "https://dailycalchubs.com/ar/"
+                            },
+                            {
+                                "@type":  "ListItem",
+                                "position":  2,
+                                "name":  "حاسبة الحياة اليومية الذكية",
+                                "item":  "https://dailycalchubs.com/ar/everyday-smart-calculator/"
+                            },
+                            {
+                                "@type":  "ListItem",
+                                "position":  3,
+                                "name":  "حاسبة تكلفة الوقود",
+                                "item":  "https://dailycalchubs.com/ar/everyday-smart-calculator/fuel-cost-calculator/"
+                            }
+                        ]
+}
+  </script>
+
+  <style>
+    :root {
+      --font-main: 'Plus Jakarta Sans', 'Noto Sans Arabic', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --bg-light: #f8fafc;
+      --bg-white: #ffffff;
+      --navy-dark: #0f172a;
+      --navy-footer: #081024;
+      --sky-saudi: #0ea5e9;
+      --sky-dark: #0284c7;
+      --sky-light: #f0f9ff;
+      --sky-border: #bae6fd;
+      --text-dark: #1e293b;
+      --text-muted: #64748b;
+      --border-color: #e2e8f0;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
+      --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font-main);
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--sky-dark); text-decoration: none; transition: color 0.2s; }
+    a:hover { color: #0369a1; }
+
+    /* Header */
+    .site-header { background: var(--bg-white); border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 50; }
+    .header-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; height: 70px; display: flex; align-items: center; justify-content: space-between; }
+    .logo-area { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 20px; color: var(--navy-dark); }
+    .logo-icon { width: 36px; height: 36px; background: linear-gradient(135deg, #0ea5e9, #0284c7); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: 18px; }
+    .main-nav { display: flex; align-items: center; gap: 20px; }
+    .nav-link { font-weight: 600; font-size: 13.5px; color: var(--text-muted); padding: 6px 10px; border-radius: 6px; }
+    .nav-link:hover { color: var(--navy-dark); background: #f1f5f9; }
+    .nav-link.active { color: var(--sky-dark); background: var(--sky-light); }
+    @media (max-width: 860px) { .main-nav { display: none; } }
+
+    /* Breadcrumbs */
+    .breadcrumb-bar { background: var(--bg-white); border-bottom: 1px solid var(--border-color); padding: 12px 20px; font-size: 13.5px; color: var(--text-muted); }
+    .breadcrumb-container { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .breadcrumb-sep { font-size: 11px; color: #94a3b8; }
+
+    /* Main Container */
+    .page-main { max-width: 1000px; margin: 30px auto; padding: 0 20px; }
+
+    /* Hero */
+    .hero-section { text-align: center; margin-bottom: 30px; background: linear-gradient(180deg, #f0f9ff 0%, #ffffff 100%); padding: 36px 24px; border-radius: 16px; border: 1px solid var(--sky-border); }
+    .badge-hero { display: inline-flex; align-items: center; gap: 6px; background: white; border: 1px solid var(--sky-border); color: var(--sky-dark); padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 700; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .hero-title { font-size: 32px; font-weight: 800; color: var(--navy-dark); margin-bottom: 10px; }
+    .hero-desc { font-size: 15.5px; color: var(--text-muted); max-width: 720px; margin: 0 auto; }
+
+    /* Calculator Card */
+    .calc-card { background: var(--bg-white); border-radius: 16px; border: 1px solid var(--border-color); box-shadow: var(--shadow-md); padding: 30px; margin-bottom: 40px; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+    @media (max-width: 650px) { .form-grid { grid-template-columns: 1fr; } }
+    .form-group { margin-bottom: 16px; }
+    .form-label { display: block; font-weight: 700; font-size: 13.5px; color: var(--navy-dark); margin-bottom: 8px; }
+
+    .calc-input-wrap, .calc-select { display: flex; align-items: center; border: 1.5px solid var(--border-color); border-radius: 10px; background: #f8fafc; overflow: hidden; transition: all 0.2s; }
+    .calc-input-wrap:focus-within, .calc-select:focus-within { border-color: var(--sky-saudi); background: #ffffff; box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.12); }
+    .calc-input { flex: 1; border: none; outline: none; padding: 12px 14px; font-size: 15px; font-weight: 700; color: var(--navy-dark); font-family: inherit; background: transparent; width: 100%; text-align: right; }
+    .calc-input-addon { padding: 12px 14px; background: #e2e8f0; color: #475569; font-size: 13px; font-weight: 700; border-right: 1px solid var(--border-color); }
+
+    .preset-chips { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+    .preset-chip { background: #f1f5f9; border: 1px solid var(--border-color); color: #334155; font-size: 12px; font-weight: 600; padding: 5px 10px; border-radius: 16px; cursor: pointer; transition: all 0.15s; }
+    .preset-chip:hover { background: var(--sky-light); border-color: var(--sky-dark); color: var(--sky-dark); }
+
+    .checkbox-row { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; padding: 12px 16px; background: #f8fafc; border: 1px solid var(--border-color); border-radius: 10px; }
+    .checkbox-row input { width: 18px; height: 18px; cursor: pointer; accent-color: var(--sky-saudi); }
+    .checkbox-row label { font-size: 13.5px; font-weight: 700; color: var(--navy-dark); cursor: pointer; }
+
+    /* Result Box */
+    .result-summary-box { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; border-radius: 14px; padding: 26px; margin-top: 24px; box-shadow: 0 10px 20px rgba(15, 23, 42, 0.15); }
+    .result-row-top { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.12); padding-bottom: 18px; margin-bottom: 20px; flex-wrap: wrap; gap: 12px; }
+    .result-label { font-size: 12.5px; color: #94a3b8; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+    .result-big-val { font-size: 36px; font-weight: 800; color: #38bdf8; margin-top: 4px; line-height: 1.1; }
+    .fuel-badge { background: rgba(14, 165, 233, 0.2); border: 1px solid rgba(56, 189, 248, 0.4); color: #bae6fd; padding: 8px 16px; border-radius: 8px; font-size: 13.5px; font-weight: 700; }
+
+    .result-meta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; margin-top: 14px; }
+    .meta-box-inner { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 10px; padding: 14px; }
+    .meta-box-title { font-size: 11.5px; color: #94a3b8; margin-bottom: 4px; }
+    .meta-box-val { font-size: 16px; font-weight: 700; color: white; }
+
+    /* SEO Article Section */
+    .seo-article { background: var(--bg-white); border-radius: 16px; border: 1px solid var(--border-color); padding: 36px 30px; margin-bottom: 40px; }
+    .seo-article h2 { font-size: 22px; font-weight: 800; color: var(--navy-dark); margin: 28px 0 14px; }
+    .seo-article h2:first-child { margin-top: 0; }
+    .seo-article h3 { font-size: 17px; font-weight: 700; color: var(--navy-dark); margin: 18px 0 10px; }
+    .seo-article p { font-size: 15px; color: #334155; line-height: 1.75; margin-bottom: 16px; }
+    .seo-article ul { margin-right: 22px; margin-bottom: 18px; font-size: 14.5px; color: #334155; }
+    .seo-article li { margin-bottom: 8px; }
+
+    .formula-box { background: #f0f9ff; border: 1.5px solid var(--sky-border); border-radius: 12px; padding: 18px 22px; margin: 20px 0; font-family: inherit; font-size: 14.5px; font-weight: 700; color: #0369a1; line-height: 1.8; }
+
+    /* Table */
+    .data-table-wrap { overflow-x: auto; margin: 20px 0; border: 1px solid var(--border-color); border-radius: 10px; }
+    .data-table { width: 100%; border-collapse: collapse; text-align: right; font-size: 14px; }
+    .data-table th { background: #f8fafc; padding: 12px 16px; font-weight: 700; color: var(--navy-dark); border-bottom: 1px solid var(--border-color); }
+    .data-table td { padding: 12px 16px; border-bottom: 1px solid #f1f5f9; color: #334155; }
+    .data-table tr:last-child td { border-bottom: none; }
+
+    /* Disclaimer Box */
+    .disclaimer-card { background: #fffbeb; border-right: 4px solid #f59e0b; padding: 18px 22px; border-radius: 10px 0 0 10px; margin: 24px 0; }
+    .disclaimer-card h4 { font-size: 14px; font-weight: 800; color: #92400e; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+    .disclaimer-card p { font-size: 13.5px; color: #78350f; line-height: 1.6; margin-bottom: 0; }
+
+    /* FAQ */
+    .faq-item { border: 1px solid var(--border-color); border-radius: 10px; margin-bottom: 12px; overflow: hidden; background: white; }
+    .faq-question { padding: 16px 20px; font-weight: 700; font-size: 15px; color: var(--navy-dark); cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: #f8fafc; transition: background 0.2s; user-select: none; }
+    .faq-question:hover { background: #f1f5f9; }
+    .faq-answer { padding: 16px 20px; font-size: 14px; color: #475569; line-height: 1.7; display: none; border-top: 1px solid var(--border-color); }
+
+    /* Related Tools */
+    .related-tools-box { margin-bottom: 40px; }
+    .related-tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; margin-top: 16px; }
+    .related-card { background: white; border: 1px solid var(--border-color); border-radius: 12px; padding: 18px; transition: transform 0.2s, box-shadow 0.2s; display: block; }
+    .related-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); border-color: var(--sky-saudi); }
+    .related-card-badge { display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase; padding: 3px 8px; border-radius: 4px; background: var(--sky-light); color: var(--sky-dark); margin-bottom: 8px; }
+    .related-card-name { font-size: 15px; font-weight: 700; color: var(--navy-dark); margin-bottom: 4px; }
+    .related-card-desc { font-size: 12.5px; color: var(--text-muted); line-height: 1.5; }
+
+    /* Footer */
+    .site-footer { background: var(--navy-footer); color: #94a3b8; padding: 48px 20px 24px; font-size: 13.5px; }
+    .footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 36px; padding-bottom: 36px; border-bottom: 1px solid #1e293b; }
+    @media (max-width: 768px) { .footer-container { grid-template-columns: 1fr; } }
+    .footer-col h4 { color: white; font-size: 14.5px; font-weight: 700; margin-bottom: 14px; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 8px; }
+    .footer-col ul li a { color: #94a3b8; font-size: 13px; }
+    .footer-col ul li a:hover { color: #38bdf8; }
+    .footer-bottom { max-width: 1200px; margin: 24px auto 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; font-size: 12.5px; }
+  </style>
+  <link rel="stylesheet" href="/theme.css">
+  <script src="/mobile-nav.js" defer></script>
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="header-container">
+      <a href="/ar/" class="logo-area">
+        <div class="logo-icon"><i class="fas fa-calculator"></i></div>
+        <span>DailyCalcHubs</span>
+      </a>
+      <div class="header-nav-container" id="navContainer">
+        <nav class="main-nav">
+          <a href="/ar/" class="nav-link">الرئيسية</a>
+          <a href="/ar/saudi-remittance-calculator/" class="nav-link">تحويل الأموال</a>
+          <a href="/ar/prayer-times/" class="nav-link">مواقيت الصلاة</a>
+          <a href="/ar/saudi-salary-calculator/" class="nav-link">الرواتب</a>
+          <a href="/ar/saudi-iqama-calculator/" class="nav-link">الإقامة</a>
+          <a href="/ar/everyday-smart-calculator/" class="nav-link active">الحاسبات الذكية</a>
+          <a href="/ar/shariah-sip-calculator/" class="nav-link">الاستثمار الشرعي</a>
+          <a href="/ar/travel-booking-calculator/" class="nav-link">السفر والحجوزات</a>
+        </nav>
+      </div>
+
+      <div class="header-right-actions" style="display: flex; align-items: center; gap: 10px;">
+        <a href="/everyday-smart-calculator/fuel-cost-calculator/" class="lang-switch-btn" lang="en" hreflang="en" title="Switch to English" aria-label="Switch to English">
+          <i class="fas fa-globe"></i> <span>EN</span>
+        </a>
+        <button type="button" class="theme-toggle-btn" id="dchThemeToggle" aria-label="تبديل الوضع الليلي" title="تبديل الوضع الليلي / النهاري">
+          <i class="fas fa-moon"></i>
+        </button>
+        <button class="mobile-menu-toggle" id="mobileMenuBtn" aria-label="تبديل القائمة">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Breadcrumbs -->
+  <div class="breadcrumb-bar">
+    <div class="breadcrumb-container">
+      <a href="/ar/"><i class="fas fa-home"></i> الرئيسية</a>
+      <span class="breadcrumb-sep"><i class="fas fa-chevron-left"></i></span>
+      <a href="/ar/everyday-smart-calculator/">حاسبة الحياة اليومية الذكية</a>
+      <span class="breadcrumb-sep"><i class="fas fa-chevron-left"></i></span>
+      <span style="color: var(--navy-dark); font-weight:600;">حاسبة تكلفة الوقود</span>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="page-main">
+
+    <!-- Hero -->
+    <section class="hero-section">
+      <div class="badge-hero"><i class="fas fa-gas-pump"></i> اقتصاديات السفر والوقود</div>
+      <h1 class="hero-title">حاسبة تكلفة استهلاك الوقود</h1>
+      <p class="hero-desc">
+        احسب كمية استهلاك البنزين باللترات لرحلتك، وقدر إجمالي تكلفة الوقود، ووزّع نفقات الانتقال والسفر بالتساوي بين الركاب.
+      </p>
+    </section>
+
+    <!-- Calculator Card -->
+    <div class="calc-card">
+      <div class="form-grid">
+        <div class="form-group">
+          <label class="form-label" for="tripDistance">مسافة الرحلة (ذهاب فقط)</label>
+          <div class="calc-input-wrap">
+            <input type="number" id="tripDistance" class="calc-input" value="400" min="1" step="5" oninput="calculateFuel()">
+            <span class="calc-input-addon" id="distUnitLabel">كم</span>
+          </div>
+          <div class="preset-chips">
+            <button type="button" class="preset-chip" onclick="setDistPreset(400)">الرياض &larr; الدمام (~400 كم)</button>
+            <button type="button" class="preset-chip" onclick="setDistPreset(420)">جدة &larr; المدينة المنورة (~420 كم)</button>
+            <button type="button" class="preset-chip" onclick="setDistPreset(85)">الرياض &larr; الخرج (~85 كم)</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="efficiencyInput">معدل استهلاك الوقود</label>
+          <div class="calc-input-wrap">
+            <input type="number" id="efficiencyInput" class="calc-input" value="8.5" min="1" max="40" step="0.1" oninput="calculateFuel()">
+            <span class="calc-input-addon">لتر / 100 كم</span>
+          </div>
+          <div class="preset-chips">
+            <button type="button" class="preset-chip" onclick="setEfficiencyPreset(6.0)">سيدان اقتصادية (~6.0)</button>
+            <button type="button" class="preset-chip" onclick="setEfficiencyPreset(8.5)">سيارة عائلية SUV (~8.5)</button>
+            <button type="button" class="preset-chip" onclick="setEfficiencyPreset(13.0)">محرك كبير V8 (~13.0)</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-grid">
+        <div class="form-group">
+          <label class="form-label" for="fuelPrice">سعر لتر الوقود</label>
+          <div class="calc-input-wrap">
+            <input type="number" id="fuelPrice" class="calc-input" value="2.18" min="0.1" max="20" step="0.01" oninput="calculateFuel()">
+            <span class="calc-input-addon" id="priceUnitLabel">ر.س / لتر</span>
+          </div>
+          <div class="preset-chips">
+            <button type="button" class="preset-chip" onclick="setPricePreset(2.18)">بنزين 91 بالسعودية (2.18 ر.س)</button>
+            <button type="button" class="preset-chip" onclick="setPricePreset(2.33)">بنزين 95 بالسعودية (2.33 ر.س)</button>
+            <button type="button" class="preset-chip" onclick="setPricePreset(1.79)">ديزل بالسعودية (1.79 ر.س)</button>
+            <button type="button" class="preset-chip" onclick="setPricePreset(3.00)">إمارات خصوصي 95 (~3.00 درهم)</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="passengerCount">عدد الركاب (مشاركة التكلفة)</label>
+          <div class="calc-input-wrap">
+            <input type="number" id="passengerCount" class="calc-input" value="1" min="1" max="20" step="1" oninput="calculateFuel()">
+            <span class="calc-input-addon">راكب</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Round Trip Checkbox -->
+      <div class="checkbox-row">
+        <input type="checkbox" id="checkRoundTrip" onchange="calculateFuel()">
+        <label for="checkRoundTrip">حساب الرحلة ذهاباً وإياباً (مضاعفة المسافة إلى <span id="roundTripDistText">800 كم</span>)</label>
+      </div>
+
+      <!-- Result Summary Box -->
+      <div class="result-summary-box">
+        <div class="result-row-top">
+          <div>
+            <div class="result-label">إجمالي تكلفة الوقود التقديرية</div>
+            <div class="result-big-val" id="resTotalFuelCost">74.12 ر.س</div>
+          </div>
+          <div>
+            <div class="fuel-badge" id="resFuelBadge">
+              <i class="fas fa-oil-can"></i> <span id="resFuelLiters">34.00 لتر مطلوب</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="result-meta-grid">
+          <div class="meta-box-inner">
+            <div class="meta-box-title">التكلفة لكل راكب</div>
+            <div class="meta-box-val" id="resCostPerPax">74.12 ر.س / راكب</div>
+          </div>
+          <div class="meta-box-inner">
+            <div class="meta-box-title">تكلفة الوقود لكل كيلومتر</div>
+            <div class="meta-box-val" id="resCostPerKm">0.19 ر.س / كم</div>
+          </div>
+          <div class="meta-box-inner">
+            <div class="meta-box-title">إجمالي مسافة السفر</div>
+            <div class="meta-box-val" id="resTotalDist">400.00 كم</div>
+          </div>
+        </div>
+      
+        <!-- Calculation Result Actions: Print/PDF & WhatsApp Share -->
+        <div class="calc-action-bar">
+          <button type="button" class="btn-action-print" onclick="dchPrintSummary(this)" aria-label="طباعة أو حفظ ملخص الحساب بتنسيق PDF">
+            <i class="fas fa-file-pdf"></i>
+            <span>طباعة / حفظ التقرير (PDF)</span>
+          </button>
+          <button type="button" class="btn-action-whatsapp" onclick="dchShareWhatsApp(this)" aria-label="مشاركة ملخص الحساب عبر واتساب">
+            <i class="fab fa-whatsapp"></i>
+            <span>مشاركة عبر واتساب</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEO Content Article -->
+    <article class="seo-article">
+      <h2>كيفية حساب تكلفة استهلاك الوقود للرحلات البرية</h2>
+      <p>
+        سواء كنت تتنقل بانتظام بين مراكز الأعمال والمحافظات في المملكة، أو تستعد لرحلة برية عائلية ممتعة، أو تنظم مشاركة سيارة يومية مع زملائك، فإن التقدير الدقيق لمصروفات البنزين يضمن لك التخطيط المالي المتوازن وتفادي أي تكاليف غير متوقعة. تعتمد معادلة استهلاك الوقود على حساب كمية البنزين باللترات بناءً على معدل كفاءة محرك سيارتك وضربه في سعر اللتر المعلن في محطات الوقود.
+      </p>
+
+      <h3>معادلات حساب الوقود المعتمدة رياضياً</h3>
+      <div class="formula-box">
+        إجمالي المسافة = مسافة الذهاب × (2 إذا كانت الرحلة ذهاباً وإياباً، وإلا 1)<br>
+        حجم الوقود (باللتر) = (إجمالي المسافة بالكيلومتر ÷ 100) × معدل استهلاك السيارة (لتر/100 كم)<br>
+        إجمالي تكلفة الوقود = حجم الوقود (باللتر) × سعر لتر الوقود<br>
+        التكلفة لكل راكب = إجمالي تكلفة الوقود ÷ عدد الركاب المشاركين
+      </div>
+
+      <h3>مثال عملي تطبيقي للحساب</h3>
+      <p>
+        افترض رحلة برية ذهاباً وإياباً بين <strong>الرياض والدمام</strong> (400 كم ذهاباً، أي 800 كم إجمالاً) بسيارة عائلية SUV تستهلك في المتوسط <strong>8.5 لتر/100 كم</strong>، وتزودت بوقود بنزين 91 بسعر <strong>2.18 ر.س للتر</strong>، بمشاركة <strong>4 ركاب</strong>:
+      </p>
+      <ul>
+        <li><strong>الخطوة 1 (إجمالي المسافة):</strong> 400 كم × 2 = <strong>800 كم</strong>.</li>
+        <li><strong>الخطوة 2 (حساب كمية البنزين المطلوبة):</strong> (800 ÷ 100) × 8.5 = <strong>68 لتراً من البنزين</strong>.</li>
+        <li><strong>الخطوة 3 (حساب إجمالي التكلفة المالية):</strong> 68 لتراً × 2.18 ر.س = <strong>148.24 ريال سعودي إجمالي تكلفة الوقود</strong>.</li>
+        <li><strong>الخطوة 4 (توزيع التكلفة على الركاب):</strong> 148.24 ر.س ÷ 4 أشخاص = <strong>37.06 ريال سعودي لكل راكب</strong>.</li>
+      </ul>
+
+      <h2>عوامل تؤثر مباشرة على كفاءة استهلاك البنزين على الطرق السريعة</h2>
+      <div class="data-table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>العامل المتغير</th>
+              <th>التأثير المعتاد على الاستهلاك</th>
+              <th>إرشادات عملية للتوفير</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>السرعة الزائدة &gt; 120 كم/ساعة</strong></td>
+              <td>زيادة من 15% إلى 25% في الاستهلاك</td>
+              <td>استخدم مثبت السرعة عند سرعة 110–120 كم/ساعة على الطرق السريعة</td>
+            </tr>
+            <tr>
+              <td><strong>تشغيل مكيف الهواء صيفاً</strong></td>
+              <td>زيادة من 10% إلى 20% في الاستهلاك</td>
+              <td>قم بتبريد المقصورة المسبق في المواقف المظللة قبل الانطلاق</td>
+            </tr>
+            <tr>
+              <td><strong>انخفاض ضغط الإطارات</strong></td>
+              <td>زيادة من 5% إلى 10% في الاستهلاك</td>
+              <td>افحص ضغط الإطارات شهرياً وهي باردة في محطات الخدمة</td>
+            </tr>
+            <tr>
+              <td><strong>الحمولة الزائدة / سلة السقف</strong></td>
+              <td>زيادة من 8% إلى 15% في الاستهلاك</td>
+              <td>فك سلة الأمتعة العلوية فور انتهاء الحاجة إليها لتقليل مقاومة الهواء</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>أسعار التجزئة الرسمية للوقود المعتمدة من أرامكو السعودية</h2>
+      <p>
+        تخضع أسعار الوقود المحلية في مختلف مناطق المملكة العربية السعودية لإشراف ومراجعة دورية من شركة أرامكو السعودية والجهات التنظيمية المختصة. وتتمثل الأسعار المرجعية لعام 2026 في الآتي:
+      </p>
+      <div class="data-table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>نوع / فئة الوقود</th>
+              <th>السعر الرسمي الحالي</th>
+              <th>فئات السيارات والمركبات المتوافقة</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>بنزين 91 أوكتان</strong></td>
+              <td><strong>2.18 ر.س / لتر</strong></td>
+              <td>سيارات الركاب الاقتصادية، السيدان، وسيارات الكروس أوفر المدمجة</td>
+            </tr>
+            <tr>
+              <td><strong>بنزين 95 أوكتان</strong></td>
+              <td><strong>2.33 ر.س / لتر</strong></td>
+              <td>المحركات عالية الأداء، السيارات الرياضية الفاخرة، وسيارات السيدان الكبيرة</td>
+            </tr>
+            <tr>
+              <td><strong>ديزل</strong></td>
+              <td><strong>1.79 ر.س / لتر</strong></td>
+              <td>الشاحنات التجارية، حافلات النقل الثقيل، ومركبات أساطيل الخدمات</td>
+            </tr>
+            <tr>
+              <td><strong>بنزين 98 أوكتان</strong></td>
+              <td><strong>4.64 ر.س / لتر</strong></td>
+              <td>السيارات الرياضية الفائقة وحلبات السباقات ذات نسب الانضغاط العالية جداً</td>
+            </tr>
+            <tr>
+              <td><strong>الكيروسين</strong></td>
+              <td><strong>1.75 ر.س / لتر</strong></td>
+              <td>التدفئة المنزلية والاستخدامات الصناعية الخفيفة</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p style="font-size:14.5px; color:#334155; line-height:1.7;">
+        هل تخطط لإجازة موسعة أو رحلة برية عبر أرجاء المملكة ودول مجلس التعاون الخليجي؟ ادمج تقديرات تكلفة الوقود مع حجوزات الإقامة وتناول الطعام والأنشطة باستخدام <a href="/ar/travel-booking-calculator/travel-budget/" style="color:var(--sky-dark); font-weight:700;">حاسبة ميزانية السفر الشاملة</a>.
+      </p>
+
+      <!-- Driving Conditions Disclaimer -->
+      <div class="disclaimer-card">
+        <h4><i class="fas fa-route"></i> تنويه بشأن دقة الحساب وأسعار الوقود</h4>
+        <p>
+          تعد معدلات استهلاك الوقود تقديرات رياضية للتخطيط المسبق. قد يختلف الاستهلاك الفعلي تبعاً لأسلوب القيادة، مقاومة الرياح، ضغط الإطارات، تشغيل التكييف، التضاريس الجبلية، والازدحام المروري داخل المدن. تنشر أرامكو السعودية الأسعار الرسمية وتخضع لمراجعة دورية، ويمكنك تعديل سعر اللتر يدوياً ليطابق فاتورة محطتك بدقة.
+        </p>
+      </div>
+
+      <!-- FAQ Section -->
+      <h2>الأسئلة الشائعة</h2>
+      
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">كيف أحسب كمية البنزين المطلوبة لرحلتي؟ <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-answer">اقسم مسافة الرحلة الإجمالية بالكيلومتر على 100، ثم اضرب الناتج في معدل استهلاك سيارتك لكل 100 كم: اللترات = (المسافة ÷ 100) × (معدل الاستهلاك). بعد ذلك، اضرب عدد اللترات في سعر اللتر لتحصل على التكلفة الكلية.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">ما هي أسعار البنزين والديزل الرسمية في السعودية؟ <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-answer">الأسعار الرسمية المعتمدة هي 2.18 ر.س للتر لبنزين 91، و2.33 ر.س للتر لبنزين 95، و1.79 ر.س للتر للديزل. وبما أن الأسعار قابلة للمراجعة من قبل أرامكو السعودية، يمكنك تعديل حقل السعر في الحاسبة ليتناسب مع أي سعر محلي معتمد.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">كيف توفر مشاركة السيارة في نفقات السفر الفردية؟ <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-answer">عند إدخال عدد الركاب في سيارتك، تقسم الحاسبة إجمالي تكلفة البنزين بالتساوي، لتوضح بدقة مساهمة كل راكب، مما يخفف العبء المالي للمسافات الطويلة ويوفر نفقات السفر للجميع.</div>
+      </div>
+    </article>
+
+    <!-- Related Calculators -->
+    <div class="related-tools-box">
+      <h3 style="font-size: 18px; font-weight: 800; color: var(--navy-dark);"><i class="fas fa-calculator" style="color: var(--sky-saudi); margin-left: 8px;"></i> استكشف أدوات حاسبة الحياة اليومية الذكية الأخرى</h3>
+      <div class="related-tools-grid">
+        <a href="/ar/everyday-smart-calculator/electricity-cost-calculator/" class="related-card">
+          <span class="related-card-badge">خدمات منزلية</span>
+          <div class="related-card-name">حاسبة تكلفة الكهرباء</div>
+          <div class="related-card-desc">احسب استهلاك الأجهزة بالكيلوواط/ساعة وفاتورة الكهرباء الشهرية.</div>
+        </a>
+
+        <a href="/ar/travel-booking-calculator/" class="related-card">
+          <span class="related-card-badge">سفر وسياحة</span>
+          <div class="related-card-name">بوابة السفر والحجوزات</div>
+          <div class="related-card-desc">أدوات متكاملة لحساب تكاليف الطيران والفنادق وميزانية الرحلات.</div>
+        </a>
+
+        <a href="/ar/everyday-smart-calculator/" class="related-card">
+          <span class="related-card-badge">البوابة الرئيسية</span>
+          <div class="related-card-name">حاسبة الحياة اليومية الذكية</div>
+          <div class="related-card-desc">وصول سريع لجميع حاسبات الإنتاجية والمنزل والحياة اليومية.</div>
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    function setDistPreset(km) {
+      document.getElementById('tripDistance').value = km;
+      calculateFuel();
+    }
+
+    function setEfficiencyPreset(eff) {
+      document.getElementById('efficiencyInput').value = eff;
+      calculateFuel();
+    }
+
+    function setPricePreset(price) {
+      document.getElementById('fuelPrice').value = price;
+      calculateFuel();
+    }
+
+    function calculateFuel() {
+      const oneWay = parseFloat(document.getElementById('tripDistance').value) || 0;
+      const eff = parseFloat(document.getElementById('efficiencyInput').value) || 0;
+      const price = parseFloat(document.getElementById('fuelPrice').value) || 0;
+      let pax = parseInt(document.getElementById('passengerCount').value) || 1;
+      if (pax < 1) pax = 1;
+
+      const isRound = document.getElementById('checkRoundTrip').checked;
+      const totalDist = isRound ? (oneWay * 2) : oneWay;
+
+      document.getElementById('roundTripDistText').innerText = (oneWay * 2).toFixed(0) + ' كم';
+
+      if (totalDist <= 0 || eff <= 0 || price < 0) {
+        document.getElementById('resTotalFuelCost').innerText = '0.00 ر.س';
+        document.getElementById('resFuelLiters').innerText = '0.00 لتر مطلوب';
+        document.getElementById('resCostPerPax').innerText = '0.00 ر.س / راكب';
+        document.getElementById('resCostPerKm').innerText = '0.00 ر.س / كم';
+        document.getElementById('resTotalDist').innerText = '0.00 كم';
+        return;
+      }
+
+      const liters = (totalDist / 100) * eff;
+      const totalCost = liters * price;
+      const costPerPax = totalCost / pax;
+      const costPerKm = totalCost / totalDist;
+
+      document.getElementById('resTotalFuelCost').innerText = totalCost.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' ر.س';
+      document.getElementById('resFuelLiters').innerText = `${liters.toFixed(2)} لتر مطلوب`;
+      document.getElementById('resCostPerPax').innerText = `${costPerPax.toFixed(2)} ر.س / راكب`;
+      document.getElementById('resCostPerKm').innerText = `${costPerKm.toFixed(2)} ر.س / كم`;
+      document.getElementById('resTotalDist').innerText = `${totalDist.toFixed(2)} كم`;
+    }
+
+    function toggleFaq(el) {
+      const ans = el.nextElementSibling;
+      const icon = el.querySelector('i');
+      if (ans.style.display === 'block') {
+        ans.style.display = 'none';
+        icon.className = 'fas fa-chevron-down';
+      } else {
+        ans.style.display = 'block';
+        icon.className = 'fas fa-chevron-up';
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', calculateFuel);
+  </script>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-col">
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom:14px;">
+          <div class="logo-icon" style="width:30px; height:30px; font-size:14px;"><i class="fas fa-calculator"></i></div>
+          <span style="font-weight:800; font-size:18px; color:white;">DailyCalcHubs</span>
+        </div>
+        <p style="font-size:13.5px; line-height:1.6; color:#94a3b8; margin-bottom:14px;">
+          حاسبات مالية دقيقة، وتحويل العملات، والرواتب، والإقامة، وأدوات الاستخدام اليومي للمواطنين والمقيمين في المملكة العربية السعودية والخليج.
+        </p>
+        <div style="font-size:12.5px; color:#64748b;">
+          الحسابات لأغراض تخطيط ميزانية السفر. قد تختلف كفاءة الوقود الفعلية وفقاً للسرعة والتكييف وظروف القيادة.
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>حاسبة الحياة اليومية الذكية</h4>
+        <ul>
+          <li><a href="/ar/everyday-smart-calculator/">البوابة الذكية للحياة اليومية</a></li>
+          <li><a href="/ar/everyday-smart-calculator/age-calculator/">حاسبة العمر وتاريخ الميلاد</a></li>
+          <li><a href="/ar/everyday-smart-calculator/discount-calculator/">حاسبة الخصومات والعروض</a></li>
+          <li><a href="/ar/everyday-smart-calculator/fuel-cost-calculator/">حاسبة تكلفة استهلاك الوقود</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>حاسبات السعودية المتخصصة</h4>
+        <ul>
+          <li><a href="/ar/saudi-remittance-calculator/">حاسبة تحويل الأموال</a></li>
+          <li><a href="/ar/prayer-times/">مواقيت الصلاة في السعودية</a></li>
+          <li><a href="/ar/saudi-salary-calculator/">حاسبة الرواتب والبدلات</a></li>
+          <li><a href="/ar/saudi-iqama-calculator/">بوابة رسوم الإقامة والتابعين</a></li>
+          <li><a href="/ar/shariah-sip-calculator/">حاسبة الاستثمار الشرعي التراكمي</a></li>
+          <li><a href="/ar/travel-booking-calculator/">بوابة السفر وحجوزات الطيران</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>المعلومات والمصداقية القانونية</h4>
+        <ul>
+          <li><a href="/ar/about/">من نحن</a></li>
+          <li><a href="/ar/contact/">اتصل بنا</a></li>
+          <li><a href="/ar/privacy-policy/">سياسة الخصوصية</a></li>
+          <li><a href="/ar/terms/">شروط الاستخدام</a></li>
+          <li><a href="/ar/disclaimer/">إخلاء المسؤولية</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>&copy; 2026 DailyCalcHubs.com. جميع الحقوق محفوظة.</div>
+      <div>صُمم بدقة فائقة لحساب اقتصاديات السفر ومصاريف الطرق البرية</div>
+    </div>
+  </footer>
+
+  <script src="/theme.js" defer></script>
+  <script src="/share.js" defer></script>
+</body>
+</html>
