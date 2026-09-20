@@ -1768,6 +1768,8 @@
           <a href="/terms/">Terms of Use</a>
           <span>|</span>
           <a href="/contact/">Contact</a>
+          <span>|</span>
+          <a href="#cookie-settings" data-cookie-settings>Cookie Settings</a>
         </div>
 
         <div class="inshallah-phrase">
@@ -2241,11 +2243,15 @@
       } catch (e) {}
     }
     function handleCookieChoice(choice) {
-      try {
-        localStorage.setItem('dch_cookie_consent', choice);
-      } catch (e) {}
-      const banner = document.getElementById('cookieConsentBanner');
-      if (banner) banner.style.display = 'none';
+      if (window.DailyCalcHubsCookies && typeof window.DailyCalcHubsCookies.choose === 'function') {
+        window.DailyCalcHubsCookies.choose(choice);
+      } else {
+        try {
+          localStorage.setItem('dch_cookie_consent', choice);
+        } catch (e) {}
+        const banner = document.getElementById('cookieConsentBanner');
+        if (banner) banner.style.display = 'none';
+      }
     }
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', initCookieConsent);

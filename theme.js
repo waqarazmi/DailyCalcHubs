@@ -137,4 +137,130 @@
     },
     toggle: toggleTheme
   };
+
+  // -------------------------------------------------------------
+  // Sitewide Cookie Consent System
+  // -------------------------------------------------------------
+  var COOKIE_KEY = 'dch_cookie_consent';
+
+  function getConsent() {
+    try {
+      return localStorage.getItem(COOKIE_KEY);
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function setConsent(choice) {
+    try {
+      localStorage.setItem(COOKIE_KEY, choice);
+    } catch (e) {}
+
+    if (choice === 'essential') {
+      window['ga-disable-G-18Y3LNHDR8'] = true;
+    } else if (choice === 'all') {
+      window['ga-disable-G-18Y3LNHDR8'] = false;
+    }
+
+    var banner = document.getElementById('cookieConsentBanner');
+    if (banner) {
+      banner.style.display = 'none';
+    }
+  }
+
+  function renderCookieBanner() {
+    var consent = getConsent();
+    if (consent === 'essential') {
+      window['ga-disable-G-18Y3LNHDR8'] = true;
+    }
+
+    var existingBanner = document.getElementById('cookieConsentBanner');
+    if (existingBanner) {
+      if (!consent) {
+        existingBanner.style.display = 'block';
+      }
+      return;
+    }
+
+    if (!consent) {
+      injectCookieBanner();
+    }
+  }
+
+  function injectCookieBanner() {
+    if (document.getElementById('cookieConsentBanner')) return;
+
+    var isAr = document.documentElement.getAttribute('lang') === 'ar';
+    var banner = document.createElement('div');
+    banner.id = 'cookieConsentBanner';
+    banner.className = 'cookie-consent-banner';
+
+    if (isAr) {
+      banner.innerHTML = [
+        '<div class="cookie-consent-container">',
+        '  <div class="cookie-consent-text">',
+        '    <i class="fas fa-cookie-bite" style="color: #38bdf8; margin-left: 6px;"></i>',
+        '    نستخدم ملفات تعريف الارتباط الأساسية لضمان عمل الأدوات الحسابية وتذكر تفضيلاتك وتطوير خدماتنا وفقاً لـ <a href="/ar/privacy-policy/">سياسة الخصوصية</a>.',
+        '  </div>',
+        '  <div class="cookie-consent-actions">',
+        '    <button type="button" class="cookie-btn cookie-btn-secondary" onclick="window.DailyCalcHubsCookies.choose(\'essential\')">الأساسية فقط</button>',
+        '    <button type="button" class="cookie-btn cookie-btn-primary" onclick="window.DailyCalcHubsCookies.choose(\'all\')">قبول الكل</button>',
+        '  </div>',
+        '</div>'
+      ].join('\n');
+    } else {
+      banner.innerHTML = [
+        '<div class="cookie-consent-container">',
+        '  <div class="cookie-consent-text">',
+        '    <i class="fas fa-cookie-bite" style="color: #38bdf8; margin-right: 6px;"></i>',
+        '    We use essential cookies to ensure calculation tools operate smoothly and remember your preferences per our <a href="/privacy-policy/">Privacy Policy</a>.',
+        '  </div>',
+        '  <div class="cookie-consent-actions">',
+        '    <button type="button" class="cookie-btn cookie-btn-secondary" onclick="window.DailyCalcHubsCookies.choose(\'essential\')">Essential Only</button>',
+        '    <button type="button" class="cookie-btn cookie-btn-primary" onclick="window.DailyCalcHubsCookies.choose(\'all\')">Accept All</button>',
+        '  </div>',
+        '</div>'
+      ].join('\n');
+    }
+
+    document.body.appendChild(banner);
+    banner.style.display = 'block';
+  }
+
+  function openConsentSettings() {
+    var banner = document.getElementById('cookieConsentBanner');
+    if (!banner) {
+      injectCookieBanner();
+    } else {
+      banner.style.display = 'block';
+    }
+  }
+
+  function bindConsentTriggers() {
+    document.addEventListener('click', function (e) {
+      var target = e.target.closest('a[href="#cookie-settings"], [data-cookie-settings], .dch-cookie-settings-trigger');
+      if (target) {
+        e.preventDefault();
+        openConsentSettings();
+      }
+    });
+  }
+
+  // Public Cookie API
+  window.DailyCalcHubsCookies = {
+    get: getConsent,
+    choose: setConsent,
+    open: openConsentSettings
+  };
+  window.openCookieSettings = openConsentSettings;
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function () {
+      renderCookieBanner();
+      bindConsentTriggers();
+    });
+  } else {
+    renderCookieBanner();
+    bindConsentTriggers();
+  }
 })();
