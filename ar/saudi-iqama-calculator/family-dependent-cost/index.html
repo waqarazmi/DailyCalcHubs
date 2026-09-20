@@ -113,11 +113,11 @@
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "Saudi Family Dependent Cost Calculator",
+  "name": "حاسبة تكلفة إقامة المرافقين والتابعين في السعودية",
   "applicationCategory": "BusinessApplication",
   "operatingSystem": "All",
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "SAR" },
-  "description": "Comprehensive planning tool for expatriate family residency surcharges, health insurance, and annual living levies in Saudi Arabia."
+  "description": "خطط لميزانية إقامة عائلتك في السعودية بدقة. احسب رسوم المرافقين والتابعين (400 ر.س/شهر) وفئات التأمين الصحي للأسرة."
 }
   </script>
 
@@ -130,19 +130,19 @@
                             {
                                 "@type":  "ListItem",
                                 "position":  1,
-                                "name":  "Home",
-                                "item":  "https://dailycalchubs.com/"
+                                "name":  "الرئيسية",
+                                "item":  "https://dailycalchubs.com/ar/"
                             },
                             {
                                 "@type":  "ListItem",
                                 "position":  2,
-                                "name":  "Saudi Iqama Calculator",
-                                "item":  "https://dailycalchubs.com/saudi-iqama-calculator/"
+                                "name":  "حاسبة الإقامة السعودية",
+                                "item":  "https://dailycalchubs.com/ar/saudi-iqama-calculator/"
                             },
                             {
                                 "@type":  "ListItem",
                                 "position":  3,
-                                "name":  "Family Dependent Cost",
+                                "name":  "تكلفة إقامة المرافقين",
                                 "item":  "https://dailycalchubs.com/ar/saudi-iqama-calculator/family-dependent-cost/"
                             }
                         ]
@@ -268,14 +268,14 @@
     .content-article h2:first-of-type { margin-top: 0; }
     .content-article h3 { font-size: 18px; font-weight: 700; color: var(--navy-dark); margin: 20px 0 10px; }
     .content-article p { font-size: 15px; line-height: 1.7; color: #334155; margin-bottom: 16px; }
-    .content-article ul, .content-article ol { margin-bottom: 18px; padding-left: 24px; }
+    .content-article ul, .content-article ol { margin-bottom: 18px; padding-right: 24px; padding-left: 0; }
     .content-article li { font-size: 14.5px; line-height: 1.6; color: #334155; margin-bottom: 8px; }
-    .content-callout { background: #fff7ed; border-left: 4px solid var(--orange-saudi); padding: 16px 20px; border-radius: 0 8px 8px 0; margin: 20px 0; font-size: 14.5px; color: #334155; }
+    .content-callout { background: #fff7ed; border-right: 4px solid var(--orange-saudi); border-left: none; padding: 16px 20px; border-radius: 8px 0 0 8px; margin: 20px 0; font-size: 14.5px; color: #334155; }
     .content-callout strong { color: #9a3412; }
 
     .data-table { width: 100%; border-collapse: collapse; margin: 18px 0; font-size: 13.5px; }
-    .data-table th { background: #f1f5f9; padding: 10px 14px; text-align: left; font-weight: 700; color: #1e293b; border: 1px solid var(--border-light); }
-    .data-table td { padding: 10px 14px; border: 1px solid var(--border-light); color: #334155; }
+    .data-table th { background: #f1f5f9; padding: 10px 14px; text-align: right; font-weight: 700; color: #1e293b; border: 1px solid var(--border-light); }
+    .data-table td { padding: 10px 14px; border: 1px solid var(--border-light); color: #334155; text-align: right; }
 
     /* FAQs */
     .faq-item { border: 1px solid var(--border-light); border-radius: 10px; margin-bottom: 12px; background: #ffffff; overflow: hidden; }
@@ -339,7 +339,7 @@
           <div class="logo-icon-box"><i class="fas fa-id-card"></i></div>
           <div class="logo-text-group">
             <div class="logo-title">DailyCalc<span style="color:#ea580c;">Hubs</span></div>
-            <div class="logo-subtitle">Saudi Tools for a Smarter Tomorrow</div>
+            <div class="logo-subtitle">أدوات سعودية لغدٍ أذكى</div>
           </div>
         </a>
         <nav class="header-nav-container" id="navContainer">
@@ -347,21 +347,21 @@
             <li><a href="/ar/">الرئيسية</a></li>
             <li><a href="/ar/saudi-remittance-calculator/">تحويل الأموال</a></li>
             <li><a href="/ar/prayer-times/">مواقيت الصلاة</a></li>
-            <li><a href="/ar/saudi-salary-calculator/">Salary</a></li>
-            <li><a href="/ar/saudi-iqama-calculator/" class="active">Iqama</a></li>
-            <li><a href="/ar/everyday-smart-calculator/">Everyday</a></li>
+            <li><a href="/ar/saudi-salary-calculator/">الرواتب</a></li>
+            <li><a href="/ar/saudi-iqama-calculator/" class="active">الإقامة</a></li>
+            <li><a href="/ar/everyday-smart-calculator/">الحاسبة اليومية</a></li>
           </ul>
         </nav>
         <div class="header-right-actions" style="display:flex;align-items:center;gap:12px;">
           <a href="/saudi-iqama-calculator/family-dependent-cost/" class="lang-switch-btn" lang="en" hreflang="en" title="Switch to English" aria-label="Switch to English"><i class="fas fa-globe"></i> <span>EN</span></a>
-          <button type="button" class="theme-toggle-btn" id="dchThemeToggle" aria-label="Toggle dark mode" title="Toggle Dark/Light Mode">
+          <button type="button" class="theme-toggle-btn" id="dchThemeToggle" aria-label="تبديل المظهر الداكن/الفاتح" title="Toggle Dark/Light Mode">
             <i class="fas fa-moon"></i>
           </button>
           <button class="mobile-menu-toggle" id="mobileMenuBtn" aria-label="Toggle navigation">
             <i class="fas fa-bars"></i>
           </button>
           <div class="saudi-badge-header">
-            <i class="fas fa-passport"></i> Saudi Residency 2026
+            <i class="fas fa-passport"></i> الإقامة السعودية 2026
           </div>
         </div>
       </div>
@@ -370,7 +370,7 @@
   <div class="breadcrumbs-bar">
     <div class="container">
       <a href="/ar/">الرئيسية</a> <span>/</span>
-      <a href="/ar/saudi-iqama-calculator/">Saudi Iqama Calculator</a> <span>/</span>
+      <a href="/ar/saudi-iqama-calculator/">حاسبة الإقامة السعودية</a> <span>/</span>
       <span class="current-crumb">تكلفة إقامة المرافقين</span>
     </div>
   </div>
@@ -378,10 +378,10 @@
   <!-- Hero -->
   <section class="tool-hero">
     <div class="container">
-      <div class="tool-pill"><i class="fas fa-house-chimney-user"></i> Expat Family Living Budget</div>
+      <div class="tool-pill"><i class="fas fa-house-chimney-user"></i> ميزانية إقامة الأسرة الوافدة</div>
       <h1 class="tool-title">حاسبة تكلفة إقامة المرافقين والتابعين في السعودية</h1>
       <p class="tool-lead">
-        Accurately plan your family's residency budget in Saudi Arabia. Calculate statutory dependent surcharges (400 SAR/month per family member) combined with مجلس الضمان الصحي (CHI) medical coverage tiers.
+        خطط لميزانية إقامة أسرتك في المملكة العربية السعودية بدقة متناهية. احسب المقابل المالي النظامي للمرافقين (400 ر.س شهرياً لكل فرد من أفراد الأسرة) مع تقديرات فئات التغطية الطبية المعتمدة من مجلس الضمان الصحي (CHI).
       </p>
     </div>
   </section>
@@ -392,24 +392,24 @@
       <!-- Calculator Column -->
       <section class="calc-card">
         <div class="calc-card-header">
-          <div class="calc-card-title"><i class="fas fa-people-roof" style="color:#ea580c;"></i> Family Budget Simulation</div>
-          <div class="live-status-pill"><span class="live-pulse"></span> Family Planner</div>
+          <div class="calc-card-title"><i class="fas fa-people-roof" style="color:#ea580c;"></i> محاكاة ميزانية إقامة الأسرة</div>
+          <div class="live-status-pill"><span class="live-pulse"></span> تخطيط الأسرة</div>
         </div>
 
         <form id="familyForm" onsubmit="event.preventDefault(); calculateFamily();">
           <div style="display:grid; grid-template-columns: 1fr 1fr; gap:16px;">
             <div class="form-group">
-              <label class="form-label" for="includeSpouse">Spouse Status</label>
+              <label class="form-label" for="includeSpouse">حالة الزوجة</label>
               <div class="input-with-addons">
                 <select id="includeSpouse" class="select-input-addon" onchange="calculateFamily()">
-                  <option value="1" selected>1 Accompanying Spouse</option>
-                  <option value="0">بدون زوجة (Children Only)</option>
+                  <option value="1" selected>زوجة واحدة مرافقة</option>
+                  <option value="0">بدون زوجة (أبناء فقط)</option>
                 </select>
               </div>
             </div>
 
             <div class="form-group">
-              <label class="form-label" for="childCount">Number of Children</label>
+              <label class="form-label" for="childCount">عدد الأبناء</label>
               <div class="input-with-addons">
                 <span class="input-addon-badge"><i class="fas fa-child"></i></span>
                 <input type="number" id="childCount" class="calc-input" value="2" min="0" max="10" step="1" oninput="calculateFamily()">
@@ -419,25 +419,25 @@
 
           <div style="display:grid; grid-template-columns: 1fr 1fr; gap:16px;">
             <div class="form-group">
-              <label class="form-label" for="planMonths">Budgeting Period</label>
+              <label class="form-label" for="planMonths">فترة التخطيط والميزانية</label>
               <div class="input-with-addons">
                 <select id="planMonths" class="select-input-addon" onchange="calculateFamily()">
-                  <option value="3">3 Months (Quarterly)</option>
-                  <option value="6">6 Months (Biannual)</option>
+                  <option value="3">3 أشهر (ربع سنوي)</option>
+                  <option value="6">6 أشهر (نصف سنوي)</option>
                   <option value="12" selected>12 شهراً (سنة كاملة)</option>
-                  <option value="24">24 Months (2 Full Years)</option>
+                  <option value="24">24 شهراً (سنتان كاملتان)</option>
                 </select>
               </div>
             </div>
 
             <div class="form-group">
-              <label class="form-label" for="insuranceTier">Health Insurance Plan Tier</label>
+              <label class="form-label" for="insuranceTier">فئة وثيقة التأمين الصحي</label>
               <div class="input-with-addons">
                 <select id="insuranceTier" class="select-input-addon" onchange="calculateFamily()">
-                  <option value="600" selected>Class C / Standard (Est. 600 SAR / person / yr)</option>
-                  <option value="1200">Class B / Silver (Est. 1,200 SAR / person / yr)</option>
-                  <option value="2200">Class A / Gold (Est. 2,200 SAR / person / yr)</option>
-                  <option value="0">Covered 100% by Employer Benefit</option>
+                  <option value="600" selected>الفئة ج / الأساسية (تقدير 600 ر.س / فرد / سنة)</option>
+                  <option value="1200">الفئة ب / الفضية (تقدير 1,200 ر.س / فرد / سنة)</option>
+                  <option value="2200">الفئة أ / الذهبية (تقدير 2,200 ر.س / فرد / سنة)</option>
+                  <option value="0">مغطى بنسبة 100% من جهة العمل</option>
                 </select>
               </div>
             </div>
@@ -448,29 +448,29 @@
         <div class="result-summary-box">
           <div class="result-row-top">
             <div>
-              <div class="result-label">Combined Family Residency Budget</div>
+              <div class="result-label">إجمالي ميزانية إقامة الأسرة</div>
               <div class="result-big-val" id="resFamilyTotal">16,200.00 SAR</div>
             </div>
             <div class="result-rate-tag">
-              <i class="fas fa-users"></i> <span id="resFamilyHeadcount">3 Dependents (12 Mo)</span>
+              <i class="fas fa-users"></i> <span id="resFamilyHeadcount">3 مرافقين (12 شهراً)</span>
             </div>
           </div>
 
           <div class="result-meta-grid">
             <div class="meta-box-inner">
-              <div class="meta-box-title">Monthly Average Surcharge</div>
-              <div class="meta-box-val" id="resMonthlyFamilyBurden">1,200.00 SAR / month</div>
+              <div class="meta-box-title">متوسط العبء الشهري للمرافقين</div>
+              <div class="meta-box-val" id="resMonthlyFamilyBurden">1,200.00 SAR / شهر</div>
             </div>
             <div class="meta-box-inner">
-              <div class="meta-box-title">Government Dependent Levy</div>
+              <div class="meta-box-title">المقابل المالي الحكومي للمرافقين</div>
               <div class="meta-box-val" id="resGovLevyTotal">14,400.00 SAR</div>
             </div>
             <div class="meta-box-inner">
-              <div class="meta-box-title">Family Healthcare Insurance</div>
+              <div class="meta-box-title">تأمين الرعاية الصحية للأسرة</div>
               <div class="meta-box-val" id="resFamilyInsurance">1,800.00 SAR</div>
             </div>
             <div class="meta-box-inner">
-              <div class="meta-box-title">Quarterly Installment (3 Mo)</div>
+              <div class="meta-box-title">القسط الربع سنوي (3 أشهر)</div>
               <div class="meta-box-val" id="resFamilyQuarterly" style="color:#38bdf8;">3,600.00 SAR</div>
             </div>
           </div>
@@ -493,16 +493,16 @@
       <aside>
         <div class="sidebar-info-card">
           <div class="sidebar-card-heading">
-            <i class="fas fa-wallet"></i> Family Financial Tips (KSA)
+            <i class="fas fa-wallet"></i> نصائح مالية لأسرة المقيم في السعودية
           </div>
           <ul class="rules-list">
             <li class="rules-item">
               <i class="fas fa-check-circle rules-icon"></i>
-              <div><strong>Quarterly Cash Flow:</strong> If budgeting 14,400 SAR annual dependent levy is heavy, request your employer to synchronize your Iqama to 3-month renewals.</div>
+              <div><strong>السيولة ربع السنوية:</strong> إذا كان سداد 14,400 ر.س رسوماً سنوية للمرافقين يشكل عبئاً على ميزانيتك، يمكنك التنسيق مع جهة عملك لتجديد الإقامة على فترات ربع سنوية (3 أشهر).</div>
             </li>
             <li class="rules-item">
               <i class="fas fa-check-circle rules-icon"></i>
-              <div><strong>Company Insurance Perks:</strong> When negotiating employment offers, ensure employer health insurance covers your spouse and children to eliminate out-of-pocket medical policies.</div>
+              <div><strong>مزايا التأمين العائلي:</strong> عند التفاوض على العروض الوظيفية، احرص على أن يشمل التأمين الطبي المقدم من جهة العمل الزوجة والأبناء لتوفير تكلفة وثائق التأمين الخاصة.</div>
             </li>
           </ul>
         </div>
@@ -511,118 +511,118 @@
 
     <!-- SEO Content Article -->
     <article class="content-article">
-      <h2>Budgeting for a Family in Saudi Arabia</h2>
+      <h2>التخطيط المالي لميزانية الأسرة في السعودية</h2>
       <p>
-        Bringing your family on an expatriate residence visa in Saudi Arabia requires structured budgeting across housing, schooling, healthcare, and statutory state levies. This simulator is designed as a <strong>comprehensive household living and relocation budget planner</strong>, combining the mandatory government dependent levy with indicative private health insurance tiers to project total monthly and annual financial commitments.
+        يتطلب استقدام الأسرة بتأشيرة إقامة في المملكة العربية السعودية تخطيطاً مالياً مدروساً يشمل السكن والتعليم والرعاية الصحية والرسوم الحكومية المقررة. صُممت هذه الأداة لتكون <strong>مخططاً شاملاً لميزانية المعيشة والاستقرار العائلي</strong>، يجمع بين المقابل المالي الحكومي الإلزامي للمرافقين وتقديرات فئات التأمين الطبي التجاري لتوقع الالتزامات المالية الشهرية والسنوية بدقة.
       </p>
 
-      <h2>Statutory Levies vs. Private Insurance Estimates</h2>
+      <h2>المقابل المالي الحكومي مقابل تقديرات التأمين الخاص</h2>
       <div class="content-callout">
-        <p style="margin-bottom:8px;"><strong>Important Regulatory Distinction:</strong></p>
-        <ul style="margin:0; padding-left:20px; line-height:1.7;">
-          <li><strong>Government Dependent Levy:</strong> A mandatory state surcharge fixed by royal decree at <strong>400 SAR per month per dependent</strong> (4,800 SAR per year), payable directly to the government through SADAD (Alien Control Code 092).</li>
-          <li><strong>Private Healthcare Insurance:</strong> Under مجلس الضمان الصحي (CHI) regulations, every dependent must have active health coverage. The insurance values shown in this tool (600, 1,200, and 2,200 SAR/year per individual) are <strong>indicative private-market estimates</strong> based on standard commercial insurance tiers, not government-mandated fees. Actual premiums vary by insurer, age, and medical history.</li>
+        <p style="margin-bottom:8px;"><strong>توضيح تنظيمي هام:</strong></p>
+        <ul style="margin:0; padding-right:20px; padding-left:0; line-height:1.7;">
+          <li><strong>المقابل المالي الحكومي للمرافقين:</strong> رسم إلزامي محدد بأمر ملكي قدره <strong>400 ر.س شهرياً لكل مرافق</strong> (4,800 ر.س سنوياً)، يُسدد مباشرة للحكومة عبر نظام سداد (المدفوعات الحكومية كود 092).</li>
+          <li><strong>التأمين الصحي الخاص:</strong> وفقاً للوائح مجلس الضمان الصحي (CHI)، يجب توفير تغطية تأمينية سارية لكل تابع. والقيم المعروضة في هذه الحاسبة (600، 1,200، 2,200 ر.س/سنة للفرد) هي <strong>تقديرات تقريبية للسوق التجاري</strong> وليست رسوماً حكومية ملزمة، وتختلف الأقساط الفعلية بحسب شركة التأمين والعمر والسجل الصحي.</li>
         </ul>
       </div>
 
-      <h2>How to Use This Household Budget Simulator</h2>
+      <h2>كيفية استخدام محاكي ميزانية الأسرة</h2>
       <div class="content-callout">
-        <ol style="margin:0; padding-left:20px; line-height:1.7;">
-          <li><strong>Specify Accompanying Family Members:</strong> Select spouse sponsorship status and input the total number of accompanying children.</li>
-          <li><strong>Choose Planning Horizon &amp; Healthcare Tier:</strong> Select your budgeting period (3, 6, 12, or 24 months) and choose an indicative private health insurance plan tier (Class C/Standard, Class B/Silver, Class A/Gold, or 0 SAR if 100% employer-sponsored).</li>
-          <li><strong>Review Itemized Household Budget:</strong> Examine the itemized outputs separating the statutory government levy from private medical insurance estimates, including average monthly and quarterly run-rates.</li>
+        <ol style="margin:0; padding-right:20px; padding-left:0; line-height:1.7;">
+          <li><strong>حدد أفراد الأسرة المرافقين:</strong> اختر حالة الزوجة وأدخل إجمالي عدد الأبناء المقيمين.</li>
+          <li><strong>اختر أفق التخطيط وفئة التأمين الصحي:</strong> حدد المدة الزمنية (3، 6، 12، أو 24 شهراً) واختر فئة التأمين الطبي التقديرية (الفئة ج، الفئة ب، الفئة أ، أو 0 ر.س في حال تغطيته بالكامل من جهة العمل).</li>
+          <li><strong>راجع تفصيل ميزانية الأسرة:</strong> اطلع على التقارير التفصيلية التي تفصل الرسوم الحكومية عن تقديرات التأمين الصحي، وتوضح متوسط العبء الشهري والأقساط ربع السنوية.</li>
         </ol>
       </div>
 
-      <h2>Illustrative Annual Household Worked Example</h2>
+      <h2>مثال تطبيقي توضيحي لاحتساب ميزانية الأسرة السنوية</h2>
       <p>
-        <em>Note: The following scenario is an illustrative example demonstrating household financial planning. Health insurance figures represent indicative private-market estimates and are not official government fees.</em>
+        <em>ملاحظة: السيناريو التالي هو مثال توضيحي يبيّن التخطيط المالي لميزانية الأسرة. وتمثل أرقام التأمين الصحي تقديرات تقريبية للسوق التجاري وليست رسوماً حكومية رسمية.</em>
       </p>
       <p>
-        Consider an expatriate residing in Saudi Arabia sponsoring a spouse and 1 child (2 dependents total) over a 12-month period with Class B / Silver health insurance (indicative 1,200 SAR/year per person):
+        لنفترض مقيماً في السعودية يعول زوجة وطفلاً واحداً (مرافقان اثنان) لمدة 12 شهراً مع اختيار تأمين الفئة ب / الفضية (تقدير 1,200 ر.س/سنة للفرد):
       </p>
       <table class="data-table">
         <thead>
           <tr>
-            <th>Budget Component</th>
-            <th>Calculation Basis</th>
-            <th>Type of Charge</th>
-            <th>Annual Total (SAR)</th>
+            <th>بند الميزانية</th>
+            <th>أساس الاحتساب</th>
+            <th>نوع الرسم / الالتزام</th>
+            <th>الإجمالي السنوي (ر.س)</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td><strong>Statutory Dependent Levy</strong></td>
-            <td>400 SAR / mo &times; 2 dependents &times; 12 mo</td>
-            <td>Mandatory Government Fee (SADAD 092)</td>
-            <td>9,600.00 SAR</td>
+            <td><strong>المقابل المالي النظامي للمرافقين</strong></td>
+            <td>400 ر.س / شهر &times; 2 مرافقين &times; 12 شهراً</td>
+            <td>رسم حكومي إلزامي (سداد كود 092)</td>
+            <td>9,600.00 ر.س</td>
           </tr>
           <tr>
-            <td><strong>Family Health Insurance</strong></td>
-            <td>1,200 SAR / person &times; 2 dependents</td>
-            <td>Indicative Private-Market Estimate</td>
-            <td>2,400.00 SAR</td>
+            <td><strong>التأمين الصحي للأسرة</strong></td>
+            <td>1,200 ر.س / فرد &times; 2 مرافقين</td>
+            <td>تقدير تأميني خاص تقريبي</td>
+            <td>2,400.00 ر.س</td>
           </tr>
           <tr style="background:#f0fdf4; font-weight:800;">
-            <td colspan="3" style="color:#15803d;"><strong>Total Estimated Annual Household Outflow</strong></td>
-            <td style="color:#15803d;"><strong>12,000.00 SAR</strong></td>
+            <td colspan="3" style="color:#15803d;"><strong>إجمالي التكلفة السنوية التقديرية للأسرة</strong></td>
+            <td style="color:#15803d;"><strong>12,000.00 ر.س</strong></td>
           </tr>
           <tr style="background:#f8fafc; font-weight:600;">
-            <td colspan="3" style="color:#475569;">Average Monthly Household Burden</td>
-            <td style="color:#475569;">1,000.00 SAR / month</td>
+            <td colspan="3" style="color:#475569;">متوسط العبء المالي الشهري للأسرة</td>
+            <td style="color:#475569;">1,000.00 ر.س / شهر</td>
           </tr>
         </tbody>
       </table>
 
       <p>
-        <strong>Official Government Levy &amp; Travel Rules:</strong> To compute exact standalone government dependent fees and calculate single or multiple exit-reentry visa prepayments, visit our dedicated <a href="/ar/saudi-iqama-calculator/dependent-fee/" style="color:#ea580c; font-weight:700; text-decoration:underline;">Saudi Dependent Fee Calculator</a>.
+        <strong>الرسوم الحكومية الرسمية وقواعد السفر:</strong> لحساب الرسوم الحكومية المستقلة للمرافقين بدقة وحساب مدفوعات تأشيرة الخروج والعودة المفردة أو المتعددة مسبقاً، تفضل بزيارة <a href="/ar/saudi-iqama-calculator/dependent-fee/" style="color:#ea580c; font-weight:700; text-decoration:underline;">حاسبة رسوم المرافقين والتابعين في السعودية</a>.
       </p>
 
       <h2>الأسئلة الشائعة</h2>
       <div class="faq-item">
         <div class="faq-question" onclick="toggleFaq(this)">
-          <span>Do children attending school in Saudi Arabia receive any discount on dependent fees?</span>
+          <span>هل يحصل الأبناء الملتحقون بالمدارس في السعودية على أي خصم في رسوم المرافقين؟</span>
           <i class="fas fa-chevron-down"></i>
         </div>
         <div class="faq-answer" style="display:none;">
-          No. The statutory dependent fee is uniformly 400 SAR per month for every non-Saudi dependent regardless of age or student status.
+          لا، المقابل المالي النظامي للمرافقين موحد بواقع 400 ر.س شهرياً عن كل مقيم تابع غير سعودي بغض النظر عن العمر أو الحالة الدراسية.
         </div>
       </div>
       <div class="faq-item">
         <div class="faq-question" onclick="toggleFaq(this)">
-          <span>Are health insurance premiums included in the official Jawazat SADAD payment?</span>
+          <span>هل أقساط التأمين الصحي مشمولة ضمن سداد رسوم الجوازات الحكومية عبر سداد؟</span>
           <i class="fas fa-chevron-down"></i>
         </div>
         <div class="faq-answer" style="display:none;">
-          No. The statutory dependent fee (400 SAR/month) is paid directly to the government through SADAD under Ministry of Interior / Alien Control Code 092. Health insurance is purchased separately through private insurance companies licensed by the Insurance Authority and linked electronically to the مجلس الضمان الصحي (CHI) database.
+          لا، يُدفع المقابل المالي للمرافقين (400 ر.س شهرياً) مباشرة إلى الحسابات الحكومية عبر نظام سداد التابع لوزارة الداخلية تحت كود 092. بينما يُشترى التأمين الصحي بشكل مستقل من شركات التأمين الخاصة المرخصة من هيئة التأمين والمرتبطة إلكترونياً بقاعدة بيانات مجلس الضمان الصحي (CHI).
         </div>
       </div>
       <div class="faq-item">
         <div class="faq-question" onclick="toggleFaq(this)">
-          <span>Can dependent fees be budgeted and paid in quarterly installments?</span>
+          <span>هل يمكن تقسيم سداد رسوم المرافقين على دفعات ربع سنوية؟</span>
           <i class="fas fa-chevron-down"></i>
         </div>
         <div class="faq-answer" style="display:none;">
-          Yes. If the sponsoring employee's establishment renews residency on a flexible quarterly schedule (3, 6, 9, or 12 months) under Saudi Cabinet Decision No. 515, the dependent levy is paid proportionally for that specific duration (e.g., 1,200 SAR per dependent for 3 months) rather than requiring a full year's payment upfront.
+          نعم، إذا كانت منشأة الموظف تجدد الإقامة بفترات مرنة (3، 6، 9، 12 شهراً) وفق قرار مجلس الوزراء رقم 515، يتم سداد المقابل المالي للمرافقين نسبياً لتلك المدة فقط (مثال: 1,200 ر.س لكل مرافق عن 3 أشهر) دون الحاجة لدفع تكلفة سنة كاملة مقدماً.
         </div>
       </div>
     </article>
 
-        <div class="related-tools-box">
-      <div class="related-title"><i class="fas fa-grid-2" style="color:#ea580c; margin-right:8px;"></i>Explore Saudi Iqama &amp; Residency Tools</div>
+    <div class="related-tools-box">
+      <div class="related-title"><i class="fas fa-grid-2" style="color:#ea580c; margin-left:8px;"></i>استكشف حاسبات وأدوات الإقامة السعودية</div>
       <div class="related-grid">
-        <a href="/ar/saudi-iqama-calculator/" class="related-link-card"><span>Main Iqama Hub</span> <i class="fas fa-arrow-right"></i></a>
-        <a href="/ar/saudi-iqama-calculator/renewal-fee/" class="related-link-card"><span>Iqama Renewal Fee</span> <i class="fas fa-arrow-right"></i></a>
-        <a href="/ar/saudi-iqama-calculator/dependent-fee/" class="related-link-card"><span>Dependent Fee</span> <i class="fas fa-arrow-right"></i></a>
-        <a href="/ar/saudi-iqama-calculator/maktab-amal/" class="related-link-card"><span>Maktab Amal</span> <i class="fas fa-arrow-right"></i></a>
-        <a href="/ar/saudi-iqama-calculator/work-permit/" class="related-link-card"><span>Work Permit Fee</span> <i class="fas fa-arrow-right"></i></a>
-        <a href="/ar/saudi-iqama-calculator/iqama-cost/" class="related-link-card"><span>إجمالي تكلفة الإقامة</span> <i class="fas fa-arrow-right"></i></a>
-        <a href="/ar/saudi-iqama-calculator/3-month-cost/" class="related-link-card"><span>3-Month Cost</span> <i class="fas fa-arrow-right"></i></a>
-        <a href="/ar/saudi-iqama-calculator/6-month-cost/" class="related-link-card"><span>6-Month Cost</span> <i class="fas fa-arrow-right"></i></a>
-        <a href="/ar/saudi-iqama-calculator/9-month-cost/" class="related-link-card"><span>9-Month Cost</span> <i class="fas fa-arrow-right"></i></a>
-        <a href="/ar/saudi-iqama-calculator/12-month-cost/" class="related-link-card"><span>12-Month Cost</span> <i class="fas fa-arrow-right"></i></a>
-        <a href="/ar/saudi-iqama-calculator/family-dependent-cost/" class="related-link-card"><span>Family Dependent Cost</span> <i class="fas fa-arrow-right"></i></a>
-        <a href="/ar/saudi-iqama-calculator/renewal-guide/" class="related-link-card"><span>Renewal Guide</span> <i class="fas fa-arrow-right"></i></a>
+        <a href="/ar/saudi-iqama-calculator/" class="related-link-card"><span>دليل الإقامة الرئيسي</span> <i class="fas fa-arrow-left"></i></a>
+        <a href="/ar/saudi-iqama-calculator/renewal-fee/" class="related-link-card"><span>رسوم تجديد الإقامة</span> <i class="fas fa-arrow-left"></i></a>
+        <a href="/ar/saudi-iqama-calculator/dependent-fee/" class="related-link-card"><span>رسوم المرافقين والتابعين</span> <i class="fas fa-arrow-left"></i></a>
+        <a href="/ar/saudi-iqama-calculator/maktab-amal/" class="related-link-card"><span>المقابل المالي لمكتب العمل</span> <i class="fas fa-arrow-left"></i></a>
+        <a href="/ar/saudi-iqama-calculator/work-permit/" class="related-link-card"><span>رسوم رخصة العمل</span> <i class="fas fa-arrow-left"></i></a>
+        <a href="/ar/saudi-iqama-calculator/iqama-cost/" class="related-link-card"><span>إجمالي تكلفة الإقامة</span> <i class="fas fa-arrow-left"></i></a>
+        <a href="/ar/saudi-iqama-calculator/3-month-cost/" class="related-link-card"><span>تكلفة الإقامة 3 أشهر</span> <i class="fas fa-arrow-left"></i></a>
+        <a href="/ar/saudi-iqama-calculator/6-month-cost/" class="related-link-card"><span>تكلفة الإقامة 6 أشهر</span> <i class="fas fa-arrow-left"></i></a>
+        <a href="/ar/saudi-iqama-calculator/9-month-cost/" class="related-link-card"><span>تكلفة الإقامة 9 أشهر</span> <i class="fas fa-arrow-left"></i></a>
+        <a href="/ar/saudi-iqama-calculator/12-month-cost/" class="related-link-card"><span>تكلفة الإقامة 12 شهراً</span> <i class="fas fa-arrow-left"></i></a>
+        <a href="/ar/saudi-iqama-calculator/family-dependent-cost/" class="related-link-card"><span>تكلفة إقامة التابعين للأسرة</span> <i class="fas fa-arrow-left"></i></a>
+        <a href="/ar/saudi-iqama-calculator/renewal-guide/" class="related-link-card"><span>دليل خطوات تجديد الإقامة</span> <i class="fas fa-arrow-left"></i></a>
       </div>
     </div>
   </main>
@@ -643,8 +643,8 @@
       const quarterlyAmount = monthlyLevy * 3;
 
       document.getElementById('resFamilyTotal').innerText = grandTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SAR';
-      document.getElementById('resFamilyHeadcount').innerText = totalDependents + ' Dependent' + (totalDependents > 1 ? 's' : '') + ' (' + months + ' Mo)';
-      document.getElementById('resMonthlyFamilyBurden').innerText = monthlyLevy.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SAR / month';
+      document.getElementById('resFamilyHeadcount').innerText = totalDependents + (totalDependents === 1 ? ' مرافق' : ' مرافقين') + ' (' + months + ' شهر)';
+      document.getElementById('resMonthlyFamilyBurden').innerText = monthlyLevy.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SAR / شهر';
       document.getElementById('resGovLevyTotal').innerText = govLevyTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SAR';
       document.getElementById('resFamilyInsurance').innerText = insuranceProrated.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SAR';
       document.getElementById('resFamilyQuarterly').innerText = quarterlyAmount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SAR';
@@ -669,59 +669,59 @@
           <div style="font-size:20px; font-weight:800; color:#fff; margin-bottom:4px;">
             DailyCalc<span style="color:#38bdf8;">Hubs</span>
           </div>
-          <div style="font-size:12px; color:#64748b; margin-bottom:14px;">Saudi Tools for a Smarter Tomorrow</div>
+          <div style="font-size:12px; color:#64748b; margin-bottom:14px;">أدوات سعودية لغدٍ أذكى</div>
           <p style="font-size:13.5px; line-height:1.6; color:#94a3b8;">
-            High-precision residency, compensation, remittance, and legal utilities built specifically for citizens, expatriates, and enterprise HR teams in Saudi Arabia.
+            منصة الأدوات الحسابية الرائدة لحساب مستحقات الرواتب، وتكاليف الإقامة، ومكافأة نهاية الخدمة، وأسعار الصرف في المملكة العربية السعودية.
           </p>
         </div>
         <div>
-          <h4 class="footer-col-heading">Iqama &amp; Residency</h4>
+          <h4 class="footer-col-heading">أدوات الإقامة</h4>
           <ul class="footer-nav-list">
-            <li><a href="/ar/saudi-iqama-calculator/renewal-fee/">Iqama Renewal Fee</a></li>
-            <li><a href="/ar/saudi-iqama-calculator/dependent-fee/">Dependent Fee Calculator</a></li>
-            <li><a href="/ar/saudi-iqama-calculator/maktab-amal/">Maktab Amal Work Permit</a></li>
-            <li><a href="/ar/saudi-iqama-calculator/3-month-cost/">3-Month Iqama Cost</a></li>
-            <li><a href="/ar/saudi-iqama-calculator/12-month-cost/">12-Month Iqama Cost</a></li>
-            <li><a href="/ar/saudi-iqama-calculator/renewal-guide/">Iqama Renewal Guide</a></li>
+            <li><a href="/ar/saudi-iqama-calculator/renewal-fee/">رسوم تجديد الإقامة</a></li>
+            <li><a href="/ar/saudi-iqama-calculator/dependent-fee/">حاسبة رسوم المرافقين</a></li>
+            <li><a href="/ar/saudi-iqama-calculator/maktab-amal/">المقابل المالي لمكتب العمل</a></li>
+            <li><a href="/ar/saudi-iqama-calculator/3-month-cost/">تكلفة الإقامة 3 أشهر</a></li>
+            <li><a href="/ar/saudi-iqama-calculator/12-month-cost/">تكلفة الإقامة 12 شهراً</a></li>
+            <li><a href="/ar/saudi-iqama-calculator/renewal-guide/">دليل تجديد الإقامة</a></li>
           </ul>
         </div>
         <div>
-          <h4 class="footer-col-heading">Core Saudi Utilities</h4>
+          <h4 class="footer-col-heading">أدوات وخدمات سعودية</h4>
           <ul class="footer-nav-list">
-            <li><a href="/ar/saudi-remittance-calculator/">Saudi Remittance</a></li>
+            <li><a href="/ar/saudi-remittance-calculator/">تحويل الأموال من السعودية</a></li>
             <li><a href="/ar/prayer-times/">مواقيت الصلاة</a></li>
-            <li><a href="/ar/saudi-salary-calculator/">Saudi Salary &amp; EOSB</a></li>
-            <li><a href="/ar/saudi-iqama-calculator/">Iqama Fee Estimator</a></li>
-            <li><a href="/ar/everyday-smart-calculator/">Everyday Smart Tools</a></li>
-            <li><a href="/ar/shariah-sip-calculator/">Shariah SIP</a></li>
-            <li><a href="/ar/travel-booking-calculator/">Travel &amp; Booking</a></li>
+            <li><a href="/ar/saudi-salary-calculator/">حاسبة الرواتب ونهاية الخدمة</a></li>
+            <li><a href="/ar/saudi-iqama-calculator/">حاسبة رسوم الإقامة</a></li>
+            <li><a href="/ar/everyday-smart-calculator/">أدوات يومية ذكية</a></li>
+            <li><a href="/ar/shariah-sip-calculator/">حاسبة الاستثمار الشرعي (SIP)</a></li>
+            <li><a href="/ar/travel-booking-calculator/">حاسبة السفر والحجوزات</a></li>
           </ul>
         </div>
         <div>
-          <h4 class="footer-col-heading">Legal &amp; Trust</h4>
+          <h4 class="footer-col-heading">المعلومات القانونية والموثوقية</h4>
           <ul class="footer-nav-list">
-            <li><a href="/about/">About DailyCalcHubs</a></li>
-            <li><a href="/privacy-policy/">Privacy Policy</a></li>
-            <li><a href="/disclaimer/">Terms &amp; Disclaimer</a></li>
-            <li><a href="/contact/">Contact Support</a></li>
+            <li><a href="/about/">عن DailyCalcHubs</a></li>
+            <li><a href="/privacy-policy/">سياسة الخصوصية</a></li>
+            <li><a href="/disclaimer/">الشروط وإخلاء المسؤولية</a></li>
+            <li><a href="/contact/">الاتصال والدعم</a></li>
           </ul>
           <div style="margin-top:16px; font-size:12px; color:#64748b;">
-            <i class="fas fa-shield-halved" style="color:#ea580c;"></i> Aligned with MHRSD, Jawazat &amp; Qiwa 2026 Standards.
+            <i class="fas fa-shield-halved" style="color:#ea580c;"></i> متوافق مع معايير وزارة الموارد البشرية والجوازات ومنصة قوى 2026.
           </div>
         </div>
       </div>
       <div class="footer-bottom-bar">
-        <div>&copy; 2026 DailyCalcHubs. All rights reserved. Independent informational service.</div>
+        <div>&copy; 2026 DailyCalcHubs. جميع الحقوق محفوظة. خدمة معلوماتية مستقلة.</div>
         <div class="footer-legal-links">
-          <a href="/privacy-policy/">Privacy Policy</a>
+          <a href="/privacy-policy/">سياسة الخصوصية</a>
           <span>|</span>
-          <a href="/disclaimer/">Disclaimer</a>
+          <a href="/disclaimer/">إخلاء المسؤولية</a>
           <span>|</span>
-          <a href="/terms/">Terms of Service</a>
+          <a href="/terms/">شروط الخدمة</a>
           <span>|</span>
-          <a href="/contact/">Contact</a>
+          <a href="/contact/">اتصل بنا</a>
         </div>
-        <div style="color:#ea580c; font-weight:600;">Serving the Saudi Community</div>
+        <div style="color:#ea580c; font-weight:600;">في خدمة المجتمع السعودي</div>
       </div>
     </div>
   </footer>

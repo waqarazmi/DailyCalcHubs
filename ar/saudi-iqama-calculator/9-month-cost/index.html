@@ -113,11 +113,11 @@
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "9-Month Saudi Iqama Cost Calculator",
+  "name": "حاسبة تكلفة تجديد الإقامة 9 أشهر في السعودية",
   "applicationCategory": "BusinessApplication",
   "operatingSystem": "All",
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "SAR" },
-  "description": "Calculate three-quarter (9-month) Iqama and work permit fees in Saudi Arabia."
+  "description": "احسب رسوم تجديد الإقامة ورخصة العمل لمدة 9 أشهر وفق قرار مجلس الوزراء رقم 515 في السعودية."
 }
   </script>
 
@@ -130,19 +130,19 @@
                             {
                                 "@type":  "ListItem",
                                 "position":  1,
-                                "name":  "Home",
-                                "item":  "https://dailycalchubs.com/"
+                                "name":  "الرئيسية",
+                                "item":  "https://dailycalchubs.com/ar/"
                             },
                             {
                                 "@type":  "ListItem",
                                 "position":  2,
-                                "name":  "Saudi Iqama Calculator",
-                                "item":  "https://dailycalchubs.com/saudi-iqama-calculator/"
+                                "name":  "حاسبة الإقامة السعودية",
+                                "item":  "https://dailycalchubs.com/ar/saudi-iqama-calculator/"
                             },
                             {
                                 "@type":  "ListItem",
                                 "position":  3,
-                                "name":  "9-Month Iqama Cost",
+                                "name":  "تكلفة الإقامة 9 أشهر",
                                 "item":  "https://dailycalchubs.com/ar/saudi-iqama-calculator/9-month-cost/"
                             }
                         ]
@@ -268,14 +268,14 @@
     .content-article h2:first-of-type { margin-top: 0; }
     .content-article h3 { font-size: 18px; font-weight: 700; color: var(--navy-dark); margin: 20px 0 10px; }
     .content-article p { font-size: 15px; line-height: 1.7; color: #334155; margin-bottom: 16px; }
-    .content-article ul, .content-article ol { margin-bottom: 18px; padding-left: 24px; }
+    .content-article ul, .content-article ol { margin-bottom: 18px; padding-right: 24px; padding-left: 0; }
     .content-article li { font-size: 14.5px; line-height: 1.6; color: #334155; margin-bottom: 8px; }
-    .content-callout { background: #fff7ed; border-left: 4px solid var(--orange-saudi); padding: 16px 20px; border-radius: 0 8px 8px 0; margin: 20px 0; font-size: 14.5px; color: #334155; }
+    .content-callout { background: #fff7ed; border-right: 4px solid var(--orange-saudi); border-left: none; padding: 16px 20px; border-radius: 8px 0 0 8px; margin: 20px 0; font-size: 14.5px; color: #334155; }
     .content-callout strong { color: #9a3412; }
 
     .data-table { width: 100%; border-collapse: collapse; margin: 18px 0; font-size: 13.5px; }
-    .data-table th { background: #f1f5f9; padding: 10px 14px; text-align: left; font-weight: 700; color: #1e293b; border: 1px solid var(--border-light); }
-    .data-table td { padding: 10px 14px; border: 1px solid var(--border-light); color: #334155; }
+    .data-table th { background: #f1f5f9; padding: 10px 14px; text-align: right; font-weight: 700; color: #1e293b; border: 1px solid var(--border-light); }
+    .data-table td { padding: 10px 14px; border: 1px solid var(--border-light); color: #334155; text-align: right; }
 
     /* FAQs */
     .faq-item { border: 1px solid var(--border-light); border-radius: 10px; margin-bottom: 12px; background: #ffffff; overflow: hidden; }
@@ -339,7 +339,7 @@
           <div class="logo-icon-box"><i class="fas fa-id-card"></i></div>
           <div class="logo-text-group">
             <div class="logo-title">DailyCalc<span style="color:#ea580c;">Hubs</span></div>
-            <div class="logo-subtitle">Saudi Tools for a Smarter Tomorrow</div>
+            <div class="logo-subtitle">أدوات سعودية لغدٍ أذكى</div>
           </div>
         </a>
         <nav class="header-nav-container" id="navContainer">
@@ -347,21 +347,21 @@
             <li><a href="/ar/">الرئيسية</a></li>
             <li><a href="/ar/saudi-remittance-calculator/">تحويل الأموال</a></li>
             <li><a href="/ar/prayer-times/">مواقيت الصلاة</a></li>
-            <li><a href="/ar/saudi-salary-calculator/">Salary</a></li>
-            <li><a href="/ar/saudi-iqama-calculator/" class="active">Iqama</a></li>
-            <li><a href="/ar/everyday-smart-calculator/">Everyday</a></li>
+            <li><a href="/ar/saudi-salary-calculator/">الرواتب</a></li>
+            <li><a href="/ar/saudi-iqama-calculator/" class="active">الإقامة</a></li>
+            <li><a href="/ar/everyday-smart-calculator/">الحاسبة اليومية</a></li>
           </ul>
         </nav>
         <div class="header-right-actions" style="display:flex;align-items:center;gap:12px;">
           <a href="/saudi-iqama-calculator/9-month-cost/" class="lang-switch-btn" lang="en" hreflang="en" title="Switch to English" aria-label="Switch to English"><i class="fas fa-globe"></i> <span>EN</span></a>
-          <button type="button" class="theme-toggle-btn" id="dchThemeToggle" aria-label="Toggle dark mode" title="Toggle Dark/Light Mode">
+          <button type="button" class="theme-toggle-btn" id="dchThemeToggle" aria-label="تبديل المظهر الداكن/الفاتح" title="Toggle Dark/Light Mode">
             <i class="fas fa-moon"></i>
           </button>
           <button class="mobile-menu-toggle" id="mobileMenuBtn" aria-label="Toggle navigation">
             <i class="fas fa-bars"></i>
           </button>
           <div class="saudi-badge-header">
-            <i class="fas fa-passport"></i> Saudi Residency 2026
+            <i class="fas fa-passport"></i> الإقامة السعودية 2026
           </div>
         </div>
       </div>
@@ -370,7 +370,7 @@
   <div class="breadcrumbs-bar">
     <div class="container">
       <a href="/ar/">الرئيسية</a> <span>/</span>
-      <a href="/ar/saudi-iqama-calculator/">Saudi Iqama Calculator</a> <span>/</span>
+      <a href="/ar/saudi-iqama-calculator/">حاسبة الإقامة السعودية</a> <span>/</span>
       <span class="current-crumb">تكلفة الإقامة 9 أشهر</span>
     </div>
   </div>
@@ -378,10 +378,10 @@
   <!-- Hero -->
   <section class="tool-hero">
     <div class="container">
-      <div class="tool-pill"><i class="fas fa-calendar-check"></i> Three-Quarter Renewal Scheme</div>
+      <div class="tool-pill"><i class="fas fa-calendar-check"></i> نظام التجديد لثلاثة أرباع السنة (9 أشهر)</div>
       <h1 class="tool-title">حاسبة تكلفة تجديد الإقامة 9 أشهر في السعودية</h1>
       <p class="tool-lead">
-        Compute 9-month residency renewal fees in Saudi Arabia. Accurately calculate prorated Jawazat passport fees (487.50 SAR), three-quarter Maktab Amal work permits (7,200 SAR), and family dependent surcharges.
+        احسب رسوم تجديد الإقامة ورخصة العمل لمدة 9 أشهر في السعودية بدقة. احسب رسوم الجوازات النسبية (487.50 ر.س)، ورخصة عمل مكتب العمل لثلاثة أرباع السنة (7,200 ر.س)، والمقابل المالي للمرافقين والتابعين.
       </p>
     </div>
   </section>
@@ -392,30 +392,30 @@
       <!-- Calculator Column -->
       <section class="calc-card">
         <div class="calc-card-header">
-          <div class="calc-card-title"><i class="fas fa-chart-line" style="color:#ea580c;"></i> 9-Month Fee Estimation</div>
-          <div class="live-status-pill"><span class="live-pulse"></span> 9-Month Term</div>
+          <div class="calc-card-title"><i class="fas fa-chart-line" style="color:#ea580c;"></i> تقدير رسوم التجديد لـ 9 أشهر</div>
+          <div class="live-status-pill"><span class="live-pulse"></span> مدة 9 أشهر</div>
         </div>
 
         <form id="cost9Form" onsubmit="event.preventDefault(); calculateCost9();">
           <div class="form-group">
-            <label class="form-label" for="maktabTier9">Maktab Amal Levy (9 Months)</label>
+            <label class="form-label" for="maktabTier9">المقابل المالي لرخصة العمل (9 أشهر)</label>
             <div class="input-with-addons">
               <select id="maktabTier9" class="select-input-addon" onchange="calculateCost9()">
-                <option value="7200" selected>Expats &gt; Saudis: 7,200 SAR (800 SAR/mo × 9)</option>
-                <option value="6300">Saudis &ge; Expats: 6,300 SAR (700 SAR/mo × 9)</option>
-                <option value="0">المنشآت الصغيرة المعفاة: 0 ر.س</option>
+                <option value="7200" selected>الوافدون أكثر من السعوديين: 7,200 ر.س (800 ر.س/شهر × 9)</option>
+                <option value="6300">السعوديون أكثر أو مساوٍ: 6,300 ر.س (700 ر.س/شهر × 9)</option>
+                <option value="0">المنشآت الصغيرة المعفاة (4 عمال فأقل): 0 ر.س</option>
               </select>
             </div>
           </div>
 
           <div class="form-group">
-            <label class="form-label" for="dependents9">Family Dependents</label>
+            <label class="form-label" for="dependents9">عدد التابعين والمرافقين</label>
             <div class="input-with-addons">
               <span class="input-addon-badge"><i class="fas fa-users"></i></span>
               <input type="number" id="dependents9" class="calc-input" value="1" min="0" max="10" step="1" oninput="calculateCost9()">
             </div>
             <small style="display:block; margin-top:6px; color:#64748b; font-size:12px;">
-              *9-Month Dependent Levy: 3,600 SAR per dependent (400 SAR × 9 Months).
+              *المقابل المالي للمرافقين لمدة 9 أشهر: 3,600 ر.س لكل مرافق (400 ر.س × 9 أشهر).
             </small>
           </div>
         </form>
@@ -428,25 +428,25 @@
               <div class="result-big-val" id="resCost9Total">11,287.50 SAR</div>
             </div>
             <div class="result-rate-tag">
-              <i class="fas fa-business-time"></i> <span>9-Month Validity</span>
+              <i class="fas fa-business-time"></i> <span>صلاحية 9 أشهر</span>
             </div>
           </div>
 
           <div class="result-meta-grid">
             <div class="meta-box-inner">
-              <div class="meta-box-title">Three-Quarter Jawazat Base</div>
-              <div class="meta-box-val">487.50 SAR</div>
+              <div class="meta-box-title">رسوم الجوازات لـ 9 أشهر</div>
+              <div class="meta-box-val">487.50 ر.س</div>
             </div>
             <div class="meta-box-inner">
               <div class="meta-box-title">رخصة العمل (9 أشهر)</div>
               <div class="meta-box-val" id="resMaktab9">7,200.00 SAR</div>
             </div>
             <div class="meta-box-inner">
-              <div class="meta-box-title">Employer Legal Share</div>
+              <div class="meta-box-title">مجموع التزام صاحب العمل</div>
               <div class="meta-box-val" id="resEmployer9" style="color:#4ade80;">7,687.50 SAR</div>
             </div>
             <div class="meta-box-inner">
-              <div class="meta-box-title">Dependent Surcharge Total</div>
+              <div class="meta-box-title">إجمالي المقابل المالي للمرافقين</div>
               <div class="meta-box-val" id="resDep9" style="color:#38bdf8;">3,600.00 SAR</div>
             </div>
           </div>
@@ -469,10 +469,10 @@
       <aside>
         <div class="sidebar-info-card">
           <div class="sidebar-card-heading">
-            <i class="fas fa-hard-hat"></i> Ideal for Project-Based Work
+            <i class="fas fa-hard-hat"></i> الخيار المثالي للمشاريع محددة المدة
           </div>
           <p style="font-size:13px; color:#475569; line-height:1.6;">
-            Contracting and engineering firms delivering specialized infrastructure projects frequently use the 9-month renewal to match remaining project timelines without paying for an unwanted 4th quarter.
+            تعتمد شركات المقاولات والهندسة التي تنفذ مشاريع البنية التحتية المتخصصة على خيار تجديد الإقامة لمدة 9 أشهر للتوافق مع الجداول الزمنية لتسليم المشاريع دون دفع تكلفة ربع رابع غير مستغل.
           </p>
         </div>
       </aside>
@@ -480,120 +480,120 @@
 
     <!-- SEO Content Article -->
     <article class="content-article">
-      <h2>When to Use the 9-Month Iqama Renewal Option</h2>
+      <h2>متى تختار تجديد الإقامة لمدة 9 أشهر؟</h2>
       <p>
-        The 9-month Iqama renewal tier caters specifically to specialized contracting arrangements, transitional workforce phasing, and fixed-term consulting assignments in the Kingdom of Saudi Arabia. Enacted under Saudi Cabinet Decision No. 515, this duration allows private sector establishments to align legal residency with defined project delivery milestones without paying for an unwanted fourth quarter, saving an entire quarter of work permit levies and Jawazat base fees per worker.
+        يلبي خيار تجديد الإقامة لمدة 9 أشهر احتياجات عقود المشاريع المتخصصة، والمراحل الانتقالية للقوى العاملة، ومهمات الاستشارات محددة الأجل في المملكة العربية السعودية. يتيح هذا الخيار الصادر بموجب قرار مجلس الوزراء رقم 515 للمنشآت مواءمة الإقامة النظامية مع مواعيد تسليم المشاريع دون تحمل تكلفة ربع رابع إضافي، مما يوفر ربع سنة كامل من رسوم مكتب العمل ورسوم الجوازات لكل عامل.
       </p>
 
-      <h2>Statutory 9-Month Cost Formulation</h2>
+      <h2>المعادلة النظامية لاحتساب تكلفة 9 أشهر</h2>
       <div class="content-callout">
-        <code>Total 9-Month Outflow = Jawazat Base Prorated (487.50 SAR) + Maktab Amal Levy (7,200 or 6,300 SAR) + Dependent Levies (3,600 SAR &times; Count)</code>
+        <code>إجمالي تدفقات 9 أشهر = رسوم الجوازات النسبية (487.50 ر.س) + المقابل المالي لمكتب العمل (7,200 أو 6,300 ر.س) + المقابل المالي للمرافقين (3,600 ر.س &times; عدد المرافقين)</code>
       </div>
 
-      <h2>How to Use This 9-Month Calculator</h2>
+      <h2>كيفية استخدام حاسبة الـ 9 أشهر</h2>
       <div class="content-callout">
-        <ol style="margin:0; padding-left:20px; line-height:1.7;">
-          <li><strong>Select Maktab Amal Quota Tier:</strong> Choose between the 7,200 SAR tier (expats &gt; Saudis at 800 SAR/mo &times; 9), the 6,300 SAR tier (Saudis &ge; expats at 700 SAR/mo &times; 9), or the 0 SAR exempt micro-business tier.</li>
-          <li><strong>Enter Accompanying Dependents:</strong> Input the count of sponsored family members to determine the 9-month dependent levy (3,600 SAR per individual).</li>
-          <li><strong>Review Itemized Cost Separation:</strong> Examine the results displaying the employer's statutory dues (487.50 SAR Jawazat + Maktab Amal) and the employee's family levy.</li>
+        <ol style="margin:0; padding-right:20px; padding-left:0; line-height:1.7;">
+          <li><strong>اختر فئة المقابل المالي لمكتب العمل:</strong> حدد فئة 7,200 ر.س (إذا كان الوافدون أكثر من السعوديين بمعدل 800 ر.س شهرياً × 9)، أو فئة 6,300 ر.س (إذا كان السعوديون مساوين أو أكثر بمعدل 700 ر.س شهرياً × 9)، أو 0 ر.س للمنشآت الصغيرة المعفاة.</li>
+          <li><strong>أدخل عدد المرافقين والتابعين:</strong> حدد عدد أفراد الأسرة المقيمين لحساب المقابل المالي للمرافقين لمدة 9 أشهر (3,600 ر.س لكل فرد).</li>
+          <li><strong>راجع تفصيل التكاليف المستحقة:</strong> افحص النتائج التي تفصل بوضوح بين التزامات صاحب العمل النظامية (487.50 ر.س رسم الجوازات + رخصة العمل) ورسوم المرافقين والتابعين التابعة للموظف.</li>
         </ol>
       </div>
 
-      <h2>Illustrative 9-Month Worked Example</h2>
+      <h2>مثال تطبيقي توضيحي لاحتساب 9 أشهر</h2>
       <p>
-        <em>Note: The following scenario is an illustrative example demonstrating how the calculator evaluates 9-month statutory components. Actual payable amounts depend on your establishment's Nitaqat tier, worker category, and applicable government fee schedules.</em>
+        <em>ملاحظة: السيناريو التالي هو مثال توضيحي يبيّن كيفية احتساب البنود النظامية لـ 9 أشهر. وتعتمد المبالغ الفعلية على نطاق المنشأة وفئة العامل وجدول الرسوم الحكومية المطبق.</em>
       </p>
       <p>
-        Consider a senior project engineer hired for a 9-month infrastructure commissioning project under the 800 SAR/month Maktab Amal tier, sponsoring 1 dependent:
+        لنفترض مهندس مشاريع تم التعاقد معه لمشروع تدشين بنية تحتية لمدة 9 أشهر تحت فئة 800 ر.س شهرياً لمكتب العمل، ويعول مرافقاً واحداً:
       </p>
       <table class="data-table">
         <thead>
           <tr>
-            <th>Cost Component</th>
-            <th>Calculation Basis</th>
-            <th>Responsible Party</th>
-            <th>9-Month Total (SAR)</th>
+            <th>بند التكلفة</th>
+            <th>أساس الاحتساب</th>
+            <th>الجهة المسؤولة نظاماً</th>
+            <th>إجمالي 9 أشهر (ر.س)</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td><strong>Prorated Jawazat Base Fee</strong></td>
-            <td>650 SAR annual base &times; 9/12 months</td>
-            <td>Employer (Labor Law Art. 40)</td>
-            <td>487.50 SAR</td>
+            <td><strong>رسوم الجوازات الأساسية النسبية</strong></td>
+            <td>650 ر.س الرسم السنوي &times; 9/12 شهر</td>
+            <td>صاحب العمل (المادة 40 من نظام العمل)</td>
+            <td>487.50 ر.س</td>
           </tr>
           <tr>
-            <td><strong>Maktab Amal Work Permit Levy</strong></td>
-            <td>800 SAR / month &times; 9 months</td>
-            <td>Employer (Labor Law Art. 40)</td>
-            <td>7,200.00 SAR</td>
+            <td><strong>المقابل المالي لرخصة العمل (مكتب العمل)</strong></td>
+            <td>800 ر.س / شهر &times; 9 أشهر</td>
+            <td>صاحب العمل (المادة 40 من نظام العمل)</td>
+            <td>7,200.00 ر.س</td>
           </tr>
           <tr style="background:#f8fafc; font-weight:700;">
-            <td colspan="3" style="color:#0f766e;"><strong>Total Employer Statutory Obligation</strong></td>
-            <td style="color:#0f766e;"><strong>7,687.50 SAR</strong></td>
+            <td colspan="3" style="color:#0f766e;"><strong>إجمالي التزام صاحب العمل النظامي</strong></td>
+            <td style="color:#0f766e;"><strong>7,687.50 ر.س</strong></td>
           </tr>
           <tr>
-            <td><strong>Accompanying Dependent Levy</strong></td>
-            <td>400 SAR / month &times; 1 dependent &times; 9 months</td>
-            <td>Employee (SADAD Code 092)</td>
-            <td>3,600.00 SAR</td>
+            <td><strong>المقابل المالي للمرافقين والتابعين</strong></td>
+            <td>400 ر.س / شهر &times; 1 مرافق &times; 9 أشهر</td>
+            <td>المقيم / الموظف (سداد كود 092)</td>
+            <td>3,600.00 ر.س</td>
           </tr>
           <tr style="background:#f0fdf4; font-weight:800;">
-            <td colspan="3" style="color:#15803d;"><strong>Total Combined 9-Month Commitment</strong></td>
-            <td style="color:#15803d;"><strong>11,287.50 SAR</strong></td>
+            <td colspan="3" style="color:#15803d;"><strong>إجمالي الالتزام المالي لـ 9 أشهر</strong></td>
+            <td style="color:#15803d;"><strong>11,287.50 ر.س</strong></td>
           </tr>
         </tbody>
       </table>
 
       <p>
-        <strong>Residency Strategy Comparison:</strong> For complete multi-factor statutory baseline fees and late renewal fines, consult the <a href="/ar/saudi-iqama-calculator/renewal-fee/" style="color:#ea580c; font-weight:700; text-decoration:underline;">Saudi Iqama Renewal Fee Guide</a>. For full-year corporate workforce planning, review the <a href="/ar/saudi-iqama-calculator/12-month-cost/" style="color:#ea580c; font-weight:700; text-decoration:underline;">12-Month Annual Iqama Cost Calculator</a>.
+        <strong>مقارنة استراتيجيات الإقامة:</strong> للاطلاع على الرسوم السنوية الشاملة وغرامات تأخير التجديد، راجع <a href="/ar/saudi-iqama-calculator/renewal-fee/" style="color:#ea580c; font-weight:700; text-decoration:underline;">دليل رسوم تجديد الإقامة السعودية</a>. وللتخطيط السنوي للشركات، استكشف <a href="/ar/saudi-iqama-calculator/12-month-cost/" style="color:#ea580c; font-weight:700; text-decoration:underline;">حاسبة تكلفة الإقامة السنوية (12 شهراً)</a>.
       </p>
 
       <h2>الأسئلة الشائعة</h2>
       <div class="faq-item">
         <div class="faq-question" onclick="toggleFaq(this)">
-          <span>Can an Iqama renewed for 9 months later be extended for 3 months?</span>
+          <span>هل يمكن تمديد الإقامة المجددة لمدة 9 أشهر لفترة 3 أشهر إضافية لاحقاً؟</span>
           <i class="fas fa-chevron-down"></i>
         </div>
         <div class="faq-answer" style="display:none;">
-          Yes. Once the 9-month period nears its conclusion, the employer can seamlessly renew for an additional 3, 6, 9, or 12 months on Qiwa and Muqeem, maintaining uninterrupted legal residency.
+          نعم، بمجرد اقتراب انتهاء مدة الـ 9 أشهر، يمكن لصاحب العمل التجديد بسلاسة لمدة 3 أو 6 أو 9 أو 12 شهراً إضافية عبر منصتي قوى ومقيم لضمان استمرار الإقامة النظامية دون انقطاع.
         </div>
       </div>
       <div class="faq-item">
         <div class="faq-question" onclick="toggleFaq(this)">
-          <span>Does a 9-month Iqama renewal require a full year of health insurance?</span>
+          <span>هل يتطلب تجديد الإقامة لمدة 9 أشهر تأميناً صحياً لسنة كاملة؟</span>
           <i class="fas fa-chevron-down"></i>
         </div>
         <div class="faq-answer" style="display:none;">
-          Yes. Cooperative health insurance policies accredited by the مجلس الضمان الصحي (CHI) are typically contracted on an annual (12-month) basis. To execute a 9-month Iqama renewal, the active insurance policy must cover the entire requested 9-month period on the national system.
+          نعم، تصدر وثائق التأمين الصحي التعاوني المعتمدة من مجلس الضمان الصحي (CHI) عموماً على أساس سنوي (12 شهراً). ولتنفيذ تجديد الإقامة لـ 9 أشهر، يجب أن تغطي وثيقة التأمين السارية كامل فترة الـ 9 أشهر المطلوبة في النظام الوطني.
         </div>
       </div>
       <div class="faq-item">
         <div class="faq-question" onclick="toggleFaq(this)">
-          <span>Can an employee travel on an exit-reentry visa during a 9-month Iqama?</span>
+          <span>هل يمكن للموظف السفر بتأشيرة خروج وعودة خلال سريان إقامة الـ 9 أشهر؟</span>
           <i class="fas fa-chevron-down"></i>
         </div>
         <div class="faq-answer" style="display:none;">
-          Yes. Single or multiple exit-reentry visas can be issued as long as the travel period and return date fall strictly within the 9-month Iqama validity, and all dependent fees covering that validity have been settled in advance.
+          نعم، يمكن إصدار تأشيرة خروج وعودة مفردة أو متعددة بشرط أن تقع فترة السفر وتاريخ العودة ضمن مدة صلاحية إقامة الـ 9 أشهر، وأن تكون جميع رسوم المرافقين المغطية لتلك الفترة مسددة بالكامل مسبقاً.
         </div>
       </div>
     </article>
 
-        <div class="related-tools-box">
-      <div class="related-title"><i class="fas fa-grid-2" style="color:#ea580c; margin-right:8px;"></i>Explore Saudi Iqama &amp; Residency Tools</div>
+    <div class="related-tools-box">
+      <div class="related-title"><i class="fas fa-grid-2" style="color:#ea580c; margin-left:8px;"></i>استكشف حاسبات وأدوات الإقامة السعودية</div>
       <div class="related-grid">
-        <a href="/ar/saudi-iqama-calculator/" class="related-link-card"><span>Main Iqama Hub</span> <i class="fas fa-arrow-right"></i></a>
-        <a href="/ar/saudi-iqama-calculator/renewal-fee/" class="related-link-card"><span>Iqama Renewal Fee</span> <i class="fas fa-arrow-right"></i></a>
-        <a href="/ar/saudi-iqama-calculator/dependent-fee/" class="related-link-card"><span>Dependent Fee</span> <i class="fas fa-arrow-right"></i></a>
-        <a href="/ar/saudi-iqama-calculator/maktab-amal/" class="related-link-card"><span>Maktab Amal</span> <i class="fas fa-arrow-right"></i></a>
-        <a href="/ar/saudi-iqama-calculator/work-permit/" class="related-link-card"><span>Work Permit Fee</span> <i class="fas fa-arrow-right"></i></a>
-        <a href="/ar/saudi-iqama-calculator/iqama-cost/" class="related-link-card"><span>إجمالي تكلفة الإقامة</span> <i class="fas fa-arrow-right"></i></a>
-        <a href="/ar/saudi-iqama-calculator/3-month-cost/" class="related-link-card"><span>3-Month Cost</span> <i class="fas fa-arrow-right"></i></a>
-        <a href="/ar/saudi-iqama-calculator/6-month-cost/" class="related-link-card"><span>6-Month Cost</span> <i class="fas fa-arrow-right"></i></a>
-        <a href="/ar/saudi-iqama-calculator/9-month-cost/" class="related-link-card"><span>9-Month Cost</span> <i class="fas fa-arrow-right"></i></a>
-        <a href="/ar/saudi-iqama-calculator/12-month-cost/" class="related-link-card"><span>12-Month Cost</span> <i class="fas fa-arrow-right"></i></a>
-        <a href="/ar/saudi-iqama-calculator/family-dependent-cost/" class="related-link-card"><span>Family Dependent Cost</span> <i class="fas fa-arrow-right"></i></a>
-        <a href="/ar/saudi-iqama-calculator/renewal-guide/" class="related-link-card"><span>Renewal Guide</span> <i class="fas fa-arrow-right"></i></a>
+        <a href="/ar/saudi-iqama-calculator/" class="related-link-card"><span>دليل الإقامة الرئيسي</span> <i class="fas fa-arrow-left"></i></a>
+        <a href="/ar/saudi-iqama-calculator/renewal-fee/" class="related-link-card"><span>رسوم تجديد الإقامة</span> <i class="fas fa-arrow-left"></i></a>
+        <a href="/ar/saudi-iqama-calculator/dependent-fee/" class="related-link-card"><span>رسوم المرافقين والتابعين</span> <i class="fas fa-arrow-left"></i></a>
+        <a href="/ar/saudi-iqama-calculator/maktab-amal/" class="related-link-card"><span>المقابل المالي لمكتب العمل</span> <i class="fas fa-arrow-left"></i></a>
+        <a href="/ar/saudi-iqama-calculator/work-permit/" class="related-link-card"><span>رسوم رخصة العمل</span> <i class="fas fa-arrow-left"></i></a>
+        <a href="/ar/saudi-iqama-calculator/iqama-cost/" class="related-link-card"><span>إجمالي تكلفة الإقامة</span> <i class="fas fa-arrow-left"></i></a>
+        <a href="/ar/saudi-iqama-calculator/3-month-cost/" class="related-link-card"><span>تكلفة الإقامة 3 أشهر</span> <i class="fas fa-arrow-left"></i></a>
+        <a href="/ar/saudi-iqama-calculator/6-month-cost/" class="related-link-card"><span>تكلفة الإقامة 6 أشهر</span> <i class="fas fa-arrow-left"></i></a>
+        <a href="/ar/saudi-iqama-calculator/9-month-cost/" class="related-link-card"><span>تكلفة الإقامة 9 أشهر</span> <i class="fas fa-arrow-left"></i></a>
+        <a href="/ar/saudi-iqama-calculator/12-month-cost/" class="related-link-card"><span>تكلفة الإقامة 12 شهراً</span> <i class="fas fa-arrow-left"></i></a>
+        <a href="/ar/saudi-iqama-calculator/family-dependent-cost/" class="related-link-card"><span>تكلفة إقامة التابعين للأسرة</span> <i class="fas fa-arrow-left"></i></a>
+        <a href="/ar/saudi-iqama-calculator/renewal-guide/" class="related-link-card"><span>دليل خطوات تجديد الإقامة</span> <i class="fas fa-arrow-left"></i></a>
       </div>
     </div>
   </main>
@@ -633,59 +633,59 @@
           <div style="font-size:20px; font-weight:800; color:#fff; margin-bottom:4px;">
             DailyCalc<span style="color:#38bdf8;">Hubs</span>
           </div>
-          <div style="font-size:12px; color:#64748b; margin-bottom:14px;">Saudi Tools for a Smarter Tomorrow</div>
+          <div style="font-size:12px; color:#64748b; margin-bottom:14px;">أدوات سعودية لغدٍ أذكى</div>
           <p style="font-size:13.5px; line-height:1.6; color:#94a3b8;">
-            High-precision residency, compensation, remittance, and legal utilities built specifically for citizens, expatriates, and enterprise HR teams in Saudi Arabia.
+            منصة الأدوات الحسابية الرائدة لحساب مستحقات الرواتب، وتكاليف الإقامة، ومكافأة نهاية الخدمة، وأسعار الصرف في المملكة العربية السعودية.
           </p>
         </div>
         <div>
-          <h4 class="footer-col-heading">Iqama &amp; Residency</h4>
+          <h4 class="footer-col-heading">أدوات الإقامة</h4>
           <ul class="footer-nav-list">
-            <li><a href="/ar/saudi-iqama-calculator/renewal-fee/">Iqama Renewal Fee</a></li>
-            <li><a href="/ar/saudi-iqama-calculator/dependent-fee/">Dependent Fee Calculator</a></li>
-            <li><a href="/ar/saudi-iqama-calculator/maktab-amal/">Maktab Amal Work Permit</a></li>
-            <li><a href="/ar/saudi-iqama-calculator/3-month-cost/">3-Month Iqama Cost</a></li>
-            <li><a href="/ar/saudi-iqama-calculator/12-month-cost/">12-Month Iqama Cost</a></li>
-            <li><a href="/ar/saudi-iqama-calculator/renewal-guide/">Iqama Renewal Guide</a></li>
+            <li><a href="/ar/saudi-iqama-calculator/renewal-fee/">رسوم تجديد الإقامة</a></li>
+            <li><a href="/ar/saudi-iqama-calculator/dependent-fee/">حاسبة رسوم المرافقين</a></li>
+            <li><a href="/ar/saudi-iqama-calculator/maktab-amal/">المقابل المالي لمكتب العمل</a></li>
+            <li><a href="/ar/saudi-iqama-calculator/3-month-cost/">تكلفة الإقامة 3 أشهر</a></li>
+            <li><a href="/ar/saudi-iqama-calculator/12-month-cost/">تكلفة الإقامة 12 شهراً</a></li>
+            <li><a href="/ar/saudi-iqama-calculator/renewal-guide/">دليل تجديد الإقامة</a></li>
           </ul>
         </div>
         <div>
-          <h4 class="footer-col-heading">Core Saudi Utilities</h4>
+          <h4 class="footer-col-heading">أدوات وخدمات سعودية</h4>
           <ul class="footer-nav-list">
-            <li><a href="/ar/saudi-remittance-calculator/">Saudi Remittance</a></li>
+            <li><a href="/ar/saudi-remittance-calculator/">تحويل الأموال من السعودية</a></li>
             <li><a href="/ar/prayer-times/">مواقيت الصلاة</a></li>
-            <li><a href="/ar/saudi-salary-calculator/">Saudi Salary &amp; EOSB</a></li>
-            <li><a href="/ar/saudi-iqama-calculator/">Iqama Fee Estimator</a></li>
-            <li><a href="/ar/everyday-smart-calculator/">Everyday Smart Tools</a></li>
-            <li><a href="/ar/shariah-sip-calculator/">Shariah SIP</a></li>
-            <li><a href="/ar/travel-booking-calculator/">Travel &amp; Booking</a></li>
+            <li><a href="/ar/saudi-salary-calculator/">حاسبة الرواتب ونهاية الخدمة</a></li>
+            <li><a href="/ar/saudi-iqama-calculator/">حاسبة رسوم الإقامة</a></li>
+            <li><a href="/ar/everyday-smart-calculator/">أدوات يومية ذكية</a></li>
+            <li><a href="/ar/shariah-sip-calculator/">حاسبة الاستثمار الشرعي (SIP)</a></li>
+            <li><a href="/ar/travel-booking-calculator/">حاسبة السفر والحجوزات</a></li>
           </ul>
         </div>
         <div>
-          <h4 class="footer-col-heading">Legal &amp; Trust</h4>
+          <h4 class="footer-col-heading">المعلومات القانونية والموثوقية</h4>
           <ul class="footer-nav-list">
-            <li><a href="/about/">About DailyCalcHubs</a></li>
-            <li><a href="/privacy-policy/">Privacy Policy</a></li>
-            <li><a href="/disclaimer/">Terms &amp; Disclaimer</a></li>
-            <li><a href="/contact/">Contact Support</a></li>
+            <li><a href="/about/">عن DailyCalcHubs</a></li>
+            <li><a href="/privacy-policy/">سياسة الخصوصية</a></li>
+            <li><a href="/disclaimer/">الشروط وإخلاء المسؤولية</a></li>
+            <li><a href="/contact/">الاتصال والدعم</a></li>
           </ul>
           <div style="margin-top:16px; font-size:12px; color:#64748b;">
-            <i class="fas fa-shield-halved" style="color:#ea580c;"></i> Aligned with MHRSD, Jawazat &amp; Qiwa 2026 Standards.
+            <i class="fas fa-shield-halved" style="color:#ea580c;"></i> متوافق مع معايير وزارة الموارد البشرية والجوازات ومنصة قوى 2026.
           </div>
         </div>
       </div>
       <div class="footer-bottom-bar">
-        <div>&copy; 2026 DailyCalcHubs. All rights reserved. Independent informational service.</div>
+        <div>&copy; 2026 DailyCalcHubs. جميع الحقوق محفوظة. خدمة معلوماتية مستقلة.</div>
         <div class="footer-legal-links">
-          <a href="/privacy-policy/">Privacy Policy</a>
+          <a href="/privacy-policy/">سياسة الخصوصية</a>
           <span>|</span>
-          <a href="/disclaimer/">Disclaimer</a>
+          <a href="/disclaimer/">إخلاء المسؤولية</a>
           <span>|</span>
-          <a href="/terms/">Terms of Service</a>
+          <a href="/terms/">شروط الخدمة</a>
           <span>|</span>
-          <a href="/contact/">Contact</a>
+          <a href="/contact/">اتصل بنا</a>
         </div>
-        <div style="color:#ea580c; font-weight:600;">Serving the Saudi Community</div>
+        <div style="color:#ea580c; font-weight:600;">في خدمة المجتمع السعودي</div>
       </div>
     </div>
   </footer>

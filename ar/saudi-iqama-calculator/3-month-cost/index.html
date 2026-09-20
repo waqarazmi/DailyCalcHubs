@@ -113,11 +113,11 @@
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "3-Month Saudi Iqama Cost Calculator",
+  "name": "حاسبة تكلفة تجديد الإقامة 3 أشهر في السعودية",
   "applicationCategory": "BusinessApplication",
   "operatingSystem": "All",
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "SAR" },
-  "description": "Calculate quarterly (3-month) Iqama and work permit fees under Saudi قرار مجلس الوزراء 515."
+  "description": "احسب رسوم تجديد الإقامة ورخصة العمل لمدة 3 أشهر (ربع سنوية) وفق قرار مجلس الوزراء رقم 515 في السعودية."
 }
   </script>
 
@@ -130,19 +130,19 @@
                             {
                                 "@type":  "ListItem",
                                 "position":  1,
-                                "name":  "Home",
-                                "item":  "https://dailycalchubs.com/"
+                                "name":  "الرئيسية",
+                                "item":  "https://dailycalchubs.com/ar/"
                             },
                             {
                                 "@type":  "ListItem",
                                 "position":  2,
-                                "name":  "Saudi Iqama Calculator",
-                                "item":  "https://dailycalchubs.com/saudi-iqama-calculator/"
+                                "name":  "حاسبة الإقامة السعودية",
+                                "item":  "https://dailycalchubs.com/ar/saudi-iqama-calculator/"
                             },
                             {
                                 "@type":  "ListItem",
                                 "position":  3,
-                                "name":  "3-Month Iqama Cost",
+                                "name":  "تكلفة الإقامة 3 أشهر",
                                 "item":  "https://dailycalchubs.com/ar/saudi-iqama-calculator/3-month-cost/"
                             }
                         ]
@@ -268,14 +268,14 @@
     .content-article h2:first-of-type { margin-top: 0; }
     .content-article h3 { font-size: 18px; font-weight: 700; color: var(--navy-dark); margin: 20px 0 10px; }
     .content-article p { font-size: 15px; line-height: 1.7; color: #334155; margin-bottom: 16px; }
-    .content-article ul, .content-article ol { margin-bottom: 18px; padding-left: 24px; }
+    .content-article ul, .content-article ol { margin-bottom: 18px; padding-right: 24px; padding-left: 0; }
     .content-article li { font-size: 14.5px; line-height: 1.6; color: #334155; margin-bottom: 8px; }
-    .content-callout { background: #fff7ed; border-left: 4px solid var(--orange-saudi); padding: 16px 20px; border-radius: 0 8px 8px 0; margin: 20px 0; font-size: 14.5px; color: #334155; }
+    .content-callout { background: #fff7ed; border-right: 4px solid var(--orange-saudi); border-left: none; padding: 16px 20px; border-radius: 8px 0 0 8px; margin: 20px 0; font-size: 14.5px; color: #334155; }
     .content-callout strong { color: #9a3412; }
 
     .data-table { width: 100%; border-collapse: collapse; margin: 18px 0; font-size: 13.5px; }
-    .data-table th { background: #f1f5f9; padding: 10px 14px; text-align: left; font-weight: 700; color: #1e293b; border: 1px solid var(--border-light); }
-    .data-table td { padding: 10px 14px; border: 1px solid var(--border-light); color: #334155; }
+    .data-table th { background: #f1f5f9; padding: 10px 14px; text-align: right; font-weight: 700; color: #1e293b; border: 1px solid var(--border-light); }
+    .data-table td { padding: 10px 14px; border: 1px solid var(--border-light); color: #334155; text-align: right; }
 
     /* FAQs */
     .faq-item { border: 1px solid var(--border-light); border-radius: 10px; margin-bottom: 12px; background: #ffffff; overflow: hidden; }
@@ -339,7 +339,7 @@
           <div class="logo-icon-box"><i class="fas fa-id-card"></i></div>
           <div class="logo-text-group">
             <div class="logo-title">DailyCalc<span style="color:#ea580c;">Hubs</span></div>
-            <div class="logo-subtitle">Saudi Tools for a Smarter Tomorrow</div>
+            <div class="logo-subtitle">أدوات سعودية لغدٍ أذكى</div>
           </div>
         </a>
         <nav class="header-nav-container" id="navContainer">
@@ -347,21 +347,21 @@
             <li><a href="/ar/">الرئيسية</a></li>
             <li><a href="/ar/saudi-remittance-calculator/">تحويل الأموال</a></li>
             <li><a href="/ar/prayer-times/">مواقيت الصلاة</a></li>
-            <li><a href="/ar/saudi-salary-calculator/">Salary</a></li>
-            <li><a href="/ar/saudi-iqama-calculator/" class="active">Iqama</a></li>
-            <li><a href="/ar/everyday-smart-calculator/">Everyday</a></li>
+            <li><a href="/ar/saudi-salary-calculator/">الرواتب</a></li>
+            <li><a href="/ar/saudi-iqama-calculator/" class="active">الإقامة</a></li>
+            <li><a href="/ar/everyday-smart-calculator/">الحاسبة اليومية</a></li>
           </ul>
         </nav>
         <div class="header-right-actions" style="display:flex;align-items:center;gap:12px;">
           <a href="/saudi-iqama-calculator/3-month-cost/" class="lang-switch-btn" lang="en" hreflang="en" title="Switch to English" aria-label="Switch to English"><i class="fas fa-globe"></i> <span>EN</span></a>
-          <button type="button" class="theme-toggle-btn" id="dchThemeToggle" aria-label="Toggle dark mode" title="Toggle Dark/Light Mode">
+          <button type="button" class="theme-toggle-btn" id="dchThemeToggle" aria-label="تبديل المظهر الداكن/الفاتح" title="Toggle Dark/Light Mode">
             <i class="fas fa-moon"></i>
           </button>
           <button class="mobile-menu-toggle" id="mobileMenuBtn" aria-label="Toggle navigation">
             <i class="fas fa-bars"></i>
           </button>
           <div class="saudi-badge-header">
-            <i class="fas fa-passport"></i> Saudi Residency 2026
+            <i class="fas fa-passport"></i> الإقامة السعودية 2026
           </div>
         </div>
       </div>
@@ -370,7 +370,7 @@
   <div class="breadcrumbs-bar">
     <div class="container">
       <a href="/ar/">الرئيسية</a> <span>/</span>
-      <a href="/ar/saudi-iqama-calculator/">Saudi Iqama Calculator</a> <span>/</span>
+      <a href="/ar/saudi-iqama-calculator/">حاسبة الإقامة السعودية</a> <span>/</span>
       <span class="current-crumb">تكلفة الإقامة 3 أشهر</span>
     </div>
   </div>
@@ -378,10 +378,10 @@
   <!-- Hero -->
   <section class="tool-hero">
     <div class="container">
-      <div class="tool-pill"><i class="fas fa-calendar-quarter"></i> Cabinet Decision No. 515</div>
+      <div class="tool-pill"><i class="fas fa-calendar-quarter"></i> قرار مجلس الوزراء رقم 515</div>
       <h1 class="tool-title">حاسبة تكلفة تجديد الإقامة 3 أشهر في السعودية</h1>
       <p class="tool-lead">
-        Compute exact 3-month quarterly renewal fees for residency and work permits in Saudi Arabia. Optimize enterprise cash flow and simulate prorated Jawazat base, Maktab Amal, and family dependent levies.
+        احسب التكلفة الدقيقة لتجديد الإقامة ورخصة العمل لمدة 3 أشهر (ربع سنوي) في المملكة العربية السعودية. عزز إدارة السيولة المالية لمنشأتك واطلع على تفصيل رسوم الجوازات النسبية، والمقابل المالي لرخصة العمل (مكتب العمل)، ورسوم المرافقين والتابعين.
       </p>
     </div>
   </section>
@@ -392,8 +392,8 @@
       <!-- Calculator Column -->
       <section class="calc-card">
         <div class="calc-card-header">
-          <div class="calc-card-title"><i class="fas fa-coins" style="color:#ea580c;"></i> 3-Month Renewal Rates</div>
-          <div class="live-status-pill"><span class="live-pulse"></span> Quarterly Scheme</div>
+          <div class="calc-card-title"><i class="fas fa-coins" style="color:#ea580c;"></i> رسوم التجديد لـ 3 أشهر</div>
+          <div class="live-status-pill"><span class="live-pulse"></span> النظام ربع السنوي</div>
         </div>
 
         <form id="cost3Form" onsubmit="event.preventDefault(); calculateCost3();">
@@ -435,7 +435,7 @@
           <div class="result-meta-grid">
             <div class="meta-box-inner">
               <div class="meta-box-title">رسوم الجوازات النسبية</div>
-              <div class="meta-box-val">162.50 SAR (650 &divide; 4)</div>
+              <div class="meta-box-val">162.50 ر.س (650 &divide; 4)</div>
             </div>
             <div class="meta-box-inner">
               <div class="meta-box-title">رخصة العمل (3 أشهر)</div>
@@ -469,16 +469,16 @@
       <aside>
         <div class="sidebar-info-card">
           <div class="sidebar-card-heading">
-            <i class="fas fa-lightbulb"></i> Why Choose Quarterly Renewal?
+            <i class="fas fa-lightbulb"></i> لماذا تختار التجديد ربع السنوي؟
           </div>
           <ul class="rules-list">
             <li class="rules-item">
               <i class="fas fa-check-circle rules-icon"></i>
-              <div><strong>Improved Corporate Liquidity:</strong> Paying 2,562.50 SAR every quarter instead of 10,250 SAR upfront preserves vital operating capital for startups and SMEs.</div>
+              <div><strong>تحسين السيولة المالية للمنشآت:</strong> دفع 2,562.50 ر.س كل ثلاثة أشهر بدلاً من 10,250 ر.س مقدماً يحافظ على رأس المال التشغيلي الحيوي للشركات الناشئة والمنشآت الصغيرة والمتوسطة.</div>
             </li>
             <li class="rules-item">
               <i class="fas fa-check-circle rules-icon"></i>
-              <div><strong>Probation Periods:</strong> Evaluate new overseas recruits during their first 90 days without committing to a full year of non-refundable work permit levies.</div>
+              <div><strong>فترات التجربة للموظفين:</strong> تقييم الموظفين الجدد المستقدمين خلال فترة التجربة (أول 90 يوماً) دون الالتزام بسداد المقابل المالي لرخصة العمل لعام كامل غير قابل للاسترداد.</div>
             </li>
           </ul>
         </div>
@@ -487,111 +487,111 @@
 
     <!-- SEO Content Article -->
     <article class="content-article">
-      <h2>Quarterly Iqama Renewals Under Saudi قرار مجلس الوزراء 515</h2>
+      <h2>تجديد الإقامة ربع السنوي وفق قرار مجلس الوزراء رقم 515</h2>
       <p>
-        In accordance with Saudi Cabinet Decision No. 515, the Ministry of Human Resources and Social Development (MHRSD) in coordination with the المديرية العامة للجوازات enables private sector establishments to issue and renew residence permits and work permits on a flexible quarterly schedule: <strong>3, 6, 9, or 12 months</strong>. This framework provides corporate liquidity relief by dividing upfront annual government fee commitments into manageable 90-day cycles.
+        وفقاً لقرار مجلس الوزراء السعودي رقم 515، أتاحت وزارة الموارد البشرية والتنمية الاجتماعية بالتنسيق مع المديرية العامة للجوازات لمنشآت القطاع الخاص إصدار وتجديد الإقامات ورخص العمل بفترات مرنة ومجزأة تشمل: <strong>3 أو 6 أو 9 أو 12 شهراً</strong>. يوفر هذا النظام مرونة مالية عالية للشركات عبر تقسيم الالتزامات المالية الحكومية السنوية إلى دفعات ربع سنوية كل 90 يوماً بدلاً من سدادها دفعة واحدة مقدمة.
       </p>
 
-      <h2>Exact 3-Month Cost Formulation</h2>
+      <h2>المعادلة الدقيقة لحساب تكلفة 3 أشهر</h2>
       <div class="content-callout">
-        <code>Total 3-Month Fee = Jawazat Base Prorated (162.50 SAR) + Maktab Amal Levy (2,400 or 2,100 SAR) + Dependent Levies (1,200 SAR &times; Count)</code>
+        <code>إجمالي رسوم 3 أشهر = رسوم الجوازات النسبية (162.50 ر.س) + المقابل المالي لمكتب العمل (2,400 أو 2,100 ر.س) + المقابل المالي للمرافقين (1,200 ر.س &times; عدد المرافقين)</code>
       </div>
 
-      <h2>How to Use This 3-Month Calculator</h2>
+      <h2>كيفية استخدام حاسبة الـ 3 أشهر</h2>
       <div class="content-callout">
-        <ol style="margin:0; padding-left:20px; line-height:1.7;">
-          <li><strong>Select Maktab Amal Quota Tier:</strong> Choose your enterprise's labor fee category based on whether non-Saudi headcount exceeds Saudi staff (2,400 SAR per quarter), is equal or minority (2,100 SAR per quarter), or qualifies for micro-business exemption (0 SAR).</li>
-          <li><strong>Enter Accompanying Dependents:</strong> Input the number of sponsored family members to compute the quarterly dependent levy (1,200 SAR per dependent for 3 months).</li>
-          <li><strong>Review Itemized Cash Outflow:</strong> Inspect the separated breakdown distinguishing statutory employer dues (prorated Jawazat base + Maktab Amal) from the employee's dependent levy.</li>
+        <ol style="margin:0; padding-right:20px; padding-left:0; line-height:1.7;">
+          <li><strong>اختر فئة المقابل المالي لمكتب العمل:</strong> حدد فئة المنشأة في نطاقات حسب نسبة العمالة الوافدة إلى السعودية (2,400 ر.س كل ربع سنة إذا كان الوافدون أكثر من السعوديين، أو 2,100 ر.س إذا كانوا مساوين أو أقل، أو 0 ر.س للمنشآت الصغيرة المعفاة).</li>
+          <li><strong>أدخل عدد المرافقين والتابعين:</strong> حدد عدد أفراد الأسرة المقيمين لحساب المقابل المالي للمرافقين (1,200 ر.س لكل مرافق لمدة 3 أشهر بمعدل 400 ر.س شهرياً).</li>
+          <li><strong>راجع تفصيل التكاليف والالتزامات:</strong> اطلع على التقرير المفصل الذي يفصل بين التزامات صاحب العمل النظامية (رسوم الجوازات النسبية + رخصة العمل) ورسوم المرافقين والتابعين التابعة للموظف.</li>
         </ol>
       </div>
 
-      <h2>Illustrative 3-Month Worked Example</h2>
+      <h2>مثال تطبيقي توضيحي لاحتساب 3 أشهر</h2>
       <p>
-        <em>Note: The following scenario is an illustrative example demonstrating how the calculator evaluates 3-month statutory components. Actual payable amounts depend on your establishment's Nitaqat tier, worker category, and applicable government fee schedules.</em>
+        <em>ملاحظة: السيناريو التالي هو مثال توضيحي يبيّن كيفية احتساب البنود النظامية لـ 3 أشهر. وتعتمد المبالغ الفعلية على نطاق المنشأة وفئة العامل وجدول الرسوم الحكومية المطبق.</em>
       </p>
       <p>
-        Consider a commercial private-sector employee whose company headcount has foreign staff exceeding Saudi employees (800 SAR/month Maktab Amal tier) sponsoring 1 dependent:
+        لنفترض موظفاً في منشأة تجارية بالقطاع الخاص تتجاوز فيها العمالة الوافدة نسبة السعوديين (فئة 800 ر.س شهرياً لمكتب العمل) ويعول مرافقاً واحداً:
       </p>
       <table class="data-table">
         <thead>
           <tr>
-            <th>Cost Component</th>
-            <th>Calculation Basis</th>
-            <th>Responsible Party</th>
-            <th>3-Month Total (SAR)</th>
+            <th>بند التكلفة</th>
+            <th>أساس الاحتساب</th>
+            <th>الجهة المسؤولة نظاماً</th>
+            <th>إجمالي 3 أشهر (ر.س)</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td><strong>Prorated Jawazat Base Fee</strong></td>
-            <td>650 SAR annual base &divide; 4 quarters</td>
-            <td>Employer (Labor Law Art. 40)</td>
-            <td>162.50 SAR</td>
+            <td><strong>رسوم الجوازات الأساسية النسبية</strong></td>
+            <td>650 ر.س الرسم السنوي &divide; 4 أرباع</td>
+            <td>صاحب العمل (المادة 40 من نظام العمل)</td>
+            <td>162.50 ر.س</td>
           </tr>
           <tr>
-            <td><strong>Maktab Amal Work Permit Levy</strong></td>
-            <td>800 SAR / month &times; 3 months</td>
-            <td>Employer (Labor Law Art. 40)</td>
-            <td>2,400.00 SAR</td>
+            <td><strong>المقابل المالي لرخصة العمل (مكتب العمل)</strong></td>
+            <td>800 ر.س / شهر &times; 3 أشهر</td>
+            <td>صاحب العمل (المادة 40 من نظام العمل)</td>
+            <td>2,400.00 ر.س</td>
           </tr>
           <tr style="background:#f8fafc; font-weight:700;">
-            <td colspan="3" style="color:#0f766e;"><strong>Total Employer Statutory Obligation</strong></td>
-            <td style="color:#0f766e;"><strong>2,562.50 SAR</strong></td>
+            <td colspan="3" style="color:#0f766e;"><strong>إجمالي التزام صاحب العمل النظامي</strong></td>
+            <td style="color:#0f766e;"><strong>2,562.50 ر.س</strong></td>
           </tr>
           <tr>
-            <td><strong>Accompanying Dependent Levy</strong></td>
-            <td>400 SAR / month &times; 1 dependent &times; 3 months</td>
-            <td>Employee (SADAD Code 092)</td>
-            <td>1,200.00 SAR</td>
+            <td><strong>المقابل المالي للمرافقين والتابعين</strong></td>
+            <td>400 ر.س / شهر &times; 1 مرافق &times; 3 أشهر</td>
+            <td>المقيم / الموظف (سداد كود 092)</td>
+            <td>1,200.00 ر.س</td>
           </tr>
           <tr style="background:#f0fdf4; font-weight:800;">
-            <td colspan="3" style="color:#15803d;"><strong>Total Combined Quarterly Cash Outflow</strong></td>
-            <td style="color:#15803d;"><strong>3,762.50 SAR</strong></td>
+            <td colspan="3" style="color:#15803d;"><strong>إجمالي التدفق النقدي الفعلي لربع السنة</strong></td>
+            <td style="color:#15803d;"><strong>3,762.50 ر.س</strong></td>
           </tr>
         </tbody>
       </table>
 
       <p>
-        <strong>Biannual &amp; Annual Planning:</strong> If your organization prefers to reduce quarterly administrative filing frequency while still managing cash flow, evaluate our <a href="/ar/saudi-iqama-calculator/6-month-cost/" style="color:#ea580c; font-weight:700; text-decoration:underline;">6-Month Iqama Cost Calculator</a>. For standard full-year statutory baseline rates and late penalty guidelines, consult the comprehensive <a href="/ar/saudi-iqama-calculator/renewal-fee/" style="color:#ea580c; font-weight:700; text-decoration:underline;">Saudi Iqama Renewal Fee Guide</a>.
+        <strong>التخطيط لنصف السنة والسنة الكاملة:</strong> إذا كانت منشأتك تفضل تقليل وتيرة المعاملات الإدارية مع الحفاظ على إدارة التدفقات النقدية، يمكنك الاطلاع على <a href="/ar/saudi-iqama-calculator/6-month-cost/" style="color:#ea580c; font-weight:700; text-decoration:underline;">حاسبة تكلفة تجديد الإقامة 6 أشهر</a>. وللاطلاع على الرسوم السنوية القياسية وغرامات التأخير، راجع <a href="/ar/saudi-iqama-calculator/renewal-fee/" style="color:#ea580c; font-weight:700; text-decoration:underline;">دليل رسوم تجديد الإقامة السعودية</a> الشامل.
       </p>
 
       <h2>الأسئلة الشائعة</h2>
       <div class="faq-item">
         <div class="faq-question" onclick="toggleFaq(this)">
-          <span>Can domestic workers (house drivers, maids) renew for 3 months?</span>
+          <span>هل يمكن تجديد إقامة العمالة المنزلية (السائق الخاص، العاملة المنزلية) لمدة 3 أشهر؟</span>
           <i class="fas fa-chevron-down"></i>
         </div>
         <div class="faq-answer" style="display:none;">
-          Yes. Under official guidance from the Ministry of Human Resources and Social Development (MHRSD) and the Ministry of Interior, residency permits for domestic workers and similar categories can now be issued and renewed for flexible periods starting from 3 months (3, 6, 9, 12 months, or longer) through official digital channels such as Absher Individuals and the Musaned platform, with fees payable for the selected duration. In contrast, commercial establishment employees process their quarterly renewals under قرار مجلس الوزراء 515 through Qiwa and Muqeem. For official details, see the <a href="https://www.hrsd.gov.sa/en/media-center/news" target="_blank" rel="noopener noreferrer" style="color:#ea580c; text-decoration:underline;">MHRSD official announcement</a> and the <a href="https://my.gov.sa/en/services/112096" target="_blank" rel="noopener noreferrer" style="color:#ea580c; text-decoration:underline;">National Platform Iqama renewal service</a>.
+          نعم، وفقاً للتحديثات والقرارات الصادرة من وزارة الموارد البشرية والتنمية الاجتماعية والمديرية العامة للجوازات، أصبحت خدمة إصدار وتجديد الإقامة المرنة متاحة للعمالة المنزلية ومن في حكمهم لفترات تبدأ من 3 أشهر (3، 6، 9، 12 شهراً أو أكثر) عبر المنصات الرسمية مثل أبشر أفراد ومنصة مساند، مع سداد الرسوم المقررة للمدة المختارة. بينما يُجدد موظفو المنشآت التجارية رخص العمل والإقامات الربع سنوية عبر منصتي قوى ومقيم. للاطلاع على التفاصيل، يمكن مراجعة <a href="https://www.hrsd.gov.sa/ar/media-center/news" target="_blank" rel="noopener noreferrer" style="color:#ea580c; text-decoration:underline;">إعلانات وزارة الموارد البشرية والتنمية الاجتماعية</a> و<a href="https://my.gov.sa/ar/services/112096" target="_blank" rel="noopener noreferrer" style="color:#ea580c; text-decoration:underline;">المنصة الوطنية الموحدة</a>.
         </div>
       </div>
       <div class="faq-item">
         <div class="faq-question" onclick="toggleFaq(this)">
-          <span>Are health insurance policies issued for 3 months alongside quarterly Iqama?</span>
+          <span>هل يمكن إصدار وثيقة تأمين صحي لمدة 3 أشهر بالتزامن مع الإقامة ربع السنوية؟</span>
           <i class="fas fa-chevron-down"></i>
         </div>
         <div class="faq-answer" style="display:none;">
-          In general, cooperative health insurance policies accredited by the مجلس الضمان الصحي (CHI) are issued by insurance providers on an annual (12-month) policy basis. Even when renewing an Iqama for 3 months, an active, verified health insurance policy covering the entire requested residency validity must be registered on the CHI database before Jawazat approves the electronic renewal.
+          بشكل عام، تصدر وثائق التأمين الصحي التعاوني المعتمدة من مجلس الضمان الصحي (CHI) من قِبل شركات التأمين على أساس سنوي (12 شهراً). وحتى عند تجديد الإقامة لمدة 3 أشهر، يشترط وجود تأمين صحي سارٍ ومسجل على نظام مجلس الضمان الصحي يغطي مدة الإقامة المطلوبة كشرط أساسي لإتمام عملية التجديد إلكترونياً عبر الجوازات.
         </div>
       </div>
     </article>
 
-        <div class="related-tools-box">
-      <div class="related-title"><i class="fas fa-grid-2" style="color:#ea580c; margin-right:8px;"></i>Explore Saudi Iqama &amp; Residency Tools</div>
+    <div class="related-tools-box">
+      <div class="related-title"><i class="fas fa-grid-2" style="color:#ea580c; margin-left:8px;"></i>استكشف حاسبات وأدوات الإقامة السعودية</div>
       <div class="related-grid">
-        <a href="/ar/saudi-iqama-calculator/" class="related-link-card"><span>Main Iqama Hub</span> <i class="fas fa-arrow-right"></i></a>
-        <a href="/ar/saudi-iqama-calculator/renewal-fee/" class="related-link-card"><span>Iqama Renewal Fee</span> <i class="fas fa-arrow-right"></i></a>
-        <a href="/ar/saudi-iqama-calculator/dependent-fee/" class="related-link-card"><span>Dependent Fee</span> <i class="fas fa-arrow-right"></i></a>
-        <a href="/ar/saudi-iqama-calculator/maktab-amal/" class="related-link-card"><span>Maktab Amal</span> <i class="fas fa-arrow-right"></i></a>
-        <a href="/ar/saudi-iqama-calculator/work-permit/" class="related-link-card"><span>Work Permit Fee</span> <i class="fas fa-arrow-right"></i></a>
-        <a href="/ar/saudi-iqama-calculator/iqama-cost/" class="related-link-card"><span>إجمالي تكلفة الإقامة</span> <i class="fas fa-arrow-right"></i></a>
-        <a href="/ar/saudi-iqama-calculator/3-month-cost/" class="related-link-card"><span>3-Month Cost</span> <i class="fas fa-arrow-right"></i></a>
-        <a href="/ar/saudi-iqama-calculator/6-month-cost/" class="related-link-card"><span>6-Month Cost</span> <i class="fas fa-arrow-right"></i></a>
-        <a href="/ar/saudi-iqama-calculator/9-month-cost/" class="related-link-card"><span>9-Month Cost</span> <i class="fas fa-arrow-right"></i></a>
-        <a href="/ar/saudi-iqama-calculator/12-month-cost/" class="related-link-card"><span>12-Month Cost</span> <i class="fas fa-arrow-right"></i></a>
-        <a href="/ar/saudi-iqama-calculator/family-dependent-cost/" class="related-link-card"><span>Family Dependent Cost</span> <i class="fas fa-arrow-right"></i></a>
-        <a href="/ar/saudi-iqama-calculator/renewal-guide/" class="related-link-card"><span>Renewal Guide</span> <i class="fas fa-arrow-right"></i></a>
+        <a href="/ar/saudi-iqama-calculator/" class="related-link-card"><span>دليل الإقامة الرئيسي</span> <i class="fas fa-arrow-left"></i></a>
+        <a href="/ar/saudi-iqama-calculator/renewal-fee/" class="related-link-card"><span>رسوم تجديد الإقامة</span> <i class="fas fa-arrow-left"></i></a>
+        <a href="/ar/saudi-iqama-calculator/dependent-fee/" class="related-link-card"><span>رسوم المرافقين والتابعين</span> <i class="fas fa-arrow-left"></i></a>
+        <a href="/ar/saudi-iqama-calculator/maktab-amal/" class="related-link-card"><span>المقابل المالي لمكتب العمل</span> <i class="fas fa-arrow-left"></i></a>
+        <a href="/ar/saudi-iqama-calculator/work-permit/" class="related-link-card"><span>رسوم رخصة العمل</span> <i class="fas fa-arrow-left"></i></a>
+        <a href="/ar/saudi-iqama-calculator/iqama-cost/" class="related-link-card"><span>إجمالي تكلفة الإقامة</span> <i class="fas fa-arrow-left"></i></a>
+        <a href="/ar/saudi-iqama-calculator/3-month-cost/" class="related-link-card"><span>تكلفة الإقامة 3 أشهر</span> <i class="fas fa-arrow-left"></i></a>
+        <a href="/ar/saudi-iqama-calculator/6-month-cost/" class="related-link-card"><span>تكلفة الإقامة 6 أشهر</span> <i class="fas fa-arrow-left"></i></a>
+        <a href="/ar/saudi-iqama-calculator/9-month-cost/" class="related-link-card"><span>تكلفة الإقامة 9 أشهر</span> <i class="fas fa-arrow-left"></i></a>
+        <a href="/ar/saudi-iqama-calculator/12-month-cost/" class="related-link-card"><span>تكلفة الإقامة 12 شهراً</span> <i class="fas fa-arrow-left"></i></a>
+        <a href="/ar/saudi-iqama-calculator/family-dependent-cost/" class="related-link-card"><span>تكلفة إقامة التابعين للأسرة</span> <i class="fas fa-arrow-left"></i></a>
+        <a href="/ar/saudi-iqama-calculator/renewal-guide/" class="related-link-card"><span>دليل خطوات تجديد الإقامة</span> <i class="fas fa-arrow-left"></i></a>
       </div>
     </div>
   </main>
@@ -631,59 +631,59 @@
           <div style="font-size:20px; font-weight:800; color:#fff; margin-bottom:4px;">
             DailyCalc<span style="color:#38bdf8;">Hubs</span>
           </div>
-          <div style="font-size:12px; color:#64748b; margin-bottom:14px;">Saudi Tools for a Smarter Tomorrow</div>
+          <div style="font-size:12px; color:#64748b; margin-bottom:14px;">أدوات سعودية لغدٍ أذكى</div>
           <p style="font-size:13.5px; line-height:1.6; color:#94a3b8;">
-            High-precision residency, compensation, remittance, and legal utilities built specifically for citizens, expatriates, and enterprise HR teams in Saudi Arabia.
+            منصة الأدوات الحسابية الرائدة لحساب مستحقات الرواتب، وتكاليف الإقامة، ومكافأة نهاية الخدمة، وأسعار الصرف في المملكة العربية السعودية.
           </p>
         </div>
         <div>
-          <h4 class="footer-col-heading">Iqama &amp; Residency</h4>
+          <h4 class="footer-col-heading">أدوات الإقامة</h4>
           <ul class="footer-nav-list">
-            <li><a href="/ar/saudi-iqama-calculator/renewal-fee/">Iqama Renewal Fee</a></li>
-            <li><a href="/ar/saudi-iqama-calculator/dependent-fee/">Dependent Fee Calculator</a></li>
-            <li><a href="/ar/saudi-iqama-calculator/maktab-amal/">Maktab Amal Work Permit</a></li>
-            <li><a href="/ar/saudi-iqama-calculator/3-month-cost/">3-Month Iqama Cost</a></li>
-            <li><a href="/ar/saudi-iqama-calculator/12-month-cost/">12-Month Iqama Cost</a></li>
-            <li><a href="/ar/saudi-iqama-calculator/renewal-guide/">Iqama Renewal Guide</a></li>
+            <li><a href="/ar/saudi-iqama-calculator/renewal-fee/">رسوم تجديد الإقامة</a></li>
+            <li><a href="/ar/saudi-iqama-calculator/dependent-fee/">حاسبة رسوم المرافقين</a></li>
+            <li><a href="/ar/saudi-iqama-calculator/maktab-amal/">المقابل المالي لمكتب العمل</a></li>
+            <li><a href="/ar/saudi-iqama-calculator/3-month-cost/">تكلفة الإقامة 3 أشهر</a></li>
+            <li><a href="/ar/saudi-iqama-calculator/12-month-cost/">تكلفة الإقامة 12 شهراً</a></li>
+            <li><a href="/ar/saudi-iqama-calculator/renewal-guide/">دليل تجديد الإقامة</a></li>
           </ul>
         </div>
         <div>
-          <h4 class="footer-col-heading">Core Saudi Utilities</h4>
+          <h4 class="footer-col-heading">أدوات وخدمات سعودية</h4>
           <ul class="footer-nav-list">
-            <li><a href="/ar/saudi-remittance-calculator/">Saudi Remittance</a></li>
+            <li><a href="/ar/saudi-remittance-calculator/">تحويل الأموال من السعودية</a></li>
             <li><a href="/ar/prayer-times/">مواقيت الصلاة</a></li>
-            <li><a href="/ar/saudi-salary-calculator/">Saudi Salary &amp; EOSB</a></li>
-            <li><a href="/ar/saudi-iqama-calculator/">Iqama Fee Estimator</a></li>
-            <li><a href="/ar/everyday-smart-calculator/">Everyday Smart Tools</a></li>
-            <li><a href="/ar/shariah-sip-calculator/">Shariah SIP</a></li>
-            <li><a href="/ar/travel-booking-calculator/">Travel &amp; Booking</a></li>
+            <li><a href="/ar/saudi-salary-calculator/">حاسبة الرواتب ونهاية الخدمة</a></li>
+            <li><a href="/ar/saudi-iqama-calculator/">حاسبة رسوم الإقامة</a></li>
+            <li><a href="/ar/everyday-smart-calculator/">أدوات يومية ذكية</a></li>
+            <li><a href="/ar/shariah-sip-calculator/">حاسبة الاستثمار الشرعي (SIP)</a></li>
+            <li><a href="/ar/travel-booking-calculator/">حاسبة السفر والحجوزات</a></li>
           </ul>
         </div>
         <div>
-          <h4 class="footer-col-heading">Legal &amp; Trust</h4>
+          <h4 class="footer-col-heading">المعلومات القانونية والموثوقية</h4>
           <ul class="footer-nav-list">
-            <li><a href="/about/">About DailyCalcHubs</a></li>
-            <li><a href="/privacy-policy/">Privacy Policy</a></li>
-            <li><a href="/disclaimer/">Terms &amp; Disclaimer</a></li>
-            <li><a href="/contact/">Contact Support</a></li>
+            <li><a href="/about/">عن DailyCalcHubs</a></li>
+            <li><a href="/privacy-policy/">سياسة الخصوصية</a></li>
+            <li><a href="/disclaimer/">الشروط وإخلاء المسؤولية</a></li>
+            <li><a href="/contact/">الاتصال والدعم</a></li>
           </ul>
           <div style="margin-top:16px; font-size:12px; color:#64748b;">
-            <i class="fas fa-shield-halved" style="color:#ea580c;"></i> Aligned with MHRSD, Jawazat &amp; Qiwa 2026 Standards.
+            <i class="fas fa-shield-halved" style="color:#ea580c;"></i> متوافق مع معايير وزارة الموارد البشرية والجوازات ومنصة قوى 2026.
           </div>
         </div>
       </div>
       <div class="footer-bottom-bar">
-        <div>&copy; 2026 DailyCalcHubs. All rights reserved. Independent informational service.</div>
+        <div>&copy; 2026 DailyCalcHubs. جميع الحقوق محفوظة. خدمة معلوماتية مستقلة.</div>
         <div class="footer-legal-links">
-          <a href="/privacy-policy/">Privacy Policy</a>
+          <a href="/privacy-policy/">سياسة الخصوصية</a>
           <span>|</span>
-          <a href="/disclaimer/">Disclaimer</a>
+          <a href="/disclaimer/">إخلاء المسؤولية</a>
           <span>|</span>
-          <a href="/terms/">Terms of Service</a>
+          <a href="/terms/">شروط الخدمة</a>
           <span>|</span>
-          <a href="/contact/">Contact</a>
+          <a href="/contact/">اتصل بنا</a>
         </div>
-        <div style="color:#ea580c; font-weight:600;">Serving the Saudi Community</div>
+        <div style="color:#ea580c; font-weight:600;">في خدمة المجتمع السعودي</div>
       </div>
     </div>
   </footer>

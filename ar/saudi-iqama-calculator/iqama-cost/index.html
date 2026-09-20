@@ -113,11 +113,11 @@
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "Total Saudi Iqama Cost Calculator",
+  "name": "حاسبة التكلفة الإجمالية للإقامة في السعودية",
   "applicationCategory": "BusinessApplication",
   "operatingSystem": "All",
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "SAR" },
-  "description": "Calculate total comprehensive residency costs combining Jawazat, Maktab Amal, Medical Insurance, and Family Levies."
+  "description": "احسب التكلفة الكلية الشاملة لإصدار وتجديد الإقامة في السعودية لعام 2026 تشمل رسوم الجوازات، رخصة العمل، التأمين الصحي الإلزامي، ومقابل المرافقين."
 }
   </script>
 
@@ -130,14 +130,14 @@
                             {
                                 "@type":  "ListItem",
                                 "position":  1,
-                                "name":  "Home",
-                                "item":  "https://dailycalchubs.com/"
+                                "name":  "الرئيسية",
+                                "item":  "https://dailycalchubs.com/ar/"
                             },
                             {
                                 "@type":  "ListItem",
                                 "position":  2,
-                                "name":  "Saudi Iqama Calculator",
-                                "item":  "https://dailycalchubs.com/saudi-iqama-calculator/"
+                                "name":  "حاسبة الإقامة السعودية",
+                                "item":  "https://dailycalchubs.com/ar/saudi-iqama-calculator/"
                             },
                             {
                                 "@type":  "ListItem",
@@ -234,8 +234,8 @@
     .form-label { display: block; font-size: 13.5px; font-weight: 700; color: #1e293b; margin-bottom: 8px; }
     .input-with-addons { display: flex; align-items: center; border: 2px solid #cbd5e1; border-radius: 10px; background: #fff; overflow: hidden; transition: border-color 0.15s; }
     .input-with-addons:focus-within { border-color: var(--orange-saudi); box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.15); }
-    .input-addon-badge { background: #f8fafc; padding: 12px 16px; font-size: 14px; font-weight: 800; color: var(--navy-dark); border-right: 1px solid #e2e8f0; display: flex; align-items: center; gap: 6px; }
-    .calc-input { flex: 1; border: none; outline: none; padding: 12px 16px; font-size: 17px; font-weight: 700; color: var(--navy-dark); font-family: inherit; width: 100%; }
+    .input-addon-badge { background: #f8fafc; padding: 12px 16px; font-size: 14px; font-weight: 800; color: var(--navy-dark); border-left: 1px solid #e2e8f0; display: flex; align-items: center; gap: 6px; }
+    .calc-input { flex: 1; border: none; outline: none; padding: 12px 16px; font-size: 17px; font-weight: 700; color: var(--navy-dark); font-family: inherit; width: 100%; text-align: right; }
     .select-input-addon { border: none; outline: none; background: #f8fafc; padding: 12px 14px; font-size: 14px; font-weight: 700; color: #0f172a; cursor: pointer; font-family: inherit; width: 100%; }
 
     .amount-chips-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
@@ -268,14 +268,14 @@
     .content-article h2:first-of-type { margin-top: 0; }
     .content-article h3 { font-size: 18px; font-weight: 700; color: var(--navy-dark); margin: 20px 0 10px; }
     .content-article p { font-size: 15px; line-height: 1.7; color: #334155; margin-bottom: 16px; }
-    .content-article ul, .content-article ol { margin-bottom: 18px; padding-left: 24px; }
+    .content-article ul, .content-article ol { margin-bottom: 18px; padding-right: 24px; }
     .content-article li { font-size: 14.5px; line-height: 1.6; color: #334155; margin-bottom: 8px; }
-    .content-callout { background: #fff7ed; border-left: 4px solid var(--orange-saudi); padding: 16px 20px; border-radius: 0 8px 8px 0; margin: 20px 0; font-size: 14.5px; color: #334155; }
+    .content-callout { background: #fff7ed; border-right: 4px solid var(--orange-saudi); padding: 16px 20px; border-radius: 8px 0 0 8px; margin: 20px 0; font-size: 14.5px; color: #334155; }
     .content-callout strong { color: #9a3412; }
 
     .data-table { width: 100%; border-collapse: collapse; margin: 18px 0; font-size: 13.5px; }
-    .data-table th { background: #f1f5f9; padding: 10px 14px; text-align: left; font-weight: 700; color: #1e293b; border: 1px solid var(--border-light); }
-    .data-table td { padding: 10px 14px; border: 1px solid var(--border-light); color: #334155; }
+    .data-table th { background: #f1f5f9; padding: 10px 14px; text-align: right; font-weight: 700; color: #1e293b; border: 1px solid var(--border-light); }
+    .data-table td { padding: 10px 14px; border: 1px solid var(--border-light); color: #334155; text-align: right; }
 
     /* FAQs */
     .faq-item { border: 1px solid var(--border-light); border-radius: 10px; margin-bottom: 12px; background: #ffffff; overflow: hidden; }
@@ -339,7 +339,7 @@
           <div class="logo-icon-box"><i class="fas fa-id-card"></i></div>
           <div class="logo-text-group">
             <div class="logo-title">DailyCalc<span style="color:#ea580c;">Hubs</span></div>
-            <div class="logo-subtitle">Saudi Tools for a Smarter Tomorrow</div>
+            <div class="logo-subtitle">أدوات سعودية لغدٍ أذكى</div>
           </div>
         </a>
         <nav class="header-nav-container" id="navContainer">
@@ -347,21 +347,21 @@
             <li><a href="/ar/">الرئيسية</a></li>
             <li><a href="/ar/saudi-remittance-calculator/">تحويل الأموال</a></li>
             <li><a href="/ar/prayer-times/">مواقيت الصلاة</a></li>
-            <li><a href="/ar/saudi-salary-calculator/">Salary</a></li>
-            <li><a href="/ar/saudi-iqama-calculator/" class="active">Iqama</a></li>
-            <li><a href="/ar/everyday-smart-calculator/">Everyday</a></li>
+            <li><a href="/ar/saudi-salary-calculator/">الرواتب</a></li>
+            <li><a href="/ar/saudi-iqama-calculator/" class="active">الإقامة</a></li>
+            <li><a href="/ar/everyday-smart-calculator/">الحاسبة اليومية</a></li>
           </ul>
         </nav>
         <div class="header-right-actions" style="display:flex;align-items:center;gap:12px;">
           <a href="/saudi-iqama-calculator/iqama-cost/" class="lang-switch-btn" lang="en" hreflang="en" title="Switch to English" aria-label="Switch to English"><i class="fas fa-globe"></i> <span>EN</span></a>
-          <button type="button" class="theme-toggle-btn" id="dchThemeToggle" aria-label="Toggle dark mode" title="Toggle Dark/Light Mode">
+          <button type="button" class="theme-toggle-btn" id="dchThemeToggle" aria-label="Toggle dark mode" title="تبديل الوضع الليلي / النهاري">
             <i class="fas fa-moon"></i>
           </button>
           <button class="mobile-menu-toggle" id="mobileMenuBtn" aria-label="Toggle navigation">
             <i class="fas fa-bars"></i>
           </button>
           <div class="saudi-badge-header">
-            <i class="fas fa-passport"></i> Saudi Residency 2026
+            <i class="fas fa-passport"></i> الإقامة السعودية 2026
           </div>
         </div>
       </div>
@@ -370,18 +370,18 @@
   <div class="breadcrumbs-bar">
     <div class="container">
       <a href="/ar/">الرئيسية</a> <span>/</span>
-      <a href="/ar/saudi-iqama-calculator/">Saudi Iqama Calculator</a> <span>/</span>
-      <span class="current-crumb">التكلفة الإجمالية للإقامة</span>
+      <a href="/ar/saudi-iqama-calculator/">حاسبة الإقامة السعودية</a> <span>/</span>
+      <span class="current-crumb">إجمالي تكلفة الإقامة</span>
     </div>
   </div>
 
   <!-- Hero -->
   <section class="tool-hero">
     <div class="container">
-      <div class="tool-pill"><i class="fas fa-calculator"></i> 360° Comprehensive Cost-to-Company</div>
+      <div class="tool-pill"><i class="fas fa-calculator"></i> تكلفة الإقامة الشاملة 360° لصاحب العمل والموظف</div>
       <h1 class="tool-title">حاسبة التكلفة الإجمالية للإقامة في السعودية</h1>
       <p class="tool-lead">
-        Consolidate all statutory, regulatory, and healthcare expenses associated with expatriate residency in Saudi Arabia. Accurately separate the employer's legal CTC obligations from the employee's personal family expenses.
+        اجمع كافة النفقات النظامية والتنظيمية والرعاية الصحية المرتبطة بإقامة المقيمين في المملكة العربية السعودية لعام 2026. افصل بدقة بين التزامات صاحب العمل النظامية (المادة 40) ونفقات المرافقين التابعين للموظف.
       </p>
     </div>
   </section>
@@ -392,40 +392,40 @@
       <!-- Calculator Column -->
       <section class="calc-card">
         <div class="calc-card-header">
-          <div class="calc-card-title"><i class="fas fa-chart-pie" style="color:#ea580c;"></i> Total Cost Simulation</div>
-          <div class="live-status-pill"><span class="live-pulse"></span> Complete CTC</div>
+          <div class="calc-card-title"><i class="fas fa-chart-pie" style="color:#ea580c;"></i> محاكاة التكلفة الكلية للإقامة</div>
+          <div class="live-status-pill"><span class="live-pulse"></span> التكلفة الكلية</div>
         </div>
 
         <form id="totalCostForm" onsubmit="event.preventDefault(); calculateTotalCost();">
           <div class="form-group">
-            <label class="form-label" for="workerTypeTotal">Worker Category</label>
+            <label class="form-label" for="workerTypeTotal">فئة العامل</label>
             <div class="input-with-addons">
               <select id="workerTypeTotal" class="select-input-addon" onchange="calculateTotalCost()">
-                <option value="corporate" selected>Corporate Commercial Employee (Jawazat 650 + Maktab Amal)</option>
-                <option value="domestic">Domestic Worker / Driver (Jawazat 600, No Maktab Amal)</option>
+                <option value="corporate" selected>موظف قطاع خاص / شركات (الجوازات 650 + مكتب العمل)</option>
+                <option value="domestic">عمالة منزلية / سائق خاص (الجوازات 600، بدون مكتب عمل)</option>
               </select>
             </div>
           </div>
 
           <div style="display:grid; grid-template-columns: 1fr 1fr; gap:16px;">
             <div class="form-group">
-              <label class="form-label" for="maktabTierTotal">Maktab Amal Levy</label>
+              <label class="form-label" for="maktabTierTotal">رسم المقابل المالي لمكتب العمل</label>
               <div class="input-with-addons">
                 <select id="maktabTierTotal" class="select-input-addon" onchange="calculateTotalCost()">
-                  <option value="800" selected>800 SAR / Month (Over Quota)</option>
-                  <option value="700">700 SAR / Month (Equal Quota)</option>
+                  <option value="800" selected>800 ر.س / شهرياً (العمالة الفائضة عن النسبة)</option>
+                  <option value="700">700 ر.س / شهرياً (العمالة المساوية أو الأقل)</option>
                 </select>
               </div>
             </div>
 
             <div class="form-group">
-              <label class="form-label" for="durationTotal">Duration</label>
+              <label class="form-label" for="durationTotal">مدة الإقامة المطلوبة</label>
               <div class="input-with-addons">
                 <select id="durationTotal" class="select-input-addon" onchange="calculateTotalCost()">
-                  <option value="3">3 Months</option>
-                  <option value="6">6 Months</option>
-                  <option value="9">9 Months</option>
-                  <option value="12" selected>12 Months</option>
+                  <option value="3">3 أشهر (تجديد ربع سنوي)</option>
+                  <option value="6">6 أشهر (نصف سنوي)</option>
+                  <option value="9">9 أشهر</option>
+                  <option value="12" selected>12 شهراً (سنة كاملة)</option>
                 </select>
               </div>
             </div>
@@ -433,7 +433,7 @@
 
           <div style="display:grid; grid-template-columns: 1fr 1fr; gap:16px;">
             <div class="form-group">
-              <label class="form-label" for="dependentsTotal">Family Dependents</label>
+              <label class="form-label" for="dependentsTotal">عدد التابعين والمرافقين</label>
               <div class="input-with-addons">
                 <span class="input-addon-badge"><i class="fas fa-users"></i></span>
                 <input type="number" id="dependentsTotal" class="calc-input" value="2" min="0" max="12" step="1" oninput="calculateTotalCost()">
@@ -441,9 +441,9 @@
             </div>
 
             <div class="form-group">
-              <label class="form-label" for="insurancePerHead">Medical Insurance (Per Head Est.)</label>
+              <label class="form-label" for="insurancePerHead">التأمين الطبي (تقدير الفرد الواحد سنوياً)</label>
               <div class="input-with-addons">
-                <span class="input-addon-badge">SAR</span>
+                <span class="input-addon-badge">ر.س</span>
                 <input type="number" id="insurancePerHead" class="calc-input" value="800" min="0" step="50" oninput="calculateTotalCost()">
               </div>
             </div>
@@ -454,30 +454,30 @@
         <div class="result-summary-box">
           <div class="result-row-top">
             <div>
-              <div class="result-label">المجموع الكلي Residency Expenditure</div>
-              <div class="result-big-val" id="resGrandResidencyTotal">22,250.00 SAR</div>
+              <div class="result-label">إجمالي تكلفة الإقامة الشاملة</div>
+              <div class="result-big-val" id="resGrandResidencyTotal">22,250.00 ر.س</div>
             </div>
             <div class="result-rate-tag">
-              <i class="fas fa-layer-group"></i> <span>All In One</span>
+              <i class="fas fa-layer-group"></i> <span>شامل كافة الرسوم</span>
             </div>
           </div>
 
           <div class="result-meta-grid">
             <div class="meta-box-inner">
-              <div class="meta-box-title">Employer Legal CTC (Art. 40)</div>
-              <div class="meta-box-val" id="resTotalEmployer" style="color:#4ade80;">11,050.00 SAR</div>
+              <div class="meta-box-title">التزام صاحب العمل النظامي (المادة 40)</div>
+              <div class="meta-box-val" id="resTotalEmployer" style="color:#4ade80;">11,050.00 ر.س</div>
             </div>
             <div class="meta-box-inner">
-              <div class="meta-box-title">Employee Personal Share</div>
-              <div class="meta-box-val" id="resTotalEmployee" style="color:#38bdf8;">11,200.00 SAR</div>
+              <div class="meta-box-title">حصة الموظف الشخصية للمرافقين</div>
+              <div class="meta-box-val" id="resTotalEmployee" style="color:#38bdf8;">11,200.00 ر.س</div>
             </div>
             <div class="meta-box-inner">
-              <div class="meta-box-title">Work Permit &amp; Jawazat</div>
-              <div class="meta-box-val" id="resGovFees">10,250.00 SAR</div>
+              <div class="meta-box-title">رسوم رخصة العمل والجوازات</div>
+              <div class="meta-box-val" id="resGovFees">10,250.00 ر.س</div>
             </div>
             <div class="meta-box-inner">
-              <div class="meta-box-title">Total Healthcare Insurance</div>
-              <div class="meta-box-val" id="resTotalInsurance">2,400.00 SAR (3 Persons)</div>
+              <div class="meta-box-title">إجمالي التأمين الطبي التقديري</div>
+              <div class="meta-box-val" id="resTotalInsurance">2,400.00 ر.س (3 أفراد)</div>
             </div>
           </div>
         
@@ -499,15 +499,15 @@
       <aside>
         <div class="sidebar-info-card">
           <div class="sidebar-card-heading">
-            <i class="fas fa-shield-halved"></i> Mandatory Health Insurance (CCHI)
+            <i class="fas fa-shield-halved"></i> التأمين الصحي الإلزامي (مجلس الضمان الصحي)
           </div>
           <p style="font-size:13px; color:#475569; line-height:1.6; margin-bottom:12px;">
-            The Council of Health Insurance requires private sector employers to provide comprehensive healthcare coverage for workers and their eligible family dependents:
+            يلزم مجلس الضمان الصحي (CHI) منشآت القطاع الخاص بتوفير تغطية تأمينية صحية شاملة للعاملين وأفراد أسرهم المؤهلين:
           </p>
           <ul class="rules-list" style="font-size:13px;">
-            <li class="rules-item"><i class="fas fa-check rules-icon" style="color:#10b981;"></i> <div>Worker policy must be active before renewal</div></li>
-            <li class="rules-item"><i class="fas fa-check rules-icon" style="color:#10b981;"></i> <div>Co-pay maximum capped at 20% by CCHI</div></li>
-            <li class="rules-item"><i class="fas fa-check rules-icon" style="color:#10b981;"></i> <div>Minimum policy benefits cover emergency care</div></li>
+            <li class="rules-item"><i class="fas fa-check rules-icon" style="color:#10b981;"></i> <div>سريان وثيقة التأمين الصحي شرط أساسي ومسبق لإصدار وتجديد الإقامة عبر منصة قوى وأبشر</div></li>
+            <li class="rules-item"><i class="fas fa-check rules-icon" style="color:#10b981;"></i> <div>الحد الأقصى لنسبة التحمل للمستفيدين محدد بنسبة 20% كحد أقصى وفق معايير الضمان الصحي</div></li>
+            <li class="rules-item"><i class="fas fa-check rules-icon" style="color:#10b981;"></i> <div>تغطي وثيقة التأمين المعتمدة حالات الطوارئ والتنويم والعلاج والعيادات الخارجية والأدوية</div></li>
           </ul>
         </div>
       </aside>
@@ -515,97 +515,97 @@
 
     <!-- SEO Content Article -->
     <article class="content-article">
-      <h2>Understanding the True Cost of Residency in Saudi Arabia</h2>
+      <h2>فهم التكلفة الحقيقية والشاملة للإقامة في السعودية لعام 2026</h2>
       <p>
-        Calculating the true cost of an expatriate's residency in Saudi Arabia involves more than the basic passport stamp fee. A complete financial projection must capture the interaction between government statutory fees, MHRSD work permit surcharges, مجلس الضمان الصحي (CHI) medical insurance premiums, and dependent family levies.
+        إن حساب التكلفة الحقيقية لإقامة الوافد في المملكة العربية السعودية يتجاوز مجرد رسوم الجوازات الأساسية. لبناء ميزانية مالية دقيقة ومتوافقة نظامياً، يجب احتساب التفاعل المشترك بين الرسوم الحكومية السيادية، والمقابل المالي لرخص العمل الصادر من وزارة الموارد البشرية، وأقساط التأمين الطبي الإلزامي المعتمد من مجلس الضمان الصحي (CHI)، والمقابل المالي للمرافقين والتابعين.
       </p>
 
-      <h3>Employer Cost-to-Company (CTC)</h3>
+      <h3>التكلفة النظامية لصاحب العمل (المادة 40 من نظام العمل)</h3>
       <p>
-        Under Article 40(1) of the Saudi Labor Law, the employer must bear all costs associated with bringing the worker into the Kingdom, renewing their residency permit (Jawazat), paying their annual work permit (Maktab Amal), and providing mandatory private health insurance. These items constitute the statutory Employer CTC.
+        وفقاً للفقرة (1) من المادة الأربعين من نظام العمل السعودي، يتحمل صاحب العمل التكاليف النظامية المترتبة على استقدام العامل غير السعودي، ورسوم تجديد رخصة الإقامة (الجوازات) ورخصة العمل (المقابل المالي لمكتب العمل) وما يترتب على تأخير تجديدها من غرامات، بالإضافة إلى توفير التغطية التأمينية الطبية الإلزامية. تشكل هذه البنود التكلفة الإجمالية النظامية لصاحب العمل (Employer CTC) ولا يجوز تحميل العامل أي جزء منها.
       </p>
 
-      <h3>Employee Personal Share &amp; Indicative Healthcare Estimates</h3>
+      <h3>الحصة الشخصية للموظف وتقديرات الرعاية الصحية</h3>
       <p>
-        In contrast to the employer's statutory dues, accompanying family dependent surcharges (400 SAR per month per dependent) are personal employee obligations under SADAD Code 092. Medical insurance premiums (modeled at an indicative estimate such as 800 SAR per individual per year) represent private-market estimates based on accredited commercial health insurance tiers, not government statutory charges. Actual medical premiums vary by insurer, policy tier, age, and health underwriting.
+        على النقيض من الرسوم المهنية للمنشأة، فإن المقابل المالي للتابعين والمرافقين (بواقع 400 ريال شهرياً عن كل فرد) يُعد التزاماً شخصياً على الموظف المقيم يُسدد عبر نظام سداد برمز الخدمة 092. أما أقساط التأمين الطبي (المبنية هنا وفق متوسط تقديري استرشادي بواقع 800 ريال للفرد سنوياً) فهي تقديرات خاصة بالسوق التأميني التجاري المعتمد وليست رسوماً حكومية ثابتة، وتتفاوت بناءً على فئة التأمين، والعمر، والتاريخ المرضي، وتصنيف شركة التأمين.
       </p>
 
       <div class="content-callout">
-        <strong>Specialized Tool Navigation:</strong>
-        <ul style="margin:6px 0 0 0; padding-left:20px; line-height:1.7;">
-          <li>For statutory Jawazat renewal rules, late delay fines, and domestic worker schedules: <a href="/ar/saudi-iqama-calculator/renewal-fee/" style="color:#ea580c; font-weight:700; text-decoration:underline;">Saudi Iqama Renewal Fee Calculator</a>.</li>
-          <li>For enterprise labor quotas, Qiwa SADAD invoices, and industrial grants: <a href="/ar/saudi-iqama-calculator/work-permit/" style="color:#ea580c; font-weight:700; text-decoration:underline;">Saudi Work Permit (Karat Amal) Calculator</a>.</li>
-          <li>For standalone family dependent surcharges and exit-reentry travel permits: <a href="/ar/saudi-iqama-calculator/dependent-fee/" style="color:#ea580c; font-weight:700; text-decoration:underline;">Saudi Dependent Fee Calculator</a>.</li>
+        <strong>دليل الأدوات والحاسبات المتخصصة ذات الصلة:</strong>
+        <ul style="margin:6px 0 0 0; padding-right:20px; line-height:1.7;">
+          <li>للاطلاع على جداول رسوم الجوازات الرسمية وغرامات التأخير وفئات الإعفاء: <a href="/ar/saudi-iqama-calculator/renewal-fee/" style="color:#ea580c; font-weight:700; text-decoration:underline;">حاسبة رسوم تجديد الإقامة السعودية</a>.</li>
+          <li>لحساب كروت العمل وفواتير سداد عبر منصة قوى وإعفاءات المنشآت الصغيرة: <a href="/ar/saudi-iqama-calculator/work-permit/" style="color:#ea580c; font-weight:700; text-decoration:underline;">حاسبة رسوم رخصة العمل (كرت العمل)</a>.</li>
+          <li>لحساب المقابل المالي المستقل للتابعين والمرافقين وتأشيرات الخروج والعودة: <a href="/ar/saudi-iqama-calculator/dependent-fee/" style="color:#ea580c; font-weight:700; text-decoration:underline;">حاسبة رسوم المرافقين والتابعين</a>.</li>
         </ul>
       </div>
 
-      <h2>How to Use This Total Residency Cost Simulator</h2>
+      <h2>كيفية استخدام محاكي التكلفة الإجمالية للإقامة</h2>
       <div class="content-callout">
-        <ol style="margin:0; padding-left:20px; line-height:1.7;">
-          <li><strong>Select Worker Classification &amp; Labor Quota:</strong> Choose Corporate Employee (Jawazat 650 + Maktab Amal) or Domestic Staff (Jawazat 600, no Maktab Amal), and select the 800 or 700 SAR/mo quota tier.</li>
-          <li><strong>Enter Dependents &amp; Indicative Insurance:</strong> Specify the count of accompanying family members and enter an indicative health insurance premium per person (e.g., 800 SAR/person).</li>
-          <li><strong>Select Duration &amp; Review Allocation:</strong> Choose 3, 6, 9, or 12 months to review the segregated breakdown separating employer legal CTC from the employee's personal family expenses.</li>
+        <ol style="margin:0; padding-right:20px; line-height:1.7;">
+          <li><strong>تحديد فئة العامل ونسبة التوطين:</strong> اختر موظف قطاع خاص (جوازات 650 ريال + رخصة عمل) أو عمالة منزلية (جوازات 600 ريال بدون مكتب عمل)، وحدد شريحة المقابل المالي (800 أو 700 ريال شهرياً).</li>
+          <li><strong>إدخال المرافقين وتكلفة التأمين التقديرية:</strong> حدد عدد المرافقين التابعين للموظف وأدخل القسط التقديري للتأمين الطبي للفرد الواحد سنوياً (مثل 800 ريال/فرد).</li>
+          <li><strong>اختيار المدة ومراجعة تفصيل الالتزامات:</strong> اختر فترة التجديد المطلوبة (3، 6، 9، أو 12 شهراً) للاطلاع على التحليل المالي الفوري الذي يفصل بين التزامات صاحب العمل النظامية ونفقات الموظف الشخصية.</li>
         </ol>
       </div>
 
-      <h2>Illustrative Total Residency Cost Worked Example</h2>
+      <h2>مثال تطبيقي عملي: ميزانية التكلفة الشاملة لموظف مع عائلته</h2>
       <p>
-        <em>Note: The following scenario is an illustrative example demonstrating full-spectrum residency cost modeling. Health insurance figures represent indicative private-market estimates and are not government fees.</em>
+        <em>ملاحظة توضيحية: النموذج التالي يمثل سيناريو توضيحياً لحساب التكلفة السنوية الكاملة للمقيم. أقساط التأمين الطبي تقديرات استرشادية لمتوسط السوق وليست رسوماً حكومية رسمية.</em>
       </p>
       <p>
-        Consider a corporate expatriate employee on a 12-month contract under the 800 SAR/month Maktab Amal tier, sponsoring 2 dependents, with an indicative private health insurance estimate of 800 SAR per person:
+        بافتراض موظف قطاع خاص بعقد لمدة 12 شهراً لدى منشأة تخضع لشريحة المقابل المالي 800 ريال شهرياً، ويعول مرافقين اثنين (2)، مع تقدير تأمين صحي بواقع 800 ريال للشخص سنوياً:
       </p>
       <table class="data-table">
         <thead>
           <tr>
-            <th>Expense Category</th>
-            <th>Calculation Basis</th>
-            <th>Responsible Entity</th>
-            <th>Annual Total (SAR)</th>
+            <th>بند التكلفة</th>
+            <th>أساس الاحتساب</th>
+            <th>الجهة المسؤولة نظاماً</th>
+            <th>الإجمالي السنوي (ريال)</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td><strong>Jawazat Residency Base Fee</strong></td>
-            <td>650 SAR annual statutory base</td>
-            <td>Employer (Labor Law Art. 40)</td>
-            <td>650.00 SAR</td>
+            <td><strong>رسوم الجوازات الأساسية</strong></td>
+            <td>650 ريال رسم سنوي ثابت</td>
+            <td>صاحب العمل (المادة 40 من نظام العمل)</td>
+            <td>650.00 ر.س</td>
           </tr>
           <tr>
-            <td><strong>Maktab Amal Work Permit Levy</strong></td>
-            <td>800 SAR / mo &times; 12 months</td>
-            <td>Employer (Labor Law Art. 40)</td>
-            <td>9,600.00 SAR</td>
+            <td><strong>المقابل المالي لمكتب العمل (رخصة العمل)</strong></td>
+            <td>800 ريال &times; 12 شهراً</td>
+            <td>صاحب العمل (المادة 40 من نظام العمل)</td>
+            <td>9,600.00 ر.س</td>
           </tr>
           <tr>
-            <td><strong>Worker Health Insurance</strong></td>
-            <td>Indicative private-market estimate</td>
-            <td>Employer (Labor Law Art. 40)</td>
-            <td>800.00 SAR</td>
+            <td><strong>التأمين الطبي للموظف</strong></td>
+            <td>تقدير استرشادي وفق السوق</td>
+            <td>صاحب العمل (المادة 40 من نظام العمل)</td>
+            <td>800.00 ر.س</td>
           </tr>
           <tr style="background:#f8fafc; font-weight:700;">
-            <td colspan="3" style="color:#0f766e;"><strong>Subtotal: Employer Legal CTC</strong></td>
-            <td style="color:#0f766e;"><strong>11,050.00 SAR</strong></td>
+            <td colspan="3" style="color:#0f766e;"><strong>المجموع الفرعي: التزام صاحب العمل النظامي (CTC)</strong></td>
+            <td style="color:#0f766e;"><strong>11,050.00 ر.س</strong></td>
           </tr>
           <tr>
-            <td><strong>Family Dependent Levy</strong></td>
-            <td>400 SAR / mo &times; 2 dependents &times; 12 mo</td>
-            <td>Employee (SADAD Code 092)</td>
-            <td>9,600.00 SAR</td>
+            <td><strong>المقابل المالي للمرافقين والتابعين</strong></td>
+            <td>400 ريال &times; 2 مرافقين &times; 12 شهراً</td>
+            <td>الموظف (رمز سداد 092)</td>
+            <td>9,600.00 ر.س</td>
           </tr>
           <tr>
-            <td><strong>Dependent Health Insurance</strong></td>
-            <td>800 SAR &times; 2 dependents (Indicative)</td>
-            <td>Employee / Family Private Cost</td>
-            <td>1,600.00 SAR</td>
+            <td><strong>التأمين الطبي للمرافقين</strong></td>
+            <td>800 ريال &times; 2 مرافقين (تقديري)</td>
+            <td>الموظف / نفقات الأسرة الشخصية</td>
+            <td>1,600.00 ر.س</td>
           </tr>
           <tr style="background:#f8fafc; font-weight:700;">
-            <td colspan="3" style="color:#0284c7;"><strong>Subtotal: Employee Personal Share</strong></td>
-            <td style="color:#0284c7;"><strong>11,200.00 SAR</strong></td>
+            <td colspan="3" style="color:#0284c7;"><strong>المجموع الفرعي: حصة الموظف الشخصية للمرافقين</strong></td>
+            <td style="color:#0284c7;"><strong>11,200.00 ر.س</strong></td>
           </tr>
           <tr style="background:#f0fdf4; font-weight:800;">
-            <td colspan="3" style="color:#15803d;"><strong>المجموع الكلي Residency Expenditure</strong></td>
-            <td style="color:#15803d;"><strong>22,250.00 SAR</strong></td>
+            <td colspan="3" style="color:#15803d;"><strong>إجمالي تكلفة الإقامة الشاملة</strong></td>
+            <td style="color:#15803d;"><strong>22,250.00 ر.س</strong></td>
           </tr>
         </tbody>
       </table>
@@ -613,50 +613,50 @@
       <h2>الأسئلة الشائعة</h2>
       <div class="faq-item">
         <div class="faq-question" onclick="toggleFaq(this)">
-          <span>Can health insurance be renewed quarterly alongside 3-month Iqama?</span>
+          <span>هل يمكن تجديد التأمين الطبي فصلياً (كل 3 أشهر) بالتزامن مع الإقامة ربع السنوية؟</span>
           <i class="fas fa-chevron-down"></i>
         </div>
         <div class="faq-answer" style="display:none;">
-          Generally no. Most accredited health insurance providers in Saudi Arabia issue medical insurance policies on an annual 12-month basis. While Iqama and work permits can be renewed quarterly, the underlying medical insurance policy must be valid for the duration of the renewal period.
+          بشكل عام لا؛ حيث تصدر معظم شركات التأمين المعتمدة في المملكة وثائق التأمين الصحي لمدة سنة كاملة (12 شهراً). ورغم إمكانية تجديد الإقامة ورخصة العمل فصلياً كل 3 أو 6 أو 9 أشهر، يشترط النظام وجود وثيقة تأمين صحي سارية تغطي فترة التجديد المطلوبة على الأقل في نظام مجلس الضمان الصحي.
         </div>
       </div>
 
       <div class="faq-item">
         <div class="faq-question" onclick="toggleFaq(this)">
-          <span>Are employers legally allowed to deduct worker health insurance from salaries?</span>
+          <span>هل يحق لصاحب العمل خصم تكلفة التأمين الطبي للموظف من راتبه الشهري؟</span>
           <i class="fas fa-chevron-down"></i>
         </div>
         <div class="faq-answer" style="display:none;">
-          No. Under the Cooperative Health Insurance Law and Article 40 of Saudi Labor Law, employers are strictly required to provide and fund basic cooperative health insurance for their employees without making salary deductions.
+          لا يحق له ذلك إطلاقاً. يلزم نظام الضمان الصحي التعاوني والمادة الأربعون من نظام العمل السعودي صاحب العمل بتوفير وتحمل التغطية التأمينية الطبية الأساسية للموظف دون استقطاع أي مبالغ من أجره.
         </div>
       </div>
 
       <div class="faq-item">
         <div class="faq-question" onclick="toggleFaq(this)">
-          <span>Who pays the dependent levy if the employer provides a family visa?</span>
+          <span>من يتحمل سداد المقابل المالي للمرافقين إذا وفرت الشركة تأشيرة استقدام الأسرة؟</span>
           <i class="fas fa-chevron-down"></i>
         </div>
         <div class="faq-answer" style="display:none;">
-          Under Saudi regulations, the employee is legally responsible for paying the 400 SAR per month dependent levy through SADAD Code 092 unless their employment contract explicitly stipulates that the company covers dependent surcharges as part of an executive benefits package.
+          وفق الأنظمة السعودية المعمول بها، فإن الموظف هو المسؤول نظاماً عن سداد المقابل المالي للمرافقين (400 ريال شهرياً عن كل تابع) عبر رمز سداد 092، ما لم ينص عقد العمل صراحة على تحمل المنشأة لتكاليف المرافقين كجزء من المزايا التعاقدية.
         </div>
       </div>
     </article>
 
-        <div class="related-tools-box">
-      <div class="related-title"><i class="fas fa-grid-2" style="color:#ea580c; margin-right:8px;"></i>Explore Saudi Iqama &amp; Residency Tools</div>
+    <div class="related-tools-box">
+      <div class="related-title"><i class="fas fa-grid-2" style="color:#ea580c; margin-left:8px;"></i>استكشف أدوات وحاسبات الإقامة السعودية</div>
       <div class="related-grid">
-        <a href="/ar/saudi-iqama-calculator/" class="related-link-card"><span>Main Iqama Hub</span> <i class="fas fa-arrow-right"></i></a>
-        <a href="/ar/saudi-iqama-calculator/renewal-fee/" class="related-link-card"><span>Iqama Renewal Fee</span> <i class="fas fa-arrow-right"></i></a>
-        <a href="/ar/saudi-iqama-calculator/dependent-fee/" class="related-link-card"><span>Dependent Fee</span> <i class="fas fa-arrow-right"></i></a>
-        <a href="/ar/saudi-iqama-calculator/maktab-amal/" class="related-link-card"><span>Maktab Amal</span> <i class="fas fa-arrow-right"></i></a>
-        <a href="/ar/saudi-iqama-calculator/work-permit/" class="related-link-card"><span>Work Permit Fee</span> <i class="fas fa-arrow-right"></i></a>
-        <a href="/ar/saudi-iqama-calculator/iqama-cost/" class="related-link-card"><span>إجمالي تكلفة الإقامة</span> <i class="fas fa-arrow-right"></i></a>
-        <a href="/ar/saudi-iqama-calculator/3-month-cost/" class="related-link-card"><span>3-Month Cost</span> <i class="fas fa-arrow-right"></i></a>
-        <a href="/ar/saudi-iqama-calculator/6-month-cost/" class="related-link-card"><span>6-Month Cost</span> <i class="fas fa-arrow-right"></i></a>
-        <a href="/ar/saudi-iqama-calculator/9-month-cost/" class="related-link-card"><span>9-Month Cost</span> <i class="fas fa-arrow-right"></i></a>
-        <a href="/ar/saudi-iqama-calculator/12-month-cost/" class="related-link-card"><span>12-Month Cost</span> <i class="fas fa-arrow-right"></i></a>
-        <a href="/ar/saudi-iqama-calculator/family-dependent-cost/" class="related-link-card"><span>Family Dependent Cost</span> <i class="fas fa-arrow-right"></i></a>
-        <a href="/ar/saudi-iqama-calculator/renewal-guide/" class="related-link-card"><span>Renewal Guide</span> <i class="fas fa-arrow-right"></i></a>
+        <a href="/ar/saudi-iqama-calculator/" class="related-link-card"><span>بوابة حاسبات الإقامة</span> <i class="fas fa-arrow-left"></i></a>
+        <a href="/ar/saudi-iqama-calculator/renewal-fee/" class="related-link-card"><span>رسوم تجديد الإقامة</span> <i class="fas fa-arrow-left"></i></a>
+        <a href="/ar/saudi-iqama-calculator/dependent-fee/" class="related-link-card"><span>رسوم المرافقين والتابعين</span> <i class="fas fa-arrow-left"></i></a>
+        <a href="/ar/saudi-iqama-calculator/maktab-amal/" class="related-link-card"><span>رسوم مكتب العمل</span> <i class="fas fa-arrow-left"></i></a>
+        <a href="/ar/saudi-iqama-calculator/work-permit/" class="related-link-card"><span>رسوم كرت العمل</span> <i class="fas fa-arrow-left"></i></a>
+        <a href="/ar/saudi-iqama-calculator/iqama-cost/" class="related-link-card"><span>إجمالي تكلفة الإقامة</span> <i class="fas fa-arrow-left"></i></a>
+        <a href="/ar/saudi-iqama-calculator/3-month-cost/" class="related-link-card"><span>تكلفة الإقامة 3 أشهر</span> <i class="fas fa-arrow-left"></i></a>
+        <a href="/ar/saudi-iqama-calculator/6-month-cost/" class="related-link-card"><span>تكلفة الإقامة 6 أشهر</span> <i class="fas fa-arrow-left"></i></a>
+        <a href="/ar/saudi-iqama-calculator/9-month-cost/" class="related-link-card"><span>تكلفة الإقامة 9 أشهر</span> <i class="fas fa-arrow-left"></i></a>
+        <a href="/ar/saudi-iqama-calculator/12-month-cost/" class="related-link-card"><span>تكلفة الإقامة 12 شهراً</span> <i class="fas fa-arrow-left"></i></a>
+        <a href="/ar/saudi-iqama-calculator/family-dependent-cost/" class="related-link-card"><span>تكلفة إقامة المرافقين</span> <i class="fas fa-arrow-left"></i></a>
+        <a href="/ar/saudi-iqama-calculator/renewal-guide/" class="related-link-card"><span>دليل تجديد الإقامة</span> <i class="fas fa-arrow-left"></i></a>
       </div>
     </div>
   </main>
@@ -689,11 +689,11 @@
       const employeeTotal = dependentLevy + dependentInsurance;
       const grandTotal = employerTotal + employeeTotal;
 
-      document.getElementById('resGrandResidencyTotal').innerText = grandTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SAR';
-      document.getElementById('resTotalEmployer').innerText = employerTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SAR';
-      document.getElementById('resTotalEmployee').innerText = employeeTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SAR';
-      document.getElementById('resGovFees').innerText = (jawazatProrated + maktabTotal).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SAR';
-      document.getElementById('resTotalInsurance').innerText = totalInsurance.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SAR (' + (dependents + 1) + ' Persons)';
+      document.getElementById('resGrandResidencyTotal').innerText = grandTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' ر.س';
+      document.getElementById('resTotalEmployer').innerText = employerTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' ر.س';
+      document.getElementById('resTotalEmployee').innerText = employeeTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' ر.س';
+      document.getElementById('resGovFees').innerText = (jawazatProrated + maktabTotal).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' ر.س';
+      document.getElementById('resTotalInsurance').innerText = totalInsurance.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' ر.س (' + (dependents + 1) + ' أفراد)';
     }
 
     window.addEventListener('DOMContentLoaded', calculateTotalCost);
@@ -715,59 +715,59 @@
           <div style="font-size:20px; font-weight:800; color:#fff; margin-bottom:4px;">
             DailyCalc<span style="color:#38bdf8;">Hubs</span>
           </div>
-          <div style="font-size:12px; color:#64748b; margin-bottom:14px;">Saudi Tools for a Smarter Tomorrow</div>
+          <div style="font-size:12px; color:#64748b; margin-bottom:14px;">أدوات سعودية لغدٍ أذكى</div>
           <p style="font-size:13.5px; line-height:1.6; color:#94a3b8;">
-            High-precision residency, compensation, remittance, and legal utilities built specifically for citizens, expatriates, and enterprise HR teams in Saudi Arabia.
+            أدوات وحاسبات عالية الدقة للإقامة، والرواتب، ونهاية الخدمة، وتحويل الأموال، صُممت خصيصاً للمواطنين والمقيمين وأصحاب الأعمال في المملكة العربية السعودية.
           </p>
         </div>
         <div>
-          <h4 class="footer-col-heading">Iqama &amp; Residency</h4>
+          <h4 class="footer-col-heading">أدوات الإقامة</h4>
           <ul class="footer-nav-list">
-            <li><a href="/ar/saudi-iqama-calculator/renewal-fee/">Iqama Renewal Fee</a></li>
-            <li><a href="/ar/saudi-iqama-calculator/dependent-fee/">Dependent Fee Calculator</a></li>
-            <li><a href="/ar/saudi-iqama-calculator/maktab-amal/">Maktab Amal Work Permit</a></li>
-            <li><a href="/ar/saudi-iqama-calculator/3-month-cost/">3-Month Iqama Cost</a></li>
-            <li><a href="/ar/saudi-iqama-calculator/12-month-cost/">12-Month Iqama Cost</a></li>
-            <li><a href="/ar/saudi-iqama-calculator/renewal-guide/">Iqama Renewal Guide</a></li>
+            <li><a href="/ar/saudi-iqama-calculator/renewal-fee/">رسوم تجديد الإقامة</a></li>
+            <li><a href="/ar/saudi-iqama-calculator/dependent-fee/">رسوم المرافقين والتابعين</a></li>
+            <li><a href="/ar/saudi-iqama-calculator/maktab-amal/">رسوم مكتب العمل</a></li>
+            <li><a href="/ar/saudi-iqama-calculator/3-month-cost/">تكلفة الإقامة 3 أشهر</a></li>
+            <li><a href="/ar/saudi-iqama-calculator/12-month-cost/">تكلفة الإقامة 12 شهراً</a></li>
+            <li><a href="/ar/saudi-iqama-calculator/renewal-guide/">دليل تجديد الإقامة</a></li>
           </ul>
         </div>
         <div>
-          <h4 class="footer-col-heading">Core Saudi Utilities</h4>
+          <h4 class="footer-col-heading">أدوات وخدمات سعودية</h4>
           <ul class="footer-nav-list">
-            <li><a href="/ar/saudi-remittance-calculator/">Saudi Remittance</a></li>
+            <li><a href="/ar/saudi-remittance-calculator/">تحويل الأموال بالسعودية</a></li>
             <li><a href="/ar/prayer-times/">مواقيت الصلاة</a></li>
-            <li><a href="/ar/saudi-salary-calculator/">Saudi Salary &amp; EOSB</a></li>
-            <li><a href="/ar/saudi-iqama-calculator/">Iqama Fee Estimator</a></li>
-            <li><a href="/ar/everyday-smart-calculator/">Everyday Smart Tools</a></li>
-            <li><a href="/ar/shariah-sip-calculator/">Shariah SIP</a></li>
-            <li><a href="/ar/travel-booking-calculator/">Travel &amp; Booking</a></li>
+            <li><a href="/ar/saudi-salary-calculator/">حاسبة الرواتب ونهاية الخدمة</a></li>
+            <li><a href="/ar/saudi-iqama-calculator/">حاسبة رسوم الإقامة</a></li>
+            <li><a href="/ar/everyday-smart-calculator/">الحاسبات اليومية الذكية</a></li>
+            <li><a href="/ar/shariah-sip-calculator/">حاسبة الاستثمار الشرعي SIP</a></li>
+            <li><a href="/ar/travel-booking-calculator/">حجوزات السفر والطيران</a></li>
           </ul>
         </div>
         <div>
-          <h4 class="footer-col-heading">Legal &amp; Trust</h4>
+          <h4 class="footer-col-heading">المعلومات القانونية والموثوقية</h4>
           <ul class="footer-nav-list">
-            <li><a href="/about/">About DailyCalcHubs</a></li>
-            <li><a href="/privacy-policy/">Privacy Policy</a></li>
-            <li><a href="/disclaimer/">Terms &amp; Disclaimer</a></li>
-            <li><a href="/contact/">Contact Support</a></li>
+            <li><a href="/about/">عن DailyCalcHubs</a></li>
+            <li><a href="/privacy-policy/">سياسة الخصوصية</a></li>
+            <li><a href="/disclaimer/">الشروط وإخلاء المسؤولية</a></li>
+            <li><a href="/contact/">الاتصال والدعم</a></li>
           </ul>
           <div style="margin-top:16px; font-size:12px; color:#64748b;">
-            <i class="fas fa-shield-halved" style="color:#ea580c;"></i> Aligned with MHRSD, Jawazat &amp; Qiwa 2026 Standards.
+            <i class="fas fa-shield-halved" style="color:#ea580c;"></i> متوافق مع معايير وزارة الموارد البشرية والجوازات ومنصة قوى 2026.
           </div>
         </div>
       </div>
       <div class="footer-bottom-bar">
-        <div>&copy; 2026 DailyCalcHubs. All rights reserved. Independent informational service.</div>
+        <div>&copy; 2026 DailyCalcHubs. جميع الحقوق محفوظة. خدمة معلوماتية مستقلة.</div>
         <div class="footer-legal-links">
-          <a href="/privacy-policy/">Privacy Policy</a>
+          <a href="/privacy-policy/">سياسة الخصوصية</a>
           <span>|</span>
-          <a href="/disclaimer/">Disclaimer</a>
+          <a href="/disclaimer/">إخلاء المسؤولية</a>
           <span>|</span>
-          <a href="/terms/">Terms of Service</a>
+          <a href="/terms/">شروط الخدمة</a>
           <span>|</span>
-          <a href="/contact/">Contact</a>
+          <a href="/contact/">اتصل بنا</a>
         </div>
-        <div style="color:#ea580c; font-weight:600;">Serving the Saudi Community</div>
+        <div style="color:#ea580c; font-weight:600;">في خدمة المجتمع السعودي</div>
       </div>
     </div>
   </footer>
