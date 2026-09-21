@@ -156,36 +156,36 @@
   <style>
     /* Local styles matching English hub */
     .hub-hero {
-      background: linear-gradient(135deg, #4c0519 0%, #1e1b4b 50%, #0f172a 100%);
-      color: #ffffff;
-      padding: 48px 0 40px;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+      background: linear-gradient(180deg, #ffffff 0%, #fff1f2 100%);
+      color: #0f172a;
+      padding: 40px 0 30px;
+      border-bottom: 1px solid #ffe4e6;
     }
     .hub-pill {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(244, 63, 94, 0.18);
-      border: 1px solid rgba(251, 113, 133, 0.35);
-      color: #fb7185;
-      font-size: 13px;
+      background: #fff1f2;
+      border: 1px solid #fecdd3;
+      color: #e11d48;
+      font-size: 12px;
       font-weight: 700;
-      padding: 6px 14px;
+      padding: 4px 12px;
       border-radius: 9999px;
       margin-bottom: 16px;
     }
     .hub-title {
-      font-size: clamp(26px, 4vw, 38px);
+      font-size: clamp(26px, 4vw, 36px);
       font-weight: 800;
       line-height: 1.25;
       margin-bottom: 14px;
-      color: #ffffff;
+      color: #0f172a;
       letter-spacing: -0.5px;
     }
     .hub-lead {
       font-size: 16px;
       line-height: 1.7;
-      color: #cbd5e1;
+      color: #475569;
       max-width: 780px;
       margin-bottom: 24px;
     }
@@ -196,22 +196,37 @@
       margin-top: 20px;
     }
     .hub-stat-card {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
       border-radius: 12px;
       padding: 12px 18px;
       min-width: 140px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
     }
     .hub-stat-num {
       font-size: 20px;
       font-weight: 800;
-      color: #fb7185;
+      color: #e11d48;
       display: block;
     }
     .hub-stat-label {
       font-size: 12px;
-      color: #94a3b8;
+      color: #64748b;
       font-weight: 600;
+    }
+    html[data-theme="dark"] .hub-hero {
+      background: #0f172a !important;
+      border-bottom-color: #1e293b !important;
+    }
+    html[data-theme="dark"] .hub-title {
+      color: #f8fafc !important;
+    }
+    html[data-theme="dark"] .hub-lead {
+      color: #cbd5e1 !important;
+    }
+    html[data-theme="dark"] .hub-stat-card {
+      background: #1e293b !important;
+      border-color: #334155 !important;
     }
 
     /* Showcase Section */

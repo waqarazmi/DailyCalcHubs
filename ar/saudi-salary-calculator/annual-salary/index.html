@@ -348,7 +348,10 @@
 
           <div class="form-group">
             <label class="form-label" for="monthlyBasicAnnual">الراتب الأساسي الشهري (SAR)</label>
-            <input type="number" id="monthlyBasicAnnual" class="calc-input" value="8000" min="1000" max="200000" step="100" placeholder="أدخل الراتب الأساسي">
+            <div class="input-with-addons">
+              <span class="input-addon-badge">ر.س</span>
+              <input type="number" id="monthlyBasicAnnual" class="calc-input" value="8000" min="1000" max="200000" step="100" placeholder="أدخل الراتب الأساسي" oninput="calculateAnnualSalary()">
+            </div>
             <div class="amount-chips-row">
               <button type="button" class="amount-chip-btn" onclick="setAnnualBasic(5000)">5,000 ر.س</button>
               <button type="button" class="amount-chip-btn active" onclick="setAnnualBasic(8000)">8,000 ر.س</button>
@@ -358,27 +361,42 @@
             </div>
           </div>
 
-          <div class="form-group">
-            <label class="form-label" for="monthlyHousingAnnual">بدل السكن الشهري (SAR)</label>
-            <input type="number" id="monthlyHousingAnnual" class="calc-input" value="2000" min="0" max="100000" step="100" placeholder="أدخل بدل السكن">
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap:16px;">
+            <div class="form-group">
+              <label class="form-label" for="monthlyHousingAnnual">بدل السكن الشهري (SAR)</label>
+              <div class="input-with-addons">
+                <span class="input-addon-badge">ر.س</span>
+                <input type="number" id="monthlyHousingAnnual" class="calc-input" value="2000" min="0" max="100000" step="100" placeholder="أدخل بدل السكن" oninput="calculateAnnualSalary()">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="monthlyTransportAnnual">بدل النقل الشهري (SAR)</label>
+              <div class="input-with-addons">
+                <span class="input-addon-badge">ر.س</span>
+                <input type="number" id="monthlyTransportAnnual" class="calc-input" value="800" min="0" max="50000" step="50" placeholder="أدخل بدل النقل" oninput="calculateAnnualSalary()">
+              </div>
+            </div>
           </div>
 
-          <div class="form-group">
-            <label class="form-label" for="monthlyTransportAnnual">بدل النقل الشهري (SAR)</label>
-            <input type="number" id="monthlyTransportAnnual" class="calc-input" value="800" min="0" max="50000" step="50" placeholder="أدخل بدل النقل">
-          </div>
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap:16px;">
+            <div class="form-group">
+              <label class="form-label" for="annualBonus">المكافأة أو البونص السنوي المتوقع (اختياري)</label>
+              <div class="input-with-addons">
+                <span class="input-addon-badge">ر.س</span>
+                <input type="number" id="annualBonus" class="calc-input" value="0" min="0" max="500000" step="500" placeholder="أدخل المكافأة السنوية إن وجدت" oninput="calculateAnnualSalary()">
+              </div>
+            </div>
 
-          <div class="form-group">
-            <label class="form-label" for="annualBonus">المكافأة أو البونص السنوي المتوقع (اختياري)</label>
-            <input type="number" id="annualBonus" class="calc-input" value="0" min="0" max="500000" step="500" placeholder="أدخل المكافأة السنوية إن وجدت">
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="annualNationality">جنسية الموظف (لتحديد اشتراكات التأمينات الاجتماعية)</label>
-            <select id="annualNationality" class="calc-input" onchange="calculateAnnualSalary()">
-              <option value="saudi" selected>مواطن سعودي (اشتراك التأمينات 9.75% على الموظف + 11.75% صاحب العمل)</option>
-              <option value="expat">مقيم غير سعودي (الأخطار المهنية 2% يتحملها صاحب العمل فقط)</option>
-            </select>
+            <div class="form-group">
+              <label class="form-label" for="annualNationality">جنسية الموظف (لتحديد اشتراكات التأمينات الاجتماعية)</label>
+              <div class="input-with-addons">
+                <select id="annualNationality" class="calc-input" onchange="calculateAnnualSalary()">
+                  <option value="saudi" selected>مواطن سعودي (اشتراك التأمينات 9.75% على الموظف + 11.75% صاحب العمل)</option>
+                  <option value="expat">مقيم غير سعودي (الأخطار المهنية 2% يتحملها صاحب العمل فقط)</option>
+                </select>
+              </div>
+            </div>
           </div>
 
           <div class="result-summary-box">

@@ -348,7 +348,10 @@
 
           <div class="form-group">
             <label class="form-label" for="monthlySalaryHourly">الراتب الشهري الأساسي (المعتمد لحساب الساعة بالريال)</label>
-            <input type="number" id="monthlySalaryHourly" class="calc-input" value="6000" min="500" max="200000" step="100" placeholder="أدخل الراتب الشهري">
+            <div class="input-with-addons">
+              <span class="input-addon-badge">ر.س</span>
+              <input type="number" id="monthlySalaryHourly" class="calc-input" value="6000" min="500" max="200000" step="100" placeholder="أدخل الراتب الشهري" oninput="calculateHourlySalary()">
+            </div>
             <div class="amount-chips-row">
               <button type="button" class="amount-chip-btn" onclick="setHourlyAmount(3000)">3,000 ر.س</button>
               <button type="button" class="amount-chip-btn" onclick="setHourlyAmount(5000)">5,000 ر.س</button>

@@ -1948,3 +1948,463 @@ html[dir="rtl"] .cookie-consent-banner {
 .cookie-btn-secondary:hover {
   background: rgba(255, 255, 255, 0.2);
 }
+
+/* ============================================================
+   DAILYCALCHUBS — ARABIC MULTILINGUAL EXPANSION DESIGN SYSTEM
+   Strictly Scoped to html[lang="ar"] (English 100% Protected)
+   ============================================================ */
+
+/* 1. Mobile Navigation Drawer (Hidden by default, slides out when active) */
+html[lang="ar"] .mobile-nav-drawer {
+  display: none !important;
+  position: fixed !important;
+  top: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 290px !important;
+  max-width: 85vw !important;
+  background: #ffffff !important;
+  z-index: 100000 !important;
+  box-shadow: -4px 0 25px rgba(0, 0, 0, 0.2) !important;
+  padding: 24px 20px !important;
+  overflow-y: auto !important;
+  flex-direction: column !important;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  direction: rtl !important;
+  text-align: right !important;
+}
+
+html[lang="ar"] .mobile-nav-drawer.open,
+html[lang="ar"] .mobile-nav-drawer.active {
+  display: flex !important;
+}
+
+html[lang="ar"] .mobile-nav-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e2e8f0;
+  margin-bottom: 16px;
+}
+
+html[lang="ar"] .mobile-nav-header .brand-name {
+  font-size: 18px;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+html[lang="ar"] .mobile-nav-header .brand-name span {
+  color: #0ea5e9;
+}
+
+html[lang="ar"] .mobile-nav-close {
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #64748b;
+  cursor: pointer;
+  padding: 4px;
+}
+
+html[lang="ar"] .mobile-nav-close:hover {
+  color: #0f172a;
+}
+
+html[lang="ar"] .mobile-nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+html[lang="ar"] .mobile-nav-links a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 8px;
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #334155;
+  text-decoration: none;
+  transition: all 0.15s;
+}
+
+html[lang="ar"] .mobile-nav-links a:hover,
+html[lang="ar"] .mobile-nav-links a.active {
+  background: #f1f5f9;
+  color: #0284c7;
+}
+
+/* Dark mode for drawer */
+html[data-theme="dark"][lang="ar"] .mobile-nav-drawer {
+  background: #0f172a !important;
+  border-left: 1px solid #1e293b !important;
+}
+html[data-theme="dark"][lang="ar"] .mobile-nav-header {
+  border-bottom-color: #1e293b;
+}
+html[data-theme="dark"][lang="ar"] .mobile-nav-header .brand-name {
+  color: #f8fafc;
+}
+html[data-theme="dark"][lang="ar"] .mobile-nav-links a {
+  color: #cbd5e1;
+}
+html[data-theme="dark"][lang="ar"] .mobile-nav-links a:hover,
+html[data-theme="dark"][lang="ar"] .mobile-nav-links a.active {
+  background: #1e293b;
+  color: #38bdf8;
+}
+
+/* 2. Base Top Rates Ticker for Arabic */
+html[lang="ar"] .top-rates-ticker {
+  background: #0f172a;
+  color: #94a3b8;
+  font-size: 11.5px;
+  font-weight: 600;
+  padding: 7px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: none;
+  direction: rtl;
+}
+
+html[lang="ar"] .top-rates-ticker::-webkit-scrollbar {
+  display: none;
+}
+
+html[lang="ar"] .top-rates-ticker .ticker-inner,
+html[lang="ar"] .top-rates-ticker .ticker-items-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 0 16px;
+}
+
+html[lang="ar"] .top-rates-ticker .ticker-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+html[lang="ar"] .top-rates-ticker .ticker-rate,
+html[lang="ar"] .top-rates-ticker .t-val {
+  color: #38bdf8;
+  font-weight: 700;
+}
+
+html[lang="ar"] .top-rates-ticker .ticker-tag-green {
+  background: rgba(22, 163, 74, 0.2);
+  color: #4ade80;
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+/* 3. Base Site Header & Navigation for Arabic */
+html[lang="ar"] .site-header {
+  background: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  direction: rtl;
+}
+
+html[lang="ar"] .site-header .header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 74px;
+}
+
+html[lang="ar"] .brand-logo-area,
+html[lang="ar"] .site-header .brand-logo-area {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+html[lang="ar"] .brand-logo-area .logo-icon-box {
+  width: 42px;
+  height: 42px;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 20px;
+  box-shadow: 0 4px 10px rgba(16, 185, 129, 0.25);
+}
+
+html[lang="ar"] .brand-logo-area .logo-title {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  line-height: 1.1;
+  color: #0f172a;
+}
+
+html[lang="ar"] .brand-logo-area .logo-subtitle {
+  font-size: 11.5px;
+  color: #64748b;
+  font-weight: 600;
+}
+
+html[lang="ar"] .site-header .header-nav,
+html[lang="ar"] .site-header .header-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+html[lang="ar"] .site-header .header-nav a,
+html[lang="ar"] .site-header .header-nav-links a {
+  color: #334155;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 700;
+  transition: color 0.15s;
+  white-space: nowrap;
+}
+
+html[lang="ar"] .site-header .header-nav a:hover,
+html[lang="ar"] .site-header .header-nav-links a:hover,
+html[lang="ar"] .site-header .header-nav a.active,
+html[lang="ar"] .site-header .header-nav-links a.active {
+  color: #0284c7;
+}
+
+html[lang="ar"] .brand-logo {
+  font-size: 22px;
+  font-weight: 800;
+  color: #0f172a;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+
+html[lang="ar"] .brand-logo span {
+  color: #0ea5e9;
+}
+
+/* 4. Base Breadcrumbs for Arabic */
+html[lang="ar"] .breadcrumbs-bar {
+  background: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  padding: 12px 0;
+  font-size: 13px;
+  direction: rtl;
+}
+
+html[lang="ar"] .breadcrumbs-bar a {
+  color: #64748b;
+  text-decoration: none;
+}
+
+html[lang="ar"] .breadcrumbs-bar a:hover {
+  color: #0284c7;
+}
+
+html[lang="ar"] .breadcrumbs-bar span {
+  color: #94a3b8;
+  margin: 0 8px;
+}
+
+html[lang="ar"] .breadcrumbs-bar .current-crumb {
+  color: #0f172a;
+  font-weight: 700;
+}
+
+/* 5. Base Site Footer for Arabic */
+html[lang="ar"] .site-footer {
+  background: #081024;
+  color: #94a3b8;
+  padding: 48px 0 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 13.5px;
+  direction: rtl;
+}
+
+html[lang="ar"] .site-footer .footer-columns-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+  gap: 36px;
+  margin-bottom: 36px;
+}
+
+@media (max-width: 840px) {
+  html[lang="ar"] .site-footer .footer-columns-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 540px) {
+  html[lang="ar"] .site-footer .footer-columns-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+html[lang="ar"] .site-footer .footer-col-heading {
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+html[lang="ar"] .site-footer .footer-nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+html[lang="ar"] .site-footer .footer-nav-list li {
+  margin-bottom: 10px;
+}
+
+html[lang="ar"] .site-footer .footer-nav-list a {
+  color: #94a3b8;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+html[lang="ar"] .site-footer .footer-nav-list a:hover {
+  color: #38bdf8;
+}
+
+html[lang="ar"] .site-footer .footer-bottom-bar {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-size: 12.5px;
+}
+
+html[lang="ar"] .site-footer .footer-legal-links a {
+  color: #94a3b8;
+  text-decoration: none;
+  margin: 0 8px;
+}
+
+html[lang="ar"] .site-footer .footer-legal-links a:hover {
+  color: #ffffff;
+}
+
+/* 6. Form Input & Addon Parity for Arabic */
+html[lang="ar"] .calc-input {
+  border: 1.5px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 12px 14px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #0f172a;
+  background: #ffffff;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+html[lang="ar"] .calc-input:focus {
+  border-color: #0284c7;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+}
+
+html[lang="ar"] .input-with-addons {
+  display: flex;
+  align-items: center;
+  border: 2px solid #cbd5e1;
+  border-radius: 10px;
+  background: #ffffff;
+  overflow: hidden;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+html[lang="ar"] .input-with-addons:focus-within {
+  border-color: #0284c7;
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+}
+
+html[lang="ar"] .input-with-addons .calc-input {
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  flex: 1;
+}
+
+html[lang="ar"] .input-with-addons .input-addon-badge {
+  background: #f8fafc;
+  padding: 12px 14px;
+  font-size: 13.5px;
+  font-weight: 800;
+  color: #0f172a;
+  border-left: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+html[data-theme="dark"][lang="ar"] .input-with-addons {
+  background: #1a233a !important;
+  border-color: #334155 !important;
+}
+
+html[data-theme="dark"][lang="ar"] .input-with-addons .input-addon-badge {
+  background: #25334d !important;
+  color: #cbd5e1 !important;
+  border-left-color: #334155 !important;
+}
+
+/* 7. Legal Pages Navigation Width Polish */
+html[lang="ar"] .site-header .header-container {
+  max-width: 1280px;
+}
+
+@media (max-width: 1140px) {
+  html[lang="ar"] .site-header .nav-link {
+    padding: 6px 8px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 1020px) {
+  html[lang="ar"] .site-header .main-nav,
+  html[lang="ar"] .site-header .header-nav,
+  html[lang="ar"] .site-header .header-nav-links {
+    display: none;
+  }
+  html[lang="ar"] .mobile-menu-toggle,
+  html[lang="ar"] .mobile-menu-btn {
+    display: inline-flex !important;
+  }
+}
+
+/* 8. Small Screen / Mobile Polish (320px–390px) */
+@media (max-width: 480px) {
+  html[lang="ar"] .header-inner,
+  html[lang="ar"] .header-container {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  html[lang="ar"] .brand-logo,
+  html[lang="ar"] .brand-logo-area .logo-title {
+    font-size: clamp(16px, 4.5vw, 20px);
+  }
+  html[lang="ar"] .brand-logo-area .logo-subtitle {
+    display: none;
+  }
+}

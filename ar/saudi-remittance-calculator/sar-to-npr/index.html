@@ -357,7 +357,10 @@
 
           <div class="form-group">
             <label class="form-label" for="nprAmount">مبلغ التحويل بالريال السعودي (SAR)</label>
-            <input type="number" id="nprAmount" class="calc-input" value="1000" min="1" max="100000" step="10" placeholder="أدخل المبلغ بالريال">
+            <div class="input-with-addons">
+              <div class="input-addon-badge"><i class="fas fa-coins" style="color:#16a34a;"></i> ر.س</div>
+              <input type="number" id="nprAmount" class="calc-input" value="1000" min="1" max="100000" step="10" placeholder="أدخل المبلغ بالريال">
+            </div>
             <div class="amount-chips-row">
               <button type="button" class="amount-chip-btn" onclick="setNprAmt(500)">500 ر.س</button>
               <button type="button" class="amount-chip-btn active" onclick="setNprAmt(1000)">1,000 ر.س</button>

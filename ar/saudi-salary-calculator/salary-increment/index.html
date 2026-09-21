@@ -348,7 +348,10 @@
 
           <div class="form-group">
             <label class="form-label" for="currBasic">الراتب الأساسي الحالي (SAR)</label>
-            <input type="number" id="currBasic" class="calc-input" value="6000" min="1000" max="200000" step="100" placeholder="أدخل الراتب الأساسي">
+            <div class="input-with-addons">
+              <span class="input-addon-badge">ر.س</span>
+              <input type="number" id="currBasic" class="calc-input" value="6000" min="1000" max="200000" step="100" placeholder="أدخل الراتب الأساسي">
+            </div>
             <div class="amount-chips-row">
               <button type="button" class="amount-chip-btn" onclick="setIncrementBasic(4000)">4,000 ر.س</button>
               <button type="button" class="amount-chip-btn active" onclick="setIncrementBasic(6000)">6,000 ر.س</button>
@@ -360,12 +363,18 @@
 
           <div class="form-group">
             <label class="form-label" for="currHousing">بدل السكن الحالي (SAR)</label>
-            <input type="number" id="currHousing" class="calc-input" value="1500" min="0" max="100000" step="50" placeholder="أدخل بدل السكن">
+            <div class="input-with-addons">
+              <span class="input-addon-badge">ر.س</span>
+              <input type="number" id="currHousing" class="calc-input" value="1500" min="0" max="100000" step="50" placeholder="أدخل بدل السكن">
+            </div>
           </div>
 
           <div class="form-group">
             <label class="form-label" for="currTransport">بدل النقل الحالي (SAR)</label>
-            <input type="number" id="currTransport" class="calc-input" value="600" min="0" max="50000" step="50" placeholder="أدخل بدل النقل">
+            <div class="input-with-addons">
+              <span class="input-addon-badge">ر.س</span>
+              <input type="number" id="currTransport" class="calc-input" value="600" min="0" max="50000" step="50" placeholder="أدخل بدل النقل">
+            </div>
           </div>
 
           <div class="form-group">
@@ -376,11 +385,11 @@
             </select>
           </div>
 
-          <div class="form-group" style="position:relative;">
+          <div class="form-group">
             <label class="form-label" for="incValue" id="incValueLabel">مقدار الزيادة المقترحة (%)</label>
-            <div style="position:relative;">
+            <div class="input-with-addons">
+              <span class="input-addon-badge" id="incValueBadge">%</span>
               <input type="number" id="incValue" class="calc-input" value="10" min="0.1" max="50000" step="0.5" placeholder="أدخل النسبة أو المبلغ">
-              <span class="input-addon-badge" id="incValueBadge" style="position:absolute; left:14px; top:50%; transform:translateY(-50%); font-weight:700; color:#64748b;">%</span>
             </div>
           </div>
 

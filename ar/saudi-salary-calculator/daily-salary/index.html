@@ -348,7 +348,10 @@
 
           <div class="form-group">
             <label class="form-label" for="monthlySalary">الراتب الشهري المعتمد (الأساسي أو الفعلي بالريال)</label>
-            <input type="number" id="monthlySalary" class="calc-input" value="6000" min="500" max="200000" step="100" placeholder="أدخل الراتب الشهري">
+            <div class="input-with-addons">
+              <span class="input-addon-badge">ر.س</span>
+              <input type="number" id="monthlySalary" class="calc-input" value="6000" min="500" max="200000" step="100" placeholder="أدخل الراتب الشهري">
+            </div>
             <div class="amount-chips-row">
               <button type="button" class="amount-chip-btn" onclick="setDailyAmount(4000)">4,000 ر.س</button>
               <button type="button" class="amount-chip-btn active" onclick="setDailyAmount(6000)">6,000 ر.س</button>
@@ -380,7 +383,10 @@
 
           <div class="form-group">
             <label class="form-label" for="absenceDays">عدد أيام الغياب غير المدفوعة أو الخصم (اختياري)</label>
-            <input type="number" id="absenceDays" class="calc-input" value="0" min="0" max="31" step="1" placeholder="أدخل أيام الغياب">
+            <div class="input-with-addons">
+              <span class="input-addon-badge"><i class="fas fa-user-xmark" style="color:#ef4444;"></i></span>
+              <input type="number" id="absenceDays" class="calc-input" value="0" min="0" max="31" step="1" placeholder="أدخل أيام الغياب">
+            </div>
           </div>
 
           <div class="result-summary-box">

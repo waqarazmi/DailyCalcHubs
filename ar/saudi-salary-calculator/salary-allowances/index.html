@@ -347,12 +347,18 @@
 
           <div class="form-group">
             <label class="form-label" for="alBasic">الراتب الأساسي الشهري (Basic Salary)</label>
-            <input type="number" id="alBasic" class="calc-input" value="6000" min="1000" max="200000" step="100" placeholder="أدخل الراتب الأساسي">
+            <div class="input-with-addons">
+              <div class="input-addon-badge">ر.س</div>
+              <input type="number" id="alBasic" class="calc-input" value="6000" min="1000" max="200000" step="100" placeholder="أدخل الراتب الأساسي">
+            </div>
           </div>
 
           <div class="form-group">
             <label class="form-label" for="alHousing">بدل السكن الشهري (Housing Allowance)</label>
-            <input type="number" id="alHousing" class="calc-input" value="1500" min="0" max="100000" step="50" placeholder="أدخل بدل السكن">
+            <div class="input-with-addons">
+              <div class="input-addon-badge">ر.س</div>
+              <input type="number" id="alHousing" class="calc-input" value="1500" min="0" max="100000" step="50" placeholder="أدخل بدل السكن">
+            </div>
             <div class="amount-chips-row">
               <button type="button" class="amount-chip-btn" onclick="setAlHousing(25)">25% (راتب 3 أشهر)</button>
               <button type="button" class="amount-chip-btn" onclick="setAlHousing(16.67)">16.67% (راتب شهرين)</button>
@@ -362,7 +368,10 @@
 
           <div class="form-group">
             <label class="form-label" for="alTransport">بدل النقل والانتقال (Transport Allowance)</label>
-            <input type="number" id="alTransport" class="calc-input" value="600" min="0" max="50000" step="50" placeholder="أدخل بدل النقل">
+            <div class="input-with-addons">
+              <div class="input-addon-badge">ر.س</div>
+              <input type="number" id="alTransport" class="calc-input" value="600" min="0" max="50000" step="50" placeholder="أدخل بدل النقل">
+            </div>
             <div class="amount-chips-row">
               <button type="button" class="amount-chip-btn" onclick="setAlTransport(10)">10% من الأساسي</button>
               <button type="button" class="amount-chip-btn" onclick="setAlTransport(15)">15% من الأساسي</button>
@@ -372,7 +381,10 @@
 
           <div class="form-group">
             <label class="form-label" for="alOther">بدلات أخرى ثابتة (هاتف، طبيعة عمل، عمولات)</label>
-            <input type="number" id="alOther" class="calc-input" value="0" min="0" max="50000" step="50" placeholder="أدخل البدلات الأخرى (اختياري)">
+            <div class="input-with-addons">
+              <div class="input-addon-badge">ر.س</div>
+              <input type="number" id="alOther" class="calc-input" value="0" min="0" max="50000" step="50" placeholder="أدخل البدلات الأخرى (اختياري)">
+            </div>
           </div>
 
           <div class="result-summary-box">
