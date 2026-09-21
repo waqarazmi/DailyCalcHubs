@@ -675,7 +675,7 @@
       direction: rtl;
       text-align: right;
     }
-    .header-container, .breadcrumbs-container, .main-container, .footer-container {
+    .header-container, .breadcrumbs-wrap, .main-container, .footer-container {
       direction: rtl;
     }
     .logo-area {
@@ -688,35 +688,31 @@
     .main-nav {
       flex-direction: row;
     }
-    .breadcrumbs-list {
+    .breadcrumbs-wrap {
       flex-direction: row;
     }
-    .breadcrumbs-item + .breadcrumbs-item::before {
-      content: "‹";
-      margin: 0 8px;
-    }
-    .location-weather-bar {
-      flex-direction: row;
-    }
-    .loc-badge, .btn-detect-gps, .weather-pill {
+    .location-header-bar {
       direction: rtl;
     }
-    .btn-detect-gps i {
+    .btn-gps-refresh i {
       margin-left: 6px;
       margin-right: 0;
     }
     .fardh-prayers-grid, .nawafil-grid {
       direction: rtl;
     }
-    .prayer-time-val, .nawafil-time, .live-clock-val, .digit-val, #nextPrayerTime {
+    .prayer-time-val, .nawafil-time, .clock-live-time, .timer-digit, #nextPrayerTime, #qiblaDegreeVal, #qiblaDistVal {
       direction: ltr;
       display: inline-block;
       unicode-bidi: embed;
     }
-    .timer-digits {
+    .countdown-timer-wrap {
       direction: ltr;
     }
-    .qibla-card-body {
+    .qibla-hero-content {
+      direction: rtl;
+    }
+    .qibla-bearing-display {
       direction: rtl;
     }
     .step-list-grid {
@@ -773,7 +769,7 @@
       <a href="/ar/" class="logo-area">
         <div class="logo-icon"><i class="fas fa-mosque"></i></div>
         <div>
-          <span style="font-weight: 800; font-size: 19px;">ديلي كالك <span style="color: var(--prayer-primary);">هَبز</span></span>
+          <span style="font-weight: 800; font-size: 19px;">DailyCalc<span style="color: var(--prayer-primary);">Hubs</span></span>
           <span style="display: block; font-size: 11px; color: var(--text-muted); font-weight: 500;">مواقيت الصلاة في السعودية</span>
         </div>
       </a>
@@ -781,12 +777,13 @@
       <div class="header-nav-container" id="navContainer">
         <nav class="main-nav">
           <a href="/ar/" class="nav-link">الرئيسية</a>
-          <a href="/ar/saudi-remittance-calculator/" class="nav-link">حاسبة التحويلات</a>
-          <a href="/ar/saudi-salary-calculator/" class="nav-link">حاسبة الرواتب</a>
-          <a href="/ar/saudi-iqama-calculator/" class="nav-link">حاسبة الإقامة</a>
-          <a href="/ar/everyday-smart-calculator/" class="nav-link">الحاسبة اليومية</a>
-          <a href="/ar/shariah-sip-calculator/" class="nav-link">الاستثمار الشرعي</a>
+          <a href="/ar/saudi-remittance-calculator/" class="nav-link">تحويل الأموال</a>
           <a href="/ar/prayer-times/" class="nav-link active">مواقيت الصلاة</a>
+          <a href="/ar/saudi-salary-calculator/" class="nav-link">الرواتب</a>
+          <a href="/ar/saudi-iqama-calculator/" class="nav-link">الإقامة</a>
+          <a href="/ar/everyday-smart-calculator/" class="nav-link">أدوات يومية</a>
+          <a href="/ar/shariah-sip-calculator/" class="nav-link">استثمار شرعي</a>
+          <a href="/ar/travel-booking-calculator/" class="nav-link">السفر والحجوزات</a>
         </nav>
       </div>
 
@@ -806,94 +803,203 @@
 
   <!-- Breadcrumbs -->
   <section class="breadcrumbs-section">
-    <div class="breadcrumbs-container">
-      <ul class="breadcrumbs-list">
-        <li class="breadcrumbs-item"><a href="/ar/">الرئيسية</a></li>
-        <li class="breadcrumbs-item active">مواقيت الصلاة</li>
-      </ul>
+    <div class="breadcrumbs-wrap">
+      <a href="/ar/"><i class="fas fa-home"></i> الرئيسية</a>
+      <i class="fas fa-chevron-left" style="font-size: 10px;"></i>
+      <span>مواقيت الصلاة في السعودية</span>
+    </div>
+  </section>
+
+  <!-- Hero Section -->
+  <section class="calc-hero">
+    <div class="hero-content">
+      <div class="badge-pill"><i class="fas fa-mosque"></i> المعيار الفلكي المعتمد • تقويم أم القرى</div>
+      <h1>مواقيت الصلاة في المملكة العربية السعودية</h1>
+      <p>أوقات الأذان الدقيقة يومياً وفق تقويم أم القرى مع التحديد التلقائي للموقع، عد تنازلي مباشر للصلاة القادمة، وبوصلة تفاعلية لتحديد اتجاه القبلة.</p>
     </div>
   </section>
 
   <!-- Main Container -->
   <main class="main-container">
 
-    <!-- Hero Title -->
-    <div class="hero-title-area">
-      <h1>مواقيت الصلاة في المملكة العربية السعودية</h1>
-      <p class="hero-subtitle">أوقات الأذان الدقيقة يومياً وفق تقويم أم القرى مع التحديد التلقائي للموقع، عد تنازلي مباشر للصلاة القادمة، وبوصلة تفاعلية لتحديد اتجاه القبلة.</p>
-      <div class="hero-badges">
-        <span class="hero-badge"><i class="fas fa-kaaba"></i> تقويم أم القرى الرسمي</span>
-        <span class="hero-badge"><i class="fas fa-location-crosshairs"></i> تحديد دقيق بنظام GPS</span>
-        <span class="hero-badge"><i class="fas fa-compass"></i> بوصلة القبلة المباشرة</span>
-      </div>
-    </div>
-
-    <!-- Main Prayer Dashboard Card -->
+    <!-- Main Prayer Times Calculator Container -->
     <div class="prayer-main-card">
 
-      <!-- A. Location & Weather Bar -->
-      <div class="location-weather-bar">
-        <div class="loc-badge">
-          <i class="fas fa-map-marker-alt"></i>
-          <span id="prayerLocLabel">الرياض، المملكة العربية السعودية</span>
+      <!-- A. Location Header -->
+      <div class="location-header-bar">
+        <div class="location-info-block">
+          <div class="loc-icon-circle">
+            <i class="fas fa-location-dot"></i>
+          </div>
+          <div>
+            <div class="loc-meta-title">الموقع المحدد</div>
+            <div class="loc-name-display">
+              <span class="pulse-dot" title="تحديث الموقع التلقائي نشط"></span>
+              <span id="prayerLocLabel">الرياض، المملكة العربية السعودية</span>
+            </div>
+          </div>
         </div>
 
-        <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
-          <button type="button" class="btn-detect-gps" id="btnDetectLoc" onclick="executeGpsTrack(true)">
+        <div class="location-actions">
+          <div class="weather-temp-badge weather-pill" id="prayerWeatherBadge" title="درجة الحرارة المباشرة والطقس" aria-label="درجة الحرارة الحالية">
+            <i class="fas fa-cloud-sun" id="prayerWeatherIcon" style="color: #f59e0b;"></i>
+            <span id="prayerTempVal">--°م</span>
+          </div>
+          <button class="btn-gps-refresh btn-detect-gps" id="btnDetectLoc" onclick="executeGpsTrack(true)" title="تحديد موقعي الدقيق بنظام GPS">
             <i class="fas fa-crosshairs"></i> تحديد موقعي تلقائياً
           </button>
+        </div>
+      </div>
 
-          <div class="weather-pill" id="prayerWeatherBadge" title="درجة الحرارة المباشرة والطقس" aria-label="درجة الحرارة الحالية">
-            <i class="fas fa-cloud-sun" id="prayerWeatherIcon" style="color: #f59e0b;"></i>
-            <span id="prayerTempVal">--°C</span>
+      <!-- B. Dual Date & Live Clock Banner -->
+      <div class="dual-date-clock-grid">
+        <div class="date-card">
+          <div class="date-icon-box date-icon-greg">
+            <i class="fas fa-calendar-day"></i>
+          </div>
+          <div>
+            <div class="date-meta-sub">التاريخ الميلادي والوقت الحالي</div>
+            <div class="date-meta-val" id="liveGregorianDate">--</div>
+            <div id="liveClockVal" class="clock-live-time" dir="ltr">--:--:-- --</div>
+          </div>
+        </div>
+
+        <div class="date-card">
+          <div class="date-icon-box date-icon-hijri">
+            <i class="fas fa-moon"></i>
+          </div>
+          <div>
+            <div class="date-meta-sub">تقويم أم القرى الهجري الرسمي</div>
+            <div class="date-meta-val">
+              <span id="liveHijriArabic" class="hijri-arabic-val">--</span>
+              <span id="liveHijriDate" style="font-size: 13px; color: var(--text-muted); margin-right: 6px;" dir="ltr">--</span>
+            </div>
+            <div style="font-size: 11.5px; color: var(--emerald-accent); font-weight: 600; margin-top: 2px;">المعيار الفلكي الرسمي المعتمد في المملكة</div>
           </div>
         </div>
       </div>
 
-      <!-- B. Live Clocks & Countdown Row -->
-      <div class="clocks-countdown-row">
-        <!-- Date Box -->
-        <div class="clock-col">
-          <div class="clock-label"><i class="fas fa-calendar-alt"></i> التاريخ الميلادي</div>
-          <div class="live-date-val" id="liveGregorianDate">--</div>
-          <div class="clock-label" style="margin-top: 8px;"><i class="fas fa-moon"></i> التاريخ الهجري (أم القرى)</div>
-          <div class="live-hijri-val" id="liveHijriArabic">--</div>
-          <div class="live-hijri-sub" id="liveHijriDate">--</div>
-        </div>
-
-        <!-- Current Clock -->
-        <div class="live-clock-box">
-          <div class="clock-label"><i class="fas fa-clock"></i> الوقت الحالي</div>
-          <div class="live-clock-val" id="liveClockVal">--:--:--</div>
-        </div>
-
-        <!-- Next Prayer Countdown Banner -->
-        <div class="countdown-card">
-          <div class="countdown-title">
-            <i class="fas fa-hourglass-half"></i> متبقي حتى أذان <span id="nextPrayerName" style="color: #38bdf8;">--</span> (<span id="nextPrayerTime">--:--</span>)
+      <!-- C. Next Prayer Countdown Hero Banner -->
+      <div class="next-prayer-hero countdown-card">
+        <div>
+          <div class="next-prayer-tag"><i class="fas fa-hourglass-half"></i> متبقي حتى الصلاة القادمة</div>
+          <div class="next-prayer-name" id="nextPrayerName">--</div>
+          <div class="next-prayer-azan-time">
+            وقت الأذان: <strong id="nextPrayerTime" dir="ltr">--:-- --</strong>
           </div>
-          <div class="timer-digits">
-            <div class="digit-box">
-              <span class="digit-val" id="timerHours">00</span>
-              <span class="digit-lbl">ساعة</span>
+        </div>
+
+        <div class="countdown-timer-wrap timer-digits" dir="ltr">
+          <div class="timer-block digit-box">
+            <div class="timer-digit digit-val" id="timerHours">00</div>
+            <div class="timer-unit digit-lbl">ساعة</div>
+          </div>
+          <div class="timer-colon digit-sep">:</div>
+          <div class="timer-block digit-box">
+            <div class="timer-digit digit-val" id="timerMinutes">00</div>
+            <div class="timer-unit digit-lbl">دقيقة</div>
+          </div>
+          <div class="timer-colon digit-sep">:</div>
+          <div class="timer-block digit-box">
+            <div class="timer-digit digit-val" id="timerSeconds">00</div>
+            <div class="timer-unit digit-lbl">ثانية</div>
+          </div>
+        </div>
+
+        <!-- Integrated Qibla Compass Sub-Section -->
+        <div class="qibla-hero-wrapper" id="qiblaHeroSection" aria-label="اتجاه القبلة والبوصلة الرقمية">
+          <div class="qibla-hero-divider"></div>
+          <div class="qibla-hero-content">
+            <!-- Left / Leading: Circular Compass Dial Visualization -->
+            <div class="qibla-dial-container">
+              <div class="qibla-compass-dial" id="qiblaCompassDial" role="img" aria-label="بوصلة دائرية تشير إلى اتجاه القبلة المشرفة">
+                <svg class="qibla-dial-svg" viewBox="0 0 160 160" aria-hidden="true">
+                  <circle cx="80" cy="80" r="70" class="dial-bg" />
+                  <circle cx="80" cy="80" r="70" class="dial-ring" />
+                  <!-- 30-degree dial tick marks -->
+                  <g class="dial-ticks">
+                    <line x1="80" y1="10" x2="80" y2="18" class="tick-major" />
+                    <line x1="115" y1="19.4" x2="111" y2="26.3" class="tick-minor" />
+                    <line x1="140.6" y1="45" x2="133.7" y2="49" class="tick-minor" />
+                    <line x1="150" y1="80" x2="142" y2="80" class="tick-major" />
+                    <line x1="140.6" y1="115" x2="133.7" y2="111" class="tick-minor" />
+                    <line x1="115" y1="140.6" x2="111" y2="133.7" class="tick-minor" />
+                    <line x1="80" y1="150" x2="80" y2="142" class="tick-major" />
+                    <line x1="45" y1="140.6" x2="49" y2="133.7" class="tick-minor" />
+                    <line x1="19.4" y1="115" x2="26.3" y2="111" class="tick-minor" />
+                    <line x1="10" y1="80" x2="18" y2="80" class="tick-major" />
+                    <line x1="19.4" y1="45" x2="26.3" y2="49" class="tick-minor" />
+                    <line x1="45" y1="19.4" x2="49" y2="26.3" class="tick-minor" />
+                  </g>
+                  <!-- Cardinal Direction Labels -->
+                  <text x="80" y="29" class="cardinal-text cardinal-n">شمال</text>
+                  <text x="133" y="84" class="cardinal-text">شرق</text>
+                  <text x="80" y="137" class="cardinal-text">جنوب</text>
+                  <text x="27" y="84" class="cardinal-text">غرب</text>
+                  <!-- Kaaba Marker at Qibla Bearing -->
+                  <g id="kaabaDialMarker" class="kaaba-dial-marker" transform="rotate(244 80 80)">
+                    <line x1="80" y1="8" x2="80" y2="1" class="kaaba-pointer-line" />
+                    <g transform="translate(73, -5)">
+                      <rect x="0" y="0" width="14" height="14" rx="2" class="kaaba-icon-body" />
+                      <rect x="0" y="3" width="14" height="2.5" class="kaaba-icon-gold" />
+                      <rect x="9" y="7" width="3" height="5" rx="0.5" class="kaaba-icon-gold" />
+                    </g>
+                  </g>
+                  <!-- Needle Arrow pointing to Kaaba -->
+                  <g id="qiblaNeedleGroup" class="qibla-needle-group" transform="rotate(244 80 80)">
+                    <polygon points="80,24 84,80 80,72 76,80" class="needle-north" />
+                    <polygon points="80,136 84,80 80,88 76,80" class="needle-south" />
+                    <circle cx="80" cy="80" r="4.5" class="needle-pivot" />
+                    <circle cx="80" cy="80" r="2" class="needle-pivot-dot" />
+                  </g>
+                </svg>
+              </div>
+              <div class="compass-orientation-label" id="compassOrientationLabel">
+                <i class="fas fa-compass"></i> وضع البوصلة الثابتة
+              </div>
             </div>
-            <div class="digit-sep">:</div>
-            <div class="digit-box">
-              <span class="digit-val" id="timerMinutes">00</span>
-              <span class="digit-lbl">دقيقة</span>
-            </div>
-            <div class="digit-sep">:</div>
-            <div class="digit-box">
-              <span class="digit-val" id="timerSeconds">00</span>
-              <span class="digit-lbl">ثانية</span>
+
+            <!-- Right / Trailing: Qibla Metrics, Distance & Status Controls -->
+            <div class="qibla-meta-container">
+              <div class="qibla-header-row">
+                <div class="qibla-badge"><i class="fas fa-kaaba"></i> اتجاه القبلة المشرفة</div>
+                <span class="qibla-accuracy-tag" id="qiblaAccuracyTag"><i class="fas fa-satellite-dish"></i> جارٍ الحساب...</span>
+              </div>
+
+              <div class="qibla-bearing-display">
+                <span class="qibla-degree-val" id="qiblaDegreeVal" dir="ltr">244°</span>
+                <span class="qibla-direction-label" id="qiblaDirectionLabel">غرب جنوب غرب</span>
+              </div>
+
+              <div class="qibla-sub-info">
+                <div class="qibla-info-line" id="qiblaDestText">
+                  <i class="fas fa-location-dot" style="color: #38bdf8;"></i> باتجاه الكعبة المشرفة في المسجد الحرام بمكة المكرمة
+                </div>
+                <div class="qibla-info-line" id="qiblaDistanceText">
+                  <i class="fas fa-route" style="color: #34d399;"></i> المسافة المباشرة: <strong id="qiblaDistVal" dir="ltr">1,181 كم</strong>
+                </div>
+              </div>
+
+              <!-- Sensor Guidance & iOS Permission Trigger -->
+              <div class="qibla-actions-bar">
+                <div class="qibla-sensor-hint" id="qiblaSensorHint">
+                  <i class="fas fa-mobile-screen"></i> ضع الهاتف أفقياً وبعيداً عن الأجهزة والمجالات المغناطيسية.
+                </div>
+                <button type="button" class="btn-enable-compass" id="btnEnableCompass" style="display: none;" onclick="requestCompassPermission()">
+                  <i class="fas fa-compass"></i> تفعيل البوصلة المباشرة
+                </button>
+              </div>
+
+              <!-- Accessible Live Region for Screen Readers -->
+              <div id="qiblaAriaLive" class="sr-only" aria-live="polite">اتجاه القبلة هو 244 درجة غرب جنوب غرب باتجاه الكعبة المشرفة في مكة المكرمة.</div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- C. Quick City Selection Chips -->
+      <!-- Quick City Selector Chips -->
       <div class="quick-cities-container">
-        <div class="quick-cities-title"><i class="fas fa-city" style="color: var(--prayer-primary);"></i> اختيار سريع للمدينة</div>
+        <div class="quick-cities-title"><i class="fas fa-city" style="color: var(--prayer-primary); margin-left: 6px;"></i> اختيار سريع للمدينة</div>
         <div class="quick-cities-rows">
           <div class="quick-cities-row">
             <button type="button" class="city-btn" onclick="selectCity(this, 'makkah', 21.4225, 39.8262, 'مكة المكرمة، السعودية')">مكة المكرمة</button>
@@ -927,7 +1033,7 @@
         <div class="prayer-card-item" id="pCardFajr">
           <div class="slot-icon"><i class="fas fa-cloud-sun"></i></div>
           <div class="prayer-name">الفجر</div>
-          <div class="prayer-time-val" id="timeFajr">--:-- --</div>
+          <div class="prayer-time-val" id="timeFajr" dir="ltr">--:-- --</div>
           <div class="slot-subtext">الفجر الصادق</div>
         </div>
 
@@ -935,7 +1041,7 @@
         <div class="prayer-card-item" id="pCardSunrise">
           <div class="slot-icon"><i class="fas fa-sun" style="color: #f59e0b;"></i></div>
           <div class="prayer-name">الشروق</div>
-          <div class="prayer-time-val" id="timeSunrise">--:-- --</div>
+          <div class="prayer-time-val" id="timeSunrise" dir="ltr">--:-- --</div>
           <div class="slot-subtext">شروق الشمس (خروج الفجر)</div>
         </div>
 
@@ -943,7 +1049,7 @@
         <div class="prayer-card-item" id="pCardDhuhr">
           <div class="slot-icon"><i class="fas fa-sun" style="color: #0284c7;"></i></div>
           <div class="prayer-name">الظهر</div>
-          <div class="prayer-time-val" id="timeDhuhr">--:-- --</div>
+          <div class="prayer-time-val" id="timeDhuhr" dir="ltr">--:-- --</div>
           <div class="slot-subtext">زوال الشمس</div>
         </div>
 
@@ -951,7 +1057,7 @@
         <div class="prayer-card-item" id="pCardAsr">
           <div class="slot-icon"><i class="fas fa-cloud-sun" style="color: #0369a1;"></i></div>
           <div class="prayer-name">العصر</div>
-          <div class="prayer-time-val" id="timeAsr">--:-- --</div>
+          <div class="prayer-time-val" id="timeAsr" dir="ltr">--:-- --</div>
           <div class="slot-subtext">المذهب الشافعي / القياسي</div>
         </div>
 
@@ -959,7 +1065,7 @@
         <div class="prayer-card-item" id="pCardMaghrib">
           <div class="slot-icon"><i class="fas fa-cloud-moon" style="color: #ea580c;"></i></div>
           <div class="prayer-name">المغرب</div>
-          <div class="prayer-time-val" id="timeMaghrib">--:-- --</div>
+          <div class="prayer-time-val" id="timeMaghrib" dir="ltr">--:-- --</div>
           <div class="slot-subtext">غروب الشمس / الإفطار</div>
         </div>
 
@@ -967,7 +1073,7 @@
         <div class="prayer-card-item" id="pCardIsha">
           <div class="slot-icon"><i class="fas fa-moon" style="color: #6366f1;"></i></div>
           <div class="prayer-name">العشاء</div>
-          <div class="prayer-time-val" id="timeIsha">--:-- --</div>
+          <div class="prayer-time-val" id="timeIsha" dir="ltr">--:-- --</div>
           <div class="slot-subtext">تقويم أم القرى (+90 دقيقة)</div>
         </div>
       </div>
@@ -975,7 +1081,7 @@
       <!-- E. Sunnah & Nawafil Timing Windows (Ishraq & Chasht) -->
       <div class="nawafil-container">
         <div class="nawafil-header">
-          <i class="fas fa-hands-praying"></i>
+          <i class="fas fa-hands-praying" style="margin-left: 8px;"></i>
           <span>أوقات السنن والنوافل (الإشراق وصلاة الضحى)</span>
         </div>
 
@@ -990,7 +1096,7 @@
                 <div class="nawafil-calc-note">الشروق + 18 دقيقة</div>
               </div>
             </div>
-            <div class="nawafil-time" id="timeIshraq">--:-- --</div>
+            <div class="nawafil-time" id="timeIshraq" dir="ltr">--:-- --</div>
           </div>
 
           <!-- Chasht / Duha -->
@@ -1003,7 +1109,7 @@
                 <div class="nawafil-calc-note" id="chashtDynamicSub">⚡ منتصف النهار الشمسي الفلكي</div>
               </div>
             </div>
-            <div class="nawafil-time" id="timeChasht">--:-- --</div>
+            <div class="nawafil-time" id="timeChasht" dir="ltr">--:-- --</div>
           </div>
         </div>
       </div>
@@ -1016,97 +1122,6 @@
         </div>
         <div>
           <span>دقة فلكية حسب الإحداثيات الجغرافية المباشرة</span>
-        </div>
-      </div>
-
-      <!-- F. Interactive Qibla Compass Card -->
-      <div class="qibla-hero-wrapper" id="qiblaHeroSection" aria-label="اتجاه القبلة والبوصلة الرقمية">
-        <div class="qibla-hero-divider"></div>
-        <div class="qibla-card-body">
-          <!-- Left: Visual Compass Dial -->
-          <div class="qibla-dial-col">
-            <div class="qibla-dial-wrapper qibla-dial-container">
-              <div class="qibla-compass-dial" id="qiblaCompassDial" role="img" aria-label="بوصلة دائرية تشير إلى اتجاه القبلة المشرفة">
-              <svg viewBox="0 0 160 160" class="qibla-dial-svg" aria-label="بوصلة اتجاه القبلة التفاعلية">
-                <!-- Base Dial Ring -->
-                <circle cx="80" cy="80" r="70" class="dial-ring" />
-                <!-- 30-degree dial tick marks -->
-                <g class="dial-ticks">
-                  <line x1="80" y1="10" x2="80" y2="18" class="tick-major" />
-                  <line x1="115" y1="19.4" x2="111" y2="26.3" class="tick-minor" />
-                  <line x1="140.6" y1="45" x2="133.7" y2="49" class="tick-minor" />
-                  <line x1="150" y1="80" x2="142" y2="80" class="tick-major" />
-                  <line x1="140.6" y1="115" x2="133.7" y2="111" class="tick-minor" />
-                  <line x1="115" y1="140.6" x2="111" y2="133.7" class="tick-minor" />
-                  <line x1="80" y1="150" x2="80" y2="142" class="tick-major" />
-                  <line x1="45" y1="140.6" x2="49" y2="133.7" class="tick-minor" />
-                  <line x1="19.4" y1="115" x2="26.3" y2="111" class="tick-minor" />
-                  <line x1="10" y1="80" x2="18" y2="80" class="tick-major" />
-                  <line x1="19.4" y1="45" x2="26.3" y2="49" class="tick-minor" />
-                  <line x1="45" y1="19.4" x2="49" y2="26.3" class="tick-minor" />
-                </g>
-                <!-- Cardinal Direction Labels -->
-                <text x="80" y="29" class="cardinal-text cardinal-n">شمال</text>
-                <text x="133" y="84" class="cardinal-text">شرق</text>
-                <text x="80" y="137" class="cardinal-text">جنوب</text>
-                <text x="27" y="84" class="cardinal-text">غرب</text>
-                <!-- Kaaba Marker at Qibla Bearing -->
-                <g id="kaabaDialMarker" class="kaaba-dial-marker" transform="rotate(244 80 80)">
-                  <line x1="80" y1="8" x2="80" y2="1" class="kaaba-pointer-line" />
-                  <g transform="translate(73, -5)">
-                    <rect x="0" y="0" width="14" height="14" rx="2" class="kaaba-icon-body" />
-                    <rect x="0" y="3" width="14" height="2.5" class="kaaba-icon-gold" />
-                    <rect x="9" y="7" width="3" height="5" rx="0.5" class="kaaba-icon-gold" />
-                  </g>
-                </g>
-                <!-- Needle Arrow pointing to Kaaba -->
-                <g id="qiblaNeedleGroup" class="qibla-needle-group" transform="rotate(244 80 80)">
-                  <polygon points="80,24 84,80 80,72 76,80" class="needle-north" />
-                  <polygon points="80,136 84,80 80,88 76,80" class="needle-south" />
-                  <circle cx="80" cy="80" r="4.5" class="needle-pivot" />
-                  <circle cx="80" cy="80" r="2" class="needle-pivot-dot" />
-                </g>
-              </svg>
-            </div>
-            <div class="compass-orientation-label" id="compassOrientationLabel">
-              <i class="fas fa-compass"></i> وضع البوصلة الثابتة
-            </div>
-          </div>
-
-          <!-- Right: Qibla Metrics, Distance & Status Controls -->
-          <div class="qibla-meta-container">
-            <div class="qibla-header-row">
-              <div class="qibla-badge"><i class="fas fa-kaaba"></i> اتجاه القبلة المشرفة</div>
-              <span class="qibla-accuracy-tag" id="qiblaAccuracyTag"><i class="fas fa-satellite-dish"></i> جارٍ الحساب...</span>
-            </div>
-
-            <div class="qibla-bearing-display">
-              <span class="qibla-degree-val" id="qiblaDegreeVal">244°</span>
-              <span class="qibla-direction-label" id="qiblaDirectionLabel">غرب جنوب غرب</span>
-            </div>
-
-            <div class="qibla-sub-info">
-              <div class="qibla-info-line" id="qiblaDestText">
-                <i class="fas fa-location-dot" style="color: #38bdf8;"></i> باتجاه الكعبة المشرفة في المسجد الحرام بمكة المكرمة
-              </div>
-              <div class="qibla-info-line" id="qiblaDistanceText">
-                <i class="fas fa-route" style="color: #34d399;"></i> المسافة إلى الكعبة: <strong id="qiblaDistVal">1,181 كم</strong>
-              </div>
-            </div>
-
-            <!-- Sensor Guidance & iOS Permission Trigger -->
-            <div class="qibla-actions-bar">
-              <div class="qibla-sensor-hint" id="qiblaSensorHint">
-                <i class="fas fa-mobile-screen"></i> امسك الهاتف بشكل مستوٍ وأبعده عن الأجهزة والمجالات المغناطيسية.
-              </div>
-              <button type="button" class="btn-enable-compass" id="btnEnableCompass" style="display: none;" onclick="requestCompassPermission()">
-                <i class="fas fa-compass"></i> تفعيل بوصلة القبلة المباشرة
-              </button>
-            </div>
-
-            <!-- Accessible Live Region for Screen Readers -->
-            <div id="qiblaAriaLive" class="sr-only" aria-live="polite">اتجاه القبلة هو 244 درجة غرب جنوب غرب باتجاه الكعبة المشرفة في مكة المكرمة.</div>
-          </div>
         </div>
       </div>
 
