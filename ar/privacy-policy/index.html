@@ -137,9 +137,10 @@
     /* Header */
     .site-header { background: var(--bg-white); border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 50; }
     .header-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; height: 70px; display: flex; align-items: center; justify-content: space-between; }
-    .logo-area { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 20px; color: var(--navy-dark); text-decoration: none; }
+    .logo-area { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 20px; color: var(--navy-dark); text-decoration: none; flex-shrink: 0; }
     .logo-icon { width: 36px; height: 36px; background: linear-gradient(135deg, #0284c7, #0369a1); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: 18px; }
-    .header-nav-container { display: flex; align-items: center; }
+    .header-nav-container { display: flex; align-items: center; flex: 1 1 auto; min-width: 0; overflow: hidden; }
+    .header-right-actions { flex-shrink: 0; }
     .main-nav { display: flex; align-items: center; gap: 6px; }
     .nav-link { padding: 8px 12px; font-size: 13.5px; font-weight: 600; color: #475569; border-radius: 6px; transition: all 0.2s; white-space: nowrap; }
     .nav-link:hover { color: var(--brand-primary); background: var(--brand-light); }
