@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
@@ -229,12 +229,12 @@
     a:hover { color: var(--prayer-dark); }
 
     /* Header */
-    .site-header { background: var(--bg-white); border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 50; }
+    .site-header { background: var(--bg-white); border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 50; overflow-x: clip; }
     .header-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; height: 70px; display: flex; align-items: center; justify-content: space-between; }
     .logo-area { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 20px; color: var(--navy-dark); text-decoration: none; flex-shrink: 0; }
     .logo-icon { width: 36px; height: 36px; background: linear-gradient(135deg, #0284c7, #0369a1); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: 18px; }
     .header-nav-container { display: flex; align-items: center; flex: 1 1 auto; min-width: 0; overflow: hidden; }
-    .header-right-actions { flex-shrink: 0; }
+    .header-right-actions { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
     .main-nav { display: flex; align-items: center; gap: 6px; }
     .nav-link { padding: 8px 12px; font-size: 13.5px; font-weight: 600; color: #475569; border-radius: 6px; transition: all 0.2s; white-space: nowrap; }
     .nav-link:hover, .nav-link.active { color: var(--prayer-primary); background: var(--prayer-light); }
@@ -766,13 +766,14 @@
     }
 
     @media (max-width: 360px) {
-      .header-container { padding: 0 10px; }
-      .logo-area { gap: 6px; font-size: 16px; }
-      .logo-icon { width: 30px; height: 30px; font-size: 15px; }
-      .header-right-actions { gap: 6px !important; }
-      .lang-switch-btn { padding: 5px 8px; font-size: 12px; }
-      .theme-toggle-btn { width: 34px; height: 34px; font-size: 13px; }
-      .mobile-menu-toggle { width: 34px; height: 34px; font-size: 16px; }
+      .header-container { padding: 0 8px !important; }
+      .logo-area { gap: 6px !important; font-size: 15px !important; flex-shrink: 1 !important; min-width: 0 !important; }
+      .logo-icon { width: 28px !important; height: 28px !important; font-size: 14px !important; flex-shrink: 0 !important; }
+      .header-right-actions { gap: 4px !important; flex-shrink: 0 !important; }
+      .header-right-actions .lang-switch-btn { padding: 4px 6px !important; font-size: 11px !important; height: 30px !important; min-height: 30px !important; }
+      .header-right-actions .lang-switch-btn span { display: none !important; }
+      .theme-toggle-btn { width: 30px !important; height: 30px !important; font-size: 12px !important; }
+      .mobile-menu-toggle { width: 30px !important; height: 30px !important; font-size: 14px !important; padding: 0 !important; }
     }
   </style>
 </head>
@@ -802,7 +803,7 @@
         </nav>
       </div>
 
-      <div class="header-right-actions" style="display: flex; align-items: center; gap: 10px;">
+      <div class="header-right-actions">
         <a href="/prayer-times/" class="lang-switch-btn" lang="en" hreflang="en" title="Switch to English" aria-label="Switch to English">
           <i class="fas fa-globe" aria-hidden="true"></i> <span>EN</span>
         </a>
