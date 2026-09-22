@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
@@ -231,9 +231,10 @@
     /* Header */
     .site-header { background: var(--bg-white); border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 50; }
     .header-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; height: 70px; display: flex; align-items: center; justify-content: space-between; }
-    .logo-area { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 20px; color: var(--navy-dark); text-decoration: none; }
+    .logo-area { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 20px; color: var(--navy-dark); text-decoration: none; flex-shrink: 0; }
     .logo-icon { width: 36px; height: 36px; background: linear-gradient(135deg, #0284c7, #0369a1); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: 18px; }
-    .header-nav-container { display: flex; align-items: center; }
+    .header-nav-container { display: flex; align-items: center; flex: 1 1 auto; min-width: 0; overflow: hidden; }
+    .header-right-actions { flex-shrink: 0; }
     .main-nav { display: flex; align-items: center; gap: 6px; }
     .nav-link { padding: 8px 12px; font-size: 13.5px; font-weight: 600; color: #475569; border-radius: 6px; transition: all 0.2s; white-space: nowrap; }
     .nav-link:hover, .nav-link.active { color: var(--prayer-primary); background: var(--prayer-light); }
@@ -759,6 +760,20 @@
       color: #38bdf8;
     }
 
+    @media (min-width: 993px) and (max-width: 1120px) {
+      .header-nav-container .main-nav { gap: 2px; }
+      .header-nav-container .nav-link { padding: 6px 7px; font-size: 12.5px; }
+    }
+
+    @media (max-width: 360px) {
+      .header-container { padding: 0 10px; }
+      .logo-area { gap: 6px; font-size: 16px; }
+      .logo-icon { width: 30px; height: 30px; font-size: 15px; }
+      .header-right-actions { gap: 6px !important; }
+      .lang-switch-btn { padding: 5px 8px; font-size: 12px; }
+      .theme-toggle-btn { width: 34px; height: 34px; font-size: 13px; }
+      .mobile-menu-toggle { width: 34px; height: 34px; font-size: 16px; }
+    }
   </style>
 </head>
 <body>
@@ -1356,16 +1371,80 @@
     // ==========================================
     // PRAYER TIMES & AUTO-LOCATION ENGINE
     // ==========================================
-    let prayerSchedule = null;
-    let currentCityLabel = 'الدمام، المملكة العربية السعودية';
+    const IS_ARABIC = true;
+    const STORAGE_KEY = 'dch_prayer_location';
 
-    // Baseline GCC & Global Fallback Dataset
-    const defaultPrayerMap = {
-      dammam: { fajr: '04:12', sunrise: '05:31', ishraq: '05:49', chasht: '08:30', dhuhr: '11:48', asr: '15:18', maghrib: '18:05', isha: '19:35', label: 'الدمام، المملكة العربية السعودية', hijri: '26 Safar 1448 AH', hijriAr: '(٢٦ صفر ١٤٤٨ هـ)' },
-      riyadh: { fajr: '04:20', sunrise: '05:39', ishraq: '05:57', chasht: '08:35', dhuhr: '11:56', asr: '15:24', maghrib: '18:12', isha: '19:42', label: 'الرياض، المملكة العربية السعودية', hijri: '26 Safar 1448 AH', hijriAr: '(٢٦ صفر ١٤٤٨ هـ)' },
-      jeddah: { fajr: '04:45', sunrise: '06:03', ishraq: '06:21', chasht: '08:50', dhuhr: '12:21', asr: '15:46', maghrib: '18:38', isha: '20:08', label: 'جدة، المملكة العربية السعودية', hijri: '26 Safar 1448 AH', hijriAr: '(٢٦ صفر ١٤٤٨ هـ)' },
-      dubai:  { fajr: '04:36', sunrise: '05:54', ishraq: '06:12', chasht: '08:45', dhuhr: '12:15', asr: '15:44', maghrib: '18:35', isha: '19:55', label: 'دبي، الإمارات العربية المتحدة', hijri: '26 Safar 1448 AH', hijriAr: '(٢٦ صفر ١٤٤٨ هـ)' }
+    let prayerSchedule = null;
+    let currentCityLabel = 'الرياض، السعودية';
+    let currentLatitude = 24.7136;
+    let currentLongitude = 46.6753;
+    let currentTimezone = 'Asia/Riyadh';
+    let currentLocationSource = 'default';
+    let activePrayerRequestId = 0;
+    let lastFetchedDateString = '';
+
+    const QUICK_CITIES = {
+      makkah:    { lat: 21.4225, lng: 39.8262, en: 'Makkah, Saudi Arabia', ar: 'مكة المكرمة، السعودية', tz: 'Asia/Riyadh' },
+      madinah:   { lat: 24.4672, lng: 39.6111, en: 'Madinah, Saudi Arabia', ar: 'المدينة المنورة، السعودية', tz: 'Asia/Riyadh' },
+      riyadh:    { lat: 24.7136, lng: 46.6753, en: 'Riyadh, Saudi Arabia', ar: 'الرياض، السعودية', tz: 'Asia/Riyadh' },
+      jeddah:    { lat: 21.5433, lng: 39.1728, en: 'Jeddah, Saudi Arabia', ar: 'جدة، السعودية', tz: 'Asia/Riyadh' },
+      dammam:    { lat: 26.4207, lng: 50.0888, en: 'Dammam, Saudi Arabia', ar: 'الدمام، السعودية', tz: 'Asia/Riyadh' },
+      khobar:    { lat: 26.2818, lng: 50.2084, en: 'Al Khobar, Saudi Arabia', ar: 'الخبر، السعودية', tz: 'Asia/Riyadh' },
+      dubai:     { lat: 25.2048, lng: 55.2708, en: 'Dubai, UAE', ar: 'دبي، الإمارات', tz: 'Asia/Dubai' },
+      azamgarh:  { lat: 26.0688, lng: 83.1859, en: 'Azamgarh, India', ar: 'أعظم كره، الهند', tz: 'Asia/Kolkata' },
+      lucknow:   { lat: 26.8467, lng: 80.9462, en: 'Lucknow, India', ar: 'لكهنؤ، الهند', tz: 'Asia/Kolkata' },
+      delhi:     { lat: 28.6139, lng: 77.2090, en: 'Delhi, India', ar: 'دلهي، الهند', tz: 'Asia/Kolkata' },
+      mumbai:    { lat: 19.0760, lng: 72.8777, en: 'Mumbai, India', ar: 'مومباي، الهند', tz: 'Asia/Kolkata' },
+      hyderabad: { lat: 17.3850, lng: 78.4867, en: 'Hyderabad, India', ar: 'حيدر أباد، الهند', tz: 'Asia/Kolkata' },
+      kolkata:   { lat: 22.5726, lng: 88.3639, en: 'Kolkata, India', ar: 'كولكاتا، الهند', tz: 'Asia/Kolkata' },
+      bangalore: { lat: 12.9716, lng: 77.5946, en: 'Bangalore, India', ar: 'بنغالور، الهند', tz: 'Asia/Kolkata' }
     };
+
+    const defaultPrayerMap = {
+      riyadh: { fajr: '04:20', sunrise: '05:39', ishraq: '05:57', chasht: '08:35', dhuhr: '11:56', asr: '15:24', maghrib: '18:12', isha: '19:42', label: 'الرياض، السعودية' },
+      dammam: { fajr: '04:12', sunrise: '05:31', ishraq: '05:49', chasht: '08:30', dhuhr: '11:48', asr: '15:18', maghrib: '18:05', isha: '19:35', label: 'الدمام، السعودية' },
+      jeddah: { fajr: '04:45', sunrise: '06:03', ishraq: '06:21', chasht: '08:50', dhuhr: '12:21', asr: '15:46', maghrib: '18:38', isha: '20:08', label: 'جدة، السعودية' },
+      dubai:  { fajr: '04:36', sunrise: '05:54', ishraq: '06:12', chasht: '08:45', dhuhr: '12:15', asr: '15:44', maghrib: '18:35', isha: '19:55', label: 'دبي، الإمارات' }
+    };
+
+    function getStoredLocation() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return null;
+        const data = JSON.parse(raw);
+        if (data && typeof data.lat === 'number' && typeof data.lng === 'number' && isFinite(data.lat) && isFinite(data.lng)) {
+          return data;
+        }
+      } catch (e) {}
+      return null;
+    }
+
+    function saveLocationToStorage(locData) {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(locData));
+      } catch (e) {}
+    }
+
+    function findMatchingCityKey(lat, lng) {
+      for (const k in QUICK_CITIES) {
+        const c = QUICK_CITIES[k];
+        if (Math.abs(c.lat - lat) < 0.05 && Math.abs(c.lng - lng) < 0.05) {
+          return k;
+        }
+      }
+      return null;
+    }
+
+    function highlightCityButton(matchKey) {
+      document.querySelectorAll('.city-btn').forEach(b => {
+        const oc = b.getAttribute('onclick') || '';
+        if (matchKey && oc.includes("'" + matchKey + "'")) {
+          b.classList.add('active');
+        } else {
+          b.classList.remove('active');
+        }
+      });
+    }
 
     function formatTime12h(timeStr) {
       if (!timeStr) return '--:-- --';
@@ -1374,7 +1453,7 @@
       if (parts.length < 2) return timeStr;
       let h = parseInt(parts[0], 10);
       const m = parts[1];
-      const ampm = h >= 12 ? 'م' : 'ص';
+      const ampm = IS_ARABIC ? (h >= 12 ? 'م' : 'ص') : (h >= 12 ? 'PM' : 'AM');
       h = h % 12;
       h = h ? h : 12;
       return `${String(h).padStart(2, '0')}:${m} ${ampm}`;
@@ -1384,7 +1463,6 @@
       if (!timeStr) return '';
       const clean = timeStr.split(' ')[0];
       const parts = clean.split(':');
-      if (parts.length < 2) return timeStr;
       let totalMins = parseInt(parts[0], 10) * 60 + parseInt(parts[1], 10) + minsToAdd;
       totalMins = (totalMins + 1440) % 1440;
       const h = Math.floor(totalMins / 60);
@@ -1393,20 +1471,71 @@
     }
 
     function getMidpointTime(time1, time2) {
-      if (!time1 || !time2) return '';
-      const p1 = time1.split(' ')[0].split(':');
-      const p2 = time2.split(' ')[0].split(':');
-      if (p1.length < 2 || p2.length < 2) return '';
-      const m1 = parseInt(p1[0], 10) * 60 + parseInt(p1[1], 10);
-      let m2 = parseInt(p2[0], 10) * 60 + parseInt(p2[1], 10);
-      if (m2 < m1) m2 += 1440;
-      const mid = Math.round((m1 + m2) / 2) % 1440;
-      const h = Math.floor(mid / 60);
-      const m = mid % 60;
-      return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}`;
+      try {
+        const p1 = time1.split(' ')[0].split(':');
+        const p2 = time2.split(' ')[0].split(':');
+        const m1 = parseInt(p1[0], 10) * 60 + parseInt(p1[1], 10);
+        const m2 = parseInt(p2[0], 10) * 60 + parseInt(p2[1], 10);
+        const mid = Math.round(m1 + (m2 - m1) / 2);
+        const h = Math.floor(mid / 60);
+        const m = mid % 60;
+        return (h < 10 ? '0' : '') + h + ':' + (m < 10 ? '0' : '') + m;
+      } catch (e) {
+        return '08:35';
+      }
+    }
+
+    function getNowInTimezone(tz) {
+      try {
+        const formatter = new Intl.DateTimeFormat('en-US', {
+          timeZone: tz,
+          hour: 'numeric',
+          minute: 'numeric',
+          second: 'numeric',
+          hour12: false
+        });
+        const parts = formatter.formatToParts(new Date());
+        let h = 0, m = 0, s = 0;
+        for (let i = 0; i < parts.length; i++) {
+          const p = parts[i];
+          if (p.type === 'hour') h = parseInt(p.value, 10);
+          if (p.type === 'minute') m = parseInt(p.value, 10);
+          if (p.type === 'second') s = parseInt(p.value, 10);
+        }
+        if (h === 24) h = 0;
+        return { hours: h, minutes: m, seconds: s, totalSeconds: h * 3600 + m * 60 + s };
+      } catch (e) {
+        const now = new Date();
+        const h = now.getHours();
+        const m = now.getMinutes();
+        const s = now.getSeconds();
+        return { hours: h, minutes: m, seconds: s, totalSeconds: h * 3600 + m * 60 + s };
+      }
+    }
+
+    function getTargetDateString(tz) {
+      try {
+        const formatter = new Intl.DateTimeFormat('en-CA', { timeZone: tz });
+        return formatter.format(new Date());
+      } catch (e) {
+        const d = new Date();
+        return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+      }
+    }
+
+    function getDynamicHijriFallback(isAr, tz) {
+      try {
+        const f = new Intl.DateTimeFormat(isAr ? 'ar-SA-u-ca-islamic-umalqura' : 'en-US-u-ca-islamic-umalqura', {
+          day: 'numeric', month: 'long', year: 'numeric', timeZone: tz || currentTimezone
+        });
+        return f.format(new Date());
+      } catch (e) {
+        return isAr ? 'مواقيت أم القرى' : 'Umm al-Qura Schedule';
+      }
     }
 
     function applyPrayerTimesToDOM(data) {
+      if (!data) return;
       prayerSchedule = data;
       const tFajr = document.getElementById('timeFajr');
       const tSunrise = document.getElementById('timeSunrise');
@@ -1448,10 +1577,15 @@
           const diff = Math.round((dm - sm) / 2);
           const dh = Math.floor(diff / 60);
           const dmin = diff % 60;
-          chashtSubEl.textContent = '⚡ منتصف النهار الفلكي (الشروق + ' + dh + ' س و ' + dmin + ' د)';
-          chashtSubEl.title = 'منتصف الوقت المحسوب فلكياً بين الشروق (' + data.sunrise + ') والظهر (' + data.dhuhr + ')';
+          if (IS_ARABIC) {
+            chashtSubEl.textContent = '⚡ منتصف الضحى (الشروق + ' + dh + 'س ' + dmin + 'د)';
+            chashtSubEl.title = 'حساب فلكي دقيق لمنتصف وقت الضحى بين الشروق (' + data.sunrise + ') والظهر (' + data.dhuhr + ')';
+          } else {
+            chashtSubEl.textContent = '⚡ Midpoint (Sunrise + ' + dh + 'h ' + dmin + 'm)';
+            chashtSubEl.title = 'Astronomically calculated midpoint between Sunrise (' + data.sunrise + ') & Dhuhr (' + data.dhuhr + ')';
+          }
         } catch(e) {
-          chashtSubEl.textContent = '⚡ منتصف النهار الشمسي الفلكي';
+          chashtSubEl.textContent = IS_ARABIC ? '⚡ منتصف وقت الضحى الفلكي' : '⚡ Dynamic Sun Midpoint';
         }
       }
       updatePrayerCountdown();
@@ -1459,55 +1593,77 @@
 
     function updateLiveClocks() {
       const now = new Date();
-      const dateOpts = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+      const dateOpts = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', timeZone: currentTimezone };
       const dateEl = document.getElementById('liveGregorianDate');
-      if (dateEl) dateEl.textContent = now.toLocaleDateString('ar-SA-u-ca-gregory', dateOpts);
+      if (dateEl) {
+        try {
+          dateEl.textContent = now.toLocaleDateString(IS_ARABIC ? 'ar-SA' : 'en-US', dateOpts);
+        } catch (e) {
+          dateEl.textContent = now.toLocaleDateString('ar-SA', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+        }
+      }
 
-      let h = now.getHours();
-      const m = String(now.getMinutes()).padStart(2, '0');
-      const s = String(now.getSeconds()).padStart(2, '0');
-      const ampm = h >= 12 ? 'م' : 'ص';
-      h = h % 12;
-      h = h ? h : 12;
       const clockEl = document.getElementById('liveClockVal');
-      if (clockEl) clockEl.textContent = `${String(h).padStart(2, '0')}:${m}:${s} ${ampm}`;
+      if (clockEl) {
+        try {
+          const clockFormatter = new Intl.DateTimeFormat(IS_ARABIC ? 'ar-SA' : 'en-US', {
+            timeZone: currentTimezone,
+            hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true
+          });
+          clockEl.textContent = clockFormatter.format(now);
+        } catch (e) {
+          let h = now.getHours();
+          const m = String(now.getMinutes()).padStart(2, '0');
+          const s = String(now.getSeconds()).padStart(2, '0');
+          const ampm = IS_ARABIC ? (h >= 12 ? 'م' : 'ص') : (h >= 12 ? 'PM' : 'AM');
+          h = h % 12;
+          h = h ? h : 12;
+          clockEl.textContent = `${String(h).padStart(2, '0')}:${m}:${s} ${ampm}`;
+        }
+      }
+
+      // Midnight Rollover Check in target timezone
+      if (currentTimezone && currentLatitude && currentLongitude) {
+        const currentTzDate = getTargetDateString(currentTimezone);
+        if (lastFetchedDateString && currentTzDate !== lastFetchedDateString) {
+          lastFetchedDateString = currentTzDate;
+          fetchPrayerForCoords(currentLatitude, currentLongitude, currentCityLabel, currentLocationSource, currentTimezone);
+        }
+      }
 
       updatePrayerCountdown();
     }
 
-    function parseTodayDateWithTime(timeStr, isNextDay = false) {
-      if (!timeStr) return null;
-      const clean = timeStr.split(' ')[0];
-      const parts = clean.split(':');
-      const d = new Date();
-      if (isNextDay) d.setDate(d.getDate() + 1);
-      d.setHours(parseInt(parts[0], 10), parseInt(parts[1], 10), 0, 0);
-      return d;
-    }
-
     function updatePrayerCountdown() {
       if (!prayerSchedule) return;
-      const now = new Date();
+      const nowTz = getNowInTimezone(currentTimezone);
 
       const slots = [
-        { key: 'Fajr', name: 'الفجر', time: prayerSchedule.fajr, cardId: 'pCardFajr' },
-        { key: 'Sunrise', name: 'الشروق', time: prayerSchedule.sunrise, cardId: 'pCardSunrise' },
-        { key: 'Ishraq', name: 'الإشراق', time: prayerSchedule.ishraq, cardId: 'pCardIshraq' },
-        { key: 'Chasht', name: 'صلاة الضحى', time: prayerSchedule.chasht, cardId: 'pCardChasht' },
-        { key: 'Dhuhr', name: 'الظهر', time: prayerSchedule.dhuhr, cardId: 'pCardDhuhr' },
-        { key: 'Asr', name: 'العصر', time: prayerSchedule.asr, cardId: 'pCardAsr' },
-        { key: 'Maghrib', name: 'المغرب', time: prayerSchedule.maghrib, cardId: 'pCardMaghrib' },
-        { key: 'Isha', name: 'العشاء', time: prayerSchedule.isha, cardId: 'pCardIsha' }
+        { key: 'Fajr', name: IS_ARABIC ? 'الفجر' : 'Fajr', time: prayerSchedule.fajr, cardId: 'pCardFajr' },
+        { key: 'Sunrise', name: IS_ARABIC ? 'الشروق' : 'Sunrise', time: prayerSchedule.sunrise, cardId: 'pCardSunrise' },
+        { key: 'Ishraq', name: IS_ARABIC ? 'الإشراق' : 'Ishraq', time: prayerSchedule.ishraq, cardId: 'pCardIshraq' },
+        { key: 'Chasht', name: IS_ARABIC ? 'الضحى' : 'Chasht (Duha)', time: prayerSchedule.chasht, cardId: 'pCardChasht' },
+        { key: 'Dhuhr', name: IS_ARABIC ? 'الظهر' : 'Dhuhr', time: prayerSchedule.dhuhr, cardId: 'pCardDhuhr' },
+        { key: 'Asr', name: IS_ARABIC ? 'العصر' : 'Asr', time: prayerSchedule.asr, cardId: 'pCardAsr' },
+        { key: 'Maghrib', name: IS_ARABIC ? 'المغرب' : 'Maghrib', time: prayerSchedule.maghrib, cardId: 'pCardMaghrib' },
+        { key: 'Isha', name: IS_ARABIC ? 'العشاء' : 'Isha', time: prayerSchedule.isha, cardId: 'pCardIsha' }
       ];
 
+      function timeToSeconds(timeStr) {
+        if (!timeStr) return 0;
+        const clean = timeStr.split(' ')[0];
+        const parts = clean.split(':');
+        return parseInt(parts[0], 10) * 3600 + parseInt(parts[1], 10) * 60;
+      }
+
       let nextSlot = null;
-      let nextSlotDate = null;
+      let remainingSecs = 0;
 
       for (let i = 0; i < slots.length; i++) {
-        const slotDate = parseTodayDateWithTime(slots[i].time);
-        if (slotDate && slotDate > now) {
+        const slotSecs = timeToSeconds(slots[i].time);
+        if (slotSecs > nowTz.totalSeconds) {
           nextSlot = slots[i];
-          nextSlotDate = slotDate;
+          remainingSecs = slotSecs - nowTz.totalSeconds;
           break;
         }
       }
@@ -1515,15 +1671,14 @@
       // If all passed today, next is tomorrow's Fajr
       if (!nextSlot) {
         nextSlot = slots[0];
-        nextSlotDate = parseTodayDateWithTime(slots[0].time, true);
+        const fajrSecs = timeToSeconds(slots[0].time);
+        remainingSecs = (86400 - nowTz.totalSeconds) + fajrSecs;
       }
 
-      if (nextSlot && nextSlotDate) {
-        const diffMs = Math.max(0, nextSlotDate.getTime() - now.getTime());
-        const totalSecs = Math.floor(diffMs / 1000);
-        const hours = Math.floor(totalSecs / 3600);
-        const mins = Math.floor((totalSecs % 3600) / 60);
-        const secs = totalSecs % 60;
+      if (nextSlot) {
+        const hours = Math.floor(remainingSecs / 3600);
+        const mins = Math.floor((remainingSecs % 3600) / 60);
+        const secs = remainingSecs % 60;
 
         const hEl = document.getElementById('timerHours');
         const mEl = document.getElementById('timerMinutes');
@@ -1551,101 +1706,154 @@
       }
     }
 
+    // High-Precision Universal Reverse Geocoder (Cleaned: no hardcoded street overrides)
     async function reverseGeocodeWithOSM(lat, lng, fallbackCity, fallbackCountry) {
       try {
-        const osmUrl = `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lng}&accept-language=ar`;
+        const osmUrl = 'https://nominatim.openstreetmap.org/reverse?format=json&lat=' + lat + '&lon=' + lng + '&zoom=18&addressdetails=1&accept-language=' + (IS_ARABIC ? 'ar' : 'en');
         const res = await fetch(osmUrl, { headers: { 'Accept': 'application/json' } });
         if (res.ok) {
-          const json = await res.json();
-          if (json && json.address) {
-            const addr = json.address;
-            const city = addr.city || addr.town || addr.municipality || addr.county || addr.suburb || addr.state_district || addr.state || fallbackCity;
-            const country = addr.country || fallbackCountry;
-            const neighborhood = addr.neighbourhood || addr.suburb || addr.residential || '';
-            if (neighborhood && city) {
-              return `${neighborhood}، ${city}، ${country}`;
+          const data = await res.json();
+          if (data && data.address) {
+            const addr = data.address;
+            let area = addr.village || addr.hamlet || addr.suburb || addr.neighbourhood || addr.quarter || addr.residential || addr.road || '';
+            const city = addr.city || addr.town || addr.state_district || addr.county || addr.district || addr.municipality || fallbackCity || '';
+            const country = addr.country || fallbackCountry || '';
+
+            const sep = IS_ARABIC ? '، ' : ', ';
+            if (area && city && area.toLowerCase() !== city.toLowerCase()) {
+              return area + sep + city;
+            } else if (city && country) {
+              return city + sep + country;
             } else if (city) {
-              return `${city}، ${country}`;
+              return city;
             }
           }
         }
       } catch (e) {
-        console.warn('Nominatim reverse geocode error:', e);
+        console.warn('OSM reverse geocode fallback:', e);
       }
 
-      // Fallback secondary reverse geocode via BigDataCloud with Arabic
+      // Fallback: BigDataCloud Reverse Geocoding
       try {
-        const bdcUrl = `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}&localityLanguage=ar`;
+        const bdcUrl = 'https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=' + lat + '&longitude=' + lng + '&localityLanguage=' + (IS_ARABIC ? 'ar' : 'en');
         const bRes = await fetch(bdcUrl);
         if (bRes.ok) {
-          const bJson = await bRes.json();
-          if (bJson) {
-            const city = bJson.locality || bJson.city || bJson.principalSubdivision || fallbackCity;
-            const country = bJson.countryName || fallbackCountry;
-            if (city) {
-              return `${city}، ${country}`;
+          const bData = await bRes.json();
+          let area = bData.locality || '';
+          let city = bData.city || '';
+          if (!city && bData.localityInfo && Array.isArray(bData.localityInfo.administrative)) {
+            const admin = bData.localityInfo.administrative;
+            for (let i = 0; i < admin.length; i++) {
+              if (admin[i].adminLevel === 4 || admin[i].adminLevel === 5) {
+                city = admin[i].name;
+                break;
+              }
             }
+          }
+          if (!city) city = fallbackCity || '';
+          const country = bData.countryName || fallbackCountry || '';
+
+          const sep = IS_ARABIC ? '، ' : ', ';
+          if (area && city && area.toLowerCase() !== city.toLowerCase()) {
+            return area + sep + city;
+          } else if (city && country) {
+            return city + sep + country;
+          } else if (city) {
+            return city;
+          }
+        }
+      } catch (e2) {
+        console.warn('BDC reverse geocode error:', e2);
+      }
+
+      const defCity = fallbackCity || (IS_ARABIC ? 'الرياض' : 'Riyadh');
+      const defCountry = fallbackCountry || (IS_ARABIC ? 'المملكة العربية السعودية' : 'Saudi Arabia');
+      return defCity + (IS_ARABIC ? '، ' : ', ') + defCountry;
+    }
+
+    async function fetchPrayerForCoords(lat, lng, locLabel, source, tz) {
+      const reqId = ++activePrayerRequestId;
+      if (locLabel) {
+        currentCityLabel = locLabel;
+        const locLabelEl = document.getElementById('prayerLocLabel');
+        if (locLabelEl) locLabelEl.textContent = currentCityLabel;
+      }
+      if (source) currentLocationSource = source;
+      if (tz) currentTimezone = tz;
+      currentLatitude = lat;
+      currentLongitude = lng;
+
+      try {
+        const today = new Date();
+        const locDateParts = new Intl.DateTimeFormat('en-GB', { timeZone: currentTimezone }).format(today).split('/');
+        const dateStr = locDateParts[0] + '-' + locDateParts[1] + '-' + locDateParts[2];
+        lastFetchedDateString = locDateParts[2] + '-' + locDateParts[1] + '-' + locDateParts[0];
+
+        const aladhanUrl = 'https://api.aladhan.com/v1/timings/' + dateStr + '?latitude=' + lat + '&longitude=' + lng + '&method=4';
+        const pRes = await fetch(aladhanUrl);
+        if (reqId !== activePrayerRequestId) return; // Drop stale response
+
+        if (pRes.ok) {
+          const pData = await pRes.json();
+          if (reqId !== activePrayerRequestId) return; // Drop stale response
+
+          if (pData && pData.data && pData.data.timings) {
+            const t = pData.data.timings;
+            if (pData.data.meta && pData.data.meta.timezone) {
+              currentTimezone = pData.data.meta.timezone;
+            }
+
+            const sunriseTime = t.Sunrise.split(' ')[0];
+            const dhuhrTime = t.Dhuhr.split(' ')[0];
+            const ishraqCalculated = addMinutesToTime(sunriseTime, 18);
+            const chashtCalculated = getMidpointTime(sunriseTime, dhuhrTime);
+
+            let hijriStr = '';
+            let hijriArStr = '';
+            if (pData.data.date && pData.data.date.hijri) {
+              const h = pData.data.date.hijri;
+              hijriStr = h.day + ' ' + h.month.en + ' ' + h.year + ' AH';
+              hijriArStr = '(' + h.day + ' ' + h.month.ar + ' ' + h.year + ' هـ)';
+            } else {
+              hijriStr = getDynamicHijriFallback(false, currentTimezone);
+              hijriArStr = '(' + getDynamicHijriFallback(true, currentTimezone) + ')';
+            }
+
+            applyPrayerTimesToDOM({
+              fajr: t.Fajr.split(' ')[0],
+              sunrise: sunriseTime,
+              ishraq: ishraqCalculated,
+              chasht: chashtCalculated,
+              dhuhr: dhuhrTime,
+              asr: t.Asr.split(' ')[0],
+              maghrib: t.Maghrib.split(' ')[0],
+              isha: t.Isha.split(' ')[0],
+              label: currentCityLabel,
+              hijri: hijriStr,
+              hijriAr: hijriArStr
+            });
+
+            // Atomically commit to canonical persistence
+            saveLocationToStorage({
+              lat: lat,
+              lng: lng,
+              label: currentCityLabel,
+              timezone: currentTimezone,
+              source: currentLocationSource,
+              timestamp: Date.now()
+            });
           }
         }
       } catch (e) {
-        console.warn('BigDataCloud reverse geocode error:', e);
+        console.warn('Aladhan fetch error:', e);
       }
-
-      return fallbackCity ? `${fallbackCity}، ${fallbackCountry}` : 'الموقع المحدد';
     }
 
-    async function fetchPrayerForCoords(lat, lng, locLabel) {
-      try {
-        const today = new Date();
-        const dd = String(today.getDate()).padStart(2, '0');
-        const mm = String(today.getMonth() + 1).padStart(2, '0');
-        const yyyy = today.getFullYear();
-        const dateStr = `${dd}-${mm}-${yyyy}`;
-
-        // method=4 is Umm Al-Qura University, Makkah
-        const aladhanUrl = `https://api.aladhan.com/v1/timings/${dateStr}?latitude=${lat}&longitude=${lng}&method=4`;
-        const pRes = await fetch(aladhanUrl);
-        if (!pRes.ok) throw new Error('Aladhan API HTTP ' + pRes.status);
-        const pData = await pRes.json();
-        if (pData && pData.data && pData.data.timings) {
-          const t = pData.data.timings;
-          const ishraq = addMinutesToTime(t.Sunrise, 18);
-          const chasht = getMidpointTime(t.Sunrise, t.Dhuhr);
-
-          let hijriStr = '';
-          let hijriArabicStr = '';
-          if (pData.data.date && pData.data.date.hijri) {
-            const h = pData.data.date.hijri;
-            hijriStr = `${h.day} ${h.month.en} ${h.year} AH`;
-            hijriArabicStr = `(${h.day} ${h.month.ar} ${h.year} هـ)`;
-          }
-
-          const customSchedule = {
-            fajr: t.Fajr,
-            sunrise: t.Sunrise,
-            ishraq: ishraq,
-            chasht: chasht,
-            dhuhr: t.Dhuhr,
-            asr: t.Asr,
-            maghrib: t.Maghrib,
-            isha: t.Isha,
-            label: locLabel,
-            hijri: hijriStr,
-            hijriAr: hijriArabicStr
-          };
-          currentCityLabel = locLabel;
-          applyPrayerTimesToDOM(customSchedule);
-          return true;
-        }
-      } catch (err) {
-        console.warn('Aladhan fetch error:', err);
-      }
-      return false;
-    }
-
-    // Open-Meteo Weather Integration
-    const weatherCache = {};
+    // ==========================================
+    // LIVE CURRENT TEMPERATURE ENGINE (OPEN-METEO)
+    // ==========================================
     let activeWeatherRequestId = 0;
+    const weatherCache = {};
     const WEATHER_REFRESH_INTERVAL_MS = 900000; // 15 minutes
     let weatherRefreshTimerId = null;
     let lastWeatherFetchTimestamp = 0;
@@ -1680,10 +1888,10 @@
       const now = Date.now();
       if (weatherCache[cacheKey] && (now - weatherCache[cacheKey].timestamp < 600000)) {
         const cached = weatherCache[cacheKey];
-        tempEl.textContent = cached.temp + '°م';
+        tempEl.textContent = cached.temp + '°C';
         iconEl.className = cached.iconClass;
-        badgeEl.setAttribute('aria-label', 'درجة الحرارة الحالية: ' + cached.temp + '°م');
-        badgeEl.title = 'درجة الحرارة الحالية: ' + cached.temp + '°م';
+        badgeEl.setAttribute('aria-label', (IS_ARABIC ? 'درجة الحرارة الحالية: ' : 'Current temperature: ') + cached.temp + '°C');
+        badgeEl.title = (IS_ARABIC ? 'درجة الحرارة الحالية: ' : 'Current temperature: ') + cached.temp + '°C';
         badgeEl.style.opacity = '1';
         lastWeatherFetchTimestamp = cached.timestamp;
         return;
@@ -1693,96 +1901,99 @@
       badgeEl.style.opacity = '0.75';
 
       try {
-        const url = `https://api.open-meteo.com/v1/forecast?latitude=${numLat}&longitude=${numLng}&current=temperature_2m,weather_code&temperature_unit=celsius&timezone=auto`;
+        const url = 'https://api.open-meteo.com/v1/forecast?latitude=' + encodeURIComponent(numLat.toFixed(4)) + '&longitude=' + encodeURIComponent(numLng.toFixed(4)) + '&current=temperature_2m,weather_code';
         const res = await fetch(url);
-        if (!res.ok) throw new Error('Weather fetch failed');
+        if (reqId !== activeWeatherRequestId) return;
+
+        if (!res.ok) {
+          badgeEl.style.opacity = '1';
+          return;
+        }
+
         const data = await res.json();
         if (reqId !== activeWeatherRequestId) return;
 
-        if (data && data.current) {
-          const temp = Math.round(data.current.temperature_2m);
+        if (data && data.current && typeof data.current.temperature_2m === 'number') {
+          const tempC = Math.round(data.current.temperature_2m);
           const iconClass = mapWmoToWeatherIcon(data.current.weather_code);
-          tempEl.textContent = temp + '°م';
-          iconEl.className = iconClass;
-          badgeEl.setAttribute('aria-label', 'درجة الحرارة الحالية: ' + temp + '°م');
-          badgeEl.title = 'درجة الحرارة الحالية: ' + temp + '°م';
-          badgeEl.style.opacity = '1';
-          lastWeatherFetchTimestamp = Date.now();
 
           weatherCache[cacheKey] = {
-            temp: temp,
+            temp: tempC,
             iconClass: iconClass,
-            timestamp: lastWeatherFetchTimestamp
+            timestamp: now
           };
+
+          tempEl.textContent = tempC + '°C';
+          iconEl.className = iconClass;
+          badgeEl.setAttribute('aria-label', (IS_ARABIC ? 'درجة الحرارة الحالية: ' : 'Current temperature: ') + tempC + '°C');
+          badgeEl.title = (IS_ARABIC ? 'درجة الحرارة الحالية: ' : 'Current temperature: ') + tempC + '°C';
+          lastWeatherFetchTimestamp = now;
         }
       } catch (err) {
-        if (reqId !== activeWeatherRequestId) return;
-        tempEl.textContent = '--°م';
-        iconEl.className = 'fas fa-temperature-half';
-        badgeEl.style.opacity = '0.5';
+        console.warn('Weather fetch fallback:', err);
+      } finally {
+        if (reqId === activeWeatherRequestId) {
+          badgeEl.style.opacity = '1';
+        }
       }
     }
 
     function triggerPeriodicWeatherRefresh() {
-      if (currentLatitude !== null && currentLongitude !== null) {
+      if (document.hidden) return;
+      if (typeof currentLatitude === 'number' && typeof currentLongitude === 'number' &&
+          isFinite(currentLatitude) && isFinite(currentLongitude)) {
         fetchWeatherForCoords(currentLatitude, currentLongitude);
-      } else {
-        fetchWeatherForCoords(26.4207, 50.0888);
       }
     }
 
     function startWeatherPeriodicRefresh() {
       if (weatherRefreshTimerId) {
         clearInterval(weatherRefreshTimerId);
+        weatherRefreshTimerId = null;
       }
       weatherRefreshTimerId = setInterval(triggerPeriodicWeatherRefresh, WEATHER_REFRESH_INTERVAL_MS);
     }
 
     // ==========================================
-    // HIGH PRECISION QIBLA COMPASS ENGINE
+    // QIBLA COMPASS & DEVICE ORIENTATION ENGINE
     // ==========================================
     const KAABA_LAT = 21.422487;
     const KAABA_LNG = 39.826206;
 
-    let currentLatitude = null;
-    let currentLongitude = null;
     let currentQiblaBearing = 244;
     let currentQiblaDistanceKm = 1181;
-    let locationSourceType = 'اختيار المدينة';
+    let locationSourceType = IS_ARABIC ? 'الوضع الافتراضي' : 'Baseline Fallback';
     let isLiveOrientationActive = false;
     let liveDeviceHeading = null;
     let orientationRafId = null;
 
     function calculateQiblaBearing(userLat, userLng) {
-      const phi1 = (userLat * Math.PI) / 180;
-      const phi2 = (KAABA_LAT * Math.PI) / 180;
-      const deltaLambda = ((KAABA_LNG - userLng) * Math.PI) / 180;
+      const phiU = userLat * (Math.PI / 180);
+      const phiK = KAABA_LAT * (Math.PI / 180);
+      const deltaLng = (KAABA_LNG - userLng) * (Math.PI / 180);
 
-      const y = Math.sin(deltaLambda);
-      const x = Math.cos(phi1) * Math.tan(phi2) - Math.sin(phi1) * Math.cos(deltaLambda);
-      let qiblaRad = Math.atan2(y, x);
-      let qiblaDeg = (qiblaRad * 180) / Math.PI;
-      return (qiblaDeg + 360) % 360;
+      const y = Math.sin(deltaLng);
+      const x = Math.cos(phiU) * Math.tan(phiK) - Math.sin(phiU) * Math.cos(deltaLng);
+      const bearingRad = Math.atan2(y, x);
+      const bearingDeg = ((bearingRad * 180 / Math.PI) + 360) % 360;
+      return bearingDeg;
     }
 
     function calculateHaversineDistance(lat1, lon1, lat2, lon2) {
-      const R = 6371; // Earth radius in km
-      const dLat = ((lat2 - lat1) * Math.PI) / 180;
-      const dLon = ((lon2 - lon1) * Math.PI) / 180;
-      const a =
+      const R = 6371; // Earth's mean radius in km
+      const dLat = (lat2 - lat1) * (Math.PI / 180);
+      const dLon = (lon2 - lon1) * (Math.PI / 180);
+      const a = 
         Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-        Math.cos((lat1 * Math.PI) / 180) *
-        Math.cos((lat2 * Math.PI) / 180) *
+        Math.cos(lat1 * (Math.PI / 180)) * Math.cos(lat2 * (Math.PI / 180)) * 
         Math.sin(dLon / 2) * Math.sin(dLon / 2);
       const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
       return R * c;
     }
 
     const COMPASS_16_POINTS = [
-      'شمال', 'شمال شمال شرق', 'شمال شرق', 'شرق شمال شرق',
-      'شرق', 'شرق جنوب شرق', 'جنوب شرق', 'جنوب جنوب شرق',
-      'جنوب', 'جنوب جنوب غرب', 'جنوب غرب', 'غرب جنوب غرب',
-      'غرب', 'غرب شمال غرب', 'شمال غرب', 'شمال شمال غرب'
+      'N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE',
+      'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'
     ];
 
     function get16WindDirection(deg) {
@@ -1815,19 +2026,18 @@
       const kaabaMarker = document.getElementById('kaabaDialMarker');
 
       if (dist < 5) {
-        // Special case: In Makkah / At the Holy Kaaba
-        if (degreeEl) degreeEl.textContent = 'مكة المكرمة';
-        if (dirEl) dirEl.textContent = 'الحرم المكي الشريف';
-        if (distEl) distEl.textContent = '< 5 كم';
+        if (degreeEl) degreeEl.textContent = IS_ARABIC ? 'مكة المكرمة' : 'Makkah';
+        if (dirEl) dirEl.textContent = IS_ARABIC ? 'الحرم المكي' : 'Holy Haram';
+        if (distEl) distEl.textContent = '< 5 km';
         if (destTextEl) {
-          destTextEl.innerHTML = '<i class="fas fa-kaaba" style="color: #fbbf24;"></i> أنت في محيط المسجد الحرام بمكة المكرمة — جميع الاتجاهات تتجه نحو الكعبة المشرفة.';
+          destTextEl.innerHTML = '<i class="fas fa-kaaba" style="color: #fbbf24;"></i> ' + (IS_ARABIC ? 'أنت بجوار الكعبة المشرفة في مكة المكرمة' : 'You are near the Holy Kaaba in Makkah — all directions lead toward the Haram.');
         }
         if (accTagEl) {
           accTagEl.innerHTML = '<i class="fas fa-check-circle" style="color: #34d399;"></i> ' + locationSourceType;
         }
         if (needle) needle.setAttribute('transform', 'rotate(0 80 80)');
         if (kaabaMarker) kaabaMarker.setAttribute('transform', 'rotate(0 80 80)');
-        if (ariaLive) ariaLive.textContent = 'أنت في مكة المكرمة بجوار الكعبة المشرفة.';
+        if (ariaLive) ariaLive.textContent = IS_ARABIC ? 'أنت في مكة المكرمة بجوار الكعبة المشرفة.' : 'You are in Makkah near the Holy Kaaba.';
         return;
       }
 
@@ -1837,100 +2047,102 @@
 
       if (degreeEl) degreeEl.textContent = currentQiblaBearing + '°';
       if (dirEl) dirEl.textContent = windDir;
-      if (distEl) distEl.textContent = currentQiblaDistanceKm.toLocaleString('ar-SA') + ' كم';
+      if (distEl) distEl.textContent = currentQiblaDistanceKm.toLocaleString() + ' km';
       if (destTextEl) {
-        destTextEl.innerHTML = '<i class="fas fa-location-dot" style="color: #38bdf8;"></i> باتجاه الكعبة المشرفة في المسجد الحرام بمكة المكرمة';
+        destTextEl.innerHTML = '<i class="fas fa-location-dot" style="color: #38bdf8;"></i> ' + (IS_ARABIC ? 'باتجاه الكعبة المشرفة بمكة المكرمة' : 'Towards the Holy Kaaba in Makkah');
       }
 
       let iconClass = 'fa-satellite-dish';
       let iconColor = '#94a3b8';
-      let displaySource = locationSourceType;
-      if (locationSourceType.includes('GPS')) {
+      const sLower = locationSourceType.toLowerCase();
+      if (sLower.includes('gps') || sLower.includes('نظام gps')) {
         iconClass = 'fa-crosshairs';
         iconColor = '#34d399';
-        displaySource = 'دقة نظام GPS';
-      } else if (locationSourceType.includes('Approximate')) {
+      } else if (sLower.includes('ip') || sLower.includes('approximate') || sLower.includes('تقريبي')) {
         iconClass = 'fa-network-wired';
         iconColor = '#38bdf8';
-        displaySource = 'تحديد تقريبي';
-      } else if (locationSourceType.includes('City') || locationSourceType.includes('اختيار')) {
+      } else if (sLower.includes('city') || sLower.includes('المدينة')) {
         iconClass = 'fa-city';
         iconColor = '#fbbf24';
-        displaySource = 'اختيار المدينة';
       }
       if (accTagEl) {
-        accTagEl.innerHTML = '<i class="fas ' + iconClass + '" style="color: ' + iconColor + ';"></i> ' + displaySource;
+        accTagEl.innerHTML = '<i class="fas ' + iconClass + '" style="color: ' + iconColor + ';"></i> ' + locationSourceType;
       }
 
-      // If live orientation is not active, orient needle directly to Qibla bearing
       if (!isLiveOrientationActive) {
         if (needle) needle.setAttribute('transform', 'rotate(' + currentQiblaBearing + ' 80 80)');
         if (kaabaMarker) kaabaMarker.setAttribute('transform', 'rotate(' + currentQiblaBearing + ' 80 80)');
       }
 
       if (ariaLive) {
-        ariaLive.textContent = 'اتجاه القبلة هو ' + currentQiblaBearing + ' درجة ' + windDir + '، وتبعد الكعبة المشرفة ' + currentQiblaDistanceKm + ' كم.';
+        ariaLive.textContent = IS_ARABIC ?
+          ('اتجاه القبلة هو ' + currentQiblaBearing + ' درجة ' + windDir + '، وتبعد ' + currentQiblaDistanceKm + ' كم عن الكعبة المشرفة.') :
+          ('Qibla direction is ' + currentQiblaBearing + ' degrees ' + windDir + ', ' + currentQiblaDistanceKm + ' kilometers to the Kaaba in Makkah.');
       }
     }
 
     function setupDeviceOrientation() {
       const btn = document.getElementById('btnEnableCompass');
-      const hint = document.getElementById('qiblaSensorHint');
+      const label = document.getElementById('compassOrientationLabel');
 
       if (typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOrientationEvent.requestPermission === 'function') {
-        // iOS 13+ requires user interaction to grant sensor permission
         if (btn) btn.style.display = 'inline-flex';
-        if (hint) hint.textContent = 'انقر على "تفعيل بوصلة القبلة" لتمكين حساس الاتجاه في هاتفك.';
-      } else if (window.DeviceOrientationEvent || 'ondeviceorientationabsolute' in window) {
-        // Android / desktop sensors without explicit prompt
-        if (window.matchMedia('(max-width: 900px)').matches) {
-          window.addEventListener('deviceorientationabsolute', handleOrientationEvent, true);
-          window.addEventListener('deviceorientation', handleOrientationEvent, true);
-        }
+        if (label) label.innerHTML = '<i class="fas fa-compass"></i> ' + (IS_ARABIC ? 'بوصلة ثابتة (اضغط للتفعيل المباشر)' : 'Static (Tap to Enable Live)');
+        return;
+      }
+
+      if ('ondeviceorientationabsolute' in window) {
+        window.addEventListener('deviceorientationabsolute', handleOrientationEvent, true);
+        isLiveOrientationActive = true;
+        if (label) label.innerHTML = '<i class="fas fa-compass"></i> ' + (IS_ARABIC ? 'البوصلة المباشرة نشطة' : 'Live Compass Active');
+      } else if ('ondeviceorientation' in window) {
+        window.addEventListener('deviceorientation', handleOrientationEvent, true);
+        isLiveOrientationActive = true;
+        if (label) label.innerHTML = '<i class="fas fa-compass"></i> ' + (IS_ARABIC ? 'البوصلة المباشرة نشطة' : 'Live Compass Active');
+      } else {
+        if (label) label.innerHTML = '<i class="fas fa-compass"></i> ' + (IS_ARABIC ? 'وضع البوصلة الثابتة' : 'Static Compass Mode');
       }
     }
 
     function requestCompassPermission() {
+      const btn = document.getElementById('btnEnableCompass');
+      const label = document.getElementById('compassOrientationLabel');
+
       if (typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOrientationEvent.requestPermission === 'function') {
         DeviceOrientationEvent.requestPermission()
-          .then(permissionState => {
-            if (permissionState === 'granted') {
+          .then(function(state) {
+            if (state === 'granted') {
               window.addEventListener('deviceorientation', handleOrientationEvent, true);
-              const btn = document.getElementById('btnEnableCompass');
+              isLiveOrientationActive = true;
               if (btn) btn.style.display = 'none';
-              const hint = document.getElementById('qiblaSensorHint');
-              if (hint) hint.textContent = 'حساس البوصلة نشط: وجه الهاتف نحو القبلة.';
+              if (label) label.innerHTML = '<i class="fas fa-compass"></i> ' + (IS_ARABIC ? 'البوصلة المباشرة نشطة' : 'Live Compass Active');
             } else {
-              alert('تم رفض إذن مستشعر الاتجاه. سيتم الإبقاء على وضع البوصلة الثابتة.');
+              if (btn) {
+                btn.innerHTML = '<i class="fas fa-times"></i> ' + (IS_ARABIC ? 'تم رفض الإذن' : 'Access Denied');
+                btn.disabled = true;
+              }
             }
           })
-          .catch(err => {
-            console.warn('Sensor permission error:', err);
+          .catch(function(err) {
+            console.warn('Compass permission error:', err);
+            if (label) label.innerHTML = '<i class="fas fa-compass"></i> ' + (IS_ARABIC ? 'وضع البوصلة الثابتة' : 'Static Compass Mode');
           });
       }
     }
 
     function handleOrientationEvent(event) {
-      let compassHeading = null;
+      if (!event) return;
 
+      let compassHeading = null;
       if (typeof event.webkitCompassHeading !== 'undefined') {
-        // iOS Safari gives direct magnetic heading
         compassHeading = event.webkitCompassHeading;
-      } else if (event.alpha !== null) {
-        // Android / W3C standard
-        if (event.absolute) {
-          compassHeading = 360 - event.alpha;
-        } else {
-          compassHeading = 360 - event.alpha;
-        }
+      } else if (event.alpha !== null && typeof event.alpha !== 'undefined') {
+        compassHeading = (360 - event.alpha + 360) % 360;
       }
 
       if (compassHeading === null || isNaN(compassHeading)) return;
-
-      isLiveOrientationActive = true;
       liveDeviceHeading = compassHeading;
 
-      // Throttle rendering via requestAnimationFrame
       if (!orientationRafId) {
         orientationRafId = requestAnimationFrame(renderLiveCompass);
       }
@@ -1941,9 +2153,6 @@
       if (liveDeviceHeading === null) return;
 
       const dialSvg = document.querySelector('.qibla-dial-svg');
-      const needle = document.getElementById('qiblaNeedleGroup');
-      const kaabaMarker = document.getElementById('kaabaDialMarker');
-
       const dialRotation = (-liveDeviceHeading + 360) % 360;
       const needleRotation = (currentQiblaBearing - liveDeviceHeading + 360) % 360;
 
@@ -1957,18 +2166,17 @@
       const isFacingQibla = (diff <= 6 || diff >= 354);
       if (label) {
         if (isFacingQibla) {
-          label.innerHTML = '<i class="fas fa-check-circle" style="color: #34d399;"></i> أنت باتجاه القبلة الآن!';
+          label.innerHTML = '<i class="fas fa-check-circle" style="color: #34d399;"></i> ' + (IS_ARABIC ? 'أنت تواجه القبلة مباشرة!' : 'Facing Qibla!');
           label.style.borderColor = '#10b981';
           label.style.color = '#34d399';
         } else {
-          label.innerHTML = '<i class="fas fa-compass"></i> البوصلة المباشرة نشطة';
+          label.innerHTML = '<i class="fas fa-compass"></i> ' + (IS_ARABIC ? 'البوصلة المباشرة نشطة' : 'Live Compass Active');
           label.style.borderColor = 'rgba(255, 255, 255, 0.08)';
           label.style.color = '#94a3b8';
         }
       }
     }
 
-    // Battery saver & tab visibility synchronization
     document.addEventListener('visibilitychange', function() {
       if (document.hidden) {
         if (orientationRafId) {
@@ -1984,27 +2192,32 @@
     });
 
     function selectCity(btnEl, cityKey, lat, lng, label) {
-      document.querySelectorAll('.city-btn').forEach(b => b.classList.remove('active'));
-      if (btnEl && btnEl.classList) {
-        btnEl.classList.add('active');
-      } else if (window.event && window.event.target && window.event.target.classList) {
-        window.event.target.classList.add('active');
+      highlightCityButton(cityKey);
+
+      let tz = 'Asia/Riyadh';
+      if (QUICK_CITIES[cityKey] && QUICK_CITIES[cityKey].tz) {
+        tz = QUICK_CITIES[cityKey].tz;
       }
-      updateQiblaDisplay(lat, lng, 'اختيار المدينة (' + label.split('،')[0].split(',')[0] + ')');
+
+      const srcLabel = IS_ARABIC ?
+        ('اختيار المدينة (' + label.split('،')[0].split(',')[0] + ')') :
+        ('City Selection (' + label.split(',')[0] + ')');
+
+      updateQiblaDisplay(lat, lng, srcLabel);
       fetchWeatherForCoords(lat, lng);
-      fetchPrayerForCoords(lat, lng, label);
+      fetchPrayerForCoords(lat, lng, label, 'manual', tz);
     }
 
     async function executeGpsTrack(isUserInitiated = false) {
       const btn = document.getElementById('btnDetectLoc');
       if (isUserInitiated && btn) {
-        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جارٍ التحديد...';
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> ' + (IS_ARABIC ? 'جاري التحديد...' : 'Detecting...');
         btn.disabled = true;
       }
 
       if (!navigator.geolocation) {
         if (isUserInitiated && btn) {
-          btn.innerHTML = '<i class="fas fa-crosshairs"></i> تحديد موقعي تلقائياً';
+          btn.innerHTML = '<i class="fas fa-crosshairs"></i> ' + (IS_ARABIC ? 'تحديد موقعي تلقائياً' : 'Detect My Location');
           btn.disabled = false;
         }
         return;
@@ -2016,34 +2229,38 @@
             if (pos && pos.coords) {
               const gpsLat = pos.coords.latitude;
               const gpsLng = pos.coords.longitude;
-              const preciseLabel = await reverseGeocodeWithOSM(gpsLat, gpsLng, 'المنطقة المحلية', 'المملكة العربية السعودية');
-              updateQiblaDisplay(gpsLat, gpsLng, 'GPS Precision');
+              const preciseLabel = await reverseGeocodeWithOSM(gpsLat, gpsLng, IS_ARABIC ? 'المنطقة المحلية' : 'Local Area', IS_ARABIC ? 'المملكة العربية السعودية' : 'Saudi Arabia');
+              updateQiblaDisplay(gpsLat, gpsLng, IS_ARABIC ? 'دقة نظام GPS' : 'GPS Precision');
               fetchWeatherForCoords(gpsLat, gpsLng);
-              await fetchPrayerForCoords(gpsLat, gpsLng, preciseLabel);
-              document.querySelectorAll('.city-btn').forEach(b => b.classList.remove('active'));
+              await fetchPrayerForCoords(gpsLat, gpsLng, preciseLabel, 'gps');
+              highlightCityButton(null);
             }
           } catch (e) {
             console.warn('GPS location handling error:', e);
           } finally {
             if (btn) {
-              btn.innerHTML = '<i class="fas fa-crosshairs"></i> تحديد موقعي تلقائياً';
+              btn.innerHTML = '<i class="fas fa-crosshairs"></i> ' + (IS_ARABIC ? 'تحديد موقعي تلقائياً' : 'Detect My Location');
               btn.disabled = false;
             }
           }
         },
         function(err) {
           console.log('GPS device status:', err.message);
-          let reason = 'نظام GPS غير متاح';
-          if (err.code === 1) { reason = 'تم رفض إذن GPS (استخدام الموقع التلقائي)'; }
-          else if (err.code === 2) { reason = 'نظام GPS غير متوفر (استخدام الموقع التلقائي)'; }
-          else if (err.code === 3) { reason = 'انتهت مهلة GPS (استخدام الموقع التلقائي)'; }
+          let reason = IS_ARABIC ? 'نظام GPS غير متاح' : 'GPS Unavailable';
+          if (err.code === 1) {
+            reason = IS_ARABIC ? 'تم رفض إذن GPS (استخدام الموقع التلقائي)' : 'GPS Denied (Using Fallback)';
+          } else if (err.code === 2) {
+            reason = IS_ARABIC ? 'نظام GPS غير متوفر (استخدام الموقع التلقائي)' : 'GPS Unavailable (Using Fallback)';
+          } else if (err.code === 3) {
+            reason = IS_ARABIC ? 'انتهت مهلة GPS (استخدام الموقع التلقائي)' : 'GPS Timeout (Using Fallback)';
+          }
           updateQiblaAccuracyTag(reason);
           const locLabelEl = document.getElementById('prayerLocLabel');
           if (locLabelEl && currentCityLabel) {
             locLabelEl.textContent = currentCityLabel;
           }
           if (btn) {
-            btn.innerHTML = '<i class="fas fa-crosshairs"></i> تحديد موقعي تلقائياً';
+            btn.innerHTML = '<i class="fas fa-crosshairs"></i> ' + (IS_ARABIC ? 'تحديد موقعي تلقائياً' : 'Detect My Location');
             btn.disabled = false;
           }
         },
@@ -2056,46 +2273,125 @@
     }
 
     async function initAutoPrayerTimes() {
-      // Initialize with Riyadh / Dammam baseline immediately
-      applyPrayerTimesToDOM(defaultPrayerMap.dammam);
-      updateQiblaDisplay(26.4207, 50.0888, 'اختيار المدينة');
-      fetchWeatherForCoords(26.4207, 50.0888);
-      setupDeviceOrientation();
-      startWeatherPeriodicRefresh();
+      // 1. Check canonical persisted state in localStorage
+      const stored = getStoredLocation();
+      let initLat = 24.7136;
+      let initLng = 46.6753;
+      let initLabel = IS_ARABIC ? 'الرياض، السعودية' : 'Riyadh, Saudi Arabia';
+      let initTz = 'Asia/Riyadh';
+      let initSource = 'default';
+      let matchingKey = 'riyadh';
 
-      // Background IP auto-detection
-      try {
-        const ipRes = await fetch('https://ipapi.co/json/', { cache: 'no-cache' });
-        if (ipRes.ok) {
-          const ipData = await ipRes.json();
-          if (ipData && ipData.latitude && ipData.longitude) {
-            const lat = ipData.latitude;
-            const lng = ipData.longitude;
-            const city = ipData.city || 'الرياض';
-            const country = ipData.country_name || 'المملكة العربية السعودية';
-            const label = `${city}، ${country}`;
-            updateQiblaDisplay(lat, lng, 'Approximate Location');
-            fetchWeatherForCoords(lat, lng);
-            await fetchPrayerForCoords(lat, lng, label);
-            return;
-          }
+      if (stored) {
+        initLat = stored.lat;
+        initLng = stored.lng;
+        initTz = stored.timezone || 'Asia/Riyadh';
+        initSource = stored.source || 'manual';
+
+        matchingKey = findMatchingCityKey(initLat, initLng);
+        if (matchingKey && QUICK_CITIES[matchingKey]) {
+          initLabel = IS_ARABIC ? QUICK_CITIES[matchingKey].ar : QUICK_CITIES[matchingKey].en;
+          initTz = QUICK_CITIES[matchingKey].tz || initTz;
+        } else if (stored.label) {
+          initLabel = stored.label;
         }
-      } catch (e) {
-        console.warn('IP geolocation lookup skipped:', e);
       }
 
-      // Default to Riyadh if IP lookup fails
-      fetchPrayerForCoords(24.7136, 46.6753, 'الرياض، المملكة العربية السعودية');
-      updateQiblaDisplay(24.7136, 46.6753, 'City Selection');
-      fetchWeatherForCoords(24.7136, 46.6753);
+      currentLatitude = initLat;
+      currentLongitude = initLng;
+      currentCityLabel = initLabel;
+      currentTimezone = initTz;
+      currentLocationSource = initSource;
+
+      // Highlight active city button if matching
+      highlightCityButton(matchingKey);
+
+      // Initial instantaneous DOM render from fallback
+      const fallbackEntry = defaultPrayerMap[matchingKey] || defaultPrayerMap.riyadh;
+      applyPrayerTimesToDOM({
+        fajr: fallbackEntry.fajr,
+        sunrise: fallbackEntry.sunrise,
+        ishraq: fallbackEntry.ishraq,
+        chasht: fallbackEntry.chasht,
+        dhuhr: fallbackEntry.dhuhr,
+        asr: fallbackEntry.asr,
+        maghrib: fallbackEntry.maghrib,
+        isha: fallbackEntry.isha,
+        label: currentCityLabel,
+        hijri: getDynamicHijriFallback(false, currentTimezone),
+        hijriAr: '(' + getDynamicHijriFallback(true, currentTimezone) + ')'
+      });
+
+      let initialSourceTag = IS_ARABIC ? 'الوضع الافتراضي' : 'Baseline Fallback';
+      if (initSource === 'manual') {
+        initialSourceTag = IS_ARABIC ? ('اختيار المدينة (' + initLabel.split('،')[0].split(',')[0] + ')') : ('City Selection (' + initLabel.split(',')[0] + ')');
+      } else if (initSource === 'gps') {
+        initialSourceTag = IS_ARABIC ? 'دقة نظام GPS' : 'GPS Precision';
+      } else if (initSource === 'ip') {
+        initialSourceTag = IS_ARABIC ? 'موقع تقريبي (IP)' : 'Approximate Location (IP)';
+      }
+
+      updateQiblaDisplay(initLat, initLng, initialSourceTag);
+      fetchWeatherForCoords(initLat, initLng);
+      setupDeviceOrientation();
+
+      // Start live clock ticking
+      updateLiveClocks();
+      setInterval(updateLiveClocks, 1000);
+      startWeatherPeriodicRefresh();
+
+      // Fetch fresh calculation for coordinates
+      await fetchPrayerForCoords(initLat, initLng, currentCityLabel, initSource, currentTimezone);
+
+      // 2. Background IP Auto-Detection: ONLY run if user has not explicitly set a manual city or GPS
+      if (currentLocationSource !== 'manual' && currentLocationSource !== 'gps') {
+        try {
+          const ipRes = await fetch('https://ipapi.co/json/', { cache: 'no-cache' });
+          if (ipRes.ok) {
+            const ipData = await ipRes.json();
+            if (ipData && ipData.latitude && ipData.longitude) {
+              if (currentLocationSource !== 'manual' && currentLocationSource !== 'gps') {
+                const ipLat = parseFloat(ipData.latitude);
+                const ipLng = parseFloat(ipData.longitude);
+                const ipCity = ipData.city || (IS_ARABIC ? 'المنطقة المحلية' : 'Local Area');
+                const ipCountry = ipData.country_name || (IS_ARABIC ? 'المملكة العربية السعودية' : 'Saudi Arabia');
+                const ipLabel = IS_ARABIC ? `${ipCity}، ${ipCountry}` : `${ipCity}, ${ipCountry}`;
+                const ipTz = ipData.timezone || currentTimezone;
+
+                const ipMatch = findMatchingCityKey(ipLat, ipLng);
+                highlightCityButton(ipMatch);
+
+                updateQiblaDisplay(ipLat, ipLng, IS_ARABIC ? 'موقع تقريبي (IP)' : 'Approximate Location (IP)');
+                fetchWeatherForCoords(ipLat, ipLng);
+                await fetchPrayerForCoords(ipLat, ipLng, ipLabel, 'ip', ipTz);
+              }
+            }
+          }
+        } catch (err) {
+          console.warn('IP Geolocation lookup skipped/fallback:', err);
+        }
+      }
+
+      // 3. Silent GPS permission sync: ONLY sync if user has not selected manual
+      if (navigator.permissions && navigator.permissions.query) {
+        try {
+          const permStatus = await navigator.permissions.query({ name: 'geolocation' });
+          if (permStatus.state === 'granted' && currentLocationSource !== 'manual') {
+            executeGpsTrack(false);
+          }
+          permStatus.onchange = function() {
+            if (permStatus.state === 'granted' && currentLocationSource !== 'manual') {
+              executeGpsTrack(false);
+            }
+          };
+        } catch (pe) {}
+      }
     }
 
-    // Global Clocks Interval
-    setInterval(updateLiveClocks, 1000);
-    updateLiveClocks();
+    // Auto-init on page load
+    window.addEventListener('DOMContentLoaded', initAutoPrayerTimes);
 
-    // Init prayer times upon load
-    initAutoPrayerTimes();
+  
   </script>
   <script src="/theme.js" defer></script>
 </body>
