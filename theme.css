@@ -1954,6 +1954,34 @@ html[dir="rtl"] .cookie-consent-banner {
    Strictly Scoped to html[lang="ar"] (English 100% Protected)
    ============================================================ */
 
+/* 0. Global Arabic Typography & Ligature Protection */
+html[lang="ar"],
+html[lang="ar"] body,
+html[lang="ar"] h1,
+html[lang="ar"] h2,
+html[lang="ar"] h3,
+html[lang="ar"] h4,
+html[lang="ar"] h5,
+html[lang="ar"] h6,
+html[lang="ar"] p,
+html[lang="ar"] span,
+html[lang="ar"] a,
+html[lang="ar"] label,
+html[lang="ar"] input,
+html[lang="ar"] select,
+html[lang="ar"] button,
+html[lang="ar"] textarea,
+html[lang="ar"] .logo-title,
+html[lang="ar"] .nav-link,
+html[lang="ar"] .hero-title,
+html[lang="ar"] .card-main-title {
+  font-family: 'Tajawal', 'Noto Sans Arabic', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+}
+
+html[lang="ar"] * {
+  letter-spacing: normal !important;
+}
+
 /* 1. Mobile Navigation Drawer (Hidden by default, slides out when active) */
 html[lang="ar"] .mobile-nav-drawer {
   display: none !important;
@@ -2369,24 +2397,37 @@ html[data-theme="dark"][lang="ar"] .input-with-addons .input-addon-badge {
   border-left-color: #334155 !important;
 }
 
-/* 7. Legal Pages Navigation Width Polish */
+/* 7. Header Navigation Responsive Parity & 1024px Overflow Prevention (Both EN and AR) */
+.site-header .header-container,
 html[lang="ar"] .site-header .header-container {
   max-width: 1280px;
 }
 
-@media (max-width: 1140px) {
+@media (max-width: 1180px) and (min-width: 1051px) {
+  .site-header .main-nav,
+  html[lang="ar"] .site-header .main-nav {
+    gap: 6px !important;
+  }
+  .site-header .nav-link,
   html[lang="ar"] .site-header .nav-link {
-    padding: 6px 8px;
-    font-size: 13px;
+    padding: 6px 7px !important;
+    font-size: 13px !important;
   }
 }
 
-@media (max-width: 1020px) {
+@media (max-width: 1050px) {
+  .site-header .main-nav,
+  .site-header .header-nav,
+  .site-header .header-nav-links,
+  .site-header .header-nav-container,
   html[lang="ar"] .site-header .main-nav,
   html[lang="ar"] .site-header .header-nav,
-  html[lang="ar"] .site-header .header-nav-links {
-    display: none;
+  html[lang="ar"] .site-header .header-nav-links,
+  html[lang="ar"] .site-header .header-nav-container {
+    display: none !important;
   }
+  .mobile-menu-toggle,
+  .mobile-menu-btn,
   html[lang="ar"] .mobile-menu-toggle,
   html[lang="ar"] .mobile-menu-btn {
     display: inline-flex !important;
@@ -2395,16 +2436,42 @@ html[lang="ar"] .site-header .header-container {
 
 /* 8. Small Screen / Mobile Polish (320px–390px) */
 @media (max-width: 480px) {
+  .site-header .container,
+  .site-header .header-inner,
+  .site-header .header-container,
+  html[lang="ar"] .site-header .container,
   html[lang="ar"] .header-inner,
   html[lang="ar"] .header-container {
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
   }
+  .header-right-actions,
+  html[lang="ar"] .header-right-actions {
+    gap: 6px !important;
+  }
+  .header-right-actions .lang-switch-btn,
+  html[lang="ar"] .header-right-actions .lang-switch-btn {
+    padding: 4px 8px !important;
+    font-size: 12px !important;
+  }
+  .brand-logo-area,
+  html[lang="ar"] .brand-logo-area {
+    gap: 8px !important;
+  }
+  .brand-logo-area .logo-icon-box,
+  html[lang="ar"] .brand-logo-area .logo-icon-box {
+    width: 34px !important;
+    height: 34px !important;
+    font-size: 16px !important;
+  }
+  .brand-logo,
   html[lang="ar"] .brand-logo,
+  .brand-logo-area .logo-title,
   html[lang="ar"] .brand-logo-area .logo-title {
-    font-size: clamp(16px, 4.5vw, 20px);
+    font-size: clamp(15px, 4vw, 18px) !important;
   }
+  .brand-logo-area .logo-subtitle,
   html[lang="ar"] .brand-logo-area .logo-subtitle {
-    display: none;
+    display: none !important;
   }
 }

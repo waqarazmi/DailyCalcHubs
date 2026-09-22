@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Theme Early Init (Prevent Flash of Unstyled Content) -->
+  <script>
+    (function() {
+      try {
+        var t = localStorage.getItem('dch_theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+
+  <!-- Travelpayouts Partner Script (Flight & Umrah Integration) -->
+  <script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
+  (function () {
+    var script = document.createElement("script");
+    script.async = 1;
+    script.setAttribute("data-cmp-ab", "2");
+    script.src = "https://emrldtp.com/NTczNDc0.js?t=573474";
+    document.head.appendChild(script);
+  })();
+  </script>
+  <title>حاسبة تكلفة الفنادق والإقامة — حساب الإقامة، ضريبة القيمة المضافة 15%، ورسوم السياحة والبلدية</title>
+  <meta name="description" content="احسب إجمالي تكلفة الإقامة الفندقية والمنتجعات مع حساب سعر الليلة، عدد الليالي، الغرف، ضريبة القيمة المضافة 15% في السعودية، ورسوم البلدية والسياحة والتنظيف.">
+  <meta name="keywords" content="حاسبة تكلفة الفنادق, حساب سعر الإقامة الفندقية, ضريبة الفنادق في السعودية, رسوم السياحة والبلدية, تكلفة حجز فندق, حساب مصاريف السكن">
+  <link rel="canonical" href="https://dailycalchubs.com/ar/travel-booking-calculator/hotel-cost/">
+  <link rel="alternate" hreflang="ar" href="https://dailycalchubs.com/ar/travel-booking-calculator/hotel-cost/">
+  <link rel="alternate" hreflang="en" href="https://dailycalchubs.com/travel-booking-calculator/hotel-cost/">
+  <link rel="alternate" hreflang="x-default" href="https://dailycalchubs.com/travel-booking-calculator/hotel-cost/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="robots" content="index, follow">
+  <meta name='impact-site-verification' value='2e43243f-51bd-4f28-b3e6-af63945bcd2c'>
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://dailycalchubs.com/ar/travel-booking-calculator/hotel-cost/">
+  <meta property="og:locale" content="ar_SA">
+  <meta property="og:title" content="حاسبة تكلفة الفنادق والإقامة — حساب الإقامة، ضريبة القيمة المضافة 15%، ورسوم السياحة والبلدية">
+  <meta property="og:description" content="احسب إجمالي تكلفة الإقامة الفندقية والمنتجعات مع حساب سعر الليلة، عدد الليالي، الغرف، ضريبة القيمة المضافة 15% في السعودية، ورسوم البلدية والسياحة والتنظيف.">
+  <meta property="og:image" content="https://dailycalchubs.com/og-image.jpg">
+  <meta property="og:image:secure_url" content="https://dailycalchubs.com/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/jpeg">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="حاسبة تكلفة الفنادق والإقامة — DailyCalcHubs">
+  <meta name="twitter:description" content="حساب فوري لتكلفة حجز الفنادق، ضريبة القيمة المضافة 15%، ورسوم البلدية والسياحة في السعودية.">
+  <meta name="twitter:image" content="https://dailycalchubs.com/og-image.jpg">
+
+  <!-- DailyCalcHubs Owner Admin Exclusion Mode -->
+  <script>
+    (function() {
+      try {
+        var params = new URLSearchParams(window.location.search);
+        var owner = params.get('owner');
+        if (owner === 'waqar_lock') {
+          localStorage.setItem('dch_owner_mode', 'active');
+          params.delete('owner');
+          var newSearch = params.toString();
+          var cleanUrl = window.location.pathname + (newSearch ? '?' + newSearch : '') + window.location.hash;
+          window.history.replaceState({}, document.title, cleanUrl);
+        } else if (owner === 'off') {
+          localStorage.removeItem('dch_owner_mode');
+          params.delete('owner');
+          var newSearch = params.toString();
+          var cleanUrl = window.location.pathname + (newSearch ? '?' + newSearch : '') + window.location.hash;
+          window.history.replaceState({}, document.title, cleanUrl);
+        }
+
+        if (localStorage.getItem('dch_owner_mode') === 'active') {
+          window['ga-disable-G-18Y3LNHDR8'] = true;
+          window.adsbygoogle = window.adsbygoogle || [];
+          window.adsbygoogle.pauseAdRequests = 1;
+
+          window.addEventListener('DOMContentLoaded', function() {
+            if (!document.getElementById('dch-owner-mode-badge')) {
+              var badge = document.createElement('div');
+              badge.id = 'dch-owner-mode-badge';
+              badge.innerHTML = '&#128274; وضع المالك: تم تعطيل التتبع والإعلانات';
+              badge.style.cssText = 'position:fixed;bottom:14px;left:14px;background:rgba(17,24,39,0.92);color:#10b981;font-size:11.5px;font-weight:600;font-family:system-ui,-apple-system,sans-serif;padding:6px 12px;border-radius:20px;border:1px solid rgba(16,185,129,0.35);box-shadow:0 4px 12px rgba(0,0,0,0.25);z-index:99999;pointer-events:none;letter-spacing:0.2px;backdrop-filter:blur(4px);';
+              document.body.appendChild(badge);
+            }
+          });
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6944579701716470" crossorigin="anonymous"></script>
+
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-18Y3LNHDR8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-18Y3LNHDR8');
+  </script>
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Tajawal:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://dailycalchubs.com/ar/travel-booking-calculator/hotel-cost/#app",
+        "name": "حاسبة تكلفة الفنادق والإقامة",
+        "url": "https://dailycalchubs.com/ar/travel-booking-calculator/hotel-cost/",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript. Requires HTML5.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "SAR"
+        },
+        "description": "أداة متخصصة لحساب إجمالي تكاليف الإقامة الفندقية، ضريبة القيمة المضافة 15%، ورسوم السياحة والبلدية ومصاريف الإلغاء والتأمين."
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://dailycalchubs.com/ar/travel-booking-calculator/hotel-cost/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "ما هي الضرائب والرسوم المفروضة على حجز الفنادق في السعودية؟",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "تخضع الإقامة الفندقية في المملكة العربية السعودية لضريبة القيمة المضافة القياسية بنسبة 15%، بالإضافة إلى رسم الإيواء البلدي والسياحي (الذي يتراوح عادة بين 2.5% إلى 5% حسب تصنيف المنشأة والمدينة)."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "ما هو تفويض التأمين المؤقت في الفندق (Security Deposit)؟",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "هو مبلغ يتم حجزه مؤقتاً على بطاقتك الائتمانية عند تسجيل الدخول لضمان تغطية الخدمات الإضافية أو الأضرار المحتملة، ويتم إلغاء الحجز تلقائياً واسترداد المبلغ بالكامل فور تسجيل المغادرة."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "كيف أحسب التكلفة الفعلية لليلة الواحدة؟",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "التكلفة الفعلية لليلة الواحدة تُحسب بقسمة إجمالي الفاتورة النهائية (شاملة الضريبة والرسوم الإضافية ورسوم الخدمة) على عدد الليالي الإجمالي وعدد الغرف المحجوزة."
+            }
+          }
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://dailycalchubs.com/ar/travel-booking-calculator/hotel-cost/#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "الرئيسية",
+            "item": "https://dailycalchubs.com/ar/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "بوابة السفر والحجوزات",
+            "item": "https://dailycalchubs.com/ar/travel-booking-calculator/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "حاسبة تكلفة الفنادق",
+            "item": "https://dailycalchubs.com/ar/travel-booking-calculator/hotel-cost/"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --font-main: 'Tajawal', 'Noto Sans Arabic', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --bg-light: #fff9f9;
+      --bg-white: #ffffff;
+      --navy-dark: #0f172a;
+      --navy-footer: #081024;
+      --crimson-primary: #e11d48;
+      --crimson-dark: #be123c;
+      --crimson-light: #fff1f2;
+      --crimson-border: #fecdd3;
+      --text-dark: #1e293b;
+      --text-muted: #64748b;
+      --border-color: #e2e8f0;
+      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.08), 0 2px 4px -2px rgba(0,0,0,0.05);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--font-main); background: var(--bg-light); color: var(--text-dark); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    a { color: var(--crimson-primary); text-decoration: none; transition: color 0.2s; }
+    a:hover { color: var(--crimson-dark); }
+
+    /* Header */
+    .site-header { background: var(--bg-white); border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 50; }
+    .header-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; height: 70px; display: flex; align-items: center; justify-content: space-between; }
+    .logo-area { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 20px; color: var(--navy-dark); text-decoration: none; }
+    .logo-icon { width: 36px; height: 36px; background: linear-gradient(135deg, #e11d48, #be123c); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: 18px; }
+    .header-nav-container { display: flex; align-items: center; }
+    .header-nav-links { display: flex; align-items: center; gap: 6px; list-style: none; margin: 0; padding: 0; }
+    .header-nav-links a { padding: 8px 12px; font-size: 13.5px; font-weight: 600; color: #475569; border-radius: 6px; transition: all 0.2s; text-decoration: none; white-space: nowrap; }
+    .header-nav-links a:hover, .header-nav-links a.active { color: var(--crimson-primary); background: var(--crimson-light); }
+    @media (max-width: 860px) { .header-nav-container { display: none; } }
+
+    /* Breadcrumbs */
+    .breadcrumbs-section { background: var(--bg-white); border-bottom: 1px solid var(--border-color); padding: 12px 0; font-size: 13px; color: var(--text-muted); }
+    .breadcrumbs-wrap { max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .breadcrumbs-wrap a { color: var(--text-muted); }
+    .breadcrumbs-wrap a:hover { color: var(--crimson-primary); }
+
+    /* Hero Section */
+    .calc-hero { background: linear-gradient(135deg, #fff1f2 0%, #ffffff 100%); padding: 40px 20px 30px; border-bottom: 1px solid var(--crimson-border); }
+    .hero-content { max-width: 900px; margin: 0 auto; text-align: center; }
+    .badge-pill { display: inline-flex; align-items: center; gap: 6px; background: #ffe4e6; color: var(--crimson-dark); padding: 5px 14px; border-radius: 20px; font-size: 12px; font-weight: 700; margin-bottom: 14px; border: 1px solid var(--crimson-border); }
+    .calc-hero h1 { font-size: 32px; font-weight: 800; color: var(--navy-dark); margin-bottom: 12px; }
+    .calc-hero p { font-size: 15.5px; color: var(--text-muted); max-width: 720px; margin: 0 auto 16px; line-height: 1.7; }
+
+    /* Main Calculator Container */
+    .main-container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+    .calculator-card { background: var(--bg-white); border-radius: 16px; border: 1px solid var(--border-color); box-shadow: var(--shadow-md); padding: 32px; margin-bottom: 40px; }
+    
+    .calc-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 32px; }
+    @media (max-width: 860px) { .calc-grid { grid-template-columns: 1fr; } }
+
+    .section-subtitle { font-size: 17px; font-weight: 700; color: var(--navy-dark); margin-bottom: 20px; display: flex; align-items: center; gap: 8px; border-bottom: 2px solid var(--crimson-light); padding-bottom: 10px; }
+    .section-subtitle i { color: var(--crimson-primary); }
+
+    .input-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+    @media (max-width: 600px) { .input-row { grid-template-columns: 1fr; } }
+
+    .input-group { margin-bottom: 16px; }
+    .input-group label { display: block; font-size: 13.5px; font-weight: 700; color: var(--text-dark); margin-bottom: 6px; }
+    .input-wrap { position: relative; display: flex; align-items: center; }
+    .input-wrap span.unit { position: absolute; right: 14px; font-weight: 700; font-size: 13px; color: var(--crimson-primary); }
+    .input-wrap input, .input-wrap select { width: 100%; padding: 11px 14px; border: 1.5px solid var(--border-color); border-radius: 8px; font-size: 14.5px; font-weight: 600; font-family: inherit; color: var(--navy-dark); background: #fdfefe; transition: all 0.2s; }
+    .input-wrap input.has-unit { padding-right: 54px; text-align: left; direction: ltr; }
+    .input-wrap select { padding-right: 14px; cursor: pointer; }
+    .input-wrap input:focus, .input-wrap select:focus { border-color: var(--crimson-primary); outline: none; background: #fff; box-shadow: 0 0 0 3px rgba(225, 29, 72, 0.12); }
+    .field-hint { font-size: 11.5px; color: var(--text-muted); margin-top: 4px; display: block; }
+
+    /* Results Panel */
+    .results-panel { background: linear-gradient(145deg, #ffffff 0%, #fff5f6 100%); border-radius: 12px; border: 1.5px solid var(--crimson-border); padding: 24px; display: flex; flex-direction: column; justify-content: space-between; }
+    .result-header { text-align: center; margin-bottom: 20px; }
+    .result-badge { font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--crimson-dark); letter-spacing: 0.8px; margin-bottom: 4px; }
+    .total-amount-display { font-size: 38px; font-weight: 800; color: var(--crimson-primary); letter-spacing: -0.5px; direction: ltr; display: inline-block; }
+    .total-sub { font-size: 13px; color: var(--text-muted); font-weight: 600; margin-top: 4px; }
+
+    .result-stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+    .stat-pill { background: white; border: 1px solid var(--crimson-border); border-radius: 8px; padding: 12px; text-align: center; }
+    .stat-pill .stat-label { font-size: 11.5px; font-weight: 600; color: var(--text-muted); display: block; margin-bottom: 2px; }
+    .stat-pill .stat-val { font-size: 16px; font-weight: 700; color: var(--navy-dark); direction: ltr; display: inline-block; }
+
+    .breakdown-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; font-size: 13px; }
+    .breakdown-table tr { border-bottom: 1px dashed var(--border-color); }
+    .breakdown-table tr:last-child { border-bottom: none; }
+    .breakdown-table td { padding: 8px 0; }
+    .breakdown-table td.cost-num { text-align: left; font-weight: 700; color: var(--navy-dark); direction: ltr; }
+    .breakdown-table tr.highlight-row td { color: var(--crimson-primary); font-weight: 700; font-size: 14px; }
+
+    .btn-action-row { display: flex; gap: 12px; margin-top: 14px; }
+    .btn-calc { flex: 1; padding: 12px; border: none; border-radius: 8px; font-weight: 700; font-size: 14px; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 6px; font-family: inherit; }
+    .btn-primary-calc { background: var(--crimson-primary); color: white; }
+    .btn-primary-calc:hover { background: var(--crimson-dark); transform: translateY(-1px); }
+    .btn-reset { background: #f1f5f9; color: var(--text-dark); }
+    .btn-reset:hover { background: #e2e8f0; }
+
+    /* Action Bar */
+    .calc-action-bar { display: flex; gap: 12px; margin-top: 20px; padding-top: 18px; border-top: 1px solid rgba(225,29,72,0.15); flex-wrap: wrap; }
+    .btn-action-print, .btn-action-whatsapp { flex: 1; min-width: 140px; padding: 10px 16px; border-radius: 8px; font-size: 13px; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: none; font-family: inherit; transition: all 0.2s; }
+    .btn-action-print { background: rgba(225, 29, 72, 0.1); color: var(--crimson-dark); border: 1px solid var(--crimson-border); }
+    .btn-action-print:hover { background: rgba(225, 29, 72, 0.2); }
+    .btn-action-whatsapp { background: #25d366; color: white; }
+    .btn-action-whatsapp:hover { background: #1ebc59; }
+
+    /* Sub Navigation Chips */
+    .tools-nav-bar { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 30px; justify-content: center; }
+    .tool-chip { padding: 8px 14px; border-radius: 20px; font-size: 12.5px; font-weight: 600; border: 1px solid var(--border-color); background: white; color: var(--text-dark); transition: all 0.2s; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
+    .tool-chip:hover { border-color: var(--crimson-primary); color: var(--crimson-primary); }
+    .tool-chip.active { background: var(--crimson-primary); color: white; border-color: var(--crimson-primary); }
+
+    /* Content & Editorial Section */
+    .editorial-section { background: white; border-radius: 16px; border: 1px solid var(--border-color); padding: 36px; margin-bottom: 40px; }
+    .editorial-section h2 { font-size: 22px; font-weight: 800; color: var(--navy-dark); margin-bottom: 16px; }
+    .editorial-section h3 { font-size: 17px; font-weight: 700; color: var(--navy-dark); margin: 24px 0 10px; }
+    .editorial-section p { font-size: 14.5px; color: #475569; margin-bottom: 16px; line-height: 1.8; }
+    .editorial-section ul { margin-right: 20px; margin-bottom: 16px; font-size: 14.5px; color: #475569; }
+    .editorial-section li { margin-bottom: 8px; }
+
+    .info-callout { background: var(--crimson-light); border-right: 4px solid var(--crimson-primary); padding: 16px; border-radius: 8px 0 0 8px; margin: 20px 0; font-size: 13.5px; color: var(--navy-dark); }
+    .info-callout strong { color: var(--crimson-dark); }
+
+    /* FAQ Section */
+    .faq-section { background: white; border-radius: 16px; border: 1px solid var(--border-color); padding: 36px; margin-bottom: 40px; }
+    .faq-item { border-bottom: 1px solid var(--border-color); padding: 18px 0; }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-question { font-size: 15.5px; font-weight: 700; color: var(--navy-dark); cursor: pointer; display: flex; justify-content: space-between; align-items: center; user-select: none; }
+    .faq-question i { font-size: 14px; color: var(--crimson-primary); transition: transform 0.2s; }
+    .faq-answer { font-size: 14px; color: #475569; line-height: 1.8; margin-top: 10px; }
+
+    /* Footer */
+    .site-footer { background: var(--navy-footer); color: #cbd5e1; padding: 48px 20px 24px; font-size: 13.5px; }
+    .footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 32px; margin-bottom: 36px; }
+    @media (max-width: 768px) { .footer-container { grid-template-columns: 1fr; } }
+    .footer-brand h4 { font-size: 18px; font-weight: 800; color: white; margin-bottom: 12px; }
+    .footer-brand p { font-size: 13px; line-height: 1.6; color: #94a3b8; }
+    .footer-col h5 { font-size: 14px; font-weight: 700; color: white; margin-bottom: 14px; text-transform: uppercase; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 13px; text-decoration: none; }
+    .footer-col a:hover { color: var(--crimson-primary); }
+    .footer-bottom { border-top: 1px solid #1e293b; padding-top: 24px; text-align: center; font-size: 12.5px; color: #64748b; }
+    .disclaimer-box { background: rgba(225, 29, 72, 0.08); border: 1px solid rgba(225, 29, 72, 0.2); border-radius: 8px; padding: 12px; font-size: 12px; color: #fecdd3; margin-top: 16px; text-align: right; }
+  </style>
+  <link rel="stylesheet" href="/theme.css">
+  <script src="/mobile-nav.js" defer></script>
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="header-container">
+      <a href="/ar/" class="logo-area">
+        <div class="logo-icon"><i class="fas fa-calculator"></i></div>
+        <span>DailyCalcHubs</span>
+      </a>
+
+      <div class="header-nav-container" id="navContainer">
+        <ul class="header-nav-links">
+          <li><a href="/ar/">الرئيسية</a></li>
+          <li><a href="/ar/saudi-remittance-calculator/">تحويل الأموال</a></li>
+          <li><a href="/ar/prayer-times/">مواقيت الصلاة</a></li>
+          <li><a href="/ar/saudi-salary-calculator/">الرواتب</a></li>
+          <li><a href="/ar/saudi-iqama-calculator/">الإقامة</a></li>
+          <li><a href="/ar/everyday-smart-calculator/">أدوات يومية</a></li>
+          <li><a href="/ar/shariah-sip-calculator/">استثمار شرعي</a></li>
+          <li><a href="/ar/travel-booking-calculator/" class="active">السفر والحجوزات</a></li>
+        </ul>
+      </div>
+
+      <div class="header-right-actions" style="display: flex; align-items: center; gap: 10px;">
+        <a href="/travel-booking-calculator/hotel-cost/" class="lang-switch-btn" lang="en" hreflang="en" title="Switch to English" aria-label="Switch to English"><i class="fas fa-globe"></i> <span>EN</span></a>
+        <button type="button" class="theme-toggle-btn" id="dchThemeToggle" aria-label="تبديل الوضع الليلي" title="تبديل الوضع الليلي / النهاري">
+          <i class="fas fa-moon"></i>
+        </button>
+        <button class="mobile-menu-toggle" id="mobileMenuBtn" aria-label="فتح القائمة">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Breadcrumbs -->
+  <section class="breadcrumbs-section">
+    <div class="breadcrumbs-wrap">
+      <a href="/ar/"><i class="fas fa-home"></i> الرئيسية</a>
+      <i class="fas fa-chevron-left" style="font-size: 10px;"></i>
+      <a href="/ar/travel-booking-calculator/">بوابة السفر والحجوزات</a>
+      <i class="fas fa-chevron-left" style="font-size: 10px;"></i>
+      <span>حاسبة تكلفة الفنادق</span>
+    </div>
+  </section>
+
+  <!-- Hero -->
+  <section class="calc-hero">
+    <div class="hero-content">
+      <div class="badge-pill"><i class="fas fa-hotel"></i> تقدير تكاليف الإقامة وضرائب السياحة</div>
+      <h1>حاسبة تكلفة الفنادق والإقامة</h1>
+      <p>احسب صافي مصاريف الإقامة الفندقية والشاليهات مع احتساب سعر الليلة، مدة الإقامة، عدد الغرف، ضريبة القيمة المضافة 15%، ورسوم السياحة والبلدية ومصاريف المنتجع.</p>
+    </div>
+  </section>
+
+  <div class="main-container">
+    <!-- Travel Suite Sub-nav -->
+    <div class="tools-nav-bar">
+      <a href="/ar/travel-booking-calculator/" class="tool-chip"><i class="fas fa-th-large"></i> جميع أدوات السفر</a>
+      <a href="/ar/travel-booking-calculator/travel-budget/" class="tool-chip"><i class="fas fa-wallet"></i> ميزانية السفر</a>
+      <a href="/ar/travel-booking-calculator/flight-cost/" class="tool-chip"><i class="fas fa-plane-departure"></i> تكلفة الطيران</a>
+      <a href="/ar/travel-booking-calculator/hotel-cost/" class="tool-chip active"><i class="fas fa-hotel"></i> تكلفة الفنادق</a>
+      <a href="/ar/travel-booking-calculator/booking-cost/" class="tool-chip"><i class="fas fa-receipt"></i> رسوم الحجز</a>
+      <a href="/ar/travel-booking-calculator/expense-split/" class="tool-chip"><i class="fas fa-users"></i> تقسيم المصاريف</a>
+    </div>
+
+    <!-- Main Hotel Calculator Card -->
+    <div class="calculator-card">
+      <div class="calc-grid">
+        
+        <!-- Input Form -->
+        <div class="calc-inputs">
+          <div class="section-subtitle"><i class="fas fa-bed"></i> تفاصيل الغرفة والإقامة</div>
+
+          <div class="input-row">
+            <div class="input-group">
+              <label for="nightlyRate">سعر الغرفة لليلة الواحدة</label>
+              <div class="input-wrap">
+                <span class="unit">ر.س</span>
+                <input type="number" id="nightlyRate" class="has-unit" value="550" min="50" step="25">
+              </div>
+              <span class="field-hint">السعر الأساسي للغرفة قبل الضرائب والرسوم</span>
+            </div>
+
+            <div class="input-group">
+              <label for="numNights">عدد الليالي</label>
+              <div class="input-wrap">
+                <input type="number" id="numNights" value="4" min="1" max="90">
+              </div>
+              <span class="field-hint">إجمالي مدة الإقامة الفندقية</span>
+            </div>
+          </div>
+
+          <div class="input-row">
+            <div class="input-group">
+              <label for="numRooms">عدد الغرف المحجوزة</label>
+              <div class="input-wrap">
+                <input type="number" id="numRooms" value="1" min="1" max="10">
+              </div>
+              <span class="field-hint">عدد الغرف لنفس المجموعة أو العائلة</span>
+            </div>
+
+            <div class="input-group">
+              <label for="vatRate">نسبة ضريبة القيمة المضافة (VAT)</label>
+              <div class="input-wrap">
+                <select id="vatRate">
+                  <option value="15" selected>15% (الضريبة القياسية في السعودية)</option>
+                  <option value="5">5% (ضريبة الإمارات / عُمان)</option>
+                  <option value="0">0% (معفى من الضريبة)</option>
+                  <option value="10">10% (ضريبة البحرين)</option>
+                </select>
+              </div>
+              <span class="field-hint">ضريبة القيمة المضافة الحكومية المفروضة على الإيواء</span>
+            </div>
+          </div>
+
+          <div class="input-row">
+            <div class="input-group">
+              <label for="tourismFee">رسوم البلدية أو رسم السياحة المطبق</label>
+              <div class="input-wrap">
+                <select id="tourismFee">
+                  <option value="5" selected>5% (رسم بلدي وسياحي قياسي)</option>
+                  <option value="2.5">2.5% (رسم إيواء سياحي مخفض)</option>
+                  <option value="0">0% (لا توجد رسوم بلدية مضافة)</option>
+                  <option value="fixed20">رسم ثابت 20 ر.س / ليلة / غرفة</option>
+                </select>
+              </div>
+              <span class="field-hint">حسب اشتراطات المدينة والمنشأة الفندقية</span>
+            </div>
+
+            <div class="input-group">
+              <label for="extraGuestFee">رسوم السرير الإضافي / النزيل (لليلة)</label>
+              <div class="input-wrap">
+                <span class="unit">ر.س</span>
+                <input type="number" id="extraGuestFee" class="has-unit" value="0" min="0" step="20">
+              </div>
+              <span class="field-hint">تكلفة سرير إضافي أو نزيل بالغ مرافق</span>
+            </div>
+          </div>
+
+          <div class="input-row">
+            <div class="input-group">
+              <label for="cleaningFee">رسوم الخدمة والمنتجع / التنظيف (للإقامة)</label>
+              <div class="input-wrap">
+                <span class="unit">ر.س</span>
+                <input type="number" id="cleaningFee" class="has-unit" value="75" min="0" step="25">
+              </div>
+              <span class="field-hint">رسوم ثابتة في الشاليهات والشقق المفروشة أو نوادي الشواطئ</span>
+            </div>
+
+            <div class="input-group">
+              <label for="refundableDeposit">مبلغ التأمين المسترد عند المغادرة</label>
+              <div class="input-wrap">
+                <span class="unit">ر.س</span>
+                <input type="number" id="refundableDeposit" class="has-unit" value="500" min="0" step="50">
+              </div>
+              <span class="field-hint">حجز تفويض مؤقت على البطاقة الائتمانية يسترد بالكامل</span>
+            </div>
+          </div>
+
+          <div class="btn-action-row">
+            <button class="btn-calc btn-primary-calc" id="recalcHotelBtn"><i class="fas fa-calculator"></i> احسب تكلفة الإقامة</button>
+            <button class="btn-calc btn-reset" id="resetHotelBtn"><i class="fas fa-undo"></i> إعادة تعيين</button>
+          </div>
+        </div>
+
+        <!-- Output Display Panel -->
+        <div class="results-panel">
+          <div>
+            <div class="result-header">
+              <div class="result-badge">إجمالي تكلفة الإقامة المستحقة للدفع</div>
+              <div class="total-amount-display" id="totalHotelCost">2,732 ر.س</div>
+              <div class="total-sub" id="staySummarySub">4 ليالٍ • غرفة واحدة (شاملة ضريبة 15% ورسم سياحي 5%)</div>
+            </div>
+
+            <div class="result-stats-grid">
+              <div class="stat-pill">
+                <span class="stat-label">التكلفة الفعلية لليلة الواحدة</span>
+                <span class="stat-val" id="effectivePerNight">683 ر.س</span>
+              </div>
+              <div class="stat-pill">
+                <span class="stat-label">إجمالي الضرائب والرسوم</span>
+                <span class="stat-val" id="totalTaxesFees">532 ر.س</span>
+              </div>
+            </div>
+
+            <table class="breakdown-table">
+              <tbody>
+                <tr>
+                  <td>السعر الأساسي للغرفة</td>
+                  <td class="cost-num" id="rowBaseLodging">2,200 ر.س</td>
+                </tr>
+                <tr>
+                  <td>رسوم البلدية والسياحة</td>
+                  <td class="cost-num" id="rowTourismFee">110 ر.س</td>
+                </tr>
+                <tr>
+                  <td>ضريبة القيمة المضافة (15%)</td>
+                  <td class="cost-num" id="rowVAT">347 ر.س</td>
+                </tr>
+                <tr>
+                  <td>رسوم السرير الإضافي</td>
+                  <td class="cost-num" id="rowExtraGuest">0 ر.س</td>
+                </tr>
+                <tr>
+                  <td>رسوم المنتجع والتنظيف</td>
+                  <td class="cost-num" id="rowCleaning">75 ر.س</td>
+                </tr>
+                <tr class="highlight-row">
+                  <td><strong>إجمالي الإقامة الصافي المستحق</strong></td>
+                  <td class="cost-num" id="rowGrandTotal">2,732 ر.س</td>
+                </tr>
+                <tr style="color: #64748b; font-size: 12px;">
+                  <td>+ حجز تأمين مؤقت (يسترد عند المغادرة)</td>
+                  <td class="cost-num" id="rowDepositHold">500 ر.س</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="info-callout" style="margin: 0; font-size: 12.5px;">
+            <i class="fas fa-info-circle" style="color: var(--crimson-primary); margin-left: 4px;"></i>
+            <strong>الشفافية الضريبية في الفنادق:</strong> تأكد دائماً مما إذا كان سعر موقع الحجز الإلكتروني يشمل ضريبة القيمة المضافة 15% ورسم البلدية أم يتم تحصيلهما لاحقاً عند الوصول إلى مكتب الاستقبال.
+          </div>
+        
+          <!-- Calculation Result Actions: Print/PDF & WhatsApp Share -->
+          <div class="calc-action-bar">
+            <button type="button" class="btn-action-print" onclick="dchPrintSummary(this)" aria-label="طباعة أو حفظ ملخص الحساب بصيغة PDF">
+              <i class="fas fa-file-pdf"></i>
+              <span>طباعة / حفظ الملخص (PDF)</span>
+            </button>
+            <button type="button" class="btn-action-whatsapp" onclick="dchShareWhatsApp(this)" aria-label="مشاركة ملخص الحساب عبر واتساب">
+              <i class="fab fa-whatsapp"></i>
+              <span>مشاركة عبر واتساب</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Editorial & Strategy Guide -->
+    <article class="editorial-section content-article">
+      <h2>فهم هيكل تسعير الفنادق والرسوم السياحية في السعودية والخليج</h2>
+      <p>عند البحث عن غرف فندقية أو منتجعات وشقق فندقية في المملكة العربية السعودية ودول مجلس التعاون الخليجي، نادراً ما يكون السعر المبدئي المعروض في القائمة الأولى هو المبلغ النهائي الذي يُسدد فعلياً. تساعدك <strong>حاسبة تكلفة الفنادق</strong> على احتساب الضرائب النظامية، والرسوم البلدية، ورسوم الخدمة لتجنب أي مفاجآت مالية عند الدفع.</p>
+
+      <h2>معادلة حساب التكلفة الإجمالية للإقامة</h2>
+      <div style="background:#fff1f2; border:1.5px dashed #fecdd3; border-radius:10px; padding:18px; font-family:monospace; font-size:14px; color:#9f1239; font-weight:700; margin:18px 0; direction:ltr; text-align:left;">
+        Base Lodging = Nightly Room Rate × Nights × Rooms<br>
+        Taxable Subtotal = Base Lodging + Extra Guest + Tourism Fee + Cleaning Fee<br>
+        VAT Amount = Taxable Subtotal × (VAT Rate ÷ 100)<br>
+        Total Payable = Taxable Subtotal + VAT Amount
+      </div>
+      <p style="font-size:14px; color:#475569; line-height:1.7;">
+        وفقاً للوائح هيئة الزكاة والضريبة والجمارك (ZATCA)، تُطبق ضريبة القيمة المضافة بنسبة 15% على القيمة الإجمالية للخدمة الفندقية. كما تُفرض رسوم بلدية على الإيواء السياحي بنسب متفاوتة حسب تصنيف المنشأة (5 نجوم، 4 نجوم، شقق مفروشة).
+      </p>
+
+      <h3>نصائح لتوفير تكاليف حجوزات الفنادق</h3>
+      <ul>
+        <li><strong>الحجز مع الإفطار المجاني:</strong> غالباً ما يكون فارق سعر الغرفة مع وجبة الإفطار أقل بكثير من تكلفة شراء الإفطار بشكل منفصل في مطعم الفندق لجميع أفراد العائلة.</li>
+        <li><strong>الانضمام لبرامج الولاء الفندقية:</strong> تمنح سلاسل الفنادق خصومات تتراوح بين 5% إلى 15% لأعضاء برامج الولاء المجانية، مع إمكانية الترقية المجانية للغرف أو تسجيل الخروج المتأخر.</li>
+        <li><strong>التأكد من سياسة الإلغاء المجاني:</strong> احرص دائماً على اختيار سعر يشمل الإلغاء المرن المجاني حتى تاريخ قريب من موعد الرحلة في حال تغيرت خططك.</li>
+      </ul>
+    </article>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+      <h2 style="font-size: 22px; font-weight: 800; color: var(--navy-dark); margin-bottom: 24px;"><i class="fas fa-question-circle" style="color: var(--crimson-primary); margin-left: 8px;"></i> الأسئلة الشائعة حول أسعار حجوزات الفنادق</h2>
+      
+      <div class="faq-item">
+        <div class="faq-question">ما هي الرسوم البلدية المفروضة على الفنادق في السعودية؟ <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-answer">تفرض وزارة الشؤون البلدية والقروية والإسكان رسوماً بلدية على مرافق الإيواء السياحي، وتبلغ في المتوسط 5% للفنادق ذات تصنيف 5 نجوم و4 نجوم، و2.5% للفنادق ذات الـ 3 نجوم والشقق المخدومة.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">متى يتم استرجاع مبلغ التأمين المحجوز على البطاقة؟ <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-answer">يقوم الفندق بإلغاء الحجز المؤقت (Pre-authorization hold) فور تسجيل المغادرة والتأكد من سلامة الغرفة. ويستغرق ظهور المبلغ في كشف حساب بطاقتك الائتمانية عادة بين يوم عمل واحد إلى 14 يوماً وفقاً لسياسة البنك المصدر لبطاقتك.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">هل تشمل أسعار المواقع العالمية مثل Booking أو Agoda الضرائب السعودية؟ <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-answer">تعرض بعض المنصات السعر الأساسي فقط في نتائج البحث الأولية وتكتب بخط صغير 'لا يشمل الضرائب والرسوم'. تأكد من مراجعة صفحة الدفع النهائية للتأكد من شمول ضريبة الـ 15% ورسوم البلدية.</div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- JavaScript Calculation Engine -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Calculation elements
+      const nightlyRateInput = document.getElementById('nightlyRate');
+      const numNightsInput = document.getElementById('numNights');
+      const numRoomsInput = document.getElementById('numRooms');
+      const vatRateSelect = document.getElementById('vatRate');
+      const tourismFeeSelect = document.getElementById('tourismFee');
+      const extraGuestFeeInput = document.getElementById('extraGuestFee');
+      const cleaningFeeInput = document.getElementById('cleaningFee');
+      const refundableDepositInput = document.getElementById('refundableDeposit');
+
+      // Displays
+      const totalHotelCostDisplay = document.getElementById('totalHotelCost');
+      const staySummarySub = document.getElementById('staySummarySub');
+      const effectivePerNightDisplay = document.getElementById('effectivePerNight');
+      const totalTaxesFeesDisplay = document.getElementById('totalTaxesFees');
+
+      // Table rows
+      const rowBaseLodging = document.getElementById('rowBaseLodging');
+      const rowTourismFee = document.getElementById('rowTourismFee');
+      const rowVAT = document.getElementById('rowVAT');
+      const rowExtraGuest = document.getElementById('rowExtraGuest');
+      const rowCleaning = document.getElementById('rowCleaning');
+      const rowGrandTotal = document.getElementById('rowGrandTotal');
+      const rowDepositHold = document.getElementById('rowDepositHold');
+
+      function calculateHotel() {
+        const nightlyRate = Math.max(0, parseFloat(nightlyRateInput.value) || 0);
+        const nights = Math.max(1, parseInt(numNightsInput.value) || 1);
+        const rooms = Math.max(1, parseInt(numRoomsInput.value) || 1);
+        const vatPct = parseFloat(vatRateSelect.value) || 0;
+        const extraGuestFee = Math.max(0, parseFloat(extraGuestFeeInput.value) || 0);
+        const cleaningFee = Math.max(0, parseFloat(cleaningFeeInput.value) || 0);
+        const deposit = Math.max(0, parseFloat(refundableDepositInput.value) || 0);
+
+        // Base Room Subtotal
+        const baseLodging = nightlyRate * nights * rooms;
+        const extraGuestTotal = extraGuestFee * nights;
+
+        // Municipal / Tourism Fee
+        let tourismFeeAmount = 0;
+        const tourismVal = tourismFeeSelect.value;
+        if (tourismVal === 'fixed20') {
+          tourismFeeAmount = 20 * nights * rooms;
+        } else {
+          const pct = parseFloat(tourismVal) || 0;
+          tourismFeeAmount = (baseLodging * pct) / 100;
+        }
+
+        // VAT calculation (applies to base lodging, extra bed, municipal fee, and cleaning)
+        const taxableSubtotal = baseLodging + extraGuestTotal + tourismFeeAmount + cleaningFee;
+        const vatAmount = (taxableSubtotal * vatPct) / 100;
+
+        // Total Net Payable
+        const grandTotal = baseLodging + tourismFeeAmount + vatAmount + extraGuestTotal + cleaningFee;
+        const totalTaxesAndFees = tourismFeeAmount + vatAmount + cleaningFee;
+        const effectiveNightly = nights > 0 ? (grandTotal / (nights * rooms)) : 0;
+
+        // Displays
+        totalHotelCostDisplay.textContent = Math.round(grandTotal).toLocaleString('en-US') + ' ر.س';
+        staySummarySub.textContent = `${nights} ليالٍ • ${rooms} غرفة (شاملة ${vatPct}% ضريبة)`;
+        effectivePerNightDisplay.textContent = Math.round(effectiveNightly).toLocaleString('en-US') + ' ر.س';
+        totalTaxesFeesDisplay.textContent = Math.round(totalTaxesAndFees).toLocaleString('en-US') + ' ر.س';
+
+        rowBaseLodging.textContent = Math.round(baseLodging).toLocaleString('en-US') + ' ر.س';
+        rowTourismFee.textContent = Math.round(tourismFeeAmount).toLocaleString('en-US') + ' ر.س';
+        rowVAT.textContent = Math.round(vatAmount).toLocaleString('en-US') + ' ر.س';
+        rowExtraGuest.textContent = Math.round(extraGuestTotal).toLocaleString('en-US') + ' ر.س';
+        rowCleaning.textContent = Math.round(cleaningFee).toLocaleString('en-US') + ' ر.س';
+        rowGrandTotal.textContent = Math.round(grandTotal).toLocaleString('en-US') + ' ر.س';
+        rowDepositHold.textContent = Math.round(deposit).toLocaleString('en-US') + ' ر.س';
+      }
+
+      // Attach event listeners
+      const inputs = [nightlyRateInput, numNightsInput, numRoomsInput, vatRateSelect, tourismFeeSelect, extraGuestFeeInput, cleaningFeeInput, refundableDepositInput];
+      inputs.forEach(input => {
+        if (input) {
+          input.addEventListener('input', calculateHotel);
+          input.addEventListener('change', calculateHotel);
+        }
+      });
+
+      const recalcBtn = document.getElementById('recalcHotelBtn');
+      if (recalcBtn) recalcBtn.addEventListener('click', calculateHotel);
+
+      const resetBtn = document.getElementById('resetHotelBtn');
+      if (resetBtn) {
+        resetBtn.addEventListener('click', function() {
+          nightlyRateInput.value = 550;
+          numNightsInput.value = 4;
+          numRoomsInput.value = 1;
+          vatRateSelect.value = "15";
+          tourismFeeSelect.value = "5";
+          extraGuestFeeInput.value = 0;
+          cleaningFeeInput.value = 75;
+          refundableDepositInput.value = 500;
+          calculateHotel();
+        });
+      }
+
+      // FAQ accordion toggle
+      document.querySelectorAll('.faq-question').forEach(q => {
+        q.addEventListener('click', () => {
+          const ans = q.nextElementSibling;
+          const icon = q.querySelector('i');
+          if (ans.style.display === 'block') {
+            ans.style.display = 'none';
+            icon.className = 'fas fa-chevron-down';
+          } else {
+            ans.style.display = 'block';
+            icon.className = 'fas fa-chevron-up';
+          }
+        });
+      });
+
+      // Initial run
+      calculateHotel();
+    });
+  </script>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom:12px;">
+          <div class="logo-icon" style="width:30px; height:30px; font-size:14px;"><i class="fas fa-calculator"></i></div>
+          <h4>DailyCalcHubs</h4>
+        </div>
+        <p>منصة شاملة للحاسبات المالية الدقيقة، الرواتب، الإقامة، تحويل الأموال وأدوات التخطيط وحجوزات السفر للمقيمين والمواطنين في السعودية والخليج العربي.</p>
+        <div class="disclaimer-box">
+          ملاحظة: تقديرات تكاليف الإقامة والضرائب استرشادية وتخضع لسياسات المنشأة الفندقية واللوائح البلدية وقت الحجز.
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h5>حاسبات السفر</h5>
+        <ul>
+          <li><a href="/ar/travel-booking-calculator/">بوابة السفر الشاملة</a></li>
+          <li><a href="/ar/travel-booking-calculator/travel-budget/">حاسبة ميزانية السفر</a></li>
+          <li><a href="/ar/travel-booking-calculator/flight-cost/">حاسبة تكلفة الطيران</a></li>
+          <li><a href="/ar/travel-booking-calculator/hotel-cost/">حاسبة تكلفة الفنادق</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>بوابات الحاسبات</h5>
+        <ul>
+          <li><a href="/ar/saudi-remittance-calculator/">حاسبة تحويل الأموال</a></li>
+          <li><a href="/ar/prayer-times/">مواقيت الصلاة الدقيقة</a></li>
+          <li><a href="/ar/saudi-salary-calculator/">حاسبة الرواتب والبدلات</a></li>
+          <li><a href="/ar/saudi-iqama-calculator/">حاسبة رسوم الإقامة</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>روابط قانونية</h5>
+        <ul>
+          <li><a href="/ar/about/">من نحن</a></li>
+          <li><a href="/ar/contact/">اتصل بنا</a></li>
+          <li><a href="/ar/privacy-policy/">سياسة الخصوصية</a></li>
+          <li><a href="/ar/terms/">شروط الخدمة</a></li>
+          <li><a href="/ar/disclaimer/">إخلاء المسؤولية</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      &copy; 2026 DailyCalcHubs.com. جميع الحقوق محفوظة. تم التطوير بدقة لتخطيط رحلاتك وإجازاتك.
+    </div>
+  </footer>
+
+  <script src="/theme.js" defer></script>
+  <script src="/share.js" defer></script>
+</body>
+</html>

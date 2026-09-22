@@ -56,12 +56,21 @@
    */
   function updateToggleButtons(theme) {
     var isDark = theme === 'dark';
+    var isArabic = document.documentElement.getAttribute('lang') === 'ar';
     var buttons = document.querySelectorAll('#dchThemeToggle, .dch-theme-toggle');
+
+    var label = isArabic
+      ? (isDark ? 'التبديل إلى الوضع النهاري' : 'التبديل إلى الوضع الليلي')
+      : (isDark ? 'Switch to light mode' : 'Switch to dark mode');
+
+    var titleText = isArabic
+      ? (isDark ? 'التبديل إلى الوضع النهاري' : 'التبديل إلى الوضع الليلي')
+      : (isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode');
 
     for (var i = 0; i < buttons.length; i++) {
       var btn = buttons[i];
-      btn.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
-      btn.setAttribute('title', isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode');
+      btn.setAttribute('aria-label', label);
+      btn.setAttribute('title', titleText);
 
       var icon = btn.querySelector('i');
       if (icon) {
