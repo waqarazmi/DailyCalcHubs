@@ -767,7 +767,7 @@
             <div class="loc-meta-title">DETECTED LOCATION</div>
             <div class="loc-name-display">
               <span class="pulse-dot" title="Location Live Sync Active"></span>
-              <span id="prayerLocLabel">Dammam, Saudi Arabia</span>
+              <span id="prayerLocLabel">Riyadh, Saudi Arabia</span>
             </div>
           </div>
         </div>
@@ -908,7 +908,7 @@
                   <i class="fas fa-location-dot" style="color: #38bdf8;"></i> Towards the Holy Kaaba in Makkah
                 </div>
                 <div class="qibla-info-line" id="qiblaDistanceText">
-                  <i class="fas fa-route" style="color: #34d399;"></i> Distance: <strong id="qiblaDistVal">1,181 km</strong>
+                  <i class="fas fa-route" style="color: #34d399;"></i> Distance: <strong id="qiblaDistVal">790 km</strong>
                 </div>
               </div>
 
@@ -936,7 +936,7 @@
           <div class="quick-cities-row">
             <button type="button" class="city-btn" onclick="selectCity(this, 'makkah', 21.4225, 39.8262, 'Makkah, Saudi Arabia')">Makkah</button>
             <button type="button" class="city-btn" onclick="selectCity(this, 'madinah', 24.4672, 39.6111, 'Madinah, Saudi Arabia')">Madinah</button>
-            <button type="button" class="city-btn" onclick="selectCity(this, 'riyadh', 24.7136, 46.6753, 'Riyadh, Saudi Arabia')">Riyadh</button>
+            <button type="button" class="city-btn active" onclick="selectCity(this, 'riyadh', 24.7136, 46.6753, 'Riyadh, Saudi Arabia')">Riyadh</button>
             <button type="button" class="city-btn" onclick="selectCity(this, 'jeddah', 21.5433, 39.1728, 'Jeddah, Saudi Arabia')">Jeddah</button>
             <button type="button" class="city-btn" onclick="selectCity(this, 'dammam', 26.4207, 50.0888, 'Dammam, Saudi Arabia')">Dammam</button>
             <button type="button" class="city-btn" onclick="selectCity(this, 'khobar', 26.2818, 50.2084, 'Al Khobar, Saudi Arabia')">Al Khobar</button>
@@ -1324,13 +1324,27 @@
       dubai:  { fajr: '04:36', sunrise: '05:54', ishraq: '06:12', chasht: '08:45', dhuhr: '12:15', asr: '15:44', maghrib: '18:35', isha: '19:55', label: 'Dubai, UAE' }
     };
 
+    const AUTO_LOCATION_MAX_AGE_MS = 24 * 60 * 60 * 1000; // 24 hours freshness TTL
+
     function getStoredLocation() {
       try {
         const raw = localStorage.getItem(STORAGE_KEY);
         if (!raw) return null;
         const data = JSON.parse(raw);
         if (data && typeof data.lat === 'number' && typeof data.lng === 'number' && isFinite(data.lat) && isFinite(data.lng)) {
-          return data;
+          const isManual = (data.source === 'manual');
+          const ts = typeof data.timestamp === 'number' ? data.timestamp : 0;
+          const isFresh = isManual || (ts > 0 && (Date.now() - ts) < AUTO_LOCATION_MAX_AGE_MS);
+          return {
+            lat: data.lat,
+            lng: data.lng,
+            label: data.label,
+            timezone: data.timezone || 'Asia/Riyadh',
+            source: data.source || (isManual ? 'manual' : 'default'),
+            timestamp: ts,
+            isFresh: isFresh,
+            isManual: isManual
+          };
         }
       } catch (e) {}
       return null;
@@ -1688,81 +1702,205 @@
       return defCity + (IS_ARABIC ? '، ' : ', ') + defCountry;
     }
 
-    async function fetchPrayerForCoords(lat, lng, locLabel, source, tz) {
-      const reqId = ++activePrayerRequestId;
-      if (locLabel) {
-        currentCityLabel = locLabel;
-        const locLabelEl = document.getElementById('prayerLocLabel');
-        if (locLabelEl) locLabelEl.textContent = currentCityLabel;
+    function showFailureNotice(msg) {
+      let noticeEl = document.getElementById('prayerFailureNotice');
+      if (!noticeEl) {
+        noticeEl = document.createElement('div');
+        noticeEl.id = 'prayerFailureNotice';
+        noticeEl.style.cssText = 'position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#b91c1c;color:#ffffff;padding:12px 20px;border-radius:8px;font-size:13.5px;font-weight:600;box-shadow:0 6px 18px rgba(0,0,0,0.25);z-index:9999;transition:opacity 0.3s ease;pointer-events:none;max-width:90vw;text-align:center;';
+        document.body.appendChild(noticeEl);
       }
-      if (source) currentLocationSource = source;
-      if (tz) currentTimezone = tz;
-      currentLatitude = lat;
-      currentLongitude = lng;
+      noticeEl.textContent = msg;
+      noticeEl.style.opacity = '1';
+      clearTimeout(noticeEl._timeout);
+      noticeEl._timeout = setTimeout(() => { noticeEl.style.opacity = '0'; }, 4000);
+    }
+
+    async function fetchPrayerForCoords(stagedLat, stagedLng, stagedLabel, stagedSource, stagedTz, stagedCityKey) {
+      const reqId = ++activePrayerRequestId;
 
       try {
-        const today = new Date();
-        const locDateParts = new Intl.DateTimeFormat('en-GB', { timeZone: currentTimezone }).format(today).split('/');
-        const dateStr = locDateParts[0] + '-' + locDateParts[1] + '-' + locDateParts[2];
-        lastFetchedDateString = locDateParts[2] + '-' + locDateParts[1] + '-' + locDateParts[0];
+        let resolvedTz = stagedTz;
+        let pData = null;
+        let usedDateStr = null;
 
-        const aladhanUrl = 'https://api.aladhan.com/v1/timings/' + dateStr + '?latitude=' + lat + '&longitude=' + lng + '&method=4';
-        const pRes = await fetch(aladhanUrl);
-        if (reqId !== activePrayerRequestId) return; // Drop stale response
-
-        if (pRes.ok) {
-          const pData = await pRes.json();
+        // Stage 1: If timezone is known, construct date in that timezone;
+        // if timezone is not known (e.g. raw GPS), query coordinate endpoint so Aladhan resolves timezone.
+        if (resolvedTz) {
+          const locDateParts = new Intl.DateTimeFormat('en-GB', { timeZone: resolvedTz }).format(new Date()).split('/');
+          usedDateStr = locDateParts[0] + '-' + locDateParts[1] + '-' + locDateParts[2];
+          const aladhanUrl = 'https://api.aladhan.com/v1/timings/' + usedDateStr + '?latitude=' + stagedLat + '&longitude=' + stagedLng + '&method=4';
+          const pRes = await fetch(aladhanUrl);
           if (reqId !== activePrayerRequestId) return; // Drop stale response
-
-          if (pData && pData.data && pData.data.timings) {
-            const t = pData.data.timings;
-            if (pData.data.meta && pData.data.meta.timezone) {
-              currentTimezone = pData.data.meta.timezone;
+          if (pRes.ok) {
+            pData = await pRes.json();
+          }
+        } else {
+          // GPS / unknown timezone: query coordinate endpoint without date so API resolves timezone
+          const aladhanUrl = 'https://api.aladhan.com/v1/timings?latitude=' + stagedLat + '&longitude=' + stagedLng + '&method=4';
+          const pRes = await fetch(aladhanUrl);
+          if (reqId !== activePrayerRequestId) return; // Drop stale response
+          if (pRes.ok) {
+            const tempPData = await pRes.json();
+            if (tempPData && tempPData.data && tempPData.data.meta && tempPData.data.meta.timezone) {
+              resolvedTz = tempPData.data.meta.timezone;
+              // Two-stage validation: verify that returned date matches local calendar date in resolved timezone
+              const expectedDate = new Intl.DateTimeFormat('en-GB', { timeZone: resolvedTz }).format(new Date()).split('/').join('-');
+              const apiDate = tempPData.data.date?.gregorian?.date;
+              if (apiDate && apiDate === expectedDate) {
+                pData = tempPData;
+                usedDateStr = expectedDate;
+              } else {
+                usedDateStr = expectedDate;
+                const reUrl = 'https://api.aladhan.com/v1/timings/' + expectedDate + '?latitude=' + stagedLat + '&longitude=' + stagedLng + '&method=4';
+                const reRes = await fetch(reUrl);
+                if (reqId !== activePrayerRequestId) return;
+                if (reRes.ok) {
+                  pData = await reRes.json();
+                }
+              }
             }
-
-            const sunriseTime = t.Sunrise.split(' ')[0];
-            const dhuhrTime = t.Dhuhr.split(' ')[0];
-            const ishraqCalculated = addMinutesToTime(sunriseTime, 18);
-            const chashtCalculated = getMidpointTime(sunriseTime, dhuhrTime);
-
-            let hijriStr = '';
-            let hijriArStr = '';
-            if (pData.data.date && pData.data.date.hijri) {
-              const h = pData.data.date.hijri;
-              hijriStr = h.day + ' ' + h.month.en + ' ' + h.year + ' AH';
-              hijriArStr = '(' + h.day + ' ' + h.month.ar + ' ' + h.year + ' هـ)';
-            } else {
-              hijriStr = getDynamicHijriFallback(false, currentTimezone);
-              hijriArStr = '(' + getDynamicHijriFallback(true, currentTimezone) + ')';
-            }
-
-            applyPrayerTimesToDOM({
-              fajr: t.Fajr.split(' ')[0],
-              sunrise: sunriseTime,
-              ishraq: ishraqCalculated,
-              chasht: chashtCalculated,
-              dhuhr: dhuhrTime,
-              asr: t.Asr.split(' ')[0],
-              maghrib: t.Maghrib.split(' ')[0],
-              isha: t.Isha.split(' ')[0],
-              label: currentCityLabel,
-              hijri: hijriStr,
-              hijriAr: hijriArStr
-            });
-
-            // Atomically commit to canonical persistence
-            saveLocationToStorage({
-              lat: lat,
-              lng: lng,
-              label: currentCityLabel,
-              timezone: currentTimezone,
-              source: currentLocationSource,
-              timestamp: Date.now()
-            });
           }
         }
+
+        if (reqId !== activePrayerRequestId) return; // Drop stale response
+
+        // Validate prayer response
+        if (pData && pData.data && pData.data.timings && pData.data.timings.Fajr && pData.data.timings.Dhuhr) {
+          const t = pData.data.timings;
+          if (pData.data.meta && pData.data.meta.timezone) {
+            resolvedTz = pData.data.meta.timezone;
+          }
+          if (!resolvedTz) resolvedTz = 'Asia/Riyadh';
+
+          const sunriseTime = t.Sunrise.split(' ')[0];
+          const dhuhrTime = t.Dhuhr.split(' ')[0];
+          const ishraqCalculated = addMinutesToTime(sunriseTime, 18);
+          const chashtCalculated = getMidpointTime(sunriseTime, dhuhrTime);
+
+          let hijriStr = '';
+          let hijriArStr = '';
+          if (pData.data.date && pData.data.date.hijri) {
+            const h = pData.data.date.hijri;
+            hijriStr = h.day + ' ' + h.month.en + ' ' + h.year + ' AH';
+            hijriArStr = '(' + h.day + ' ' + h.month.ar + ' ' + h.year + ' هـ)';
+          } else {
+            hijriStr = getDynamicHijriFallback(false, resolvedTz);
+            hijriArStr = '(' + getDynamicHijriFallback(true, resolvedTz) + ')';
+          }
+
+          // === ATOMIC COMMIT ===
+          currentLatitude = stagedLat;
+          currentLongitude = stagedLng;
+          currentCityLabel = stagedLabel;
+          currentLocationSource = stagedSource;
+          currentTimezone = resolvedTz;
+          if (usedDateStr) {
+            const p = usedDateStr.split('-');
+            lastFetchedDateString = p[2] + '-' + p[1] + '-' + p[0];
+          }
+
+          const validatedSchedule = {
+            fajr: t.Fajr.split(' ')[0],
+            sunrise: sunriseTime,
+            ishraq: ishraqCalculated,
+            chasht: chashtCalculated,
+            dhuhr: dhuhrTime,
+            asr: t.Asr.split(' ')[0],
+            maghrib: t.Maghrib.split(' ')[0],
+            isha: t.Isha.split(' ')[0],
+            label: currentCityLabel,
+            hijri: hijriStr,
+            hijriAr: hijriArStr
+          };
+
+          // Update visible DOM
+          const locLabelEl = document.getElementById('prayerLocLabel');
+          if (locLabelEl) locLabelEl.textContent = currentCityLabel;
+          applyPrayerTimesToDOM(validatedSchedule);
+
+          const srcLabel = IS_ARABIC ?
+            (stagedSource === 'manual' ? ('اختيار المدينة (' + stagedLabel.split('،')[0].split(',')[0] + ')') : (stagedSource === 'gps' ? 'دقة نظام GPS' : 'موقع تقريبي (IP)')) :
+            (stagedSource === 'manual' ? ('City Selection (' + stagedLabel.split(',')[0] + ')') : (stagedSource === 'gps' ? 'GPS Precision' : 'Approximate Location (IP)'));
+
+          updateQiblaDisplay(currentLatitude, currentLongitude, srcLabel);
+          fetchWeatherForCoords(currentLatitude, currentLongitude);
+
+          const matchingKey = stagedCityKey || findMatchingCityKey(currentLatitude, currentLongitude);
+          highlightCityButton(matchingKey);
+
+          // Persist to storage
+          saveLocationToStorage({
+            lat: currentLatitude,
+            lng: currentLongitude,
+            label: currentCityLabel,
+            timezone: currentTimezone,
+            source: currentLocationSource,
+            timestamp: Date.now()
+          });
+
+          return true;
+        } else {
+          throw new Error('Invalid prayer data response');
+        }
       } catch (e) {
-        console.warn('Aladhan fetch error:', e);
+        if (reqId !== activePrayerRequestId) return; // Drop stale response
+        console.warn('Prayer fetch error for staged location:', e);
+
+        // Check if staged location is a known city with offline baseline
+        const matchKey = stagedCityKey || findMatchingCityKey(stagedLat, stagedLng);
+        if (matchKey && defaultPrayerMap[matchKey]) {
+          const fallbackEntry = defaultPrayerMap[matchKey];
+          currentLatitude = stagedLat;
+          currentLongitude = stagedLng;
+          currentCityLabel = stagedLabel;
+          currentLocationSource = stagedSource;
+          currentTimezone = stagedTz || (QUICK_CITIES[matchKey] && QUICK_CITIES[matchKey].tz) || 'Asia/Riyadh';
+
+          const validatedSchedule = {
+            fajr: fallbackEntry.fajr,
+            sunrise: fallbackEntry.sunrise,
+            ishraq: fallbackEntry.ishraq,
+            chasht: fallbackEntry.chasht,
+            dhuhr: fallbackEntry.dhuhr,
+            asr: fallbackEntry.asr,
+            maghrib: fallbackEntry.maghrib,
+            isha: fallbackEntry.isha,
+            label: currentCityLabel,
+            hijri: getDynamicHijriFallback(false, currentTimezone),
+            hijriAr: '(' + getDynamicHijriFallback(true, currentTimezone) + ')'
+          };
+
+          const locLabelEl = document.getElementById('prayerLocLabel');
+          if (locLabelEl) locLabelEl.textContent = currentCityLabel;
+          applyPrayerTimesToDOM(validatedSchedule);
+
+          const srcLabel = IS_ARABIC ? 'الوضع الافتراضي' : 'Baseline Fallback';
+          updateQiblaDisplay(currentLatitude, currentLongitude, srcLabel);
+          fetchWeatherForCoords(currentLatitude, currentLongitude);
+          highlightCityButton(matchKey);
+
+          saveLocationToStorage({
+            lat: currentLatitude,
+            lng: currentLongitude,
+            label: currentCityLabel,
+            timezone: currentTimezone,
+            source: currentLocationSource,
+            timestamp: Date.now()
+          });
+          return true;
+        }
+
+        // ROLLBACK / PRESERVE PREVIOUS STATE:
+        const committedKey = findMatchingCityKey(currentLatitude, currentLongitude);
+        highlightCityButton(committedKey);
+
+        const failMsg = IS_ARABIC ?
+          'تعذر تحميل مواقيت الصلاة للموقع المطلوب. تم الاحتفاظ بالموقع الحالي.' :
+          'Unable to load prayer times for the requested location. Retaining current location.';
+        showFailureNotice(failMsg);
+        updateQiblaAccuracyTag(IS_ARABIC ? 'خطأ في الاتصال' : 'Connection Error');
+        return false;
       }
     }
 
@@ -2109,20 +2247,11 @@
     });
 
     function selectCity(btnEl, cityKey, lat, lng, label) {
-      highlightCityButton(cityKey);
-
       let tz = 'Asia/Riyadh';
       if (QUICK_CITIES[cityKey] && QUICK_CITIES[cityKey].tz) {
         tz = QUICK_CITIES[cityKey].tz;
       }
-
-      const srcLabel = IS_ARABIC ?
-        ('اختيار المدينة (' + label.split('،')[0].split(',')[0] + ')') :
-        ('City Selection (' + label.split(',')[0] + ')');
-
-      updateQiblaDisplay(lat, lng, srcLabel);
-      fetchWeatherForCoords(lat, lng);
-      fetchPrayerForCoords(lat, lng, label, 'manual', tz);
+      fetchPrayerForCoords(lat, lng, label, 'manual', tz, cityKey);
     }
 
     async function executeGpsTrack(isUserInitiated = false) {
@@ -2147,10 +2276,7 @@
               const gpsLat = pos.coords.latitude;
               const gpsLng = pos.coords.longitude;
               const preciseLabel = await reverseGeocodeWithOSM(gpsLat, gpsLng, IS_ARABIC ? 'المنطقة المحلية' : 'Local Area', IS_ARABIC ? 'المملكة العربية السعودية' : 'Saudi Arabia');
-              updateQiblaDisplay(gpsLat, gpsLng, IS_ARABIC ? 'دقة نظام GPS' : 'GPS Precision');
-              fetchWeatherForCoords(gpsLat, gpsLng);
-              await fetchPrayerForCoords(gpsLat, gpsLng, preciseLabel, 'gps');
-              highlightCityButton(null);
+              await fetchPrayerForCoords(gpsLat, gpsLng, preciseLabel, 'gps', null, null);
             }
           } catch (e) {
             console.warn('GPS location handling error:', e);
@@ -2198,6 +2324,7 @@
       let initTz = 'Asia/Riyadh';
       let initSource = 'default';
       let matchingKey = 'riyadh';
+      let needsAutoDetect = false;
 
       if (stored) {
         initLat = stored.lat;
@@ -2212,6 +2339,14 @@
         } else if (stored.label) {
           initLabel = stored.label;
         }
+
+        // If automatic location is expired, trigger refresh
+        if (!stored.isFresh) {
+          needsAutoDetect = true;
+        }
+      } else {
+        // Fresh first visit: trigger auto-detection
+        needsAutoDetect = true;
       }
 
       currentLatitude = initLat;
@@ -2220,7 +2355,9 @@
       currentTimezone = initTz;
       currentLocationSource = initSource;
 
-      // Highlight active city button if matching
+      // Update visible DOM
+      const locLabelEl = document.getElementById('prayerLocLabel');
+      if (locLabelEl) locLabelEl.textContent = currentCityLabel;
       highlightCityButton(matchingKey);
 
       // Initial instantaneous DOM render from fallback
@@ -2258,16 +2395,16 @@
       startWeatherPeriodicRefresh();
 
       // Fetch fresh calculation for coordinates
-      await fetchPrayerForCoords(initLat, initLng, currentCityLabel, initSource, currentTimezone);
+      await fetchPrayerForCoords(initLat, initLng, currentCityLabel, initSource, currentTimezone, matchingKey);
 
-      // 2. Background IP Auto-Detection: ONLY run if user has not explicitly set a manual city or GPS
-      if (currentLocationSource !== 'manual' && currentLocationSource !== 'gps') {
+      // 2. Background IP Auto-Detection: ONLY run if needsAutoDetect is true AND source is not manual
+      if (needsAutoDetect && currentLocationSource !== 'manual') {
         try {
           const ipRes = await fetch('https://ipapi.co/json/', { cache: 'no-cache' });
           if (ipRes.ok) {
             const ipData = await ipRes.json();
             if (ipData && ipData.latitude && ipData.longitude) {
-              if (currentLocationSource !== 'manual' && currentLocationSource !== 'gps') {
+              if (currentLocationSource !== 'manual') {
                 const ipLat = parseFloat(ipData.latitude);
                 const ipLng = parseFloat(ipData.longitude);
                 const ipCity = ipData.city || (IS_ARABIC ? 'المنطقة المحلية' : 'Local Area');
@@ -2275,12 +2412,7 @@
                 const ipLabel = IS_ARABIC ? `${ipCity}، ${ipCountry}` : `${ipCity}, ${ipCountry}`;
                 const ipTz = ipData.timezone || currentTimezone;
 
-                const ipMatch = findMatchingCityKey(ipLat, ipLng);
-                highlightCityButton(ipMatch);
-
-                updateQiblaDisplay(ipLat, ipLng, IS_ARABIC ? 'موقع تقريبي (IP)' : 'Approximate Location (IP)');
-                fetchWeatherForCoords(ipLat, ipLng);
-                await fetchPrayerForCoords(ipLat, ipLng, ipLabel, 'ip', ipTz);
+                await fetchPrayerForCoords(ipLat, ipLng, ipLabel, 'ip', ipTz, null);
               }
             }
           }
@@ -2289,8 +2421,8 @@
         }
       }
 
-      // 3. Silent GPS permission sync: ONLY sync if user has not selected manual
-      if (navigator.permissions && navigator.permissions.query) {
+      // 3. Silent GPS permission sync: ONLY sync if needsAutoDetect is true AND source is not manual
+      if (needsAutoDetect && currentLocationSource !== 'manual' && navigator.permissions && navigator.permissions.query) {
         try {
           const permStatus = await navigator.permissions.query({ name: 'geolocation' });
           if (permStatus.state === 'granted' && currentLocationSource !== 'manual') {
