@@ -1376,6 +1376,7 @@
     const STORAGE_KEY = 'dch_prayer_location';
 
     let prayerSchedule = null;
+    let hasCommittedPrayerSchedule = false;
     let currentCityLabel = 'الرياض، السعودية';
     let currentLatitude = 24.7136;
     let currentLongitude = 46.6753;
@@ -1604,6 +1605,34 @@
         }
       }
       updatePrayerCountdown();
+    }
+
+    function renderUnavailablePrayerState() {
+      prayerSchedule = null;
+      const ids = ['timeFajr', 'timeSunrise', 'timeIshraq', 'timeChasht', 'timeDhuhr', 'timeAsr', 'timeMaghrib', 'timeIsha'];
+      ids.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.textContent = '--:-- --';
+      });
+      const cardIds = ['pCardFajr', 'pCardSunrise', 'pCardIshraq', 'pCardChasht', 'pCardDhuhr', 'pCardAsr', 'pCardMaghrib', 'pCardIsha'];
+      cardIds.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.classList.remove('active-prayer');
+      });
+      const hEl = document.getElementById('timerHours');
+      const mEl = document.getElementById('timerMinutes');
+      const sEl = document.getElementById('timerSeconds');
+      const nameEl = document.getElementById('nextPrayerName');
+      const timeEl = document.getElementById('nextPrayerTime');
+      if (hEl) hEl.textContent = '--';
+      if (mEl) mEl.textContent = '--';
+      if (sEl) sEl.textContent = '--';
+      if (nameEl) nameEl.textContent = IS_ARABIC ? 'غير متاح' : 'Unavailable';
+      if (timeEl) timeEl.textContent = '--:-- --';
+      const chashtSubEl = document.getElementById('chashtDynamicSub');
+      if (chashtSubEl) {
+        chashtSubEl.textContent = IS_ARABIC ? '⚡ منتصف الضحى: غير متاح' : '⚡ Midpoint: Unavailable';
+      }
     }
 
     function updateLiveClocks() {
@@ -1874,6 +1903,7 @@
           }
 
           // === ATOMIC COMMIT ===
+          hasCommittedPrayerSchedule = true;
           currentLatitude = stagedLat;
           currentLongitude = stagedLng;
           currentCityLabel = stagedLabel;
@@ -1929,62 +1959,31 @@
         }
       } catch (e) {
         if (reqId !== activePrayerRequestId) return; // Drop stale response
-        console.warn('Prayer fetch error for staged location:', e);
-
-        // Check if staged location is a known city with offline baseline
-        const matchKey = stagedCityKey || findMatchingCityKey(stagedLat, stagedLng);
-        if (matchKey && defaultPrayerMap[matchKey]) {
-          const fallbackEntry = defaultPrayerMap[matchKey];
-          currentLatitude = stagedLat;
-          currentLongitude = stagedLng;
-          currentCityLabel = stagedLabel;
-          currentLocationSource = stagedSource;
-          currentTimezone = stagedTz || (QUICK_CITIES[matchKey] && QUICK_CITIES[matchKey].tz) || 'Asia/Riyadh';
-
-          const validatedSchedule = {
-            fajr: fallbackEntry.fajr,
-            sunrise: fallbackEntry.sunrise,
-            ishraq: fallbackEntry.ishraq,
-            chasht: fallbackEntry.chasht,
-            dhuhr: fallbackEntry.dhuhr,
-            asr: fallbackEntry.asr,
-            maghrib: fallbackEntry.maghrib,
-            isha: fallbackEntry.isha,
-            label: currentCityLabel,
-            hijri: getDynamicHijriFallback(false, currentTimezone),
-            hijriAr: '(' + getDynamicHijriFallback(true, currentTimezone) + ')'
-          };
+        if (hasCommittedPrayerSchedule && prayerSchedule) {
+          // A valid prayer schedule is ALREADY COMMITTED from a prior successful fetch:
+          // Retain current valid location, coordinates, timezone, city label, and current prayer times
+          const committedKey = findMatchingCityKey(currentLatitude, currentLongitude);
+          highlightCityButton(committedKey);
 
           const locLabelEl = document.getElementById('prayerLocLabel');
           if (locLabelEl) locLabelEl.textContent = currentCityLabel;
-          applyPrayerTimesToDOM(validatedSchedule);
 
-          const srcLabel = IS_ARABIC ? 'الوضع الافتراضي' : 'Baseline Fallback';
-          updateQiblaDisplay(currentLatitude, currentLongitude, srcLabel);
-          fetchWeatherForCoords(currentLatitude, currentLongitude);
-          highlightCityButton(matchKey);
-
-          saveLocationToStorage({
-            lat: currentLatitude,
-            lng: currentLongitude,
-            label: currentCityLabel,
-            timezone: currentTimezone,
-            source: currentLocationSource,
-            timestamp: Date.now()
-          });
-          return true;
+          const failMsg = IS_ARABIC ?
+            'تعذر تحميل مواقيت الصلاة للموقع المطلوب. تم الاحتفاظ بالموقع الحالي.' :
+            'Unable to load prayer times for the requested location. Retaining current location.';
+          showFailureNotice(failMsg);
+          updateQiblaAccuracyTag(IS_ARABIC ? 'خطأ في الاتصال' : 'Connection Error');
+          return false;
+        } else {
+          // NO valid prayer schedule was ever committed (e.g. fresh load or initial failure):
+          renderUnavailablePrayerState();
+          const unavailableMsg = IS_ARABIC ?
+            'تعذر تحميل مواقيت الصلاة. يرجى التحقق من الاتصال.' :
+            'Unable to load prayer times. Please check your connection.';
+          showFailureNotice(unavailableMsg);
+          updateQiblaAccuracyTag(IS_ARABIC ? 'غير متاح' : 'Unavailable');
+          return false;
         }
-
-        // ROLLBACK / PRESERVE PREVIOUS STATE:
-        const committedKey = findMatchingCityKey(currentLatitude, currentLongitude);
-        highlightCityButton(committedKey);
-
-        const failMsg = IS_ARABIC ?
-          'تعذر تحميل مواقيت الصلاة للموقع المطلوب. تم الاحتفاظ بالموقع الحالي.' :
-          'Unable to load prayer times for the requested location. Retaining current location.';
-        showFailureNotice(failMsg);
-        updateQiblaAccuracyTag(IS_ARABIC ? 'خطأ في الاتصال' : 'Connection Error');
-        return false;
       }
     }
 
