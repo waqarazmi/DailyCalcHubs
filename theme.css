@@ -2363,7 +2363,7 @@ html[lang="ar"] .top-rates-ticker .ticker-inner,
 html[lang="ar"] .top-rates-ticker .ticker-items-wrapper {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start !important;
   gap: 16px;
   padding: 0 16px;
 }
@@ -2735,7 +2735,9 @@ html[data-theme="dark"][lang="ar"] .site-header .header-actions {
   html[lang="ar"] .site-header .header-nav-links,
   html[lang="ar"] .site-header .header-nav-container,
   html[lang="ar"] .site-header .main-navigation,
-  html[lang="ar"] .main-navigation {
+  html[lang="ar"] .main-navigation,
+  html[lang="ar"] .site-header .desktop-nav,
+  html[lang="ar"] .desktop-nav {
     display: none !important;
   }
   .mobile-menu-toggle,
@@ -2793,5 +2795,67 @@ html[data-theme="dark"][lang="ar"] .site-header .header-actions {
   .brand-logo-area .logo-subtitle,
   html[lang="ar"] .brand-logo-area .logo-subtitle {
     display: none !important;
+  }
+}
+
+/* ==========================================================================
+   ARABIC REMITTANCE TARGETED DEFECT FIXES (SURGICAL PARITY & ALIGNMENT)
+   ========================================================================== */
+
+/* D. Prevent .tool-layout min-content overflow strictly within Remittance layouts */
+html[lang="ar"] .tool-layout:has(.provider-table-card) > div,
+html[lang="ar"] .tool-layout:has(.provider-table-card) > section {
+  min-width: 0 !important;
+}
+
+html[lang="ar"] .provider-table-card {
+  box-sizing: border-box !important;
+  max-width: 100% !important;
+}
+
+@media (max-width: 640px) {
+  html[lang="ar"] .provider-table-card {
+    padding: 16px 12px !important;
+  }
+}
+
+/* E. Arabic Remittance Provider / Data Tables Alignment & Input Addon Divider */
+html[lang="ar"] .provider-table,
+html[lang="ar"] .provider-table th,
+html[lang="ar"] .provider-table td,
+html[lang="ar"] .provider-table-card .data-table,
+html[lang="ar"] .provider-table-card .data-table th,
+html[lang="ar"] .provider-table-card .data-table td,
+html[lang="ar"] .comparison-table,
+html[lang="ar"] .comparison-table th,
+html[lang="ar"] .comparison-table td {
+  text-align: right !important;
+}
+
+html[lang="ar"] .input-with-addons .input-addon-badge {
+  border-right: none !important;
+  border-left: 1px solid #e2e8f0 !important;
+}
+
+/* F. Arabic Remittance Hub Live Card & Grid Mobile Width Fit */
+html[lang="ar"] .tools-grid {
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important;
+}
+
+html[lang="ar"] .comparison-table-wrap {
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+}
+
+@media (max-width: 480px) {
+  html[lang="ar"] .live-calc-card {
+    padding: 20px 14px !important;
+  }
+  html[lang="ar"] .live-calc-grid {
+    grid-template-columns: 1fr !important;
+  }
+  html[lang="ar"] .tools-grid {
+    grid-template-columns: 1fr !important;
   }
 }
