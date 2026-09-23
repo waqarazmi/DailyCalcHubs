@@ -2656,19 +2656,70 @@ html[data-theme="dark"][lang="ar"] .input-with-addons .input-addon-badge {
 
 /* 7. Header Navigation Responsive Parity & 1024px Overflow Prevention (Both EN and AR) */
 .site-header .header-container,
-html[lang="ar"] .site-header .header-container {
+.site-header .container,
+html[lang="ar"] .site-header .header-container,
+html[lang="ar"] .site-header .container {
   max-width: 1280px;
 }
 
-@media (max-width: 1180px) and (min-width: 1051px) {
+/* Point 13: Global English ↔ Arabic Language Control Separation */
+.site-header .header-right-actions,
+.site-header .header-actions,
+html[lang="ar"] .site-header .header-right-actions,
+html[lang="ar"] .site-header .header-actions {
+  margin-inline-start: 20px !important;
+  padding-inline-start: 16px !important;
+  border-inline-start: 1px solid #e2e8f0 !important;
+  flex-shrink: 0 !important;
+}
+
+html[data-theme="dark"] .site-header .header-right-actions,
+html[data-theme="dark"] .site-header .header-actions,
+html[data-theme="dark"][lang="ar"] .site-header .header-right-actions,
+html[data-theme="dark"][lang="ar"] .site-header .header-actions {
+  border-inline-start-color: #334155 !important;
+}
+
+@media (max-width: 1280px) {
+  html[lang="ar"] .site-header .header-nav-links,
+  html[lang="ar"] .site-header .main-nav,
+  html[lang="ar"] .site-header .main-navigation {
+    gap: 12px !important;
+  }
+}
+
+@media (max-width: 1200px) {
+  .saudi-badge-header,
+  .saudi-badge-btn,
+  html[lang="ar"] .saudi-badge-header,
+  html[lang="ar"] .saudi-badge-btn {
+    display: none !important;
+  }
+}
+
+@media (max-width: 1200px) and (min-width: 1051px) {
+  .site-header .header-nav-links,
   .site-header .main-nav,
-  html[lang="ar"] .site-header .main-nav {
+  .site-header .main-navigation,
+  html[lang="ar"] .site-header .header-nav-links,
+  html[lang="ar"] .site-header .main-nav,
+  html[lang="ar"] .site-header .main-navigation {
     gap: 6px !important;
   }
+  .site-header .header-nav-links a,
+  .site-header .main-nav a,
+  .site-header .main-nav .nav-link,
+  .site-header .main-navigation a,
   .site-header .nav-link,
-  html[lang="ar"] .site-header .nav-link {
-    padding: 6px 7px !important;
-    font-size: 13px !important;
+  .site-header .nav-link-item,
+  html[lang="ar"] .site-header .header-nav-links a,
+  html[lang="ar"] .site-header .main-nav a,
+  html[lang="ar"] .site-header .main-nav .nav-link,
+  html[lang="ar"] .site-header .main-navigation a,
+  html[lang="ar"] .site-header .nav-link,
+  html[lang="ar"] .site-header .nav-link-item {
+    padding: 4px 5px !important;
+    font-size: 12.5px !important;
   }
 }
 
@@ -2677,10 +2728,14 @@ html[lang="ar"] .site-header .header-container {
   .site-header .header-nav,
   .site-header .header-nav-links,
   .site-header .header-nav-container,
+  .site-header .main-navigation,
+  .main-navigation,
   html[lang="ar"] .site-header .main-nav,
   html[lang="ar"] .site-header .header-nav,
   html[lang="ar"] .site-header .header-nav-links,
-  html[lang="ar"] .site-header .header-nav-container {
+  html[lang="ar"] .site-header .header-nav-container,
+  html[lang="ar"] .site-header .main-navigation,
+  html[lang="ar"] .main-navigation {
     display: none !important;
   }
   .mobile-menu-toggle,
@@ -2688,6 +2743,14 @@ html[lang="ar"] .site-header .header-container {
   html[lang="ar"] .mobile-menu-toggle,
   html[lang="ar"] .mobile-menu-btn {
     display: inline-flex !important;
+  }
+  .site-header .header-right-actions,
+  .site-header .header-actions,
+  html[lang="ar"] .site-header .header-right-actions,
+  html[lang="ar"] .site-header .header-actions {
+    border-inline-start: none !important;
+    padding-inline-start: 0 !important;
+    margin-inline-start: 0 !important;
   }
 }
 
