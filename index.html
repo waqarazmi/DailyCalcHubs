@@ -2735,28 +2735,6 @@
         });
       });
 
-      // 2. Mobile Accordion Items
-      const accHeaders = document.querySelectorAll('.mobile-accordion-header');
-      accHeaders.forEach(btn => {
-        btn.addEventListener('click', function(e) {
-          e.preventDefault();
-          e.stopPropagation();
-          const item = this.closest('.mobile-accordion-item');
-          const wasActive = item.classList.contains('active');
-          
-          document.querySelectorAll('.mobile-accordion-item').forEach(other => {
-            other.classList.remove('active');
-            const otherBtn = other.querySelector('.mobile-accordion-header');
-            if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
-          });
-
-          if (!wasActive) {
-            item.classList.add('active');
-            this.setAttribute('aria-expanded', 'true');
-          }
-        });
-      });
-
       // 3. Mobile Drawer Controls
       const closeBtn = document.getElementById('mobileNavCloseBtn');
       const backdrop = document.getElementById('mobileNavBackdrop');
