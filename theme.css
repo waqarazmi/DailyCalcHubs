@@ -68,6 +68,33 @@ html[data-theme="dark"] {
   --prayer-border: #1e3a5f;
   --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
   --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.35);
+
+  /* Theme Tokens Parity */
+  --dch-bg-page: #0b0f19;
+  --dch-bg-surface: #131b2e;
+  --dch-bg-subtle: #1a233a;
+  --dch-text-primary: #f8fafc;
+  --dch-text-secondary: #cbd5e1;
+  --dch-text-muted: #94a3b8;
+  --dch-border: #1e293b;
+  --dch-border-subtle: #334155;
+  --dch-input-bg: #1a233a;
+
+  /* Secondary Category Tints for Dark Mode */
+  --brand-light: #162032;
+  --brand-border: #1e3a5f;
+  --brand-dark: #38bdf8;
+  --amber-light: #261c0c;
+  --amber-border: #523811;
+  --amber-dark: #fbbf24;
+  --crimson-light: #251017;
+  --crimson-border: #4c1d29;
+  --crimson-dark: #fb7185;
+  --orange-light: #26160d;
+  --orange-border: #4d2614;
+  --purple-light: #1c142e;
+  --purple-border: #3c2463;
+  --text-main: #cbd5e1;
   color-scheme: dark;
 }
 
@@ -3494,4 +3521,358 @@ html[data-theme="dark"] .mega-footer-link {
     border-right: 1px solid #1e293b !important;
   }
 }
+
+/* ==========================================================================
+   DAILYCALCHUBS — COMPREHENSIVE DARK MODE DESIGN SYSTEM (EN & AR)
+   ========================================================================== */
+
+/* 1. Article, Content & SEO Text Readability */
+html[data-theme="dark"] .content-article,
+html[data-theme="dark"] .seo-article,
+html[data-theme="dark"] .editorial-section,
+html[data-theme="dark"] .content-card,
+html[data-theme="dark"] .guide-article {
+  background: #131b2e !important;
+  border-color: #1e293b !important;
+  color: #cbd5e1 !important;
+}
+
+html[data-theme="dark"] .content-article p,
+html[data-theme="dark"] .content-article li,
+html[data-theme="dark"] .seo-article p,
+html[data-theme="dark"] .seo-article li,
+html[data-theme="dark"] .seo-article ul,
+html[data-theme="dark"] .editorial-section p,
+html[data-theme="dark"] .editorial-section li,
+html[data-theme="dark"] .editorial-section ul,
+html[data-theme="dark"] .content-card p,
+html[data-theme="dark"] .content-card li,
+html[data-theme="dark"] .content-card ul,
+html[data-theme="dark"] .rules-item,
+html[data-theme="dark"] .guide-article p,
+html[data-theme="dark"] .guide-article li {
+  color: #cbd5e1 !important;
+}
+
+html[data-theme="dark"] .content-article h2,
+html[data-theme="dark"] .content-article h3,
+html[data-theme="dark"] .content-article h4,
+html[data-theme="dark"] .seo-article h2,
+html[data-theme="dark"] .seo-article h3,
+html[data-theme="dark"] .editorial-section h2,
+html[data-theme="dark"] .editorial-section h3,
+html[data-theme="dark"] .content-card h2,
+html[data-theme="dark"] .content-card h3,
+html[data-theme="dark"] .guide-article h2,
+html[data-theme="dark"] .guide-article h3 {
+  color: #f8fafc !important;
+}
+
+/* 2. Homepage Dark Mode Elements */
+html[data-theme="dark"] .section-title {
+  color: #f8fafc !important;
+}
+html[data-theme="dark"] .section-subtitle {
+  color: #94a3b8 !important;
+}
+html[data-theme="dark"] .section-top-badge {
+  background: #131b2e !important;
+  border-color: #1e293b !important;
+}
+html[data-theme="dark"] .top-badge-text-title {
+  color: #f8fafc !important;
+}
+html[data-theme="dark"] .top-badge-text-sub {
+  color: #94a3b8 !important;
+}
+
+/* 7 Homepage Category Cards */
+html[data-theme="dark"] .tool-hub-card,
+html[data-theme="dark"] .card-remittance,
+html[data-theme="dark"] .card-prayer,
+html[data-theme="dark"] .card-salary,
+html[data-theme="dark"] .card-iqama,
+html[data-theme="dark"] .card-everyday,
+html[data-theme="dark"] .card-sip,
+html[data-theme="dark"] .card-travel {
+  background: #131b2e !important;
+  border-color: #1e293b !important;
+}
+html[data-theme="dark"] .card-tool-name {
+  color: #f8fafc !important;
+}
+html[data-theme="dark"] .card-tool-desc {
+  color: #94a3b8 !important;
+}
+
+/* Homepage Sidebar & Trust Banner */
+html[data-theme="dark"] .sidebar-box,
+html[data-theme="dark"] .trust-values-banner {
+  background: #131b2e !important;
+  border-color: #1e293b !important;
+}
+html[data-theme="dark"] .sidebar-card-title,
+html[data-theme="dark"] .trust-value-item {
+  color: #f8fafc !important;
+}
+html[data-theme="dark"] .sidebar-check-item,
+html[data-theme="dark"] .quick-guide-step {
+  color: #cbd5e1 !important;
+}
+html[data-theme="dark"] .val-icon-dark {
+  color: #38bdf8 !important;
+}
+html[data-theme="dark"] .quote-card {
+  background: #162032 !important;
+  border-color: #1e3a5f !important;
+}
+html[data-theme="dark"] .quote-text-title {
+  color: #60a5fa !important;
+}
+
+/* Header Search Button */
+html[data-theme="dark"] .search-btn-circle {
+  background: #1e293b !important;
+  border: 1px solid #334155 !important;
+  color: #f8fafc !important;
+}
+html[data-theme="dark"] .search-btn-circle:hover {
+  background: #25334d !important;
+  border-color: #38bdf8 !important;
+  color: #38bdf8 !important;
+}
+
+/* 3. EN + AR Hub Tool Cards & Sidebar Cards */
+html[data-theme="dark"] .tool-card-item,
+html[data-theme="dark"] .tool-card,
+html[data-theme="dark"] .featured-tool-card,
+html[data-theme="dark"] .mini-tool-card,
+html[data-theme="dark"] .tool-link-card,
+html[data-theme="dark"] .feature-card {
+  background: #131b2e !important;
+  border-color: #1e293b !important;
+}
+html[data-theme="dark"] .tool-card-name,
+html[data-theme="dark"] .tool-card-title,
+html[data-theme="dark"] .card-main-title,
+html[data-theme="dark"] .card-heading,
+html[data-theme="dark"] .live-card-title,
+html[data-theme="dark"] .sidebar-card-heading {
+  color: #f8fafc !important;
+}
+html[data-theme="dark"] .tool-card-desc,
+html[data-theme="dark"] .card-main-desc,
+html[data-theme="dark"] .card-desc {
+  color: #94a3b8 !important;
+}
+html[data-theme="dark"] .tool-card-badge,
+html[data-theme="dark"] .tool-card-badge-num {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+  color: #cbd5e1 !important;
+}
+html[data-theme="dark"] .tool-card-icon {
+  background: #1e293b !important;
+  color: #38bdf8 !important;
+}
+html[data-theme="dark"] .sidebar-card {
+  background: #131b2e !important;
+  border-color: #1e293b !important;
+}
+html[data-theme="dark"] .salary-result-card,
+html[data-theme="dark"] .iqama-result-card,
+html[data-theme="dark"] .travel-result-card {
+  background: #1a233a !important;
+  border-color: #334155 !important;
+}
+html[data-theme="dark"] .salary-result-card.highlight {
+  background: #231b40 !important;
+  border-color: #7c3aed !important;
+}
+html[data-theme="dark"] .salary-result-val {
+  color: #f8fafc !important;
+}
+html[data-theme="dark"] .salary-result-card.highlight .salary-result-val {
+  color: #c4b5fd !important;
+}
+
+/* 4. Callouts, Result Details & Form Elements */
+html[data-theme="dark"] .highlight-box {
+  background: #162032 !important;
+  border-left: 4px solid #0284c7 !important;
+  border-color: #1e3a5f !important;
+  color: #cbd5e1 !important;
+}
+html[dir="rtl"][data-theme="dark"] .highlight-box {
+  border-left: none !important;
+  border-right: 4px solid #0284c7 !important;
+}
+html[data-theme="dark"] .highlight-box strong {
+  color: #38bdf8 !important;
+}
+html[data-theme="dark"] .warning-box {
+  background: #261c0c !important;
+  border-left: 4px solid #f59e0b !important;
+  border-color: #523811 !important;
+  color: #fde68a !important;
+}
+html[dir="rtl"][data-theme="dark"] .warning-box {
+  border-left: none !important;
+  border-right: 4px solid #f59e0b !important;
+}
+html[data-theme="dark"] .warning-box strong {
+  color: #fbbf24 !important;
+}
+html[data-theme="dark"] .ai-disclosure-banner {
+  background: #162032 !important;
+  border-color: #1e3a5f !important;
+  color: #93c5fd !important;
+}
+
+/* Stat Pills & Breakdown Tables in Results */
+html[data-theme="dark"] .stat-pill {
+  background: #131b2e !important;
+  border-color: #1e293b !important;
+}
+html[data-theme="dark"] .stat-pill .stat-label {
+  color: #94a3b8 !important;
+}
+html[data-theme="dark"] .stat-pill .stat-val {
+  color: #f8fafc !important;
+}
+html[data-theme="dark"] .breakdown-table tr {
+  border-bottom-color: #1e293b !important;
+}
+html[data-theme="dark"] .breakdown-table td.cost-num {
+  color: #f8fafc !important;
+}
+html[data-theme="dark"] .tool-chip {
+  background: #131b2e !important;
+  border-color: #1e293b !important;
+  color: #cbd5e1 !important;
+}
+html[data-theme="dark"] .btn-reset {
+  background: #1e293b !important;
+  color: #cbd5e1 !important;
+}
+html[data-theme="dark"] .btn-reset:hover {
+  background: #25334d !important;
+  color: #f8fafc !important;
+}
+
+/* Contact Page Specific Components */
+html[data-theme="dark"] .form-group label {
+  color: #cbd5e1 !important;
+}
+html[data-theme="dark"] .channel-box {
+  background: #1a233a !important;
+  border-color: #334155 !important;
+}
+html[data-theme="dark"] .channel-icon {
+  background: #131b2e !important;
+  border-color: #334155 !important;
+}
+html[data-theme="dark"] .channel-val,
+html[data-theme="dark"] .channel-val a {
+  color: #f8fafc !important;
+}
+html[data-theme="dark"] .ai-grounded-card {
+  background: #131b2e !important;
+  border-color: #065f46 !important;
+  border-left-color: #10b981 !important;
+  color: #cbd5e1 !important;
+}
+html[dir="rtl"][data-theme="dark"] .ai-grounded-card {
+  border-left-color: #065f46 !important;
+  border-right: 4px solid #10b981 !important;
+}
+html[data-theme="dark"] .ai-grounded-text {
+  color: #cbd5e1 !important;
+}
+html[data-theme="dark"] .ai-escalation-card {
+  background: #261c0c !important;
+  border-color: #78350f !important;
+  border-left-color: #f59e0b !important;
+  color: #fde68a !important;
+}
+html[dir="rtl"][data-theme="dark"] .ai-escalation-card {
+  border-left-color: #78350f !important;
+  border-right: 4px solid #f59e0b !important;
+}
+html[data-theme="dark"] .ai-escalation-text {
+  color: #fde68a !important;
+}
+html[data-theme="dark"] .ticket-history-panel {
+  background: #1a233a !important;
+  border-color: #334155 !important;
+}
+html[data-theme="dark"] .ticket-history-toggle {
+  color: #f8fafc !important;
+}
+
+/* 5. Mobile Navigation Parity for Legal / Info Pages */
+html[data-theme="dark"] .header-nav-container.open .main-nav {
+  background: #0f172a !important;
+  border-bottom-color: #1e293b !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* 6. 404 Page Specific Elements */
+html[data-theme="dark"] .hubs-directory-card {
+  background: #131b2e !important;
+  border-color: #1e293b !important;
+}
+html[data-theme="dark"] .hub-link-tile {
+  background: #1a233a !important;
+  border-color: #334155 !important;
+  color: #f8fafc !important;
+}
+html[data-theme="dark"] .hub-link-tile:hover {
+  background: #25334d !important;
+  border-color: #38bdf8 !important;
+  color: #38bdf8 !important;
+}
+html[data-theme="dark"] .error-title {
+  color: #f8fafc !important;
+}
+html[data-theme="dark"] .error-desc {
+  color: #94a3b8 !important;
+}
+html[data-theme="dark"] .btn-secondary {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+  color: #cbd5e1 !important;
+}
+html[data-theme="dark"] .btn-secondary:hover {
+  background: #25334d !important;
+  color: #f8fafc !important;
+}
+
+/* 7. Inline Light Tint Overrides in Dark Mode */
+html[data-theme="dark"] tr[style*="background:#f5f3ff"],
+html[data-theme="dark"] tr[style*="background: #f5f3ff"] {
+  background: #231b40 !important;
+}
+html[data-theme="dark"] div[style*="background:#fff1f2"] {
+  background: #251017 !important;
+  border-color: #4c1d29 !important;
+  color: #fda4af !important;
+}
+html[data-theme="dark"] div[style*="background:#fffbeb"] {
+  background: #261c0c !important;
+  border-color: #523811 !important;
+  color: #fde68a !important;
+}
+html[data-theme="dark"] div[style*="background:#f0fdf4"] {
+  background: #0d2319 !important;
+  border-color: #164e32 !important;
+}
+html[data-theme="dark"] div[style*="background:#f8fafc"],
+html[data-theme="dark"] div[style*="background: #f8fafc"] {
+  background: #131b2e !important;
+}
+html[data-theme="dark"] div[style*="background:#f5f3ff"] {
+  background: #231b40 !important;
+}
+
 

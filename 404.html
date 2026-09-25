@@ -1,8 +1,17 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Theme Early Init (Prevent Flash of Unstyled Content) -->
+  <script>
+    (function() {
+      try {
+        var t = localStorage.getItem('dch_theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
   <title>404: Page Not Found | DailyCalcHubs</title>
   <meta name="description" content="The calculator or page you are looking for might have been moved, renamed, or is temporarily unavailable. Return to DailyCalcHubs to find the tool you need.">
   <meta name="robots" content="noindex, follow">
@@ -19,6 +28,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="/theme.css">
 
   <style>
     :root {
@@ -50,23 +60,6 @@
       flex-direction: column;
     }
     .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; width: 100%; }
-
-    /* Top Rates Ticker */
-    .top-rates-ticker {
-      background: var(--navy-dark);
-      color: #94a3b8;
-      font-size: 11.5px;
-      font-weight: 600;
-      padding: 7px 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      overflow-x: auto;
-      white-space: nowrap;
-      scrollbar-width: none;
-    }
-    .top-rates-ticker::-webkit-scrollbar { display: none; }
-    .ticker-inner { display: flex; align-items: center; justify-content: center; gap: 14px; padding: 0 16px; }
-    .ticker-item { display: inline-flex; align-items: center; gap: 6px; }
-    .ticker-rate { color: #38bdf8; font-weight: 700; }
 
     /* Header */
     .site-header { background: var(--bg-white); border-bottom: 1px solid var(--border-light); position: sticky; top: 0; z-index: 1000; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04); }
@@ -218,7 +211,6 @@
   </style>
 </head>
 <body>
-  <!-- Top Rates Ticker -->
   <!-- Header -->
   <header class="site-header">
     <div class="container header-inner">
@@ -241,6 +233,11 @@
           <li><a href="/travel-booking-calculator/">Travel &amp; Booking</a></li>
         </ul>
       </nav>
+      <div class="header-right-actions" style="display: flex; align-items: center; gap: 10px;">
+        <button type="button" class="theme-toggle-btn" id="dchThemeToggle" aria-label="Toggle dark mode" title="Toggle Dark/Light Mode">
+          <i class="fas fa-moon"></i>
+        </button>
+      </div>
     </div>
   </header>
 
@@ -323,5 +320,6 @@
     </div>
   </footer>
   <script src="/live-ticker.js" defer></script>
+  <script src="/theme.js" defer></script>
 </body>
 </html>
