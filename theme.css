@@ -1509,6 +1509,9 @@ html[data-theme="dark"] .service-pill:hover .pill-badge {
   .faq-section,
   #searchModal,
   .search-modal,
+  #siteSearchModal,
+  .site-search-modal,
+  .site-search-overlay,
   .tool-pill,
   .live-status-pill,
   .calc-action-bar,
@@ -3931,4 +3934,387 @@ html[data-theme="dark"] div[style*="background:#f5f3ff"] {
   background: #231b40 !important;
 }
 
+/* ==========================================================================
+   TARGETED UI FIXES: D1-D7 (DARK/LIGHT THEME) & R1-R6 (ARABIC RTL)
+   ========================================================================== */
 
+/* --------------------------------------------------------------------------
+   D1: Search Modal Dark-Mode Styling (Matching Live Markup Classes)
+   -------------------------------------------------------------------------- */
+html[data-theme="dark"] .site-search-modal {
+  background: #131b2e !important;
+  border-color: #1e293b !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7) !important;
+}
+html[data-theme="dark"] .site-search-header {
+  background: #0f172a !important;
+  border-bottom-color: #1e293b !important;
+}
+html[data-theme="dark"] .site-search-input {
+  background: transparent !important;
+  color: #f8fafc !important;
+}
+html[data-theme="dark"] .site-search-close-btn {
+  background: #1e293b !important;
+  color: #94a3b8 !important;
+}
+html[data-theme="dark"] .site-search-close-btn:hover {
+  background: #334155 !important;
+  color: #f8fafc !important;
+}
+html[data-theme="dark"] .search-quick-chip {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+  color: #94a3b8 !important;
+}
+html[data-theme="dark"] .search-quick-chip:hover {
+  background: #0284c7 !important;
+  border-color: #38bdf8 !important;
+  color: #ffffff !important;
+}
+html[data-theme="dark"] .search-result-item {
+  color: #f8fafc !important;
+}
+html[data-theme="dark"] .search-result-item:hover,
+html[data-theme="dark"] .search-result-item.selected {
+  background: #1a233a !important;
+  border-color: #38bdf8 !important;
+}
+html[data-theme="dark"] .search-result-title {
+  color: #f8fafc !important;
+}
+html[data-theme="dark"] .search-result-desc {
+  color: #94a3b8 !important;
+}
+html[data-theme="dark"] .search-result-badge {
+  background: #1e293b !important;
+  color: #94a3b8 !important;
+}
+html[data-theme="dark"] .search-empty-state {
+  color: #94a3b8 !important;
+}
+
+/* --------------------------------------------------------------------------
+   D2: Remittance Provider Comparison Cards
+   -------------------------------------------------------------------------- */
+html[data-theme="dark"] .provider-table-card {
+  background: #131b2e !important;
+  border-color: #1e293b !important;
+}
+html[data-theme="dark"] .provider-table-title {
+  color: #f8fafc !important;
+}
+html[data-theme="dark"] .provider-table th {
+  background: #1a233a !important;
+  color: #94a3b8 !important;
+  border-bottom-color: #1e293b !important;
+}
+html[data-theme="dark"] .provider-table td {
+  border-bottom-color: #1e293b !important;
+  color: #f8fafc !important;
+}
+html[data-theme="dark"] .provider-badge-best {
+  background: rgba(16, 185, 129, 0.2) !important;
+  color: #34d399 !important;
+}
+
+/* --------------------------------------------------------------------------
+   D3: Salary/Iqama Table Summary & Total Rows
+   -------------------------------------------------------------------------- */
+html[data-theme="dark"] tr[style*="background:#f8fafc"],
+html[data-theme="dark"] tr[style*="background: #f8fafc"],
+html[data-theme="dark"] .data-table tr[style*="background:#f8fafc"],
+html[data-theme="dark"] .data-table tr[style*="background: #f8fafc"] {
+  background: #1a233a !important;
+  color: #f8fafc !important;
+}
+html[data-theme="dark"] tr[style*="background:#f0fdf4"],
+html[data-theme="dark"] tr[style*="background: #f0fdf4"],
+html[data-theme="dark"] .data-table tr[style*="background:#f0fdf4"],
+html[data-theme="dark"] .data-table tr[style*="background: #f0fdf4"] {
+  background: #0d2319 !important;
+  color: #f8fafc !important;
+}
+
+/* --------------------------------------------------------------------------
+   D4: Category Hub Components (Stat Cards, Accordions, Guides, Badges, Tabs)
+   -------------------------------------------------------------------------- */
+html[data-theme="dark"] .hub-stat-card {
+  background: #131b2e !important;
+  border-color: #1e293b !important;
+  color: #f8fafc !important;
+}
+html[data-theme="dark"] .hub-stat-card .stat-label {
+  color: #94a3b8 !important;
+}
+html[data-theme="dark"] .faq-accordion-item {
+  background: #131b2e !important;
+  border-color: #1e293b !important;
+  color: #f8fafc !important;
+}
+html[data-theme="dark"] .faq-accordion-item:hover {
+  background: #1a233a !important;
+}
+html[data-theme="dark"] .faq-accordion-header {
+  color: #f8fafc !important;
+}
+html[data-theme="dark"] .faq-accordion-content,
+html[data-theme="dark"] .faq-accordion-body {
+  color: #94a3b8 !important;
+}
+html[data-theme="dark"] .guide-content-section {
+  background: #131b2e !important;
+  border-color: #1e293b !important;
+  color: #f8fafc !important;
+}
+html[data-theme="dark"] .guide-content-section h2,
+html[data-theme="dark"] .guide-content-section h3 {
+  color: #f8fafc !important;
+}
+html[data-theme="dark"] .guide-content-section p,
+html[data-theme="dark"] .guide-content-section li {
+  color: #94a3b8 !important;
+}
+html[data-theme="dark"] .hub-pill,
+html[data-theme="dark"] .section-pill,
+html[data-theme="dark"] .section-badge {
+  background: #1a233a !important;
+  color: #94a3b8 !important;
+  border-color: #1e293b !important;
+}
+html[data-theme="dark"] .disclaimer-box {
+  background: rgba(239, 68, 68, 0.12) !important;
+  border-color: rgba(239, 68, 68, 0.3) !important;
+  color: #fca5a5 !important;
+}
+html[data-theme="dark"] .tabs-nav,
+html[data-theme="dark"] .quick-nav-tabs,
+html[data-theme="dark"] .interactive-tabs {
+  background: #1a233a !important;
+  border-color: #1e293b !important;
+}
+html[data-theme="dark"] .tabs-nav button,
+html[data-theme="dark"] .quick-nav-tabs button,
+html[data-theme="dark"] .interactive-tabs button,
+html[data-theme="dark"] .tab-btn {
+  color: #94a3b8 !important;
+}
+html[data-theme="dark"] .tabs-nav button.active,
+html[data-theme="dark"] .quick-nav-tabs button.active,
+html[data-theme="dark"] .interactive-tabs button.active,
+html[data-theme="dark"] .tab-btn.active {
+  background: #0284c7 !important;
+  color: #ffffff !important;
+}
+
+/* --------------------------------------------------------------------------
+   D5: Tool-Specific Disclaimer, Formula, Input-Focus & Toggle Light Surfaces
+   -------------------------------------------------------------------------- */
+html[data-theme="dark"] .disclaimer-alert {
+  background: rgba(239, 68, 68, 0.12) !important;
+  border-color: rgba(239, 68, 68, 0.3) !important;
+  color: #fca5a5 !important;
+}
+html[data-theme="dark"] .formula-card {
+  background: rgba(245, 158, 11, 0.12) !important;
+  border-color: rgba(245, 158, 11, 0.3) !important;
+  color: #fde68a !important;
+}
+html[data-theme="dark"] .input-wrap input:focus,
+html[data-theme="dark"] .input-wrap select:focus {
+  background: #1a233a !important;
+  border-color: #0284c7 !important;
+  color: #f8fafc !important;
+}
+html[data-theme="dark"] .scale-btn {
+  background: #1a233a !important;
+  border-color: #334155 !important;
+  color: #94a3b8 !important;
+}
+html[data-theme="dark"] .scale-btn.active,
+html[data-theme="dark"] .scale-btn:hover {
+  background: #0284c7 !important;
+  color: #ffffff !important;
+  border-color: #0284c7 !important;
+}
+html[data-theme="dark"] .scale-selector-bar {
+  background: #131b2e !important;
+  border-color: #1e293b !important;
+}
+html[data-theme="dark"] .unit-toggle-bar {
+  background: #1a233a !important;
+  border-color: #334155 !important;
+}
+html[data-theme="dark"] .unit-toggle-btn {
+  color: #94a3b8 !important;
+}
+html[data-theme="dark"] .unit-toggle-btn.active {
+  background: #0284c7 !important;
+  color: #ffffff !important;
+}
+html[data-theme="dark"] .radio-label-box {
+  background: #1a233a !important;
+  border-color: #334155 !important;
+  color: #f8fafc !important;
+}
+
+/* --------------------------------------------------------------------------
+   D6: Legal, Contact, About, Privacy, Terms, Disclaimer & 404 Light Surfaces
+   -------------------------------------------------------------------------- */
+html[data-theme="dark"] .form-control {
+  background: #1a233a !important;
+  border-color: #334155 !important;
+  color: #f8fafc !important;
+}
+html[data-theme="dark"] .form-control:focus {
+  background: #1a233a !important;
+  border-color: #0284c7 !important;
+  color: #f8fafc !important;
+}
+html[data-theme="dark"] .ticket-history-item {
+  background: #131b2e !important;
+  border-color: #1e293b !important;
+  color: #f8fafc !important;
+}
+html[data-theme="dark"] .pillar-box {
+  background: #131b2e !important;
+  border-color: #1e293b !important;
+  color: #f8fafc !important;
+}
+html[data-theme="dark"] .pillar-box h3 {
+  color: #f8fafc !important;
+}
+html[data-theme="dark"] .pillar-box p {
+  color: #94a3b8 !important;
+}
+html[data-theme="dark"] .last-updated-tag {
+  background: #1a233a !important;
+  border-color: #334155 !important;
+  color: #94a3b8 !important;
+}
+html[data-theme="dark"] .error-code-badge {
+  background: rgba(239, 68, 68, 0.15) !important;
+  border-color: rgba(239, 68, 68, 0.3) !important;
+  color: #fca5a5 !important;
+}
+
+/* --------------------------------------------------------------------------
+   D7: Low-Contrast Inline Dark Text in Dark Mode
+   -------------------------------------------------------------------------- */
+html[data-theme="dark"] p[style*="color:#334155"],
+html[data-theme="dark"] p[style*="color: #334155"],
+html[data-theme="dark"] span[style*="color:#334155"],
+html[data-theme="dark"] span[style*="color: #334155"],
+html[data-theme="dark"] div[style*="color:#334155"],
+html[data-theme="dark"] div[style*="color: #334155"],
+html[data-theme="dark"] .rules-item {
+  color: #94a3b8 !important;
+}
+html[data-theme="dark"] td[style*="color:#0f766e"],
+html[data-theme="dark"] td[style*="color: #0f766e"] {
+  color: #2dd4bf !important;
+}
+html[data-theme="dark"] td[style*="color:#15803d"],
+html[data-theme="dark"] td[style*="color: #15803d"] {
+  color: #4ade80 !important;
+}
+
+/* --------------------------------------------------------------------------
+   R1: Standalone Container Spacing (Arabic Hubs & Sitewide Screen Containers)
+   -------------------------------------------------------------------------- */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+  box-sizing: border-box;
+}
+@media (max-width: 768px) {
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   R2: Arabic Article List Bullet / Number Indentation Inversion
+   -------------------------------------------------------------------------- */
+html[lang="ar"] .content-article ul,
+html[lang="ar"] .content-article ol,
+html[lang="ar"] .article-content ul,
+html[lang="ar"] .article-content ol,
+html[dir="rtl"] .content-article ul,
+html[dir="rtl"] .content-article ol,
+html[dir="rtl"] .article-content ul,
+html[dir="rtl"] .article-content ol {
+  padding-left: 0 !important;
+  padding-right: 28px !important;
+}
+
+/* --------------------------------------------------------------------------
+   R3: RTL Inline Icon Margin Direction (Flipping margin-right to margin-left)
+   -------------------------------------------------------------------------- */
+html[lang="ar"] i[style*="margin-right:8px"],
+html[lang="ar"] i[style*="margin-right: 8px"],
+html[dir="rtl"] i[style*="margin-right:8px"],
+html[dir="rtl"] i[style*="margin-right: 8px"] {
+  margin-right: 0 !important;
+  margin-left: 8px !important;
+}
+
+/* --------------------------------------------------------------------------
+   R4: Arabic Data Table Mobile Overflow Fit
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  html[lang="ar"] .tool-layout > div,
+  html[lang="ar"] .tool-layout > section,
+  html[dir="rtl"] .tool-layout > div,
+  html[dir="rtl"] .tool-layout > section,
+  html[lang="ar"] .content-article,
+  html[dir="rtl"] .content-article {
+    min-width: 0 !important;
+    max-width: 100% !important;
+  }
+
+  html[lang="ar"] table.data-table,
+  html[dir="rtl"] table.data-table,
+  html[lang="ar"] .data-table,
+  html[dir="rtl"] .data-table {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    box-sizing: border-box !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   R5: Arabic Travel Formula Explanation Natural RTL Alignment
+   -------------------------------------------------------------------------- */
+html[lang="ar"] .editorial-section div[style*="font-family:monospace"],
+html[dir="rtl"] .editorial-section div[style*="font-family:monospace"],
+html[lang="ar"] .content-article div[style*="font-family:monospace"],
+html[dir="rtl"] .content-article div[style*="font-family:monospace"],
+html[lang="ar"] .formula-box,
+html[dir="rtl"] .formula-box {
+  direction: rtl !important;
+  text-align: right !important;
+}
+
+/* --------------------------------------------------------------------------
+   R6: Arabic Number Input Native Stepper Removal
+   -------------------------------------------------------------------------- */
+html[lang="ar"] input[type="number"]::-webkit-inner-spin-button,
+html[lang="ar"] input[type="number"]::-webkit-outer-spin-button,
+html[dir="rtl"] input[type="number"]::-webkit-inner-spin-button,
+html[dir="rtl"] input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none !important;
+  margin: 0 !important;
+}
+html[lang="ar"] input[type="number"],
+html[dir="rtl"] input[type="number"] {
+  -moz-appearance: textfield !important;
+}
