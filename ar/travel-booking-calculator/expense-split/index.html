@@ -351,20 +351,242 @@
         <span>DailyCalcHubs</span>
       </a>
 
-      <div class="header-nav-container" id="navContainer">
-        <ul class="header-nav-links">
-          <li><a href="/ar/">الرئيسية</a></li>
-          <li><a href="/ar/saudi-remittance-calculator/">تحويل الأموال</a></li>
-          <li><a href="/ar/prayer-times/">مواقيت الصلاة</a></li>
-          <li><a href="/ar/saudi-salary-calculator/">الرواتب</a></li>
-          <li><a href="/ar/saudi-iqama-calculator/">الإقامة</a></li>
-          <li><a href="/ar/everyday-smart-calculator/">أدوات يومية</a></li>
-          <li><a href="/ar/shariah-sip-calculator/">استثمار شرعي</a></li>
-          <li><a href="/ar/travel-booking-calculator/" class="active">السفر والحجوزات</a></li>
-        </ul>
+        <nav class="main-navigation" id="mainNavigation" aria-label="التنقل الرئيسي">
+        <a href="/ar/" class="nav-link-item">الرئيسية</a>
+        <a href="/ar/prayer-times/" class="nav-link-item">مواقيت الصلاة</a>
+        <div class="nav-dropdown-item" id="exploreToolsDropdown">
+          <button type="button" class="nav-link-item nav-dropdown-btn" id="exploreToolsBtn" aria-expanded="false" aria-haspopup="true" aria-controls="exploreToolsMenu">
+            <span>استكشف الحاسبات</span>
+            <i class="fas fa-chevron-down nav-dropdown-arrow"></i>
+          </button>
+          
+    <div class="explore-mega-menu" id="exploreToolsMenu" role="menu" aria-label="استكشف الحاسبات والأدوات">
+      <div class="mega-menu-split-layout">
+        <!-- Category Rail (Left in LTR / Right in RTL) -->
+        <div class="mega-cat-rail" role="tablist" aria-orientation="vertical" aria-label="استكشف الحاسبات والأدوات">
+          
+        <button type="button" class="mega-cat-tab active" role="tab" id="tab-salary" aria-selected="true" aria-controls="panel-salary" data-cat="salary" tabindex="0">
+          <span class="mega-cat-icon-badge" style="background:#f5f3ff; color:#7c3aed; border:1px solid #ddd6fe;">
+            <i class="fas fa-briefcase"></i>
+          </span>
+          <span class="mega-cat-tab-title">الرواتب ونظام العمل</span>
+          <span class="mega-cat-tab-count">12</span>
+          <i class="fas fa-chevron-left mega-tab-arrow"></i>
+        </button>
+        <button type="button" class="mega-cat-tab" role="tab" id="tab-iqama" aria-selected="false" aria-controls="panel-iqama" data-cat="iqama" tabindex="-1">
+          <span class="mega-cat-icon-badge" style="background:#fff7ed; color:#ea580c; border:1px solid #fed7aa;">
+            <i class="fas fa-id-card"></i>
+          </span>
+          <span class="mega-cat-tab-title">الإقامة ورخص العمل</span>
+          <span class="mega-cat-tab-count">11</span>
+          <i class="fas fa-chevron-left mega-tab-arrow"></i>
+        </button>
+        <button type="button" class="mega-cat-tab" role="tab" id="tab-remittance" aria-selected="false" aria-controls="panel-remittance" data-cat="remittance" tabindex="-1">
+          <span class="mega-cat-icon-badge" style="background:#f0fdf4; color:#15803d; border:1px solid #bbf7d0;">
+            <i class="fas fa-exchange-alt"></i>
+          </span>
+          <span class="mega-cat-tab-title">تحويل الأموال والصرف</span>
+          <span class="mega-cat-tab-count">10</span>
+          <i class="fas fa-chevron-left mega-tab-arrow"></i>
+        </button>
+        <button type="button" class="mega-cat-tab" role="tab" id="tab-everyday" aria-selected="false" aria-controls="panel-everyday" data-cat="everyday" tabindex="-1">
+          <span class="mega-cat-icon-badge" style="background:#f0f9ff; color:#0ea5e9; border:1px solid #bae6fd;">
+            <i class="fas fa-calculator"></i>
+          </span>
+          <span class="mega-cat-tab-title">أدوات الحياة اليومية</span>
+          <span class="mega-cat-tab-count">12</span>
+          <i class="fas fa-chevron-left mega-tab-arrow"></i>
+        </button>
+        <button type="button" class="mega-cat-tab" role="tab" id="tab-travel" aria-selected="false" aria-controls="panel-travel" data-cat="travel" tabindex="-1">
+          <span class="mega-cat-icon-badge" style="background:#fff1f2; color:#e11d48; border:1px solid #fecdd3;">
+            <i class="fas fa-plane-departure"></i>
+          </span>
+          <span class="mega-cat-tab-title">السفر وحجوزات الطيران</span>
+          <span class="mega-cat-tab-count">5</span>
+          <i class="fas fa-chevron-left mega-tab-arrow"></i>
+        </button>
+        <button type="button" class="mega-cat-tab" role="tab" id="tab-sip" aria-selected="false" aria-controls="panel-sip" data-cat="sip" tabindex="-1">
+          <span class="mega-cat-icon-badge" style="background:#fffbeb; color:#b45309; border:1px solid #fde68a;">
+            <i class="fas fa-coins"></i>
+          </span>
+          <span class="mega-cat-tab-title">الاستثمار الشرعي (SIP)</span>
+          <span class="mega-cat-tab-count">4</span>
+          <i class="fas fa-chevron-left mega-tab-arrow"></i>
+        </button>
+        <button type="button" class="mega-cat-tab" role="tab" id="tab-prayer" aria-selected="false" aria-controls="panel-prayer" data-cat="prayer" tabindex="-1">
+          <span class="mega-cat-icon-badge" style="background:#f0f9ff; color:#0284c7; border:1px solid #bae6fd;">
+            <i class="fas fa-mosque"></i>
+          </span>
+          <span class="mega-cat-tab-title">مواقيت الصلاة والقبلة</span>
+          <span class="mega-cat-tab-count">1</span>
+          <i class="fas fa-chevron-left mega-tab-arrow"></i>
+        </button>
+        </div>
+
+        <!-- Selected Category Content Panel -->
+        <div class="mega-panels-container">
+          
+        <div class="mega-category-panel active" id="panel-salary" role="tabpanel" aria-labelledby="tab-salary">
+          <div class="mega-panel-header">
+            <div class="mega-panel-title-group">
+              <span class="mega-cat-icon-badge" style="background:#f5f3ff; color:#7c3aed; border:1px solid #ddd6fe; width:32px; height:32px; font-size:14px;">
+                <i class="fas fa-briefcase"></i>
+              </span>
+              <div>
+                <h3 class="mega-panel-title">الرواتب ونظام العمل</h3>
+                <p class="mega-panel-desc">مكافأة نهاية الخدمة، صافي الراتب، استقطاع التأمينات والعمل الإضافي</p>
+              </div>
+            </div>
+            <a href="/ar/saudi-salary-calculator/" class="mega-panel-hub-btn">
+              <span>عرض القسم الشامل</span>
+              <i class="fas fa-arrow-left"></i>
+            </a>
+          </div>
+          <div class="mega-panel-tools-grid">
+            <a href="/ar/saudi-salary-calculator/eosb/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">حاسبة مكافأة نهاية الخدمة (EOSB)</span></a><a href="/ar/saudi-salary-calculator/take-home-salary/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">حاسبة صافي الراتب المستلم</span></a><a href="/ar/saudi-salary-calculator/gosi-calculator/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">حاسبة التأمينات الاجتماعية (GOSI)</span></a><a href="/ar/saudi-salary-calculator/overtime/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">حاسبة ساعات العمل الإضافي</span></a><a href="/ar/saudi-salary-calculator/final-settlement/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">حاسبة تصفية المستحقات النهائية</span></a><a href="/ar/saudi-salary-calculator/resignation-gratuity/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">حاسبة مكافأة الاستقالة</span></a><a href="/ar/saudi-salary-calculator/basic-salary/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">حاسبة الراتب الأساسي</span></a><a href="/ar/saudi-salary-calculator/salary-allowances/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">حاسبة البدلات والمزايا</span></a><a href="/ar/saudi-salary-calculator/daily-salary/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">حاسبة أجر اليوم وخصم الغياب</span></a><a href="/ar/saudi-salary-calculator/hourly-salary/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">حاسبة أجر الساعة</span></a><a href="/ar/saudi-salary-calculator/annual-salary/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">حاسبة الراتب السنوي والدخل الإجمالي</span></a><a href="/ar/saudi-salary-calculator/salary-increment/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">حاسبة العلاوة وزيادة الراتب</span></a>
+          </div>
+        </div>
+        <div class="mega-category-panel" id="panel-iqama" role="tabpanel" aria-labelledby="tab-iqama">
+          <div class="mega-panel-header">
+            <div class="mega-panel-title-group">
+              <span class="mega-cat-icon-badge" style="background:#fff7ed; color:#ea580c; border:1px solid #fed7aa; width:32px; height:32px; font-size:14px;">
+                <i class="fas fa-id-card"></i>
+              </span>
+              <div>
+                <h3 class="mega-panel-title">الإقامة ورخص العمل</h3>
+                <p class="mega-panel-desc">رسوم تجديد الإقامة، مقابل المرافقين المالي ورخص العمل</p>
+              </div>
+            </div>
+            <a href="/ar/saudi-iqama-calculator/" class="mega-panel-hub-btn">
+              <span>عرض القسم الشامل</span>
+              <i class="fas fa-arrow-left"></i>
+            </a>
+          </div>
+          <div class="mega-panel-tools-grid">
+            <a href="/ar/saudi-iqama-calculator/iqama-cost/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">حاسبة التكلفة الإجمالية للإقامة</span></a><a href="/ar/saudi-iqama-calculator/dependent-fee/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">حاسبة رسوم المرافقين</span></a><a href="/ar/saudi-iqama-calculator/family-dependent-cost/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">حاسبة تكلفة إقامة المرافقين والتابعين</span></a><a href="/ar/saudi-iqama-calculator/maktab-amal/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">حاسبة المقابل المالي لمكتب العمل</span></a><a href="/ar/saudi-iqama-calculator/renewal-fee/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">حاسبة رسوم تجديد الإقامة</span></a><a href="/ar/saudi-iqama-calculator/renewal-guide/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">دليل تجديد الإقامة خطوة بخطوة</span></a><a href="/ar/saudi-iqama-calculator/work-permit/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">حاسبة رسوم رخصة العمل</span></a><a href="/ar/saudi-iqama-calculator/3-month-cost/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">حاسبة تجديد الإقامة 3 أشهر</span></a><a href="/ar/saudi-iqama-calculator/6-month-cost/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">حاسبة تجديد الإقامة 6 أشهر</span></a><a href="/ar/saudi-iqama-calculator/9-month-cost/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">حاسبة تجديد الإقامة 9 أشهر</span></a><a href="/ar/saudi-iqama-calculator/12-month-cost/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">تكلفة تجديد الإقامة السنوية 12 شهراً</span></a>
+          </div>
+        </div>
+        <div class="mega-category-panel" id="panel-remittance" role="tabpanel" aria-labelledby="tab-remittance">
+          <div class="mega-panel-header">
+            <div class="mega-panel-title-group">
+              <span class="mega-cat-icon-badge" style="background:#f0fdf4; color:#15803d; border:1px solid #bbf7d0; width:32px; height:32px; font-size:14px;">
+                <i class="fas fa-exchange-alt"></i>
+              </span>
+              <div>
+                <h3 class="mega-panel-title">تحويل الأموال والصرف</h3>
+                <p class="mega-panel-desc">أسعار صرف الريال المباشرة، مقارنة رسوم التحويل والدليل الإرشادي</p>
+              </div>
+            </div>
+            <a href="/ar/saudi-remittance-calculator/" class="mega-panel-hub-btn">
+              <span>عرض القسم الشامل</span>
+              <i class="fas fa-arrow-left"></i>
+            </a>
+          </div>
+          <div class="mega-panel-tools-grid">
+            <a href="/ar/saudi-remittance-calculator/live-sar-exchange-rate/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">أسعار صرف العملات الحية مقابل الريال</span></a><a href="/ar/saudi-remittance-calculator/sar-to-inr/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">تحويل الريال إلى الروبية الهندية (INR)</span></a><a href="/ar/saudi-remittance-calculator/sar-to-pkr/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">تحويل الريال إلى الروبية الباكستانية (PKR)</span></a><a href="/ar/saudi-remittance-calculator/sar-to-bdt/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">تحويل الريال إلى التاكا البنغلاديشية (BDT)</span></a><a href="/ar/saudi-remittance-calculator/sar-to-php/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">تحويل الريال إلى البيزو الفلبيني (PHP)</span></a><a href="/ar/saudi-remittance-calculator/sar-to-npr/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">تحويل الريال إلى الروبية النيبالية (NPR)</span></a><a href="/ar/saudi-remittance-calculator/sar-to-lkr/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">تحويل الريال إلى الروبية السريلانكية (LKR)</span></a><a href="/ar/saudi-remittance-calculator/remittance-comparison/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">مقارنة رسوم ومنصات تحويل الأموال</span></a><a href="/ar/saudi-remittance-calculator/remittance-fee/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">حاسبة رسوم التحويل المالي الدولي</span></a><a href="/ar/saudi-remittance-calculator/saudi-to-india-remittance-guide/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">دليل تحويل الأموال من السعودية إلى الهند</span></a>
+          </div>
+        </div>
+        <div class="mega-category-panel" id="panel-everyday" role="tabpanel" aria-labelledby="tab-everyday">
+          <div class="mega-panel-header">
+            <div class="mega-panel-title-group">
+              <span class="mega-cat-icon-badge" style="background:#f0f9ff; color:#0ea5e9; border:1px solid #bae6fd; width:32px; height:32px; font-size:14px;">
+                <i class="fas fa-calculator"></i>
+              </span>
+              <div>
+                <h3 class="mega-panel-title">أدوات الحياة اليومية</h3>
+                <p class="mega-panel-desc">العمر، الخصومات، الوقود، الكهرباء، مؤشر كتلة الجسم وتقسيم الفواتير</p>
+              </div>
+            </div>
+            <a href="/ar/everyday-smart-calculator/" class="mega-panel-hub-btn">
+              <span>عرض القسم الشامل</span>
+              <i class="fas fa-arrow-left"></i>
+            </a>
+          </div>
+          <div class="mega-panel-tools-grid">
+            <a href="/ar/everyday-smart-calculator/age-calculator/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">حاسبة العمر وتاريخ الميلاد</span></a><a href="/ar/everyday-smart-calculator/discount-calculator/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">حاسبة الخصم وضريبة القيمة المضافة</span></a><a href="/ar/everyday-smart-calculator/percentage-calculator/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">حاسبة النسبة المئوية (4 أوضاع)</span></a><a href="/ar/everyday-smart-calculator/split-bill-calculator/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">حاسبة تقسيم الفاتورة بالتساوي</span></a><a href="/ar/everyday-smart-calculator/fuel-cost-calculator/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">حاسبة تكلفة استهلاك الوقود</span></a><a href="/ar/everyday-smart-calculator/electricity-cost-calculator/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">حاسبة فاتورة الكهرباء السعودية</span></a><a href="/ar/everyday-smart-calculator/appliance-electricity-consumption/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">حاسبة استهلاك الأجهزة للطاقة</span></a><a href="/ar/everyday-smart-calculator/bmi-calculator/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">حاسبة مؤشر كتلة الجسم (BMI)</span></a><a href="/ar/everyday-smart-calculator/tip-calculator/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">حاسبة البقشيش والإكرامية</span></a><a href="/ar/everyday-smart-calculator/time-duration-calculator/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">حاسبة الفترات الزمنية والتواريخ</span></a><a href="/ar/everyday-smart-calculator/gpa-calculator/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">حاسبة المعدل التراكمي الجامعي (GPA)</span></a><a href="/ar/everyday-smart-calculator/unit-converter/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">محول الوحدات القياسية الشامل</span></a>
+          </div>
+        </div>
+        <div class="mega-category-panel" id="panel-travel" role="tabpanel" aria-labelledby="tab-travel">
+          <div class="mega-panel-header">
+            <div class="mega-panel-title-group">
+              <span class="mega-cat-icon-badge" style="background:#fff1f2; color:#e11d48; border:1px solid #fecdd3; width:32px; height:32px; font-size:14px;">
+                <i class="fas fa-plane-departure"></i>
+              </span>
+              <div>
+                <h3 class="mega-panel-title">السفر وحجوزات الطيران</h3>
+                <p class="mega-panel-desc">تكاليف الطيران، الفنادق، ميزانية الرحلة وتقسيم مصاريف السفر</p>
+              </div>
+            </div>
+            <a href="/ar/travel-booking-calculator/" class="mega-panel-hub-btn">
+              <span>عرض القسم الشامل</span>
+              <i class="fas fa-arrow-left"></i>
+            </a>
+          </div>
+          <div class="mega-panel-tools-grid">
+            <a href="/ar/travel-booking-calculator/flight-cost/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">حاسبة تكلفة تذاكر الطيران</span></a><a href="/ar/travel-booking-calculator/hotel-cost/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">حاسبة تكلفة الفنادق والإقامة</span></a><a href="/ar/travel-booking-calculator/expense-split/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">حاسبة تقسيم مصاريف السفر والرحلات</span></a><a href="/ar/travel-booking-calculator/booking-cost/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">حاسبة رسوم الحجز والرسوم الإضافية</span></a><a href="/ar/travel-booking-calculator/travel-budget/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">حاسبة ميزانية السفر الشاملة</span></a>
+          </div>
+        </div>
+        <div class="mega-category-panel" id="panel-sip" role="tabpanel" aria-labelledby="tab-sip">
+          <div class="mega-panel-header">
+            <div class="mega-panel-title-group">
+              <span class="mega-cat-icon-badge" style="background:#fffbeb; color:#b45309; border:1px solid #fde68a; width:32px; height:32px; font-size:14px;">
+                <i class="fas fa-coins"></i>
+              </span>
+              <div>
+                <h3 class="mega-panel-title">الاستثمار الشرعي (SIP)</h3>
+                <p class="mega-panel-desc">صناديق الاستثمار المتوافقة مع الشريعة، خطط الأهداف ونمو الثروة</p>
+              </div>
+            </div>
+            <a href="/ar/shariah-sip-calculator/" class="mega-panel-hub-btn">
+              <span>عرض القسم الشامل</span>
+              <i class="fas fa-arrow-left"></i>
+            </a>
+          </div>
+          <div class="mega-panel-tools-grid">
+            <a href="/ar/shariah-sip-calculator/sip-calculator/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">حاسبة الاستثمار الشهري التراكمي (SIP)</span></a><a href="/ar/shariah-sip-calculator/sip-goal-calculator/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">حاسبة تحقيق الهدف المالي الاستثماري</span></a><a href="/ar/shariah-sip-calculator/monthly-investment-calculator/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">حاسبة الاستثمار الشهري التراكمي</span></a><a href="/ar/shariah-sip-calculator/lump-sum-calculator/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">حاسبة الاستثمار بمبلغ مقطوع مقابل SIP</span></a>
+          </div>
+        </div>
+        <div class="mega-category-panel" id="panel-prayer" role="tabpanel" aria-labelledby="tab-prayer">
+          <div class="mega-panel-header">
+            <div class="mega-panel-title-group">
+              <span class="mega-cat-icon-badge" style="background:#f0f9ff; color:#0284c7; border:1px solid #bae6fd; width:32px; height:32px; font-size:14px;">
+                <i class="fas fa-mosque"></i>
+              </span>
+              <div>
+                <h3 class="mega-panel-title">مواقيت الصلاة والقبلة</h3>
+                <p class="mega-panel-desc">مواقيت الصلاة الدقيقة حسب تقويم أم القرى واتجاه القبلة</p>
+              </div>
+            </div>
+            <a href="/ar/prayer-times/" class="mega-panel-hub-btn">
+              <span>عرض القسم الشامل</span>
+              <i class="fas fa-arrow-left"></i>
+            </a>
+          </div>
+          <div class="mega-panel-tools-grid">
+            <a href="/ar/prayer-times/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">مواقيت الصلاة الرسمية واتجاه القبلة</span></a>
+          </div>
+        </div>
+        </div>
       </div>
 
-      <div class="header-right-actions" style="display: flex; align-items: center; gap: 10px;">
+      <!-- Bottom Status & Quick Link Bar -->
+      <div class="mega-menu-footer">
+        <div class="mega-footer-count">
+          <i class="fas fa-layer-group" style="color: #0284c7;"></i>
+          <span>55 حاسبة وأداة</span>
+        </div>
+        <a href="/ar/#popular-calculators" class="mega-footer-link" onclick="closeExploreDropdown()">
+          <span>عرض كافة الأقسام بالصفحة الرئيسية</span>
+          <i class="fas fa-arrow-left"></i>
+        </a>
+      </div>
+    </div>
+    
+        </div>
+        <a href="/ar/travel-booking-calculator/" class="nav-link-item active">السفر والحجوزات</a>
+      </nav>
+
+        <div class="header-right-actions" style="display: flex; align-items: center; gap: 10px;">
         <a href="/travel-booking-calculator/expense-split/" class="lang-switch-btn" lang="en" hreflang="en" title="Switch to English" aria-label="Switch to English"><i class="fas fa-globe"></i> <span>EN</span></a>
         <button type="button" class="theme-toggle-btn" id="dchThemeToggle" aria-label="تبديل الوضع الليلي" title="تبديل الوضع الليلي / النهاري">
           <i class="fas fa-moon"></i>
@@ -375,6 +597,199 @@
       </div>
     </div>
   </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-nav-container" id="navContainer">
+    <div class="mobile-nav-backdrop" id="mobileNavBackdrop"></div>
+    <div class="mobile-nav-drawer">
+      <div class="mobile-nav-header">
+        <div class="mobile-logo-group">
+          <div class="logo-icon-box" style="width:34px;height:34px;font-size:15px;background:#0284c7;color:#fff;border-radius:10px;display:flex;align-items:center;justify-content:center;">
+            <i class="fas fa-calculator"></i>
+          </div>
+          <div class="logo-text-group">
+            <span class="logo-title" style="font-size:18px;font-weight:800;color:var(--text-dark,#0f172a);">DailyCalc<span style="color:#38bdf8;">Hubs</span></span>
+          </div>
+        </div>
+        <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="إغلاق القائمة">
+          <i class="fas fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="mobile-nav-body">
+        <div class="mobile-nav-top-row">
+          <a href="/ar/" class="nav-link-item"><i class="fas fa-home"></i> <span>الرئيسية</span></a>
+          <a href="/ar/prayer-times/" class="nav-link-item"><i class="fas fa-mosque"></i> <span>مواقيت الصلاة</span></a>
+        </div>
+
+        <div class="mobile-nav-heading">55 حاسبة وأداة</div>
+
+        <div class="mobile-accordion" id="mobileAccordion">
+          
+        <div class="mobile-accordion-item">
+          <button type="button" class="mobile-accordion-header" aria-expanded="false">
+            <div class="mobile-acc-title-group">
+              <span class="mobile-acc-icon" style="background:#f5f3ff; color:#7c3aed; border: 1px solid #ddd6fe;">
+                <i class="fas fa-briefcase"></i>
+              </span>
+              <span class="mobile-acc-title">الرواتب ونظام العمل</span>
+              <span class="mobile-acc-count">12</span>
+            </div>
+            <i class="fas fa-chevron-down mobile-acc-chevron"></i>
+          </button>
+          <div class="mobile-accordion-body">
+            <a href="/ar/saudi-salary-calculator/" class="mobile-acc-hub-link">
+              <span>انتقل إلى القسم الشامل</span>
+              <span>&larr;</span>
+            </a>
+            <div class="mobile-acc-links-list">
+              <a href="/ar/saudi-salary-calculator/eosb/" class="mobile-acc-tool-link">حاسبة مكافأة نهاية الخدمة (EOSB)</a><a href="/ar/saudi-salary-calculator/take-home-salary/" class="mobile-acc-tool-link">حاسبة صافي الراتب المستلم</a><a href="/ar/saudi-salary-calculator/gosi-calculator/" class="mobile-acc-tool-link">حاسبة التأمينات الاجتماعية (GOSI)</a><a href="/ar/saudi-salary-calculator/overtime/" class="mobile-acc-tool-link">حاسبة ساعات العمل الإضافي</a><a href="/ar/saudi-salary-calculator/final-settlement/" class="mobile-acc-tool-link">حاسبة تصفية المستحقات النهائية</a><a href="/ar/saudi-salary-calculator/resignation-gratuity/" class="mobile-acc-tool-link">حاسبة مكافأة الاستقالة</a><a href="/ar/saudi-salary-calculator/basic-salary/" class="mobile-acc-tool-link">حاسبة الراتب الأساسي</a><a href="/ar/saudi-salary-calculator/salary-allowances/" class="mobile-acc-tool-link">حاسبة البدلات والمزايا</a><a href="/ar/saudi-salary-calculator/daily-salary/" class="mobile-acc-tool-link">حاسبة أجر اليوم وخصم الغياب</a><a href="/ar/saudi-salary-calculator/hourly-salary/" class="mobile-acc-tool-link">حاسبة أجر الساعة</a><a href="/ar/saudi-salary-calculator/annual-salary/" class="mobile-acc-tool-link">حاسبة الراتب السنوي والدخل الإجمالي</a><a href="/ar/saudi-salary-calculator/salary-increment/" class="mobile-acc-tool-link">حاسبة العلاوة وزيادة الراتب</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="mobile-accordion-item">
+          <button type="button" class="mobile-accordion-header" aria-expanded="false">
+            <div class="mobile-acc-title-group">
+              <span class="mobile-acc-icon" style="background:#fff7ed; color:#ea580c; border: 1px solid #fed7aa;">
+                <i class="fas fa-id-card"></i>
+              </span>
+              <span class="mobile-acc-title">الإقامة ورخص العمل</span>
+              <span class="mobile-acc-count">11</span>
+            </div>
+            <i class="fas fa-chevron-down mobile-acc-chevron"></i>
+          </button>
+          <div class="mobile-accordion-body">
+            <a href="/ar/saudi-iqama-calculator/" class="mobile-acc-hub-link">
+              <span>انتقل إلى القسم الشامل</span>
+              <span>&larr;</span>
+            </a>
+            <div class="mobile-acc-links-list">
+              <a href="/ar/saudi-iqama-calculator/iqama-cost/" class="mobile-acc-tool-link">حاسبة التكلفة الإجمالية للإقامة</a><a href="/ar/saudi-iqama-calculator/dependent-fee/" class="mobile-acc-tool-link">حاسبة رسوم المرافقين</a><a href="/ar/saudi-iqama-calculator/family-dependent-cost/" class="mobile-acc-tool-link">حاسبة تكلفة إقامة المرافقين والتابعين</a><a href="/ar/saudi-iqama-calculator/maktab-amal/" class="mobile-acc-tool-link">حاسبة المقابل المالي لمكتب العمل</a><a href="/ar/saudi-iqama-calculator/renewal-fee/" class="mobile-acc-tool-link">حاسبة رسوم تجديد الإقامة</a><a href="/ar/saudi-iqama-calculator/renewal-guide/" class="mobile-acc-tool-link">دليل تجديد الإقامة خطوة بخطوة</a><a href="/ar/saudi-iqama-calculator/work-permit/" class="mobile-acc-tool-link">حاسبة رسوم رخصة العمل</a><a href="/ar/saudi-iqama-calculator/3-month-cost/" class="mobile-acc-tool-link">حاسبة تجديد الإقامة 3 أشهر</a><a href="/ar/saudi-iqama-calculator/6-month-cost/" class="mobile-acc-tool-link">حاسبة تجديد الإقامة 6 أشهر</a><a href="/ar/saudi-iqama-calculator/9-month-cost/" class="mobile-acc-tool-link">حاسبة تجديد الإقامة 9 أشهر</a><a href="/ar/saudi-iqama-calculator/12-month-cost/" class="mobile-acc-tool-link">تكلفة تجديد الإقامة السنوية 12 شهراً</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="mobile-accordion-item">
+          <button type="button" class="mobile-accordion-header" aria-expanded="false">
+            <div class="mobile-acc-title-group">
+              <span class="mobile-acc-icon" style="background:#f0fdf4; color:#15803d; border: 1px solid #bbf7d0;">
+                <i class="fas fa-exchange-alt"></i>
+              </span>
+              <span class="mobile-acc-title">تحويل الأموال والصرف</span>
+              <span class="mobile-acc-count">10</span>
+            </div>
+            <i class="fas fa-chevron-down mobile-acc-chevron"></i>
+          </button>
+          <div class="mobile-accordion-body">
+            <a href="/ar/saudi-remittance-calculator/" class="mobile-acc-hub-link">
+              <span>انتقل إلى القسم الشامل</span>
+              <span>&larr;</span>
+            </a>
+            <div class="mobile-acc-links-list">
+              <a href="/ar/saudi-remittance-calculator/live-sar-exchange-rate/" class="mobile-acc-tool-link">أسعار صرف العملات الحية مقابل الريال</a><a href="/ar/saudi-remittance-calculator/sar-to-inr/" class="mobile-acc-tool-link">تحويل الريال إلى الروبية الهندية (INR)</a><a href="/ar/saudi-remittance-calculator/sar-to-pkr/" class="mobile-acc-tool-link">تحويل الريال إلى الروبية الباكستانية (PKR)</a><a href="/ar/saudi-remittance-calculator/sar-to-bdt/" class="mobile-acc-tool-link">تحويل الريال إلى التاكا البنغلاديشية (BDT)</a><a href="/ar/saudi-remittance-calculator/sar-to-php/" class="mobile-acc-tool-link">تحويل الريال إلى البيزو الفلبيني (PHP)</a><a href="/ar/saudi-remittance-calculator/sar-to-npr/" class="mobile-acc-tool-link">تحويل الريال إلى الروبية النيبالية (NPR)</a><a href="/ar/saudi-remittance-calculator/sar-to-lkr/" class="mobile-acc-tool-link">تحويل الريال إلى الروبية السريلانكية (LKR)</a><a href="/ar/saudi-remittance-calculator/remittance-comparison/" class="mobile-acc-tool-link">مقارنة رسوم ومنصات تحويل الأموال</a><a href="/ar/saudi-remittance-calculator/remittance-fee/" class="mobile-acc-tool-link">حاسبة رسوم التحويل المالي الدولي</a><a href="/ar/saudi-remittance-calculator/saudi-to-india-remittance-guide/" class="mobile-acc-tool-link">دليل تحويل الأموال من السعودية إلى الهند</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="mobile-accordion-item">
+          <button type="button" class="mobile-accordion-header" aria-expanded="false">
+            <div class="mobile-acc-title-group">
+              <span class="mobile-acc-icon" style="background:#f0f9ff; color:#0ea5e9; border: 1px solid #bae6fd;">
+                <i class="fas fa-calculator"></i>
+              </span>
+              <span class="mobile-acc-title">أدوات الحياة اليومية</span>
+              <span class="mobile-acc-count">12</span>
+            </div>
+            <i class="fas fa-chevron-down mobile-acc-chevron"></i>
+          </button>
+          <div class="mobile-accordion-body">
+            <a href="/ar/everyday-smart-calculator/" class="mobile-acc-hub-link">
+              <span>انتقل إلى القسم الشامل</span>
+              <span>&larr;</span>
+            </a>
+            <div class="mobile-acc-links-list">
+              <a href="/ar/everyday-smart-calculator/age-calculator/" class="mobile-acc-tool-link">حاسبة العمر وتاريخ الميلاد</a><a href="/ar/everyday-smart-calculator/discount-calculator/" class="mobile-acc-tool-link">حاسبة الخصم وضريبة القيمة المضافة</a><a href="/ar/everyday-smart-calculator/percentage-calculator/" class="mobile-acc-tool-link">حاسبة النسبة المئوية (4 أوضاع)</a><a href="/ar/everyday-smart-calculator/split-bill-calculator/" class="mobile-acc-tool-link">حاسبة تقسيم الفاتورة بالتساوي</a><a href="/ar/everyday-smart-calculator/fuel-cost-calculator/" class="mobile-acc-tool-link">حاسبة تكلفة استهلاك الوقود</a><a href="/ar/everyday-smart-calculator/electricity-cost-calculator/" class="mobile-acc-tool-link">حاسبة فاتورة الكهرباء السعودية</a><a href="/ar/everyday-smart-calculator/appliance-electricity-consumption/" class="mobile-acc-tool-link">حاسبة استهلاك الأجهزة للطاقة</a><a href="/ar/everyday-smart-calculator/bmi-calculator/" class="mobile-acc-tool-link">حاسبة مؤشر كتلة الجسم (BMI)</a><a href="/ar/everyday-smart-calculator/tip-calculator/" class="mobile-acc-tool-link">حاسبة البقشيش والإكرامية</a><a href="/ar/everyday-smart-calculator/time-duration-calculator/" class="mobile-acc-tool-link">حاسبة الفترات الزمنية والتواريخ</a><a href="/ar/everyday-smart-calculator/gpa-calculator/" class="mobile-acc-tool-link">حاسبة المعدل التراكمي الجامعي (GPA)</a><a href="/ar/everyday-smart-calculator/unit-converter/" class="mobile-acc-tool-link">محول الوحدات القياسية الشامل</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="mobile-accordion-item">
+          <button type="button" class="mobile-accordion-header" aria-expanded="false">
+            <div class="mobile-acc-title-group">
+              <span class="mobile-acc-icon" style="background:#fff1f2; color:#e11d48; border: 1px solid #fecdd3;">
+                <i class="fas fa-plane-departure"></i>
+              </span>
+              <span class="mobile-acc-title">السفر وحجوزات الطيران</span>
+              <span class="mobile-acc-count">5</span>
+            </div>
+            <i class="fas fa-chevron-down mobile-acc-chevron"></i>
+          </button>
+          <div class="mobile-accordion-body">
+            <a href="/ar/travel-booking-calculator/" class="mobile-acc-hub-link">
+              <span>انتقل إلى القسم الشامل</span>
+              <span>&larr;</span>
+            </a>
+            <div class="mobile-acc-links-list">
+              <a href="/ar/travel-booking-calculator/flight-cost/" class="mobile-acc-tool-link">حاسبة تكلفة تذاكر الطيران</a><a href="/ar/travel-booking-calculator/hotel-cost/" class="mobile-acc-tool-link">حاسبة تكلفة الفنادق والإقامة</a><a href="/ar/travel-booking-calculator/expense-split/" class="mobile-acc-tool-link">حاسبة تقسيم مصاريف السفر والرحلات</a><a href="/ar/travel-booking-calculator/booking-cost/" class="mobile-acc-tool-link">حاسبة رسوم الحجز والرسوم الإضافية</a><a href="/ar/travel-booking-calculator/travel-budget/" class="mobile-acc-tool-link">حاسبة ميزانية السفر الشاملة</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="mobile-accordion-item">
+          <button type="button" class="mobile-accordion-header" aria-expanded="false">
+            <div class="mobile-acc-title-group">
+              <span class="mobile-acc-icon" style="background:#fffbeb; color:#b45309; border: 1px solid #fde68a;">
+                <i class="fas fa-coins"></i>
+              </span>
+              <span class="mobile-acc-title">الاستثمار الشرعي (SIP)</span>
+              <span class="mobile-acc-count">4</span>
+            </div>
+            <i class="fas fa-chevron-down mobile-acc-chevron"></i>
+          </button>
+          <div class="mobile-accordion-body">
+            <a href="/ar/shariah-sip-calculator/" class="mobile-acc-hub-link">
+              <span>انتقل إلى القسم الشامل</span>
+              <span>&larr;</span>
+            </a>
+            <div class="mobile-acc-links-list">
+              <a href="/ar/shariah-sip-calculator/sip-calculator/" class="mobile-acc-tool-link">حاسبة الاستثمار الشهري التراكمي (SIP)</a><a href="/ar/shariah-sip-calculator/sip-goal-calculator/" class="mobile-acc-tool-link">حاسبة تحقيق الهدف المالي الاستثماري</a><a href="/ar/shariah-sip-calculator/monthly-investment-calculator/" class="mobile-acc-tool-link">حاسبة الاستثمار الشهري التراكمي</a><a href="/ar/shariah-sip-calculator/lump-sum-calculator/" class="mobile-acc-tool-link">حاسبة الاستثمار بمبلغ مقطوع مقابل SIP</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="mobile-accordion-item">
+          <button type="button" class="mobile-accordion-header" aria-expanded="false">
+            <div class="mobile-acc-title-group">
+              <span class="mobile-acc-icon" style="background:#f0f9ff; color:#0284c7; border: 1px solid #bae6fd;">
+                <i class="fas fa-mosque"></i>
+              </span>
+              <span class="mobile-acc-title">مواقيت الصلاة والقبلة</span>
+              <span class="mobile-acc-count">1</span>
+            </div>
+            <i class="fas fa-chevron-down mobile-acc-chevron"></i>
+          </button>
+          <div class="mobile-accordion-body">
+            <a href="/ar/prayer-times/" class="mobile-acc-hub-link">
+              <span>انتقل إلى القسم الشامل</span>
+              <span>&larr;</span>
+            </a>
+            <div class="mobile-acc-links-list">
+              <a href="/ar/prayer-times/" class="mobile-acc-tool-link">مواقيت الصلاة الرسمية واتجاه القبلة</a>
+            </div>
+          </div>
+        </div>
+        
+        </div>
+      </div>
+
+      <div class="mobile-nav-footer" style="padding:14px 18px;border-top:1px solid #e2e8f0;display:flex;align-items:center;justify-content:space-between;gap:12px;">
+        <a href="/travel-booking-calculator/expense-split/index.html" class="lang-switch-btn" title="Switch to English" aria-label="Switch to English">
+          <i class="fas fa-globe" aria-hidden="true"></i> <span>English</span>
+        </a>
+      </div>
+    </div>
+  </div>
 
   <!-- Breadcrumbs -->
   <section class="breadcrumbs-section">
@@ -419,7 +834,7 @@
             <div class="input-group">
               <label for="numTravelers">عدد المسافرين المشاركين</label>
               <div class="input-wrap">
-                <input type="number" id="numTravelers" value="4" min="2" max="25">
+                <input type="number" id="numTravelers" value="4" min="2" max="25" dir="ltr" inputmode="decimal">
               </div>
               <span class="field-hint">الأفراد الذين يشاركون في تقاسم التكاليف المشتركة</span>
             </div>
@@ -427,7 +842,7 @@
             <div class="input-group">
               <label for="tripDays">مدة الرحلة (بالأيام)</label>
               <div class="input-wrap">
-                <input type="number" id="tripDays" value="5" min="1" max="60">
+                <input type="number" id="tripDays" value="5" min="1" max="60" dir="ltr" inputmode="decimal">
               </div>
               <span class="field-hint">طول مدة الإجازة لحساب المتوسط اليومي</span>
             </div>
@@ -440,7 +855,7 @@
               <label for="lodgingShared">السكن المشترك (فيلا / شاليه / شقة)</label>
               <div class="input-wrap">
                 <span class="unit">ر.س</span>
-                <input type="number" id="lodgingShared" class="has-unit" value="3200" min="0" step="50">
+                <input type="number" id="lodgingShared" class="has-unit" value="3200" min="0" step="50" dir="ltr" inputmode="decimal">
               </div>
             </div>
 
@@ -448,7 +863,7 @@
               <label for="foodShared">الوجبات والمطاعم ومشتريات البقالة</label>
               <div class="input-wrap">
                 <span class="unit">ر.س</span>
-                <input type="number" id="foodShared" class="has-unit" value="1600" min="0" step="50">
+                <input type="number" id="foodShared" class="has-unit" value="1600" min="0" step="50" dir="ltr" inputmode="decimal">
               </div>
             </div>
           </div>
@@ -458,7 +873,7 @@
               <label for="transitShared">استئجار السيارة، الوقود ورسوم الطرق</label>
               <div class="input-wrap">
                 <span class="unit">ر.س</span>
-                <input type="number" id="transitShared" class="has-unit" value="950" min="0" step="25">
+                <input type="number" id="transitShared" class="has-unit" value="950" min="0" step="25" dir="ltr" inputmode="decimal">
               </div>
             </div>
 
@@ -466,7 +881,7 @@
               <label for="activitiesShared">الجولات السياحية والتذاكر والفعاليات</label>
               <div class="input-wrap">
                 <span class="unit">ر.س</span>
-                <input type="number" id="activitiesShared" class="has-unit" value="750" min="0" step="25">
+                <input type="number" id="activitiesShared" class="has-unit" value="750" min="0" step="25" dir="ltr" inputmode="decimal">
               </div>
             </div>
           </div>
@@ -478,7 +893,7 @@
               <label for="paidByYou">المبلغ المدفوع مسبقاً من قِبلك</label>
               <div class="input-wrap">
                 <span class="unit">ر.س</span>
-                <input type="number" id="paidByYou" class="has-unit" value="4150" min="0" step="50">
+                <input type="number" id="paidByYou" class="has-unit" value="4150" min="0" step="50" dir="ltr" inputmode="decimal">
               </div>
               <span class="field-hint">ما سددته ببطاقتك الائتمانية أو نقداً للمجموعة</span>
             </div>
@@ -487,7 +902,7 @@
               <label for="paidByOthers">المبالغ المدفوعة من قِبل بقية الأصدقاء</label>
               <div class="input-wrap">
                 <span class="unit">ر.س</span>
-                <input type="number" id="paidByOthers" class="has-unit" value="2350" min="0" step="50">
+                <input type="number" id="paidByOthers" class="has-unit" value="2350" min="0" step="50" dir="ltr" inputmode="decimal">
               </div>
               <span class="field-hint">المدفوعات التي سددها أعضاء الرحلة الآخرون</span>
             </div>

@@ -40,6 +40,7 @@
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_US">
   <meta property="og:url" content="https://dailycalchubs.com/travel-booking-calculator/expense-split/">
   <meta property="og:title" content="Travel Expense Splitter — Group Vacation &amp; Trip Bill Settlement Calculator">
   <meta property="og:description" content="Split group vacation costs fairly among friends and family. Calculate shared lodging, meals, transport, and activities with per-person shares and who owes whom.">
@@ -351,20 +352,242 @@
         <span>DailyCalcHubs</span>
       </a>
 
-      <div class="header-nav-container" id="navContainer">
-        <nav class="main-nav">
-          <a href="/" class="nav-link">Home</a>
-          <a href="/saudi-remittance-calculator/" class="nav-link">Remittance</a>
-          <a href="/prayer-times/" class="nav-link">Prayer Times</a>
-          <a href="/saudi-salary-calculator/" class="nav-link">Salary</a>
-          <a href="/saudi-iqama-calculator/" class="nav-link">Iqama</a>
-          <a href="/everyday-smart-calculator/" class="nav-link">Everyday</a>
-          <a href="/shariah-sip-calculator/" class="nav-link">Shariah SIP</a>
-          <a href="/travel-booking-calculator/" class="nav-link active">Travel &amp; Booking</a>
-        </nav>
+        <nav class="main-navigation" id="mainNavigation" aria-label="Main Navigation">
+        <a href="/" class="nav-link-item">Home</a>
+        <a href="/prayer-times/" class="nav-link-item">Prayer Times</a>
+        <div class="nav-dropdown-item" id="exploreToolsDropdown">
+          <button type="button" class="nav-link-item nav-dropdown-btn" id="exploreToolsBtn" aria-expanded="false" aria-haspopup="true" aria-controls="exploreToolsMenu">
+            <span>Explore Tools</span>
+            <i class="fas fa-chevron-down nav-dropdown-arrow"></i>
+          </button>
+          
+    <div class="explore-mega-menu" id="exploreToolsMenu" role="menu" aria-label="Explore Calculators and Tools">
+      <div class="mega-menu-split-layout">
+        <!-- Category Rail (Left in LTR / Right in RTL) -->
+        <div class="mega-cat-rail" role="tablist" aria-orientation="vertical" aria-label="Explore Calculators and Tools">
+          
+        <button type="button" class="mega-cat-tab active" role="tab" id="tab-salary" aria-selected="true" aria-controls="panel-salary" data-cat="salary" tabindex="0">
+          <span class="mega-cat-icon-badge" style="background:#f5f3ff; color:#7c3aed; border:1px solid #ddd6fe;">
+            <i class="fas fa-briefcase"></i>
+          </span>
+          <span class="mega-cat-tab-title">Salary & Labor Law</span>
+          <span class="mega-cat-tab-count">12</span>
+          <i class="fas fa-chevron-right mega-tab-arrow"></i>
+        </button>
+        <button type="button" class="mega-cat-tab" role="tab" id="tab-iqama" aria-selected="false" aria-controls="panel-iqama" data-cat="iqama" tabindex="-1">
+          <span class="mega-cat-icon-badge" style="background:#fff7ed; color:#ea580c; border:1px solid #fed7aa;">
+            <i class="fas fa-id-card"></i>
+          </span>
+          <span class="mega-cat-tab-title">Iqama & Residency</span>
+          <span class="mega-cat-tab-count">11</span>
+          <i class="fas fa-chevron-right mega-tab-arrow"></i>
+        </button>
+        <button type="button" class="mega-cat-tab" role="tab" id="tab-remittance" aria-selected="false" aria-controls="panel-remittance" data-cat="remittance" tabindex="-1">
+          <span class="mega-cat-icon-badge" style="background:#f0fdf4; color:#15803d; border:1px solid #bbf7d0;">
+            <i class="fas fa-exchange-alt"></i>
+          </span>
+          <span class="mega-cat-tab-title">Remittance & Forex</span>
+          <span class="mega-cat-tab-count">10</span>
+          <i class="fas fa-chevron-right mega-tab-arrow"></i>
+        </button>
+        <button type="button" class="mega-cat-tab" role="tab" id="tab-everyday" aria-selected="false" aria-controls="panel-everyday" data-cat="everyday" tabindex="-1">
+          <span class="mega-cat-icon-badge" style="background:#f0f9ff; color:#0ea5e9; border:1px solid #bae6fd;">
+            <i class="fas fa-calculator"></i>
+          </span>
+          <span class="mega-cat-tab-title">Everyday Smart Tools</span>
+          <span class="mega-cat-tab-count">12</span>
+          <i class="fas fa-chevron-right mega-tab-arrow"></i>
+        </button>
+        <button type="button" class="mega-cat-tab" role="tab" id="tab-travel" aria-selected="false" aria-controls="panel-travel" data-cat="travel" tabindex="-1">
+          <span class="mega-cat-icon-badge" style="background:#fff1f2; color:#e11d48; border:1px solid #fecdd3;">
+            <i class="fas fa-plane-departure"></i>
+          </span>
+          <span class="mega-cat-tab-title">Travel & Booking</span>
+          <span class="mega-cat-tab-count">5</span>
+          <i class="fas fa-chevron-right mega-tab-arrow"></i>
+        </button>
+        <button type="button" class="mega-cat-tab" role="tab" id="tab-sip" aria-selected="false" aria-controls="panel-sip" data-cat="sip" tabindex="-1">
+          <span class="mega-cat-icon-badge" style="background:#fffbeb; color:#b45309; border:1px solid #fde68a;">
+            <i class="fas fa-coins"></i>
+          </span>
+          <span class="mega-cat-tab-title">Shariah SIP & Wealth</span>
+          <span class="mega-cat-tab-count">4</span>
+          <i class="fas fa-chevron-right mega-tab-arrow"></i>
+        </button>
+        <button type="button" class="mega-cat-tab" role="tab" id="tab-prayer" aria-selected="false" aria-controls="panel-prayer" data-cat="prayer" tabindex="-1">
+          <span class="mega-cat-icon-badge" style="background:#f0f9ff; color:#0284c7; border:1px solid #bae6fd;">
+            <i class="fas fa-mosque"></i>
+          </span>
+          <span class="mega-cat-tab-title">Prayer & Religious</span>
+          <span class="mega-cat-tab-count">1</span>
+          <i class="fas fa-chevron-right mega-tab-arrow"></i>
+        </button>
+        </div>
+
+        <!-- Selected Category Content Panel -->
+        <div class="mega-panels-container">
+          
+        <div class="mega-category-panel active" id="panel-salary" role="tabpanel" aria-labelledby="tab-salary">
+          <div class="mega-panel-header">
+            <div class="mega-panel-title-group">
+              <span class="mega-cat-icon-badge" style="background:#f5f3ff; color:#7c3aed; border:1px solid #ddd6fe; width:32px; height:32px; font-size:14px;">
+                <i class="fas fa-briefcase"></i>
+              </span>
+              <div>
+                <h3 class="mega-panel-title">Salary & Labor Law</h3>
+                <p class="mega-panel-desc">EOSB gratuity, wage breakdowns, overtime & labor rules</p>
+              </div>
+            </div>
+            <a href="/saudi-salary-calculator/" class="mega-panel-hub-btn">
+              <span>View Category Hub</span>
+              <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+          <div class="mega-panel-tools-grid">
+            <a href="/saudi-salary-calculator/eosb/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">End of Service (EOSB) Gratuity</span></a><a href="/saudi-salary-calculator/take-home-salary/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">Net Take-Home Salary Calculator</span></a><a href="/saudi-salary-calculator/gosi-calculator/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">GOSI Contribution Calculator</span></a><a href="/saudi-salary-calculator/overtime/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">Overtime Calculator (Article 107)</span></a><a href="/saudi-salary-calculator/final-settlement/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">Final Settlement Calculator</span></a><a href="/saudi-salary-calculator/resignation-gratuity/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">Resignation Gratuity (Article 85)</span></a><a href="/saudi-salary-calculator/basic-salary/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">Basic Salary Calculator</span></a><a href="/saudi-salary-calculator/salary-allowances/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">Salary Allowances Calculator</span></a><a href="/saudi-salary-calculator/daily-salary/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">Daily Salary Calculator</span></a><a href="/saudi-salary-calculator/hourly-salary/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">Hourly Salary Calculator</span></a><a href="/saudi-salary-calculator/annual-salary/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">Annual Salary Calculator</span></a><a href="/saudi-salary-calculator/salary-increment/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">Salary Increment Calculator</span></a>
+          </div>
+        </div>
+        <div class="mega-category-panel" id="panel-iqama" role="tabpanel" aria-labelledby="tab-iqama">
+          <div class="mega-panel-header">
+            <div class="mega-panel-title-group">
+              <span class="mega-cat-icon-badge" style="background:#fff7ed; color:#ea580c; border:1px solid #fed7aa; width:32px; height:32px; font-size:14px;">
+                <i class="fas fa-id-card"></i>
+              </span>
+              <div>
+                <h3 class="mega-panel-title">Iqama & Residency</h3>
+                <p class="mega-panel-desc">Iqama renewal costs, dependent levies & work permits</p>
+              </div>
+            </div>
+            <a href="/saudi-iqama-calculator/" class="mega-panel-hub-btn">
+              <span>View Category Hub</span>
+              <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+          <div class="mega-panel-tools-grid">
+            <a href="/saudi-iqama-calculator/iqama-cost/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">Total Saudi Iqama Cost</span></a><a href="/saudi-iqama-calculator/dependent-fee/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">Saudi Dependent Fee & Levy</span></a><a href="/saudi-iqama-calculator/family-dependent-cost/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">Family Dependent Cost Calculator</span></a><a href="/saudi-iqama-calculator/maktab-amal/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">Maktab Amal Work Permit Fee</span></a><a href="/saudi-iqama-calculator/renewal-fee/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">Iqama Renewal Fee Calculator</span></a><a href="/saudi-iqama-calculator/renewal-guide/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">Complete Iqama Renewal Guide</span></a><a href="/saudi-iqama-calculator/work-permit/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">Work Permit (Karat Amal) Fee</span></a><a href="/saudi-iqama-calculator/3-month-cost/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">3-Month Quarterly Iqama Cost</span></a><a href="/saudi-iqama-calculator/6-month-cost/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">6-Month Half-Year Iqama Cost</span></a><a href="/saudi-iqama-calculator/9-month-cost/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">9-Month Iqama Cost</span></a><a href="/saudi-iqama-calculator/12-month-cost/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">12-Month Annual Iqama Cost</span></a>
+          </div>
+        </div>
+        <div class="mega-category-panel" id="panel-remittance" role="tabpanel" aria-labelledby="tab-remittance">
+          <div class="mega-panel-header">
+            <div class="mega-panel-title-group">
+              <span class="mega-cat-icon-badge" style="background:#f0fdf4; color:#15803d; border:1px solid #bbf7d0; width:32px; height:32px; font-size:14px;">
+                <i class="fas fa-exchange-alt"></i>
+              </span>
+              <div>
+                <h3 class="mega-panel-title">Remittance & Forex</h3>
+                <p class="mega-panel-desc">Live SAR exchange rates, transfer fees & corridors</p>
+              </div>
+            </div>
+            <a href="/saudi-remittance-calculator/" class="mega-panel-hub-btn">
+              <span>View Category Hub</span>
+              <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+          <div class="mega-panel-tools-grid">
+            <a href="/saudi-remittance-calculator/live-sar-exchange-rate/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">Live SAR Exchange Rates</span></a><a href="/saudi-remittance-calculator/sar-to-inr/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">SAR to INR (India)</span></a><a href="/saudi-remittance-calculator/sar-to-pkr/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">SAR to PKR (Pakistan)</span></a><a href="/saudi-remittance-calculator/sar-to-bdt/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">SAR to BDT (Bangladesh)</span></a><a href="/saudi-remittance-calculator/sar-to-php/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">SAR to PHP (Philippines)</span></a><a href="/saudi-remittance-calculator/sar-to-npr/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">SAR to NPR (Nepal)</span></a><a href="/saudi-remittance-calculator/sar-to-lkr/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">SAR to LKR (Sri Lanka)</span></a><a href="/saudi-remittance-calculator/remittance-comparison/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">Remittance Comparison Tool</span></a><a href="/saudi-remittance-calculator/remittance-fee/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">Remittance Fee Calculator</span></a><a href="/saudi-remittance-calculator/saudi-to-india-remittance-guide/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">Saudi to India Remittance Guide</span></a>
+          </div>
+        </div>
+        <div class="mega-category-panel" id="panel-everyday" role="tabpanel" aria-labelledby="tab-everyday">
+          <div class="mega-panel-header">
+            <div class="mega-panel-title-group">
+              <span class="mega-cat-icon-badge" style="background:#f0f9ff; color:#0ea5e9; border:1px solid #bae6fd; width:32px; height:32px; font-size:14px;">
+                <i class="fas fa-calculator"></i>
+              </span>
+              <div>
+                <h3 class="mega-panel-title">Everyday Smart Tools</h3>
+                <p class="mega-panel-desc">Age, discounts, fuel, electricity, BMI, bills & converters</p>
+              </div>
+            </div>
+            <a href="/everyday-smart-calculator/" class="mega-panel-hub-btn">
+              <span>View Category Hub</span>
+              <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+          <div class="mega-panel-tools-grid">
+            <a href="/everyday-smart-calculator/age-calculator/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">Age & Date of Birth Calculator</span></a><a href="/everyday-smart-calculator/discount-calculator/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">Smart Discount & Sale Price</span></a><a href="/everyday-smart-calculator/percentage-calculator/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">Percentage Calculator (4 Modes)</span></a><a href="/everyday-smart-calculator/split-bill-calculator/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">Split Bill & Group Expense</span></a><a href="/everyday-smart-calculator/fuel-cost-calculator/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">Fuel & Petrol Cost Calculator</span></a><a href="/everyday-smart-calculator/electricity-cost-calculator/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">Electricity / Unit Cost Calculator</span></a><a href="/everyday-smart-calculator/appliance-electricity-consumption/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">Appliance Electricity Consumption</span></a><a href="/everyday-smart-calculator/bmi-calculator/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">BMI Health Calculator</span></a><a href="/everyday-smart-calculator/tip-calculator/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">Tip & Gratuity Calculator</span></a><a href="/everyday-smart-calculator/time-duration-calculator/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">Time Duration & Date Difference</span></a><a href="/everyday-smart-calculator/gpa-calculator/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">GPA / Grade Point Calculator</span></a><a href="/everyday-smart-calculator/unit-converter/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">Universal Unit Converter</span></a>
+          </div>
+        </div>
+        <div class="mega-category-panel" id="panel-travel" role="tabpanel" aria-labelledby="tab-travel">
+          <div class="mega-panel-header">
+            <div class="mega-panel-title-group">
+              <span class="mega-cat-icon-badge" style="background:#fff1f2; color:#e11d48; border:1px solid #fecdd3; width:32px; height:32px; font-size:14px;">
+                <i class="fas fa-plane-departure"></i>
+              </span>
+              <div>
+                <h3 class="mega-panel-title">Travel & Booking</h3>
+                <p class="mega-panel-desc">Flight, hotel, travel expense splitter & trip budgets</p>
+              </div>
+            </div>
+            <a href="/travel-booking-calculator/" class="mega-panel-hub-btn">
+              <span>View Category Hub</span>
+              <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+          <div class="mega-panel-tools-grid">
+            <a href="/travel-booking-calculator/flight-cost/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">Flight Cost Calculator</span></a><a href="/travel-booking-calculator/hotel-cost/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">Hotel Cost Calculator</span></a><a href="/travel-booking-calculator/expense-split/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">Travel Expense Splitter</span></a><a href="/travel-booking-calculator/booking-cost/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">Booking Cost & Fee Calculator</span></a><a href="/travel-booking-calculator/travel-budget/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">Travel Budget Calculator</span></a>
+          </div>
+        </div>
+        <div class="mega-category-panel" id="panel-sip" role="tabpanel" aria-labelledby="tab-sip">
+          <div class="mega-panel-header">
+            <div class="mega-panel-title-group">
+              <span class="mega-cat-icon-badge" style="background:#fffbeb; color:#b45309; border:1px solid #fde68a; width:32px; height:32px; font-size:14px;">
+                <i class="fas fa-coins"></i>
+              </span>
+              <div>
+                <h3 class="mega-panel-title">Shariah SIP & Wealth</h3>
+                <p class="mega-panel-desc">Halal mutual funds, goal planning & wealth compounding</p>
+              </div>
+            </div>
+            <a href="/shariah-sip-calculator/" class="mega-panel-hub-btn">
+              <span>View Category Hub</span>
+              <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+          <div class="mega-panel-tools-grid">
+            <a href="/shariah-sip-calculator/sip-calculator/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">Shariah SIP Calculator</span></a><a href="/shariah-sip-calculator/sip-goal-calculator/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">Shariah SIP Goal Calculator</span></a><a href="/shariah-sip-calculator/monthly-investment-calculator/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">Monthly Investment Compounding</span></a><a href="/shariah-sip-calculator/lump-sum-calculator/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">Lump Sum vs SIP Wealth Projection</span></a>
+          </div>
+        </div>
+        <div class="mega-category-panel" id="panel-prayer" role="tabpanel" aria-labelledby="tab-prayer">
+          <div class="mega-panel-header">
+            <div class="mega-panel-title-group">
+              <span class="mega-cat-icon-badge" style="background:#f0f9ff; color:#0284c7; border:1px solid #bae6fd; width:32px; height:32px; font-size:14px;">
+                <i class="fas fa-mosque"></i>
+              </span>
+              <div>
+                <h3 class="mega-panel-title">Prayer & Religious</h3>
+                <p class="mega-panel-desc">Accurate Umm Al-Qura prayer times and Qibla direction</p>
+              </div>
+            </div>
+            <a href="/prayer-times/" class="mega-panel-hub-btn">
+              <span>View Category Hub</span>
+              <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+          <div class="mega-panel-tools-grid">
+            <a href="/prayer-times/" class="mega-tool-item" role="menuitem"><span class="mega-tool-bullet"></span><span class="mega-tool-text">Umm Al-Qura Prayer Times & Qibla</span></a>
+          </div>
+        </div>
+        </div>
       </div>
 
-      <div class="header-right-actions" style="display: flex; align-items: center; gap: 10px;">
+      <!-- Bottom Status & Quick Link Bar -->
+      <div class="mega-menu-footer">
+        <div class="mega-footer-count">
+          <i class="fas fa-layer-group" style="color: #0284c7;"></i>
+          <span>55 Calculators & Tools</span>
+        </div>
+        <a href="/#popular-calculators" class="mega-footer-link" onclick="closeExploreDropdown()">
+          <span>View All Categories on Homepage</span>
+          <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+    
+        </div>
+        <a href="/travel-booking-calculator/" class="nav-link-item active">Travel & Booking</a>
+      </nav>
+
+        <div class="header-right-actions" style="display: flex; align-items: center; gap: 10px;">
         <a href="/ar/travel-booking-calculator/expense-split/" class="lang-switch-btn" title="النسخة العربية">العربية</a>
         <button type="button" class="theme-toggle-btn" id="dchThemeToggle" aria-label="Toggle dark mode" title="Toggle Dark/Light Mode">
           <i class="fas fa-moon"></i>
@@ -375,6 +598,199 @@
       </div>
     </div>
   </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-nav-container" id="navContainer">
+    <div class="mobile-nav-backdrop" id="mobileNavBackdrop"></div>
+    <div class="mobile-nav-drawer">
+      <div class="mobile-nav-header">
+        <div class="mobile-logo-group">
+          <div class="logo-icon-box" style="width:34px;height:34px;font-size:15px;background:#0284c7;color:#fff;border-radius:10px;display:flex;align-items:center;justify-content:center;">
+            <i class="fas fa-calculator"></i>
+          </div>
+          <div class="logo-text-group">
+            <span class="logo-title" style="font-size:18px;font-weight:800;color:var(--text-dark,#0f172a);">DailyCalc<span style="color:#38bdf8;">Hubs</span></span>
+          </div>
+        </div>
+        <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Close menu">
+          <i class="fas fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="mobile-nav-body">
+        <div class="mobile-nav-top-row">
+          <a href="/" class="nav-link-item"><i class="fas fa-home"></i> <span>Home</span></a>
+          <a href="/prayer-times/" class="nav-link-item"><i class="fas fa-mosque"></i> <span>Prayer Times</span></a>
+        </div>
+
+        <div class="mobile-nav-heading">55 Calculators & Tools</div>
+
+        <div class="mobile-accordion" id="mobileAccordion">
+          
+        <div class="mobile-accordion-item">
+          <button type="button" class="mobile-accordion-header" aria-expanded="false">
+            <div class="mobile-acc-title-group">
+              <span class="mobile-acc-icon" style="background:#f5f3ff; color:#7c3aed; border: 1px solid #ddd6fe;">
+                <i class="fas fa-briefcase"></i>
+              </span>
+              <span class="mobile-acc-title">Salary & Labor Law</span>
+              <span class="mobile-acc-count">12</span>
+            </div>
+            <i class="fas fa-chevron-down mobile-acc-chevron"></i>
+          </button>
+          <div class="mobile-accordion-body">
+            <a href="/saudi-salary-calculator/" class="mobile-acc-hub-link">
+              <span>View Full Category Hub</span>
+              <span>&rarr;</span>
+            </a>
+            <div class="mobile-acc-links-list">
+              <a href="/saudi-salary-calculator/eosb/" class="mobile-acc-tool-link">End of Service (EOSB) Gratuity</a><a href="/saudi-salary-calculator/take-home-salary/" class="mobile-acc-tool-link">Net Take-Home Salary Calculator</a><a href="/saudi-salary-calculator/gosi-calculator/" class="mobile-acc-tool-link">GOSI Contribution Calculator</a><a href="/saudi-salary-calculator/overtime/" class="mobile-acc-tool-link">Overtime Calculator (Article 107)</a><a href="/saudi-salary-calculator/final-settlement/" class="mobile-acc-tool-link">Final Settlement Calculator</a><a href="/saudi-salary-calculator/resignation-gratuity/" class="mobile-acc-tool-link">Resignation Gratuity (Article 85)</a><a href="/saudi-salary-calculator/basic-salary/" class="mobile-acc-tool-link">Basic Salary Calculator</a><a href="/saudi-salary-calculator/salary-allowances/" class="mobile-acc-tool-link">Salary Allowances Calculator</a><a href="/saudi-salary-calculator/daily-salary/" class="mobile-acc-tool-link">Daily Salary Calculator</a><a href="/saudi-salary-calculator/hourly-salary/" class="mobile-acc-tool-link">Hourly Salary Calculator</a><a href="/saudi-salary-calculator/annual-salary/" class="mobile-acc-tool-link">Annual Salary Calculator</a><a href="/saudi-salary-calculator/salary-increment/" class="mobile-acc-tool-link">Salary Increment Calculator</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="mobile-accordion-item">
+          <button type="button" class="mobile-accordion-header" aria-expanded="false">
+            <div class="mobile-acc-title-group">
+              <span class="mobile-acc-icon" style="background:#fff7ed; color:#ea580c; border: 1px solid #fed7aa;">
+                <i class="fas fa-id-card"></i>
+              </span>
+              <span class="mobile-acc-title">Iqama & Residency</span>
+              <span class="mobile-acc-count">11</span>
+            </div>
+            <i class="fas fa-chevron-down mobile-acc-chevron"></i>
+          </button>
+          <div class="mobile-accordion-body">
+            <a href="/saudi-iqama-calculator/" class="mobile-acc-hub-link">
+              <span>View Full Category Hub</span>
+              <span>&rarr;</span>
+            </a>
+            <div class="mobile-acc-links-list">
+              <a href="/saudi-iqama-calculator/iqama-cost/" class="mobile-acc-tool-link">Total Saudi Iqama Cost</a><a href="/saudi-iqama-calculator/dependent-fee/" class="mobile-acc-tool-link">Saudi Dependent Fee & Levy</a><a href="/saudi-iqama-calculator/family-dependent-cost/" class="mobile-acc-tool-link">Family Dependent Cost Calculator</a><a href="/saudi-iqama-calculator/maktab-amal/" class="mobile-acc-tool-link">Maktab Amal Work Permit Fee</a><a href="/saudi-iqama-calculator/renewal-fee/" class="mobile-acc-tool-link">Iqama Renewal Fee Calculator</a><a href="/saudi-iqama-calculator/renewal-guide/" class="mobile-acc-tool-link">Complete Iqama Renewal Guide</a><a href="/saudi-iqama-calculator/work-permit/" class="mobile-acc-tool-link">Work Permit (Karat Amal) Fee</a><a href="/saudi-iqama-calculator/3-month-cost/" class="mobile-acc-tool-link">3-Month Quarterly Iqama Cost</a><a href="/saudi-iqama-calculator/6-month-cost/" class="mobile-acc-tool-link">6-Month Half-Year Iqama Cost</a><a href="/saudi-iqama-calculator/9-month-cost/" class="mobile-acc-tool-link">9-Month Iqama Cost</a><a href="/saudi-iqama-calculator/12-month-cost/" class="mobile-acc-tool-link">12-Month Annual Iqama Cost</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="mobile-accordion-item">
+          <button type="button" class="mobile-accordion-header" aria-expanded="false">
+            <div class="mobile-acc-title-group">
+              <span class="mobile-acc-icon" style="background:#f0fdf4; color:#15803d; border: 1px solid #bbf7d0;">
+                <i class="fas fa-exchange-alt"></i>
+              </span>
+              <span class="mobile-acc-title">Remittance & Forex</span>
+              <span class="mobile-acc-count">10</span>
+            </div>
+            <i class="fas fa-chevron-down mobile-acc-chevron"></i>
+          </button>
+          <div class="mobile-accordion-body">
+            <a href="/saudi-remittance-calculator/" class="mobile-acc-hub-link">
+              <span>View Full Category Hub</span>
+              <span>&rarr;</span>
+            </a>
+            <div class="mobile-acc-links-list">
+              <a href="/saudi-remittance-calculator/live-sar-exchange-rate/" class="mobile-acc-tool-link">Live SAR Exchange Rates</a><a href="/saudi-remittance-calculator/sar-to-inr/" class="mobile-acc-tool-link">SAR to INR (India)</a><a href="/saudi-remittance-calculator/sar-to-pkr/" class="mobile-acc-tool-link">SAR to PKR (Pakistan)</a><a href="/saudi-remittance-calculator/sar-to-bdt/" class="mobile-acc-tool-link">SAR to BDT (Bangladesh)</a><a href="/saudi-remittance-calculator/sar-to-php/" class="mobile-acc-tool-link">SAR to PHP (Philippines)</a><a href="/saudi-remittance-calculator/sar-to-npr/" class="mobile-acc-tool-link">SAR to NPR (Nepal)</a><a href="/saudi-remittance-calculator/sar-to-lkr/" class="mobile-acc-tool-link">SAR to LKR (Sri Lanka)</a><a href="/saudi-remittance-calculator/remittance-comparison/" class="mobile-acc-tool-link">Remittance Comparison Tool</a><a href="/saudi-remittance-calculator/remittance-fee/" class="mobile-acc-tool-link">Remittance Fee Calculator</a><a href="/saudi-remittance-calculator/saudi-to-india-remittance-guide/" class="mobile-acc-tool-link">Saudi to India Remittance Guide</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="mobile-accordion-item">
+          <button type="button" class="mobile-accordion-header" aria-expanded="false">
+            <div class="mobile-acc-title-group">
+              <span class="mobile-acc-icon" style="background:#f0f9ff; color:#0ea5e9; border: 1px solid #bae6fd;">
+                <i class="fas fa-calculator"></i>
+              </span>
+              <span class="mobile-acc-title">Everyday Smart Tools</span>
+              <span class="mobile-acc-count">12</span>
+            </div>
+            <i class="fas fa-chevron-down mobile-acc-chevron"></i>
+          </button>
+          <div class="mobile-accordion-body">
+            <a href="/everyday-smart-calculator/" class="mobile-acc-hub-link">
+              <span>View Full Category Hub</span>
+              <span>&rarr;</span>
+            </a>
+            <div class="mobile-acc-links-list">
+              <a href="/everyday-smart-calculator/age-calculator/" class="mobile-acc-tool-link">Age & Date of Birth Calculator</a><a href="/everyday-smart-calculator/discount-calculator/" class="mobile-acc-tool-link">Smart Discount & Sale Price</a><a href="/everyday-smart-calculator/percentage-calculator/" class="mobile-acc-tool-link">Percentage Calculator (4 Modes)</a><a href="/everyday-smart-calculator/split-bill-calculator/" class="mobile-acc-tool-link">Split Bill & Group Expense</a><a href="/everyday-smart-calculator/fuel-cost-calculator/" class="mobile-acc-tool-link">Fuel & Petrol Cost Calculator</a><a href="/everyday-smart-calculator/electricity-cost-calculator/" class="mobile-acc-tool-link">Electricity / Unit Cost Calculator</a><a href="/everyday-smart-calculator/appliance-electricity-consumption/" class="mobile-acc-tool-link">Appliance Electricity Consumption</a><a href="/everyday-smart-calculator/bmi-calculator/" class="mobile-acc-tool-link">BMI Health Calculator</a><a href="/everyday-smart-calculator/tip-calculator/" class="mobile-acc-tool-link">Tip & Gratuity Calculator</a><a href="/everyday-smart-calculator/time-duration-calculator/" class="mobile-acc-tool-link">Time Duration & Date Difference</a><a href="/everyday-smart-calculator/gpa-calculator/" class="mobile-acc-tool-link">GPA / Grade Point Calculator</a><a href="/everyday-smart-calculator/unit-converter/" class="mobile-acc-tool-link">Universal Unit Converter</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="mobile-accordion-item">
+          <button type="button" class="mobile-accordion-header" aria-expanded="false">
+            <div class="mobile-acc-title-group">
+              <span class="mobile-acc-icon" style="background:#fff1f2; color:#e11d48; border: 1px solid #fecdd3;">
+                <i class="fas fa-plane-departure"></i>
+              </span>
+              <span class="mobile-acc-title">Travel & Booking</span>
+              <span class="mobile-acc-count">5</span>
+            </div>
+            <i class="fas fa-chevron-down mobile-acc-chevron"></i>
+          </button>
+          <div class="mobile-accordion-body">
+            <a href="/travel-booking-calculator/" class="mobile-acc-hub-link">
+              <span>View Full Category Hub</span>
+              <span>&rarr;</span>
+            </a>
+            <div class="mobile-acc-links-list">
+              <a href="/travel-booking-calculator/flight-cost/" class="mobile-acc-tool-link">Flight Cost Calculator</a><a href="/travel-booking-calculator/hotel-cost/" class="mobile-acc-tool-link">Hotel Cost Calculator</a><a href="/travel-booking-calculator/expense-split/" class="mobile-acc-tool-link">Travel Expense Splitter</a><a href="/travel-booking-calculator/booking-cost/" class="mobile-acc-tool-link">Booking Cost & Fee Calculator</a><a href="/travel-booking-calculator/travel-budget/" class="mobile-acc-tool-link">Travel Budget Calculator</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="mobile-accordion-item">
+          <button type="button" class="mobile-accordion-header" aria-expanded="false">
+            <div class="mobile-acc-title-group">
+              <span class="mobile-acc-icon" style="background:#fffbeb; color:#b45309; border: 1px solid #fde68a;">
+                <i class="fas fa-coins"></i>
+              </span>
+              <span class="mobile-acc-title">Shariah SIP & Wealth</span>
+              <span class="mobile-acc-count">4</span>
+            </div>
+            <i class="fas fa-chevron-down mobile-acc-chevron"></i>
+          </button>
+          <div class="mobile-accordion-body">
+            <a href="/shariah-sip-calculator/" class="mobile-acc-hub-link">
+              <span>View Full Category Hub</span>
+              <span>&rarr;</span>
+            </a>
+            <div class="mobile-acc-links-list">
+              <a href="/shariah-sip-calculator/sip-calculator/" class="mobile-acc-tool-link">Shariah SIP Calculator</a><a href="/shariah-sip-calculator/sip-goal-calculator/" class="mobile-acc-tool-link">Shariah SIP Goal Calculator</a><a href="/shariah-sip-calculator/monthly-investment-calculator/" class="mobile-acc-tool-link">Monthly Investment Compounding</a><a href="/shariah-sip-calculator/lump-sum-calculator/" class="mobile-acc-tool-link">Lump Sum vs SIP Wealth Projection</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="mobile-accordion-item">
+          <button type="button" class="mobile-accordion-header" aria-expanded="false">
+            <div class="mobile-acc-title-group">
+              <span class="mobile-acc-icon" style="background:#f0f9ff; color:#0284c7; border: 1px solid #bae6fd;">
+                <i class="fas fa-mosque"></i>
+              </span>
+              <span class="mobile-acc-title">Prayer & Religious</span>
+              <span class="mobile-acc-count">1</span>
+            </div>
+            <i class="fas fa-chevron-down mobile-acc-chevron"></i>
+          </button>
+          <div class="mobile-accordion-body">
+            <a href="/prayer-times/" class="mobile-acc-hub-link">
+              <span>View Full Category Hub</span>
+              <span>&rarr;</span>
+            </a>
+            <div class="mobile-acc-links-list">
+              <a href="/prayer-times/" class="mobile-acc-tool-link">Umm Al-Qura Prayer Times & Qibla</a>
+            </div>
+          </div>
+        </div>
+        
+        </div>
+      </div>
+
+      <div class="mobile-nav-footer" style="padding:14px 18px;border-top:1px solid #e2e8f0;display:flex;align-items:center;justify-content:space-between;gap:12px;">
+        <a href="/ar/travel-booking-calculator/expense-split/index.html" class="lang-switch-btn" title="التحويل إلى اللغة العربية" aria-label="التحويل إلى اللغة العربية">
+          <i class="fas fa-globe" aria-hidden="true"></i> <span>العربية</span>
+        </a>
+      </div>
+    </div>
+  </div>
 
   <!-- Breadcrumbs -->
   <section class="breadcrumbs-section">
@@ -730,6 +1146,7 @@
           <li><a href="/contact/">Contact Support</a></li>
           <li><a href="/privacy-policy/">Privacy Policy</a></li>
           <li><a href="/terms/">Terms of Service</a></li>
+            <li><a href="/disclaimer/">Disclaimer</a></li>
         </ul>
       </div>
     </div>
