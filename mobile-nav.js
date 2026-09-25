@@ -1,4 +1,4 @@
-﻿/**
+/**
  * DailyCalcHubs — Dedicated Mobile Navigation Controller
  * Handles mobile hamburger toggle, accessible ARIA states, and outside-click dismissal.
  * Isolated from theme.js and Night Mode.
@@ -16,8 +16,11 @@
     if (menuBtn.dataset.navInitialized === 'true') return;
     menuBtn.dataset.navInitialized = 'true';
 
+    var drawer = navContainer.querySelector('.mobile-nav-drawer');
+
     function openMenu() {
       navContainer.classList.add('open');
+      if (drawer) drawer.classList.add('open');
       menuBtn.setAttribute('aria-expanded', 'true');
       var icon = menuBtn.querySelector('i');
       if (icon) {
@@ -28,6 +31,7 @@
 
     function closeMenu() {
       navContainer.classList.remove('open');
+      if (drawer) drawer.classList.remove('open');
       menuBtn.setAttribute('aria-expanded', 'false');
       var icon = menuBtn.querySelector('i');
       if (icon) {

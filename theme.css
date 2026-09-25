@@ -2239,107 +2239,7 @@ html[lang="ar"] * {
   letter-spacing: normal !important;
 }
 
-/* 1. Mobile Navigation Drawer (Hidden by default, slides out when active) */
-html[lang="ar"] .mobile-nav-drawer {
-  display: none !important;
-  position: fixed !important;
-  top: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  width: 290px !important;
-  max-width: 85vw !important;
-  background: #ffffff !important;
-  z-index: 100000 !important;
-  box-shadow: -4px 0 25px rgba(0, 0, 0, 0.2) !important;
-  padding: 24px 20px !important;
-  overflow-y: auto !important;
-  flex-direction: column !important;
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-  direction: rtl !important;
-  text-align: right !important;
-}
-
-html[lang="ar"] .mobile-nav-drawer.open,
-html[lang="ar"] .mobile-nav-drawer.active {
-  display: flex !important;
-}
-
-html[lang="ar"] .mobile-nav-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-bottom: 16px;
-  border-bottom: 1px solid #e2e8f0;
-  margin-bottom: 16px;
-}
-
-html[lang="ar"] .mobile-nav-header .brand-name {
-  font-size: 18px;
-  font-weight: 800;
-  color: #0f172a;
-}
-
-html[lang="ar"] .mobile-nav-header .brand-name span {
-  color: #0ea5e9;
-}
-
-html[lang="ar"] .mobile-nav-close {
-  background: none;
-  border: none;
-  font-size: 20px;
-  color: #64748b;
-  cursor: pointer;
-  padding: 4px;
-}
-
-html[lang="ar"] .mobile-nav-close:hover {
-  color: #0f172a;
-}
-
-html[lang="ar"] .mobile-nav-links {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-html[lang="ar"] .mobile-nav-links a {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 12px 14px;
-  border-radius: 8px;
-  font-size: 14.5px;
-  font-weight: 700;
-  color: #334155;
-  text-decoration: none;
-  transition: all 0.15s;
-}
-
-html[lang="ar"] .mobile-nav-links a:hover,
-html[lang="ar"] .mobile-nav-links a.active {
-  background: #f1f5f9;
-  color: #0284c7;
-}
-
-/* Dark mode for drawer */
-html[data-theme="dark"][lang="ar"] .mobile-nav-drawer {
-  background: #0f172a !important;
-  border-left: 1px solid #1e293b !important;
-}
-html[data-theme="dark"][lang="ar"] .mobile-nav-header {
-  border-bottom-color: #1e293b;
-}
-html[data-theme="dark"][lang="ar"] .mobile-nav-header .brand-name {
-  color: #f8fafc;
-}
-html[data-theme="dark"][lang="ar"] .mobile-nav-links a {
-  color: #cbd5e1;
-}
-html[data-theme="dark"][lang="ar"] .mobile-nav-links a:hover,
-html[data-theme="dark"][lang="ar"] .mobile-nav-links a.active {
-  background: #1e293b;
-  color: #38bdf8;
-}
+/* 1. Mobile Navigation Drawer — Scoped unified styles defined in Navigation System section */
 
 /* 2. Base Top Rates Ticker for Arabic */
 html[lang="ar"] .top-rates-ticker {
@@ -3229,6 +3129,11 @@ html[dir="rtl"] .mega-cat-tab.active .mega-tab-arrow {
   display: block !important;
 }
 
+.mobile-nav-container.open .mobile-nav-drawer,
+.mobile-nav-drawer.open {
+  display: flex !important;
+}
+
 .mobile-nav-backdrop {
   position: fixed !important;
   top: 0 !important;
@@ -3257,9 +3162,12 @@ html[dir="rtl"] .mega-cat-tab.active .mega-tab-arrow {
   transition: transform 0.25s ease !important;
 }
 
-html[dir="rtl"] .mobile-nav-drawer {
+html[dir="rtl"] .mobile-nav-drawer,
+html[lang="ar"] .mobile-nav-drawer {
   left: auto !important;
   right: 0 !important;
+  direction: rtl !important;
+  text-align: right !important;
 }
 
 .mobile-nav-header {
@@ -3578,6 +3486,12 @@ html[data-theme="dark"] .mega-footer-link {
   html[data-theme="dark"] .mobile-acc-tool-link:active {
     background: #1e293b !important;
     color: #38bdf8 !important;
+  }
+  html[data-theme="dark"] .mobile-nav-drawer,
+  html[data-theme="dark"][lang="ar"] .mobile-nav-drawer {
+    background: #0f172a !important;
+    border-left: 1px solid #1e293b !important;
+    border-right: 1px solid #1e293b !important;
   }
 }
 

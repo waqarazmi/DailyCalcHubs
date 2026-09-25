@@ -2761,9 +2761,11 @@
       const backdrop = document.getElementById('mobileNavBackdrop');
       const navContainer = document.getElementById('navContainer');
       const menuBtn = document.getElementById('mobileMenuBtn');
+      const drawer = navContainer ? navContainer.querySelector('.mobile-nav-drawer') : null;
 
       function closeDrawer() {
         if (navContainer) navContainer.classList.remove('open');
+        if (drawer) drawer.classList.remove('open');
         if (menuBtn) {
           menuBtn.setAttribute('aria-expanded', 'false');
           const icon = menuBtn.querySelector('i');
