@@ -4339,7 +4339,9 @@ html[data-theme="dark"] .provider-cta-btn:hover {
   }
 
   /* Table transforms into a clean stacked vertical cards container */
-  table.provider-table {
+  table.provider-table,
+  table.comparison-table,
+  .provider-table-card table {
     display: block !important;
     width: 100% !important;
     max-width: 100% !important;
@@ -4352,11 +4354,15 @@ html[data-theme="dark"] .provider-cta-btn:hover {
     border-spacing: 0 !important;
   }
 
-  table.provider-table thead {
+  table.provider-table thead,
+  table.comparison-table thead,
+  .provider-table-card table thead {
     display: none !important;
   }
 
-  table.provider-table tbody {
+  table.provider-table tbody,
+  table.comparison-table tbody,
+  .provider-table-card table tbody {
     display: flex !important;
     flex-direction: column !important;
     gap: 12px !important;
@@ -4365,7 +4371,9 @@ html[data-theme="dark"] .provider-cta-btn:hover {
   }
 
   /* Each row is a compact vertical card */
-  table.provider-table tr {
+  table.provider-table tr,
+  table.comparison-table tr,
+  .provider-table-card table tr {
     display: flex !important;
     flex-direction: column !important;
     background: #ffffff !important;
@@ -4378,12 +4386,16 @@ html[data-theme="dark"] .provider-cta-btn:hover {
     margin: 0 !important;
   }
 
-  table.provider-table tr:hover {
+  table.provider-table tr:hover,
+  table.comparison-table tr:hover,
+  .provider-table-card table tr:hover {
     background: #ffffff !important;
   }
 
   /* Base row cell styles */
-  table.provider-table td {
+  table.provider-table td,
+  table.comparison-table td,
+  .provider-table-card table td {
     display: flex !important;
     align-items: center !important;
     justify-content: space-between !important;
@@ -4396,7 +4408,9 @@ html[data-theme="dark"] .provider-cta-btn:hover {
   }
 
   /* Data Labels on the left (or right in RTL) */
-  table.provider-table td::before {
+  table.provider-table td::before,
+  table.comparison-table td::before,
+  .provider-table-card table td::before {
     content: attr(data-label);
     font-size: 13px !important;
     font-weight: 500 !important;
