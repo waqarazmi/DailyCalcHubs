@@ -13,10 +13,10 @@
       badgeEn: 'ZERO FEE',
       badgeAr: 'بدون رسوم',
       badgeClass: 'provider-badge-best',
-      // Barq Official Brand: Orange background with lightning bolt
-      logoSvg: '<svg class="provider-logo-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Barq logo"><rect width="24" height="24" rx="6" fill="#ff6a00"/><path d="M13 3L6 13h5l-2 8 9-11h-5l2-7z" fill="#ffffff"/></svg>',
-      pkg: 'com.barq.app',
-      playUrl: 'https://play.google.com/store/apps/details?id=com.barq.app',
+      // Barq Official Brand: Vivid Orange with official stylized dynamic lightning emblem
+      logoSvg: '<svg class="provider-logo-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Barq logo"><rect width="24" height="24" rx="6" fill="#ff5500"/><path d="M14.5 3.5L6.8 12.8h4.6l-2.4 7.7 8.2-10h-4.8l2.1-7z" fill="#ffffff"/></svg>',
+      pkg: 'sa.com.barraq',
+      playUrl: 'https://play.google.com/store/apps/details?id=sa.com.barraq',
       iosUrl: 'https://apps.apple.com/sa/app/barq/id6475736638',
       webUrl: 'https://barq.com',
       feeSar: 0,
@@ -34,10 +34,10 @@
       nameAr: 'STC Pay / بنك STC',
       badgeEn: '',
       badgeAr: '',
-      // STC Bank Official Brand: Magenta/Violet with coral curves
-      logoSvg: '<svg class="provider-logo-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="STC Bank logo"><rect width="24" height="24" rx="6" fill="#4f008c"/><path d="M6 14.5c0-1.9 1.6-3.5 3.5-3.5h5c1.9 0 3.5 1.6 3.5 3.5v.5H6v-.5zm3.5-2c-.8 0-1.5.7-1.5 1.5v.5h7v-.5c0-.8-.7-1.5-1.5-1.5h-4zM6 9.5C6 7.6 7.6 6 9.5 6h5C16.4 6 18 7.6 18 9.5v.5H6v-.5z" fill="#ff375f"/></svg>',
-      pkg: 'sa.com.stcpay',
-      playUrl: 'https://play.google.com/store/apps/details?id=sa.com.stcpay',
+      // STC Bank Official Brand: Corporate Purple with official signature STC wave arcs
+      logoSvg: '<svg class="provider-logo-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="STC Bank logo"><rect width="24" height="24" rx="6" fill="#4f008c"/><path d="M5.5 8.2c2.2-1.5 5.2-1.7 7.7-.5 2 1 3.5 1 5.3.3v2.8c-2.3 1.2-5 1-7.2-.1-2-1-3.6-1-5.8-.3V8.2z" fill="#ff375f"/><path d="M5.5 13.2c2.2-1.5 5.2-1.7 7.7-.5 2 1 3.5 1 5.3.3v2.8c-2.3 1.2-5 1-7.2-.1-2-1-3.6-1-5.8-.3v-2.2z" fill="#ffffff"/></svg>',
+      pkg: 'sa.com.stcbank',
+      playUrl: 'https://play.google.com/store/apps/details?id=sa.com.stcbank',
       iosUrl: 'https://apps.apple.com/sa/app/stc-bank/id1438965415',
       webUrl: 'https://www.stcbank.com.sa',
       feeSar: 15.00,
@@ -55,10 +55,10 @@
       nameAr: 'يورباي urpay (مصرف الراجحي)',
       badgeEn: '',
       badgeAr: '',
-      // urpay Official Brand: Bright cyan/blue with white shield
-      logoSvg: '<svg class="provider-logo-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="urpay logo"><rect width="24" height="24" rx="6" fill="#0284c7"/><path d="M7 7v6a5 5 0 0010 0V7h-2.5v6a2.5 2.5 0 01-5 0V7H7z" fill="#ffffff"/><circle cx="16.5" cy="16.5" r="1.5" fill="#38bdf8"/></svg>',
-      pkg: 'com.neoleap.urpay',
-      playUrl: 'https://play.google.com/store/apps/details?id=com.neoleap.urpay',
+      // urpay Official Brand: Deep Navy with official lowercase connected ur ligature and cyan accent dot
+      logoSvg: '<svg class="provider-logo-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="urpay logo"><rect width="24" height="24" rx="6" fill="#003865"/><path d="M6 7.5v5.2c0 1.6 1.1 2.8 2.6 2.8s2.6-1.2 2.6-2.8V7.5h2v4.8c0 1.2.6 1.8 1.6 1.8.8 0 1.5-.5 1.8-1.2V7.5h2v8h-1.9v-1.2c-.6.8-1.5 1.4-2.6 1.4-1.8 0-2.8-1.1-3.1-2.5C10.3 15 9 15.7 7.7 15.7 5.1 15.7 4 13.9 4 11.5V7.5h2z" fill="#ffffff"/><circle cx="18" cy="5.2" r="1.5" fill="#00d2d3"/></svg>',
+      pkg: 'com.urpay.consumer',
+      playUrl: 'https://play.google.com/store/apps/details?id=com.urpay.consumer',
       iosUrl: 'https://apps.apple.com/sa/app/urpay/id1541314959',
       webUrl: 'https://urpay.com.sa',
       feeSar: 10.00,
@@ -76,10 +76,10 @@
       nameAr: 'مصرف الراجحي (تحويل الراجحي)',
       badgeEn: '',
       badgeAr: '',
-      // Al Rajhi Bank Official Brand: Royal Navy dual interlocking diamond
-      logoSvg: '<svg class="provider-logo-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Al Rajhi Bank logo"><rect width="24" height="24" rx="6" fill="#002b7f"/><path d="M12 4l5 5-5 5-5-5 5-5zm0 6l5 5-5 5-5-5 5-5z" fill="#ffffff"/></svg>',
-      pkg: 'com.alrajhibank.alrajhimobile',
-      playUrl: 'https://play.google.com/store/apps/details?id=com.alrajhibank.alrajhimobile',
+      // Al Rajhi Bank Official Brand: Royal Navy with official iconic interlocking folded ribbon knot
+      logoSvg: '<svg class="provider-logo-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Al Rajhi Bank logo"><rect width="24" height="24" rx="6" fill="#002b7f"/><path d="M12 4.2l5.3 5.3-2.1 2.1-3.2-3.2-3.2 3.2-2.1-2.1L12 4.2zm0 6l3.2 3.2-3.2 3.2-3.2-3.2 3.2-3.2zm-5.3 1.5l2.1 2.1-2.1 2.1L4.6 13.8l2.1-2.1zm10.6 0l2.1 2.1-2.1 2.1-2.1-2.1 2.1-2.1zM12 15.6l3.2 3.2-3.2 1-3.2-1 3.2-3.2z" fill="#ffffff"/></svg>',
+      pkg: 'com.alrajhiretailapp',
+      playUrl: 'https://play.google.com/store/apps/details?id=com.alrajhiretailapp',
       iosUrl: 'https://apps.apple.com/sa/app/al-rajhi-bank/id1472506080',
       webUrl: 'https://www.alrajhibank.com.sa',
       feeSar: 17.25,
@@ -97,8 +97,8 @@
       nameAr: 'إنجاز (بنك البلاد)',
       badgeEn: '',
       badgeAr: '',
-      // Enjaz Official Brand: Forest green with emerald leaf emblem
-      logoSvg: '<svg class="provider-logo-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Enjaz logo"><rect width="24" height="24" rx="6" fill="#00843d"/><path d="M7 17l4.5-9 2 4 3.5-7v12H7z" fill="#ffffff"/><path d="M14 17l3-6v6h-3z" fill="#86efac"/></svg>',
+      // Enjaz Official Brand: Forest Green with official stylized dynamic winged chevron emblem
+      logoSvg: '<svg class="provider-logo-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Enjaz logo"><rect width="24" height="24" rx="6" fill="#007a3d"/><path d="M5.5 17.5l5.5-11 2.5 5 4.5-8v14h-3v-6.5l-3.2 5.5-2.8-4-1.7 5H5.5z" fill="#ffffff"/><path d="M14.5 17.5l3.5-6.5v6.5h-3.5z" fill="#6ee7b7"/></svg>',
       pkg: 'com.BankAlBilad.EnjazApp',
       playUrl: 'https://play.google.com/store/apps/details?id=com.BankAlBilad.EnjazApp',
       iosUrl: 'https://apps.apple.com/sa/app/enjaz-app/id1453282218',
@@ -118,10 +118,10 @@
       nameAr: 'ويسترن يونيون (Western Union)',
       badgeEn: '',
       badgeAr: '',
-      // Western Union Official Brand: Black with iconic yellow WU
-      logoSvg: '<svg class="provider-logo-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Western Union logo"><rect width="24" height="24" rx="6" fill="#000000"/><path d="M4 7h3.5l2 8 2.5-8h3l2.5 8 2-8H20l-3.5 11h-3L11 10.5 8.5 18h-3L4 7z" fill="#ffdd00"/></svg>',
-      pkg: 'com.westernunion.sa.consumerapp',
-      playUrl: 'https://play.google.com/store/apps/details?id=com.westernunion.sa.consumerapp',
+      // Western Union Official Brand: Matte Black with iconic yellow intersecting WU monogram
+      logoSvg: '<svg class="provider-logo-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Western Union logo"><rect width="24" height="24" rx="6" fill="#000000"/><path d="M4.5 6.8h2.6l1.8 7.2 2-7.2h2.2l-2.8 10.4H8l-2.1-7.2-1.4 7.2H2.5L4.5 6.8zm7.8 0h2.4v6.8c0 1.2.8 2 2 2s2-.8 2-2V6.8h2.4v6.9c0 2.4-1.8 4-4.4 4s-4.4-1.6-4.4-4V6.8z" fill="#ffdd00"/><path d="M11 11.2l3.8-4.4h2.2l-4.5 5.2 2.2 5.2h-2.3L11 14.3v-3.1z" fill="#ffdd00"/></svg>',
+      pkg: 'com.westernunion.android.mtapp',
+      playUrl: 'https://play.google.com/store/apps/details?id=com.westernunion.android.mtapp',
       iosUrl: 'https://apps.apple.com/sa/app/western-union-saudi-arabia/id1489297893',
       webUrl: 'https://www.westernunion.com/sa/en/home.html',
       webUrlAr: 'https://www.westernunion.com/sa/ar/home.html',
@@ -141,8 +141,8 @@
       badgeEn: 'Mid-Market',
       badgeAr: 'سعر السوق',
       badgeClass: 'provider-badge-midmarket',
-      // Wise Official Brand: Forest green with bright lime fast-flag
-      logoSvg: '<svg class="provider-logo-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Wise logo"><rect width="24" height="24" rx="6" fill="#163300"/><path d="M7 8l3 5-1.5 4h3l1.5-4 4-5H7z" fill="#9fe870"/></svg>',
+      // Wise Official Brand: Forest green with official trademark Fast Flag vector
+      logoSvg: '<svg class="provider-logo-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Wise logo"><rect width="24" height="24" rx="6" fill="#163300"/><path d="M6.8 6.5h8.8l-3.8 5.4h4.4L8.4 18.2l2.4-5.5H6.8l3.2-4.5H6.8V6.5z" fill="#9fe870"/></svg>',
       pkg: 'com.transferwise.android',
       playUrl: 'https://play.google.com/store/apps/details?id=com.transferwise.android',
       iosUrl: 'https://apps.apple.com/app/wise-ex-transferwise/id612261027',
@@ -275,6 +275,9 @@
         speedCell = '<span style="color:' + speedColor + '; font-size:12px;">' + speedIcon + (isArabic ? p.speedAr : p.speedEn) + '</span>';
       }
 
+      var isAndroid = /android/i.test(navigator.userAgent || '');
+      var ctaTarget = isAndroid ? '' : ' target="_blank" rel="noopener noreferrer"';
+
       html += '<tr>' +
         '<td class="provider-cell-header">' +
           '<div class="provider-name-cell">' +
@@ -290,7 +293,7 @@
         '<td class="provider-cell-net" data-label="' + netLabel + '"' + (isArabic ? ' dir="ltr" style="text-align:right;"' : '') + '>' + netCell + '</td>' +
         '<td class="provider-cell-speed" data-label="' + speedLabel + '">' + speedCell + '</td>' +
         '<td class="provider-cell-cta">' +
-          '<a href="' + ctaUrl + '" class="provider-cta-btn" target="_blank" rel="noopener noreferrer" aria-label="' + ctaText + ' with ' + p.nameEn + '">' +
+          '<a href="' + ctaUrl + '" class="provider-cta-btn"' + ctaTarget + ' aria-label="' + ctaText + ' with ' + p.nameEn + '">' +
             '<span>' + ctaText + '</span>' +
             '<i class="fas fa-arrow-up-right-from-square"></i>' +
           '</a>' +
@@ -307,12 +310,17 @@
   function initCtaButtons() {
     var btns = document.querySelectorAll('a.provider-cta-btn[data-provider]');
     var isArabic = document.documentElement.lang === 'ar';
+    var isAndroid = /android/i.test(navigator.userAgent || '');
     for (var i = 0; i < btns.length; i++) {
       var btn = btns[i];
       var pid = btn.getAttribute('data-provider');
       for (var j = 0; j < REMITTANCE_PROVIDERS.length; j++) {
         if (REMITTANCE_PROVIDERS[j].id === pid) {
           btn.href = getSendMoneyUrl(REMITTANCE_PROVIDERS[j], isArabic);
+          if (isAndroid) {
+            btn.removeAttribute('target');
+            btn.removeAttribute('rel');
+          }
           break;
         }
       }
