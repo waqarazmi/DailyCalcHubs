@@ -164,7 +164,7 @@
 
   /**
    * Resolves the device-aware Send Money CTA destination URL.
-   * - Android: intent://#Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;package=...;S.browser_fallback_url=...;end
+   * - Android: intent://#Intent;scheme=...;package=...;S.browser_fallback_url=...;end
    * - iOS: Official Apple App Store listing
    * - Desktop: Official Web portal
    */
@@ -175,7 +175,8 @@
 
     if (isAndroid && provider.pkg) {
       var encodedPlayUrl = encodeURIComponent(provider.playUrl);
-      return 'intent://#Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;package=' + provider.pkg + ';S.browser_fallback_url=' + encodedPlayUrl + ';end';
+      var schemePart = provider.scheme ? 'scheme=' + provider.scheme + ';' : '';
+      return 'intent://#Intent;' + schemePart + 'package=' + provider.pkg + ';S.browser_fallback_url=' + encodedPlayUrl + ';end';
     } else if (isIOS && provider.iosUrl) {
       return provider.iosUrl;
     } else {
