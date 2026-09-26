@@ -174,8 +174,12 @@
     var isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
 
     if (isAndroid && provider.pkg) {
-      var schemePart = provider.scheme ? 'scheme=' + provider.scheme + ';' : '';
-      return 'intent://#Intent;' + schemePart + 'package=' + provider.pkg + ';S.browser_fallback_url=' + encodeURIComponent(provider.playUrl) + ';end';
+      var encodedPlayUrl = encodeURIComponent(provider.playUrl);
+      if (provider.id === 'wise' || provider.id === 'enjaz') {
+        var schemePart = provider.scheme ? 'scheme=' + provider.scheme + ';' : '';
+        return 'intent://#Intent;' + schemePart + 'package=' + provider.pkg + ';S.browser_fallback_url=' + encodedPlayUrl + ';end';
+      }
+      return 'intent://#Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;package=' + provider.pkg + ';S.browser_fallback_url=' + encodedPlayUrl + ';end';
     } else if (isIOS && provider.iosUrl) {
       return provider.iosUrl;
     } else {
