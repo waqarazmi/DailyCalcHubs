@@ -264,33 +264,12 @@
   window.openCookieSettings = openConsentSettings;
 
   // -------------------------------------------------------------
-  // Arabic Mobile Navigation Drawer & Menu Bridge
+  // Mobile Navigation Drawer — Delegated solely to mobile-nav.js
   // -------------------------------------------------------------
   function bindMobileNav() {
-    if (document.documentElement.getAttribute('lang') !== 'ar') return;
-
-    document.addEventListener('click', function (e) {
-      var menuBtn = e.target.closest('#mobileMenuBtn, .mobile-menu-btn, .mobile-menu-toggle');
-      if (menuBtn) {
-        var drawer = document.getElementById('mobileNavDrawer');
-        if (drawer) {
-          drawer.classList.toggle('open');
-        }
-        var navContainer = document.getElementById('navContainer');
-        if (navContainer) {
-          navContainer.classList.toggle('open');
-        }
-      }
-
-      var closeBtn = e.target.closest('#mobileNavClose, .mobile-nav-close');
-      if (closeBtn) {
-        var d = document.getElementById('mobileNavDrawer');
-        if (d) {
-          d.classList.remove('open');
-        }
-      }
-    });
+    // Delegated entirely to mobile-nav.js across English and Arabic layouts.
   }
+
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function () {

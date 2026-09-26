@@ -153,18 +153,21 @@
       });
 
       if (navContainer) {
-        var navLinks = navContainer.querySelectorAll('a');
-        for (var i = 0; i < navLinks.length; i++) {
-          navLinks[i].addEventListener('click', function() {
+        var terminalLinks = navContainer.querySelectorAll('.mobile-acc-tool-link, .mobile-acc-hub-link, .nav-link-item, .lang-switch-btn');
+        terminalLinks.forEach(function(link) {
+          link.addEventListener('click', function() {
             closeMenu();
           });
-        }
+        });
       }
     }
 
     // Mobile Accordion Items
     var accHeaders = document.querySelectorAll('.mobile-accordion-header');
     accHeaders.forEach(function(btn) {
+      if (btn.dataset.accInitialized === 'true') return;
+      btn.dataset.accInitialized = 'true';
+
       btn.addEventListener('click', function(e) {
         e.preventDefault();
         e.stopPropagation();
