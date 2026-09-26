@@ -3310,15 +3310,17 @@ html[lang="ar"] .mobile-nav-drawer {
   .mobile-accordion {
     display: flex !important;
     flex-direction: column !important;
-    gap: 6px !important;
+    gap: 0 !important;
   }
 
   .mobile-accordion-item {
-    border: 1px solid #e2e8f0 !important;
-    border-radius: 10px !important;
+    border: none !important;
+    border-bottom: 1px solid #f1f5f9 !important;
+    border-radius: 0 !important;
     overflow: hidden !important;
-    background: #ffffff !important;
-    transition: all 0.2s ease !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    transition: background 0.15s ease !important;
   }
 
   .mobile-accordion-header {
@@ -3516,8 +3518,11 @@ html[lang="ar"] .mobile-nav-drawer {
   }
 
   html[data-theme="dark"] .mobile-accordion-item {
-    border-color: #1e293b !important;
-    background: #0f172a !important;
+    border: none !important;
+    border-bottom: 1px solid #1e293b !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
   }
 
   html[data-theme="dark"] .mobile-accordion-header {
