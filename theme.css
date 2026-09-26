@@ -3236,6 +3236,19 @@ html[dir="rtl"] .mega-cat-tab.active .mega-tab-arrow {
   z-index: 100000 !important;
 }
 
+.mobile-nav-drawer,
+.mobile-nav-drawer *,
+.mobile-nav-drawer *::before,
+.mobile-nav-drawer *::after {
+  box-sizing: border-box !important;
+}
+
+.mobile-nav-heading,
+.mobile-acc-hub-link,
+.mobile-acc-count {
+  display: none !important;
+}
+
 .mobile-nav-drawer {
   position: fixed !important;
   top: 0 !important;
@@ -3376,16 +3389,7 @@ html[lang="ar"] .mobile-nav-drawer {
 
   /* Category Heading */
   .mobile-nav-heading {
-    font-size: 11px !important;
-    font-weight: 800 !important;
-    text-transform: uppercase !important;
-    letter-spacing: 0.6px !important;
-    color: #64748b !important;
-    margin: 10px 0 6px 4px !important;
-  }
-
-  html[dir="rtl"] .mobile-nav-heading {
-    margin: 10px 4px 6px 0 !important;
+    display: none !important;
   }
 
   /* 7 Accordion Category Items */
@@ -3453,14 +3457,7 @@ html[lang="ar"] .mobile-nav-drawer {
   }
 
   .mobile-acc-count {
-    font-size: 10.5px !important;
-    font-weight: 700 !important;
-    padding: 1px 6px !important;
-    border-radius: 10px !important;
-    background: #f1f5f9 !important;
-    color: #475569 !important;
-    border: none !important;
-    flex-shrink: 0 !important;
+    display: none !important;
   }
 
   .mobile-acc-chevron {
@@ -3476,7 +3473,7 @@ html[lang="ar"] .mobile-nav-drawer {
 
   .mobile-accordion-body {
     display: none;
-    padding: 4px 12px 12px 12px !important;
+    padding: 6px 12px 12px 12px !important;
     border-top: 1px dashed #e2e8f0 !important;
     background: #f8fafc !important;
   }
@@ -3486,21 +3483,7 @@ html[lang="ar"] .mobile-nav-drawer {
   }
 
   .mobile-acc-hub-link {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-    font-size: 12px !important;
-    font-weight: 700 !important;
-    color: #0284c7 !important;
-    padding: 6px 0 !important;
-    text-decoration: none !important;
-    border-bottom: 1px solid #e2e8f0 !important;
-    margin-bottom: 6px !important;
-    transition: color 0.15s ease !important;
-  }
-
-  .mobile-acc-hub-link:hover {
-    color: #0369a1 !important;
+    display: none !important;
   }
 
   .mobile-acc-links-list {
@@ -3615,7 +3598,7 @@ html[lang="ar"] .mobile-nav-drawer {
   }
 
   html[data-theme="dark"] .mobile-nav-heading {
-    color: #94a3b8 !important;
+    display: none !important;
   }
 
   html[data-theme="dark"] .mobile-accordion-item {
@@ -3636,8 +3619,7 @@ html[lang="ar"] .mobile-nav-drawer {
   }
 
   html[data-theme="dark"] .mobile-acc-count {
-    background: #1e293b !important;
-    color: #cbd5e1 !important;
+    display: none !important;
   }
 
   html[data-theme="dark"] .mobile-acc-chevron {
@@ -3654,12 +3636,7 @@ html[lang="ar"] .mobile-nav-drawer {
   }
 
   html[data-theme="dark"] .mobile-acc-hub-link {
-    color: #38bdf8 !important;
-    border-bottom-color: #1e293b !important;
-  }
-
-  html[data-theme="dark"] .mobile-acc-hub-link:hover {
-    color: #7dd3fc !important;
+    display: none !important;
   }
 
   html[data-theme="dark"] .mobile-acc-tool-link {
