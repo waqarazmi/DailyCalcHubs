@@ -1909,7 +1909,6 @@ html[data-theme="dark"] .site-header .header-nav-container a.active {
 }
 @media (max-width: 768px) {
   table.data-table,
-  table.provider-table,
   table.salary-table,
   table.schedule-table,
   table.breakdown-table {
@@ -4324,6 +4323,192 @@ html[data-theme="dark"] .provider-cta-btn {
 html[data-theme="dark"] .provider-cta-btn:hover {
   background: #16a34a !important;
   color: #ffffff !important;
+}
+
+/* --------------------------------------------------------------------------
+   Mobile Provider Cards & Desktop Table System
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  /* Prevent horizontal scroll on mobile containers */
+  .provider-table-wrap,
+  .provider-table-card .provider-table-wrap,
+  .comparison-table-wrap {
+    overflow-x: visible !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Table transforms into a clean stacked vertical cards container */
+  table.provider-table {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+  }
+
+  table.provider-table thead {
+    display: none !important;
+  }
+
+  table.provider-table tbody {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+    width: 100% !important;
+    border: none !important;
+  }
+
+  /* Each row is a compact vertical card */
+  table.provider-table tr {
+    display: flex !important;
+    flex-direction: column !important;
+    background: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 12px !important;
+    padding: 14px 16px !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+    margin: 0 !important;
+  }
+
+  table.provider-table tr:hover {
+    background: #ffffff !important;
+  }
+
+  /* Base row cell styles */
+  table.provider-table td {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 5px 0 !important;
+    border: none !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    font-size: 13.5px !important;
+    line-height: 1.4 !important;
+  }
+
+  /* Data Labels on the left (or right in RTL) */
+  table.provider-table td::before {
+    content: attr(data-label);
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    color: #64748b !important;
+    flex-shrink: 0 !important;
+    margin-right: 12px !important;
+  }
+
+  html[dir="rtl"] table.provider-table td::before,
+  html[lang="ar"] table.provider-table td::before {
+    margin-right: 0 !important;
+    margin-left: 12px !important;
+  }
+
+  /* TOP ROW: [Provider Logo] Provider Name */
+  table.provider-table td.provider-cell-header,
+  table.provider-table td:first-child {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    padding: 0 0 10px 0 !important;
+    border-bottom: 1px solid #f1f5f9 !important;
+    margin-bottom: 6px !important;
+  }
+
+  table.provider-table td.provider-cell-header::before,
+  table.provider-table td:first-child::before {
+    display: none !important;
+  }
+
+  table.provider-table td.provider-cell-header .provider-name-cell,
+  table.provider-table td:first-child .provider-name-cell {
+    min-width: 0 !important;
+    width: 100% !important;
+  }
+
+  /* Values alignment */
+  table.provider-table td.provider-cell-rate,
+  table.provider-table td.provider-cell-fee,
+  table.provider-table td.provider-cell-net,
+  table.provider-table td.provider-cell-speed {
+    text-align: right !important;
+  }
+
+  html[dir="rtl"] table.provider-table td.provider-cell-rate,
+  html[dir="rtl"] table.provider-table td.provider-cell-fee,
+  html[dir="rtl"] table.provider-table td.provider-cell-net,
+  html[dir="rtl"] table.provider-table td.provider-cell-speed,
+  html[lang="ar"] table.provider-table td.provider-cell-rate,
+  html[lang="ar"] table.provider-table td.provider-cell-fee,
+  html[lang="ar"] table.provider-table td.provider-cell-net,
+  html[lang="ar"] table.provider-table td.provider-cell-speed {
+    text-align: left !important;
+  }
+
+  /* Highlight You Receive */
+  table.provider-table td.provider-cell-net strong {
+    font-size: 14.5px !important;
+    font-weight: 800 !important;
+  }
+
+  /* BOTTOM: [ Send Money ] Full Width Button */
+  table.provider-table td.provider-cell-cta,
+  table.provider-table td:last-child {
+    display: block !important;
+    padding: 10px 0 0 0 !important;
+    border-top: 1px solid #f1f5f9 !important;
+    margin-top: 6px !important;
+  }
+
+  table.provider-table td.provider-cell-cta::before,
+  table.provider-table td:last-child::before {
+    display: none !important;
+  }
+
+  table.provider-table td.provider-cell-cta .provider-cta-btn,
+  table.provider-table td:last-child .provider-cta-btn {
+    display: flex !important;
+    width: 100% !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 10px 16px !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    border-radius: 8px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Dark mode overrides for cards */
+  html[data-theme="dark"] table.provider-table tr {
+    background: #131b2e !important;
+    border-color: #1e293b !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3) !important;
+  }
+
+  html[data-theme="dark"] table.provider-table tr:hover {
+    background: #131b2e !important;
+  }
+
+  html[data-theme="dark"] table.provider-table td.provider-cell-header,
+  html[data-theme="dark"] table.provider-table td:first-child {
+    border-bottom-color: #1e293b !important;
+  }
+
+  html[data-theme="dark"] table.provider-table td.provider-cell-cta,
+  html[data-theme="dark"] table.provider-table td:last-child {
+    border-top-color: #1e293b !important;
+  }
+
+  html[data-theme="dark"] table.provider-table td::before {
+    color: #94a3b8 !important;
+  }
 }
 
 /* --------------------------------------------------------------------------

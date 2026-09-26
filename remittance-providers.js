@@ -135,23 +135,6 @@
       status: 'ACTIVE'
     },
     {
-      id: 'remitly',
-      nameEn: 'Remitly',
-      nameAr: 'ريمتلي (Remitly)',
-      badgeEn: 'REVIEW',
-      badgeAr: 'ملاحظة',
-      badgeClass: 'provider-badge-review',
-      // Remitly Official Brand: Deep navy with turquoise wing
-      logoSvg: '<svg class="provider-logo-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Remitly logo"><rect width="24" height="24" rx="6" fill="#0d233a"/><path d="M7 16l5-10 3 6-2 4H7z" fill="#00c08b"/><circle cx="16" cy="8" r="2" fill="#00c08b"/></svg>',
-      pkg: 'com.remitly.androidapp',
-      playUrl: 'https://play.google.com/store/apps/details?id=com.remitly.androidapp',
-      iosUrl: 'https://apps.apple.com/app/remitly-send-money-transfer/id674258165',
-      webUrl: 'https://www.remitly.com',
-      status: 'UNSUPPORTED_OUTBOUND', // Outbound SAR unsupported from KSA
-      speedEn: 'Inbound Only',
-      speedAr: 'استلام فقط'
-    },
-    {
       id: 'wise',
       nameEn: 'Wise',
       nameAr: 'وايز (Wise)',
@@ -210,7 +193,7 @@
   }
 
   /**
-   * Renders the 8 provider rows into the specified tbody element.
+   * Renders the 7 provider rows into the specified tbody element with mobile data-label attributes.
    */
   function renderRemittanceTable(opts) {
     var tbody = typeof opts.tbody === 'string' ? document.getElementById(opts.tbody) : opts.tbody;
@@ -229,6 +212,11 @@
         '</td></tr>';
       return;
     }
+
+    var rateLabel = isArabic ? 'سعر التحويل' : 'Retail Rate';
+    var feeLabel = isArabic ? 'رسوم التحويل' : 'Transfer Fee';
+    var netLabel = isArabic ? 'المبلغ المستلم' : 'You Receive';
+    var speedLabel = isArabic ? 'سرعة الإيداع' : 'Speed';
 
     var html = '';
     for (var i = 0; i < REMITTANCE_PROVIDERS.length; i++) {
@@ -251,17 +239,7 @@
       var netCell = '';
       var speedCell = '';
 
-      if (p.status === 'UNSUPPORTED_OUTBOUND') {
-        // Remitly: factual notice that outbound SAR transfers are unsupported from KSA
-        rateCell = '<span style="color:#94a3b8;">—</span>';
-        feeCell = '<span style="color:#94a3b8;">—</span>';
-        netCell = '<span style="font-size:12px; color:#64748b; font-weight:600;">' +
-          (isArabic ? 'غير متاح من السعودية' : 'Not supported from SAR') +
-          '</span>';
-        speedCell = '<span style="font-size:11.5px; color:#94a3b8;">' +
-          (isArabic ? p.speedAr : p.speedEn) +
-          '</span>';
-      } else if (p.status === 'VARIABLE_PRICING') {
+      if (p.status === 'VARIABLE_PRICING') {
         // Wise: Mid-market rate + variable bank clearing fee
         var wiseRate = rate - (rate * p.spreadPct);
         var wiseFeeSar = amount * p.variableFeePct;
@@ -298,7 +276,7 @@
       }
 
       html += '<tr>' +
-        '<td>' +
+        '<td class="provider-cell-header">' +
           '<div class="provider-name-cell">' +
             p.logoSvg +
             '<div>' +
@@ -307,11 +285,11 @@
             '</div>' +
           '</div>' +
         '</td>' +
-        '<td' + (isArabic ? ' dir="ltr" style="text-align:right;"' : '') + '>' + rateCell + '</td>' +
-        '<td>' + feeCell + '</td>' +
-        '<td' + (isArabic ? ' dir="ltr" style="text-align:right;"' : '') + '>' + netCell + '</td>' +
-        '<td>' + speedCell + '</td>' +
-        '<td>' +
+        '<td class="provider-cell-rate" data-label="' + rateLabel + '"' + (isArabic ? ' dir="ltr" style="text-align:right;"' : '') + '>' + rateCell + '</td>' +
+        '<td class="provider-cell-fee" data-label="' + feeLabel + '">' + feeCell + '</td>' +
+        '<td class="provider-cell-net" data-label="' + netLabel + '"' + (isArabic ? ' dir="ltr" style="text-align:right;"' : '') + '>' + netCell + '</td>' +
+        '<td class="provider-cell-speed" data-label="' + speedLabel + '">' + speedCell + '</td>' +
+        '<td class="provider-cell-cta">' +
           '<a href="' + ctaUrl + '" class="provider-cta-btn" target="_blank" rel="noopener noreferrer" aria-label="' + ctaText + ' with ' + p.nameEn + '">' +
             '<span>' + ctaText + '</span>' +
             '<i class="fas fa-arrow-up-right-from-square"></i>' +
