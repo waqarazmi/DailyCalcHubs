@@ -105,8 +105,15 @@
       var backdrop = document.getElementById('mobileNavBackdrop');
 
       function openMenu() {
-        if (navContainer) navContainer.classList.add('open');
-        if (drawer) drawer.classList.add('open');
+        if (navContainer) {
+          navContainer.classList.add('open', 'active');
+        }
+        if (drawer) {
+          drawer.classList.add('open', 'active');
+        }
+        if (backdrop) {
+          backdrop.classList.add('open', 'active');
+        }
         menuBtn.setAttribute('aria-expanded', 'true');
         var icon = menuBtn.querySelector('i');
         if (icon) {
@@ -116,8 +123,15 @@
       }
 
       function closeMenu() {
-        if (navContainer) navContainer.classList.remove('open');
-        if (drawer) drawer.classList.remove('open');
+        if (navContainer) {
+          navContainer.classList.remove('open', 'active');
+        }
+        if (drawer) {
+          drawer.classList.remove('open', 'active');
+        }
+        if (backdrop) {
+          backdrop.classList.remove('open', 'active');
+        }
         menuBtn.setAttribute('aria-expanded', 'false');
         var icon = menuBtn.querySelector('i');
         if (icon) {
@@ -128,7 +142,7 @@
 
       menuBtn.addEventListener('click', function(e) {
         e.stopPropagation();
-        if (navContainer && navContainer.classList.contains('open')) {
+        if (navContainer && (navContainer.classList.contains('open') || navContainer.classList.contains('active'))) {
           closeMenu();
         } else {
           openMenu();
