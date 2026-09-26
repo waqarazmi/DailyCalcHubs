@@ -1282,6 +1282,7 @@
               <th>رسوم التحويل الإدارية</th>
               <th>صافي المبلغ المستلم</th>
               <th>سرعة الإيداع</th>
+              <th>إرسال الأموال</th>
             </tr>
           </thead>
           <tbody id="providerTableBody">
@@ -1834,62 +1835,17 @@
       renderComparisonTable(sarAmount, targetCur, baseRate, symbol);
     }
 
-    function renderComparisonTable(amount, cur, rate, sym) {
-      const tbody = document.getElementById('providerTableBody');
-      if (!tbody) return;
-
-      const barqSpread = rate * 0.011;
-      const stcSpread = rate * 0.013;
-      const urpaySpread = rate * 0.014;
-      const bankSpread = rate * 0.020;
-
-      const barqRate = rate - barqSpread;
-      const stcRate = rate - stcSpread;
-      const urpayRate = rate - urpaySpread;
-      const bankRate = rate - bankSpread;
-
-      const barqNet = amount * barqRate;
-      const stcNet = Math.max(0, amount - 17.25) * stcRate;
-      const urpayNet = Math.max(0, amount - 11.50) * urpayRate;
-      const bankNet = Math.max(0, amount - 19.84) * bankRate;
-
-      const formatVal = (val) => cur === 'INR'
-        ? val.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
-        : val.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-
-      tbody.innerHTML = `
-        <tr>
-          <td>
-            <strong style="color:#16a34a;"><i class="fas fa-bolt"></i> تطبيق برق (Barq)</strong>
-            <span class="provider-badge-best">بدون رسوم تحويل</span>
-          </td>
-          <td dir="ltr" style="text-align:right;">${sym} ${barqRate.toFixed(2)}</td>
-          <td><strong style="color:#16a34a;">0.00 ر.س (مجاني)</strong></td>
-          <td dir="ltr" style="text-align:right;"><strong style="color:#16a34a; font-size:14px;">${sym} ${formatVal(barqNet)}</strong></td>
-          <td><span style="color:#16a34a; font-size:12px;"><i class="fas fa-clock"></i> فوري خلال دقائق</span></td>
-        </tr>
-        <tr>
-          <td><strong>STC Pay / بنك STC</strong></td>
-          <td dir="ltr" style="text-align:right;">${sym} ${stcRate.toFixed(2)}</td>
-          <td>15.00 ر.س (+15% ضريبة)</td>
-          <td dir="ltr" style="text-align:right;">${sym} ${formatVal(stcNet)}</td>
-          <td><span style="color:#64748b; font-size:12px;">فوري عبر IMPS / Raast</span></td>
-        </tr>
-        <tr>
-          <td><strong>يورباي urpay (مصرف الراجحي)</strong></td>
-          <td dir="ltr" style="text-align:right;">${sym} ${urpayRate.toFixed(2)}</td>
-          <td>10.00 ر.س (+15% ضريبة)</td>
-          <td dir="ltr" style="text-align:right;">${sym} ${formatVal(urpayNet)}</td>
-          <td><span style="color:#64748b; font-size:12px;">إيداع بنكي مباشر</span></td>
-        </tr>
-        <tr>
-          <td><strong>تحويل الراجحي / إنجاز</strong></td>
-          <td dir="ltr" style="text-align:right;">${sym} ${bankRate.toFixed(2)}</td>
-          <td>17.25 ر.س (+15% ضريبة)</td>
-          <td dir="ltr" style="text-align:right;">${sym} ${formatVal(bankNet)}</td>
-          <td><span style="color:#64748b; font-size:12px;">في نفس اليوم أو اليوم التالي</span></td>
-        </tr>
-      `;
+        function renderComparisonTable(amount, cur, rate, sym) {
+      if (window.DailyCalcRemittance && window.DailyCalcRemittance.renderTable) {
+        window.DailyCalcRemittance.renderTable({
+          tbody: 'providerTableBody',
+          amount: amount,
+          currency: cur,
+          baseRate: rate,
+          symbol: sym,
+          isArabic: true
+        });
+      }
     }
 
     function toggleFaq(el) {
@@ -1910,6 +1866,7 @@
       fetchLiveExchangeRates();
     });
   </script>
+  <script src="/remittance-providers.js"></script>
   <script src="/live-ticker.js" defer></script>
   <script src="/theme.js" defer></script>
   <script src="/share.js" defer></script>

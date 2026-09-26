@@ -1592,6 +1592,7 @@
                     <th>Transfer Fee</th>
                     <th>In-Hand Beneficiary Total</th>
                     <th>Speed</th>
+                    <th>Send Money</th>
                   </tr>
                 </thead>
                 <tbody id="providerTableBody">
@@ -2148,59 +2149,17 @@
       renderComparisonTable(sarAmount, targetCur, baseRate, symbol);
     }
 
-    function renderComparisonTable(amount, cur, rate, sym) {
-      const tbody = document.getElementById('providerTableBody');
-      if (!tbody) return;
-
-      // Realistic retail spreads & fees per provider
-      const barqSpread = rate * 0.011; // ~1.1% spread, 0 fee
-      const stcSpread = rate * 0.013;  // ~1.3% spread, 15 SAR fee
-      const urpaySpread = rate * 0.014; // ~1.4% spread, 10 SAR fee
-      const bankSpread = rate * 0.020;  // ~2.0% spread, 17.25 SAR fee
-
-      const barqRate = rate - barqSpread;
-      const stcRate = rate - stcSpread;
-      const urpayRate = rate - urpaySpread;
-      const bankRate = rate - bankSpread;
-
-      const barqNet = amount * barqRate;
-      const stcNet = Math.max(0, amount - 17.25) * stcRate; // 15 SAR + 15% VAT
-      const urpayNet = Math.max(0, amount - 11.50) * urpayRate; // 10 SAR + 15% VAT
-      const bankNet = Math.max(0, amount - 19.84) * bankRate; // 17.25 SAR + 15% VAT
-
-      tbody.innerHTML = `
-        <tr>
-          <td>
-            <strong style="color:#16a34a;"><i class="fas fa-bolt"></i> Barq</strong>
-            <span class="provider-badge-best">ZERO FEE</span>
-          </td>
-          <td>${sym} ${barqRate.toFixed(2)}</td>
-          <td><strong style="color:#16a34a;">0.00 SAR</strong></td>
-          <td><strong style="color:#16a34a; font-size:14px;">${sym} ${(cur === 'INR' ? barqNet.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : barqNet.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }))}</strong></td>
-          <td><span style="color:#16a34a; font-size:12px;"><i class="fas fa-clock"></i> Instant</span></td>
-        </tr>
-        <tr>
-          <td><strong>STC Pay / STC Bank</strong></td>
-          <td>${sym} ${stcRate.toFixed(2)}</td>
-          <td>15.00 SAR (+15% VAT)</td>
-          <td>${sym} ${(cur === 'INR' ? stcNet.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : stcNet.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }))}</td>
-          <td><span style="color:#64748b; font-size:12px;">Instant IMPS / Raast</span></td>
-        </tr>
-        <tr>
-          <td><strong>urpay (Al Rajhi)</strong></td>
-          <td>${sym} ${urpayRate.toFixed(2)}</td>
-          <td>10.00 SAR (+15% VAT)</td>
-          <td>${sym} ${(cur === 'INR' ? urpayNet.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : urpayNet.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }))}</td>
-          <td><span style="color:#64748b; font-size:12px;">Direct Bank Credit</span></td>
-        </tr>
-        <tr>
-          <td><strong>Tahweel Al Rajhi / Enjaz</strong></td>
-          <td>${sym} ${bankRate.toFixed(2)}</td>
-          <td>17.25 SAR (+15% VAT)</td>
-          <td>${sym} ${(cur === 'INR' ? bankNet.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : bankNet.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }))}</td>
-          <td><span style="color:#64748b; font-size:12px;">Same Day / Next Day</span></td>
-        </tr>
-      `;
+        function renderComparisonTable(amount, cur, rate, sym) {
+      if (window.DailyCalcRemittance && window.DailyCalcRemittance.renderTable) {
+        window.DailyCalcRemittance.renderTable({
+          tbody: 'providerTableBody',
+          amount: amount,
+          currency: cur,
+          baseRate: rate,
+          symbol: sym,
+          isArabic: false
+        });
+      }
     }
 
     function toggleFaq(el) {
@@ -2221,6 +2180,7 @@
       fetchLiveExchangeRates();
     });
   </script>
+  <script src="/remittance-providers.js"></script>
   <script src="/live-ticker.js" defer></script>
   <script src="/theme.js" defer></script>
   <script src="/share.js" defer></script>

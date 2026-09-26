@@ -873,6 +873,7 @@
                   <th>الرسوم + الضريبة 15%</th>
                   <th>صافي المستلم بالروبية</th>
                   <th>سرعة الإيداع</th>
+                  <th>إرسال الأموال</th>
                 </tr>
               </thead>
               <tbody id="inrTableBody">
@@ -994,45 +995,17 @@
       payoutEl.textContent = '₹ ' + total.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
       tagEl.innerHTML = '<i class="fas fa-bolt" style="color:#fbbf24;"></i> <span>1 SAR = ' + rate.toFixed(4) + ' INR</span>';
 
-      const barqRate = rate - 0.27;
-      const stcRate = rate - 0.31;
-      const urpayRate = rate - 0.33;
-      const bankRate = rate - 0.45;
-
-      const barqNet = amt * barqRate;
-      const stcNet = Math.max(0, amt - 17.25) * stcRate;
-      const urpayNet = Math.max(0, amt - 11.50) * urpayRate;
-      const bankNet = Math.max(0, amt - 19.84) * bankRate;
-
-      const tbody = document.getElementById('inrTableBody');
-      tbody.innerHTML = '<tr>' +
-          '<td><strong style="color:#16a34a;"><i class="fas fa-bolt"></i> تطبيق برق (Barq)</strong> <span class="provider-badge-best" style="background:#dcfce7; color:#15803d; padding:2px 6px; border-radius:4px; font-size:11px; font-weight:700;">بدون رسوم</span></td>' +
-          '<td>₹ ' + barqRate.toFixed(2) + '</td>' +
-          '<td><strong style="color:#16a34a;">0.00 ر.س</strong></td>' +
-          '<td><strong style="color:#16a34a; font-size:14px;">₹ ' + barqNet.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + '</strong></td>' +
-          '<td><span style="color:#16a34a;"><i class="fas fa-clock"></i> 2 - 5 دقائق</span></td>' +
-        '</tr>' +
-        '<tr>' +
-          '<td><strong>يورباي (urpay - الراجحي)</strong></td>' +
-          '<td>₹ ' + urpayRate.toFixed(2) + '</td>' +
-          '<td>11.50 ر.س (10 + 1.50 ضريبة)</td>' +
-          '<td>₹ ' + urpayNet.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + '</td>' +
-          '<td><span style="color:#64748b;">إيداع فوري IMPS</span></td>' +
-        '</tr>' +
-        '<tr>' +
-          '<td><strong>إس تي سي باي (STC Pay)</strong></td>' +
-          '<td>₹ ' + stcRate.toFixed(2) + '</td>' +
-          '<td>17.25 ر.س (15 + 2.25 ضريبة)</td>' +
-          '<td>₹ ' + stcNet.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + '</td>' +
-          '<td><span style="color:#64748b;">تحويل بنكي فوري</span></td>' +
-        '</tr>' +
-        '<tr>' +
-          '<td><strong>تحويل الراجحي / إنجاز</strong></td>' +
-          '<td>₹ ' + bankRate.toFixed(2) + '</td>' +
-          '<td>19.84 ر.س (17.25 + 2.59 ضريبة)</td>' +
-          '<td>₹ ' + bankNet.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + '</td>' +
-          '<td><span style="color:#64748b;">فروع / حسابات</span></td>' +
-        '</tr>';
+            if (window.DailyCalcRemittance && window.DailyCalcRemittance.renderTable) {
+        window.DailyCalcRemittance.renderTable({
+          tbody: 'inrTableBody',
+          amount: amt,
+          currency: 'INR',
+          baseRate: rate,
+          symbol: '\u20B9',
+          isArabic: true,
+          incentiveMultiplier: 1
+        });
+      }
     }
 
     document.addEventListener('DOMContentLoaded', function() {
@@ -1109,6 +1082,7 @@
     }
   </script>
   <script src="/mobile-nav.js" defer></script>
+  <script src="/remittance-providers.js"></script>
   <script src="/live-ticker.js" defer></script>
   <script src="/theme.js" defer></script>
   <script src="/share.js" defer></script>

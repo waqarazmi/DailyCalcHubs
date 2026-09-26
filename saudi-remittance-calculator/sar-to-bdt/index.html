@@ -957,6 +957,7 @@
                   <th>Fee + 15% VAT</th>
                   <th>Total Payout (+2.5% Incentive)</th>
                   <th>Speed</th>
+                  <th>Send Money</th>
                 </tr>
               </thead>
               <tbody id="bdtTableBody">
@@ -1110,52 +1111,17 @@
       document.getElementById('bdtBaseVal').textContent = '\u09F3 ' + baseTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
       document.getElementById('bdtIncentiveVal').textContent = includeIncentive ? ('+ \u09F3 ' + incentiveAmt.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })) : '\u09F3 0.00';
 
-      const barqRate = rate - 0.35;
-      const stcRate = rate - 0.40;
-      const urpayRate = rate - 0.45;
-      const bankRate = rate - 0.60;
-
-      const calcTotal = (netSar, r) => {
-        const b = netSar * r;
-        return includeIncentive ? (b * 1.025) : b;
-      };
-
-      const barqNet = calcTotal(amt, barqRate);
-      const stcNet = calcTotal(Math.max(0, amt - 17.25), stcRate);
-      const urpayNet = calcTotal(Math.max(0, amt - 11.50), urpayRate);
-      const bankNet = calcTotal(Math.max(0, amt - 19.84), bankRate);
-
-      const tbody = document.getElementById('bdtTableBody');
-      tbody.innerHTML = `
-        <tr>
-          <td><strong style="color:#16a34a;"><i class="fas fa-bolt"></i> Barq</strong> <span class="provider-badge-best">ZERO FEE</span></td>
-          <td>&#2547; ${barqRate.toFixed(2)}</td>
-          <td><strong style="color:#16a34a;">0.00 SAR</strong></td>
-          <td><strong style="color:#16a34a; font-size:14px;">&#2547; ${barqNet.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</strong></td>
-          <td><span style="color:#16a34a;"><i class="fas fa-clock"></i> Instant bKash</span></td>
-        </tr>
-        <tr>
-          <td><strong>urpay (Al Rajhi)</strong></td>
-          <td>&#2547; ${urpayRate.toFixed(2)}</td>
-          <td>11.50 SAR (10 + 1.50 VAT)</td>
-          <td>&#2547; ${urpayNet.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
-          <td><span style="color:#64748b;">Direct Bank Credit</span></td>
-        </tr>
-        <tr>
-          <td><strong>STC Pay / STC Bank</strong></td>
-          <td>&#2547; ${stcRate.toFixed(2)}</td>
-          <td>17.25 SAR (15 + 2.25 VAT)</td>
-          <td>&#2547; ${stcNet.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
-          <td><span style="color:#64748b;">bKash &amp; Bank Transfer</span></td>
-        </tr>
-        <tr>
-          <td><strong>Tahweel Al Rajhi / Enjaz</strong></td>
-          <td>&#2547; ${bankRate.toFixed(2)}</td>
-          <td>19.84 SAR (17.25 + 2.59 VAT)</td>
-          <td>&#2547; ${bankNet.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
-          <td><span style="color:#64748b;">Islami Bank / Sonali</span></td>
-        </tr>
-      `;
+            if (window.DailyCalcRemittance && window.DailyCalcRemittance.renderTable) {
+        window.DailyCalcRemittance.renderTable({
+          tbody: 'bdtTableBody',
+          amount: amt,
+          currency: 'BDT',
+          baseRate: rate,
+          symbol: '\u09F3',
+          isArabic: false,
+          incentiveMultiplier: 1.025
+        });
+      }
     }
 
     document.addEventListener('DOMContentLoaded', () => {
@@ -1250,6 +1216,7 @@
       }
     }
   </script>
+  <script src="/remittance-providers.js"></script>
   <script src="/live-ticker.js" defer></script>
   <script src="/theme.js" defer></script>
   <script src="/share.js" defer></script>

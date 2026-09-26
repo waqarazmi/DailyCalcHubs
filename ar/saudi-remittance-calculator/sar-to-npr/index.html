@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
@@ -863,6 +863,7 @@
                   <th>الرسوم + الضريبة 15%</th>
                   <th>صافي المستلم بالروبية</th>
                   <th>سرعة الإيداع</th>
+                  <th>إرسال الأموال</th>
                 </tr>
               </thead>
               <tbody id="nprTableBody">
@@ -981,47 +982,17 @@
       document.getElementById('nprPayout').textContent = 'NPR ' + totalPayout.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
       document.getElementById('nprRateTag').innerHTML = `<i class="fas fa-bolt" style="color:#fbbf24;"></i> <span>1 SAR = ${rate.toFixed(4)} NPR</span>`;
 
-      const barqRate = rate - 0.25;
-      const stcRate = rate - 0.40;
-      const urpayRate = rate - 0.45;
-      const bankRate = rate - 0.65;
-
-      const barqNet = amt * barqRate;
-      const stcNet = Math.max(0, amt - 17.25) * stcRate;
-      const urpayNet = Math.max(0, amt - 11.50) * urpayRate;
-      const bankNet = Math.max(0, amt - 19.84) * bankRate;
-
-      const tbody = document.getElementById('nprTableBody');
-      tbody.innerHTML = `
-        <tr>
-          <td><strong style="color:#16a34a;"><i class="fas fa-bolt"></i> تطبيق برق (Barq)</strong> <span class="provider-badge-best">بدون رسوم</span></td>
-          <td>NPR ${barqRate.toFixed(2)}</td>
-          <td><strong style="color:#16a34a;">0.00 ر.س</strong></td>
-          <td><strong style="color:#16a34a; font-size:14px;">NPR ${barqNet.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</strong></td>
-          <td><span style="color:#16a34a;"><i class="fas fa-clock"></i> إيداع فوري IME / eSewa</span></td>
-        </tr>
-        <tr>
-          <td><strong>يورباي (urpay - الراجحي)</strong></td>
-          <td>NPR ${urpayRate.toFixed(2)}</td>
-          <td>11.50 ر.س (10 + 1.50 ضريبة)</td>
-          <td>NPR ${urpayNet.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
-          <td><span style="color:#64748b;">إيداع بنكي مباشر</span></td>
-        </tr>
-        <tr>
-          <td><strong>إس تي سي باي (STC Pay)</strong></td>
-          <td>NPR ${stcRate.toFixed(2)}</td>
-          <td>17.25 ر.س (15 + 2.25 ضريبة)</td>
-          <td>NPR ${stcNet.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
-          <td><span style="color:#64748b;">شبكة ويسترن يونيون</span></td>
-        </tr>
-        <tr>
-          <td><strong>تحويل الراجحي / إنجاز</strong></td>
-          <td>NPR ${bankRate.toFixed(2)}</td>
-          <td>19.84 ر.س (17.25 + 2.59 ضريبة)</td>
-          <td>NPR ${bankNet.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
-          <td><span style="color:#64748b;">استلام نقدي بالفرع</span></td>
-        </tr>
-      `;
+            if (window.DailyCalcRemittance && window.DailyCalcRemittance.renderTable) {
+        window.DailyCalcRemittance.renderTable({
+          tbody: 'nprTableBody',
+          amount: amt,
+          currency: 'NPR',
+          baseRate: rate,
+          symbol: '\u0930\u0942',
+          isArabic: true,
+          incentiveMultiplier: 1
+        });
+      }
     }
 
     document.addEventListener('DOMContentLoaded', () => {
@@ -1089,6 +1060,7 @@
       }
     }
   </script>
+  <script src="/remittance-providers.js"></script>
   <script src="/live-ticker.js" defer></script>
   <script src="/theme.js" defer></script>
   <script src="/share.js" defer></script>
