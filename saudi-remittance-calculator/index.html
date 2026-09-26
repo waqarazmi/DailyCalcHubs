@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -597,9 +597,14 @@
 
     /* Provider Comparison Table */
     .provider-table-card {
-      margin-top: 24px;
-      border-top: 1px solid var(--border-light);
-      padding-top: 20px;
+      margin-top: 32px;
+      background: #ffffff;
+      border-radius: 16px;
+      border: 1px solid var(--border-light);
+      box-shadow: var(--card-shadow);
+      padding: 24px 28px;
+      box-sizing: border-box;
+      width: 100%;
     }
     .provider-table-title {
       font-size: 15px;
@@ -1539,33 +1544,7 @@
             </button>
           </div>
         </div>
-
-          <!-- In-Hand Wallet Comparison -->
-          <div class="provider-table-card">
-            <div class="provider-table-title">
-              <span><i class="fas fa-wallet" style="color:#16a34a;"></i> Saudi Wallet &amp; Bank Comparison</span>
-              <span style="font-size:12px; font-weight:600; color:#64748b;" id="compareCurNote">For SAR to INR</span>
-            </div>
-            <div class="provider-table-wrap">
-              <table class="provider-table">
-                <thead>
-                  <tr>
-                    <th>Provider</th>
-                    <th>Retail Rate</th>
-                    <th>Transfer Fee</th>
-                    <th>In-Hand Beneficiary Total</th>
-                    <th>Speed</th>
-                    <th>Send Money</th>
-                  </tr>
-                </thead>
-                <tbody id="providerTableBody">
-                  <!-- Generated dynamically via JS -->
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-        </div>
+      </div>
 
         <!-- Right: Saudi Remittance Quick Guide & Rules -->
         <div>
@@ -1627,6 +1606,32 @@
         </div>
 
       </div>
+
+      <!-- In-Hand Wallet Comparison -->
+      <div class="provider-table-card">
+        <div class="provider-table-title">
+          <span><i class="fas fa-wallet" style="color:#16a34a;"></i> Saudi Wallet &amp; Bank Comparison</span>
+          <span style="font-size:12px; font-weight:600; color:#64748b;" id="compareCurNote">For SAR to INR</span>
+        </div>
+        <div class="provider-table-wrap">
+          <table class="provider-table">
+            <thead>
+              <tr>
+                <th>Provider</th>
+                <th>Retail Rate</th>
+                <th>Transfer Fee</th>
+                <th>In-Hand Beneficiary Total</th>
+                <th>Speed</th>
+                <th>Send Money</th>
+              </tr>
+            </thead>
+            <tbody id="providerTableBody">
+              <!-- Generated dynamically via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
     </div>
   </section>
 
