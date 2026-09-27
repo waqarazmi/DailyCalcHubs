@@ -12,17 +12,6 @@
       } catch (e) {}
     })();
   </script>
-
-  <!-- Travelpayouts Partner Script (Flight & Umrah Integration) -->
-  <script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
-  (function () {
-    var script = document.createElement("script");
-    script.async = 1;
-    script.setAttribute("data-cmp-ab", "2");
-    script.src = "https://emrldtp.com/NTczNDc0.js?t=573474";
-    document.head.appendChild(script);
-  })();
-  </script>
   <title>Shariah SIP Calculator — Halal Wealth & Investment Projection Engine</title>
   <meta name="description" content="Plan your wealth accumulation with our free Shariah SIP Calculator. Forecast monthly investments, calculate target financial goals, and simulate ethical compounding.">
   <meta name="keywords" content="shariah sip calculator, halal sip calculator, islamic mutual fund calculator, monthly investment projection, ethical investing ksa, sukuk return calculator">
@@ -667,9 +656,14 @@
             <span class="logo-title" style="font-size:18px;font-weight:800;color:#0f172a;">DailyCalc<span style="color:#0284c7;">Hubs</span></span>
           </div>
         </div>
-        <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Close menu">
-          <i class="fas fa-xmark"></i>
-        </button>
+        <div class="mobile-header-actions">
+          <button type="button" class="mobile-theme-toggle dch-theme-toggle" id="mobileDrawerThemeToggle" aria-label="Toggle theme" title="Toggle theme">
+            <i class="fas fa-moon"></i>
+          </button>
+          <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Close menu">
+            <i class="fas fa-xmark"></i>
+          </button>
+        </div>
       </div>
 
       <div class="mobile-nav-body">
@@ -897,7 +891,7 @@
             <label class="mini-form-label" for="hubSipMonthly">Monthly Investment (SAR)</label>
             <div class="mini-input-addons">
               <span style="padding-left:12px; color:#b45309; font-weight:700;">SAR</span>
-              <input type="number" id="hubSipMonthly" class="mini-calc-input" value="2000" min="50" step="50" oninput="calculateHubSip()">
+              <input type="number" id="hubSipMonthly" class="mini-calc-input" value="2000" min="50" step="50" oninput="calculateHubSip()" inputmode="decimal">
             </div>
             <div class="mini-chips-row">
               <button type="button" class="mini-chip-btn" onclick="setHubSipMonthly(500)">500</button>
@@ -911,7 +905,7 @@
             <label class="mini-form-label" for="hubSipReturn">Expected Annual Return (% p.a.)</label>
             <div class="mini-input-addons">
               <span style="padding-left:12px; color:#b45309; font-weight:700;">%</span>
-              <input type="number" id="hubSipReturn" class="mini-calc-input" value="10" min="1" max="30" step="0.5" oninput="calculateHubSip()">
+              <input type="number" id="hubSipReturn" class="mini-calc-input" value="10" min="1" max="30" step="0.5" oninput="calculateHubSip()" inputmode="decimal">
             </div>
             <div class="mini-chips-row">
               <button type="button" class="mini-chip-btn" onclick="setHubSipReturn(6)">6% Sukuk</button>
@@ -925,7 +919,7 @@
             <label class="mini-form-label" for="hubSipYears">Investment Horizon (Years)</label>
             <div class="mini-input-addons">
               <span style="padding-left:12px; color:#b45309; font-weight:700;"><i class="fas fa-clock"></i></span>
-              <input type="number" id="hubSipYears" class="mini-calc-input" value="10" min="1" max="40" step="1" oninput="calculateHubSip()">
+              <input type="number" id="hubSipYears" class="mini-calc-input" value="10" min="1" max="40" step="1" oninput="calculateHubSip()" inputmode="numeric">
             </div>
             <div class="mini-chips-row">
               <button type="button" class="mini-chip-btn" onclick="setHubSipYears(3)">3 Yrs</button>
@@ -979,7 +973,7 @@
             <label class="mini-form-label" for="hubGoalTarget">Target Financial Goal (SAR)</label>
             <div class="mini-input-addons">
               <span style="padding-left:12px; color:#b45309; font-weight:700;">SAR</span>
-              <input type="number" id="hubGoalTarget" class="mini-calc-input" value="500000" min="10000" step="10000" oninput="calculateHubGoal()">
+              <input type="number" id="hubGoalTarget" class="mini-calc-input" value="500000" min="10000" step="10000" oninput="calculateHubGoal()" inputmode="decimal">
             </div>
             <div class="mini-chips-row">
               <button type="button" class="mini-chip-btn" onclick="setHubGoalTarget(100000)">100k</button>
@@ -993,7 +987,7 @@
             <label class="mini-form-label" for="hubGoalReturn">Expected Annual Return (% p.a.)</label>
             <div class="mini-input-addons">
               <span style="padding-left:12px; color:#b45309; font-weight:700;">%</span>
-              <input type="number" id="hubGoalReturn" class="mini-calc-input" value="10" min="1" max="30" step="0.5" oninput="calculateHubGoal()">
+              <input type="number" id="hubGoalReturn" class="mini-calc-input" value="10" min="1" max="30" step="0.5" oninput="calculateHubGoal()" inputmode="decimal">
             </div>
             <div class="mini-chips-row">
               <button type="button" class="mini-chip-btn" onclick="setHubGoalReturn(8)">8% Balanced</button>
@@ -1006,7 +1000,7 @@
             <label class="mini-form-label" for="hubGoalYears">Years to Reach Goal</label>
             <div class="mini-input-addons">
               <span style="padding-left:12px; color:#b45309; font-weight:700;"><i class="fas fa-bullseye"></i></span>
-              <input type="number" id="hubGoalYears" class="mini-calc-input" value="10" min="1" max="40" step="1" oninput="calculateHubGoal()">
+              <input type="number" id="hubGoalYears" class="mini-calc-input" value="10" min="1" max="40" step="1" oninput="calculateHubGoal()" inputmode="numeric">
             </div>
             <div class="mini-chips-row">
               <button type="button" class="mini-chip-btn" onclick="setHubGoalYears(5)">5 Yrs</button>

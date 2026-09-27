@@ -12,17 +12,6 @@
       } catch (e) {}
     })();
   </script>
-
-  <!-- Travelpayouts Partner Script (Flight & Umrah Integration) -->
-  <script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
-  (function () {
-    var script = document.createElement("script");
-    script.async = 1;
-    script.setAttribute("data-cmp-ab", "2");
-    script.src = "https://emrldtp.com/NTczNDc0.js?t=573474";
-    document.head.appendChild(script);
-  })();
-  </script>
   <title>Total Saudi Iqama Cost Calculator 2026 | Full Employer & Worker CTC</title>
   <meta name="description" content="Comprehensive calculator for total residency cost in Saudi Arabia. Compute Jawazat fees, Maktab Amal, health insurance, dependent levies, and exit-reentry.">
   <meta name="keywords" content="total iqama cost calculator 2026, cost of iqama in saudi arabia, full residency expense ksa, employer cost for expat worker, cchi medical insurance iqama">
@@ -600,9 +589,14 @@
             <span class="logo-title" style="font-size:18px;font-weight:800;color:#0f172a;">DailyCalc<span style="color:#0284c7;">Hubs</span></span>
           </div>
         </div>
-        <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Close menu">
-          <i class="fas fa-xmark"></i>
-        </button>
+        <div class="mobile-header-actions">
+          <button type="button" class="mobile-theme-toggle dch-theme-toggle" id="mobileDrawerThemeToggle" aria-label="Toggle theme" title="Toggle theme">
+            <i class="fas fa-moon"></i>
+          </button>
+          <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Close menu">
+            <i class="fas fa-xmark"></i>
+          </button>
+        </div>
       </div>
 
       <div class="mobile-nav-body">
@@ -865,7 +859,7 @@
               <label class="form-label" for="dependentsTotal">Family Dependents</label>
               <div class="input-with-addons">
                 <span class="input-addon-badge"><i class="fas fa-users"></i></span>
-                <input type="number" id="dependentsTotal" class="calc-input" value="2" min="0" max="12" step="1" oninput="calculateTotalCost()">
+                <input type="number" id="dependentsTotal" class="calc-input" value="2" min="0" max="12" step="1" oninput="calculateTotalCost()" inputmode="numeric">
               </div>
             </div>
 
@@ -873,7 +867,7 @@
               <label class="form-label" for="insurancePerHead">Medical Insurance (Per Head Est.)</label>
               <div class="input-with-addons">
                 <span class="input-addon-badge">SAR</span>
-                <input type="number" id="insurancePerHead" class="calc-input" value="800" min="0" step="50" oninput="calculateTotalCost()">
+                <input type="number" id="insurancePerHead" class="calc-input" value="800" min="0" step="50" oninput="calculateTotalCost()" inputmode="decimal">
               </div>
             </div>
           </div>

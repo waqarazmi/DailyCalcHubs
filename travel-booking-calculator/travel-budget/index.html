@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -596,9 +596,14 @@
             <span class="logo-title" style="font-size:18px;font-weight:800;color:#0f172a;">DailyCalc<span style="color:#0284c7;">Hubs</span></span>
           </div>
         </div>
-        <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Close menu">
-          <i class="fas fa-xmark"></i>
-        </button>
+        <div class="mobile-header-actions">
+          <button type="button" class="mobile-theme-toggle dch-theme-toggle" id="mobileDrawerThemeToggle" aria-label="Toggle theme" title="Toggle theme">
+            <i class="fas fa-moon"></i>
+          </button>
+          <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Close menu">
+            <i class="fas fa-xmark"></i>
+          </button>
+        </div>
       </div>
 
       <div class="mobile-nav-body">
@@ -824,7 +829,7 @@
             <label class="form-label" for="tbTravelers">Number of Travelers</label>
             <div class="input-with-addons">
               <span class="input-addon-badge"><i class="fas fa-user-group"></i></span>
-              <input type="number" id="tbTravelers" class="calc-input" value="2" min="1" max="50" step="1" required oninput="calculateDetailedBudget()">
+              <input type="number" id="tbTravelers" class="calc-input" value="2" min="1" max="50" step="1" required oninput="calculateDetailedBudget()" inputmode="numeric">
             </div>
             <div class="amount-chips-row">
               <button type="button" class="amount-chip-btn" onclick="setTbTravelers(1)">1 Solo</button>
@@ -837,7 +842,7 @@
             <label class="form-label" for="tbDays">Trip Duration (Days)</label>
             <div class="input-with-addons">
               <span class="input-addon-badge"><i class="fas fa-calendar-days"></i></span>
-              <input type="number" id="tbDays" class="calc-input" value="7" min="1" max="180" step="1" required oninput="calculateDetailedBudget()">
+              <input type="number" id="tbDays" class="calc-input" value="7" min="1" max="180" step="1" required oninput="calculateDetailedBudget()" inputmode="numeric">
             </div>
             <div class="amount-chips-row">
               <button type="button" class="amount-chip-btn" onclick="setTbDays(3)">3 Days</button>
@@ -851,7 +856,7 @@
           <label class="form-label" for="tbFlightCost">Total Flights Cost for All Travelers (SAR)</label>
           <div class="input-with-addons">
             <span class="input-addon-badge">SAR</span>
-            <input type="number" id="tbFlightCost" class="calc-input" value="2400" min="0" step="50" oninput="calculateDetailedBudget()">
+            <input type="number" id="tbFlightCost" class="calc-input" value="2400" min="0" step="50" oninput="calculateDetailedBudget()" inputmode="decimal">
           </div>
         </div>
 
@@ -859,7 +864,7 @@
           <label class="form-label" for="tbHotelCost">Total Lodging / Hotel Cost (SAR)</label>
           <div class="input-with-addons">
             <span class="input-addon-badge">SAR</span>
-            <input type="number" id="tbHotelCost" class="calc-input" value="3150" min="0" step="50" oninput="calculateDetailedBudget()">
+            <input type="number" id="tbHotelCost" class="calc-input" value="3150" min="0" step="50" oninput="calculateDetailedBudget()" inputmode="decimal">
           </div>
         </div>
 
@@ -868,7 +873,7 @@
             <label class="form-label" for="tbDailyFood">Food &amp; Dining / Person / Day (SAR)</label>
             <div class="input-with-addons">
               <span class="input-addon-badge">SAR</span>
-              <input type="number" id="tbDailyFood" class="calc-input" value="150" min="0" step="10" oninput="calculateDetailedBudget()">
+              <input type="number" id="tbDailyFood" class="calc-input" value="150" min="0" step="10" oninput="calculateDetailedBudget()" inputmode="decimal">
             </div>
           </div>
 
@@ -876,7 +881,7 @@
             <label class="form-label" for="tbDailyTransit">Local Taxis / Transit / Day (SAR)</label>
             <div class="input-with-addons">
               <span class="input-addon-badge">SAR</span>
-              <input type="number" id="tbDailyTransit" class="calc-input" value="50" min="0" step="10" oninput="calculateDetailedBudget()">
+              <input type="number" id="tbDailyTransit" class="calc-input" value="50" min="0" step="10" oninput="calculateDetailedBudget()" inputmode="decimal">
             </div>
           </div>
         </div>
@@ -885,7 +890,7 @@
           <label class="form-label" for="tbActivities">Activities, Tours &amp; Attractions (SAR Total)</label>
           <div class="input-with-addons">
             <span class="input-addon-badge">SAR</span>
-            <input type="number" id="tbActivities" class="calc-input" value="800" min="0" step="25" oninput="calculateDetailedBudget()">
+            <input type="number" id="tbActivities" class="calc-input" value="800" min="0" step="25" oninput="calculateDetailedBudget()" inputmode="decimal">
           </div>
         </div>
 
@@ -893,7 +898,7 @@
           <label class="form-label" for="tbContingencyPct">Emergency Contingency Buffer (%)</label>
           <div class="input-with-addons">
             <span class="input-addon-badge"><i class="fas fa-shield-heart"></i></span>
-            <input type="number" id="tbContingencyPct" class="calc-input" value="10" min="0" max="30" step="1" oninput="calculateDetailedBudget()">
+            <input type="number" id="tbContingencyPct" class="calc-input" value="10" min="0" max="30" step="1" oninput="calculateDetailedBudget()" inputmode="decimal">
           </div>
           <div class="amount-chips-row">
             <button type="button" class="amount-chip-btn" onclick="setTbContingency(0)">0% (None)</button>

@@ -12,17 +12,6 @@
       } catch (e) {}
     })();
   </script>
-
-  <!-- Travelpayouts Partner Script (Flight & Umrah Integration) -->
-  <script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
-  (function () {
-    var script = document.createElement("script");
-    script.async = 1;
-    script.setAttribute("data-cmp-ab", "2");
-    script.src = "https://emrldtp.com/NTczNDc0.js?t=573474";
-    document.head.appendChild(script);
-  })();
-  </script>
   <title>SIP Goal Calculator — Reverse Plan Monthly Savings for Future Targets</title>
   <meta name="description" content="Determine the exact monthly SIP investment required to reach your target financial goal (Hajj, education, retirement, down payment) with our Shariah SIP Goal Planner.">
   <meta name="keywords" content="sip goal calculator, target savings calculator, hajj fund sip planner, retirement target calculator saudi arabia, reverse sip calculator">
@@ -592,9 +581,14 @@
             <span class="logo-title" style="font-size:18px;font-weight:800;color:#0f172a;">DailyCalc<span style="color:#0284c7;">Hubs</span></span>
           </div>
         </div>
-        <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Close menu">
-          <i class="fas fa-xmark"></i>
-        </button>
+        <div class="mobile-header-actions">
+          <button type="button" class="mobile-theme-toggle dch-theme-toggle" id="mobileDrawerThemeToggle" aria-label="Toggle theme" title="Toggle theme">
+            <i class="fas fa-moon"></i>
+          </button>
+          <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Close menu">
+            <i class="fas fa-xmark"></i>
+          </button>
+        </div>
       </div>
 
       <div class="mobile-nav-body">
@@ -819,7 +813,7 @@
           <label class="form-label" for="goalTarget">Target Wealth Goal Amount (SAR)</label>
           <div class="input-with-addons">
             <span class="input-addon-badge">SAR</span>
-            <input type="number" id="goalTarget" class="calc-input" value="500000" min="1000" step="5000" required oninput="calculateDetailedGoal()">
+            <input type="number" id="goalTarget" class="calc-input" value="500000" min="1000" step="5000" required oninput="calculateDetailedGoal()" inputmode="decimal">
           </div>
           <div class="amount-chips-row">
             <button type="button" class="amount-chip-btn" onclick="setTargetPreset(100000)">100,000 SAR</button>
@@ -834,7 +828,7 @@
           <label class="form-label" for="goalReturn">Expected Annual Return Rate (% p.a.)</label>
           <div class="input-with-addons">
             <span class="input-addon-badge"><i class="fas fa-percent"></i></span>
-            <input type="number" id="goalReturn" class="calc-input" value="10" min="0" max="30" step="0.5" required oninput="calculateDetailedGoal()">
+            <input type="number" id="goalReturn" class="calc-input" value="10" min="0" max="30" step="0.5" required oninput="calculateDetailedGoal()" inputmode="decimal">
           </div>
           <div class="amount-chips-row">
             <button type="button" class="amount-chip-btn" onclick="setGoalReturnPreset(6)">6% Conservative Sukuk</button>
@@ -848,7 +842,7 @@
           <label class="form-label" for="goalYears">Time Horizon to Achieve Goal (Years)</label>
           <div class="input-with-addons">
             <span class="input-addon-badge"><i class="fas fa-calendar-check"></i></span>
-            <input type="number" id="goalYears" class="calc-input" value="10" min="1" max="40" step="1" required oninput="calculateDetailedGoal()">
+            <input type="number" id="goalYears" class="calc-input" value="10" min="1" max="40" step="1" required oninput="calculateDetailedGoal()" inputmode="numeric">
           </div>
           <div class="amount-chips-row">
             <button type="button" class="amount-chip-btn" onclick="setGoalYearsPreset(3)">3 Years</button>

@@ -13,17 +13,6 @@
       } catch (e) {}
     })();
   </script>
-
-  <!-- Travelpayouts Partner Script (Flight & Umrah Integration) -->
-  <script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
-  (function () {
-    var script = document.createElement("script");
-    script.async = 1;
-    script.setAttribute("data-cmp-ab", "2");
-    script.src = "https://emrldtp.com/NTczNDc0.js?t=573474";
-    document.head.appendChild(script);
-  })();
-  </script>
   <title>Split Bill Calculator — Equal & Custom Diner Share Estimator</title>
   <meta name="description" content="Split restaurant bills fairly among friends and coworkers. Calculate equal per-person shares or custom itemized individual diner contributions with tax and tip.">
   <meta name="keywords" content="split bill calculator, bill splitter online, divide restaurant bill, split check calculator, itemized bill split, group dining calculator">
@@ -604,9 +593,14 @@
             <span class="logo-title" style="font-size:18px;font-weight:800;color:#0f172a;">DailyCalc<span style="color:#0284c7;">Hubs</span></span>
           </div>
         </div>
-        <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Close menu">
-          <i class="fas fa-xmark"></i>
-        </button>
+        <div class="mobile-header-actions">
+          <button type="button" class="mobile-theme-toggle dch-theme-toggle" id="mobileDrawerThemeToggle" aria-label="Toggle theme" title="Toggle theme">
+            <i class="fas fa-moon"></i>
+          </button>
+          <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Close menu">
+            <i class="fas fa-xmark"></i>
+          </button>
+        </div>
       </div>
 
       <div class="mobile-nav-body">
@@ -836,7 +830,7 @@
         <div class="form-group">
           <label class="form-label" for="billSubtotal">Bill Total / Subtotal</label>
           <div class="calc-input-wrap">
-            <input type="number" id="billSubtotal" class="calc-input" value="300" min="0" step="5" oninput="calculateSplit()">
+            <input type="number" id="billSubtotal" class="calc-input" value="300" min="0" step="5" oninput="calculateSplit()" inputmode="decimal">
             <span class="calc-input-addon" id="currLabel">SAR</span>
           </div>
         </div>
@@ -860,7 +854,7 @@
         <div class="form-group">
           <label class="form-label" for="tipPct">Tip Percentage (%)</label>
           <div class="calc-input-wrap">
-            <input type="number" id="tipPct" class="calc-input" value="5" min="0" max="100" step="1" oninput="calculateSplit()">
+            <input type="number" id="tipPct" class="calc-input" value="5" min="0" max="100" step="1" oninput="calculateSplit()" inputmode="decimal">
             <span class="calc-input-addon">%</span>
           </div>
         </div>
@@ -868,7 +862,7 @@
         <div class="form-group">
           <label class="form-label" for="taxPct">Tax / VAT (%)</label>
           <div class="calc-input-wrap">
-            <input type="number" id="taxPct" class="calc-input" value="0" min="0" max="100" step="1" oninput="calculateSplit()">
+            <input type="number" id="taxPct" class="calc-input" value="0" min="0" max="100" step="1" oninput="calculateSplit()" inputmode="decimal">
             <span class="calc-input-addon">%</span>
           </div>
           <div style="font-size:11.5px; color:#64748b; margin-top:4px;">(Note: Retail prices in KSA already include 15% VAT)</div>
@@ -880,7 +874,7 @@
         <div class="form-group">
           <label class="form-label" for="numPeople">Number of Diners / People</label>
           <div class="calc-input-wrap">
-            <input type="number" id="numPeople" class="calc-input" value="3" min="1" max="50" step="1" oninput="calculateSplit()">
+            <input type="number" id="numPeople" class="calc-input" value="3" min="1" max="50" step="1" oninput="calculateSplit()" inputmode="numeric">
             <span class="calc-input-addon">People</span>
           </div>
         </div>
@@ -1072,7 +1066,7 @@
       const amtWrap = document.createElement('div');
       amtWrap.className = 'calc-input-wrap';
       amtWrap.style.borderRadius = '8px';
-      amtWrap.innerHTML = `<input type="number" class="calc-input diner-amt" value="${amount}" min="0" step="5" oninput="calculateSplit()"><span class="calc-input-addon" style="padding:8px 10px; font-size:12px;">${curr}</span>`;
+      amtWrap.innerHTML = `<input type="number" class="calc-input diner-amt" value="${amount}" min="0" step="5" oninput="calculateSplit()" inputmode="decimal"><span class="calc-input-addon" style="padding:8px 10px; font-size:12px;">${curr}</span>`;
 
       const delBtn = document.createElement('button');
       delBtn.type = 'button';

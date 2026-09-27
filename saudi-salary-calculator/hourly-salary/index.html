@@ -12,17 +12,6 @@
       } catch (e) {}
     })();
   </script>
-
-  <!-- Travelpayouts Partner Script (Flight & Umrah Integration) -->
-  <script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
-  (function () {
-    var script = document.createElement("script");
-    script.async = 1;
-    script.setAttribute("data-cmp-ab", "2");
-    script.src = "https://emrldtp.com/NTczNDc0.js?t=573474";
-    document.head.appendChild(script);
-  })();
-  </script>
   <title>Saudi Hourly Salary Calculator | Article 98 & 240-Hour MHRSD Standard</title>
   <meta name="description" content="Compute your hourly wage in Saudi Arabia based on statutory 240-hour monthly standard or 48/40-hour workweeks. Accurate for overtime base and partial-day deductions.">
   <meta name="keywords" content="hourly salary calculator saudi arabia, hourly rate ksa, hourly wage calculation riyadh, article 98 saudi labor law, hourly wage 240 hours">
@@ -600,9 +589,14 @@
             <span class="logo-title" style="font-size:18px;font-weight:800;color:#0f172a;">DailyCalc<span style="color:#0284c7;">Hubs</span></span>
           </div>
         </div>
-        <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Close menu">
-          <i class="fas fa-xmark"></i>
-        </button>
+        <div class="mobile-header-actions">
+          <button type="button" class="mobile-theme-toggle dch-theme-toggle" id="mobileDrawerThemeToggle" aria-label="Toggle theme" title="Toggle theme">
+            <i class="fas fa-moon"></i>
+          </button>
+          <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Close menu">
+            <i class="fas fa-xmark"></i>
+          </button>
+        </div>
       </div>
 
       <div class="mobile-nav-body">
@@ -830,7 +824,7 @@
             <label class="form-label" for="monthlySalaryHourly">Monthly Salary (SAR)</label>
             <div class="input-with-addons">
               <span class="input-addon-badge">SAR</span>
-              <input type="number" id="monthlySalaryHourly" class="calc-input" value="9600" min="0" step="100" placeholder="e.g. 9600" required oninput="calculateHourlySalary()">
+              <input type="number" id="monthlySalaryHourly" class="calc-input" value="9600" min="0" step="100" placeholder="e.g. 9600" required oninput="calculateHourlySalary()" inputmode="decimal">
             </div>
             <div class="amount-chips-row">
               <button type="button" class="amount-chip-btn" onclick="setHourlyAmount(4800)">4,800 SAR</button>
@@ -860,7 +854,7 @@
             <label class="form-label" for="dailyHours">Daily Work Hours</label>
             <div class="input-with-addons">
               <span class="input-addon-badge"><i class="fas fa-business-time"></i></span>
-              <input type="number" id="dailyHours" class="calc-input" value="8" min="1" max="12" step="0.5" oninput="calculateHourlySalary()">
+              <input type="number" id="dailyHours" class="calc-input" value="8" min="1" max="12" step="0.5" oninput="calculateHourlySalary()" inputmode="decimal">
             </div>
           </div>
         </form>

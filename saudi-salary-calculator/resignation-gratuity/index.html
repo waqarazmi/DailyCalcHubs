@@ -12,17 +12,6 @@
       } catch (e) {}
     })();
   </script>
-
-  <!-- Travelpayouts Partner Script (Flight & Umrah Integration) -->
-  <script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
-  (function () {
-    var script = document.createElement("script");
-    script.async = 1;
-    script.setAttribute("data-cmp-ab", "2");
-    script.src = "https://emrldtp.com/NTczNDc0.js?t=573474";
-    document.head.appendChild(script);
-  })();
-  </script>
   <title>Saudi Resignation Gratuity Calculator | Labor Law Article 85 Tiers</title>
   <meta name="description" content="Compute your legal resignation severance under Article 85 of Saudi Labor Law. Check exact 0%, 33.3%, 66.7%, and 100% gratuity thresholds based on completed service years.">
   <meta name="keywords" content="saudi resignation gratuity calculator, article 85 saudi labor law, resignation eosb ksa, resigning after 2 years saudi arabia, resignation gratuity scale">
@@ -600,9 +589,14 @@
             <span class="logo-title" style="font-size:18px;font-weight:800;color:#0f172a;">DailyCalc<span style="color:#0284c7;">Hubs</span></span>
           </div>
         </div>
-        <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Close menu">
-          <i class="fas fa-xmark"></i>
-        </button>
+        <div class="mobile-header-actions">
+          <button type="button" class="mobile-theme-toggle dch-theme-toggle" id="mobileDrawerThemeToggle" aria-label="Toggle theme" title="Toggle theme">
+            <i class="fas fa-moon"></i>
+          </button>
+          <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Close menu">
+            <i class="fas fa-xmark"></i>
+          </button>
+        </div>
       </div>
 
       <div class="mobile-nav-body">
@@ -830,7 +824,7 @@
             <label class="form-label" for="resignationWage">Last Total Monthly Wage (Basic + Allowances)</label>
             <div class="input-with-addons">
               <span class="input-addon-badge">SAR</span>
-              <input type="number" id="resignationWage" class="calc-input" value="10000" min="0" step="500" placeholder="e.g. 10000" required oninput="calculateResignation()">
+              <input type="number" id="resignationWage" class="calc-input" value="10000" min="0" step="500" placeholder="e.g. 10000" required oninput="calculateResignation()" inputmode="decimal">
             </div>
             <div class="amount-chips-row">
               <button type="button" class="amount-chip-btn" onclick="setResignWage(4500)">4,500 SAR</button>
@@ -845,14 +839,14 @@
             <div class="form-group">
               <label class="form-label" for="resignYears">Years Completed</label>
               <div class="input-with-addons">
-                <input type="number" id="resignYears" class="calc-input" value="4" min="0" max="60" step="1" oninput="calculateResignation()">
+                <input type="number" id="resignYears" class="calc-input" value="4" min="0" max="60" step="1" oninput="calculateResignation()" inputmode="numeric">
               </div>
             </div>
 
             <div class="form-group">
               <label class="form-label" for="resignMonths">Months Completed</label>
               <div class="input-with-addons">
-                <input type="number" id="resignMonths" class="calc-input" value="6" min="0" max="11" step="1" oninput="calculateResignation()">
+                <input type="number" id="resignMonths" class="calc-input" value="6" min="0" max="11" step="1" oninput="calculateResignation()" inputmode="numeric">
               </div>
             </div>
           </div>

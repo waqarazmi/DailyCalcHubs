@@ -12,17 +12,6 @@
       } catch (e) {}
     })();
   </script>
-
-  <!-- Travelpayouts Partner Script (Flight & Umrah Integration) -->
-  <script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
-  (function () {
-    var script = document.createElement("script");
-    script.async = 1;
-    script.setAttribute("data-cmp-ab", "2");
-    script.src = "https://emrldtp.com/NTczNDc0.js?t=573474";
-    document.head.appendChild(script);
-  })();
-  </script>
   <title>Saudi Salary Calculator: Net Pay, GOSI &amp; EOSB | DailyCalcHubs</title>
   <meta name="description" content="Calculate gross and net salary in Saudi Arabia. Estimate take-home pay with GOSI deductions, housing allowances, overtime pay, and end of service benefits.">
   <meta name="keywords" content="Saudi Salary Calculator, take home salary Saudi Arabia, GOSI calculator 2026, Saudi EOSB calculator, basic salary allowances KSA, overtime calculator Saudi Labor Law, Saudi resignation gratuity">
@@ -1274,9 +1263,14 @@
             <span class="logo-title" style="font-size:18px;font-weight:800;color:#0f172a;">DailyCalc<span style="color:#0284c7;">Hubs</span></span>
           </div>
         </div>
-        <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Close menu">
-          <i class="fas fa-xmark"></i>
-        </button>
+        <div class="mobile-header-actions">
+          <button type="button" class="mobile-theme-toggle dch-theme-toggle" id="mobileDrawerThemeToggle" aria-label="Toggle theme" title="Toggle theme">
+            <i class="fas fa-moon"></i>
+          </button>
+          <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Close menu">
+            <i class="fas fa-xmark"></i>
+          </button>
+        </div>
       </div>
 
       <div class="mobile-nav-body">
@@ -1534,7 +1528,7 @@
             <label class="form-label" for="basicSalary">Monthly Basic Salary (SAR):</label>
             <div class="input-with-addons">
               <div class="input-addon-badge"><i class="fas fa-coins" style="color:#16a34a;"></i> SAR</div>
-              <input type="number" id="basicSalary" class="calc-input" value="5000" min="0" step="100" placeholder="Enter basic salary">
+              <input type="number" id="basicSalary" class="calc-input" value="5000" min="0" step="100" placeholder="Enter basic salary" inputmode="decimal">
             </div>
             <div class="amount-chips-row">
               <button class="amount-chip-btn" onclick="setBasicSalary(3000)">3,000 SAR</button>
@@ -1553,7 +1547,7 @@
             </div>
             <div class="input-with-addons">
               <div class="input-addon-badge"><i class="fas fa-house" style="color:#0284c7;"></i> SAR</div>
-              <input type="number" id="housingAllowance" class="calc-input" value="1250" min="0" step="50" placeholder="Housing allowance">
+              <input type="number" id="housingAllowance" class="calc-input" value="1250" min="0" step="50" placeholder="Housing allowance" inputmode="decimal">
             </div>
           </div>
 
@@ -1565,7 +1559,7 @@
             </div>
             <div class="input-with-addons">
               <div class="input-addon-badge"><i class="fas fa-car" style="color:#f59e0b;"></i> SAR</div>
-              <input type="number" id="transportAllowance" class="calc-input" value="500" min="0" step="50" placeholder="Transport allowance">
+              <input type="number" id="transportAllowance" class="calc-input" value="500" min="0" step="50" placeholder="Transport allowance" inputmode="decimal">
             </div>
           </div>
 
@@ -1575,14 +1569,14 @@
               <label class="form-label" for="otherAllowances">Other Allowances:</label>
               <div class="input-with-addons">
                 <div class="input-addon-badge">SAR</div>
-                <input type="number" id="otherAllowances" class="calc-input" value="0" min="0" step="50" placeholder="0">
+                <input type="number" id="otherAllowances" class="calc-input" value="0" min="0" step="50" placeholder="0" inputmode="decimal">
               </div>
             </div>
             <div class="form-group">
               <label class="form-label" for="otherDeductions">Other Deductions:</label>
               <div class="input-with-addons">
                 <div class="input-addon-badge">SAR</div>
-                <input type="number" id="otherDeductions" class="calc-input" value="0" min="0" step="50" placeholder="0">
+                <input type="number" id="otherDeductions" class="calc-input" value="0" min="0" step="50" placeholder="0" inputmode="decimal">
               </div>
             </div>
           </div>

@@ -12,17 +12,6 @@
       } catch (e) {}
     })();
   </script>
-
-  <!-- Travelpayouts Partner Script (Flight & Umrah Integration) -->
-  <script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
-  (function () {
-    var script = document.createElement("script");
-    script.async = 1;
-    script.setAttribute("data-cmp-ab", "2");
-    script.src = "https://emrldtp.com/NTczNDc0.js?t=573474";
-    document.head.appendChild(script);
-  })();
-  </script>
   <title>9-Month Iqama Renewal Cost 2026 | Three-Quarter Saudi Residency Fees</title>
   <meta name="description" content="Compute 9-month Iqama renewal fees in Saudi Arabia. Calculate three-quarter Jawazat base (487.50 SAR), Maktab Amal (7,200 SAR), and dependent surcharges.">
   <meta name="keywords" content="9 month iqama renewal fee 2026, three quarter iqama cost ksa, 9 month maktab amal fee 7200, 9 month dependent fee 3600, project completion iqama">
@@ -600,9 +589,14 @@
             <span class="logo-title" style="font-size:18px;font-weight:800;color:#0f172a;">DailyCalc<span style="color:#0284c7;">Hubs</span></span>
           </div>
         </div>
-        <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Close menu">
-          <i class="fas fa-xmark"></i>
-        </button>
+        <div class="mobile-header-actions">
+          <button type="button" class="mobile-theme-toggle dch-theme-toggle" id="mobileDrawerThemeToggle" aria-label="Toggle theme" title="Toggle theme">
+            <i class="fas fa-moon"></i>
+          </button>
+          <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Close menu">
+            <i class="fas fa-xmark"></i>
+          </button>
+        </div>
       </div>
 
       <div class="mobile-nav-body">
@@ -841,7 +835,7 @@
             <label class="form-label" for="dependents9">Family Dependents</label>
             <div class="input-with-addons">
               <span class="input-addon-badge"><i class="fas fa-users"></i></span>
-              <input type="number" id="dependents9" class="calc-input" value="1" min="0" max="10" step="1" oninput="calculateCost9()">
+              <input type="number" id="dependents9" class="calc-input" value="1" min="0" max="10" step="1" oninput="calculateCost9()" inputmode="numeric">
             </div>
             <small style="display:block; margin-top:6px; color:#64748b; font-size:12px;">
               *9-Month Dependent Levy: 3,600 SAR per dependent (400 SAR × 9 Months).

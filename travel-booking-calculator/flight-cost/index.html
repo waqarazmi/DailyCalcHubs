@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -604,9 +604,14 @@
             <span class="logo-title" style="font-size:18px;font-weight:800;color:#0f172a;">DailyCalc<span style="color:#0284c7;">Hubs</span></span>
           </div>
         </div>
-        <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Close menu">
-          <i class="fas fa-xmark"></i>
-        </button>
+        <div class="mobile-header-actions">
+          <button type="button" class="mobile-theme-toggle dch-theme-toggle" id="mobileDrawerThemeToggle" aria-label="Toggle theme" title="Toggle theme">
+            <i class="fas fa-moon"></i>
+          </button>
+          <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Close menu">
+            <i class="fas fa-xmark"></i>
+          </button>
+        </div>
       </div>
 
       <div class="mobile-nav-body">
@@ -845,7 +850,7 @@
               <label for="baseFare">Adult Base Airfare</label>
               <div class="input-wrap">
                 <span class="unit">SAR</span>
-                <input type="number" id="baseFare" class="has-unit" value="1250" min="50" step="10">
+                <input type="number" id="baseFare" class="has-unit" value="1250" min="50" step="10" inputmode="decimal">
               </div>
               <span class="field-hint">Published one-way or round-trip base ticket</span>
             </div>
@@ -867,14 +872,14 @@
             <div class="input-group">
               <label for="numAdults">Adult Passengers (12+ yrs)</label>
               <div class="input-wrap">
-                <input type="number" id="numAdults" value="2" min="1" max="15">
+                <input type="number" id="numAdults" value="2" min="1" max="15" inputmode="numeric">
               </div>
             </div>
 
             <div class="input-group">
               <label for="numChildren">Children (2–11 yrs)</label>
               <div class="input-wrap">
-                <input type="number" id="numChildren" value="1" min="0" max="10">
+                <input type="number" id="numChildren" value="1" min="0" max="10" inputmode="numeric">
               </div>
               <span class="field-hint">Illustrative 75% child fare preset (varies by carrier)</span>
             </div>
@@ -884,7 +889,7 @@
             <div class="input-group">
               <label for="numInfants">Infants (&lt;2 yrs, Lap)</label>
               <div class="input-wrap">
-                <input type="number" id="numInfants" value="0" min="0" max="5">
+                <input type="number" id="numInfants" value="0" min="0" max="5" inputmode="numeric">
               </div>
               <span class="field-hint">Illustrative 10% lap infant preset (varies by carrier)</span>
             </div>
@@ -893,7 +898,7 @@
               <label for="baggageFee">Checked Luggage Fee (Per Bag)</label>
               <div class="input-wrap">
                 <span class="unit">SAR</span>
-                <input type="number" id="baggageFee" class="has-unit" value="180" min="0" step="10">
+                <input type="number" id="baggageFee" class="has-unit" value="180" min="0" step="10" inputmode="decimal">
               </div>
               <span class="field-hint">0 if checked luggage included in airfare</span>
             </div>
@@ -903,7 +908,7 @@
             <div class="input-group">
               <label for="numBags">Extra Bags to Check In</label>
               <div class="input-wrap">
-                <input type="number" id="numBags" value="2" min="0" max="20">
+                <input type="number" id="numBags" value="2" min="0" max="20" inputmode="numeric">
               </div>
               <span class="field-hint">Total additional checked pieces for party</span>
             </div>
@@ -912,7 +917,7 @@
               <label for="seatFee">Seat Selection Fee (Per Person)</label>
               <div class="input-wrap">
                 <span class="unit">SAR</span>
-                <input type="number" id="seatFee" class="has-unit" value="65" min="0" step="5">
+                <input type="number" id="seatFee" class="has-unit" value="65" min="0" step="5" inputmode="decimal">
               </div>
               <span class="field-hint">Standard seat, extra legroom, or window preference</span>
             </div>
@@ -923,7 +928,7 @@
               <label for="airportTax">Airport / ticket taxes &amp; fees (user input)</label>
               <div class="input-wrap">
                 <span class="unit">SAR</span>
-                <input type="number" id="airportTax" class="has-unit" value="240" min="0" step="10">
+                <input type="number" id="airportTax" class="has-unit" value="240" min="0" step="10" inputmode="decimal">
               </div>
               <span class="field-hint">Applicable airport, carrier, or ticket-related taxes and fees, where included in the fare or entered by the user</span>
             </div>
@@ -932,7 +937,7 @@
               <label for="mealAddon">In-flight Meals / Amenities (Per Person)</label>
               <div class="input-wrap">
                 <span class="unit">SAR</span>
-                <input type="number" id="mealAddon" class="has-unit" value="45" min="0" step="5">
+                <input type="number" id="mealAddon" class="has-unit" value="45" min="0" step="5" inputmode="decimal">
               </div>
               <span class="field-hint">Pre-ordered hot meals, snacks, or Wi-Fi passes</span>
             </div>
@@ -1021,7 +1026,7 @@
 
           <!-- Smart Booking Actions -->
           <div class="smart-booking-bar">
-            <a href="https://www.aviasales.com/?marker=573474&sub_id=flight_cost" target="_blank" rel="noopener noreferrer" class="btn-booking-action btn-booking-flight" aria-label="Search live flights on Aviasales">
+            <a href="https://www.aviasales.com/?marker=573474&sub_id=flight_cost" target="_blank" rel="nofollow sponsored noopener" class="btn-booking-action btn-booking-flight" aria-label="Search live flights on Aviasales">
               <i class="fas fa-plane-departure" aria-hidden="true"></i>
               <span>Search Live Flights</span>
             </a>

@@ -12,17 +12,6 @@
       } catch (e) {}
     })();
   </script>
-
-  <!-- Travelpayouts Partner Script (Flight & Umrah Integration) -->
-  <script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
-  (function () {
-    var script = document.createElement("script");
-    script.async = 1;
-    script.setAttribute("data-cmp-ab", "2");
-    script.src = "https://emrldtp.com/NTczNDc0.js?t=573474";
-    document.head.appendChild(script);
-  })();
-  </script>
   <title>Discount Calculator — Sale Price, Stacked Vouchers & 15% Saudi VAT</title>
   <meta name="description" content="Calculate final sale prices, double stacked promo discounts, and 15% Saudi VAT with our free Smart Discount Calculator. Perfect for KSA sales and shopping.">
   <meta name="keywords" content="discount calculator, sale price calculator, percent off calculator, saudi vat discount calculator, stacked promo discount, ksa shopping calculator">
@@ -843,9 +832,14 @@
             <span class="logo-title" style="font-size:18px;font-weight:800;color:#0f172a;">DailyCalc<span style="color:#0284c7;">Hubs</span></span>
           </div>
         </div>
-        <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Close menu">
-          <i class="fas fa-xmark"></i>
-        </button>
+        <div class="mobile-header-actions">
+          <button type="button" class="mobile-theme-toggle dch-theme-toggle" id="mobileDrawerThemeToggle" aria-label="Toggle theme" title="Toggle theme">
+            <i class="fas fa-moon"></i>
+          </button>
+          <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Close menu">
+            <i class="fas fa-xmark"></i>
+          </button>
+        </div>
       </div>
 
       <div class="mobile-nav-body">
@@ -1070,7 +1064,7 @@
           <label class="form-label" for="origPrice">Original Retail Price (SAR)</label>
           <div class="input-with-addons">
             <span class="input-addon-badge">SAR</span>
-            <input type="number" id="origPrice" class="calc-input" value="500" min="0" step="0.5" required oninput="calculateDetailedDiscount()">
+            <input type="number" id="origPrice" class="calc-input" value="500" min="0" step="0.5" required oninput="calculateDetailedDiscount()" inputmode="decimal">
           </div>
           <div class="amount-chips-row">
             <button type="button" class="amount-chip-btn" onclick="setPricePreset(100)">100 SAR</button>
@@ -1085,7 +1079,7 @@
           <label class="form-label" for="discountPct">Primary Discount Percentage (%)</label>
           <div class="input-with-addons">
             <span class="input-addon-badge"><i class="fas fa-percent"></i></span>
-            <input type="number" id="discountPct" class="calc-input" value="25" min="0" max="100" step="0.5" required oninput="calculateDetailedDiscount()">
+            <input type="number" id="discountPct" class="calc-input" value="25" min="0" max="100" step="0.5" required oninput="calculateDetailedDiscount()" inputmode="decimal">
           </div>
           <div class="amount-chips-row">
             <button type="button" class="amount-chip-btn" onclick="setDiscountPreset(10)">10% Off</button>
@@ -1100,7 +1094,7 @@
           <label class="form-label" for="extraCouponPct">Extra Stackable Coupon / App Voucher (%) <span style="font-weight:400; color:#64748b;">(Optional)</span></label>
           <div class="input-with-addons">
             <span class="input-addon-badge"><i class="fas fa-ticket-simple"></i></span>
-            <input type="number" id="extraCouponPct" class="calc-input" value="10" min="0" max="100" step="0.5" oninput="calculateDetailedDiscount()">
+            <input type="number" id="extraCouponPct" class="calc-input" value="10" min="0" max="100" step="0.5" oninput="calculateDetailedDiscount()" inputmode="decimal">
           </div>
           <div class="amount-chips-row">
             <button type="button" class="amount-chip-btn" onclick="setCouponPreset(0)">0% (None)</button>

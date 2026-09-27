@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -605,9 +605,14 @@
             <span class="logo-title" style="font-size:18px;font-weight:800;color:#0f172a;">DailyCalc<span style="color:#0284c7;">Hubs</span></span>
           </div>
         </div>
-        <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Close menu">
-          <i class="fas fa-xmark"></i>
-        </button>
+        <div class="mobile-header-actions">
+          <button type="button" class="mobile-theme-toggle dch-theme-toggle" id="mobileDrawerThemeToggle" aria-label="Toggle theme" title="Toggle theme">
+            <i class="fas fa-moon"></i>
+          </button>
+          <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Close menu">
+            <i class="fas fa-xmark"></i>
+          </button>
+        </div>
       </div>
 
       <div class="mobile-nav-body">
@@ -846,7 +851,7 @@
               <label for="baseAmount">Base Reservation Amount</label>
               <div class="input-wrap">
                 <span class="unit">SAR</span>
-                <input type="number" id="baseAmount" class="has-unit" value="1800" min="20" step="50">
+                <input type="number" id="baseAmount" class="has-unit" value="1800" min="20" step="50" inputmode="decimal">
               </div>
               <span class="field-hint">Ticket, package, hotel or activity baseline rate</span>
             </div>
@@ -885,7 +890,7 @@
               <label for="travelInsurance">Optional Travel Insurance</label>
               <div class="input-wrap">
                 <span class="unit">SAR</span>
-                <input type="number" id="travelInsurance" class="has-unit" value="85" min="0" step="10">
+                <input type="number" id="travelInsurance" class="has-unit" value="85" min="0" step="10" inputmode="decimal">
               </div>
               <span class="field-hint">Medical, trip delay &amp; luggage protection</span>
             </div>
@@ -896,7 +901,7 @@
               <label for="cancelWaiver">Cancellation Protection Waiver</label>
               <div class="input-wrap">
                 <span class="unit">SAR</span>
-                <input type="number" id="cancelWaiver" class="has-unit" value="50" min="0" step="10">
+                <input type="number" id="cancelWaiver" class="has-unit" value="50" min="0" step="10" inputmode="decimal">
               </div>
               <span class="field-hint">Full refund guarantee or flexible date change</span>
             </div>
@@ -905,7 +910,7 @@
               <label for="promoDiscount">Promo Code / Coupon Discount</label>
               <div class="input-wrap">
                 <span class="unit">SAR</span>
-                <input type="number" id="promoDiscount" class="has-unit" value="100" min="0" step="10">
+                <input type="number" id="promoDiscount" class="has-unit" value="100" min="0" step="10" inputmode="decimal">
               </div>
               <span class="field-hint">Deducted voucher or promotional saving</span>
             </div>
@@ -990,7 +995,7 @@
 
           <!-- Smart Booking Actions -->
           <div class="smart-booking-bar">
-            <a href="https://www.aviasales.com/?marker=573474&sub_id=booking_cost" target="_blank" rel="noopener noreferrer" class="btn-booking-action btn-booking-deals" aria-label="Compare booking options on Aviasales">
+            <a href="https://www.aviasales.com/?marker=573474&sub_id=booking_cost" target="_blank" rel="nofollow sponsored noopener" class="btn-booking-action btn-booking-deals" aria-label="Compare booking options on Aviasales">
               <i class="fas fa-search" aria-hidden="true"></i>
               <span>Compare Booking Options</span>
             </a>

@@ -12,17 +12,6 @@
       } catch (e) {}
     })();
   </script>
-
-  <!-- Travelpayouts Partner Script (Flight & Umrah Integration) -->
-  <script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
-  (function () {
-    var script = document.createElement("script");
-    script.async = 1;
-    script.setAttribute("data-cmp-ab", "2");
-    script.src = "https://emrldtp.com/NTczNDc0.js?t=573474";
-    document.head.appendChild(script);
-  })();
-  </script>
   <title>Unit Converter — Length, Weight, Temp, Area & Digital Storage</title>
   <meta name="description" content="Convert measurements accurately with our fast everyday Unit Converter. Supports length, weight, temperature, area, volume, speed, time, and digital data.">
   <meta name="keywords" content="unit converter, metric to imperial converter, length converter, weight converter, temperature converter celsius to fahrenheit, digital storage converter">
@@ -605,9 +594,14 @@
             <span class="logo-title" style="font-size:18px;font-weight:800;color:#0f172a;">DailyCalc<span style="color:#0284c7;">Hubs</span></span>
           </div>
         </div>
-        <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Close menu">
-          <i class="fas fa-xmark"></i>
-        </button>
+        <div class="mobile-header-actions">
+          <button type="button" class="mobile-theme-toggle dch-theme-toggle" id="mobileDrawerThemeToggle" aria-label="Toggle theme" title="Toggle theme">
+            <i class="fas fa-moon"></i>
+          </button>
+          <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Close menu">
+            <i class="fas fa-xmark"></i>
+          </button>
+        </div>
       </div>
 
       <div class="mobile-nav-body">
@@ -844,7 +838,7 @@
         <div class="converter-col">
           <div class="converter-label">From Value &amp; Unit</div>
           <div class="calc-input-wrap">
-            <input type="number" id="valFrom" class="calc-input" value="10" step="any" oninput="convertFrom()">
+            <input type="number" id="valFrom" class="calc-input" value="10" step="any" oninput="convertFrom()" inputmode="decimal">
           </div>
           <div class="calc-select">
             <select id="unitFrom" onchange="convertFrom()"></select>
@@ -860,7 +854,7 @@
         <div class="converter-col">
           <div class="converter-label">Converted Value &amp; Unit</div>
           <div class="calc-input-wrap">
-            <input type="number" id="valTo" class="calc-input" value="0" step="any" oninput="convertTo()">
+            <input type="number" id="valTo" class="calc-input" value="0" step="any" oninput="convertTo()" inputmode="decimal">
           </div>
           <div class="calc-select">
             <select id="unitTo" onchange="convertFrom()"></select>

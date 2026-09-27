@@ -288,8 +288,8 @@
       var ctaTarget = isAndroid ? '' : ' target="_blank" rel="noopener noreferrer"';
 
       var logoHtml = p.logoImg
-        ? '<img class="provider-logo-img" src="' + p.logoImg + '" alt="' + p.nameEn + ' logo" width="28" height="28" loading="lazy" />'
-        : p.logoSvg;
+        ? '<img class="provider-logo-img" src="' + p.logoImg + '" alt="' + (isArabic ? ('شعار ' + (p.nameAr || p.nameEn)) : (p.nameEn + ' logo')) + '" width="28" height="28" loading="lazy" />'
+        : (isArabic && p.logoSvg ? p.logoSvg.replace(/aria-label="[^"]*"/, 'aria-label="شعار ' + (p.nameAr || p.nameEn) + '"') : p.logoSvg);
 
       html += '<tr>' +
         '<td class="provider-cell-header">' +
@@ -306,7 +306,7 @@
         '<td class="provider-cell-net" data-label="' + netLabel + '"' + (isArabic ? ' dir="ltr" style="text-align:right;"' : '') + '>' + netCell + '</td>' +
         '<td class="provider-cell-speed" data-label="' + speedLabel + '">' + speedCell + '</td>' +
         '<td class="provider-cell-cta">' +
-          '<a href="' + ctaUrl + '" class="provider-cta-btn"' + ctaTarget + ' aria-label="' + ctaText + ' with ' + p.nameEn + '">' +
+          '<a href="' + ctaUrl + '" class="provider-cta-btn"' + ctaTarget + ' aria-label="' + (isArabic ? ('إرسال عبر ' + (p.nameAr || p.nameEn)) : (ctaText + ' with ' + p.nameEn)) + '">' +
             '<span>' + ctaText + '</span>' +
             '<i class="fas fa-arrow-up-right-from-square"></i>' +
           '</a>' +

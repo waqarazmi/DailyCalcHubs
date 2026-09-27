@@ -12,17 +12,6 @@
       } catch (e) {}
     })();
   </script>
-
-  <!-- Travelpayouts Partner Script (Flight & Umrah Integration) -->
-  <script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
-  (function () {
-    var script = document.createElement("script");
-    script.async = 1;
-    script.setAttribute("data-cmp-ab", "2");
-    script.src = "https://emrldtp.com/NTczNDc0.js?t=573474";
-    document.head.appendChild(script);
-  })();
-  </script>
   <title>Monthly Investment Calculator — Compounding Schedule & Inflation Adjuster</title>
   <meta name="description" content="Forecast monthly investment compounding with real inflation adjustments. View your year-by-year portfolio milestone schedule and purchasing power.">
   <meta name="keywords" content="monthly investment calculator, compounding schedule calculator, inflation adjusted investment return, halal monthly savings projection, saudi riyal compounding schedule">
@@ -604,9 +593,14 @@
             <span class="logo-title" style="font-size:18px;font-weight:800;color:#0f172a;">DailyCalc<span style="color:#0284c7;">Hubs</span></span>
           </div>
         </div>
-        <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Close menu">
-          <i class="fas fa-xmark"></i>
-        </button>
+        <div class="mobile-header-actions">
+          <button type="button" class="mobile-theme-toggle dch-theme-toggle" id="mobileDrawerThemeToggle" aria-label="Toggle theme" title="Toggle theme">
+            <i class="fas fa-moon"></i>
+          </button>
+          <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Close menu">
+            <i class="fas fa-xmark"></i>
+          </button>
+        </div>
       </div>
 
       <div class="mobile-nav-body">
@@ -831,7 +825,7 @@
           <label class="form-label" for="schedMonthly">Monthly Investment (SAR)</label>
           <div class="input-with-addons">
             <span class="input-addon-badge">SAR</span>
-            <input type="number" id="schedMonthly" class="calc-input" value="2000" min="50" step="50" required oninput="calculateMonthlySchedule()">
+            <input type="number" id="schedMonthly" class="calc-input" value="2000" min="50" step="50" required oninput="calculateMonthlySchedule()" inputmode="decimal">
           </div>
           <div class="amount-chips-row">
             <button type="button" class="amount-chip-btn" onclick="setSchedMonthly(500)">500 SAR</button>
@@ -845,7 +839,7 @@
           <label class="form-label" for="schedReturn">Expected Annual Return Rate (% p.a.)</label>
           <div class="input-with-addons">
             <span class="input-addon-badge"><i class="fas fa-percent"></i></span>
-            <input type="number" id="schedReturn" class="calc-input" value="10" min="0" max="30" step="0.5" required oninput="calculateMonthlySchedule()">
+            <input type="number" id="schedReturn" class="calc-input" value="10" min="0" max="30" step="0.5" required oninput="calculateMonthlySchedule()" inputmode="decimal">
           </div>
           <div class="amount-chips-row">
             <button type="button" class="amount-chip-btn" onclick="setSchedReturn(6)">6% Conservative</button>
@@ -859,7 +853,7 @@
           <label class="form-label" for="schedYears">Investment Horizon (Years)</label>
           <div class="input-with-addons">
             <span class="input-addon-badge"><i class="fas fa-clock"></i></span>
-            <input type="number" id="schedYears" class="calc-input" value="15" min="1" max="40" step="1" required oninput="calculateMonthlySchedule()">
+            <input type="number" id="schedYears" class="calc-input" value="15" min="1" max="40" step="1" required oninput="calculateMonthlySchedule()" inputmode="numeric">
           </div>
           <div class="amount-chips-row">
             <button type="button" class="amount-chip-btn" onclick="setSchedYears(5)">5 Years</button>
@@ -873,7 +867,7 @@
           <label class="form-label" for="schedInflation">Assumed Annual Inflation Rate (%)</label>
           <div class="input-with-addons">
             <span class="input-addon-badge"><i class="fas fa-arrow-trend-up"></i></span>
-            <input type="number" id="schedInflation" class="calc-input" value="2.5" min="0" max="15" step="0.1" required oninput="calculateMonthlySchedule()">
+            <input type="number" id="schedInflation" class="calc-input" value="2.5" min="0" max="15" step="0.1" required oninput="calculateMonthlySchedule()" inputmode="decimal">
           </div>
           <small style="display:block; margin-top:6px; color:#64748b; font-size:12.5px;">
             *Saudi Arabia long-term inflation benchmark is typically ~2.0%–2.5%.

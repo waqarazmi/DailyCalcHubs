@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
@@ -11,17 +11,6 @@
         document.documentElement.setAttribute('data-theme', t);
       } catch (e) {}
     })();
-  </script>
-
-  <!-- Travelpayouts Partner Script (Flight & Umrah Integration) -->
-  <script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
-  (function () {
-    var script = document.createElement("script");
-    script.async = 1;
-    script.setAttribute("data-cmp-ab", "2");
-    script.src = "https://emrldtp.com/NTczNDc0.js?t=573474";
-    document.head.appendChild(script);
-  })();
   </script>
   <title>حاسبة تحويل الأموال في السعودية | أسعار الصرف الحية ومقارنة المحافظ 2026</title>
   <meta name="description" content="احسب أسعار تحويل الريال السعودي (SAR) المباشرة إلى الهند، باكستان، بنغلاديش، الفلبين، نيبال وسريلانكا. قارن رسوم تطبيق برق، STC Pay، يورباي، وتحويل الراجحي بأسعار حية.">
@@ -54,43 +43,54 @@
   <meta name="twitter:description" content="احسب أسعار تحويل الريال السعودي وقارن أفضل محافظ وتطبيقات التحويل المالي الدولية في المملكة.">
   <meta name="twitter:image" content="https://dailycalchubs.com/og-image.jpg">
 
-  <!-- DailyCalcHubs Owner Admin Exclusion Mode -->
+    <!-- DailyCalcHubs Owner Admin Exclusion Mode (Zero GA4 Views / Zero AdSense Impressions) -->
   <script>
     (function() {
       try {
         var params = new URLSearchParams(window.location.search);
         var owner = params.get('owner');
         if (owner === 'waqar_lock') {
-          sessionStorage.setItem('dch_admin_traffic', 'true');
+          localStorage.setItem('dch_owner_mode', 'active');
+          params.delete('owner');
+          var newSearch = params.toString();
+          var cleanUrl = window.location.pathname + (newSearch ? '?' + newSearch : '') + window.location.hash;
+          window.history.replaceState({}, document.title, cleanUrl);
+        } else if (owner === 'off') {
+          localStorage.removeItem('dch_owner_mode');
+          params.delete('owner');
+          var newSearch = params.toString();
+          var cleanUrl = window.location.pathname + (newSearch ? '?' + newSearch : '') + window.location.hash;
+          window.history.replaceState({}, document.title, cleanUrl);
+        }
+
+        if (localStorage.getItem('dch_owner_mode') === 'active') {
+          window['ga-disable-G-18Y3LNHDR8'] = true;
+          window.adsbygoogle = window.adsbygoogle || [];
+          window.adsbygoogle.pauseAdRequests = 1;
+
+          window.addEventListener('DOMContentLoaded', function() {
+            if (!document.getElementById('dch-owner-mode-badge')) {
+              var badge = document.createElement('div');
+              badge.id = 'dch-owner-mode-badge';
+              badge.innerHTML = '&#128274; Owner Mode: Tracking &amp; Ads Disabled';
+              badge.style.cssText = 'position:fixed;bottom:14px;left:14px;background:rgba(17,24,39,0.92);color:#10b981;font-size:11.5px;font-weight:600;font-family:system-ui,-apple-system,sans-serif;padding:6px 12px;border-radius:20px;border:1px solid rgba(16,185,129,0.35);box-shadow:0 4px 12px rgba(0,0,0,0.25);z-index:99999;pointer-events:none;letter-spacing:0.2px;backdrop-filter:blur(4px);';
+              document.body.appendChild(badge);
+            }
+          });
         }
       } catch (e) {}
     })();
   </script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6944579701716470" crossorigin="anonymous"></script>
 
-  <!-- Google Analytics 4 & AdSense -->
+  <!-- Google Analytics (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-18Y3LNHDR8"></script>
   <script>
-    (function() {
-      if (sessionStorage.getItem('dch_admin_traffic') === 'true') {
-        window['ga-disable-G-18Y3LNHDR8'] = true;
-        console.warn('DailyCalcHubs: Analytics & AdSense disabled for Admin Session');
-      } else {
-        var gtm = document.createElement('script');
-        gtm.async = true;
-        gtm.src = 'https://www.googletagmanager.com/gtag/js?id=G-18Y3LNHDR8';
-        document.head.appendChild(gtm);
-
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-18Y3LNHDR8');
-
-        var ads = document.createElement('script');
-        ads.async = true;
-        ads.crossOrigin = 'anonymous';
-        ads.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6944579701716470';
-        document.head.appendChild(ads);
-      }
-    })();
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-18Y3LNHDR8');
   </script>
 
   <!-- Fonts & Icons -->
@@ -938,9 +938,14 @@
             <span class="logo-title" style="font-size:18px;font-weight:800;color:#0f172a;">DailyCalc<span style="color:#0284c7;">Hubs</span></span>
           </div>
         </div>
-        <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="إغلاق القائمة">
-          <i class="fas fa-xmark"></i>
-        </button>
+        <div class="mobile-header-actions">
+          <button type="button" class="mobile-theme-toggle dch-theme-toggle" id="mobileDrawerThemeToggle" aria-label="ØªØ¨Ø¯ÙŠÙ„ Ø§Ù„Ù…Ø¸Ù‡Ø±" title="ØªØ¨Ø¯ÙŠÙ„ Ø§Ù„Ù…Ø¸Ù‡Ø±">
+            <i class="fas fa-moon"></i>
+          </button>
+          <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Ø¥ØºÙ„Ø§Ù‚ Ø§Ù„Ù‚Ø§Ø¦Ù…Ø©">
+            <i class="fas fa-xmark"></i>
+          </button>
+        </div>
       </div>
 
       <div class="mobile-nav-body">
@@ -1195,7 +1200,7 @@
         <div class="calc-input-group">
           <label for="sarAmountInput">مبلغ التحويل بالريال السعودي (SAR)</label>
           <div class="calc-input-wrap">
-            <input type="number" id="sarAmountInput" value="1000" min="10" step="50" placeholder="1000" dir="ltr">
+            <input type="number" id="sarAmountInput" value="1000" min="10" step="50" placeholder="1000" dir="ltr" inputmode="decimal">
             <span class="calc-currency-badge">SAR</span>
           </div>
           <div class="quick-chips-row">

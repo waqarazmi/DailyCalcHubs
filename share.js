@@ -57,7 +57,9 @@
       footer.className = 'dch-print-footer';
       document.body.appendChild(footer);
     }
-    footer.innerHTML = '<span class="dch-print-footer-label">Verify / Recalculate:</span> ' +
+    var isAr = (document.documentElement.getAttribute('lang') === 'ar' || document.documentElement.lang === 'ar');
+    var labelText = isAr ? 'للتحقق / إعادة الحساب:' : 'Verify / Recalculate:';
+    footer.innerHTML = '<span class="dch-print-footer-label">' + labelText + '</span> ' +
                        '<a href="' + url + '" class="dch-print-canonical-link" target="_blank" rel="noopener">' +
                        url +
                        '</a>';
@@ -155,9 +157,11 @@
         }
       }
 
+      var isAr = (document.documentElement.getAttribute('lang') === 'ar' || document.documentElement.lang === 'ar');
+
       // Validation: If no valid calculation output exists yet, warn user
       if (!primaryVal || primaryVal === '--' || (primaryVal === '0.00 SAR' && !container)) {
-        alert('Please perform a calculation first to generate your summary.');
+        alert(isAr ? 'يرجى إجراء الحساب أولاً لإنشاء الملخص الخاص بك.' : 'Please perform a calculation first to generate your summary.');
         return;
       }
 
@@ -169,7 +173,7 @@
         var rateTag = container.querySelector('.result-rate-tag, .badge-status, #resCategoryText, #resCategoryBadge');
         if (rateTag) {
           var tagTxt = cleanText(rateTag.innerText);
-          if (tagTxt) details.push('Status: ' + tagTxt);
+          if (tagTxt) details.push((isAr ? 'الحالة: ' : 'Status: ') + tagTxt);
         }
 
         // B. Check for Meta Boxes (.meta-box-inner / .stat-pill)
@@ -215,25 +219,25 @@
 
       // 6. Assemble WhatsApp Markdown Message
       var lines = [];
-      lines.push('*DailyCalcHubs Calculation Summary*');
-      lines.push('Tool: ' + toolTitle);
+      lines.push(isAr ? '*ملخص حساب DailyCalcHubs*' : '*DailyCalcHubs Calculation Summary*');
+      lines.push((isAr ? 'الأداة: ' : 'Tool: ') + toolTitle);
       
       if (primaryLabel) {
         lines.push('*' + primaryLabel + ':* ' + primaryVal);
       } else {
-        lines.push('*Result:* ' + primaryVal);
+        lines.push((isAr ? '*النتيجة:* ' : '*Result:* ') + primaryVal);
       }
 
       if (details.length > 0) {
         lines.push('');
-        lines.push('*Breakdown:*');
+        lines.push(isAr ? '*التفاصيل:*' : '*Breakdown:*');
         for (var d = 0; d < details.length; d++) {
           lines.push('- ' + details[d]);
         }
       }
 
       lines.push('');
-      lines.push('Calculate or verify here:');
+      lines.push(isAr ? 'للحساب أو التحقق عبر الرابط:' : 'Calculate or verify here:');
       lines.push(cleanUrl);
 
       var messageText = lines.join('\n');

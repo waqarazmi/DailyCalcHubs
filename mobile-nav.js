@@ -104,6 +104,47 @@
       var closeBtn = document.getElementById('mobileNavCloseBtn');
       var backdrop = document.getElementById('mobileNavBackdrop');
 
+      // Initialize Theme Toggle in Mobile Drawer Header if not already in markup
+      var drawerThemeBtn = document.getElementById('mobileDrawerThemeToggle');
+      if (!drawerThemeBtn && drawer && closeBtn) {
+        var header = drawer.querySelector('.mobile-nav-header');
+        if (header) {
+          var headerActions = drawer.querySelector('.mobile-header-actions');
+          if (!headerActions) {
+            headerActions = document.createElement('div');
+            headerActions.className = 'mobile-header-actions';
+            closeBtn.parentNode.insertBefore(headerActions, closeBtn);
+            headerActions.appendChild(closeBtn);
+          }
+          drawerThemeBtn = document.createElement('button');
+          drawerThemeBtn.type = 'button';
+          drawerThemeBtn.id = 'mobileDrawerThemeToggle';
+          drawerThemeBtn.className = 'mobile-theme-toggle dch-theme-toggle';
+          var isAr = document.documentElement.getAttribute('lang') === 'ar';
+          var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+          drawerThemeBtn.setAttribute('aria-label', isAr ? 'تبديل المظهر' : 'Toggle theme');
+          drawerThemeBtn.setAttribute('title', isAr ? 'تبديل المظهر' : 'Toggle theme');
+          drawerThemeBtn.innerHTML = '<i class="' + (isDark ? 'fas fa-sun' : 'fas fa-moon') + '"></i>';
+          headerActions.insertBefore(drawerThemeBtn, closeBtn);
+        }
+      }
+
+      // Sync drawer theme toggle icon on theme changes
+      function updateDrawerThemeIcon() {
+        var btn = document.getElementById('mobileDrawerThemeToggle');
+        if (btn) {
+          var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+          var isAr = document.documentElement.getAttribute('lang') === 'ar';
+          var icon = btn.querySelector('i');
+          if (icon) {
+            icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+          }
+          var lbl = isAr ? (isDark ? 'التبديل إلى الوضع النهاري' : 'التبديل إلى الوضع الليلي') : (isDark ? 'Switch to light mode' : 'Switch to dark mode');
+          btn.setAttribute('aria-label', lbl);
+          btn.setAttribute('title', lbl);
+        }
+      }
+
       function openMenu() {
         if (navContainer) {
           navContainer.classList.add('open', 'active');
@@ -114,12 +155,21 @@
         if (backdrop) {
           backdrop.classList.add('open', 'active');
         }
+        document.body.classList.add('mobile-nav-open');
         menuBtn.setAttribute('aria-expanded', 'true');
         var icon = menuBtn.querySelector('i');
         if (icon) {
           icon.classList.remove('fa-bars');
           icon.classList.add('fa-xmark');
         }
+
+        // Hide Owner Mode badge over drawer
+        var ownerBadge = document.getElementById('dch-owner-mode-badge');
+        if (ownerBadge) {
+          ownerBadge.style.display = 'none';
+        }
+
+        updateDrawerThemeIcon();
       }
 
       function closeMenu() {
@@ -132,12 +182,23 @@
         if (backdrop) {
           backdrop.classList.remove('open', 'active');
         }
+        document.body.classList.remove('mobile-nav-open');
         menuBtn.setAttribute('aria-expanded', 'false');
         var icon = menuBtn.querySelector('i');
         if (icon) {
           icon.classList.remove('fa-xmark');
           icon.classList.add('fa-bars');
         }
+
+        // Restore Owner Mode badge if active
+        try {
+          if (localStorage.getItem('dch_owner_mode') === 'active') {
+            var ownerBadge = document.getElementById('dch-owner-mode-badge');
+            if (ownerBadge) {
+              ownerBadge.style.display = 'block';
+            }
+          }
+        } catch (e) {}
       }
 
       menuBtn.addEventListener('click', function(e) {

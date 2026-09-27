@@ -12,17 +12,6 @@
       } catch (e) {}
     })();
   </script>
-
-  <!-- Travelpayouts Partner Script (Flight & Umrah Integration) -->
-  <script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
-  (function () {
-    var script = document.createElement("script");
-    script.async = 1;
-    script.setAttribute("data-cmp-ab", "2");
-    script.src = "https://emrldtp.com/NTczNDc0.js?t=573474";
-    document.head.appendChild(script);
-  })();
-  </script>
   <title>Saudi Final Settlement Calculator | Article 88 Dues & Leave Encashment</title>
   <meta name="description" content="Compute your complete final financial settlement in Saudi Arabia. Calculate EOSB, accrued unused leave pay, pro-rated last month salary, advances, and company deductions.">
   <meta name="keywords" content="final settlement calculator saudi arabia, article 88 labor law ksa, leave encashment calculation riyadh, final exit financial clearance ksa, employee final settlement">
@@ -690,9 +679,14 @@
             <span class="logo-title" style="font-size:18px;font-weight:800;color:#0f172a;">DailyCalc<span style="color:#0284c7;">Hubs</span></span>
           </div>
         </div>
-        <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Close menu">
-          <i class="fas fa-xmark"></i>
-        </button>
+        <div class="mobile-header-actions">
+          <button type="button" class="mobile-theme-toggle dch-theme-toggle" id="mobileDrawerThemeToggle" aria-label="Toggle theme" title="Toggle theme">
+            <i class="fas fa-moon"></i>
+          </button>
+          <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Close menu">
+            <i class="fas fa-xmark"></i>
+          </button>
+        </div>
       </div>
 
       <div class="mobile-nav-body">
@@ -920,7 +914,7 @@
             <label class="form-label" for="settlementGrossWage">Monthly Full Wage (Basic + Allowances)</label>
             <div class="input-with-addons">
               <span class="input-addon-badge">SAR</span>
-              <input type="number" id="settlementGrossWage" class="calc-input" value="12000" min="0" step="500" placeholder="e.g. 12000" required oninput="calculateSettlement()">
+              <input type="number" id="settlementGrossWage" class="calc-input" value="12000" min="0" step="500" placeholder="e.g. 12000" required oninput="calculateSettlement()" inputmode="decimal">
             </div>
             <div class="amount-chips-row">
               <button type="button" class="amount-chip-btn" onclick="setSettlementWage(6000)">6,000 SAR</button>
@@ -971,7 +965,7 @@
               <label class="form-label" for="settlementEosb">Approved EOSB Gratuity (SAR)</label>
               <div class="input-with-addons">
                 <span class="input-addon-badge">SAR</span>
-                <input type="number" id="settlementEosb" class="calc-input" value="45000" min="0" step="1000" oninput="calculateSettlement()">
+                <input type="number" id="settlementEosb" class="calc-input" value="45000" min="0" step="1000" oninput="calculateSettlement()" inputmode="decimal">
               </div>
               <div class="eosb-helper-row">
                 <span class="eosb-helper-prompt">Don’t know your gratuity?</span>
@@ -985,7 +979,7 @@
               <label class="form-label" for="unusedLeaveDays">Unused Annual Leave Balance (Days)</label>
               <div class="input-with-addons">
                 <span class="input-addon-badge"><i class="fas fa-umbrella-beach"></i></span>
-                <input type="number" id="unusedLeaveDays" class="calc-input" value="18" min="0" max="90" step="1" oninput="calculateSettlement()">
+                <input type="number" id="unusedLeaveDays" class="calc-input" value="18" min="0" max="90" step="1" oninput="calculateSettlement()" inputmode="decimal">
               </div>
             </div>
           </div>
@@ -995,7 +989,7 @@
               <label class="form-label" for="lastMonthDays">Days Worked in Final Month</label>
               <div class="input-with-addons">
                 <span class="input-addon-badge"><i class="fas fa-calendar-day"></i></span>
-                <input type="number" id="lastMonthDays" class="calc-input" value="20" min="0" max="30" step="1" oninput="calculateSettlement()">
+                <input type="number" id="lastMonthDays" class="calc-input" value="20" min="0" max="30" step="1" oninput="calculateSettlement()" inputmode="numeric">
               </div>
             </div>
 
@@ -1003,7 +997,7 @@
               <label class="form-label" for="pendingOtClaims">Pending Overtime &amp; Expenses (SAR)</label>
               <div class="input-with-addons">
                 <span class="input-addon-badge">SAR</span>
-                <input type="number" id="pendingOtClaims" class="calc-input" value="1200" min="0" step="100" oninput="calculateSettlement()">
+                <input type="number" id="pendingOtClaims" class="calc-input" value="1200" min="0" step="100" oninput="calculateSettlement()" inputmode="decimal">
               </div>
             </div>
           </div>
@@ -1012,7 +1006,7 @@
             <label class="form-label" for="companyDeductions">Outstanding Deductions / Salary Advances (SAR)</label>
             <div class="input-with-addons">
               <span class="input-addon-badge"><i class="fas fa-minus-circle" style="color:#ef4444;"></i></span>
-              <input type="number" id="companyDeductions" class="calc-input" value="2500" min="0" step="100" oninput="calculateSettlement()">
+              <input type="number" id="companyDeductions" class="calc-input" value="2500" min="0" step="100" oninput="calculateSettlement()" inputmode="decimal">
             </div>
           </div>
         </form>

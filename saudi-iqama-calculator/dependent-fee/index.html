@@ -12,17 +12,6 @@
       } catch (e) {}
     })();
   </script>
-
-  <!-- Travelpayouts Partner Script (Flight & Umrah Integration) -->
-  <script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
-  (function () {
-    var script = document.createElement("script");
-    script.async = 1;
-    script.setAttribute("data-cmp-ab", "2");
-    script.src = "https://emrldtp.com/NTczNDc0.js?t=573474";
-    document.head.appendChild(script);
-  })();
-  </script>
   <title>Saudi Dependent Fee Calculator 2026 | 400 SAR/Month Expat Surcharge</title>
   <meta name="description" content="Calculate family dependent fees in Saudi Arabia. Compute monthly, quarterly, and annual levies (400 SAR/month per dependent) for spouse and children.">
   <meta name="keywords" content="dependent fee calculator saudi arabia 2026, expat levy ksa, 400 sar per month dependent fee, family tax saudi arabia, sadad dependent fee payment">
@@ -600,9 +589,14 @@
             <span class="logo-title" style="font-size:18px;font-weight:800;color:#0f172a;">DailyCalc<span style="color:#0284c7;">Hubs</span></span>
           </div>
         </div>
-        <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Close menu">
-          <i class="fas fa-xmark"></i>
-        </button>
+        <div class="mobile-header-actions">
+          <button type="button" class="mobile-theme-toggle dch-theme-toggle" id="mobileDrawerThemeToggle" aria-label="Toggle theme" title="Toggle theme">
+            <i class="fas fa-moon"></i>
+          </button>
+          <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Close menu">
+            <i class="fas fa-xmark"></i>
+          </button>
+        </div>
       </div>
 
       <div class="mobile-nav-body">
@@ -830,7 +824,7 @@
             <label class="form-label" for="numDependents">Number of Accompanying Dependents</label>
             <div class="input-with-addons">
               <span class="input-addon-badge"><i class="fas fa-user-group"></i></span>
-              <input type="number" id="numDependents" class="calc-input" value="2" min="1" max="15" step="1" placeholder="e.g. 2" required oninput="calculateDep()">
+              <input type="number" id="numDependents" class="calc-input" value="2" min="1" max="15" step="1" placeholder="e.g. 2" required oninput="calculateDep()" inputmode="numeric">
             </div>
             <div class="amount-chips-row">
               <button type="button" class="amount-chip-btn" onclick="setDepCount(1)">1 Dependent</button>
@@ -845,7 +839,7 @@
             <label class="form-label" for="validityMonths">Validity Duration (Months to Pay For)</label>
             <div class="input-with-addons">
               <span class="input-addon-badge"><i class="fas fa-calendar-days"></i></span>
-              <input type="number" id="validityMonths" class="calc-input" value="12" min="1" max="36" step="1" placeholder="e.g. 12" required oninput="calculateDep()">
+              <input type="number" id="validityMonths" class="calc-input" value="12" min="1" max="36" step="1" placeholder="e.g. 12" required oninput="calculateDep()" inputmode="numeric">
             </div>
             <div class="amount-chips-row">
               <button type="button" class="amount-chip-btn" onclick="setDepMonths(3)">3 Months</button>

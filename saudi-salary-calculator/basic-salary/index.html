@@ -12,17 +12,6 @@
       } catch (e) {}
     })();
   </script>
-
-  <!-- Travelpayouts Partner Script (Flight & Umrah Integration) -->
-  <script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
-  (function () {
-    var script = document.createElement("script");
-    script.async = 1;
-    script.setAttribute("data-cmp-ab", "2");
-    script.src = "https://emrldtp.com/NTczNDc0.js?t=573474";
-    document.head.appendChild(script);
-  })();
-  </script>
   <title>Saudi Basic Salary Calculator 2026: Package to Base Wage Split</title>
   <meta name="description" content="Calculate basic salary from your total compensation package in Saudi Arabia. Compute standard 60/25/15 package ratios, housing allowance splits, and base wage benchmarks.">
   <meta name="keywords" content="basic salary calculator Saudi Arabia, calculate basic salary from total package KSA, Saudi salary split 60 25 10, basic wage ratio Saudi Labor Law 2026">
@@ -598,9 +587,14 @@
             <span class="logo-title" style="font-size:18px;font-weight:800;color:#0f172a;">DailyCalc<span style="color:#0284c7;">Hubs</span></span>
           </div>
         </div>
-        <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Close menu">
-          <i class="fas fa-xmark"></i>
-        </button>
+        <div class="mobile-header-actions">
+          <button type="button" class="mobile-theme-toggle dch-theme-toggle" id="mobileDrawerThemeToggle" aria-label="Toggle theme" title="Toggle theme">
+            <i class="fas fa-moon"></i>
+          </button>
+          <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Close menu">
+            <i class="fas fa-xmark"></i>
+          </button>
+        </div>
       </div>
 
       <div class="mobile-nav-body">
@@ -836,7 +830,7 @@
           <label class="form-label" for="pkgTotal">Total Monthly Package (SAR):</label>
           <div class="input-with-addons">
             <div class="input-addon-badge"><i class="fas fa-coins" style="color:#16a34a;"></i> SAR</div>
-            <input type="number" id="pkgTotal" class="calc-input" value="10000" min="0" step="500" placeholder="Total package">
+            <input type="number" id="pkgTotal" class="calc-input" value="10000" min="0" step="500" placeholder="Total package" inputmode="decimal">
           </div>
           <div class="amount-chips-row">
             <button class="amount-chip-btn" onclick="setPkgAmt(5000)">5,000 SAR</button>

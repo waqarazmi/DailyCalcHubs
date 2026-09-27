@@ -12,17 +12,6 @@
       } catch (e) {}
     })();
   </script>
-
-  <!-- Travelpayouts Partner Script (Flight & Umrah Integration) -->
-  <script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
-  (function () {
-    var script = document.createElement("script");
-    script.async = 1;
-    script.setAttribute("data-cmp-ab", "2");
-    script.src = "https://emrldtp.com/NTczNDc0.js?t=573474";
-    document.head.appendChild(script);
-  })();
-  </script>
   <title>Tip Calculator — Bill Gratuity & Group Share Estimator</title>
   <meta name="description" content="Calculate tip amount, total restaurant bill, and equal split per person with custom percentage options. Culturally neutral and voluntary gratuity guidance.">
   <meta name="keywords" content="tip calculator, gratuity calculator, calculate tip online, bill split tip calculator, restaurant tip calculator, voluntary tip saudi">
@@ -592,9 +581,14 @@
             <span class="logo-title" style="font-size:18px;font-weight:800;color:#0f172a;">DailyCalc<span style="color:#0284c7;">Hubs</span></span>
           </div>
         </div>
-        <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Close menu">
-          <i class="fas fa-xmark"></i>
-        </button>
+        <div class="mobile-header-actions">
+          <button type="button" class="mobile-theme-toggle dch-theme-toggle" id="mobileDrawerThemeToggle" aria-label="Toggle theme" title="Toggle theme">
+            <i class="fas fa-moon"></i>
+          </button>
+          <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Close menu">
+            <i class="fas fa-xmark"></i>
+          </button>
+        </div>
       </div>
 
       <div class="mobile-nav-body">
@@ -818,7 +812,7 @@
         <div class="form-group">
           <label class="form-label" for="billAmount">Bill Amount</label>
           <div class="calc-input-wrap">
-            <input type="number" id="billAmount" class="calc-input" value="200" min="0" step="5" oninput="calculateTip()">
+            <input type="number" id="billAmount" class="calc-input" value="200" min="0" step="5" oninput="calculateTip()" inputmode="decimal">
             <span class="calc-input-addon" id="currencyDisplay">SAR</span>
           </div>
         </div>
@@ -841,7 +835,7 @@
       <div class="form-group">
         <label class="form-label" for="tipPct">Tip Percentage (%)</label>
         <div class="calc-input-wrap">
-          <input type="number" id="tipPct" class="calc-input" value="10" min="0" max="100" step="1" oninput="calculateTip()">
+          <input type="number" id="tipPct" class="calc-input" value="10" min="0" max="100" step="1" oninput="calculateTip()" inputmode="decimal">
           <span class="calc-input-addon">%</span>
         </div>
         <div class="tip-chips-row">
@@ -856,7 +850,7 @@
       <div class="form-group">
         <label class="form-label" for="numGuests">Number of Diners (Split Evenly)</label>
         <div class="calc-input-wrap">
-          <input type="number" id="numGuests" class="calc-input" value="2" min="1" max="50" step="1" oninput="calculateTip()">
+          <input type="number" id="numGuests" class="calc-input" value="2" min="1" max="50" step="1" oninput="calculateTip()" inputmode="numeric">
           <span class="calc-input-addon">Person(s)</span>
         </div>
       </div>

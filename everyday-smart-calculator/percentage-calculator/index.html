@@ -12,17 +12,6 @@
       } catch (e) {}
     })();
   </script>
-
-  <!-- Travelpayouts Partner Script (Flight & Umrah Integration) -->
-  <script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
-  (function () {
-    var script = document.createElement("script");
-    script.async = 1;
-    script.setAttribute("data-cmp-ab", "2");
-    script.src = "https://emrldtp.com/NTczNDc0.js?t=573474";
-    document.head.appendChild(script);
-  })();
-  </script>
   <title>Percentage Calculator — 4 Multi-Mode Math & Percent Change Tool</title>
   <meta name="description" content="Calculate percentages, percentage increase and decrease, percent change between two values, and find what percent X is of Y with our free instant Percentage Calculator.">
   <meta name="keywords" content="percentage calculator, percent change calculator, percentage increase calculator, calculate percentage of a number, percentage formula, free math tool">
@@ -593,9 +582,14 @@
             <span class="logo-title" style="font-size:18px;font-weight:800;color:#0f172a;">DailyCalc<span style="color:#0284c7;">Hubs</span></span>
           </div>
         </div>
-        <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Close menu">
-          <i class="fas fa-xmark"></i>
-        </button>
+        <div class="mobile-header-actions">
+          <button type="button" class="mobile-theme-toggle dch-theme-toggle" id="mobileDrawerThemeToggle" aria-label="Toggle theme" title="Toggle theme">
+            <i class="fas fa-moon"></i>
+          </button>
+          <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Close menu">
+            <i class="fas fa-xmark"></i>
+          </button>
+        </div>
       </div>
 
       <div class="mobile-nav-body">
@@ -829,14 +823,14 @@
           <div class="form-group">
             <label class="form-label" for="m1_pct">Percentage (X)</label>
             <div class="calc-input-wrap">
-              <input type="number" id="m1_pct" class="calc-input" value="15" step="any" oninput="calcMode1()">
+              <input type="number" id="m1_pct" class="calc-input" value="15" step="any" oninput="calcMode1()" inputmode="decimal">
               <span class="calc-input-addon">%</span>
             </div>
           </div>
           <div class="form-group">
             <label class="form-label" for="m1_val">Of Total Value (Y)</label>
             <div class="calc-input-wrap">
-              <input type="number" id="m1_val" class="calc-input" value="500" step="any" oninput="calcMode1()">
+              <input type="number" id="m1_val" class="calc-input" value="500" step="any" oninput="calcMode1()" inputmode="decimal">
               <span class="calc-input-addon">Value</span>
             </div>
           </div>
@@ -849,14 +843,14 @@
           <div class="form-group">
             <label class="form-label" for="m2_x">Value (X)</label>
             <div class="calc-input-wrap">
-              <input type="number" id="m2_x" class="calc-input" value="45" step="any" oninput="calcMode2()">
+              <input type="number" id="m2_x" class="calc-input" value="45" step="any" oninput="calcMode2()" inputmode="decimal">
               <span class="calc-input-addon">Part</span>
             </div>
           </div>
           <div class="form-group">
             <label class="form-label" for="m2_y">Total Value (Y)</label>
             <div class="calc-input-wrap">
-              <input type="number" id="m2_y" class="calc-input" value="180" step="any" oninput="calcMode2()">
+              <input type="number" id="m2_y" class="calc-input" value="180" step="any" oninput="calcMode2()" inputmode="decimal">
               <span class="calc-input-addon">Total</span>
             </div>
           </div>
@@ -869,14 +863,14 @@
           <div class="form-group">
             <label class="form-label" for="m3_old">Initial Value (X)</label>
             <div class="calc-input-wrap">
-              <input type="number" id="m3_old" class="calc-input" value="100" step="any" oninput="calcMode3()">
+              <input type="number" id="m3_old" class="calc-input" value="100" step="any" oninput="calcMode3()" inputmode="decimal">
               <span class="calc-input-addon">Before</span>
             </div>
           </div>
           <div class="form-group">
             <label class="form-label" for="m3_new">New Value (Y)</label>
             <div class="calc-input-wrap">
-              <input type="number" id="m3_new" class="calc-input" value="125" step="any" oninput="calcMode3()">
+              <input type="number" id="m3_new" class="calc-input" value="125" step="any" oninput="calcMode3()" inputmode="decimal">
               <span class="calc-input-addon">After</span>
             </div>
           </div>
@@ -889,14 +883,14 @@
           <div class="form-group">
             <label class="form-label" for="m4_val">Base Value</label>
             <div class="calc-input-wrap">
-              <input type="number" id="m4_val" class="calc-input" value="200" step="any" oninput="calcMode4()">
+              <input type="number" id="m4_val" class="calc-input" value="200" step="any" oninput="calcMode4()" inputmode="decimal">
               <span class="calc-input-addon">Base</span>
             </div>
           </div>
           <div class="form-group">
             <label class="form-label" for="m4_pct">Percentage Adjustment</label>
             <div class="calc-input-wrap">
-              <input type="number" id="m4_pct" class="calc-input" value="20" step="any" oninput="calcMode4()">
+              <input type="number" id="m4_pct" class="calc-input" value="20" step="any" oninput="calcMode4()" inputmode="decimal">
               <span class="calc-input-addon">%</span>
             </div>
           </div>

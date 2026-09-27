@@ -12,17 +12,6 @@
       } catch (e) {}
     })();
   </script>
-
-  <!-- Travelpayouts Partner Script (Flight & Umrah Integration) -->
-  <script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
-  (function () {
-    var script = document.createElement("script");
-    script.async = 1;
-    script.setAttribute("data-cmp-ab", "2");
-    script.src = "https://emrldtp.com/NTczNDc0.js?t=573474";
-    document.head.appendChild(script);
-  })();
-  </script>
   <title>Time Duration Calculator — Days, Hours, Minutes & Date Difference</title>
   <meta name="description" content="Calculate exact time duration between two dates and times, or add and subtract time to find future target dates with our free Time Duration Calculator.">
   <meta name="keywords" content="time duration calculator, date difference calculator, calculate hours between two times, elapsed time calculator, time addition calculator">
@@ -594,9 +583,14 @@
             <span class="logo-title" style="font-size:18px;font-weight:800;color:#0f172a;">DailyCalc<span style="color:#0284c7;">Hubs</span></span>
           </div>
         </div>
-        <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Close menu">
-          <i class="fas fa-xmark"></i>
-        </button>
+        <div class="mobile-header-actions">
+          <button type="button" class="mobile-theme-toggle dch-theme-toggle" id="mobileDrawerThemeToggle" aria-label="Toggle theme" title="Toggle theme">
+            <i class="fas fa-moon"></i>
+          </button>
+          <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Close menu">
+            <i class="fas fa-xmark"></i>
+          </button>
+        </div>
       </div>
 
       <div class="mobile-nav-body">
@@ -864,19 +858,19 @@
           <div class="form-group">
             <label class="form-label" for="addDays">Days</label>
             <div class="calc-input-wrap">
-              <input type="number" id="addDays" class="calc-input" value="14" min="0" oninput="calcDateMath()">
+              <input type="number" id="addDays" class="calc-input" value="14" min="0" oninput="calcDateMath()" inputmode="numeric">
             </div>
           </div>
           <div class="form-group">
             <label class="form-label" for="addHours">Hours</label>
             <div class="calc-input-wrap">
-              <input type="number" id="addHours" class="calc-input" value="6" min="0" oninput="calcDateMath()">
+              <input type="number" id="addHours" class="calc-input" value="6" min="0" oninput="calcDateMath()" inputmode="numeric">
             </div>
           </div>
           <div class="form-group">
             <label class="form-label" for="addMins">Minutes</label>
             <div class="calc-input-wrap">
-              <input type="number" id="addMins" class="calc-input" value="30" min="0" oninput="calcDateMath()">
+              <input type="number" id="addMins" class="calc-input" value="30" min="0" oninput="calcDateMath()" inputmode="numeric">
             </div>
           </div>
         </div>

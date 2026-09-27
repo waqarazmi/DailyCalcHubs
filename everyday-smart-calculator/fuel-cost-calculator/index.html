@@ -12,17 +12,6 @@
       } catch (e) {}
     })();
   </script>
-
-  <!-- Travelpayouts Partner Script (Flight & Umrah Integration) -->
-  <script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
-  (function () {
-    var script = document.createElement("script");
-    script.async = 1;
-    script.setAttribute("data-cmp-ab", "2");
-    script.src = "https://emrldtp.com/NTczNDc0.js?t=573474";
-    document.head.appendChild(script);
-  })();
-  </script>
   <title>Fuel Cost Calculator — Gas & Trip Travel Expense Estimator</title>
   <meta name="description" content="Calculate road trip fuel costs, liters required, fuel efficiency in L/100km or MPG, and carpool split costs with our free Fuel Cost Calculator.">
   <meta name="keywords" content="fuel cost calculator, gas trip calculator, petrol cost calculator saudi, calculate fuel consumption, carpool gas calculator, trip fuel cost">
@@ -603,9 +592,14 @@
             <span class="logo-title" style="font-size:18px;font-weight:800;color:#0f172a;">DailyCalc<span style="color:#0284c7;">Hubs</span></span>
           </div>
         </div>
-        <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Close menu">
-          <i class="fas fa-xmark"></i>
-        </button>
+        <div class="mobile-header-actions">
+          <button type="button" class="mobile-theme-toggle dch-theme-toggle" id="mobileDrawerThemeToggle" aria-label="Toggle theme" title="Toggle theme">
+            <i class="fas fa-moon"></i>
+          </button>
+          <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Close menu">
+            <i class="fas fa-xmark"></i>
+          </button>
+        </div>
       </div>
 
       <div class="mobile-nav-body">
@@ -829,7 +823,7 @@
         <div class="form-group">
           <label class="form-label" for="tripDistance">One-Way Distance</label>
           <div class="calc-input-wrap">
-            <input type="number" id="tripDistance" class="calc-input" value="400" min="1" step="5" oninput="calculateFuel()">
+            <input type="number" id="tripDistance" class="calc-input" value="400" min="1" step="5" oninput="calculateFuel()" inputmode="decimal">
             <span class="calc-input-addon" id="distUnitLabel">km</span>
           </div>
           <div class="preset-chips">
@@ -842,7 +836,7 @@
         <div class="form-group">
           <label class="form-label" for="efficiencyInput">Fuel Efficiency</label>
           <div class="calc-input-wrap">
-            <input type="number" id="efficiencyInput" class="calc-input" value="8.5" min="1" max="40" step="0.1" oninput="calculateFuel()">
+            <input type="number" id="efficiencyInput" class="calc-input" value="8.5" min="1" max="40" step="0.1" oninput="calculateFuel()" inputmode="decimal">
             <span class="calc-input-addon">L / 100km</span>
           </div>
           <div class="preset-chips">
@@ -857,7 +851,7 @@
         <div class="form-group">
           <label class="form-label" for="fuelPrice">Fuel Price per Liter</label>
           <div class="calc-input-wrap">
-            <input type="number" id="fuelPrice" class="calc-input" value="2.18" min="0.1" max="20" step="0.01" oninput="calculateFuel()">
+            <input type="number" id="fuelPrice" class="calc-input" value="2.18" min="0.1" max="20" step="0.01" oninput="calculateFuel()" inputmode="decimal">
             <span class="calc-input-addon" id="priceUnitLabel">SAR / L</span>
           </div>
           <div class="preset-chips">
@@ -871,7 +865,7 @@
         <div class="form-group">
           <label class="form-label" for="passengerCount">Passengers (Carpool Split)</label>
           <div class="calc-input-wrap">
-            <input type="number" id="passengerCount" class="calc-input" value="1" min="1" max="20" step="1" oninput="calculateFuel()">
+            <input type="number" id="passengerCount" class="calc-input" value="1" min="1" max="20" step="1" oninput="calculateFuel()" inputmode="numeric">
             <span class="calc-input-addon">Person(s)</span>
           </div>
         </div>

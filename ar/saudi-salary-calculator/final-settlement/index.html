@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
@@ -12,17 +12,6 @@
         document.documentElement.setAttribute('data-theme', t);
       } catch (e) {}
     })();
-  </script>
-
-  <!-- Travelpayouts Partner Script -->
-  <script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
-  (function () {
-    var script = document.createElement("script");
-    script.async = 1;
-    script.setAttribute("data-cmp-ab", "2");
-    script.src = "https://emrldtp.com/NTczNDc0.js?t=573474";
-    document.head.appendChild(script);
-  })();
   </script>
 
   <title>حاسبة تصفية المستحقات والبدلات في السعودية | المادة 88 وبدل الإجازات</title>
@@ -707,9 +696,14 @@
             <span class="logo-title" style="font-size:18px;font-weight:800;color:#0f172a;">DailyCalc<span style="color:#0284c7;">Hubs</span></span>
           </div>
         </div>
-        <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="إغلاق القائمة">
-          <i class="fas fa-xmark"></i>
-        </button>
+        <div class="mobile-header-actions">
+          <button type="button" class="mobile-theme-toggle dch-theme-toggle" id="mobileDrawerThemeToggle" aria-label="ØªØ¨Ø¯ÙŠÙ„ Ø§Ù„Ù…Ø¸Ù‡Ø±" title="ØªØ¨Ø¯ÙŠÙ„ Ø§Ù„Ù…Ø¸Ù‡Ø±">
+            <i class="fas fa-moon"></i>
+          </button>
+          <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Ø¥ØºÙ„Ø§Ù‚ Ø§Ù„Ù‚Ø§Ø¦Ù…Ø©">
+            <i class="fas fa-xmark"></i>
+          </button>
+        </div>
       </div>
 
       <div class="mobile-nav-body">
@@ -939,7 +933,7 @@
             <label class="form-label" for="settlementGrossWage">الأجر الإجمالي الشهري الأخير (الأساسي + السكن + البدلات)</label>
             <div class="input-with-addons">
               <span class="input-addon-badge">ر.س</span>
-              <input type="number" id="settlementGrossWage" class="calc-input" value="10000" min="0" step="500" placeholder="مثال: 10000" required oninput="calculateSettlement()" dir="ltr">
+              <input type="number" id="settlementGrossWage" class="calc-input" value="10000" min="0" step="500" placeholder="مثال: 10000" required oninput="calculateSettlement()" dir="ltr" inputmode="decimal">
             </div>
             <div class="amount-chips-row">
               <button type="button" class="amount-chip-btn" onclick="setSettlementWage(4500)">4,500 ر.س</button>
@@ -956,7 +950,7 @@
               <label class="form-label" for="joiningDate">تاريخ بداية الخدمة (Joining Date)</label>
               <div class="input-with-addons">
                 <input type="date" id="joiningDate" class="calc-input date-input-hidden" value="2020-01-01" dir="ltr">
-                <input type="text" id="joiningDateMobile" class="calc-input date-input-visible" placeholder="DD-MM-YYYY" maxlength="10" dir="ltr">
+                <input type="text" id="joiningDateMobile" class="calc-input date-input-visible" placeholder="DD-MM-YYYY" maxlength="10" dir="ltr" inputmode="numeric">
                 <button type="button" id="btnJoiningDatePicker" class="date-picker-addon-btn" aria-label="اختر تاريخ بداية الخدمة">
                   <i class="fas fa-calendar-alt"></i>
                 </button>
@@ -967,7 +961,7 @@
               <label class="form-label" for="exitDate">تاريخ انتهاء الخدمة (Exit Date)</label>
               <div class="input-with-addons">
                 <input type="date" id="exitDate" class="calc-input date-input-hidden" value="2026-01-01" dir="ltr">
-                <input type="text" id="exitDateMobile" class="calc-input date-input-visible" placeholder="DD-MM-YYYY" maxlength="10" dir="ltr">
+                <input type="text" id="exitDateMobile" class="calc-input date-input-visible" placeholder="DD-MM-YYYY" maxlength="10" dir="ltr" inputmode="numeric">
                 <button type="button" id="btnExitDatePicker" class="date-picker-addon-btn" aria-label="اختر تاريخ نهاية الخدمة">
                   <i class="fas fa-calendar-alt"></i>
                 </button>
@@ -987,7 +981,7 @@
             </div>
             <div class="input-with-addons">
               <span class="input-addon-badge">ر.س</span>
-              <input type="number" id="settlementEosb" class="calc-input" value="50000" min="0" step="100" oninput="calculateSettlement()" dir="ltr">
+              <input type="number" id="settlementEosb" class="calc-input" value="50000" min="0" step="100" oninput="calculateSettlement()" dir="ltr" inputmode="decimal">
             </div>
           </div>
 
@@ -996,7 +990,7 @@
               <label class="form-label" for="unusedLeaveDays">رصيد الإجازات السنوية المتبقية (أيام)</label>
               <div class="input-with-addons">
                 <span class="input-addon-badge"><i class="fas fa-umbrella-beach"></i></span>
-                <input type="number" id="unusedLeaveDays" class="calc-input" value="15" min="0" max="180" step="0.5" oninput="calculateSettlement()" dir="ltr">
+                <input type="number" id="unusedLeaveDays" class="calc-input" value="15" min="0" max="180" step="0.5" oninput="calculateSettlement()" dir="ltr" inputmode="decimal">
               </div>
             </div>
 
@@ -1004,7 +998,7 @@
               <label class="form-label" for="lastMonthDays">أيام العمل غير المدفوعة في آخر شهر</label>
               <div class="input-with-addons">
                 <span class="input-addon-badge"><i class="fas fa-business-time"></i></span>
-                <input type="number" id="lastMonthDays" class="calc-input" value="12" min="0" max="30" step="1" oninput="calculateSettlement()" dir="ltr">
+                <input type="number" id="lastMonthDays" class="calc-input" value="12" min="0" max="30" step="1" oninput="calculateSettlement()" dir="ltr" inputmode="numeric">
               </div>
             </div>
           </div>
@@ -1014,7 +1008,7 @@
               <label class="form-label" for="pendingOtClaims">مطالبات العمل الإضافي المعلقة (SAR)</label>
               <div class="input-with-addons">
                 <span class="input-addon-badge">ر.س</span>
-                <input type="number" id="pendingOtClaims" class="calc-input" value="0" min="0" step="100" oninput="calculateSettlement()" dir="ltr">
+                <input type="number" id="pendingOtClaims" class="calc-input" value="0" min="0" step="100" oninput="calculateSettlement()" dir="ltr" inputmode="decimal">
               </div>
             </div>
 
@@ -1022,7 +1016,7 @@
               <label class="form-label" for="companyDeductions">الخصومات المستحقة (سلف، عهد، تأخير)</label>
               <div class="input-with-addons">
                 <span class="input-addon-badge" style="color:#ef4444;"><i class="fas fa-minus-circle"></i></span>
-                <input type="number" id="companyDeductions" class="calc-input" value="0" min="0" step="100" oninput="calculateSettlement()" dir="ltr">
+                <input type="number" id="companyDeductions" class="calc-input" value="0" min="0" step="100" oninput="calculateSettlement()" dir="ltr" inputmode="decimal">
               </div>
             </div>
           </div>

@@ -12,17 +12,6 @@
       } catch (e) {}
     })();
   </script>
-
-  <!-- Travelpayouts Partner Script (Flight & Umrah Integration) -->
-  <script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
-  (function () {
-    var script = document.createElement("script");
-    script.async = 1;
-    script.setAttribute("data-cmp-ab", "2");
-    script.src = "https://emrldtp.com/NTczNDc0.js?t=573474";
-    document.head.appendChild(script);
-  })();
-  </script>
   <title>BMI Calculator — Body Mass Index & Healthy Weight Range</title>
   <meta name="description" content="Calculate your Body Mass Index (BMI), healthy weight range, and WHO weight category instantly with our free metric and imperial BMI Calculator.">
   <meta name="keywords" content="bmi calculator, body mass index calculator, calculate bmi online, healthy weight calculator, metric bmi calculator, bmi formula">
@@ -606,9 +595,14 @@
             <span class="logo-title" style="font-size:18px;font-weight:800;color:#0f172a;">DailyCalc<span style="color:#0284c7;">Hubs</span></span>
           </div>
         </div>
-        <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Close menu">
-          <i class="fas fa-xmark"></i>
-        </button>
+        <div class="mobile-header-actions">
+          <button type="button" class="mobile-theme-toggle dch-theme-toggle" id="mobileDrawerThemeToggle" aria-label="Toggle theme" title="Toggle theme">
+            <i class="fas fa-moon"></i>
+          </button>
+          <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Close menu">
+            <i class="fas fa-xmark"></i>
+          </button>
+        </div>
       </div>
 
       <div class="mobile-nav-body">
@@ -838,14 +832,14 @@
         <div class="form-group">
           <label class="form-label" for="metricHeight">Height (cm)</label>
           <div class="calc-input-wrap">
-            <input type="number" id="metricHeight" class="calc-input" value="175" min="50" max="250" step="1" oninput="calculateBMI()">
+            <input type="number" id="metricHeight" class="calc-input" value="175" min="50" max="250" step="1" oninput="calculateBMI()" inputmode="decimal">
             <span class="calc-input-addon">cm</span>
           </div>
         </div>
         <div class="form-group">
           <label class="form-label" for="metricWeight">Weight (kg)</label>
           <div class="calc-input-wrap">
-            <input type="number" id="metricWeight" class="calc-input" value="70" min="20" max="300" step="0.5" oninput="calculateBMI()">
+            <input type="number" id="metricWeight" class="calc-input" value="70" min="20" max="300" step="0.5" oninput="calculateBMI()" inputmode="decimal">
             <span class="calc-input-addon">kg</span>
           </div>
         </div>
@@ -857,11 +851,11 @@
           <label class="form-label">Height (Feet &amp; Inches)</label>
           <div style="display: flex; gap: 10px;">
             <div class="calc-input-wrap" style="flex:1;">
-              <input type="number" id="impFeet" class="calc-input" value="5" min="2" max="8" step="1" oninput="calculateBMI()">
+              <input type="number" id="impFeet" class="calc-input" value="5" min="2" max="8" step="1" oninput="calculateBMI()" inputmode="numeric">
               <span class="calc-input-addon">ft</span>
             </div>
             <div class="calc-input-wrap" style="flex:1;">
-              <input type="number" id="impInches" class="calc-input" value="9" min="0" max="11" step="1" oninput="calculateBMI()">
+              <input type="number" id="impInches" class="calc-input" value="9" min="0" max="11" step="1" oninput="calculateBMI()" inputmode="numeric">
               <span class="calc-input-addon">in</span>
             </div>
           </div>
@@ -869,7 +863,7 @@
         <div class="form-group">
           <label class="form-label" for="impWeight">Weight (lbs)</label>
           <div class="calc-input-wrap">
-            <input type="number" id="impWeight" class="calc-input" value="154" min="40" max="700" step="1" oninput="calculateBMI()">
+            <input type="number" id="impWeight" class="calc-input" value="154" min="40" max="700" step="1" oninput="calculateBMI()" inputmode="decimal">
             <span class="calc-input-addon">lbs</span>
           </div>
         </div>

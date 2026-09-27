@@ -12,17 +12,6 @@
       } catch (e) {}
     })();
   </script>
-
-  <!-- Travelpayouts Partner Script (Flight & Umrah Integration) -->
-  <script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
-  (function () {
-    var script = document.createElement("script");
-    script.async = 1;
-    script.setAttribute("data-cmp-ab", "2");
-    script.src = "https://emrldtp.com/NTczNDc0.js?t=573474";
-    document.head.appendChild(script);
-  })();
-  </script>
   <title>Daily Salary Calculator Saudi Arabia | 30-Day Statutory Divisor MHRSD</title>
   <meta name="description" content="Calculate your exact daily salary wage in Saudi Arabia based on MHRSD labor standards. Compute daily deductions, unpaid leave penalties, and statutory 30-day salary divisors.">
   <meta name="keywords" content="daily salary calculator saudi arabia, daily wage ksa, calculate daily pay saudi labor law, unpaid leave deduction ksa, monthly salary to daily rate riyadh">
@@ -600,9 +589,14 @@
             <span class="logo-title" style="font-size:18px;font-weight:800;color:#0f172a;">DailyCalc<span style="color:#0284c7;">Hubs</span></span>
           </div>
         </div>
-        <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Close menu">
-          <i class="fas fa-xmark"></i>
-        </button>
+        <div class="mobile-header-actions">
+          <button type="button" class="mobile-theme-toggle dch-theme-toggle" id="mobileDrawerThemeToggle" aria-label="Toggle theme" title="Toggle theme">
+            <i class="fas fa-moon"></i>
+          </button>
+          <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Close menu">
+            <i class="fas fa-xmark"></i>
+          </button>
+        </div>
       </div>
 
       <div class="mobile-nav-body">
@@ -830,7 +824,7 @@
             <label class="form-label" for="monthlySalary">Monthly Salary (Gross or Basic Wage)</label>
             <div class="input-with-addons">
               <span class="input-addon-badge">SAR</span>
-              <input type="number" id="monthlySalary" class="calc-input" value="9000" min="0" step="100" placeholder="e.g. 9000" required oninput="calculateDailySalary()">
+              <input type="number" id="monthlySalary" class="calc-input" value="9000" min="0" step="100" placeholder="e.g. 9000" required oninput="calculateDailySalary()" inputmode="decimal">
             </div>
             <div class="amount-chips-row">
               <button type="button" class="amount-chip-btn" onclick="setDailyAmount(4000)">4,000 SAR</button>
@@ -872,7 +866,7 @@
             <label class="form-label" for="absenceDays">Number of Unpaid / Absent Days (Optional)</label>
             <div class="input-with-addons">
               <span class="input-addon-badge"><i class="fas fa-user-xmark" style="color:#ef4444;"></i></span>
-              <input type="number" id="absenceDays" class="calc-input" value="0" min="0" max="31" step="1" placeholder="e.g. 2" oninput="calculateDailySalary()">
+              <input type="number" id="absenceDays" class="calc-input" value="0" min="0" max="31" step="1" placeholder="e.g. 2" oninput="calculateDailySalary()" inputmode="numeric">
             </div>
           </div>
         </form>

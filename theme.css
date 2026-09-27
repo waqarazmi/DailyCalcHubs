@@ -1,4 +1,4 @@
-/**
+﻿/**
  * DailyCalcHubs — Global Night Mode Design System
  * Theme Tokens, Component Overrides & Dark Mode Styles
  * Pilot Phase: Prayer Times, EOSB, Split Bill
@@ -3112,7 +3112,14 @@ html[dir="rtl"] .mega-cat-tab.active .mega-tab-arrow {
   color: #0369a1 !important;
 }
 
-/* --- Mobile Specific Styles (<768px) --- */
+/* --- Mobile Specific Styles (<768px / Mobile Drawer Reference Image 1) --- */
+/* Hide Owner Mode badge over mobile nav drawer */
+.mobile-nav-container.open ~ #dch-owner-mode-badge,
+.mobile-nav-container.active ~ #dch-owner-mode-badge,
+body.mobile-nav-open #dch-owner-mode-badge {
+  display: none !important;
+}
+
 /* Mobile Drawer Container & Backdrop */
 .mobile-nav-container {
   display: none;
@@ -3144,9 +3151,9 @@ html[dir="rtl"] .mega-cat-tab.active .mega-tab-arrow {
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
-  background: rgba(2, 6, 23, 0.75) !important;
-  backdrop-filter: blur(6px) !important;
-  -webkit-backdrop-filter: blur(6px) !important;
+  background: rgba(2, 6, 23, 0.72) !important;
+  backdrop-filter: blur(5px) !important;
+  -webkit-backdrop-filter: blur(5px) !important;
   z-index: 100000 !important;
 }
 
@@ -3168,7 +3175,7 @@ html[dir="rtl"] .mega-cat-tab.active .mega-tab-arrow {
   top: 0 !important;
   bottom: 0 !important;
   left: 0 !important;
-  width: min(340px, 86vw) !important;
+  width: min(350px, 86vw) !important;
   height: 100% !important;
   background: #ffffff !important;
   color: #0f172a !important;
@@ -3191,13 +3198,15 @@ html[lang="ar"] .mobile-nav-drawer {
   border-left: 1px solid #e2e8f0 !important;
 }
 
+/* Header */
 .mobile-nav-header {
-  padding: 16px 20px !important;
+  padding: 14px 18px !important;
+  min-height: 64px !important;
   display: flex !important;
   align-items: center !important;
   justify-content: space-between !important;
   background: #ffffff !important;
-  border-bottom: 1px solid #e2e8f0 !important;
+  border-bottom: 1px solid #f1f5f9 !important;
   flex-shrink: 0 !important;
 }
 
@@ -3218,27 +3227,41 @@ html[lang="ar"] .mobile-nav-drawer {
   color: #0284c7 !important;
 }
 
+/* Header Controls (Theme Toggle + Close Button side-by-side as in Image 1) */
+.mobile-header-actions {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+.mobile-theme-toggle,
 .mobile-nav-close {
+  width: 38px !important;
+  height: 38px !important;
+  border-radius: 8px !important;
+  border: 1px solid #e2e8f0 !important;
   background: transparent !important;
-  border: none !important;
-  font-size: 18px !important;
-  color: #64748b !important;
-  cursor: pointer !important;
-  padding: 6px !important;
-  border-radius: 6px !important;
+  color: #0f172a !important;
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
-  transition: all 0.2s ease !important;
+  font-size: 15px !important;
+  cursor: pointer !important;
+  padding: 0 !important;
+  transition: all 0.15s ease !important;
+  box-sizing: border-box !important;
 }
 
+.mobile-theme-toggle:hover,
 .mobile-nav-close:hover {
-  color: #0f172a !important;
-  background: #f1f5f9 !important;
+  background: #f8fafc !important;
+  border-color: #cbd5e1 !important;
+  color: #0284c7 !important;
 }
 
+/* Drawer Body */
 .mobile-nav-body {
-  padding: 16px 20px !important;
+  padding: 10px 14px 16px 14px !important;
   flex-grow: 1 !important;
   overflow-y: auto !important;
   overscroll-behavior: contain !important;
@@ -3259,23 +3282,23 @@ html[lang="ar"] .mobile-nav-drawer {
   .mobile-nav-top-row {
     display: flex !important;
     flex-direction: column !important;
-    gap: 4px !important;
-    padding-bottom: 12px !important;
-    margin-bottom: 12px !important;
-    border-bottom: 1px solid #e2e8f0 !important;
+    gap: 0 !important;
+    padding-bottom: 8px !important;
+    margin-bottom: 6px !important;
+    border-bottom: 1px solid #f1f5f9 !important;
   }
 
   .mobile-nav-top-row .nav-link-item {
     display: flex !important;
     align-items: center !important;
-    gap: 10px !important;
-    padding: 8px 10px !important;
-    min-height: 40px !important;
+    gap: 12px !important;
+    padding: 10px 12px !important;
+    min-height: 44px !important;
     background: transparent !important;
     border: none !important;
     border-radius: 6px !important;
-    color: #475569 !important;
-    font-size: 14px !important;
+    color: #0f172a !important;
+    font-size: 15px !important;
     font-weight: 600 !important;
     text-decoration: none !important;
     transition: background 0.15s ease, color 0.15s ease !important;
@@ -3291,7 +3314,7 @@ html[lang="ar"] .mobile-nav-drawer {
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
-    font-size: 13px !important;
+    font-size: 15px !important;
     flex-shrink: 0 !important;
   }
 
@@ -3301,12 +3324,7 @@ html[lang="ar"] .mobile-nav-drawer {
     color: #0284c7 !important;
   }
 
-  /* Category Heading */
-  .mobile-nav-heading {
-    display: none !important;
-  }
-
-  /* 7 Accordion Category Items */
+  /* 7 Flat Category Rows (Contiguous, NOT floating cards) */
   .mobile-accordion {
     display: flex !important;
     flex-direction: column !important;
@@ -3328,90 +3346,92 @@ html[lang="ar"] .mobile-nav-drawer {
     display: flex !important;
     align-items: center !important;
     justify-content: space-between !important;
-    padding: 10px 12px !important;
-    min-height: 44px !important;
+    padding: 11px 12px !important;
+    min-height: 48px !important;
     background: transparent !important;
     border: none !important;
     cursor: pointer !important;
     font-family: inherit !important;
-    font-size: 13.5px !important;
-    font-weight: 700 !important;
+    font-size: 14.5px !important;
+    font-weight: 600 !important;
     color: #0f172a !important;
     text-align: inherit !important;
-    transition: background 0.15s ease !important;
+    transition: background 0.15s ease, color 0.15s ease !important;
   }
 
   .mobile-accordion-header:hover {
     background: #f8fafc !important;
   }
 
+  /* Active / Expanded Category Header (Soft light blue highlight as in Image 1) */
+  .mobile-accordion-item.active .mobile-accordion-header {
+    background: #f0f9ff !important;
+    color: #0f172a !important;
+  }
+
   .mobile-acc-title-group {
     display: flex !important;
     align-items: center !important;
-    gap: 8px !important;
+    gap: 12px !important;
     min-width: 0 !important;
   }
 
   .mobile-acc-title {
     color: inherit !important;
-    font-size: 13.5px !important;
-    font-weight: 700 !important;
+    font-size: 14.5px !important;
+    font-weight: 600 !important;
     white-space: nowrap !important;
     overflow: hidden !important;
     text-overflow: ellipsis !important;
   }
 
   .mobile-acc-icon {
-    width: 24px !important;
-    height: 24px !important;
-    border-radius: 6px !important;
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 8px !important;
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
-    font-size: 11px !important;
+    font-size: 14px !important;
     flex-shrink: 0 !important;
-  }
-
-  .mobile-acc-count {
-    display: none !important;
   }
 
   .mobile-acc-chevron {
-    font-size: 11px !important;
+    font-size: 12px !important;
     color: #94a3b8 !important;
-    transition: transform 0.2s ease !important;
+    transition: transform 0.2s ease, color 0.2s ease !important;
     flex-shrink: 0 !important;
   }
 
+  /* Chevron turns up and blue when active */
   .mobile-accordion-item.active .mobile-acc-chevron {
     transform: rotate(180deg) !important;
+    color: #0284c7 !important;
   }
 
+  /* Accordion Body */
   .mobile-accordion-body {
     display: none;
-    padding: 6px 12px 12px 12px !important;
-    border-top: 1px dashed #e2e8f0 !important;
+    padding: 4px 8px 10px 8px !important;
     background: #f8fafc !important;
+    border-top: none !important;
   }
 
   .mobile-accordion-item.active .mobile-accordion-body {
     display: block !important;
   }
 
-  .mobile-acc-hub-link {
-    display: none !important;
-  }
-
   .mobile-acc-links-list {
     display: flex !important;
     flex-direction: column !important;
-    gap: 3px !important;
+    gap: 2px !important;
   }
 
+  /* Tool Links indented under Category Title */
   .mobile-acc-tool-link {
     display: block !important;
-    padding: 6px 8px !important;
-    font-size: 12px !important;
+    padding: 8px 12px 8px 44px !important;
+    font-size: 13.5px !important;
     font-weight: 500 !important;
     color: #334155 !important;
     text-decoration: none !important;
@@ -3419,16 +3439,22 @@ html[lang="ar"] .mobile-nav-drawer {
     transition: background 0.15s ease, color 0.15s ease !important;
   }
 
+  html[dir="rtl"] .mobile-acc-tool-link,
+  html[lang="ar"] .mobile-acc-tool-link {
+    padding: 8px 44px 8px 12px !important;
+    text-align: right !important;
+  }
+
   .mobile-acc-tool-link:hover,
   .mobile-acc-tool-link:active {
-    background: #e2e8f0 !important;
+    background: #e0f2fe !important;
     color: #0284c7 !important;
   }
 
   /* Drawer Footer */
   .mobile-nav-footer {
-    padding: 14px 18px !important;
-    border-top: 1px solid #e2e8f0 !important;
+    padding: 12px 18px !important;
+    border-top: 1px solid #f1f5f9 !important;
     background: #ffffff !important;
     display: flex !important;
     align-items: center !important;
@@ -3449,50 +3475,55 @@ html[lang="ar"] .mobile-nav-drawer {
     border-radius: 6px !important;
     background: #f8fafc !important;
     border: 1px solid #e2e8f0 !important;
-    transition: all 0.2s ease !important;
+    transition: all 0.15s ease !important;
   }
 
   .mobile-nav-footer .lang-switch-btn:hover {
-    color: #0284c7 !important;
     background: #f1f5f9 !important;
-    border-color: #cbd5e1 !important;
+    color: #0284c7 !important;
+    border-color: #0284c7 !important;
   }
 
-  /* Mobile Dark Mode Parity System */
-  html[data-theme="dark"] .mobile-nav-drawer,
-  html[data-theme="dark"][lang="ar"] .mobile-nav-drawer {
-    background: #0f172a !important;
-    border-left: 1px solid #1e293b !important;
-    border-right: 1px solid #1e293b !important;
+  /* ========================================================
+     DARK MODE (REFERENCE IMAGE 1 RIGHT PANEL)
+     ======================================================== */
+  html[data-theme="dark"] .mobile-nav-drawer {
+    background: #0b1329 !important;
     color: #f1f5f9 !important;
+    border-right-color: #1e293b !important;
+    border-left-color: #1e293b !important;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6) !important;
   }
 
   html[data-theme="dark"] .mobile-nav-header {
-    background: #0f172a !important;
+    background: #0b1329 !important;
     border-bottom-color: #1e293b !important;
   }
 
   html[data-theme="dark"] .mobile-logo-group .logo-title {
-    color: #f8fafc !important;
+    color: #ffffff !important;
   }
 
   html[data-theme="dark"] .mobile-logo-group .logo-title span {
     color: #38bdf8 !important;
   }
 
+  html[data-theme="dark"] .mobile-theme-toggle,
   html[data-theme="dark"] .mobile-nav-close {
-    color: #94a3b8 !important;
-    background: transparent !important;
-    border: none !important;
+    border-color: #1e293b !important;
+    background: #131b2e !important;
+    color: #f1f5f9 !important;
   }
 
+  html[data-theme="dark"] .mobile-theme-toggle:hover,
   html[data-theme="dark"] .mobile-nav-close:hover {
-    color: #f8fafc !important;
     background: #1e293b !important;
+    border-color: #38bdf8 !important;
+    color: #38bdf8 !important;
   }
 
   html[data-theme="dark"] .mobile-nav-body {
-    background: #0f172a !important;
+    background: #0b1329 !important;
   }
 
   html[data-theme="dark"] .mobile-nav-top-row {
@@ -3500,7 +3531,7 @@ html[lang="ar"] .mobile-nav-drawer {
   }
 
   html[data-theme="dark"] .mobile-nav-top-row .nav-link-item {
-    color: #cbd5e1 !important;
+    color: #f1f5f9 !important;
   }
 
   html[data-theme="dark"] .mobile-nav-top-row .nav-link-item i {
@@ -3509,20 +3540,12 @@ html[lang="ar"] .mobile-nav-drawer {
 
   html[data-theme="dark"] .mobile-nav-top-row .nav-link-item:hover,
   html[data-theme="dark"] .mobile-nav-top-row .nav-link-item.active {
-    background: #1e293b !important;
+    background: #131b2e !important;
     color: #38bdf8 !important;
   }
 
-  html[data-theme="dark"] .mobile-nav-heading {
-    display: none !important;
-  }
-
   html[data-theme="dark"] .mobile-accordion-item {
-    border: none !important;
-    border-bottom: 1px solid #1e293b !important;
-    border-radius: 0 !important;
-    background: transparent !important;
-    box-shadow: none !important;
+    border-bottom-color: #1e293b !important;
   }
 
   html[data-theme="dark"] .mobile-accordion-header {
@@ -3530,15 +3553,17 @@ html[lang="ar"] .mobile-nav-drawer {
   }
 
   html[data-theme="dark"] .mobile-accordion-header:hover {
-    background: #131b2e !important;
+    background: #111a2e !important;
+  }
+
+  /* Active / Expanded Category Header in Dark Mode (Reference Image 1) */
+  html[data-theme="dark"] .mobile-accordion-item.active .mobile-accordion-header {
+    background: #132238 !important;
+    color: #ffffff !important;
   }
 
   html[data-theme="dark"] .mobile-acc-title {
     color: #f1f5f9 !important;
-  }
-
-  html[data-theme="dark"] .mobile-acc-count {
-    display: none !important;
   }
 
   html[data-theme="dark"] .mobile-acc-chevron {
@@ -3550,26 +3575,21 @@ html[lang="ar"] .mobile-nav-drawer {
   }
 
   html[data-theme="dark"] .mobile-accordion-body {
-    background: #090e17 !important;
-    border-top-color: #1e293b !important;
-  }
-
-  html[data-theme="dark"] .mobile-acc-hub-link {
-    display: none !important;
+    background: #080d1a !important;
   }
 
   html[data-theme="dark"] .mobile-acc-tool-link {
-    color: #94a3b8 !important;
+    color: #cbd5e1 !important;
   }
 
   html[data-theme="dark"] .mobile-acc-tool-link:hover,
   html[data-theme="dark"] .mobile-acc-tool-link:active {
-    background: #1e293b !important;
+    background: #132238 !important;
     color: #38bdf8 !important;
   }
 
   html[data-theme="dark"] .mobile-nav-footer {
-    background: #0f172a !important;
+    background: #0b1329 !important;
     border-top-color: #1e293b !important;
   }
 

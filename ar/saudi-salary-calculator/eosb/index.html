@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
@@ -12,17 +12,6 @@
         document.documentElement.setAttribute('data-theme', t);
       } catch (e) {}
     })();
-  </script>
-
-  <!-- Travelpayouts Partner Script -->
-  <script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
-  (function () {
-    var script = document.createElement("script");
-    script.async = 1;
-    script.setAttribute("data-cmp-ab", "2");
-    script.src = "https://emrldtp.com/NTczNDc0.js?t=573474";
-    document.head.appendChild(script);
-  })();
   </script>
 
   <title>حاسبة مكافأة نهاية الخدمة في السعودية | دليل نظام العمل والمادتين 84 و85</title>
@@ -628,9 +617,14 @@
             <span class="logo-title" style="font-size:18px;font-weight:800;color:#0f172a;">DailyCalc<span style="color:#0284c7;">Hubs</span></span>
           </div>
         </div>
-        <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="إغلاق القائمة">
-          <i class="fas fa-xmark"></i>
-        </button>
+        <div class="mobile-header-actions">
+          <button type="button" class="mobile-theme-toggle dch-theme-toggle" id="mobileDrawerThemeToggle" aria-label="ØªØ¨Ø¯ÙŠÙ„ Ø§Ù„Ù…Ø¸Ù‡Ø±" title="ØªØ¨Ø¯ÙŠÙ„ Ø§Ù„Ù…Ø¸Ù‡Ø±">
+            <i class="fas fa-moon"></i>
+          </button>
+          <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Ø¥ØºÙ„Ø§Ù‚ Ø§Ù„Ù‚Ø§Ø¦Ù…Ø©">
+            <i class="fas fa-xmark"></i>
+          </button>
+        </div>
       </div>
 
       <div class="mobile-nav-body">
@@ -860,7 +854,7 @@
             <label class="form-label" for="lastGrossSalary">الأجر الشهري الإجمالي الأخير (الأساسي + السكن + البدلات)</label>
             <div class="input-with-addons">
               <span class="input-addon-badge">ر.س</span>
-              <input type="number" id="lastGrossSalary" class="calc-input" value="12000" min="0" step="500" placeholder="مثال: 12000" required oninput="calculateEosb()" dir="ltr">
+              <input type="number" id="lastGrossSalary" class="calc-input" value="12000" min="0" step="500" placeholder="مثال: 12000" required oninput="calculateEosb()" dir="ltr" inputmode="decimal">
             </div>
             <div class="amount-chips-row">
               <button type="button" class="amount-chip-btn" onclick="setEosbAmount(5000)">5,000 ر.س</button>
@@ -875,21 +869,21 @@
             <div class="form-group">
               <label class="form-label" for="serviceYears">السنوات</label>
               <div class="input-with-addons">
-                <input type="number" id="serviceYears" class="calc-input" value="6" min="0" max="60" step="1" oninput="calculateEosb()" dir="ltr">
+                <input type="number" id="serviceYears" class="calc-input" value="6" min="0" max="60" step="1" oninput="calculateEosb()" dir="ltr" inputmode="numeric">
               </div>
             </div>
 
             <div class="form-group">
               <label class="form-label" for="serviceMonths">الأشهر</label>
               <div class="input-with-addons">
-                <input type="number" id="serviceMonths" class="calc-input" value="4" min="0" max="11" step="1" oninput="calculateEosb()" dir="ltr">
+                <input type="number" id="serviceMonths" class="calc-input" value="4" min="0" max="11" step="1" oninput="calculateEosb()" dir="ltr" inputmode="numeric">
               </div>
             </div>
 
             <div class="form-group">
               <label class="form-label" for="serviceDays">الأيام</label>
               <div class="input-with-addons">
-                <input type="number" id="serviceDays" class="calc-input" value="0" min="0" max="30" step="1" oninput="calculateEosb()" dir="ltr">
+                <input type="number" id="serviceDays" class="calc-input" value="0" min="0" max="30" step="1" oninput="calculateEosb()" dir="ltr" inputmode="numeric">
               </div>
             </div>
           </div>

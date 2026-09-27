@@ -12,17 +12,6 @@
       } catch (e) {}
     })();
   </script>
-
-  <!-- Travelpayouts Partner Script (Flight & Umrah Integration) -->
-  <script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
-  (function () {
-    var script = document.createElement("script");
-    script.async = 1;
-    script.setAttribute("data-cmp-ab", "2");
-    script.src = "https://emrldtp.com/NTczNDc0.js?t=573474";
-    document.head.appendChild(script);
-  })();
-  </script>
   <title>DailyCalcHubs — أدوات وحاسبات سعودية ذكية للمقيمين والمواطنين والعائلات</title>
   <meta name="description" content="استكشف حاسبات وأدوات يومية مجانية للمملكة العربية السعودية: حساب الرواتب، مكافأة نهاية الخدمة، التأمينات (GOSI)، رسوم الإقامة والمرافقين، أسعار تحويل العملات ومواقيت الصلاة.">
   <link rel="canonical" href="https://dailycalchubs.com/ar/">
@@ -83,43 +72,54 @@
   }
   </script>
 
-  <!-- DailyCalcHubs Owner Admin Exclusion Mode -->
+    <!-- DailyCalcHubs Owner Admin Exclusion Mode (Zero GA4 Views / Zero AdSense Impressions) -->
   <script>
     (function() {
       try {
         var params = new URLSearchParams(window.location.search);
         var owner = params.get('owner');
         if (owner === 'waqar_lock') {
-          sessionStorage.setItem('dch_admin_traffic', 'true');
+          localStorage.setItem('dch_owner_mode', 'active');
+          params.delete('owner');
+          var newSearch = params.toString();
+          var cleanUrl = window.location.pathname + (newSearch ? '?' + newSearch : '') + window.location.hash;
+          window.history.replaceState({}, document.title, cleanUrl);
+        } else if (owner === 'off') {
+          localStorage.removeItem('dch_owner_mode');
+          params.delete('owner');
+          var newSearch = params.toString();
+          var cleanUrl = window.location.pathname + (newSearch ? '?' + newSearch : '') + window.location.hash;
+          window.history.replaceState({}, document.title, cleanUrl);
+        }
+
+        if (localStorage.getItem('dch_owner_mode') === 'active') {
+          window['ga-disable-G-18Y3LNHDR8'] = true;
+          window.adsbygoogle = window.adsbygoogle || [];
+          window.adsbygoogle.pauseAdRequests = 1;
+
+          window.addEventListener('DOMContentLoaded', function() {
+            if (!document.getElementById('dch-owner-mode-badge')) {
+              var badge = document.createElement('div');
+              badge.id = 'dch-owner-mode-badge';
+              badge.innerHTML = '&#128274; Owner Mode: Tracking &amp; Ads Disabled';
+              badge.style.cssText = 'position:fixed;bottom:14px;left:14px;background:rgba(17,24,39,0.92);color:#10b981;font-size:11.5px;font-weight:600;font-family:system-ui,-apple-system,sans-serif;padding:6px 12px;border-radius:20px;border:1px solid rgba(16,185,129,0.35);box-shadow:0 4px 12px rgba(0,0,0,0.25);z-index:99999;pointer-events:none;letter-spacing:0.2px;backdrop-filter:blur(4px);';
+              document.body.appendChild(badge);
+            }
+          });
         }
       } catch (e) {}
     })();
   </script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6944579701716470" crossorigin="anonymous"></script>
 
-  <!-- Google Analytics 4 & AdSense -->
+  <!-- Google Analytics (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-18Y3LNHDR8"></script>
   <script>
-    (function() {
-      if (sessionStorage.getItem('dch_admin_traffic') === 'true') {
-        window['ga-disable-G-18Y3LNHDR8'] = true;
-        console.warn('DailyCalcHubs: Analytics & AdSense disabled for Admin Session');
-      } else {
-        var gtm = document.createElement('script');
-        gtm.async = true;
-        gtm.src = 'https://www.googletagmanager.com/gtag/js?id=G-18Y3LNHDR8';
-        document.head.appendChild(gtm);
-
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-18Y3LNHDR8');
-
-        var ads = document.createElement('script');
-        ads.async = true;
-        ads.crossOrigin = 'anonymous';
-        ads.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6944579701716470';
-        document.head.appendChild(ads);
-      }
-    })();
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-18Y3LNHDR8');
   </script>
 
   <!-- Fonts & Icons -->
@@ -1420,7 +1420,7 @@
                 <i class="fas fa-briefcase"></i>
               </span>
               <div>
-                <h3 class="mega-panel-title">الرواتب ونظام العمل</h3>
+                <div class="mega-panel-title">الرواتب ونظام العمل</div>
                 <p class="mega-panel-desc">مكافأة نهاية الخدمة، صافي الراتب، استقطاع التأمينات والعمل الإضافي</p>
               </div>
             </div>
@@ -1440,7 +1440,7 @@
                 <i class="fas fa-id-card"></i>
               </span>
               <div>
-                <h3 class="mega-panel-title">الإقامة ورخص العمل</h3>
+                <div class="mega-panel-title">الإقامة ورخص العمل</div>
                 <p class="mega-panel-desc">رسوم تجديد الإقامة، مقابل المرافقين المالي ورخص العمل</p>
               </div>
             </div>
@@ -1460,7 +1460,7 @@
                 <i class="fas fa-exchange-alt"></i>
               </span>
               <div>
-                <h3 class="mega-panel-title">تحويل الأموال والصرف</h3>
+                <div class="mega-panel-title">تحويل الأموال والصرف</div>
                 <p class="mega-panel-desc">أسعار صرف الريال المباشرة، مقارنة رسوم التحويل والدليل الإرشادي</p>
               </div>
             </div>
@@ -1480,7 +1480,7 @@
                 <i class="fas fa-calculator"></i>
               </span>
               <div>
-                <h3 class="mega-panel-title">أدوات الحياة اليومية</h3>
+                <div class="mega-panel-title">أدوات الحياة اليومية</div>
                 <p class="mega-panel-desc">العمر، الخصومات، الوقود، الكهرباء، مؤشر كتلة الجسم وتقسيم الفواتير</p>
               </div>
             </div>
@@ -1500,7 +1500,7 @@
                 <i class="fas fa-plane-departure"></i>
               </span>
               <div>
-                <h3 class="mega-panel-title">السفر وحجوزات الطيران</h3>
+                <div class="mega-panel-title">السفر وحجوزات الطيران</div>
                 <p class="mega-panel-desc">تكاليف الطيران، الفنادق، ميزانية الرحلة وتقسيم مصاريف السفر</p>
               </div>
             </div>
@@ -1520,7 +1520,7 @@
                 <i class="fas fa-coins"></i>
               </span>
               <div>
-                <h3 class="mega-panel-title">الاستثمار الشرعي (SIP)</h3>
+                <div class="mega-panel-title">الاستثمار الشرعي (SIP)</div>
                 <p class="mega-panel-desc">صناديق الاستثمار المتوافقة مع الشريعة، خطط الأهداف ونمو الثروة</p>
               </div>
             </div>
@@ -1540,7 +1540,7 @@
                 <i class="fas fa-mosque"></i>
               </span>
               <div>
-                <h3 class="mega-panel-title">مواقيت الصلاة والقبلة</h3>
+                <div class="mega-panel-title">مواقيت الصلاة والقبلة</div>
                 <p class="mega-panel-desc">مواقيت الصلاة الدقيقة حسب تقويم أم القرى واتجاه القبلة</p>
               </div>
             </div>
@@ -1627,9 +1627,14 @@
             <span class="logo-title" style="font-size:18px;font-weight:800;color:#0f172a;">DailyCalc<span style="color:#0284c7;">Hubs</span></span>
           </div>
         </div>
-        <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="إغلاق القائمة">
-          <i class="fas fa-xmark"></i>
-        </button>
+        <div class="mobile-header-actions">
+          <button type="button" class="mobile-theme-toggle dch-theme-toggle" id="mobileDrawerThemeToggle" aria-label="ØªØ¨Ø¯ÙŠÙ„ Ø§Ù„Ù…Ø¸Ù‡Ø±" title="ØªØ¨Ø¯ÙŠÙ„ Ø§Ù„Ù…Ø¸Ù‡Ø±">
+            <i class="fas fa-moon"></i>
+          </button>
+          <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Ø¥ØºÙ„Ø§Ù‚ Ø§Ù„Ù‚Ø§Ø¦Ù…Ø©">
+            <i class="fas fa-xmark"></i>
+          </button>
+        </div>
       </div>
 
       <div class="mobile-nav-body">

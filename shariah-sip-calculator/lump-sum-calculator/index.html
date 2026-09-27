@@ -12,17 +12,6 @@
       } catch (e) {}
     })();
   </script>
-
-  <!-- Travelpayouts Partner Script (Flight & Umrah Integration) -->
-  <script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
-  (function () {
-    var script = document.createElement("script");
-    script.async = 1;
-    script.setAttribute("data-cmp-ab", "2");
-    script.src = "https://emrldtp.com/NTczNDc0.js?t=573474";
-    document.head.appendChild(script);
-  })();
-  </script>
   <title>Lump Sum Wealth Calculator — Compound Growth vs Monthly SIP Comparison</title>
   <meta name="description" content="Calculate the future value of a one-time lump sum investment and compare it directly against systematic monthly SIP investing over any time period.">
   <meta name="keywords" content="lump sum calculator, lump sum vs sip calculator, compound interest lumpsum saudi riyal, eosb investment calculator, halal lumpsum return calculator">
@@ -613,9 +602,14 @@
             <span class="logo-title" style="font-size:18px;font-weight:800;color:#0f172a;">DailyCalc<span style="color:#0284c7;">Hubs</span></span>
           </div>
         </div>
-        <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Close menu">
-          <i class="fas fa-xmark"></i>
-        </button>
+        <div class="mobile-header-actions">
+          <button type="button" class="mobile-theme-toggle dch-theme-toggle" id="mobileDrawerThemeToggle" aria-label="Toggle theme" title="Toggle theme">
+            <i class="fas fa-moon"></i>
+          </button>
+          <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Close menu">
+            <i class="fas fa-xmark"></i>
+          </button>
+        </div>
       </div>
 
       <div class="mobile-nav-body">
@@ -840,7 +834,7 @@
           <label class="form-label" for="lumpAmount">Lump Sum Capital Deposit (SAR)</label>
           <div class="input-with-addons">
             <span class="input-addon-badge">SAR</span>
-            <input type="number" id="lumpAmount" class="calc-input" value="100000" min="1000" step="5000" required oninput="calculateLumpVsSip()">
+            <input type="number" id="lumpAmount" class="calc-input" value="100000" min="1000" step="5000" required oninput="calculateLumpVsSip()" inputmode="decimal">
           </div>
           <div class="amount-chips-row">
             <button type="button" class="amount-chip-btn" onclick="setLumpPreset(25000)">25,000 SAR</button>
@@ -855,7 +849,7 @@
           <label class="form-label" for="lumpReturn">Expected Annual Return Rate (% p.a.)</label>
           <div class="input-with-addons">
             <span class="input-addon-badge"><i class="fas fa-percent"></i></span>
-            <input type="number" id="lumpReturn" class="calc-input" value="10" min="0" max="30" step="0.5" required oninput="calculateLumpVsSip()">
+            <input type="number" id="lumpReturn" class="calc-input" value="10" min="0" max="30" step="0.5" required oninput="calculateLumpVsSip()" inputmode="decimal">
           </div>
           <div class="amount-chips-row">
             <button type="button" class="amount-chip-btn" onclick="setLumpReturn(6)">6% Conservative Sukuk</button>
@@ -869,7 +863,7 @@
           <label class="form-label" for="lumpYears">Investment Horizon (Years)</label>
           <div class="input-with-addons">
             <span class="input-addon-badge"><i class="fas fa-clock"></i></span>
-            <input type="number" id="lumpYears" class="calc-input" value="10" min="1" max="40" step="1" required oninput="calculateLumpVsSip()">
+            <input type="number" id="lumpYears" class="calc-input" value="10" min="1" max="40" step="1" required oninput="calculateLumpVsSip()" inputmode="numeric">
           </div>
           <div class="amount-chips-row">
             <button type="button" class="amount-chip-btn" onclick="setLumpYears(3)">3 Years</button>

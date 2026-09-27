@@ -12,17 +12,6 @@
       } catch (e) {}
     })();
   </script>
-
-  <!-- Travelpayouts Partner Script (Flight & Umrah Integration) -->
-  <script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
-  (function () {
-    var script = document.createElement("script");
-    script.async = 1;
-    script.setAttribute("data-cmp-ab", "2");
-    script.src = "https://emrldtp.com/NTczNDc0.js?t=573474";
-    document.head.appendChild(script);
-  })();
-  </script>
   <title>Saudi Remittance Fee Calculator 2026: Transfer Charges & 15% VAT</title>
   <meta name="description" content="Calculate the true cost of sending money from Saudi Arabia: upfront service charges, 15% ZATCA VAT, and hidden exchange rate margin spreads across digital wallets and bank counters.">
   <meta name="keywords" content="Saudi remittance fee calculator, 15 percent VAT on money transfer Saudi, Barq vs STC Pay fees, hidden exchange rate margin, Tahweel Al Rajhi transfer charges 2026">
@@ -608,9 +597,14 @@
             <span class="logo-title" style="font-size:18px;font-weight:800;color:#0f172a;">DailyCalc<span style="color:#0284c7;">Hubs</span></span>
           </div>
         </div>
-        <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Close menu">
-          <i class="fas fa-xmark"></i>
-        </button>
+        <div class="mobile-header-actions">
+          <button type="button" class="mobile-theme-toggle dch-theme-toggle" id="mobileDrawerThemeToggle" aria-label="Toggle theme" title="Toggle theme">
+            <i class="fas fa-moon"></i>
+          </button>
+          <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Close menu">
+            <i class="fas fa-xmark"></i>
+          </button>
+        </div>
       </div>
 
       <div class="mobile-nav-body">
@@ -846,7 +840,7 @@
           <label class="form-label" for="feeAmount">Transfer Principal Amount (SAR):</label>
           <div class="input-with-addons">
             <div class="input-addon-badge"><i class="fas fa-coins" style="color:#16a34a;"></i> SAR</div>
-            <input type="number" id="feeAmount" class="calc-input" value="2000" min="1" max="100000" step="10" placeholder="Enter SAR amount">
+            <input type="number" id="feeAmount" class="calc-input" value="2000" min="1" max="100000" step="10" placeholder="Enter SAR amount" inputmode="decimal">
           </div>
           <div class="amount-chips-row">
             <button class="amount-chip-btn" onclick="setFeeAmt(500)">500 SAR</button>

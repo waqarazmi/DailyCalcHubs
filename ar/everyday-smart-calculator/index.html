@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
@@ -11,17 +11,6 @@
         document.documentElement.setAttribute('data-theme', t);
       } catch (e) {}
     })();
-  </script>
-
-  <!-- Travelpayouts Partner Script (Flight & Umrah Integration) -->
-  <script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
-  (function () {
-    var script = document.createElement("script");
-    script.async = 1;
-    script.setAttribute("data-cmp-ab", "2");
-    script.src = "https://emrldtp.com/NTczNDc0.js?t=573474";
-    document.head.appendChild(script);
-  })();
   </script>
   <title>الحاسبة اليومية الذكية | أدوات وحاسبات الحياة اليومية والمالية المجانية</title>
   <meta name="description" content="حاسبات يومية ذكية مجانية: حساب العمر وتاريخ الميلاد، حاسبة الخصومات والتخفيضات، كتلة الجسم (BMI)، استهلاك الكهرباء، تقسيم الفاتورة، وأدوات حسابية عملية للحياة اليومية.">
@@ -54,43 +43,54 @@
   <meta name="twitter:description" content="مجموعة متكاملة من 12 حاسبة يومية ذكية للحياة والعمل في المملكة العربية السعودية.">
   <meta name="twitter:image" content="https://dailycalchubs.com/og-image.jpg">
 
-  <!-- DailyCalcHubs Owner Admin Exclusion Mode -->
+    <!-- DailyCalcHubs Owner Admin Exclusion Mode (Zero GA4 Views / Zero AdSense Impressions) -->
   <script>
     (function() {
       try {
         var params = new URLSearchParams(window.location.search);
         var owner = params.get('owner');
         if (owner === 'waqar_lock') {
-          sessionStorage.setItem('dch_admin_traffic', 'true');
+          localStorage.setItem('dch_owner_mode', 'active');
+          params.delete('owner');
+          var newSearch = params.toString();
+          var cleanUrl = window.location.pathname + (newSearch ? '?' + newSearch : '') + window.location.hash;
+          window.history.replaceState({}, document.title, cleanUrl);
+        } else if (owner === 'off') {
+          localStorage.removeItem('dch_owner_mode');
+          params.delete('owner');
+          var newSearch = params.toString();
+          var cleanUrl = window.location.pathname + (newSearch ? '?' + newSearch : '') + window.location.hash;
+          window.history.replaceState({}, document.title, cleanUrl);
+        }
+
+        if (localStorage.getItem('dch_owner_mode') === 'active') {
+          window['ga-disable-G-18Y3LNHDR8'] = true;
+          window.adsbygoogle = window.adsbygoogle || [];
+          window.adsbygoogle.pauseAdRequests = 1;
+
+          window.addEventListener('DOMContentLoaded', function() {
+            if (!document.getElementById('dch-owner-mode-badge')) {
+              var badge = document.createElement('div');
+              badge.id = 'dch-owner-mode-badge';
+              badge.innerHTML = '&#128274; Owner Mode: Tracking &amp; Ads Disabled';
+              badge.style.cssText = 'position:fixed;bottom:14px;left:14px;background:rgba(17,24,39,0.92);color:#10b981;font-size:11.5px;font-weight:600;font-family:system-ui,-apple-system,sans-serif;padding:6px 12px;border-radius:20px;border:1px solid rgba(16,185,129,0.35);box-shadow:0 4px 12px rgba(0,0,0,0.25);z-index:99999;pointer-events:none;letter-spacing:0.2px;backdrop-filter:blur(4px);';
+              document.body.appendChild(badge);
+            }
+          });
         }
       } catch (e) {}
     })();
   </script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6944579701716470" crossorigin="anonymous"></script>
 
-  <!-- Google Analytics 4 & AdSense -->
+  <!-- Google Analytics (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-18Y3LNHDR8"></script>
   <script>
-    (function() {
-      if (sessionStorage.getItem('dch_admin_traffic') === 'true') {
-        window['ga-disable-G-18Y3LNHDR8'] = true;
-        console.warn('DailyCalcHubs: Analytics & AdSense disabled for Admin Session');
-      } else {
-        var gtm = document.createElement('script');
-        gtm.async = true;
-        gtm.src = 'https://www.googletagmanager.com/gtag/js?id=G-18Y3LNHDR8';
-        document.head.appendChild(gtm);
-
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-18Y3LNHDR8');
-
-        var ads = document.createElement('script');
-        ads.async = true;
-        ads.crossOrigin = 'anonymous';
-        ads.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6944579701716470';
-        document.head.appendChild(ads);
-      }
-    })();
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-18Y3LNHDR8');
   </script>
 
   <!-- Fonts & Icons -->
@@ -848,9 +848,14 @@
             <span class="logo-title" style="font-size:18px;font-weight:800;color:#0f172a;">DailyCalc<span style="color:#0284c7;">Hubs</span></span>
           </div>
         </div>
-        <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="إغلاق القائمة">
-          <i class="fas fa-xmark"></i>
-        </button>
+        <div class="mobile-header-actions">
+          <button type="button" class="mobile-theme-toggle dch-theme-toggle" id="mobileDrawerThemeToggle" aria-label="ØªØ¨Ø¯ÙŠÙ„ Ø§Ù„Ù…Ø¸Ù‡Ø±" title="ØªØ¨Ø¯ÙŠÙ„ Ø§Ù„Ù…Ø¸Ù‡Ø±">
+            <i class="fas fa-moon"></i>
+          </button>
+          <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Ø¥ØºÙ„Ø§Ù‚ Ø§Ù„Ù‚Ø§Ø¦Ù…Ø©">
+            <i class="fas fa-xmark"></i>
+          </button>
+        </div>
       </div>
 
       <div class="mobile-nav-body">
@@ -1117,13 +1122,13 @@
           <div class="calc-input-group">
             <label for="quickOrigPrice">السعر الأصلي (SAR)</label>
             <div class="calc-input-wrap">
-              <input type="number" id="quickOrigPrice" value="250" min="0" step="5" oninput="runQuickDiscount()" dir="ltr">
+              <input type="number" id="quickOrigPrice" value="250" min="0" step="5" oninput="runQuickDiscount()" dir="ltr" inputmode="decimal">
             </div>
           </div>
           <div class="calc-input-group">
             <label for="quickDiscPct">نسبة الخصم (%)</label>
             <div class="calc-input-wrap">
-              <input type="number" id="quickDiscPct" value="20" min="0" max="100" step="1" oninput="runQuickDiscount()" dir="ltr">
+              <input type="number" id="quickDiscPct" value="20" min="0" max="100" step="1" oninput="runQuickDiscount()" dir="ltr" inputmode="decimal">
             </div>
           </div>
         </div>

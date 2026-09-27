@@ -12,17 +12,6 @@
       } catch (e) {}
     })();
   </script>
-
-  <!-- Travelpayouts Partner Script (Flight & Umrah Integration) -->
-  <script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
-  (function () {
-    var script = document.createElement("script");
-    script.async = 1;
-    script.setAttribute("data-cmp-ab", "2");
-    script.src = "https://emrldtp.com/NTczNDc0.js?t=573474";
-    document.head.appendChild(script);
-  })();
-  </script>
   <title>Appliance Electricity Consumption Calculator — Power, kWh & Cost</title>
   <meta name="description" content="Calculate electrical appliance energy consumption in Watts, kWh, electricity units, and estimated electricity bills with our free Appliance Electricity Consumption Calculator.">
   <meta name="keywords" content="appliance electricity consumption calculator, calculate electricity bill per appliance, watts to kwh calculator, electricity unit calculator, appliance power consumption in kwh">
@@ -660,9 +649,14 @@
             <span class="logo-title" style="font-size:18px;font-weight:800;color:#0f172a;">DailyCalc<span style="color:#0284c7;">Hubs</span></span>
           </div>
         </div>
-        <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Close menu">
-          <i class="fas fa-xmark"></i>
-        </button>
+        <div class="mobile-header-actions">
+          <button type="button" class="mobile-theme-toggle dch-theme-toggle" id="mobileDrawerThemeToggle" aria-label="Toggle theme" title="Toggle theme">
+            <i class="fas fa-moon"></i>
+          </button>
+          <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Close menu">
+            <i class="fas fa-xmark"></i>
+          </button>
+        </div>
       </div>
 
       <div class="mobile-nav-body">
@@ -940,7 +934,7 @@
           <div class="form-group">
             <label class="form-label" for="powerInput">Appliance Power (Watts)</label>
             <div class="calc-input-wrap">
-              <input type="number" id="powerInput" value="1000" min="1" max="100000" step="1" oninput="recalcSingle()">
+              <input type="number" id="powerInput" value="1000" min="1" max="100000" step="1" oninput="recalcSingle()" inputmode="decimal">
               <span class="calc-input-addon">Watts (W)</span>
             </div>
             <div class="preset-chips">
@@ -961,7 +955,7 @@
           <div class="form-group">
             <label class="form-label" for="hoursInput">Daily Usage (Hours / Day)</label>
             <div class="calc-input-wrap">
-              <input type="number" id="hoursInput" value="1" min="0.1" max="24" step="0.5" oninput="recalcSingle()">
+              <input type="number" id="hoursInput" value="1" min="0.1" max="24" step="0.5" oninput="recalcSingle()" inputmode="decimal">
               <span class="calc-input-addon">Hours / Day</span>
             </div>
             <div class="preset-chips">
@@ -977,7 +971,7 @@
           <div class="form-group">
             <label class="form-label" for="daysInput">Number of Days</label>
             <div class="calc-input-wrap">
-              <input type="number" id="daysInput" value="30" min="1" max="365" step="1" oninput="recalcSingle()">
+              <input type="number" id="daysInput" value="30" min="1" max="365" step="1" oninput="recalcSingle()" inputmode="decimal">
               <span class="calc-input-addon">Days</span>
             </div>
             <div class="preset-chips">
@@ -996,7 +990,7 @@
           <div class="form-group">
             <label class="form-label" for="rateInput">Electricity Rate (per Unit / kWh)</label>
             <div class="calc-input-wrap">
-              <input type="number" id="rateInput" value="8" min="0" max="500" step="0.25" oninput="recalcSingle()">
+              <input type="number" id="rateInput" value="8" min="0" max="500" step="0.25" oninput="recalcSingle()" inputmode="decimal">
               <span class="calc-input-addon" id="rateUnitLabel">₹ / Unit</span>
             </div>
             <div class="preset-chips">
@@ -1105,14 +1099,14 @@
           <div class="form-group">
             <label class="form-label" for="multiRateInput">Electricity Rate (per Unit / kWh)</label>
             <div class="calc-input-wrap">
-              <input type="number" id="multiRateInput" value="8" min="0" step="0.25" oninput="recalcMulti()">
+              <input type="number" id="multiRateInput" value="8" min="0" step="0.25" oninput="recalcMulti()" inputmode="decimal">
               <span class="calc-input-addon" id="multiRateUnitLabel">₹ / Unit</span>
             </div>
           </div>
           <div class="form-group">
             <label class="form-label" for="multiDaysInput">Calculation Period (Days)</label>
             <div class="calc-input-wrap">
-              <input type="number" id="multiDaysInput" value="30" min="1" max="365" step="1" oninput="recalcMulti()">
+              <input type="number" id="multiDaysInput" value="30" min="1" max="365" step="1" oninput="recalcMulti()" inputmode="decimal">
               <span class="calc-input-addon">Days</span>
             </div>
           </div>
@@ -1835,10 +1829,10 @@
         tr.innerHTML = `
           <td><strong>${item.name}</strong></td>
           <td>
-            <input type="number" class="table-num-input" value="${item.watts}" min="1" max="100000" step="10" onchange="updateMultiItemWatts(${item.id}, this.value)">
+            <input type="number" class="table-num-input" value="${item.watts}" min="1" max="100000" step="10" onchange="updateMultiItemWatts(${item.id}, this.value)" inputmode="decimal">
           </td>
           <td>
-            <input type="number" class="table-num-input" value="${item.hours}" min="0.1" max="24" step="0.5" onchange="updateMultiItemHours(${item.id}, this.value)">
+            <input type="number" class="table-num-input" value="${item.hours}" min="0.1" max="24" step="0.5" onchange="updateMultiItemHours(${item.id}, this.value)" inputmode="decimal">
           </td>
           <td>${formatNumber(dailyKwh)} kWh</td>
           <td>${formatNumber(periodKwh)} Units</td>

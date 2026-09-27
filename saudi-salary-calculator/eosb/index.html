@@ -13,17 +13,6 @@
       } catch (e) {}
     })();
   </script>
-
-  <!-- Travelpayouts Partner Script (Flight & Umrah Integration) -->
-  <script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
-  (function () {
-    var script = document.createElement("script");
-    script.async = 1;
-    script.setAttribute("data-cmp-ab", "2");
-    script.src = "https://emrldtp.com/NTczNDc0.js?t=573474";
-    document.head.appendChild(script);
-  })();
-  </script>
   <title>Saudi EOSB Gratuity Calculator: End of Service Labor Law Guide</title>
   <meta name="description" content="Calculate your Saudi End of Service Benefit (EOSB) gratuity under Saudi Labor Law. Estimate severance payouts based on service length, wage, and contract terms.">
   <meta name="keywords" content="saudi eosb calculator, end of service benefit saudi arabia, article 84 labor law ksa, gratuity calculation riyadh, qiwa eosb calculator">
@@ -615,9 +604,14 @@
             <span class="logo-title" style="font-size:18px;font-weight:800;color:#0f172a;">DailyCalc<span style="color:#0284c7;">Hubs</span></span>
           </div>
         </div>
-        <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Close menu">
-          <i class="fas fa-xmark"></i>
-        </button>
+        <div class="mobile-header-actions">
+          <button type="button" class="mobile-theme-toggle dch-theme-toggle" id="mobileDrawerThemeToggle" aria-label="Toggle theme" title="Toggle theme">
+            <i class="fas fa-moon"></i>
+          </button>
+          <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Close menu">
+            <i class="fas fa-xmark"></i>
+          </button>
+        </div>
       </div>
 
       <div class="mobile-nav-body">
@@ -845,7 +839,7 @@
             <label class="form-label" for="lastGrossSalary">Last Total Monthly Wage (Basic + Housing + Allowances)</label>
             <div class="input-with-addons">
               <span class="input-addon-badge">SAR</span>
-              <input type="number" id="lastGrossSalary" class="calc-input" value="12000" min="0" step="500" placeholder="e.g. 12000" required oninput="calculateEosb()">
+              <input type="number" id="lastGrossSalary" class="calc-input" value="12000" min="0" step="500" placeholder="e.g. 12000" required oninput="calculateEosb()" inputmode="decimal">
             </div>
             <div class="amount-chips-row">
               <button type="button" class="amount-chip-btn" onclick="setEosbAmount(5000)">5,000 SAR</button>
@@ -860,21 +854,21 @@
             <div class="form-group">
               <label class="form-label" for="serviceYears">Years</label>
               <div class="input-with-addons">
-                <input type="number" id="serviceYears" class="calc-input" value="6" min="0" max="60" step="1" oninput="calculateEosb()">
+                <input type="number" id="serviceYears" class="calc-input" value="6" min="0" max="60" step="1" oninput="calculateEosb()" inputmode="numeric">
               </div>
             </div>
 
             <div class="form-group">
               <label class="form-label" for="serviceMonths">Months</label>
               <div class="input-with-addons">
-                <input type="number" id="serviceMonths" class="calc-input" value="4" min="0" max="11" step="1" oninput="calculateEosb()">
+                <input type="number" id="serviceMonths" class="calc-input" value="4" min="0" max="11" step="1" oninput="calculateEosb()" inputmode="numeric">
               </div>
             </div>
 
             <div class="form-group">
               <label class="form-label" for="serviceDays">Days</label>
               <div class="input-with-addons">
-                <input type="number" id="serviceDays" class="calc-input" value="0" min="0" max="30" step="1" oninput="calculateEosb()">
+                <input type="number" id="serviceDays" class="calc-input" value="0" min="0" max="30" step="1" oninput="calculateEosb()" inputmode="numeric">
               </div>
             </div>
           </div>

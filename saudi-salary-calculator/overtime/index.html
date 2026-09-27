@@ -12,17 +12,6 @@
       } catch (e) {}
     })();
   </script>
-
-  <!-- Travelpayouts Partner Script (Flight & Umrah Integration) -->
-  <script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
-  (function () {
-    var script = document.createElement("script");
-    script.async = 1;
-    script.setAttribute("data-cmp-ab", "2");
-    script.src = "https://emrldtp.com/NTczNDc0.js?t=573474";
-    document.head.appendChild(script);
-  })();
-  </script>
   <title>Saudi Overtime Calculator | Article 107 Saudi Labor Law (1.5× Rate)</title>
   <meta name="description" content="Accurately calculate your overtime pay in Saudi Arabia under Article 107 of Saudi Labor Law. Compute weekday overtime, weekend, and public holiday extra pay with live rates.">
   <meta name="keywords" content="saudi overtime calculator, article 107 saudi labor law, overtime rate calculation ksa, holiday overtime pay saudi arabia, 1.5x hourly wage overtime">
@@ -600,9 +589,14 @@
             <span class="logo-title" style="font-size:18px;font-weight:800;color:#0f172a;">DailyCalc<span style="color:#0284c7;">Hubs</span></span>
           </div>
         </div>
-        <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Close menu">
-          <i class="fas fa-xmark"></i>
-        </button>
+        <div class="mobile-header-actions">
+          <button type="button" class="mobile-theme-toggle dch-theme-toggle" id="mobileDrawerThemeToggle" aria-label="Toggle theme" title="Toggle theme">
+            <i class="fas fa-moon"></i>
+          </button>
+          <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Close menu">
+            <i class="fas fa-xmark"></i>
+          </button>
+        </div>
       </div>
 
       <div class="mobile-nav-body">
@@ -830,7 +824,7 @@
             <label class="form-label" for="monthlySalaryOt">Monthly Salary (SAR)</label>
             <div class="input-with-addons">
               <span class="input-addon-badge">SAR</span>
-              <input type="number" id="monthlySalaryOt" class="calc-input" value="9600" min="0" step="100" placeholder="e.g. 9600" required oninput="calculateOvertime()">
+              <input type="number" id="monthlySalaryOt" class="calc-input" value="9600" min="0" step="100" placeholder="e.g. 9600" required oninput="calculateOvertime()" inputmode="decimal">
             </div>
             <div class="amount-chips-row">
               <button type="button" class="amount-chip-btn" onclick="setOtAmount(5000)">5,000 SAR</button>
@@ -858,7 +852,7 @@
             <label class="form-label" for="basicSalaryOt">Basic Salary Component (SAR)</label>
             <div class="input-with-addons">
               <span class="input-addon-badge">SAR</span>
-              <input type="number" id="basicSalaryOt" class="calc-input" value="6000" min="0" step="100" oninput="calculateOvertime()">
+              <input type="number" id="basicSalaryOt" class="calc-input" value="6000" min="0" step="100" oninput="calculateOvertime()" inputmode="decimal">
             </div>
           </div>
 
@@ -867,7 +861,7 @@
               <label class="form-label" for="weekdayHours">Weekday Overtime (Hours)</label>
               <div class="input-with-addons">
                 <span class="input-addon-badge"><i class="fas fa-clock"></i></span>
-                <input type="number" id="weekdayHours" class="calc-input" value="12" min="0" max="100" step="0.5" oninput="calculateOvertime()">
+                <input type="number" id="weekdayHours" class="calc-input" value="12" min="0" max="100" step="0.5" oninput="calculateOvertime()" inputmode="decimal">
               </div>
             </div>
 
@@ -875,7 +869,7 @@
               <label class="form-label" for="holidayHours">Weekend / Holiday Overtime</label>
               <div class="input-with-addons">
                 <span class="input-addon-badge"><i class="fas fa-calendar-star" style="color:#f59e0b;"></i></span>
-                <input type="number" id="holidayHours" class="calc-input" value="6" min="0" max="100" step="0.5" oninput="calculateOvertime()">
+                <input type="number" id="holidayHours" class="calc-input" value="6" min="0" max="100" step="0.5" oninput="calculateOvertime()" inputmode="decimal">
               </div>
             </div>
           </div>

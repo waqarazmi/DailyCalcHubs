@@ -657,9 +657,14 @@
             <span class="logo-title" style="font-size:18px;font-weight:800;color:#0f172a;">DailyCalc<span style="color:#0284c7;">Hubs</span></span>
           </div>
         </div>
-        <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Close menu">
-          <i class="fas fa-xmark"></i>
-        </button>
+        <div class="mobile-header-actions">
+          <button type="button" class="mobile-theme-toggle dch-theme-toggle" id="mobileDrawerThemeToggle" aria-label="Toggle theme" title="Toggle theme">
+            <i class="fas fa-moon"></i>
+          </button>
+          <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Close menu">
+            <i class="fas fa-xmark"></i>
+          </button>
+        </div>
       </div>
 
       <div class="mobile-nav-body">
@@ -887,7 +892,7 @@
             <label class="mini-form-label" for="hubTravelers">Number of Travelers</label>
             <div class="mini-input-addons">
               <span style="padding-left:12px; color:#e11d48; font-weight:700;"><i class="fas fa-users"></i></span>
-              <input type="number" id="hubTravelers" class="mini-calc-input" value="2" min="1" max="50" step="1" oninput="calculateHubTrip()">
+              <input type="number" id="hubTravelers" class="mini-calc-input" value="2" min="1" max="50" step="1" oninput="calculateHubTrip()" inputmode="numeric">
             </div>
             <div class="mini-chips-row">
               <button type="button" class="mini-chip-btn" onclick="setHubTravelers(1)">Solo (1)</button>
@@ -901,7 +906,7 @@
             <label class="mini-form-label" for="hubDays">Trip Duration (Days / Nights)</label>
             <div class="mini-input-addons">
               <span style="padding-left:12px; color:#e11d48; font-weight:700;"><i class="fas fa-calendar-day"></i></span>
-              <input type="number" id="hubDays" class="mini-calc-input" value="7" min="1" max="180" step="1" oninput="calculateHubTrip()">
+              <input type="number" id="hubDays" class="mini-calc-input" value="7" min="1" max="180" step="1" oninput="calculateHubTrip()" inputmode="numeric">
             </div>
             <div class="mini-chips-row">
               <button type="button" class="mini-chip-btn" onclick="setHubDays(3)">Weekend (3d)</button>
@@ -915,7 +920,7 @@
             <label class="mini-form-label" for="hubFlightPerPerson">Avg Flight Fare Per Person (SAR)</label>
             <div class="mini-input-addons">
               <span style="padding-left:12px; color:#e11d48; font-weight:700;">SAR</span>
-              <input type="number" id="hubFlightPerPerson" class="mini-calc-input" value="1200" min="0" step="50" oninput="calculateHubTrip()">
+              <input type="number" id="hubFlightPerPerson" class="mini-calc-input" value="1200" min="0" step="50" oninput="calculateHubTrip()" inputmode="decimal">
             </div>
           </div>
 
@@ -923,7 +928,7 @@
             <label class="mini-form-label" for="hubHotelPerNight">Hotel Room Rate (SAR/night)</label>
             <div class="mini-input-addons">
               <span style="padding-left:12px; color:#e11d48; font-weight:700;">SAR</span>
-              <input type="number" id="hubHotelPerNight" class="mini-calc-input" value="450" min="0" step="25" oninput="calculateHubTrip()">
+              <input type="number" id="hubHotelPerNight" class="mini-calc-input" value="450" min="0" step="25" oninput="calculateHubTrip()" inputmode="decimal">
             </div>
           </div>
 
@@ -931,7 +936,7 @@
             <label class="mini-form-label" for="hubDailyFoodPerPerson">Daily Food &amp; Local Transit / Person (SAR)</label>
             <div class="mini-input-addons">
               <span style="padding-left:12px; color:#e11d48; font-weight:700;">SAR</span>
-              <input type="number" id="hubDailyFoodPerPerson" class="mini-calc-input" value="200" min="0" step="10" oninput="calculateHubTrip()">
+              <input type="number" id="hubDailyFoodPerPerson" class="mini-calc-input" value="200" min="0" step="10" oninput="calculateHubTrip()" inputmode="decimal">
             </div>
           </div>
         </div>
@@ -979,11 +984,11 @@
 
           <!-- Smart Booking Actions -->
           <div class="smart-booking-bar">
-            <a href="https://www.aviasales.com/?marker=573474&sub_id=travel_hub" target="_blank" rel="noopener noreferrer" class="btn-booking-action btn-booking-flight" aria-label="Search live flights on Aviasales">
+            <a href="https://www.aviasales.com/?marker=573474&sub_id=travel_hub" target="_blank" rel="nofollow sponsored noopener" class="btn-booking-action btn-booking-flight" aria-label="Search live flights on Aviasales">
               <i class="fas fa-plane-departure" aria-hidden="true"></i>
               <span>Search Live Flights</span>
             </a>
-            <a href="https://www.aviasales.com/hotels?marker=573474&sub_id=travel_hub" target="_blank" rel="noopener noreferrer" class="btn-booking-action btn-booking-hotel" aria-label="Compare hotel deals on Aviasales">
+            <a href="https://www.aviasales.com/hotels?marker=573474&sub_id=travel_hub" target="_blank" rel="nofollow sponsored noopener" class="btn-booking-action btn-booking-hotel" aria-label="Compare hotel deals on Aviasales">
               <i class="fas fa-hotel" aria-hidden="true"></i>
               <span>Compare Hotel Deals</span>
             </a>
@@ -1022,7 +1027,7 @@
             <label class="mini-form-label" for="hubSplitTotalBill">Total Group Travel Bill (SAR)</label>
             <div class="mini-input-addons">
               <span style="padding-left:12px; color:#e11d48; font-weight:700;">SAR</span>
-              <input type="number" id="hubSplitTotalBill" class="mini-calc-input" value="6000" min="10" step="50" oninput="calculateHubSplit()">
+              <input type="number" id="hubSplitTotalBill" class="mini-calc-input" value="6000" min="10" step="50" oninput="calculateHubSplit()" inputmode="decimal">
             </div>
             <div class="mini-chips-row">
               <button type="button" class="mini-chip-btn" onclick="setHubSplitBill(1500)">1,500</button>
@@ -1036,7 +1041,7 @@
             <label class="mini-form-label" for="hubSplitPeople">Number of People Sharing</label>
             <div class="mini-input-addons">
               <span style="padding-left:12px; color:#e11d48; font-weight:700;"><i class="fas fa-user-group"></i></span>
-              <input type="number" id="hubSplitPeople" class="mini-calc-input" value="4" min="2" max="100" step="1" oninput="calculateHubSplit()">
+              <input type="number" id="hubSplitPeople" class="mini-calc-input" value="4" min="2" max="100" step="1" oninput="calculateHubSplit()" inputmode="numeric">
             </div>
             <div class="mini-chips-row">
               <button type="button" class="mini-chip-btn" onclick="setHubSplitPeople(2)">2 Friends</button>
@@ -1050,7 +1055,7 @@
             <label class="mini-form-label" for="hubSplitTipPct">Optional Service Surcharge / Tip (%)</label>
             <div class="mini-input-addons">
               <span style="padding-left:12px; color:#e11d48; font-weight:700;">%</span>
-              <input type="number" id="hubSplitTipPct" class="mini-calc-input" value="0" min="0" max="30" step="1" oninput="calculateHubSplit()">
+              <input type="number" id="hubSplitTipPct" class="mini-calc-input" value="0" min="0" max="30" step="1" oninput="calculateHubSplit()" inputmode="decimal">
             </div>
           </div>
         </div>

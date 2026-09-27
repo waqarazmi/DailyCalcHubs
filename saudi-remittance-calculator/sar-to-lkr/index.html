@@ -12,17 +12,6 @@
       } catch (e) {}
     })();
   </script>
-
-  <!-- Travelpayouts Partner Script (Flight & Umrah Integration) -->
-  <script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
-  (function () {
-    var script = document.createElement("script");
-    script.async = 1;
-    script.setAttribute("data-cmp-ab", "2");
-    script.src = "https://emrldtp.com/NTczNDc0.js?t=573474";
-    document.head.appendChild(script);
-  })();
-  </script>
   <title>SAR to LKR Live Rate & Sri Lanka Remittance Calculator | DailyCalcHubs</title>
   <meta name="description" content="Convert Saudi Riyal (SAR) to Sri Lankan Rupee (LKR) with live rates. Compare Barq, STC Pay, Urpay, and commercial bank transfer payouts in Colombo.">
   <meta name="keywords" content="SAR to LKR live rate, Saudi Riyal to Sri Lankan Rupee today, Sri Lanka remittance from Saudi, Commercial Bank of Ceylon remittance, CBSL exchange rates 2026">
@@ -608,9 +597,14 @@
             <span class="logo-title" style="font-size:18px;font-weight:800;color:#0f172a;">DailyCalc<span style="color:#0284c7;">Hubs</span></span>
           </div>
         </div>
-        <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Close menu">
-          <i class="fas fa-xmark"></i>
-        </button>
+        <div class="mobile-header-actions">
+          <button type="button" class="mobile-theme-toggle dch-theme-toggle" id="mobileDrawerThemeToggle" aria-label="Toggle theme" title="Toggle theme">
+            <i class="fas fa-moon"></i>
+          </button>
+          <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Close menu">
+            <i class="fas fa-xmark"></i>
+          </button>
+        </div>
       </div>
 
       <div class="mobile-nav-body">
@@ -846,7 +840,7 @@
           <label class="form-label" for="lkrAmount">Transfer Amount in Saudi Riyals (SAR):</label>
           <div class="input-with-addons">
             <div class="input-addon-badge"><i class="fas fa-coins" style="color:#16a34a;"></i> SAR</div>
-            <input type="number" id="lkrAmount" class="calc-input" value="1000" min="1" max="100000" step="10" placeholder="Enter SAR amount">
+            <input type="number" id="lkrAmount" class="calc-input" value="1000" min="1" max="100000" step="10" placeholder="Enter SAR amount" inputmode="decimal">
           </div>
           <div class="amount-chips-row">
             <button class="amount-chip-btn" onclick="setLkrAmt(500)">500 SAR</button>
@@ -1164,7 +1158,7 @@
       }
     }
   </script>
-  <script src="/remittance-providers.js"></script>
+  <script src="/remittance-providers.js?v=20260926c"></script>
   <script src="/live-ticker.js" defer></script>
   <script src="/theme.js" defer></script>
   <script src="/share.js" defer></script>

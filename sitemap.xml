@@ -674,6 +674,24 @@
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
+  <url>
+    <loc>https://dailycalchubs.com/ar/everyday-smart-calculator/percentage-calculator/</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://dailycalchubs.com/ar/everyday-smart-calculator/time-duration-calculator/</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://dailycalchubs.com/ar/everyday-smart-calculator/tip-calculator/</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
   <!-- Arabic Shariah SIP Suite -->
   <url>
     <loc>https://dailycalchubs.com/ar/shariah-sip-calculator/</loc>
@@ -714,6 +732,30 @@
   </url>
   <url>
     <loc>https://dailycalchubs.com/ar/travel-booking-calculator/travel-budget/</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://dailycalchubs.com/ar/travel-booking-calculator/flight-cost/</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://dailycalchubs.com/ar/travel-booking-calculator/hotel-cost/</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://dailycalchubs.com/ar/travel-booking-calculator/booking-cost/</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://dailycalchubs.com/ar/travel-booking-calculator/expense-split/</loc>
     <lastmod>2026-09-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>

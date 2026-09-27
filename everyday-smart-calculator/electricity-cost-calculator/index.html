@@ -12,17 +12,6 @@
       } catch (e) {}
     })();
   </script>
-
-  <!-- Travelpayouts Partner Script (Flight & Umrah Integration) -->
-  <script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
-  (function () {
-    var script = document.createElement("script");
-    script.async = 1;
-    script.setAttribute("data-cmp-ab", "2");
-    script.src = "https://emrldtp.com/NTczNDc0.js?t=573474";
-    document.head.appendChild(script);
-  })();
-  </script>
   <title>Electricity Cost Calculator: Monthly Bill &amp; kWh Power Estimator</title>
   <meta name="description" content="Calculate monthly electricity bills and kWh power consumption based on tariff rates. Estimate appliance energy costs and household electric utility expenses.">
   <meta name="keywords" content="electricity cost calculator, kwh cost calculator, appliance power usage calculator, saudi electricity bill estimate, calculate electric bill online">
@@ -600,9 +589,14 @@
             <span class="logo-title" style="font-size:18px;font-weight:800;color:#0f172a;">DailyCalc<span style="color:#0284c7;">Hubs</span></span>
           </div>
         </div>
-        <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Close menu">
-          <i class="fas fa-xmark"></i>
-        </button>
+        <div class="mobile-header-actions">
+          <button type="button" class="mobile-theme-toggle dch-theme-toggle" id="mobileDrawerThemeToggle" aria-label="Toggle theme" title="Toggle theme">
+            <i class="fas fa-moon"></i>
+          </button>
+          <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Close menu">
+            <i class="fas fa-xmark"></i>
+          </button>
+        </div>
       </div>
 
       <div class="mobile-nav-body">
@@ -844,7 +838,7 @@
         <div class="form-group">
           <label class="form-label" for="wattageInput">Power Rating (Watts)</label>
           <div class="calc-input-wrap">
-            <input type="number" id="wattageInput" value="200" min="1" max="100000" step="10" oninput="calculateElectricity()">
+            <input type="number" id="wattageInput" value="200" min="1" max="100000" step="10" oninput="calculateElectricity()" inputmode="decimal">
             <span class="calc-input-addon">Watts (W)</span>
           </div>
         </div>
@@ -854,7 +848,7 @@
         <div class="form-group">
           <label class="form-label" for="hoursInput">Daily Usage (Hours per Day)</label>
           <div class="calc-input-wrap">
-            <input type="number" id="hoursInput" value="24" min="0.1" max="24" step="0.5" oninput="calculateElectricity()">
+            <input type="number" id="hoursInput" value="24" min="0.1" max="24" step="0.5" oninput="calculateElectricity()" inputmode="decimal">
             <span class="calc-input-addon">Hours / Day</span>
           </div>
           <div class="preset-chips">
@@ -868,7 +862,7 @@
         <div class="form-group">
           <label class="form-label" for="daysInput">Billing Period Length (Days)</label>
           <div class="calc-input-wrap">
-            <input type="number" id="daysInput" value="30" min="1" max="365" step="1" oninput="calculateElectricity()">
+            <input type="number" id="daysInput" value="30" min="1" max="365" step="1" oninput="calculateElectricity()" inputmode="decimal">
             <span class="calc-input-addon">Days</span>
           </div>
           <div class="preset-chips">
@@ -883,7 +877,7 @@
         <div class="form-group">
           <label class="form-label" for="tariffInput">Electricity Tariff (Cost per kWh)</label>
           <div class="calc-input-wrap">
-            <input type="number" id="tariffInput" value="0.18" min="0.001" max="10" step="0.01" oninput="calculateElectricity()">
+            <input type="number" id="tariffInput" value="0.18" min="0.001" max="10" step="0.01" oninput="calculateElectricity()" inputmode="decimal">
             <span class="calc-input-addon" id="tariffUnitLabel">SAR / kWh</span>
           </div>
           <div class="preset-chips">

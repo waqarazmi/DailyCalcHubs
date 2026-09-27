@@ -12,17 +12,6 @@
       } catch (e) {}
     })();
   </script>
-
-  <!-- Travelpayouts Partner Script (Flight & Umrah Integration) -->
-  <script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
-  (function () {
-    var script = document.createElement("script");
-    script.async = 1;
-    script.setAttribute("data-cmp-ab", "2");
-    script.src = "https://emrldtp.com/NTczNDc0.js?t=573474";
-    document.head.appendChild(script);
-  })();
-  </script>
   <title>Maktab Amal Fee Calculator 2026 | Saudi Work Permit Financial Levy</title>
   <meta name="description" content="Determine Ministry of Human Resources (MHRSD) Maktab Amal fees in Saudi Arabia. Check 800 SAR vs 700 SAR monthly rates based on company Saudization quota.">
   <meta name="keywords" content="maktab amal fee calculator 2026, work permit financial levy ksa, 800 sar monthly maktab amal, 9600 sar yearly work permit, qiwa maktab amal payment">
@@ -600,9 +589,14 @@
             <span class="logo-title" style="font-size:18px;font-weight:800;color:#0f172a;">DailyCalc<span style="color:#0284c7;">Hubs</span></span>
           </div>
         </div>
-        <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Close menu">
-          <i class="fas fa-xmark"></i>
-        </button>
+        <div class="mobile-header-actions">
+          <button type="button" class="mobile-theme-toggle dch-theme-toggle" id="mobileDrawerThemeToggle" aria-label="Toggle theme" title="Toggle theme">
+            <i class="fas fa-moon"></i>
+          </button>
+          <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Close menu">
+            <i class="fas fa-xmark"></i>
+          </button>
+        </div>
       </div>
 
       <div class="mobile-nav-body">
@@ -840,7 +834,7 @@
             <label class="form-label" for="numWorkers">Number of Expat Workers to Renew</label>
             <div class="input-with-addons">
               <span class="input-addon-badge"><i class="fas fa-user-tie"></i></span>
-              <input type="number" id="numWorkers" class="calc-input" value="5" min="1" max="1000" step="1" placeholder="e.g. 5" required oninput="calculateMaktab()">
+              <input type="number" id="numWorkers" class="calc-input" value="5" min="1" max="1000" step="1" placeholder="e.g. 5" required oninput="calculateMaktab()" inputmode="numeric">
             </div>
             <div class="amount-chips-row">
               <button type="button" class="amount-chip-btn" onclick="setWorkerCount(1)">1 Worker</button>

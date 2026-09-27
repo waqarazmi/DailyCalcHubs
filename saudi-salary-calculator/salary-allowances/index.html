@@ -12,17 +12,6 @@
       } catch (e) {}
     })();
   </script>
-
-  <!-- Travelpayouts Partner Script (Flight & Umrah Integration) -->
-  <script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
-  (function () {
-    var script = document.createElement("script");
-    script.async = 1;
-    script.setAttribute("data-cmp-ab", "2");
-    script.src = "https://emrldtp.com/NTczNDc0.js?t=573474";
-    document.head.appendChild(script);
-  })();
-  </script>
   <title>Saudi Salary + Allowances Calculator 2026: Housing, Transport & Benefits</title>
   <meta name="description" content="Structure compensation packages in Saudi Arabia. Calculate basic salary plus housing allowance (25%), transportation (10%), mobile, and food allowances with GOSI and EOSB impacts.">
   <meta name="keywords" content="Saudi salary allowances calculator, housing allowance percentage Saudi Arabia, transportation allowance KSA, compensation package builder Saudi 2026">
@@ -598,9 +587,14 @@
             <span class="logo-title" style="font-size:18px;font-weight:800;color:#0f172a;">DailyCalc<span style="color:#0284c7;">Hubs</span></span>
           </div>
         </div>
-        <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Close menu">
-          <i class="fas fa-xmark"></i>
-        </button>
+        <div class="mobile-header-actions">
+          <button type="button" class="mobile-theme-toggle dch-theme-toggle" id="mobileDrawerThemeToggle" aria-label="Toggle theme" title="Toggle theme">
+            <i class="fas fa-moon"></i>
+          </button>
+          <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Close menu">
+            <i class="fas fa-xmark"></i>
+          </button>
+        </div>
       </div>
 
       <div class="mobile-nav-body">
@@ -836,7 +830,7 @@
           <label class="form-label" for="alBasic">Monthly Basic Salary (SAR):</label>
           <div class="input-with-addons">
             <div class="input-addon-badge">SAR</div>
-            <input type="number" id="alBasic" class="calc-input" value="7000" min="0" step="100" placeholder="Basic salary">
+            <input type="number" id="alBasic" class="calc-input" value="7000" min="0" step="100" placeholder="Basic salary" inputmode="decimal">
           </div>
         </div>
 
@@ -847,7 +841,7 @@
           </div>
           <div class="input-with-addons">
             <div class="input-addon-badge">SAR</div>
-            <input type="number" id="alHousing" class="calc-input" value="1750" min="0" step="50" placeholder="Housing">
+            <input type="number" id="alHousing" class="calc-input" value="1750" min="0" step="50" placeholder="Housing" inputmode="decimal">
           </div>
         </div>
 
@@ -858,7 +852,7 @@
           </div>
           <div class="input-with-addons">
             <div class="input-addon-badge">SAR</div>
-            <input type="number" id="alTransport" class="calc-input" value="700" min="0" step="50" placeholder="Transport">
+            <input type="number" id="alTransport" class="calc-input" value="700" min="0" step="50" placeholder="Transport" inputmode="decimal">
           </div>
         </div>
 
@@ -866,7 +860,7 @@
           <label class="form-label" for="alOther">Other Fixed Allowances (Mobile, Food, Field):</label>
           <div class="input-with-addons">
             <div class="input-addon-badge">SAR</div>
-            <input type="number" id="alOther" class="calc-input" value="500" min="0" step="50" placeholder="Other allowances">
+            <input type="number" id="alOther" class="calc-input" value="500" min="0" step="50" placeholder="Other allowances" inputmode="decimal">
           </div>
         </div>
 

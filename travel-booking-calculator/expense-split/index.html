@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -612,9 +612,14 @@
             <span class="logo-title" style="font-size:18px;font-weight:800;color:#0f172a;">DailyCalc<span style="color:#0284c7;">Hubs</span></span>
           </div>
         </div>
-        <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Close menu">
-          <i class="fas fa-xmark"></i>
-        </button>
+        <div class="mobile-header-actions">
+          <button type="button" class="mobile-theme-toggle dch-theme-toggle" id="mobileDrawerThemeToggle" aria-label="Toggle theme" title="Toggle theme">
+            <i class="fas fa-moon"></i>
+          </button>
+          <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Close menu">
+            <i class="fas fa-xmark"></i>
+          </button>
+        </div>
       </div>
 
       <div class="mobile-nav-body">
@@ -852,7 +857,7 @@
             <div class="input-group">
               <label for="numTravelers">Number of Travelers</label>
               <div class="input-wrap">
-                <input type="number" id="numTravelers" value="4" min="2" max="25">
+                <input type="number" id="numTravelers" value="4" min="2" max="25" inputmode="numeric">
               </div>
               <span class="field-hint">People sharing communal trip costs</span>
             </div>
@@ -860,7 +865,7 @@
             <div class="input-group">
               <label for="tripDays">Duration (Days)</label>
               <div class="input-wrap">
-                <input type="number" id="tripDays" value="5" min="1" max="60">
+                <input type="number" id="tripDays" value="5" min="1" max="60" inputmode="numeric">
               </div>
               <span class="field-hint">Length of trip for daily average</span>
             </div>
@@ -873,7 +878,7 @@
               <label for="lodgingShared">Shared Lodging / Villa / Chalet</label>
               <div class="input-wrap">
                 <span class="unit">SAR</span>
-                <input type="number" id="lodgingShared" class="has-unit" value="3200" min="0" step="50">
+                <input type="number" id="lodgingShared" class="has-unit" value="3200" min="0" step="50" inputmode="decimal">
               </div>
             </div>
 
@@ -881,7 +886,7 @@
               <label for="foodShared">Group Dining &amp; Shared Groceries</label>
               <div class="input-wrap">
                 <span class="unit">SAR</span>
-                <input type="number" id="foodShared" class="has-unit" value="1600" min="0" step="50">
+                <input type="number" id="foodShared" class="has-unit" value="1600" min="0" step="50" inputmode="decimal">
               </div>
             </div>
           </div>
@@ -891,7 +896,7 @@
               <label for="transitShared">Car Rental, Fuel &amp; Highway Tolls</label>
               <div class="input-wrap">
                 <span class="unit">SAR</span>
-                <input type="number" id="transitShared" class="has-unit" value="950" min="0" step="25">
+                <input type="number" id="transitShared" class="has-unit" value="950" min="0" step="25" inputmode="decimal">
               </div>
             </div>
 
@@ -899,7 +904,7 @@
               <label for="activitiesShared">Shared Tours, Tickets &amp; Excursions</label>
               <div class="input-wrap">
                 <span class="unit">SAR</span>
-                <input type="number" id="activitiesShared" class="has-unit" value="750" min="0" step="25">
+                <input type="number" id="activitiesShared" class="has-unit" value="750" min="0" step="25" inputmode="decimal">
               </div>
             </div>
           </div>
@@ -911,7 +916,7 @@
               <label for="paidByYou">Amount Paid Upfront by You</label>
               <div class="input-wrap">
                 <span class="unit">SAR</span>
-                <input type="number" id="paidByYou" class="has-unit" value="4150" min="0" step="50">
+                <input type="number" id="paidByYou" class="has-unit" value="4150" min="0" step="50" inputmode="decimal">
               </div>
               <span class="field-hint">What you put on your card/cash</span>
             </div>
@@ -920,7 +925,7 @@
               <label for="paidByOthers">Amount Paid by Other Companions</label>
               <div class="input-wrap">
                 <span class="unit">SAR</span>
-                <input type="number" id="paidByOthers" class="has-unit" value="2350" min="0" step="50">
+                <input type="number" id="paidByOthers" class="has-unit" value="2350" min="0" step="50" inputmode="decimal">
               </div>
               <span class="field-hint">Payments handled by other members</span>
             </div>
@@ -1015,7 +1020,7 @@
 
           <!-- Smart Booking Actions -->
           <div class="smart-booking-bar">
-            <a href="https://www.aviasales.com/?marker=573474&sub_id=expense_split" target="_blank" rel="noopener noreferrer" class="btn-booking-action btn-booking-deals" aria-label="Explore travel deals on Aviasales">
+            <a href="https://www.aviasales.com/?marker=573474&sub_id=expense_split" target="_blank" rel="nofollow sponsored noopener" class="btn-booking-action btn-booking-deals" aria-label="Explore travel deals on Aviasales">
               <i class="fas fa-globe-americas" aria-hidden="true"></i>
               <span>Explore Travel Deals</span>
             </a>

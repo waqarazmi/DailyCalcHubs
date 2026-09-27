@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -604,9 +604,14 @@
             <span class="logo-title" style="font-size:18px;font-weight:800;color:#0f172a;">DailyCalc<span style="color:#0284c7;">Hubs</span></span>
           </div>
         </div>
-        <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Close menu">
-          <i class="fas fa-xmark"></i>
-        </button>
+        <div class="mobile-header-actions">
+          <button type="button" class="mobile-theme-toggle dch-theme-toggle" id="mobileDrawerThemeToggle" aria-label="Toggle theme" title="Toggle theme">
+            <i class="fas fa-moon"></i>
+          </button>
+          <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Close menu">
+            <i class="fas fa-xmark"></i>
+          </button>
+        </div>
       </div>
 
       <div class="mobile-nav-body">
@@ -845,7 +850,7 @@
               <label for="nightlyRate">Nightly Room Rate</label>
               <div class="input-wrap">
                 <span class="unit">SAR</span>
-                <input type="number" id="nightlyRate" class="has-unit" value="550" min="50" step="25">
+                <input type="number" id="nightlyRate" class="has-unit" value="550" min="50" step="25" inputmode="decimal">
               </div>
               <span class="field-hint">Base room price per night (before tax)</span>
             </div>
@@ -853,7 +858,7 @@
             <div class="input-group">
               <label for="numNights">Number of Nights</label>
               <div class="input-wrap">
-                <input type="number" id="numNights" value="4" min="1" max="90">
+                <input type="number" id="numNights" value="4" min="1" max="90" inputmode="numeric">
               </div>
               <span class="field-hint">Total duration of hotel stay</span>
             </div>
@@ -863,7 +868,7 @@
             <div class="input-group">
               <label for="numRooms">Number of Rooms</label>
               <div class="input-wrap">
-                <input type="number" id="numRooms" value="1" min="1" max="10">
+                <input type="number" id="numRooms" value="1" min="1" max="10" inputmode="numeric">
               </div>
               <span class="field-hint">Rooms booked for your party</span>
             </div>
@@ -900,7 +905,7 @@
               <label for="extraGuestFee">Extra Bed / Guest Fee (Per Night)</label>
               <div class="input-wrap">
                 <span class="unit">SAR</span>
-                <input type="number" id="extraGuestFee" class="has-unit" value="0" min="0" step="20">
+                <input type="number" id="extraGuestFee" class="has-unit" value="0" min="0" step="20" inputmode="decimal">
               </div>
               <span class="field-hint">Rollaway bed or extra adult charge</span>
             </div>
@@ -911,7 +916,7 @@
               <label for="cleaningFee">Resort / Cleaning Fee (Per Stay)</label>
               <div class="input-wrap">
                 <span class="unit">SAR</span>
-                <input type="number" id="cleaningFee" class="has-unit" value="75" min="0" step="25">
+                <input type="number" id="cleaningFee" class="has-unit" value="75" min="0" step="25" inputmode="decimal">
               </div>
               <span class="field-hint">Fixed facility, beach club or chalet turnover fee</span>
             </div>
@@ -920,7 +925,7 @@
               <label for="refundableDeposit">Refundable Security Deposit</label>
               <div class="input-wrap">
                 <span class="unit">SAR</span>
-                <input type="number" id="refundableDeposit" class="has-unit" value="500" min="0" step="50">
+                <input type="number" id="refundableDeposit" class="has-unit" value="500" min="0" step="50" inputmode="decimal">
               </div>
               <span class="field-hint">Temporary card pre-authorization hold</span>
             </div>
@@ -1005,7 +1010,7 @@
 
           <!-- Smart Booking Actions -->
           <div class="smart-booking-bar">
-            <a href="https://www.aviasales.com/hotels?marker=573474&sub_id=hotel_cost" target="_blank" rel="noopener noreferrer" class="btn-booking-action btn-booking-hotel" aria-label="Compare hotel deals on Aviasales">
+            <a href="https://www.aviasales.com/hotels?marker=573474&sub_id=hotel_cost" target="_blank" rel="nofollow sponsored noopener" class="btn-booking-action btn-booking-hotel" aria-label="Compare hotel deals on Aviasales">
               <i class="fas fa-hotel" aria-hidden="true"></i>
               <span>Compare Hotel Deals</span>
             </a>
