@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
@@ -577,10 +577,10 @@
           </div>
         </div>
         <div class="mobile-header-actions">
-          <button type="button" class="mobile-theme-toggle dch-theme-toggle" id="mobileDrawerThemeToggle" aria-label="ØªØ¨Ø¯ÙŠÙ„ Ø§Ù„Ù…Ø¸Ù‡Ø±" title="ØªØ¨Ø¯ÙŠÙ„ Ø§Ù„Ù…Ø¸Ù‡Ø±">
+          <button type="button" class="mobile-theme-toggle dch-theme-toggle" id="mobileDrawerThemeToggle" aria-label="تبديل المظهر" title="تبديل المظهر">
             <i class="fas fa-moon"></i>
           </button>
-          <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Ø¥ØºÙ„Ø§Ù‚ Ø§Ù„Ù‚Ø§Ø¦Ù…Ø©">
+          <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="إغلاق القائمة">
             <i class="fas fa-xmark"></i>
           </button>
         </div>
@@ -825,11 +825,12 @@
           <div class="result-summary-box">
             <div class="result-row-top">
               <div>
-                <div class="result-label">المبلغ المستلم بالروبية الباكستانية (سعر السوق)</div>
-                <div class="result-big-val" id="pkrPayout">Rs 74,240.00</div>
+                <div class="result-label">أفضل مبلغ تسليم مقدر (تطبيق برق)</div>
+                <div class="result-big-val" id="pkrPayout">Rs --.--</div>
+                <div id="pkrWholesaleBench" style="font-size:11.5px; color:#cbd5e1; margin-top:4px;">السعر المرجعي بين البنوك: --</div>
               </div>
               <div class="result-rate-tag" id="pkrRateTag">
-                <i class="fas fa-bolt" style="color:#fbbf24;"></i> <span>1 SAR = 74.2400 PKR</span>
+                <i class="fas fa-bolt" style="color:#fbbf24;"></i> <span>جاري حساب سعر الصرف...</span>
               </div>
             </div>
 
@@ -862,7 +863,7 @@
             <span><i class="fas fa-wallet" style="color:#16a34a;"></i> مقارنة صافي المستلم لدى تطبيقات التحويل إلى باكستان</span>
           </div>
           <div class="provider-table-wrap" style="overflow-x:auto;">
-            <table class="provider-table data-table" style="margin:0;">
+            <table class="provider-table data-table data-table-cards" style="margin:0;">
               <thead>
                 <tr>
                   <th>المزود</th>
@@ -901,10 +902,58 @@
     </div>
 
     <article class="content-article">
-      <h2>دليل تحويل الأموال إلى باكستان 2026</h2>
+      <h3>مثال تطبيقي عملي: تحويل 2,500 ريال سعودي إلى باكستان</h3>
       <p>
-        تتمتع الجالية الباكستانية في المملكة العربية السعودية بدعم واسع عبر القنوات المالية الرسمية، حيث تقدم المحافظ الرقمية السعودية أسعار صرف متقدمة تتماشى مع مبادرات البنك المركزي الباكستاني لتشجيع القنوات النظامية.
+        لنحسب صافي المبلغ المستلم عند تحويل 2,500 ريال سعودي إلى حساب بنكي في باكستان بموجب أسعار السوق القياسية المعتمدة (سعر الصرف المرجعي: 1 ريال = 74.20 روبية باكستانية):
       </p>
+      <table class="data-table data-table-cards">
+        <thead>
+          <tr>
+            <th>التطبيق / القناة</th>
+            <th>رسوم التحويل + الضريبة 15%</th>
+            <th>سعر صرف التحويل</th>
+            <th>صافي المبلغ المستلم</th>
+            <th>فارق التوفير</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-label="التطبيق / القناة"><strong>تطبيق برق (Barq)</strong></td>
+            <td data-label="رسوم التحويل + الضريبة 15%">0.00 ر.س (مجاني)</td>
+            <td data-label="سعر صرف التحويل"><span dir="ltr">Rs 73.38 / SAR</span></td>
+            <td data-label="صافي المبلغ المستلم"><strong><span dir="ltr">Rs 183,450.00</span></strong></td>
+            <td data-label="فارق التوفير"><span style="color:#16a34a; font-weight:700;"><span dir="ltr">+ Rs 4,284.37</span> إضافية</span></td>
+          </tr>
+          <tr>
+            <td data-label="التطبيق / القناة"><strong>يورباي urpay (الراجحي)</strong></td>
+            <td data-label="رسوم التحويل + الضريبة 15%">11.50 ر.س (10 + 1.50 ضريبة)</td>
+            <td data-label="سعر صرف التحويل"><span dir="ltr">Rs 73.16 / SAR</span></td>
+            <td data-label="صافي المبلغ المستلم"><span dir="ltr">Rs 182,058.66</span></td>
+            <td data-label="فارق التوفير"><span style="color:#16a34a; font-weight:700;"><span dir="ltr">+ Rs 2,893.03</span> إضافية</span></td>
+          </tr>
+          <tr>
+            <td data-label="التطبيق / القناة"><strong>بنك STC (STC Pay)</strong></td>
+            <td data-label="رسوم التحويل + الضريبة 15%">17.25 ر.س (15 + 2.25 ضريبة)</td>
+            <td data-label="سعر صرف التحويل"><span dir="ltr">Rs 73.24 / SAR</span></td>
+            <td data-label="صافي المبلغ المستلم"><span dir="ltr">Rs 181,836.61</span></td>
+            <td data-label="فارق التوفير"><span style="color:#16a34a; font-weight:700;"><span dir="ltr">+ Rs 2,670.98</span> إضافية</span></td>
+          </tr>
+          <tr>
+            <td data-label="التطبيق / القناة"><strong>تحويل الراجحي</strong></td>
+            <td data-label="رسوم التحويل + الضريبة 15%">17.25 ر.س (15 + 2.25 ضريبة)</td>
+            <td data-label="سعر صرف التحويل"><span dir="ltr">Rs 72.86 / SAR</span></td>
+            <td data-label="صافي المبلغ المستلم"><span dir="ltr">Rs 180,893.17</span></td>
+            <td data-label="فارق التوفير"><span style="color:#16a34a; font-weight:700;"><span dir="ltr">+ Rs 1,727.54</span> إضافية</span></td>
+          </tr>
+          <tr>
+            <td data-label="التطبيق / القناة"><strong>فرع البنك التقليدي</strong></td>
+            <td data-label="رسوم التحويل + الضريبة 15%">28.75 ر.س (25 + 3.75 ضريبة)</td>
+            <td data-label="سعر صرف التحويل"><span dir="ltr">Rs 72.50 / SAR</span></td>
+            <td data-label="صافي المبلغ المستلم"><span dir="ltr">Rs 179,165.63</span></td>
+            <td data-label="فارق التوفير">المستوى الأساسي للمقارنة</td>
+          </tr>
+        </tbody>
+      </table>
 
       <h2>الأسئلة الشائعة</h2>
       <div class="faq-item">
@@ -930,36 +979,33 @@
     </div>
   </main>
 
-  <script>
-    const FX_API_URL = 'https://open.er-api.com/v6/latest/USD';
-    let liveSarPkrRate = null;
+  <!-- Core Remittance Engine -->
+  <script src="/remittance-providers.js?v=20260927"></script>
+  <script src="/live-ticker.js" defer></script>
+  <script src="/theme.js" defer></script>
+  <script src="/share.js" defer></script>
 
-    async function initPkrCalc() {
+  <script>
+    function initPkrCalc() {
       const badge = document.getElementById('pkrStatusBadge');
       const text = document.getElementById('pkrStatusText');
 
-      try {
-        const res = await fetch(FX_API_URL + '?ts=' + Date.now(), { cache: 'no-store' });
-        if (!res.ok) throw new Error('API down');
-        const data = await res.json();
-        if (data && data.rates && data.rates.SAR && data.rates.PKR) {
-          liveSarPkrRate = data.rates.PKR / data.rates.SAR;
+      if (!window.DailyCalcRemittance) return;
+
+      window.DailyCalcRemittance.fetchRates(function(rates, info) {
+        if (info && info.isLive) {
           badge.style.background = '#f0fdf4';
           badge.style.color = '#166534';
           badge.style.border = '1px solid #bbf7d0';
-          text.textContent = 'البيانات المباشرة نشطة';
-          recalcPkr();
-          return;
+          text.textContent = info.statusAr || 'البيانات المرجعية نشطة';
+        } else {
+          badge.style.background = '#fef2f2';
+          badge.style.color = '#991b1b';
+          badge.style.border = '1px solid #fecaca';
+          text.textContent = 'سعر إغلاق مرجعي معتمد';
         }
-        throw new Error('Incomplete data');
-      } catch (e) {
-        liveSarPkrRate = 74.24;
-        badge.style.background = '#fef2f2';
-        badge.style.color = '#991b1b';
-        badge.style.border = '1px solid #fecaca';
-        text.textContent = 'السعر المباشر غير متاح مؤقتاً';
         recalcPkr();
-      }
+      });
     }
 
     function setPkrAmt(val) {
@@ -974,15 +1020,22 @@
 
     function recalcPkr() {
       const amt = parseFloat(document.getElementById('pkrAmount').value) || 0;
-      const rate = liveSarPkrRate || 74.24;
+      if (!window.DailyCalcRemittance) return;
+      const rate = window.DailyCalcRemittance.getRateFromSar('PKR') || 74.24;
 
       const payoutEl = document.getElementById('pkrPayout');
       const tagEl = document.getElementById('pkrRateTag');
       const priTag = document.getElementById('pkrPriTag');
+      const benchEl = document.getElementById('pkrWholesaleBench');
 
-      const total = amt * rate;
-      payoutEl.textContent = 'Rs ' + total.toLocaleString('en-PK', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-      tagEl.innerHTML = '<i class="fas fa-bolt" style="color:#fbbf24;"></i> <span>1 SAR = ' + rate.toFixed(4) + ' PKR</span>';
+      const topProvider = window.DailyCalcRemittance.providers[0]; // Barq
+      const calcTop = window.DailyCalcRemittance.calculateProviderPayout(topProvider, amt, 'PKR', rate);
+
+      payoutEl.innerHTML = '<span dir="ltr">Rs ' + calcTop.formattedPayout + '</span>';
+      tagEl.innerHTML = '<i class="fas fa-bolt" style="color:#fbbf24;"></i> <span dir="ltr">1 SAR = ' + rate.toFixed(4) + ' PKR</span>';
+      if (benchEl) {
+        benchEl.innerHTML = 'السعر المرجعي بين البنوك: <span dir="ltr">Rs ' + window.DailyCalcRemittance.formatPayout(amt * rate, 'PKR') + '</span>';
+      }
 
       if (amt >= 375) {
         priTag.textContent = 'مؤهل للتحويل المجاني (مبادرة PRI)';
@@ -992,17 +1045,14 @@
         priTag.style.color = '#94a3b8';
       }
 
-            if (window.DailyCalcRemittance && window.DailyCalcRemittance.renderTable) {
-        window.DailyCalcRemittance.renderTable({
-          tbody: 'pkrTableBody',
-          amount: amt,
-          currency: 'PKR',
-          baseRate: rate,
-          symbol: 'Rs',
-          isArabic: true,
-          incentiveMultiplier: 1
-        });
-      }
+      window.DailyCalcRemittance.renderTable({
+        tbody: 'pkrTableBody',
+        amount: amt,
+        currency: 'PKR',
+        baseRate: rate,
+        symbol: 'Rs',
+        isArabic: true
+      });
     }
 
     document.addEventListener('DOMContentLoaded', function() {
@@ -1079,9 +1129,5 @@
     }
   </script>
   <script src="/mobile-nav.js" defer></script>
-  <script src="/remittance-providers.js?v=20260926c"></script>
-  <script src="/live-ticker.js" defer></script>
-  <script src="/theme.js" defer></script>
-  <script src="/share.js" defer></script>
 </body>
 </html>

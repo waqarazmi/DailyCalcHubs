@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
@@ -567,10 +567,10 @@
           </div>
         </div>
         <div class="mobile-header-actions">
-          <button type="button" class="mobile-theme-toggle dch-theme-toggle" id="mobileDrawerThemeToggle" aria-label="ØªØ¨Ø¯ÙŠÙ„ Ø§Ù„Ù…Ø¸Ù‡Ø±" title="ØªØ¨Ø¯ÙŠÙ„ Ø§Ù„Ù…Ø¸Ù‡Ø±">
+          <button type="button" class="mobile-theme-toggle dch-theme-toggle" id="mobileDrawerThemeToggle" aria-label="تبديل المظهر" title="تبديل المظهر">
             <i class="fas fa-moon"></i>
           </button>
-          <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Ø¥ØºÙ„Ø§Ù‚ Ø§Ù„Ù‚Ø§Ø¦Ù…Ø©">
+          <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="إغلاق القائمة">
             <i class="fas fa-xmark"></i>
           </button>
         </div>
@@ -815,18 +815,19 @@
           <div class="result-summary-box">
             <div class="result-row-top">
               <div>
-                <div class="result-label">المبلغ المستلم بالروبية السريلانكية (سعر السوق)</div>
-                <div class="result-big-val" id="lkrPayout">LKR 79,800.00</div>
+                <div class="result-label">أفضل تقدير لصافي المستلم (برق)</div>
+                <div class="result-big-val" id="lkrPayout">Rs --.--</div>
+                <div id="lkrWholesaleBench" style="font-size:11.5px; color:#94a3b8; margin-top:4px;">السعر المرجعي لسوق الجملة: --</div>
               </div>
               <div class="result-rate-tag" id="lkrRateTag">
-                <i class="fas fa-bolt" style="color:#fbbf24;"></i> <span>1 SAR = 79.8000 LKR</span>
+                <i class="fas fa-bolt" style="color:#fbbf24;"></i> <span>جاري جلب سعر الصرف...</span>
               </div>
             </div>
 
             <div class="result-meta-grid">
               <div class="meta-box-inner">
-                <div class="meta-box-title">مصدر السعر</div>
-                <div class="meta-box-val" id="lkrTimeVal">سعر السوق الفوري المباشر</div>
+                <div class="meta-box-title">مصدر السعر وحالته</div>
+                <div class="meta-box-val" id="lkrTimeVal">السعر المرجعي الرسمي</div>
               </div>
               <div class="meta-box-inner">
                 <div class="meta-box-title">شبكة الإيداع</div>
@@ -852,7 +853,7 @@
             <span><i class="fas fa-wallet" style="color:#16a34a;"></i> مقارنة صافي المستلم لدى تطبيقات التحويل إلى سريلانكا</span>
           </div>
           <div class="provider-table-wrap" style="overflow-x:auto;">
-            <table class="provider-table data-table" style="margin:0;">
+            <table class="provider-table data-table data-table-cards" style="margin:0;">
               <thead>
                 <tr>
                   <th>المزود</th>
@@ -900,6 +901,59 @@
         تتيح المحافظ الرقمية المرخصة في المملكة العربية السعودية للمقيمين السريلانكيين إرسال أموالهم بأمان وسرعة فائقة بأسعار صرف تنافسية معتمدة من البنك المركزي.
       </p>
 
+      <h3>مثال عملي توضيحي: تحويل 1,500 ريال سعودي إلى سريلانكا</h3>
+      <p>
+        يوضح الجدول التالي صافي المبالغ المستلمة بالروبية السريلانكية عند تحويل 1,500 ريال عبر مختلف القنوات (سعر مرجعي توضيحي: 1 ريال = 80.00 روبية):
+      </p>
+      <table class="data-table data-table-cards">
+        <thead>
+          <tr>
+            <th>المزود / القناة</th>
+            <th>رسوم الخدمة + 15% ضريبة</th>
+            <th>سعر التحويل للمزود</th>
+            <th>صافي المبلغ المستلم</th>
+            <th>الفارق عن الفرع التقليدي</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-label="المزود / القناة"><strong>تطبيق برق (Barq)</strong></td>
+            <td data-label="رسوم الخدمة + 15% ضريبة">0.00 ر.س (عرض مجاني)</td>
+            <td data-label="سعر التحويل للمزود">Rs 79.52 / ر.س</td>
+            <td data-label="صافي المبلغ المستلم"><strong>Rs 119,280.00</strong></td>
+            <td data-label="الفارق عن الفرع التقليدي"><span style="color:#16a34a; font-weight:700;">+ Rs 4,169.40 إضافية</span></td>
+          </tr>
+          <tr>
+            <td data-label="المزود / القناة"><strong>محفظة يورباي (urpay)</strong></td>
+            <td data-label="رسوم الخدمة + 15% ضريبة">11.50 ر.س (10 + 1.50 ضريبة)</td>
+            <td data-label="سعر التحويل للمزود">Rs 79.44 / ر.س</td>
+            <td data-label="صافي المبلغ المستلم">Rs 118,246.44</td>
+            <td data-label="الفارق عن الفرع التقليدي"><span style="color:#16a34a; font-weight:700;">+ Rs 3,135.84 إضافية</span></td>
+          </tr>
+          <tr>
+            <td data-label="المزود / القناة"><strong>بنك إس تي سي (STC Bank)</strong></td>
+            <td data-label="رسوم الخدمة + 15% ضريبة">17.25 ر.س (15 + 2.25 ضريبة)</td>
+            <td data-label="سعر التحويل للمزود">Rs 79.40 / ر.س</td>
+            <td data-label="صافي المبلغ المستلم">Rs 117,730.35</td>
+            <td data-label="الفارق عن الفرع التقليدي"><span style="color:#16a34a; font-weight:700;">+ Rs 2,619.75 إضافية</span></td>
+          </tr>
+          <tr>
+            <td data-label="المزود / القناة"><strong>تحويل الراجحي</strong></td>
+            <td data-label="رسوم الخدمة + 15% ضريبة">17.25 ر.س (15 + 2.25 ضريبة)</td>
+            <td data-label="سعر التحويل للمزود">Rs 78.80 / ر.س</td>
+            <td data-label="صافي المبلغ المستلم">Rs 116,840.70</td>
+            <td data-label="الفارق عن الفرع التقليدي"><span style="color:#16a34a; font-weight:700;">+ Rs 1,730.10 إضافية</span></td>
+          </tr>
+          <tr>
+            <td data-label="المزود / القناة"><strong>فرع البنك التقليدي</strong></td>
+            <td data-label="رسوم الخدمة + 15% ضريبة">28.75 ر.س (25 + 3.75 ضريبة)</td>
+            <td data-label="سعر التحويل للمزود">Rs 78.24 / ر.س</td>
+            <td data-label="صافي المبلغ المستلم">Rs 115,110.60</td>
+            <td data-label="الفارق عن الفرع التقليدي">سعر الأساس المقارن</td>
+          </tr>
+        </tbody>
+      </table>
+
       <h2>الأسئلة الشائعة حول تحويل الريال إلى الروبية السريلانكية</h2>
       <div class="faq-item">
         <div class="faq-question" onclick="toggleFaq(this)">
@@ -925,40 +979,35 @@
     </div>
   </main>
 
-  <script>
-    const FX_API_URL = 'https://open.er-api.com/v6/latest/USD';
-    let liveSarLkrRate = null;
+  <script src="/remittance-providers.js?v=20260927"></script>
+  <script src="/live-ticker.js" defer></script>
+  <script src="/theme.js" defer></script>
+  <script src="/share.js" defer></script>
 
-    async function initLkrCalc() {
+  <script>
+    function initLkrCalc() {
       const badge = document.getElementById('lkrStatusBadge');
       const text = document.getElementById('lkrStatusText');
       const timeVal = document.getElementById('lkrTimeVal');
 
-      try {
-        const res = await fetch(FX_API_URL + '?ts=' + Date.now(), { cache: 'no-store' });
-        if (!res.ok) throw new Error('API down');
-        const data = await res.json();
-        if (data && data.rates && data.rates.SAR && data.rates.LKR) {
-          liveSarLkrRate = data.rates.LKR / data.rates.SAR;
+      if (!window.DailyCalcRemittance) return;
+
+      window.DailyCalcRemittance.fetchRates(function(rates, info) {
+        if (info && info.isLive) {
           badge.style.background = '#f0fdf4';
           badge.style.color = '#166534';
           badge.style.border = '1px solid #bbf7d0';
-          text.textContent = 'البيانات المباشرة نشطة';
-          const t = new Date().toLocaleTimeString('ar-SA', { hour: '2-digit', minute: '2-digit' });
-          timeVal.textContent = 'سعر السوق المباشر @ ' + t;
-          recalcLkr();
-          return;
+          text.textContent = info.statusAr || 'سعر الصرف المرجعي نشط';
+          if (timeVal) timeVal.textContent = info.timeFormattedAr || 'سعر الصرف المرجعي نشط';
+        } else {
+          badge.style.background = '#fef2f2';
+          badge.style.color = '#991b1b';
+          badge.style.border = '1px solid #fecaca';
+          text.textContent = 'سعر الإغلاق المرجعي';
+          if (timeVal) timeVal.textContent = 'سعر الإغلاق المرجعي المعتمد';
         }
-        throw new Error('Incomplete data');
-      } catch (e) {
-        liveSarLkrRate = 79.80;
-        badge.style.background = '#fef2f2';
-        badge.style.color = '#991b1b';
-        badge.style.border = '1px solid #fecaca';
-        text.textContent = 'السعر المباشر غير متاح مؤقتاً';
-        timeVal.textContent = 'السعر المباشر غير متاح مؤقتاً';
         recalcLkr();
-      }
+      });
     }
 
     function setLkrAmt(val) {
@@ -973,23 +1022,28 @@
 
     function recalcLkr() {
       const amt = parseFloat(document.getElementById('lkrAmount').value) || 0;
-      const rate = liveSarLkrRate || 79.80;
-      const totalPayout = amt * rate;
+      if (!window.DailyCalcRemittance) return;
+      const rate = window.DailyCalcRemittance.getRateFromSar('LKR') || 80.66;
 
-      document.getElementById('lkrPayout').textContent = 'LKR ' + totalPayout.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-      document.getElementById('lkrRateTag').innerHTML = `<i class="fas fa-bolt" style="color:#fbbf24;"></i> <span>1 SAR = ${rate.toFixed(4)} LKR</span>`;
+      const topProvider = window.DailyCalcRemittance.providers[0]; // Barq
+      const calcTop = window.DailyCalcRemittance.calculateProviderPayout(topProvider, amt, 'LKR', rate);
 
-            if (window.DailyCalcRemittance && window.DailyCalcRemittance.renderTable) {
-        window.DailyCalcRemittance.renderTable({
-          tbody: 'lkrTableBody',
-          amount: amt,
-          currency: 'LKR',
-          baseRate: rate,
-          symbol: 'Rs.',
-          isArabic: true,
-          incentiveMultiplier: 1
-        });
+      document.getElementById('lkrPayout').textContent = 'Rs ' + calcTop.formattedPayout;
+      document.getElementById('lkrRateTag').innerHTML = '<i class="fas fa-bolt" style="color:#fbbf24;"></i> <span>1 ر.س = ' + rate.toFixed(4) + ' روبية سريلانكية</span>';
+      const benchEl = document.getElementById('lkrWholesaleBench');
+      if (benchEl) {
+        benchEl.textContent = 'السعر المرجعي لسوق الجملة: Rs ' + window.DailyCalcRemittance.formatPayout(amt * rate, 'LKR');
       }
+
+      window.DailyCalcRemittance.renderTable({
+        tbody: 'lkrTableBody',
+        amount: amt,
+        currency: 'LKR',
+        baseRate: rate,
+        symbol: 'Rs.',
+        isArabic: true,
+        incentiveMultiplier: 1.0
+      });
     }
 
     document.addEventListener('DOMContentLoaded', () => {
@@ -1057,10 +1111,6 @@
       }
     }
   </script>
-  <script src="/remittance-providers.js?v=20260926c"></script>
-  <script src="/live-ticker.js" defer></script>
-  <script src="/theme.js" defer></script>
-  <script src="/share.js" defer></script>
   <script src="/mobile-nav.js" defer></script>
 </body>
 </html>

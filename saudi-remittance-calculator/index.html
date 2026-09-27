@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -142,34 +142,34 @@
         "mainEntity": [
           {
             "@type": "Question",
-            "name": "Which app offers the best exchange rate from Saudi Arabia to India?",
+            "name": "Which app gives the best rate from Saudi Arabia to India?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Digital remittance platforms like Barq frequently offer the highest net payout to India because they combine a tight retail exchange rate spread with a zero-transfer-fee promotion. Other popular options include STC Pay, Urpay, and Tahweel Al Rajhi, which typically charge 10 to 17.25 SAR per transfer."
+              "text": "Digital remittance apps like Barq frequently provide the highest in-hand payout for India because they offer a tight spread (typically 0.25 to 0.30 INR below spot) combined with a zero-transfer-fee model. Urpay and STC Pay are also highly competitive, especially for transactions over 3,000 SAR."
             }
           },
           {
             "@type": "Question",
-            "name": "Is there a 15% VAT on international money transfers from Saudi Arabia?",
+            "name": "How long does it take for money sent from Saudi Arabia to arrive?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "In accordance with Saudi ZATCA regulations, 15% Value Added Tax (VAT) applies only to the administrative service fee charged by the bank or wallet, not on the remitted principal amount. For example, on a 10 SAR transfer fee, 1.50 SAR VAT is charged."
+              "text": "Most modern digital wallets utilize instant clearing networks (such as India's IMPS, Pakistan's Raast, Bangladesh's BEFTN/NPSB, and the Philippines' GCash/InstaPay). Funds sent via these digital channels typically credit within 2 to 10 minutes. Traditional SWIFT bank wire transfers take 1 to 2 business days."
             }
           },
           {
             "@type": "Question",
-            "name": "What is the legal remittance limit for expats in Saudi Arabia?",
+            "name": "Is there any tax on money sent from Saudi Arabia to home countries?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "The Saudi Central Bank (SAMA) requires licensed banks and wallets to monitor international remittances against an expat's verified Iqama salary registered in GOSI / MHRSD. While daily wallet transaction limits often range from 10,000 to 20,000 SAR, cumulative remittances exceeding annual declared salary may require proof of funds."
+              "text": "In Saudi Arabia, there is zero income tax or remittance capital tax. In destination countries like India and Pakistan, money sent to non-resident bank accounts (NRE) or to close dependent relatives (parents, spouse, children) is completely tax-free under double taxation avoidance frameworks and gift tax exemptions."
             }
           },
           {
             "@type": "Question",
-            "name": "Why is the retail remittance rate lower than the interbank rate shown on Google?",
+            "name": "Can I send money from Saudi Arabia using an expired Iqama?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "The rate shown on Google is the wholesale interbank midpoint rate, reserved for multi-million-dollar institutional trades. Retail remittance providers include a small spread margin (typically 0.20 to 0.50 units per SAR) to cover foreign exchange risks, operational processing, and beneficiary partner clearing."
+              "text": "No. Under SAMA directives, financial institutions and digital wallets automatically freeze international debit transactions as soon as an expat's Iqama expires. You must renew your Iqama and re-authenticate via Absher/Nafath before international remittance channels are reactivated."
             }
           }
         ]
@@ -1439,10 +1439,10 @@
         Calculate live international transfer exchange rates, compare administrative fees, and verify in-hand beneficiary payouts across leading Saudi digital wallets and commercial banking channels.
       </p>
       <div class="hub-features-row">
-        <div class="hub-badge-item"><i class="fas fa-check-circle"></i> Live Interbank FX Feeds</div>
-        <div class="hub-badge-item"><i class="fas fa-check-circle"></i> 15% ZATCA VAT Calculated</div>
-        <div class="hub-badge-item"><i class="fas fa-check-circle"></i> Barq, Urpay, STC Pay &amp; Tahweel Compared</div>
-        <div class="hub-badge-item"><i class="fas fa-check-circle"></i> No Fake or Hardcoded Rates</div>
+        <div class="hub-badge-item"><i class="fas fa-check-circle"></i> Daily Spot FX Benchmark</div>
+        <div class="hub-badge-item"><i class="fas fa-check-circle"></i> 15% ZATCA VAT on Fees Only</div>
+        <div class="hub-badge-item"><i class="fas fa-check-circle"></i> 7 Major Providers Compared</div>
+        <div class="hub-badge-item"><i class="fas fa-check-circle"></i> Transparent Retail Spreads</div>
       </div>
     </div>
   </section>
@@ -1480,6 +1480,7 @@
               <button class="amount-chip-btn" onclick="setSarAmount(5000)">5,000 SAR</button>
               <button class="amount-chip-btn" onclick="setSarAmount(10000)">10,000 SAR</button>
             </div>
+            <div id="amtNoticeBox" style="display:none; margin-top:12px; padding:10px 14px; border-radius:8px; font-size:12.5px;"></div>
           </div>
 
           <div class="form-group">
@@ -1506,23 +1507,24 @@
           <div class="result-summary-box">
             <div class="result-row-top">
               <div>
-                <div class="result-label">Estimated Payout Received</div>
+                <div class="result-label">Best Estimated Payout (Barq)</div>
                 <div class="result-big-val" id="estimatedPayoutDisplay">&#8377; --.--</div>
+                <div id="baseBenchmarkVal" style="font-size:11.5px; color:#94a3b8; margin-top:4px;">Wholesale Benchmark: --</div>
               </div>
               <div class="result-rate-tag" id="liveRateDisplayTag">
                 <i class="fas fa-bolt" style="color:#fbbf24;"></i>
-                <span>Fetching live rate...</span>
+                <span>Fetching exchange rate...</span>
               </div>
             </div>
 
             <div class="result-meta-grid">
               <div class="meta-box-inner">
-                <div class="meta-box-title">RATE SOURCE &amp; TIME</div>
-                <div class="meta-box-val" id="rateTimestampVal">Live Interbank Feed</div>
+                <div class="meta-box-title">RATE SOURCE &amp; STATUS</div>
+                <div class="meta-box-val" id="rateTimestampVal">Official Market Benchmark</div>
               </div>
               <div class="meta-box-inner">
                 <div class="meta-box-title">ESTIMATED DIGITAL FEE</div>
-                <div class="meta-box-val" id="estFeeVal">0.00 - 10.00 SAR</div>
+                <div class="meta-box-val" id="estFeeVal">0.00 - 17.25 SAR</div>
               </div>
             </div>
           
@@ -1993,85 +1995,42 @@
     </div>
   </footer>
 
+  <!-- Core Remittance Engine -->
+  <script src="/remittance-providers.js?v=20260927"></script>
+  <script src="/live-ticker.js" defer></script>
+  <script src="/theme.js" defer></script>
+  <script src="/share.js" defer></script>
+
   <!-- Script for Live Currency Rates & Calculations -->
   <script>
-    const FX_API_URL = 'https://open.er-api.com/v6/latest/USD';
-    let liveUsdRates = null;
-    let isLiveAvailable = false;
-    let fetchTimestamp = null;
-
-    // Currency metadata
     const currencySymbols = {
       INR: '\u20B9', PKR: 'Rs', BDT: '\u09F3', PHP: '\u20B1', NPR: 'Rs',
       LKR: 'Rs', EGP: 'E\u00A3', USD: '$', AED: 'AED'
     };
 
-    async function fetchLiveExchangeRates() {
+    function initRates() {
       const statusBadge = document.getElementById('liveStatusBadge');
       const statusText = document.getElementById('liveStatusText');
       const timestampEl = document.getElementById('rateTimestampVal');
 
-      try {
-        const response = await fetch(FX_API_URL + '?ts=' + Date.now(), { cache: 'no-store' });
-        if (!response.ok) throw new Error('Network response not ok');
-        const data = await response.json();
+      if (!window.DailyCalcRemittance) return;
 
-        if (data && data.rates && data.rates.SAR && data.rates.INR) {
-          liveUsdRates = data.rates;
-          isLiveAvailable = true;
-          fetchTimestamp = new Date();
-
+      window.DailyCalcRemittance.fetchRates(function(rates, info) {
+        if (info && info.isLive) {
           statusBadge.style.background = '#f0fdf4';
           statusBadge.style.color = '#166534';
           statusBadge.style.border = '1px solid #bbf7d0';
-          statusText.textContent = 'Live Rate Active';
-
-          const timeStr = fetchTimestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-          timestampEl.textContent = 'Live Interbank @ ' + timeStr;
-
-          updateTopTicker();
-          recalculate();
-          return;
+          statusText.textContent = info.statusEn || 'Benchmark Active';
+          timestampEl.textContent = info.timeFormattedEn || 'Daily Spot Benchmark Active';
+        } else {
+          statusBadge.style.background = '#fef2f2';
+          statusBadge.style.color = '#991b1b';
+          statusBadge.style.border = '1px solid #fecaca';
+          statusText.textContent = 'Reference Benchmark';
+          timestampEl.textContent = 'Closing Reference Benchmark';
         }
-        throw new Error('Incomplete rate data');
-      } catch (err) {
-        console.warn('Live rate fetch notice:', err.message);
-        isLiveAvailable = false;
-        statusBadge.style.background = '#fef2f2';
-        statusBadge.style.color = '#991b1b';
-        statusBadge.style.border = '1px solid #fecaca';
-        statusText.textContent = 'Live Rate Temporarily Unavailable';
-        timestampEl.textContent = 'Live exchange rate temporarily unavailable';
-        
-        // Use realistic base structure for estimation only when live connection drops
-        liveUsdRates = { USD: 1, SAR: 3.75, INR: 86.50, PKR: 278.40, BDT: 121.20, PHP: 58.70, NPR: 138.40, LKR: 302.50, EGP: 49.30, AED: 3.6725 };
-        updateTopTicker();
         recalculate();
-      }
-    }
-
-    function getRateFromSar(targetCur) {
-      if (!liveUsdRates || !liveUsdRates.SAR || !liveUsdRates[targetCur]) return null;
-      return liveUsdRates[targetCur] / liveUsdRates.SAR;
-    }
-
-    function updateTopTicker() {
-      const sarInr = getRateFromSar('INR') || 23.06;
-      const sarPkr = getRateFromSar('PKR') || 74.24;
-      const sarBdt = getRateFromSar('BDT') || 32.32;
-      const sarPhp = getRateFromSar('PHP') || 15.65;
-      const barqInr = (sarInr - 0.27).toFixed(2);
-
-      const elInr = document.getElementById('tickerSar');
-      if (elInr) elInr.textContent = '\u20B9 ' + sarInr.toFixed(2);
-      const elBarq = document.getElementById('tickerBarq');
-      if (elBarq) elBarq.textContent = '\u20B9 ' + barqInr;
-      const elPkr = document.getElementById('tickerPkr');
-      if (elPkr) elPkr.textContent = 'Rs ' + sarPkr.toFixed(2);
-      const elBdt = document.getElementById('tickerBdt');
-      if (elBdt) elBdt.textContent = '\u09F3 ' + sarBdt.toFixed(2);
-      const elPhp = document.getElementById('tickerPhp');
-      if (elPhp) elPhp.textContent = '\u20B1 ' + sarPhp.toFixed(2);
+      });
     }
 
     function setSarAmount(val) {
@@ -2088,40 +2047,64 @@
       const sarAmount = parseFloat(document.getElementById('sarAmountInput').value) || 0;
       const targetCur = document.getElementById('destCurrencySelect').value;
       const symbol = currencySymbols[targetCur] || '';
-      const baseRate = getRateFromSar(targetCur);
+      
+      if (!window.DailyCalcRemittance) return;
 
+      const baseRate = window.DailyCalcRemittance.getRateFromSar(targetCur);
       const payoutDisplay = document.getElementById('estimatedPayoutDisplay');
       const rateDisplay = document.getElementById('liveRateDisplayTag');
       const compareNote = document.getElementById('compareCurNote');
+      const benchmarkVal = document.getElementById('baseBenchmarkVal');
+      const noticeBox = document.getElementById('amtNoticeBox');
 
-      if (!baseRate) {
+      // Amount alerts
+      if (noticeBox) {
+        if (sarAmount > 0 && sarAmount < 17.25) {
+          noticeBox.style.display = 'block';
+          noticeBox.style.background = '#fef3c7';
+          noticeBox.style.color = '#92400e';
+          noticeBox.style.border = '1px solid #fde68a';
+          noticeBox.innerHTML = '<i class="fas fa-triangle-exclamation"></i> <strong>Small Amount Notice:</strong> For standard banking channels charging a 15 SAR fee + 15% VAT (17.25 SAR total), the transfer fee meets or exceeds this amount. Consider using a zero-fee digital wallet like Barq.';
+        } else if (sarAmount > 50000) {
+          noticeBox.style.display = 'block';
+          noticeBox.style.background = '#eff6ff';
+          noticeBox.style.color = '#1e40af';
+          noticeBox.style.border = '1px solid #bfdbfe';
+          noticeBox.innerHTML = '<i class="fas fa-shield-halved"></i> <strong>SAMA Compliance Notice:</strong> Remittances exceeding 50,000 SAR typically require salary or verified income source documentation under Saudi AML regulations.';
+        } else {
+          noticeBox.style.display = 'none';
+        }
+      }
+
+      if (!baseRate || baseRate <= 0) {
         payoutDisplay.textContent = 'Unavailable';
         rateDisplay.textContent = 'Exchange rate temporarily unavailable';
         return;
       }
 
-      const totalEstimated = sarAmount * baseRate;
-      const formattedNumber = (targetCur === 'INR')
-        ? totalEstimated.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
-        : totalEstimated.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-      payoutDisplay.textContent = symbol + ' ' + formattedNumber;
+      const incentiveMultiplier = (targetCur === 'BDT') ? 1.025 : 1.0;
+      const topProvider = window.DailyCalcRemittance.providers[0]; // Barq
+      const calcTop = window.DailyCalcRemittance.calculateProviderPayout(topProvider, sarAmount, targetCur, baseRate, incentiveMultiplier);
+
+      payoutDisplay.textContent = symbol + ' ' + calcTop.formattedPayout;
       rateDisplay.innerHTML = `<i class="fas fa-bolt" style="color:#fbbf24;"></i> <span>1 SAR = ${baseRate.toFixed(4)} ${targetCur}</span>`;
-      compareNote.textContent = `For SAR to ${targetCur}`;
-
-      renderComparisonTable(sarAmount, targetCur, baseRate, symbol);
-    }
-
-        function renderComparisonTable(amount, cur, rate, sym) {
-      if (window.DailyCalcRemittance && window.DailyCalcRemittance.renderTable) {
-        window.DailyCalcRemittance.renderTable({
-          tbody: 'providerTableBody',
-          amount: amount,
-          currency: cur,
-          baseRate: rate,
-          symbol: sym,
-          isArabic: false
-        });
+      if (benchmarkVal) {
+        const wholesaleGross = sarAmount * baseRate * incentiveMultiplier;
+        benchmarkVal.textContent = 'Wholesale Benchmark: ' + symbol + ' ' + window.DailyCalcRemittance.formatPayout(wholesaleGross, targetCur) + (targetCur === 'BDT' ? ' (incl. 2.5% incentive)' : '');
       }
+      if (compareNote) {
+        compareNote.textContent = `For SAR to ${targetCur}`;
+      }
+
+      window.DailyCalcRemittance.renderTable({
+        tbody: 'providerTableBody',
+        amount: sarAmount,
+        currency: targetCur,
+        baseRate: baseRate,
+        symbol: symbol,
+        isArabic: false,
+        incentiveMultiplier: incentiveMultiplier
+      });
     }
 
     function toggleFaq(el) {
@@ -2136,15 +2119,11 @@
       }
     }
 
-    // Initialize on load
     document.addEventListener('DOMContentLoaded', () => {
-      document.getElementById('sarAmountInput').addEventListener('input', recalculate);
-      fetchLiveExchangeRates();
+      const amtInput = document.getElementById('sarAmountInput');
+      if (amtInput) amtInput.addEventListener('input', recalculate);
+      initRates();
     });
   </script>
-  <script src="/remittance-providers.js?v=20260926c"></script>
-  <script src="/live-ticker.js" defer></script>
-  <script src="/theme.js" defer></script>
-  <script src="/share.js" defer></script>
 </body>
 </html>

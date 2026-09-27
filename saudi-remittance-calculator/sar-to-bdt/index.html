@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -868,22 +868,23 @@
         <div class="result-summary-box">
           <div class="result-row-top">
             <div>
-              <div class="result-label">Total In-Hand Taka Received (With 2.5% Incentive)</div>
-              <div class="result-big-val" id="bdtPayout">&#2547; 33,128.00</div>
+              <div class="result-label">Best Estimated Payout (Barq + 2.5% Incentive)</div>
+              <div class="result-big-val" id="bdtPayout">&#2547; --.--</div>
+              <div id="bdtWholesaleBench" style="font-size:11.5px; color:#94a3b8; margin-top:4px;">Wholesale Benchmark: --</div>
             </div>
             <div class="result-rate-tag" id="bdtRateTag">
               <i class="fas fa-bolt" style="color:#fbbf24;"></i>
-              <span>1 SAR = 32.3200 BDT</span>
+              <span>Fetching exchange rate...</span>
             </div>
           </div>
           <div class="result-meta-grid">
             <div class="meta-box-inner">
-              <div class="meta-box-title">BASE TAKA AMOUNT</div>
-              <div class="meta-box-val" id="bdtBaseVal">&#2547; 32,320.00</div>
+              <div class="meta-box-title">RATE SOURCE &amp; STATUS</div>
+              <div class="meta-box-val" id="bdtTimeVal">Official Market Benchmark</div>
             </div>
             <div class="meta-box-inner">
               <div class="meta-box-title">2.5% GOVT CASH INCENTIVE</div>
-              <div class="meta-box-val" id="bdtIncentiveVal" style="color:#4ade80;">+ &#2547; 808.00</div>
+              <div class="meta-box-val" id="bdtIncentiveVal" style="color:#4ade80;">+ &#2547; 0.00</div>
             </div>
           </div>
         
@@ -906,7 +907,7 @@
             <span><i class="fas fa-wallet" style="color:#16a34a;"></i> Saudi-to-Bangladesh Wallet Comparison</span>
           </div>
           <div class="provider-table-wrap">
-            <table class="provider-table">
+            <table class="provider-table data-table-cards">
               <thead>
                 <tr>
                   <th>Provider</th>
@@ -958,15 +959,37 @@
 
       <h3>Worked Example: Sending 1,500 SAR</h3>
       <p>
-        Suppose an expat in Riyadh sends 1,500 SAR through Barq or STC Pay at a retail rate of 1 SAR = 32.00 BDT:
+        Suppose an expat in Riyadh sends 1,500 SAR to a bank or bKash wallet in Bangladesh under verified standard pricing (Illustrative Benchmark: 1 SAR = 32.00 BDT):
       </p>
-      <ul>
-        <li><strong>Base Taka Transfer:</strong> 1,500 SAR &times; 32.00 BDT = <strong>48,000 BDT</strong></li>
-        <li><strong>2.5% Government Incentive:</strong> 48,000 BDT &times; 2.5% = <strong>+ 1,200 BDT</strong></li>
-        <li><strong>Total Received by Family:</strong> 48,000 + 1,200 = <strong>49,200 BDT</strong></li>
-      </ul>
+      <table class="data-table data-table-cards">
+        <thead>
+          <tr>
+            <th>Provider / Channel</th>
+            <th>Service Fee + 15% VAT</th>
+            <th>Base Taka Amount</th>
+            <th>2.5% Govt Incentive</th>
+            <th>Total Received by Family</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-label="Provider / Channel"><strong>Barq (0 Fee Promotion)</strong></td>
+            <td data-label="Service Fee + 15% VAT">0.00 SAR</td>
+            <td data-label="Base Taka Amount">&#2547; 48,000.00</td>
+            <td data-label="2.5% Govt Incentive"><span style="color:#16a34a; font-weight:700;">+ &#2547; 1,200.00</span></td>
+            <td data-label="Total Received by Family"><strong>&#2547; 49,200.00</strong></td>
+          </tr>
+          <tr>
+            <td data-label="Provider / Channel"><strong>STC Bank (Standard Fee)</strong></td>
+            <td data-label="Service Fee + 15% VAT">17.25 SAR (15 + 2.25 VAT)</td>
+            <td data-label="Base Taka Amount">&#2547; 47,448.00</td>
+            <td data-label="2.5% Govt Incentive"><span style="color:#16a34a; font-weight:700;">+ &#2547; 1,186.20</span></td>
+            <td data-label="Total Received by Family"><strong>&#2547; 48,634.20</strong></td>
+          </tr>
+        </tbody>
+      </table>
       <p>
-        The 1,200 BDT incentive is paid entirely by the Government of Bangladesh and credited automatically without requiring any manual claim forms.
+        Notice that transfer fees are deducted prior to currency conversion. The 2.5% statutory incentive is calculated on the net converted Taka principal and credited automatically without requiring manual claim forms.
       </p>
 
       <h2>Frequently Asked Questions</h2>
@@ -1012,36 +1035,35 @@
 
   </div>
 
-  <script>
-    const FX_API_URL = 'https://open.er-api.com/v6/latest/USD';
-    let liveSarBdtRate = null;
+  <script src="/remittance-providers.js?v=20260927"></script>
+  <script src="/live-ticker.js" defer></script>
+  <script src="/theme.js" defer></script>
+  <script src="/share.js" defer></script>
 
-    async function initBdtCalc() {
+  <script>
+    function initBdtCalc() {
       const badge = document.getElementById('bdtStatusBadge');
       const text = document.getElementById('bdtStatusText');
+      const timeVal = document.getElementById('bdtTimeVal');
 
-      try {
-        const res = await fetch(FX_API_URL + '?ts=' + Date.now(), { cache: 'no-store' });
-        if (!res.ok) throw new Error('API down');
-        const data = await res.json();
-        if (data && data.rates && data.rates.SAR && data.rates.BDT) {
-          liveSarBdtRate = data.rates.BDT / data.rates.SAR;
+      if (!window.DailyCalcRemittance) return;
+
+      window.DailyCalcRemittance.fetchRates(function(rates, info) {
+        if (info && info.isLive) {
           badge.style.background = '#f0fdf4';
           badge.style.color = '#166534';
           badge.style.border = '1px solid #bbf7d0';
-          text.textContent = 'Live Feed Active';
-          recalcBdt();
-          return;
+          text.textContent = info.statusEn || 'Benchmark Active';
+          if (timeVal) timeVal.textContent = info.timeFormattedEn || 'Daily Spot Benchmark Active';
+        } else {
+          badge.style.background = '#fef2f2';
+          badge.style.color = '#991b1b';
+          badge.style.border = '1px solid #fecaca';
+          text.textContent = 'Reference Benchmark';
+          if (timeVal) timeVal.textContent = 'Closing Reference Benchmark';
         }
-        throw new Error('Incomplete data');
-      } catch (e) {
-        liveSarBdtRate = 32.32;
-        badge.style.background = '#fef2f2';
-        badge.style.color = '#991b1b';
-        badge.style.border = '1px solid #fecaca';
-        text.textContent = 'Live exchange rate temporarily unavailable';
         recalcBdt();
-      }
+      });
     }
 
     function setBdtAmt(val) {
@@ -1056,29 +1078,37 @@
 
     function recalcBdt() {
       const amt = parseFloat(document.getElementById('bdtAmount').value) || 0;
-      const rate = liveSarBdtRate || 32.32;
-      const includeIncentive = document.getElementById('bdtIncentiveCheck').checked;
+      if (!window.DailyCalcRemittance) return;
+      const rate = window.DailyCalcRemittance.getRateFromSar('BDT') || 32.32;
+      const includeIncentive = document.getElementById('bdtIncentiveCheck') ? document.getElementById('bdtIncentiveCheck').checked : true;
+      const mult = includeIncentive ? 1.025 : 1.0;
 
-      const baseTotal = amt * rate;
-      const incentiveAmt = includeIncentive ? (baseTotal * 0.025) : 0;
-      const finalTotal = baseTotal + incentiveAmt;
+      const topProvider = window.DailyCalcRemittance.providers[0]; // Barq
+      const calcTop = window.DailyCalcRemittance.calculateProviderPayout(topProvider, amt, 'BDT', rate, mult);
 
-      document.getElementById('bdtPayout').textContent = '\u09F3 ' + finalTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      const baseWholesale = amt * rate;
+      const incentiveVal = includeIncentive ? (baseWholesale * 0.025) : 0;
+
+      document.getElementById('bdtPayout').textContent = '\u09F3 ' + calcTop.formattedPayout;
       document.getElementById('bdtRateTag').innerHTML = `<i class="fas fa-bolt" style="color:#fbbf24;"></i> <span>1 SAR = ${rate.toFixed(4)} BDT</span>`;
-      document.getElementById('bdtBaseVal').textContent = '\u09F3 ' + baseTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-      document.getElementById('bdtIncentiveVal').textContent = includeIncentive ? ('+ \u09F3 ' + incentiveAmt.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })) : '\u09F3 0.00';
-
-            if (window.DailyCalcRemittance && window.DailyCalcRemittance.renderTable) {
-        window.DailyCalcRemittance.renderTable({
-          tbody: 'bdtTableBody',
-          amount: amt,
-          currency: 'BDT',
-          baseRate: rate,
-          symbol: '\u09F3',
-          isArabic: false,
-          incentiveMultiplier: 1.025
-        });
+      const benchEl = document.getElementById('bdtWholesaleBench');
+      if (benchEl) {
+        benchEl.textContent = 'Wholesale Benchmark: \u09F3 ' + window.DailyCalcRemittance.formatPayout(baseWholesale * mult, 'BDT');
       }
+      const incentiveValEl = document.getElementById('bdtIncentiveVal');
+      if (incentiveValEl) {
+        incentiveValEl.textContent = includeIncentive ? ('+ \u09F3 ' + window.DailyCalcRemittance.formatPayout(incentiveVal, 'BDT')) : '\u09F3 0.00';
+      }
+
+      window.DailyCalcRemittance.renderTable({
+        tbody: 'bdtTableBody',
+        amount: amt,
+        currency: 'BDT',
+        baseRate: rate,
+        symbol: '\u09F3',
+        isArabic: false,
+        incentiveMultiplier: mult
+      });
     }
 
     document.addEventListener('DOMContentLoaded', () => {
@@ -1173,9 +1203,5 @@
       }
     }
   </script>
-  <script src="/remittance-providers.js?v=20260926c"></script>
-  <script src="/live-ticker.js" defer></script>
-  <script src="/theme.js" defer></script>
-  <script src="/share.js" defer></script>
 </body>
 </html>

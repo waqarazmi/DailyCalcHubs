@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -908,8 +908,8 @@
 
   </div>
 
+  <script src="/remittance-providers.js?v=20260927"></script>
   <script>
-    const FX_API_URL = 'https://open.er-api.com/v6/latest/USD';
     const currencies = [
       { code: 'INR', name: 'Indian Rupee', flag: '\uD83C\uDDEE\uD83C\uDDF3', sym: '\u20B9', link: '/saudi-remittance-calculator/sar-to-inr/' },
       { code: 'PKR', name: 'Pakistani Rupee', flag: '\uD83C\uDDF5\uD83C\uDDF0', sym: 'Rs', link: '/saudi-remittance-calculator/sar-to-pkr/' },
@@ -925,36 +925,34 @@
       { code: 'CAD', name: 'Canadian Dollar', flag: '\uD83C\uDDE8\uD83C\uDDE6', sym: 'C$', link: '/saudi-remittance-calculator/' }
     ];
 
-    async function initLiveBoard() {
+    function initLiveBoard() {
       const badge = document.getElementById('boardStatusBadge');
       const text = document.getElementById('boardStatusText');
       const timeEl = document.getElementById('boardTimestamp');
 
-      let rates = null;
-      try {
-        const res = await fetch(FX_API_URL + '?ts=' + Date.now(), { cache: 'no-store' });
-        if (!res.ok) throw new Error('API down');
-        const data = await res.json();
-        if (data && data.rates && data.rates.SAR) {
-          rates = data.rates;
+      function updateBoard(rates, info) {
+        if (info && info.isLive) {
           badge.style.background = '#f0fdf4';
           badge.style.color = '#166534';
           badge.style.border = '1px solid #bbf7d0';
-          text.textContent = 'Live Feed Active';
-          timeEl.textContent = 'Updated: ' + new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+          text.textContent = 'Daily Spot Benchmark Active';
+          timeEl.textContent = info.timeFormattedEn || 'Updated: Spot Active';
         } else {
-          throw new Error('Incomplete data');
+          badge.style.background = '#fffbeb';
+          badge.style.color = '#92400e';
+          badge.style.border = '1px solid #fde68a';
+          text.textContent = 'Official Reference Benchmark';
+          timeEl.textContent = 'Verified Closing Benchmark';
         }
-      } catch (e) {
-        rates = { USD: 1, SAR: 3.75, INR: 86.50, PKR: 278.40, BDT: 121.20, PHP: 58.70, NPR: 138.40, LKR: 302.50, EUR: 0.92, GBP: 0.78, AED: 3.6725, EGP: 49.30, CAD: 1.36 };
-        badge.style.background = '#fef2f2';
-        badge.style.color = '#991b1b';
-        badge.style.border = '1px solid #fecaca';
-        text.textContent = 'Live exchange rate temporarily unavailable';
-        timeEl.textContent = 'Live exchange rate temporarily unavailable';
+        renderBoardCards(rates);
       }
 
-      renderBoardCards(rates);
+      if (window.DailyCalcRemittance && typeof window.DailyCalcRemittance.fetchRates === 'function') {
+        window.DailyCalcRemittance.fetchRates(updateBoard);
+      } else {
+        const fbRates = { USD: 1, SAR: 3.75, INR: 95.88, PKR: 277.00, BDT: 121.50, PHP: 58.70, NPR: 153.40, LKR: 302.50, EUR: 0.92, GBP: 0.78, AED: 3.6725, EGP: 49.30, CAD: 1.36 };
+        renderBoardCards(fbRates);
+      }
     }
 
     function renderBoardCards(rates) {
@@ -962,7 +960,14 @@
       const sarBase = rates.SAR || 3.75;
 
       grid.innerHTML = currencies.map(c => {
-        const targetRate = rates[c.code] ? (rates[c.code] / sarBase) : 0;
+        let targetRate = 0;
+        if (c.code === 'NPR') {
+          // Official Nepal peg: 1 INR = 1.60 NPR
+          const inrRate = rates.INR ? (rates.INR / sarBase) : (95.88 / 3.75);
+          targetRate = inrRate * 1.60;
+        } else {
+          targetRate = rates[c.code] ? (rates[c.code] / sarBase) : 0;
+        }
         const invRate = targetRate > 0 ? (1 / targetRate) : 0;
 
         return `
@@ -994,7 +999,11 @@
       }).join('');
     }
 
-    document.addEventListener('DOMContentLoaded', initLiveBoard);
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initLiveBoard);
+    } else {
+      initLiveBoard();
+    }
   </script>  <!-- AdSense Container -->
   <div class="ad-slot-container">
     <ins class="adsbygoogle"

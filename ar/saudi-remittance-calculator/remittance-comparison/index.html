@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
@@ -576,10 +576,10 @@
           </div>
         </div>
         <div class="mobile-header-actions">
-          <button type="button" class="mobile-theme-toggle dch-theme-toggle" id="mobileDrawerThemeToggle" aria-label="ØªØ¨Ø¯ÙŠÙ„ Ø§Ù„Ù…Ø¸Ù‡Ø±" title="ØªØ¨Ø¯ÙŠÙ„ Ø§Ù„Ù…Ø¸Ù‡Ø±">
+          <button type="button" class="mobile-theme-toggle dch-theme-toggle" id="mobileDrawerThemeToggle" aria-label="تبديل المظهر" title="تبديل المظهر">
             <i class="fas fa-moon"></i>
           </button>
-          <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Ø¥ØºÙ„Ø§Ù‚ Ø§Ù„Ù‚Ø§Ø¦Ù…Ø©">
+          <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="إغلاق القائمة">
             <i class="fas fa-xmark"></i>
           </button>
         </div>
@@ -803,155 +803,157 @@
       </p>
 
       <div class="provider-table-wrap" style="overflow-x:auto;">
-        <table class="data-table provider-table">
+        <table class="data-table provider-table data-table-cards">
           <thead>
             <tr>
-              <th>Ø§Ù„ØªØ·Ø¨ÙŠÙ‚ / Ø§Ù„Ù…Ø²ÙˆØ¯</th>
-              <th>Ø±Ø³ÙˆÙ… Ø§Ù„ØªØ­ÙˆÙŠÙ„ Ø§Ù„Ø«Ø§Ø¨ØªØ©</th>
-              <th>Ø§Ù„Ø¶Ø±ÙŠØ¨Ø© 15% Ø¹Ù„Ù‰ Ø§Ù„Ø±Ø³Ù…</th>
-              <th>Ù…ØªÙˆØ³Ø· Ù‡Ø§Ù…Ø´ Ø§Ù„ØµØ±Ù</th>
-              <th>Ø³Ø±Ø¹Ø© Ø§Ù„Ø¥ÙŠØ¯Ø§Ø¹</th>
-              <th>Ø§Ù„Ø­Ø¯ Ø§Ù„ÙŠÙˆÙ…ÙŠ</th>
-              <th>Ø£ÙØ¶Ù„ Ø§Ù„ÙˆØ¬Ù‡Ø§Øª</th>
-              <th>Ø¥Ø±Ø³Ø§Ù„ Ø§Ù„Ø£Ù…ÙˆØ§Ù„</th>
+              <th>التطبيق / المزود</th>
+              <th>رسوم التحويل الثابتة</th>
+              <th>الضريبة 15% على الرسم</th>
+              <th>متوسط هامش الصرف</th>
+              <th>سرعة الإيداع</th>
+              <th>الحد اليومي</th>
+              <th>أفضل الوجهات</th>
+              <th>إرسال الأموال</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td class="provider-cell-header">
+              <td class="provider-cell-header" data-label="المزود">
                 <div class="provider-name-cell">
                   <svg class="provider-logo-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="شعار بارق"><rect width="24" height="24" rx="6" fill="#ff5500"/><path d="M14.5 3.5L6.8 12.8h4.6l-2.4 7.7 8.2-10h-4.8l2.1-7z" fill="#ffffff"/></svg>
-                  <div><strong>ØªØ·Ø¨ÙŠÙ‚ Ø¨Ø±Ù‚ (Barq)</strong> <span class="provider-badge-best">Ø¨Ø¯ÙˆÙ† Ø±Ø³ÙˆÙ…</span></div>
+                  <div><strong>تطبيق برق (Barq)</strong> <span class="provider-badge-best">بدون رسوم</span></div>
                 </div>
               </td>
-              <td data-label="Ø§Ù„Ø±Ø³ÙˆÙ… Ø§Ù„Ø«Ø§Ø¨ØªØ©"><strong style="color:#16a34a;">0.00 Ø±.Ø³ (Ø¹Ø±Ø¶ Ù…Ø³ØªÙ…Ø±)</strong></td>
-              <td data-label="Ø§Ù„Ø¶Ø±ÙŠØ¨Ø© (15%)">0.00 Ø±.Ø³</td>
-              <td data-label="Ù…ØªÙˆØ³Ø· Ù‡Ø§Ù…Ø´ Ø§Ù„ØµØ±Ù">~1.1%</td>
-              <td data-label="Ø³Ø±Ø¹Ø© Ø§Ù„Ø¥ÙŠØ¯Ø§Ø¹"><span style="color:#16a34a;"><i class="fas fa-bolt"></i> ÙÙˆØ±ÙŠ (2 - 5 Ø¯Ù‚Ø§Ø¦Ù‚)</span></td>
-              <td data-label="Ø§Ù„Ø­Ø¯ Ø§Ù„ÙŠÙˆÙ…ÙŠ">20,000 Ø±.Ø³</td>
-              <td data-label="Ø£ÙØ¶Ù„ Ø§Ù„ÙˆØ¬Ù‡Ø§Øª">Ø§Ù„Ù‡Ù†Ø¯ØŒ Ø¨Ø§ÙƒØ³ØªØ§Ù†ØŒ Ø¨Ù†ØºÙ„Ø§Ø¯ÙŠØ´</td>
-              <td class="provider-cell-cta">
-                <a href="https://barq.com" class="provider-cta-btn" data-provider="barq" target="_blank" rel="noopener noreferrer" aria-label="Ø¥Ø±Ø³Ø§Ù„ Ø§Ù„Ø£Ù…ÙˆØ§Ù„ Ø¹Ø¨Ø± ØªØ·Ø¨ÙŠÙ‚ Ø¨Ø±Ù‚">
-                  <span>Ø¥Ø±Ø³Ø§Ù„</span> <i class="fas fa-arrow-up-right-from-square"></i>
+              <td data-label="الرسوم الثابتة"><strong style="color:#16a34a;">0.00 ر.س (عرض ترويجي)</strong></td>
+              <td data-label="الضريبة (15%)">0.00 ر.س</td>
+              <td data-label="متوسط هامش الصرف">~1.1%</td>
+              <td data-label="سرعة الإيداع"><span style="color:#16a34a;"><i class="fas fa-bolt"></i> فوري (2 - 5 دقائق)</span></td>
+              <td data-label="الحد اليومي">20,000 ر.س</td>
+              <td data-label="أفضل الوجهات">الهند، باكستان، بنغلاديش</td>
+              <td class="provider-cell-cta" data-label="إرسال الأموال">
+                <a href="https://barq.com" class="provider-cta-btn" data-provider="barq" target="_blank" rel="noopener noreferrer" aria-label="إرسال الأموال عبر تطبيق برق">
+                  <span>إرسال</span> <i class="fas fa-arrow-up-right-from-square"></i>
                 </a>
               </td>
             </tr>
             <tr>
-              <td class="provider-cell-header">
+              <td class="provider-cell-header" data-label="المزود">
                 <div class="provider-name-cell">
                   <svg class="provider-logo-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="شعار بنك STC"><rect width="24" height="24" rx="6" fill="#4f008c"/><path d="M5.5 8.2c2.2-1.5 5.2-1.7 7.7-.5 2 1 3.5 1 5.3.3v2.8c-2.3 1.2-5 1-7.2-.1-2-1-3.6-1-5.8-.3V8.2z" fill="#ff375f"/><path d="M5.5 13.2c2.2-1.5 5.2-1.7 7.7-.5 2 1 3.5 1 5.3.3v2.8c-2.3 1.2-5 1-7.2-.1-2-1-3.6-1-5.8-.3v-2.2z" fill="#ffffff"/></svg>
-                  <div><strong>STC Pay / Ø¨Ù†Ùƒ STC</strong></div>
+                  <div><strong>بنك STC (سابقاً STC Pay)</strong></div>
                 </div>
               </td>
-              <td data-label="Ø§Ù„Ø±Ø³ÙˆÙ… Ø§Ù„Ø«Ø§Ø¨ØªØ©">15.00 Ø±.Ø³</td>
-              <td data-label="Ø§Ù„Ø¶Ø±ÙŠØ¨Ø© (15%)">2.25 Ø±.Ø³</td>
-              <td data-label="Ù…ØªÙˆØ³Ø· Ù‡Ø§Ù…Ø´ Ø§Ù„ØµØ±Ù">~1.3%</td>
-              <td data-label="Ø³Ø±Ø¹Ø© Ø§Ù„Ø¥ÙŠØ¯Ø§Ø¹">ÙÙˆØ±ÙŠ / ÙˆÙŠØ³ØªØ±Ù† ÙŠÙˆÙ†ÙŠÙˆÙ†</td>
-              <td data-label="Ø§Ù„Ø­Ø¯ Ø§Ù„ÙŠÙˆÙ…ÙŠ">20,000 Ø±.Ø³</td>
-              <td data-label="Ø£ÙØ¶Ù„ Ø§Ù„ÙˆØ¬Ù‡Ø§Øª">Ø£ÙƒØ«Ø± Ù…Ù† 200 Ø¯ÙˆÙ„Ø© Ø­ÙˆÙ„ Ø§Ù„Ø¹Ø§Ù„Ù…</td>
-              <td class="provider-cell-cta">
-                <a href="https://www.stcbank.com.sa" class="provider-cta-btn" data-provider="stcpay" target="_blank" rel="noopener noreferrer" aria-label="Ø¥Ø±Ø³Ø§Ù„ Ø§Ù„Ø£Ù…ÙˆØ§Ù„ Ø¹Ø¨Ø± STC Bank">
-                  <span>Ø¥Ø±Ø³Ø§Ù„</span> <i class="fas fa-arrow-up-right-from-square"></i>
+              <td data-label="الرسوم الثابتة">15.00 ر.س</td>
+              <td data-label="الضريبة (15%)">2.25 ر.س</td>
+              <td data-label="متوسط هامش الصرف">~1.3%</td>
+              <td data-label="سرعة الإيداع">فوري / ويسترن يونيون</td>
+              <td data-label="الحد اليومي">20,000 ر.س</td>
+              <td data-label="أفضل الوجهات">أكثر من 200 دولة حول العالم</td>
+              <td class="provider-cell-cta" data-label="إرسال الأموال">
+                <a href="https://www.stcbank.com.sa" class="provider-cta-btn" data-provider="stcpay" target="_blank" rel="noopener noreferrer" aria-label="إرسال الأموال عبر STC Bank">
+                  <span>إرسال</span> <i class="fas fa-arrow-up-right-from-square"></i>
                 </a>
               </td>
             </tr>
             <tr>
-              <td class="provider-cell-header">
+              <td class="provider-cell-header" data-label="المزود">
                 <div class="provider-name-cell">
                   <svg class="provider-logo-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="شعار يورباي"><rect width="24" height="24" rx="6" fill="#003865"/><path d="M6 7.5v5.2c0 1.6 1.1 2.8 2.6 2.8s2.6-1.2 2.6-2.8V7.5h2v4.8c0 1.2.6 1.8 1.6 1.8.8 0 1.5-.5 1.8-1.2V7.5h2v8h-1.9v-1.2c-.6.8-1.5 1.4-2.6 1.4-1.8 0-2.8-1.1-3.1-2.5C10.3 15 9 15.7 7.7 15.7 5.1 15.7 4 13.9 4 11.5V7.5h2z" fill="#ffffff"/><circle cx="18" cy="5.2" r="1.5" fill="#00d2d3"/></svg>
-                  <div><strong>ÙŠÙˆØ±Ø¨Ø§ÙŠ urpay (Ù…ØµØ±Ù Ø§Ù„Ø±Ø§Ø¬Ø­ÙŠ)</strong></div>
+                  <div><strong>يورباي urpay (من مصرف الراجحي)</strong></div>
                 </div>
               </td>
-              <td data-label="Ø§Ù„Ø±Ø³ÙˆÙ… Ø§Ù„Ø«Ø§Ø¨ØªØ©">10.00 Ø±.Ø³</td>
-              <td data-label="Ø§Ù„Ø¶Ø±ÙŠØ¨Ø© (15%)">1.50 Ø±.Ø³</td>
-              <td data-label="Ù…ØªÙˆØ³Ø· Ù‡Ø§Ù…Ø´ Ø§Ù„ØµØ±Ù">~1.4%</td>
-              <td data-label="Ø³Ø±Ø¹Ø© Ø§Ù„Ø¥ÙŠØ¯Ø§Ø¹">ÙÙˆØ±ÙŠ IMPS / Ø­Ø³Ø§Ø¨Ø§Øª Ø¨Ù†ÙƒÙŠØ©</td>
-              <td data-label="Ø§Ù„Ø­Ø¯ Ø§Ù„ÙŠÙˆÙ…ÙŠ">20,000 Ø±.Ø³</td>
-              <td data-label="Ø£ÙØ¶Ù„ Ø§Ù„ÙˆØ¬Ù‡Ø§Øª">Ø§Ù„Ù‡Ù†Ø¯ØŒ Ø§Ù„ÙÙ„Ø¨ÙŠÙ†ØŒ Ù†ÙŠØ¨Ø§Ù„</td>
-              <td class="provider-cell-cta">
-                <a href="https://urpay.com.sa" class="provider-cta-btn" data-provider="urpay" target="_blank" rel="noopener noreferrer" aria-label="Ø¥Ø±Ø³Ø§Ù„ Ø§Ù„Ø£Ù…ÙˆØ§Ù„ Ø¹Ø¨Ø± ÙŠÙˆØ±Ø¨Ø§ÙŠ">
-                  <span>Ø¥Ø±Ø³Ø§Ù„</span> <i class="fas fa-arrow-up-right-from-square"></i>
+              <td data-label="الرسوم الثابتة">10.00 ر.س</td>
+              <td data-label="الضريبة (15%)">1.50 ر.س</td>
+              <td data-label="متوسط هامش الصرف">~1.4%</td>
+              <td data-label="سرعة الإيداع">فوري IMPS / حسابات بنكية</td>
+              <td data-label="الحد اليومي">20,000 ر.س</td>
+              <td data-label="أفضل الوجهات">الهند، الفلبين، نيبال</td>
+              <td class="provider-cell-cta" data-label="إرسال الأموال">
+                <a href="https://urpay.com.sa" class="provider-cta-btn" data-provider="urpay" target="_blank" rel="noopener noreferrer" aria-label="إرسال الأموال عبر يورباي">
+                  <span>إرسال</span> <i class="fas fa-arrow-up-right-from-square"></i>
                 </a>
               </td>
             </tr>
             <tr>
-              <td class="provider-cell-header">
+              <td class="provider-cell-header" data-label="المزود">
                 <div class="provider-name-cell">
                   <svg class="provider-logo-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="شعار مصرف الراجحي"><rect width="24" height="24" rx="6" fill="#002b7f"/><path d="M12 4.2l5.3 5.3-2.1 2.1-3.2-3.2-3.2 3.2-2.1-2.1L12 4.2zm0 6l3.2 3.2-3.2 3.2-3.2-3.2 3.2-3.2zm-5.3 1.5l2.1 2.1-2.1 2.1L4.6 13.8l2.1-2.1zm10.6 0l2.1 2.1-2.1 2.1-2.1-2.1 2.1-2.1zM12 15.6l3.2 3.2-3.2 1-3.2-1 3.2-3.2z" fill="#ffffff"/></svg>
-                  <div><strong>Ù…ØµØ±Ù Ø§Ù„Ø±Ø§Ø¬Ø­ÙŠ (ØªØ­ÙˆÙŠÙ„ Ø§Ù„Ø±Ø§Ø¬Ø­ÙŠ)</strong></div>
+                  <div><strong>مصرف الراجحي (تحويل الراجحي)</strong></div>
                 </div>
               </td>
-              <td data-label="Ø§Ù„Ø±Ø³ÙˆÙ… Ø§Ù„Ø«Ø§Ø¨ØªØ©">17.25 Ø±.Ø³</td>
-              <td data-label="Ø§Ù„Ø¶Ø±ÙŠØ¨Ø© (15%)">2.59 Ø±.Ø³</td>
-              <td data-label="Ù…ØªÙˆØ³Ø· Ù‡Ø§Ù…Ø´ Ø§Ù„ØµØ±Ù">~1.9%</td>
-              <td data-label="Ø³Ø±Ø¹Ø© Ø§Ù„Ø¥ÙŠØ¯Ø§Ø¹">Ù†ÙØ³ Ø§Ù„ÙŠÙˆÙ… / Ø§Ù„ÙŠÙˆÙ… Ø§Ù„ØªØ§Ù„ÙŠ</td>
-              <td data-label="Ø§Ù„Ø­Ø¯ Ø§Ù„ÙŠÙˆÙ…ÙŠ">Ø³Ù‚Ù Ø§Ù„Ø­Ø³Ø§Ø¨ Ø§Ù„Ø¨Ù†ÙƒÙŠ</td>
-              <td data-label="Ø£ÙØ¶Ù„ Ø§Ù„ÙˆØ¬Ù‡Ø§Øª">Ø§Ø³ØªÙ„Ø§Ù… Ù†Ù‚Ø¯ÙŠ ÙˆÙØ±ÙˆØ¹ Ø¹Ø§Ù„Ù…ÙŠØ©</td>
-              <td class="provider-cell-cta">
-                <a href="https://www.alrajhibank.com.sa" class="provider-cta-btn" data-provider="alrajhi" target="_blank" rel="noopener noreferrer" aria-label="Ø¥Ø±Ø³Ø§Ù„ Ø§Ù„Ø£Ù…ÙˆØ§Ù„ Ø¹Ø¨Ø± Ù…ØµØ±Ù Ø§Ù„Ø±Ø§Ø¬Ø­ÙŠ">
-                  <span>Ø¥Ø±Ø³Ø§Ù„</span> <i class="fas fa-arrow-up-right-from-square"></i>
+              <td data-label="الرسوم الثابتة">15.00 ر.س</td>
+              <td data-label="الضريبة (15%)">2.25 ر.س</td>
+              <td data-label="متوسط هامش الصرف">~1.8%</td>
+              <td data-label="سرعة الإيداع">نفس اليوم / اليوم التالي</td>
+              <td data-label="الحد اليومي">سقف الحساب البنكي</td>
+              <td data-label="أفضل الوجهات">استلام نقدي وفروع عالمية</td>
+              <td class="provider-cell-cta" data-label="إرسال الأموال">
+                <a href="https://www.alrajhibank.com.sa" class="provider-cta-btn" data-provider="alrajhi" target="_blank" rel="noopener noreferrer" aria-label="إرسال الأموال عبر مصرف الراجحي">
+                  <span>إرسال</span> <i class="fas fa-arrow-up-right-from-square"></i>
                 </a>
               </td>
             </tr>
             <tr>
-              <td class="provider-cell-header">
+              <td class="provider-cell-header" data-label="المزود">
                 <div class="provider-name-cell">
                   <svg class="provider-logo-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="شعار إنجاز"><rect width="24" height="24" rx="6" fill="#007a3d"/><path d="M5.5 17.5l5.5-11 2.5 5 4.5-8v14h-3v-6.5l-3.2 5.5-2.8-4-1.7 5H5.5z" fill="#ffffff"/><path d="M14.5 17.5l3.5-6.5v6.5h-3.5z" fill="#6ee7b7"/></svg>
-                  <div><strong>Ø¥Ù†Ø¬Ø§Ø² (Ø¨Ù†Ùƒ Ø§Ù„Ø¨Ù„Ø§Ø¯)</strong></div>
+                  <div><strong>إنجاز (بنك البلاد)</strong></div>
                 </div>
               </td>
-              <td data-label="Ø§Ù„Ø±Ø³ÙˆÙ… Ø§Ù„Ø«Ø§Ø¨ØªØ©">16.50 Ø±.Ø³</td>
-              <td data-label="Ø§Ù„Ø¶Ø±ÙŠØ¨Ø© (15%)">2.48 Ø±.Ø³</td>
-              <td data-label="Ù…ØªÙˆØ³Ø· Ù‡Ø§Ù…Ø´ Ø§Ù„ØµØ±Ù">~1.7%</td>
-              <td data-label="Ø³Ø±Ø¹Ø© Ø§Ù„Ø¥ÙŠØ¯Ø§Ø¹">Ù†ÙØ³ Ø§Ù„ÙŠÙˆÙ… / ÙÙˆØ±ÙŠ</td>
-              <td data-label="Ø§Ù„Ø­Ø¯ Ø§Ù„ÙŠÙˆÙ…ÙŠ">Ø³Ù‚Ù Ø§Ù„Ø­Ø³Ø§Ø¨ Ø§Ù„Ø¨Ù†ÙƒÙŠ</td>
-              <td data-label="Ø£ÙØ¶Ù„ Ø§Ù„ÙˆØ¬Ù‡Ø§Øª">Ù…ØµØ±ØŒ Ø§Ù„Ø£Ø±Ø¯Ù†ØŒ Ø¬Ù†ÙˆØ¨ Ø¢Ø³ÙŠØ§</td>
-              <td class="provider-cell-cta">
-                <a href="https://enjaz.bankalbilad.com" class="provider-cta-btn" data-provider="enjaz" target="_blank" rel="noopener noreferrer" aria-label="Ø¥Ø±Ø³Ø§Ù„ Ø§Ù„Ø£Ù…ÙˆØ§Ù„ Ø¹Ø¨Ø± Ø¥Ù†Ø¬Ø§Ø²">
-                  <span>Ø¥Ø±Ø³Ø§Ù„</span> <i class="fas fa-arrow-up-right-from-square"></i>
+              <td data-label="الرسوم الثابتة">15.00 ر.س</td>
+              <td data-label="الضريبة (15%)">2.25 ر.س</td>
+              <td data-label="متوسط هامش الصرف">~1.7%</td>
+              <td data-label="سرعة الإيداع">نفس اليوم / فوري</td>
+              <td data-label="الحد اليومي">سقف الحساب البنكي</td>
+              <td data-label="أفضل الوجهات">مصر، الأردن، جنوب آسيا</td>
+              <td class="provider-cell-cta" data-label="إرسال الأموال">
+                <a href="https://enjaz.bankalbilad.com" class="provider-cta-btn" data-provider="enjaz" target="_blank" rel="noopener noreferrer" aria-label="إرسال الأموال عبر إنجاز">
+                  <span>إرسال</span> <i class="fas fa-arrow-up-right-from-square"></i>
                 </a>
               </td>
             </tr>
             <tr>
-              <td class="provider-cell-header">
+              <td class="provider-cell-header" data-label="المزود">
                 <div class="provider-name-cell">
                   <svg class="provider-logo-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="شعار ويسترن يونيون"><rect width="24" height="24" rx="6" fill="#000000"/><path d="M4.5 6.8h2.6l1.8 7.2 2-7.2h2.2l-2.8 10.4H8l-2.1-7.2-1.4 7.2H2.5L4.5 6.8zm7.8 0h2.4v6.8c0 1.2.8 2 2 2s2-.8 2-2V6.8h2.4v6.9c0 2.4-1.8 4-4.4 4s-4.4-1.6-4.4-4V6.8z" fill="#ffdd00"/><path d="M11 11.2l3.8-4.4h2.2l-4.5 5.2 2.2 5.2h-2.3L11 14.3v-3.1z" fill="#ffdd00"/></svg>
-                  <div><strong>ÙˆÙŠØ³ØªØ±Ù† ÙŠÙˆÙ†ÙŠÙˆÙ† (Western Union)</strong></div>
+                  <div><strong>ويسترن يونيون (Western Union)</strong></div>
                 </div>
               </td>
-              <td data-label="Ø§Ù„Ø±Ø³ÙˆÙ… Ø§Ù„Ø«Ø§Ø¨ØªØ©">15.00 Ø±.Ø³</td>
-              <td data-label="Ø§Ù„Ø¶Ø±ÙŠØ¨Ø© (15%)">2.25 Ø±.Ø³</td>
-              <td data-label="Ù…ØªÙˆØ³Ø· Ù‡Ø§Ù…Ø´ Ø§Ù„ØµØ±Ù">~1.8%</td>
-              <td data-label="Ø³Ø±Ø¹Ø© Ø§Ù„Ø¥ÙŠØ¯Ø§Ø¹">Ø®Ù„Ø§Ù„ Ø¯Ù‚Ø§Ø¦Ù‚ (Ù†Ù‚Ø¯ÙŠ / Ø­Ø³Ø§Ø¨)</td>
-              <td data-label="Ø§Ù„Ø­Ø¯ Ø§Ù„ÙŠÙˆÙ…ÙŠ">20,000 Ø±.Ø³ (Ø¹Ø¨Ø± Ø§Ù„ØªØ·Ø¨ÙŠÙ‚)</td>
-              <td data-label="Ø£ÙØ¶Ù„ Ø§Ù„ÙˆØ¬Ù‡Ø§Øª">Ø¹Ø§Ù„Ù…ÙŠØ§Ù‹ (Ø£ÙƒØ«Ø± Ù…Ù† 200 Ø¯ÙˆÙ„Ø©)</td>
-              <td class="provider-cell-cta">
-                <a href="https://www.westernunion.com/sa/ar/home.html" class="provider-cta-btn" data-provider="westernunion" target="_blank" rel="noopener noreferrer" aria-label="Ø¥Ø±Ø³Ø§Ù„ Ø§Ù„Ø£Ù…ÙˆØ§Ù„ Ø¹Ø¨Ø± ÙˆÙŠØ³ØªØ±Ù† ÙŠÙˆÙ†ÙŠÙˆÙ†">
-                  <span>Ø¥Ø±Ø³Ø§Ù„</span> <i class="fas fa-arrow-up-right-from-square"></i>
+              <td data-label="الرسوم الثابتة">15.00 ر.س</td>
+              <td data-label="الضريبة (15%)">2.25 ر.س</td>
+              <td data-label="متوسط هامش الصرف">~1.8%</td>
+              <td data-label="سرعة الإيداع">خلال دقائق (نقدي / حساب)</td>
+              <td data-label="الحد اليومي">20,000 ر.س (عبر التطبيق)</td>
+              <td data-label="أفضل الوجهات">عالمياً (أكثر من 200 دولة)</td>
+              <td class="provider-cell-cta" data-label="إرسال الأموال">
+                <a href="https://www.westernunion.com/sa/ar/home.html" class="provider-cta-btn" data-provider="westernunion" target="_blank" rel="noopener noreferrer" aria-label="إرسال الأموال عبر ويسترن يونيون">
+                  <span>إرسال</span> <i class="fas fa-arrow-up-right-from-square"></i>
                 </a>
               </td>
             </tr>
             <tr>
-              <td class="provider-cell-header">
+              <td class="provider-cell-header" data-label="المزود">
                 <div class="provider-name-cell">
                   <svg class="provider-logo-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="شعار وايز"><rect width="24" height="24" rx="6" fill="#163300"/><path d="M6.8 6.5h8.8l-3.8 5.4h4.4L8.4 18.2l2.4-5.5H6.8l3.2-4.5H6.8V6.5z" fill="#9fe870"/></svg>
-                  <div><strong>ÙˆØ§ÙŠØ² (Wise)</strong> <span class="provider-badge-midmarket">Ø³Ø¹Ø± Ø§Ù„Ø³ÙˆÙ‚</span></div>
+                  <div><strong>وايز (Wise)</strong> <span class="provider-badge-midmarket">سعر السوق</span></div>
                 </div>
               </td>
-              <td data-label="Ø§Ù„Ø±Ø³ÙˆÙ… Ø§Ù„Ø«Ø§Ø¨ØªØ©">Ù…ØªØºÙŠØ±Ø© (~0.55%)</td>
-              <td data-label="Ø§Ù„Ø¶Ø±ÙŠØ¨Ø© (15%)">Ù…Ø´Ù…ÙˆÙ„Ø© Ø¶Ù…Ù† Ø±Ø³ÙˆÙ… Ø§Ù„Ø´Ø±ÙŠÙƒ</td>
-              <td data-label="Ù…ØªÙˆØ³Ø· Ù‡Ø§Ù…Ø´ Ø§Ù„ØµØ±Ù">~0.2%</td>
-              <td data-label="Ø³Ø±Ø¹Ø© Ø§Ù„Ø¥ÙŠØ¯Ø§Ø¹">ÙÙˆØ±ÙŠ Ø­ØªÙ‰ 24 Ø³Ø§Ø¹Ø©</td>
-              <td data-label="Ø§Ù„Ø­Ø¯ Ø§Ù„ÙŠÙˆÙ…ÙŠ">Ø³Ù‚Ù Ø§Ù„Ø´Ø±ÙŠÙƒ Ø§Ù„Ø¨Ù†ÙƒÙŠ</td>
-              <td data-label="Ø£ÙØ¶Ù„ Ø§Ù„ÙˆØ¬Ù‡Ø§Øª">Ø£ÙˆØ±ÙˆØ¨Ø§ØŒ Ø£Ù…Ø±ÙŠÙƒØ§ØŒ ØªØ­ÙˆÙŠÙ„Ø§Øª IBAN</td>
-              <td class="provider-cell-cta">
-                <a href="https://wise.com" class="provider-cta-btn" data-provider="wise" target="_blank" rel="noopener noreferrer" aria-label="Ø¥Ø±Ø³Ø§Ù„ Ø§Ù„Ø£Ù…ÙˆØ§Ù„ Ø¹Ø¨Ø± ÙˆØ§ÙŠØ²">
-                  <span>Ø¥Ø±Ø³Ø§Ù„</span> <i class="fas fa-arrow-up-right-from-square"></i>
+              <td data-label="الرسوم الثابتة">متغيرة (~0.55%)*</td>
+              <td data-label="الضريبة (15%)">مشمولة ضمن رسوم الشريك</td>
+              <td data-label="متوسط هامش الصرف">~0.2%</td>
+              <td data-label="سرعة الإيداع">فوري حتى 24 ساعة</td>
+              <td data-label="الحد اليومي">سقف الشريك البنكي</td>
+              <td data-label="أفضل الوجهات">أوروبا، أمريكا، تحويلات IBAN</td>
+              <td class="provider-cell-cta" data-label="إرسال الأموال">
+                <a href="https://wise.com" class="provider-cta-btn" data-provider="wise" target="_blank" rel="noopener noreferrer" aria-label="إرسال الأموال عبر وايز">
+                  <span>إرسال</span> <i class="fas fa-arrow-up-right-from-square"></i>
                 </a>
               </td>
             </tr>
           </tbody>
         </table>
+        <p style="font-size:12px; color:#64748b; margin-top:10px; line-height:1.5;">* <strong>إشعار تنظيمي وتشغيلي حول وايز (Wise):</strong> تعمل منصة وايز كشريك دولي لتحويل الأموال بأسعار السوق بين البنوك عبر شبكة مراسلين وشركاء بنكيين دوليين، وليست بنكاً تجارياً محلياً مرخصاً ومباشراً من البنك المركزي السعودي (ساما).</p>
+
       </div>
 
       <h2>نظرة عامة على أبرز مزودي التحويل</h2>

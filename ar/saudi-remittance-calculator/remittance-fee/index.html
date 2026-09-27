@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
@@ -575,10 +575,10 @@
           </div>
         </div>
         <div class="mobile-header-actions">
-          <button type="button" class="mobile-theme-toggle dch-theme-toggle" id="mobileDrawerThemeToggle" aria-label="ØªØ¨Ø¯ÙŠÙ„ Ø§Ù„Ù…Ø¸Ù‡Ø±" title="ØªØ¨Ø¯ÙŠÙ„ Ø§Ù„Ù…Ø¸Ù‡Ø±">
+          <button type="button" class="mobile-theme-toggle dch-theme-toggle" id="mobileDrawerThemeToggle" aria-label="تبديل المظهر" title="تبديل المظهر">
             <i class="fas fa-moon"></i>
           </button>
-          <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Ø¥ØºÙ„Ø§Ù‚ Ø§Ù„Ù‚Ø§Ø¦Ù…Ø©">
+          <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="إغلاق القائمة">
             <i class="fas fa-xmark"></i>
           </button>
         </div>
@@ -824,10 +824,10 @@
             <label class="form-label" for="feeChannel">قناة التحويل / نوع المزود</label>
             <select id="feeChannel" class="calc-input" onchange="recalcFee()">
               <option value="wallet_zero">محفظة رقمية بدون رسوم (مثل تطبيق برق - عرض 0 ر.س)</option>
-              <option value="wallet_standard" selected>محفظة رقمية قياسية (يورباي / إس تي سي باي - 10 ر.س)</option>
-              <option value="bank_app">تطبيق بنكي مباشر (الراجحي، الأهلي، الإنماء - 15 ر.س)</option>
-              <option value="branch_counter">التحويل من فرع المصرف التقليدي (إنجاز / تلي موني - 17.25 ر.س)</option>
-              <option value="express_cash">تحويل نقدي فوري عالمي (ويسترن يونيون / موني جرام - 25 ر.س)</option>
+              <option value="wallet_standard" selected>محفظة رقمية قياسية (يورباي - 10 ر.س + 15% ضريبة)</option>
+              <option value="bank_app">التطبيقات البنكية وSTC Pay وإنجاز (15 ر.س + 15% ضريبة)</option>
+              <option value="branch_counter">التحويل من فرع المصرف التقليدي (25 ر.س + 15% ضريبة)</option>
+              <option value="express_cash">تحويل نقدي فوري عالمي (ويسترن يونيون / موني جرام - 25 ر.س + 15% ضريبة)</option>
             </select>
           </div>
 
@@ -871,7 +871,7 @@
             <span><i class="fas fa-list-check" style="color:#16a34a;"></i> تفصيل عناصر تكلفة التحويل</span>
           </div>
           <div class="provider-table-wrap" style="overflow-x:auto;">
-            <table class="data-table" style="margin:0;">
+            <table class="data-table data-table-cards" style="margin:0;">
               <thead>
                 <tr>
                   <th>بند التكلفة</th>
@@ -967,23 +967,23 @@
       const ch = document.getElementById('feeChannel').value;
 
       let baseFee = 0;
-      let spreadPct = 0.012; // 1.2%
+      let spreadPct = 0.006; // 0.6%
 
       if (ch === 'wallet_zero') {
         baseFee = 0.0;
-        spreadPct = 0.012; // 1.2%
+        spreadPct = 0.006; // 0.6%
       } else if (ch === 'wallet_standard') {
         baseFee = 10.0;
-        spreadPct = 0.013; // 1.3%
+        spreadPct = 0.007; // 0.7%
       } else if (ch === 'bank_app') {
         baseFee = 15.0;
-        spreadPct = 0.014; // 1.4%
+        spreadPct = 0.015; // 1.5%
       } else if (ch === 'branch_counter') {
-        baseFee = 17.25;
-        spreadPct = 0.019; // 1.9%
+        baseFee = 25.0;
+        spreadPct = 0.020; // 2.0%
       } else if (ch === 'express_cash') {
         baseFee = 25.0;
-        spreadPct = 0.022; // 2.2%
+        spreadPct = 0.025; // 2.5%
       }
 
       const vat = baseFee * 0.15;
@@ -1000,28 +1000,28 @@
       const tbody = document.getElementById('feeBreakdownBody');
       tbody.innerHTML = `
         <tr>
-          <td><strong>الرسم الإداري الأساسي</strong></td>
-          <td>رسم ثابت للقناة</td>
-          <td>${baseFee.toFixed(2)} ر.س</td>
-          <td>يتقاضاه التطبيق أو مزود الخدمة</td>
+          <td data-label="بند التكلفة"><strong>الرسم الإداري الأساسي</strong></td>
+          <td data-label="طريقة الاحتساب">رسم ثابت للقناة</td>
+          <td data-label="المبلغ بالريال">${baseFee.toFixed(2)} ر.س</td>
+          <td data-label="ملاحظات وتوجيهات تنظيمية">يتقاضاه التطبيق أو مزود الخدمة</td>
         </tr>
         <tr>
-          <td><strong>ضريبة القيمة المضافة 15% (VAT)</strong></td>
-          <td>15% من رسم الخدمة</td>
-          <td>${vat.toFixed(2)} ر.س</td>
-          <td>ضريبة حكومية إلزامية على رسم الخدمة فقط</td>
+          <td data-label="بند التكلفة"><strong>ضريبة القيمة المضافة 15% (VAT)</strong></td>
+          <td data-label="طريقة الاحتساب">15% من رسم الخدمة</td>
+          <td data-label="المبلغ بالريال">${vat.toFixed(2)} ر.س</td>
+          <td data-label="ملاحظات وتوجيهات تنظيمية">ضريبة حكومية إلزامية على رسم الخدمة فقط</td>
         </tr>
         <tr>
-          <td><strong>هامش سعر الصرف المقدر (FX Spread)</strong></td>
-          <td>~${(spreadPct * 100).toFixed(1)}% من أصل الحوالة</td>
-          <td>${fxMargin.toFixed(2)} ر.س</td>
-          <td>الفرق بين سعر السوق بين البنوك وسعر التجزئة</td>
+          <td data-label="بند التكلفة"><strong>هامش سعر الصرف المقدر (FX Spread)</strong></td>
+          <td data-label="طريقة الاحتساب">~${(spreadPct * 100).toFixed(1)}% من أصل الحوالة</td>
+          <td data-label="المبلغ بالريال">${fxMargin.toFixed(2)} ر.س</td>
+          <td data-label="ملاحظات وتوجيهات تنظيمية">الفرق بين سعر السوق بين البنوك وسعر التجزئة</td>
         </tr>
         <tr style="background:#f8fafc; font-weight:700;">
-          <td style="color:#16a34a;"><strong>إجمالي التكلفة الاقتصادية الحقيقية</strong></td>
-          <td style="color:#16a34a;">${effPct.toFixed(2)}% نسبة فعلية</td>
-          <td style="color:#16a34a; font-size:15px;"><strong>${totalCost.toFixed(2)} ر.س</strong></td>
-          <td style="color:#16a34a;">إجمالي ما يُستقطع فعلياً من قيمة تحويلك</td>
+          <td data-label="بند التكلفة" style="color:#16a34a;"><strong>إجمالي التكلفة الاقتصادية الحقيقية</strong></td>
+          <td data-label="طريقة الاحتساب" style="color:#16a34a;">${effPct.toFixed(2)}% نسبة فعلية</td>
+          <td data-label="المبلغ بالريال" style="color:#16a34a; font-size:15px;"><strong>${totalCost.toFixed(2)} ر.س</strong></td>
+          <td data-label="ملاحظات وتوجيهات تنظيمية" style="color:#16a34a;">إجمالي ما يُستقطع فعلياً من قيمة تحويلك</td>
         </tr>
       `;
     }

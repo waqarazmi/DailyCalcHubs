@@ -1,9 +1,30 @@
 /**
- * DailyCalcHubs — Remittance Providers & Device-Aware Send Money Module
- * Authoritative provider dataset, official branding, and Android/iOS/Desktop link resolution.
+ * DailyCalcHubs — Unified Remittance Providers, Rate Engine & Send Money Module
+ * Authoritative provider dataset, official branding, unified FX cache, and device-aware CTA URLs.
  */
 (function () {
   'use strict';
+
+  var FX_API_URL = 'https://open.er-api.com/v6/latest/USD';
+  var CACHE_KEY = 'dch_forex_cache_v2';
+  var CACHE_TTL = 300000; // 5 minutes in ms
+
+  // Authoritative verified closing benchmark rates for fallback when offline
+  var FALLBACK_RATES = {
+    USD: 1.0,
+    SAR: 3.75,
+    INR: 95.88,   // ~25.568 SAR/INR
+    PKR: 277.00,  // ~73.867 SAR/PKR
+    BDT: 121.50,  // ~32.400 SAR/BDT
+    PHP: 58.70,   // ~15.653 SAR/PHP
+    NPR: 153.40,  // ~40.907 SAR/NPR (pegged to INR * 1.60)
+    LKR: 302.50,  // ~80.667 SAR/LKR
+    EUR: 0.92,
+    GBP: 0.78,
+    AED: 3.6725,  // ~0.979 SAR/AED
+    EGP: 49.30,   // ~13.147 SAR/EGP
+    CAD: 1.36
+  };
 
   var REMITTANCE_PROVIDERS = [
     {
@@ -27,12 +48,14 @@
       speedEn: 'Instant (2 - 5 mins)',
       speedAr: 'فوري خلال دقائق',
       isInstant: true,
-      status: 'ACTIVE'
+      status: 'ACTIVE',
+      noteEn: 'Promotional zero transfer fee. Revenue earned via retail exchange spread.',
+      noteAr: 'عرض ترويجي بدون رسوم تحويل. تُحصّل الإيرادات من فارق سعر الصرف.'
     },
     {
       id: 'stcpay',
-      nameEn: 'STC Pay / STC Bank',
-      nameAr: 'STC Pay / بنك STC',
+      nameEn: 'STC Bank (formerly STC Pay)',
+      nameAr: 'بنك STC (سابقاً STC Pay)',
       badgeEn: '',
       badgeAr: '',
       logoImg: '/assets/img/providers/stcbank.webp',
@@ -46,15 +69,17 @@
       vatSar: 2.25,
       totalDeduction: 17.25,
       spreadPct: 0.013, // ~1.3%
-      speedEn: 'Instant IMPS / Raast',
-      speedAr: 'فوري عبر IMPS / Raast',
+      speedEn: 'Instant IMPS / Raast / Direct',
+      speedAr: 'فوري عبر IMPS / Raast / مباشر',
       isInstant: false,
-      status: 'ACTIVE'
+      status: 'ACTIVE',
+      noteEn: 'Standard SAMA digital banking tariff (15 SAR + 15% VAT).',
+      noteAr: 'تعريفة التحويل الرقمي المعتمدة (15 ر.س + 15% ضريبة القيمة المضافة).'
     },
     {
       id: 'urpay',
-      nameEn: 'urpay (Al Rajhi)',
-      nameAr: 'يورباي urpay (مصرف الراجحي)',
+      nameEn: 'urpay (by Al Rajhi)',
+      nameAr: 'يورباي urpay (من مصرف الراجحي)',
       badgeEn: '',
       badgeAr: '',
       logoImg: '/assets/img/providers/urpay.webp',
@@ -71,12 +96,14 @@
       speedEn: 'Direct Bank Credit',
       speedAr: 'إيداع بنكي مباشر',
       isInstant: false,
-      status: 'ACTIVE'
+      status: 'ACTIVE',
+      noteEn: 'Direct digital wallet fee (10 SAR + 1.50 SAR VAT).',
+      noteAr: 'رسم تحويل المحفظة الرقمية (10 ر.س + 1.50 ر.س ضريبة).'
     },
     {
       id: 'alrajhi',
-      nameEn: 'Al Rajhi Bank',
-      nameAr: 'مصرف الراجحي (تحويل الراجحي)',
+      nameEn: 'Tahweel Al Rajhi / Al Rajhi Bank',
+      nameAr: 'تحويل الراجحي / مصرف الراجحي',
       badgeEn: '',
       badgeAr: '',
       logoImg: '/assets/img/providers/alrajhi.webp',
@@ -86,14 +113,16 @@
       playUrl: 'https://play.google.com/store/apps/details?id=com.alrajhiretailapp',
       iosUrl: 'https://apps.apple.com/sa/app/al-rajhi-bank/id1472506080',
       webUrl: 'https://www.alrajhibank.com.sa',
-      feeSar: 17.25,
-      vatSar: 2.59,
-      totalDeduction: 19.84,
-      spreadPct: 0.019, // ~1.9%
+      feeSar: 15.00,
+      vatSar: 2.25,
+      totalDeduction: 17.25,
+      spreadPct: 0.018, // ~1.8%
       speedEn: 'Same Day / Next Day',
       speedAr: 'في نفس اليوم أو اليوم التالي',
       isInstant: false,
-      status: 'ACTIVE'
+      status: 'ACTIVE',
+      noteEn: 'Standard SAMA digital banking tariff (15 SAR + 15% VAT). Branch counter fees may differ.',
+      noteAr: 'تعريفة القنوات الرقمية المعتمدة (15 ر.س + 15% ضريبة). قد تختلف رسوم فروع التحويل.'
     },
     {
       id: 'enjaz',
@@ -108,14 +137,16 @@
       playUrl: 'https://play.google.com/store/apps/details?id=com.BankAlBilad.EnjazApp',
       iosUrl: 'https://apps.apple.com/sa/app/enjaz-app/id1453282218',
       webUrl: 'https://enjaz.bankalbilad.com',
-      feeSar: 16.50,
-      vatSar: 2.48,
-      totalDeduction: 18.98,
+      feeSar: 15.00,
+      vatSar: 2.25,
+      totalDeduction: 17.25,
       spreadPct: 0.017, // ~1.7%
-      speedEn: 'Same Day / Instant',
-      speedAr: 'في نفس اليوم / فوري',
+      speedEn: 'Same Day / Instant IMPS',
+      speedAr: 'في نفس اليوم / إيداع فوري',
       isInstant: false,
-      status: 'ACTIVE'
+      status: 'ACTIVE',
+      noteEn: 'Standard electronic remittance fee (15 SAR + 15% VAT).',
+      noteAr: 'رسم التحويل الإلكتروني المعتمد (15 ر.س + 15% ضريبة).'
     },
     {
       id: 'westernunion',
@@ -138,14 +169,16 @@
       speedEn: 'Minutes (Cash / Account)',
       speedAr: 'خلال دقائق (نقدي / حساب)',
       isInstant: false,
-      status: 'ACTIVE'
+      status: 'ACTIVE',
+      noteEn: 'Digital partner integration fee. Physical cash pickup counters may charge higher.',
+      noteAr: 'تسعيرة الشركاء الرقميين. قد تختلف رسوم الاستلام النقدي من الفروع.'
     },
     {
       id: 'wise',
       nameEn: 'Wise',
       nameAr: 'وايز (Wise)',
-      badgeEn: 'Mid-Market',
-      badgeAr: 'سعر السوق',
+      badgeEn: 'Mid-Market Partner',
+      badgeAr: 'شريك بسعر السوق',
       badgeClass: 'provider-badge-midmarket',
       logoImg: '/assets/img/providers/wise.webp',
       logoSvg: '<svg class="provider-logo-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Wise logo"><rect width="24" height="24" rx="6" fill="#163300"/><path d="M6.8 6.5h8.8l-3.8 5.4h4.4L8.4 18.2l2.4-5.5H6.8l3.2-4.5H6.8V6.5z" fill="#9fe870"/></svg>',
@@ -155,18 +188,17 @@
       iosUrl: 'https://apps.apple.com/app/wise-ex-transferwise/id612261027',
       webUrl: 'https://wise.com',
       status: 'VARIABLE_PRICING',
-      spreadPct: 0.002, // Mid-market near zero spread
-      variableFeePct: 0.0055, // ~0.55% variable partner clearing fee via linked bank
+      spreadPct: 0.002, // Mid-market near zero spread (~0.2%)
+      variableFeePct: 0.0055, // ~0.55% variable partner clearing fee via card/bank transfer
       speedEn: 'Instant to 24h',
-      speedAr: 'فوري حتى 24 ساعة'
+      speedAr: 'فوري حتى 24 ساعة',
+      noteEn: 'Global mid-market platform operating via international partner banking networks.',
+      noteAr: 'منصة دولية بسعر السوق الفعلي تعمل عبر شبكات بنكية شريكة.'
     }
   ];
 
   /**
    * Resolves the device-aware Send Money CTA destination URL.
-   * - Android: intent://#Intent;scheme=...;package=...;S.browser_fallback_url=...;end
-   * - iOS: Official Apple App Store listing
-   * - Desktop: Official Web portal
    */
   function getSendMoneyUrl(provider, isArabic) {
     var ua = navigator.userAgent || '';
@@ -202,6 +234,179 @@
   }
 
   /**
+   * Reads FX rates from sessionStorage cache if fresh (< 5 mins).
+   */
+  function readCache() {
+    try {
+      var cached = sessionStorage.getItem(CACHE_KEY);
+      if (!cached) return null;
+      var parsed = JSON.parse(cached);
+      if (parsed && parsed.ts && (Date.now() - parsed.ts < CACHE_TTL) && parsed.rates) {
+        return parsed;
+      }
+    } catch (e) {}
+    return null;
+  }
+
+  /**
+   * Writes FX rates to sessionStorage cache.
+   */
+  function writeCache(rates, rawTimestamp) {
+    try {
+      sessionStorage.setItem(CACHE_KEY, JSON.stringify({
+        ts: Date.now(),
+        rates: rates,
+        rawTimestamp: rawTimestamp || null
+      }));
+    } catch (e) {}
+  }
+
+  /**
+   * Formats API UTC timestamp into human-readable date/time.
+   */
+  function formatApiDate(utcString, isArabic) {
+    if (!utcString) return null;
+    try {
+      var d = new Date(utcString);
+      if (isNaN(d.getTime())) return null;
+      var locale = isArabic ? 'ar-SA' : 'en-US';
+      var dateStr = d.toLocaleDateString(locale, { day: 'numeric', month: 'short', year: 'numeric' });
+      var timeStr = d.toLocaleTimeString(locale, { hour: '2-digit', minute: '2-digit', timeZoneName: 'short' });
+      return dateStr + ' ' + timeStr;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  /**
+   * Central FX Rate Engine: Fetches rates once, shares across all pages and widgets.
+   */
+  function fetchRates(callback) {
+    var cached = readCache();
+    var isArabic = document.documentElement.lang === 'ar';
+
+    if (cached) {
+      window.dchLiveRates = cached.rates;
+      var formattedCachedDate = formatApiDate(cached.rawTimestamp, isArabic);
+      var cachedInfo = {
+        isLive: true,
+        rates: cached.rates,
+        rawTimestamp: cached.rawTimestamp,
+        timeFormattedEn: formattedCachedDate ? ('Updated: ' + formattedCachedDate) : 'Spot Benchmark Active',
+        timeFormattedAr: formattedCachedDate ? ('تحديث: ' + formattedCachedDate) : 'سعر الصرف المرجعي نشط',
+        statusEn: 'Benchmark Active',
+        statusAr: 'سعر الصرف المرجعي نشط'
+      };
+      if (typeof callback === 'function') {
+        callback(cached.rates, cachedInfo);
+      }
+      return;
+    }
+
+    // Network request
+    var url = FX_API_URL + '?ts=' + Math.floor(Date.now() / 60000);
+    fetch(url)
+      .then(function (res) {
+        if (!res.ok) throw new Error('FX API HTTP ' + res.status);
+        return res.json();
+      })
+      .then(function (data) {
+        if (data && data.rates && data.rates.SAR && data.rates.INR) {
+          window.dchLiveRates = data.rates;
+          var rawTs = data.time_last_update_utc || null;
+          writeCache(data.rates, rawTs);
+          window.dispatchEvent(new CustomEvent('dchRatesUpdated', { detail: data.rates }));
+
+          var formattedDate = formatApiDate(rawTs, isArabic);
+          var info = {
+            isLive: true,
+            rates: data.rates,
+            rawTimestamp: rawTs,
+            timeFormattedEn: formattedDate ? ('Updated: ' + formattedDate) : 'Daily Spot Benchmark Active',
+            timeFormattedAr: formattedDate ? ('تحديث: ' + formattedDate) : 'سعر الصرف المرجعي نشط',
+            statusEn: 'Benchmark Active',
+            statusAr: 'سعر الصرف المرجعي نشط'
+          };
+          if (typeof callback === 'function') {
+            callback(data.rates, info);
+          }
+        } else {
+          throw new Error('Incomplete FX payload');
+        }
+      })
+      .catch(function (err) {
+        console.warn('DailyCalcHubs: FX fetch fallback active:', err.message);
+        window.dchLiveRates = FALLBACK_RATES;
+        var offlineInfo = {
+          isLive: false,
+          rates: FALLBACK_RATES,
+          rawTimestamp: null,
+          timeFormattedEn: 'Closing Reference Benchmark',
+          timeFormattedAr: 'سعر إغلاق مرجعي معتمد',
+          statusEn: 'Reference Closing Rate',
+          statusAr: 'سعر إغلاق مرجعي'
+        };
+        if (typeof callback === 'function') {
+          callback(FALLBACK_RATES, offlineInfo);
+        }
+      });
+  }
+
+  /**
+   * Calculates cross-rate from SAR to target currency.
+   */
+  function getRateFromSar(targetCur, customRates) {
+    var rates = customRates || window.dchLiveRates || FALLBACK_RATES;
+    if (!rates || !rates.SAR || !rates[targetCur]) return null;
+    return rates[targetCur] / rates.SAR;
+  }
+
+  /**
+   * Calculates individual provider payout details.
+   */
+  function calculateProviderPayout(provider, amount, currency, baseRate, incentiveMultiplier) {
+    var amt = Number(amount) || 0;
+    var rate = Number(baseRate) || 0;
+    var mult = Number(incentiveMultiplier) || 1.0;
+
+    if (amt <= 0 || rate <= 0) {
+      return {
+        rate: 0,
+        feeSar: 0,
+        vatSar: 0,
+        totalDeduction: 0,
+        netPayout: 0,
+        formattedPayout: '0.00'
+      };
+    }
+
+    if (provider.status === 'VARIABLE_PRICING') {
+      var wiseRate = rate - (rate * provider.spreadPct);
+      var wiseFeeSar = amt * provider.variableFeePct;
+      var wiseNet = Math.max(0, amt - wiseFeeSar) * wiseRate * mult;
+      return {
+        rate: wiseRate,
+        feeSar: wiseFeeSar,
+        vatSar: 0,
+        totalDeduction: wiseFeeSar,
+        netPayout: wiseNet,
+        formattedPayout: formatPayout(wiseNet, currency)
+      };
+    }
+
+    var pRate = rate - (rate * provider.spreadPct);
+    var pNet = Math.max(0, amt - provider.totalDeduction) * pRate * mult;
+    return {
+      rate: pRate,
+      feeSar: provider.feeSar,
+      vatSar: provider.vatSar,
+      totalDeduction: provider.totalDeduction,
+      netPayout: pNet,
+      formattedPayout: formatPayout(pNet, currency)
+    };
+  }
+
+  /**
    * Renders the 7 provider rows into the specified tbody element with mobile data-label attributes.
    */
   function renderRemittanceTable(opts) {
@@ -213,7 +418,7 @@
     var rate = Number(opts.baseRate) || 0;
     var sym = opts.symbol || '';
     var isArabic = !!opts.isArabic || document.documentElement.lang === 'ar';
-    var incentiveMultiplier = Number(opts.incentiveMultiplier) || 1.0; // 1.025 for BDT incentive
+    var incentiveMultiplier = Number(opts.incentiveMultiplier) || 1.0;
 
     if (!rate || rate <= 0) {
       tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding:18px; color:#94a3b8;">' +
@@ -234,7 +439,6 @@
       var ctaUrl = getSendMoneyUrl(p, isArabic);
       var ctaText = isArabic ? 'إرسال' : 'Send Money';
 
-      // Badge HTML
       var badgeHtml = '';
       if (isArabic && p.badgeAr) {
         badgeHtml = ' <span class="' + (p.badgeClass || 'provider-badge-best') + '">' + p.badgeAr + '</span>';
@@ -242,47 +446,29 @@
         badgeHtml = ' <span class="' + (p.badgeClass || 'provider-badge-best') + '">' + p.badgeEn + '</span>';
       }
 
-      // Calculations per provider status
-      var rateCell = '';
+      var calc = calculateProviderPayout(p, amount, cur, rate, incentiveMultiplier);
+
+      var rateCell = (isArabic ? '<span dir="ltr">' : '') + sym + ' ' + calc.rate.toFixed(2) + (isArabic ? '</span>' : '');
       var feeCell = '';
-      var netCell = '';
-      var speedCell = '';
-
       if (p.status === 'VARIABLE_PRICING') {
-        // Wise: Mid-market rate + variable bank clearing fee
-        var wiseRate = rate - (rate * p.spreadPct);
-        var wiseFeeSar = amount * p.variableFeePct;
-        var wiseNet = Math.max(0, amount - wiseFeeSar) * wiseRate * incentiveMultiplier;
-
-        rateCell = (isArabic ? '<span dir="ltr">' : '') + sym + ' ' + wiseRate.toFixed(2) + (isArabic ? '</span>' : '');
         feeCell = isArabic ? 'متغيرة (~0.55%)' : 'Variable (~0.55%)';
-        netCell = '<strong style="font-size:13.5px;' + (isArabic ? ' text-align:right;' : '') + '">' +
-          (isArabic ? '<span dir="ltr">' : '') + sym + ' ' + formatPayout(wiseNet, cur) + (isArabic ? '</span>' : '') +
-          '</strong>';
-        speedCell = '<span style="font-size:12px; color:#64748b;">' + (isArabic ? p.speedAr : p.speedEn) + '</span>';
+      } else if (p.feeSar === 0) {
+        feeCell = isArabic ? '<strong style="color:#16a34a;">0.00 ر.س (مجاني)</strong>' : '<strong style="color:#16a34a;">0.00 SAR (Free)</strong>';
       } else {
-        // Standard Verified Providers (Barq, STC Bank, urpay, Al Rajhi Bank, Enjaz, Western Union)
-        var pRate = rate - (rate * p.spreadPct);
-        var pNet = Math.max(0, amount - p.totalDeduction) * pRate * incentiveMultiplier;
-
-        rateCell = (isArabic ? '<span dir="ltr">' : '') + sym + ' ' + pRate.toFixed(2) + (isArabic ? '</span>' : '');
-        
-        if (p.feeSar === 0) {
-          feeCell = isArabic ? '<strong style="color:#16a34a;">0.00 ر.س (مجاني)</strong>' : '<strong style="color:#16a34a;">0.00 SAR</strong>';
-        } else {
-          feeCell = isArabic ? (p.feeSar.toFixed(2) + ' ر.س (+15% ضريبة)') : (p.feeSar.toFixed(2) + ' SAR (+15% VAT)');
-        }
-
-        var isBest = p.id === 'barq';
-        var netColor = isBest ? '#16a34a' : 'inherit';
-        netCell = '<strong style="color:' + netColor + '; font-size:13.5px;' + (isArabic ? ' text-align:right;' : '') + '">' +
-          (isArabic ? '<span dir="ltr">' : '') + sym + ' ' + formatPayout(pNet, cur) + (isArabic ? '</span>' : '') +
-          '</strong>';
-
-        var speedColor = p.isInstant ? '#16a34a' : '#64748b';
-        var speedIcon = p.isInstant ? '<i class="fas fa-bolt" style="color:#16a34a; font-size:11px;"></i> ' : '';
-        speedCell = '<span style="color:' + speedColor + '; font-size:12px;">' + speedIcon + (isArabic ? p.speedAr : p.speedEn) + '</span>';
+        feeCell = isArabic
+          ? (p.feeSar.toFixed(2) + ' ر.س (+15% ضريبة)')
+          : (p.feeSar.toFixed(2) + ' SAR (+15% VAT)');
       }
+
+      var isBest = p.id === 'barq';
+      var netColor = isBest ? '#16a34a' : 'inherit';
+      var netCell = '<strong style="color:' + netColor + '; font-size:13.5px;' + (isArabic ? ' text-align:right;' : '') + '">' +
+        (isArabic ? '<span dir="ltr">' : '') + sym + ' ' + calc.formattedPayout + (isArabic ? '</span>' : '') +
+        '</strong>';
+
+      var speedColor = p.isInstant ? '#16a34a' : '#64748b';
+      var speedIcon = p.isInstant ? '<i class="fas fa-bolt" style="color:#16a34a; font-size:11px;"></i> ' : '';
+      var speedCell = '<span style="color:' + speedColor + '; font-size:12px;">' + speedIcon + (isArabic ? p.speedAr : p.speedEn) + '</span>';
 
       var isAndroid = /android/i.test(navigator.userAgent || '');
       var ctaTarget = isAndroid ? '' : ' target="_blank" rel="noopener noreferrer"';
@@ -349,7 +535,12 @@
   // Export to global scope
   window.DailyCalcRemittance = {
     providers: REMITTANCE_PROVIDERS,
+    fallbackRates: FALLBACK_RATES,
     getSendMoneyUrl: getSendMoneyUrl,
+    formatPayout: formatPayout,
+    fetchRates: fetchRates,
+    getRateFromSar: getRateFromSar,
+    calculateProviderPayout: calculateProviderPayout,
     renderTable: renderRemittanceTable,
     initCtaButtons: initCtaButtons
   };

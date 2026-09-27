@@ -8,23 +8,23 @@
   'use strict';
 
   const FX_API_URL = 'https://open.er-api.com/v6/latest/USD';
-  const CACHE_KEY = 'dch_forex_cache_v1';
+  const CACHE_KEY = 'dch_forex_cache_v2';
   const CACHE_TTL = 300000; // 5 minutes in ms
 
-  // Reference fallbacks (only used if network is unreachable and cache is empty)
+  // Reference fallbacks (strictly matching shared remittance engine)
   const FALLBACK_RATES = {
     SAR: 3.75,
-    INR: 94.54,   // ~25.21 SAR/INR
-    PKR: 278.40,  // ~74.24 SAR/PKR
-    BDT: 121.20,  // ~32.32 SAR/BDT
-    PHP: 58.70,   // ~15.65 SAR/PHP
-    AED: 3.6725,  // ~0.98 SAR/AED
-    KWD: 0.3086,  // ~306.33 KWD/INR
-    NPR: 138.40,  // ~36.90 SAR/NPR
-    LKR: 302.50,  // ~80.66 SAR/LKR
+    INR: 95.88,   // ~25.568 SAR/INR
+    PKR: 277.00,  // ~73.867 SAR/PKR
+    BDT: 121.50,  // ~32.400 SAR/BDT
+    PHP: 58.70,   // ~15.653 SAR/PHP
+    AED: 3.6725,  // ~0.979 SAR/AED
+    KWD: 0.3060,  // ~313.33 KWD/INR
+    NPR: 153.40,  // ~40.907 SAR/NPR
+    LKR: 302.50,  // ~80.667 SAR/LKR
     USD: 1.0,
     EUR: 0.92,
-    GBP: 0.79
+    GBP: 0.78
   };
 
   function updateTickerDOM(rates) {

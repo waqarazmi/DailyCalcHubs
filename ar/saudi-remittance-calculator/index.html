@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
@@ -939,10 +939,10 @@
           </div>
         </div>
         <div class="mobile-header-actions">
-          <button type="button" class="mobile-theme-toggle dch-theme-toggle" id="mobileDrawerThemeToggle" aria-label="ØªØ¨Ø¯ÙŠÙ„ Ø§Ù„Ù…Ø¸Ù‡Ø±" title="ØªØ¨Ø¯ÙŠÙ„ Ø§Ù„Ù…Ø¸Ù‡Ø±">
+          <button type="button" class="mobile-theme-toggle dch-theme-toggle" id="mobileDrawerThemeToggle" aria-label="تبديل المظهر" title="تبديل المظهر">
             <i class="fas fa-moon"></i>
           </button>
-          <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Ø¥ØºÙ„Ø§Ù‚ Ø§Ù„Ù‚Ø§Ø¦Ù…Ø©">
+          <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="إغلاق القائمة">
             <i class="fas fa-xmark"></i>
           </button>
         </div>
@@ -1152,7 +1152,7 @@
   <!-- Hero Header -->
   <section class="hub-hero">
     <div class="container">
-      <div class="hub-pill"><i class="fas fa-bolt"></i> أسعار تحويل فورية ومحدثة للريال السعودي</div>
+      <div class="hub-pill"><i class="fas fa-building-columns"></i> مرجع معتمد وفق لوائح ساما وهيئة الزكاة والضريبة والجمارك • إصدار 2026</div>
       <h1 class="hub-title">حاسبة تحويل الأموال في السعودية</h1>
       <p class="hub-lead">
         احسب وقارن أسعار تحويل الريال السعودي (SAR) المباشرة إلى الهند، باكستان، بنغلاديش، الفلبين، نيبال وسريلانكا. استكشف الفروق بين أسعار التحويل بين البنوك وتطبيقات التحويل الرقمية الرائدة في المملكة مع مقارنة رسوم التحويل الصافية.
@@ -1209,6 +1209,7 @@
             <button type="button" class="amount-chip-btn" onclick="setSarAmount(2500)">2,500 ر.س</button>
             <button type="button" class="amount-chip-btn" onclick="setSarAmount(5000)">5,000 ر.س</button>
           </div>
+          <div id="amtNoticeBox" style="display:none; margin-top:12px; padding:10px 14px; border-radius:8px; font-size:12.5px;"></div>
         </div>
 
         <!-- Target Currency -->
@@ -1232,17 +1233,18 @@
 
         <!-- Estimated Payout -->
         <div class="calc-result-box">
-          <span class="calc-result-label">المبلغ المقدر استلامه (السعر المرجعي)</span>
-          <span class="calc-result-val" id="estimatedPayoutDisplay">&#8377; 23,060.00</span>
+          <span class="calc-result-label">أفضل مبلغ تسليم مقدر (تطبيق برق)</span>
+          <span class="calc-result-val" id="estimatedPayoutDisplay">&#8377; --.--</span>
           <span class="calc-result-rate-tag" id="liveRateDisplayTag">
-            <i class="fas fa-bolt" style="color:#fbbf24;"></i> <span>1 SAR = 23.0600 INR</span>
+            <i class="fas fa-bolt" style="color:#fbbf24;"></i> <span>جاري حساب سعر الصرف...</span>
           </span>
+          <div id="baseBenchmarkVal" style="font-size:11.5px; color:#065f46; margin-top:4px;">السعر المرجعي بين البنوك: --</div>
         </div>
       </div>
 
       <!-- Provider Comparison Table -->
       <div class="comparison-table-wrap">
-        <table class="comparison-table provider-table">
+        <table class="comparison-table provider-table data-table-cards">
           <thead>
             <tr>
               <th>تطبيق / مزود التحويل</th>
@@ -1699,71 +1701,36 @@
       LKR: 'Rs', EGP: 'E\u00A3', USD: '$', AED: 'AED'
     };
 
-    async function fetchLiveExchangeRates() {
+  <!-- Core Remittance Engine -->
+  <script src="/remittance-providers.js?v=20260927"></script>
+  <script src="/live-ticker.js" defer></script>
+  <script src="/theme.js" defer></script>
+  <script src="/share.js" defer></script>
+
+  <script>
+    function initRates() {
       const statusBadge = document.getElementById('liveStatusBadge');
       const statusText = document.getElementById('liveStatusText');
       const timestampEl = document.getElementById('rateTimestampEl');
 
-      try {
-        const response = await fetch(FX_API_URL + '?ts=' + Date.now(), { cache: 'no-store' });
-        if (!response.ok) throw new Error('Network response not ok');
-        const data = await response.json();
+      if (!window.DailyCalcRemittance) return;
 
-        if (data && data.rates && data.rates.SAR && data.rates.INR) {
-          liveUsdRates = data.rates;
-          isLiveAvailable = true;
-          fetchTimestamp = new Date();
-
+      window.DailyCalcRemittance.fetchRates(function(rates, info) {
+        if (info && info.isLive) {
           statusBadge.style.background = '#f0fdf4';
           statusBadge.style.color = '#166534';
           statusBadge.style.border = '1px solid #bbf7d0';
-          statusText.textContent = 'سعر الصرف المباشر نشط';
-
-          const timeStr = fetchTimestamp.toLocaleTimeString('ar-SA', { hour: '2-digit', minute: '2-digit' });
-          timestampEl.textContent = 'سعر الصرف المباشر بين البنوك @ ' + timeStr;
-
-          updateTopTicker();
-          recalculate();
-          return;
+          statusText.textContent = info.statusAr || 'سعر الصرف المرجعي نشط';
+          timestampEl.textContent = info.timeFormattedAr || 'سعر الصرف المرجعي اليومي نشط';
+        } else {
+          statusBadge.style.background = '#fef2f2';
+          statusBadge.style.color = '#991b1b';
+          statusBadge.style.border = '1px solid #fecaca';
+          statusText.textContent = 'سعر إغلاق مرجعي معتمد';
+          timestampEl.textContent = 'سعر إغلاق مرجعي معتمد';
         }
-        throw new Error('Incomplete rate data');
-      } catch (err) {
-        console.warn('Live rate fetch notice:', err.message);
-        isLiveAvailable = false;
-        statusBadge.style.background = '#fef2f2';
-        statusBadge.style.color = '#991b1b';
-        statusBadge.style.border = '1px solid #fecaca';
-        statusText.textContent = 'سعر الصرف المباشر غير متاح مؤقتاً';
-        timestampEl.textContent = 'أسعار الصرف المباشرة غير متاحة مؤقتاً (جاري استخدام أسعار مرجعية)';
-        
-        liveUsdRates = { USD: 1, SAR: 3.75, INR: 86.50, PKR: 278.40, BDT: 121.20, PHP: 58.70, NPR: 138.40, LKR: 302.50, EGP: 49.30, AED: 3.6725 };
-        updateTopTicker();
         recalculate();
-      }
-    }
-
-    function getRateFromSar(targetCur) {
-      if (!liveUsdRates || !liveUsdRates.SAR || !liveUsdRates[targetCur]) return null;
-      return liveUsdRates[targetCur] / liveUsdRates.SAR;
-    }
-
-    function updateTopTicker() {
-      const sarInr = getRateFromSar('INR') || 23.06;
-      const sarPkr = getRateFromSar('PKR') || 74.24;
-      const sarBdt = getRateFromSar('BDT') || 32.32;
-      const sarPhp = getRateFromSar('PHP') || 15.65;
-      const barqInr = (sarInr - 0.27).toFixed(2);
-
-      const elInr = document.getElementById('tickerSar');
-      if (elInr) elInr.textContent = '\u20B9 ' + sarInr.toFixed(2);
-      const elBarq = document.getElementById('tickerBarq');
-      if (elBarq) elBarq.textContent = '\u20B9 ' + barqInr;
-      const elPkr = document.getElementById('tickerPkr');
-      if (elPkr) elPkr.textContent = 'Rs ' + sarPkr.toFixed(2);
-      const elBdt = document.getElementById('tickerBdt');
-      if (elBdt) elBdt.textContent = '\u09F3 ' + sarBdt.toFixed(2);
-      const elPhp = document.getElementById('tickerPhp');
-      if (elPhp) elPhp.textContent = '\u20B1 ' + sarPhp.toFixed(2);
+      });
     }
 
     function setSarAmount(val) {
@@ -1780,40 +1747,64 @@
       const sarAmount = parseFloat(document.getElementById('sarAmountInput').value) || 0;
       const targetCur = document.getElementById('destCurrencySelect').value;
       const symbol = currencySymbols[targetCur] || '';
-      const baseRate = getRateFromSar(targetCur);
+      
+      if (!window.DailyCalcRemittance) return;
 
+      const baseRate = window.DailyCalcRemittance.getRateFromSar(targetCur);
       const payoutDisplay = document.getElementById('estimatedPayoutDisplay');
       const rateDisplay = document.getElementById('liveRateDisplayTag');
       const compareNote = document.getElementById('compareCurNote');
+      const benchmarkVal = document.getElementById('baseBenchmarkVal');
+      const noticeBox = document.getElementById('amtNoticeBox');
 
-      if (!baseRate) {
+      // Amount alerts
+      if (noticeBox) {
+        if (sarAmount > 0 && sarAmount < 17.25) {
+          noticeBox.style.display = 'block';
+          noticeBox.style.background = '#fef3c7';
+          noticeBox.style.color = '#92400e';
+          noticeBox.style.border = '1px solid #fde68a';
+          noticeBox.innerHTML = '<i class="fas fa-triangle-exclamation"></i> <strong>تنبيه للمبالغ الصغيرة:</strong> في القنوات المصرفية التي تفرض رسوماً قدرها 15 ريالاً + 15% ضريبة (17.25 ريال إجمالي)، تكون الرسوم مساوية أو أكبر من أصل الحوالة. يُنصح باستخدام محفظة رقمية بدون رسوم مثل تطبيق برق.';
+        } else if (sarAmount > 50000) {
+          noticeBox.style.display = 'block';
+          noticeBox.style.background = '#eff6ff';
+          noticeBox.style.color = '#1e40af';
+          noticeBox.style.border = '1px solid #bfdbfe';
+          noticeBox.innerHTML = '<i class="fas fa-shield-halved"></i> <strong>تنبيه الامتثال لأنظمة ساما:</strong> الحوالات التي تتجاوز 50,000 ريال سعودي تتطلب عادةً تقديم إثبات لمصدر الدخل أو شهادة الراتب بموجب لوائح مكافحة غسل الأموال.';
+        } else {
+          noticeBox.style.display = 'none';
+        }
+      }
+
+      if (!baseRate || baseRate <= 0) {
         payoutDisplay.textContent = 'غير متوفر';
         rateDisplay.textContent = 'سعر الصرف غير متاح مؤقتاً';
         return;
       }
 
-      const totalEstimated = sarAmount * baseRate;
-      const formattedNumber = (targetCur === 'INR')
-        ? totalEstimated.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
-        : totalEstimated.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-      payoutDisplay.textContent = symbol + ' ' + formattedNumber;
-      rateDisplay.innerHTML = `<i class="fas fa-bolt" style="color:#fbbf24;"></i> <span>1 ريال = ${baseRate.toFixed(4)} ${targetCur}</span>`;
-      compareNote.textContent = `* مقارنة أسعار التحويل الحية من الريال السعودي إلى ${targetCur}`;
+      const incentiveMultiplier = (targetCur === 'BDT') ? 1.025 : 1.0;
+      const topProvider = window.DailyCalcRemittance.providers[0]; // Barq
+      const calcTop = window.DailyCalcRemittance.calculateProviderPayout(topProvider, sarAmount, targetCur, baseRate, incentiveMultiplier);
 
-      renderComparisonTable(sarAmount, targetCur, baseRate, symbol);
-    }
-
-        function renderComparisonTable(amount, cur, rate, sym) {
-      if (window.DailyCalcRemittance && window.DailyCalcRemittance.renderTable) {
-        window.DailyCalcRemittance.renderTable({
-          tbody: 'providerTableBody',
-          amount: amount,
-          currency: cur,
-          baseRate: rate,
-          symbol: sym,
-          isArabic: true
-        });
+      payoutDisplay.innerHTML = '<span dir="ltr">' + symbol + ' ' + calcTop.formattedPayout + '</span>';
+      rateDisplay.innerHTML = `<i class="fas fa-bolt" style="color:#fbbf24;"></i> <span dir="ltr">1 SAR = ${baseRate.toFixed(4)} ${targetCur}</span>`;
+      if (benchmarkVal) {
+        const wholesaleGross = sarAmount * baseRate * incentiveMultiplier;
+        benchmarkVal.innerHTML = 'السعر المرجعي بين البنوك: <span dir="ltr">' + symbol + ' ' + window.DailyCalcRemittance.formatPayout(wholesaleGross, targetCur) + '</span>' + (targetCur === 'BDT' ? ' (شامل الحافز 2.5%)' : '');
       }
+      if (compareNote) {
+        compareNote.textContent = `* مقارنة أسعار التحويل المحدثة من الريال السعودي إلى ${targetCur}`;
+      }
+
+      window.DailyCalcRemittance.renderTable({
+        tbody: 'providerTableBody',
+        amount: sarAmount,
+        currency: targetCur,
+        baseRate: baseRate,
+        symbol: symbol,
+        isArabic: true,
+        incentiveMultiplier: incentiveMultiplier
+      });
     }
 
     function toggleFaq(el) {
@@ -1828,15 +1819,11 @@
       }
     }
 
-    // Initialize on load
     document.addEventListener('DOMContentLoaded', () => {
-      document.getElementById('sarAmountInput').addEventListener('input', recalculate);
-      fetchLiveExchangeRates();
+      const amtInput = document.getElementById('sarAmountInput');
+      if (amtInput) amtInput.addEventListener('input', recalculate);
+      initRates();
     });
   </script>
-  <script src="/remittance-providers.js?v=20260926c"></script>
-  <script src="/live-ticker.js" defer></script>
-  <script src="/theme.js" defer></script>
-  <script src="/share.js" defer></script>
 </body>
 </html>

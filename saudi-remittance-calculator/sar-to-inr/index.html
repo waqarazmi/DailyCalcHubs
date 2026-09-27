@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -860,18 +860,19 @@
         <div class="result-summary-box">
           <div class="result-row-top">
             <div>
-              <div class="result-label">Net In-Hand Beneficiary Receives</div>
+              <div class="result-label">Best Estimated Payout (Barq)</div>
               <div class="result-big-val" id="inrPayout">&#8377; --.--</div>
+              <div id="inrWholesaleBench" style="font-size:11.5px; color:#94a3b8; margin-top:4px;">Wholesale Benchmark: --</div>
             </div>
             <div class="result-rate-tag" id="inrRateTag">
               <i class="fas fa-bolt" style="color:#fbbf24;"></i>
-              <span>Fetching live rate...</span>
+              <span>Fetching exchange rate...</span>
             </div>
           </div>
           <div class="result-meta-grid">
             <div class="meta-box-inner">
-              <div class="meta-box-title">RATE SOURCE</div>
-              <div class="meta-box-val" id="inrTimeVal">Live Interbank Feed</div>
+              <div class="meta-box-title">RATE SOURCE &amp; STATUS</div>
+              <div class="meta-box-val" id="inrTimeVal">Official Market Benchmark</div>
             </div>
             <div class="meta-box-inner">
               <div class="meta-box-title">DELIVERY NETWORK</div>
@@ -898,7 +899,7 @@
             <span><i class="fas fa-wallet" style="color:#16a34a;"></i> Saudi-to-India Wallet &amp; Bank Comparison</span>
           </div>
           <div class="provider-table-wrap">
-            <table class="provider-table">
+            <table class="provider-table data-table-cards">
               <thead>
                 <tr>
                   <th>Provider</th>
@@ -981,9 +982,9 @@
 
       <h3>Practical Worked Example: Sending 3,000 SAR to India</h3>
       <p>
-        Let us calculate the net payout for an expat sending 3,000 SAR to an Indian bank account under typical market pricing (Illustrative Scenario Benchmark: 1 SAR = 22.45 INR):
+        Let us calculate the exact net payout for an expat sending 3,000 SAR to an Indian bank account under verified standard pricing (Illustrative Benchmark: 1 SAR = 25.50 INR):
       </p>
-      <table class="data-table">
+      <table class="data-table data-table-cards">
         <thead>
           <tr>
             <th>Provider / Channel</th>
@@ -991,37 +992,43 @@
             <th>Retail Exchange Rate</th>
             <th>Net In-Hand Payout</th>
             <th>Net Difference</th>
-
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td><strong>Barq (Digital App)</strong></td>
-            <td>0.00 SAR</td>
-            <td>&#8377; 22.18 / SAR</td>
-            <td><strong>&#8377; 66,540.00</strong></td>
-            <td><span style="color:#16a34a; font-weight:700;">+ &#8377; 715 Extra</span></td>
+            <td data-label="Provider / Channel"><strong>Barq (Digital App)</strong></td>
+            <td data-label="Service Fee + 15% VAT">0.00 SAR (Free)</td>
+            <td data-label="Retail Exchange Rate">&#8377; 25.22 / SAR</td>
+            <td data-label="Net In-Hand Payout"><strong>&#8377; 75,660.00</strong></td>
+            <td data-label="Net Difference"><span style="color:#16a34a; font-weight:700;">+ &#8377; 1,527.31 Extra</span></td>
           </tr>
           <tr>
-            <td><strong>urpay (Al Rajhi)</strong></td>
-            <td>11.50 SAR (10 + 1.50 VAT)</td>
-            <td>&#8377; 22.12 / SAR</td>
-            <td>&#8377; 66,105.62</td>
-            <td>+ &#8377; 280</td>
+            <td data-label="Provider / Channel"><strong>urpay (Al Rajhi)</strong></td>
+            <td data-label="Service Fee + 15% VAT">11.50 SAR (10 + 1.50 VAT)</td>
+            <td data-label="Retail Exchange Rate">&#8377; 25.14 / SAR</td>
+            <td data-label="Net In-Hand Payout">&#8377; 75,130.89</td>
+            <td data-label="Net Difference"><span style="color:#16a34a; font-weight:700;">+ &#8377; 998.20 Extra</span></td>
           </tr>
           <tr>
-            <td><strong>STC Pay / STC Bank</strong></td>
-            <td>17.25 SAR (15 + 2.25 VAT)</td>
-            <td>&#8377; 22.14 / SAR</td>
-            <td>&#8377; 66,036.00</td>
-            <td>+ &#8377; 211</td>
+            <td data-label="Provider / Channel"><strong>STC Bank (STC Pay)</strong></td>
+            <td data-label="Service Fee + 15% VAT">17.25 SAR (15 + 2.25 VAT)</td>
+            <td data-label="Retail Exchange Rate">&#8377; 25.17 / SAR</td>
+            <td data-label="Net In-Hand Payout">&#8377; 75,075.82</td>
+            <td data-label="Net Difference"><span style="color:#16a34a; font-weight:700;">+ &#8377; 943.13 Extra</span></td>
           </tr>
           <tr>
-            <td><strong>Traditional Bank Branch</strong></td>
-            <td>19.84 SAR (17.25 + 2.59 VAT)</td>
-            <td>&#8377; 22.00 / SAR</td>
-            <td>&#8377; 65,563.52</td>
-            <td>Baseline</td>
+            <td data-label="Provider / Channel"><strong>Tahweel Al Rajhi</strong></td>
+            <td data-label="Service Fee + 15% VAT">17.25 SAR (15 + 2.25 VAT)</td>
+            <td data-label="Retail Exchange Rate">&#8377; 25.04 / SAR</td>
+            <td data-label="Net In-Hand Payout">&#8377; 74,688.06</td>
+            <td data-label="Net Difference"><span style="color:#16a34a; font-weight:700;">+ &#8377; 555.37 Extra</span></td>
+          </tr>
+          <tr>
+            <td data-label="Provider / Channel"><strong>Traditional Bank Branch Counter</strong></td>
+            <td data-label="Service Fee + 15% VAT">28.75 SAR (25 + 3.75 VAT)</td>
+            <td data-label="Retail Exchange Rate">&#8377; 24.95 / SAR</td>
+            <td data-label="Net In-Hand Payout">&#8377; 74,132.69</td>
+            <td data-label="Net Difference">Baseline</td>
           </tr>
         </tbody>
       </table>
@@ -1087,40 +1094,35 @@
 
   </div>
 
-  <script>
-    const FX_API_URL = 'https://open.er-api.com/v6/latest/USD';
-    let liveSarInrRate = null;
+  <script src="/remittance-providers.js?v=20260927"></script>
+  <script src="/live-ticker.js" defer></script>
+  <script src="/theme.js" defer></script>
+  <script src="/share.js" defer></script>
 
-    async function initInrCalc() {
+  <script>
+    function initInrCalc() {
       const badge = document.getElementById('inrStatusBadge');
       const text = document.getElementById('inrStatusText');
       const timeVal = document.getElementById('inrTimeVal');
 
-      try {
-        const res = await fetch(FX_API_URL + '?ts=' + Date.now(), { cache: 'no-store' });
-        if (!res.ok) throw new Error('API down');
-        const data = await res.json();
-        if (data && data.rates && data.rates.SAR && data.rates.INR) {
-          liveSarInrRate = data.rates.INR / data.rates.SAR;
+      if (!window.DailyCalcRemittance) return;
+
+      window.DailyCalcRemittance.fetchRates(function(rates, info) {
+        if (info && info.isLive) {
           badge.style.background = '#f0fdf4';
           badge.style.color = '#166534';
           badge.style.border = '1px solid #bbf7d0';
-          text.textContent = 'Live Feed Active';
-          const t = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-          timeVal.textContent = 'Live Interbank @ ' + t;
-          recalcInr();
-          return;
+          text.textContent = info.statusEn || 'Benchmark Active';
+          timeVal.textContent = info.timeFormattedEn || 'Daily Spot Benchmark Active';
+        } else {
+          badge.style.background = '#fef2f2';
+          badge.style.color = '#991b1b';
+          badge.style.border = '1px solid #fecaca';
+          text.textContent = 'Reference Benchmark';
+          timeVal.textContent = 'Closing Reference Benchmark';
         }
-        throw new Error('Incomplete data');
-      } catch (e) {
-        liveSarInrRate = 25.21;
-        badge.style.background = '#fef2f2';
-        badge.style.color = '#991b1b';
-        badge.style.border = '1px solid #fecaca';
-        text.textContent = 'Live exchange rate temporarily unavailable';
-        timeVal.textContent = 'Live exchange rate temporarily unavailable';
         recalcInr();
-      }
+      });
     }
 
     function setInrAmt(val) {
@@ -1135,27 +1137,30 @@
 
     function recalcInr() {
       const amt = parseFloat(document.getElementById('inrAmount').value) || 0;
-      const rate = liveSarInrRate || 25.21;
+      if (!window.DailyCalcRemittance) return;
+      const rate = window.DailyCalcRemittance.getRateFromSar('INR') || 25.21;
 
       const payoutEl = document.getElementById('inrPayout');
       const tagEl = document.getElementById('inrRateTag');
+      const benchEl = document.getElementById('inrWholesaleBench');
 
-      const total = amt * rate;
-      payoutEl.textContent = '\u20B9 ' + total.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      const topProvider = window.DailyCalcRemittance.providers[0]; // Barq
+      const calcTop = window.DailyCalcRemittance.calculateProviderPayout(topProvider, amt, 'INR', rate);
+
+      payoutEl.textContent = '₹ ' + calcTop.formattedPayout;
       tagEl.innerHTML = `<i class="fas fa-bolt" style="color:#fbbf24;"></i> <span>1 SAR = ${rate.toFixed(4)} INR</span>`;
-
-      // Render Table
-            if (window.DailyCalcRemittance && window.DailyCalcRemittance.renderTable) {
-        window.DailyCalcRemittance.renderTable({
-          tbody: 'inrTableBody',
-          amount: amt,
-          currency: 'INR',
-          baseRate: rate,
-          symbol: '\u20B9',
-          isArabic: false,
-          incentiveMultiplier: 1
-        });
+      if (benchEl) {
+        benchEl.textContent = 'Wholesale Benchmark: ₹ ' + window.DailyCalcRemittance.formatPayout(amt * rate, 'INR');
       }
+
+      window.DailyCalcRemittance.renderTable({
+        tbody: 'inrTableBody',
+        amount: amt,
+        currency: 'INR',
+        baseRate: rate,
+        symbol: '₹',
+        isArabic: false
+      });
     }
 
     document.addEventListener('DOMContentLoaded', () => {
@@ -1250,9 +1255,5 @@
       }
     }
   </script>
-  <script src="/remittance-providers.js?v=20260926c"></script>
-  <script src="/live-ticker.js" defer></script>
-  <script src="/theme.js" defer></script>
-  <script src="/share.js" defer></script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -860,18 +860,19 @@
         <div class="result-summary-box">
           <div class="result-row-top">
             <div>
-              <div class="result-label">Net In-Hand Beneficiary Receives</div>
-              <div class="result-big-val" id="pkrPayout">Rs 74,240.00</div>
+              <div class="result-label">Best Estimated Payout (Barq)</div>
+              <div class="result-big-val" id="pkrPayout">Rs --.--</div>
+              <div id="pkrWholesaleBench" style="font-size:11.5px; color:#94a3b8; margin-top:4px;">Wholesale Benchmark: --</div>
             </div>
             <div class="result-rate-tag" id="pkrRateTag">
               <i class="fas fa-bolt" style="color:#fbbf24;"></i>
-              <span>1 SAR = 74.2400 PKR</span>
+              <span>Fetching exchange rate...</span>
             </div>
           </div>
           <div class="result-meta-grid">
             <div class="meta-box-inner">
-              <div class="meta-box-title">RATE SOURCE</div>
-              <div class="meta-box-val" id="pkrTimeVal">Live Interbank Feed</div>
+              <div class="meta-box-title">RATE SOURCE &amp; STATUS</div>
+              <div class="meta-box-val" id="pkrTimeVal">Official Market Benchmark</div>
             </div>
             <div class="meta-box-inner">
               <div class="meta-box-title">SBP PRI ELIGIBILITY</div>
@@ -898,7 +899,7 @@
             <span><i class="fas fa-wallet" style="color:#16a34a;"></i> Saudi-to-Pakistan Wallet Comparison</span>
           </div>
           <div class="provider-table-wrap">
-            <table class="provider-table">
+            <table class="provider-table data-table-cards">
               <thead>
                 <tr>
                   <th>Provider</th>
@@ -961,15 +962,58 @@
         <li><strong>Tax Immunity:</strong> Funds received through legal banking channels enjoy statutory immunity from tax scrutiny under Section 111(4) of Pakistan's Income Tax Ordinance 2001.</li>
       </ul>
 
-      <h3>Worked Example: Sending 2,500 SAR to Pakistan</h3>
+      <h3>Practical Worked Example: Sending 2,500 SAR to Pakistan</h3>
       <p>
-        Assuming an interbank rate of 1 SAR = 74.20 PKR:
+        Let us calculate the net payout for an expat sending 2,500 SAR to a Pakistani bank account under verified standard pricing (Illustrative Benchmark: 1 SAR = 74.20 PKR):
       </p>
-      <ul>
-        <li><strong>Barq (0 fee, retail rate ~73.35 PKR):</strong> 2,500 × 73.35 = <strong>Rs 183,375.00 PKR</strong></li>
-        <li><strong>urpay (11.50 SAR fee, retail rate ~73.20 PKR):</strong> (2,500 - 11.50) × 73.20 = <strong>Rs 182,157.00 PKR</strong></li>
-        <li><strong>STC Pay (17.25 SAR fee, retail rate ~73.25 PKR):</strong> (2,500 - 17.25) × 73.25 = <strong>Rs 181,858.00 PKR</strong></li>
-      </ul>
+      <table class="data-table data-table-cards">
+        <thead>
+          <tr>
+            <th>Provider / Channel</th>
+            <th>Service Fee + 15% VAT</th>
+            <th>Retail Exchange Rate</th>
+            <th>Net In-Hand Payout</th>
+            <th>Net Difference</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-label="Provider / Channel"><strong>Barq (Digital App)</strong></td>
+            <td data-label="Service Fee + 15% VAT">0.00 SAR (Free)</td>
+            <td data-label="Retail Exchange Rate">Rs 73.38 / SAR</td>
+            <td data-label="Net In-Hand Payout"><strong>Rs 183,450.00</strong></td>
+            <td data-label="Net Difference"><span style="color:#16a34a; font-weight:700;">+ Rs 4,284.37 Extra</span></td>
+          </tr>
+          <tr>
+            <td data-label="Provider / Channel"><strong>urpay (Al Rajhi)</strong></td>
+            <td data-label="Service Fee + 15% VAT">11.50 SAR (10 + 1.50 VAT)</td>
+            <td data-label="Retail Exchange Rate">Rs 73.16 / SAR</td>
+            <td data-label="Net In-Hand Payout">Rs 182,058.66</td>
+            <td data-label="Net Difference"><span style="color:#16a34a; font-weight:700;">+ Rs 2,893.03 Extra</span></td>
+          </tr>
+          <tr>
+            <td data-label="Provider / Channel"><strong>STC Bank (STC Pay)</strong></td>
+            <td data-label="Service Fee + 15% VAT">17.25 SAR (15 + 2.25 VAT)</td>
+            <td data-label="Retail Exchange Rate">Rs 73.24 / SAR</td>
+            <td data-label="Net In-Hand Payout">Rs 181,836.61</td>
+            <td data-label="Net Difference"><span style="color:#16a34a; font-weight:700;">+ Rs 2,670.98 Extra</span></td>
+          </tr>
+          <tr>
+            <td data-label="Provider / Channel"><strong>Tahweel Al Rajhi</strong></td>
+            <td data-label="Service Fee + 15% VAT">17.25 SAR (15 + 2.25 VAT)</td>
+            <td data-label="Retail Exchange Rate">Rs 72.86 / SAR</td>
+            <td data-label="Net In-Hand Payout">Rs 180,893.17</td>
+            <td data-label="Net Difference"><span style="color:#16a34a; font-weight:700;">+ Rs 1,727.54 Extra</span></td>
+          </tr>
+          <tr>
+            <td data-label="Provider / Channel"><strong>Traditional Bank Branch Counter</strong></td>
+            <td data-label="Service Fee + 15% VAT">28.75 SAR (25 + 3.75 VAT)</td>
+            <td data-label="Retail Exchange Rate">Rs 72.50 / SAR</td>
+            <td data-label="Net In-Hand Payout">Rs 179,165.63</td>
+            <td data-label="Net Difference">Baseline</td>
+          </tr>
+        </tbody>
+      </table>
 
       <h2>Frequently Asked Questions</h2>
       <div class="faq-item">
@@ -1023,40 +1067,35 @@
 
   </div>
 
-  <script>
-    const FX_API_URL = 'https://open.er-api.com/v6/latest/USD';
-    let liveSarPkrRate = null;
+  <script src="/remittance-providers.js?v=20260927"></script>
+  <script src="/live-ticker.js" defer></script>
+  <script src="/theme.js" defer></script>
+  <script src="/share.js" defer></script>
 
-    async function initPkrCalc() {
+  <script>
+    function initPkrCalc() {
       const badge = document.getElementById('pkrStatusBadge');
       const text = document.getElementById('pkrStatusText');
       const timeVal = document.getElementById('pkrTimeVal');
 
-      try {
-        const res = await fetch(FX_API_URL + '?ts=' + Date.now(), { cache: 'no-store' });
-        if (!res.ok) throw new Error('API down');
-        const data = await res.json();
-        if (data && data.rates && data.rates.SAR && data.rates.PKR) {
-          liveSarPkrRate = data.rates.PKR / data.rates.SAR;
+      if (!window.DailyCalcRemittance) return;
+
+      window.DailyCalcRemittance.fetchRates(function(rates, info) {
+        if (info && info.isLive) {
           badge.style.background = '#f0fdf4';
           badge.style.color = '#166534';
           badge.style.border = '1px solid #bbf7d0';
-          text.textContent = 'Live Feed Active';
-          const t = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-          timeVal.textContent = 'Live Interbank @ ' + t;
-          recalcPkr();
-          return;
+          text.textContent = info.statusEn || 'Benchmark Active';
+          timeVal.textContent = info.timeFormattedEn || 'Daily Spot Benchmark Active';
+        } else {
+          badge.style.background = '#fef2f2';
+          badge.style.color = '#991b1b';
+          badge.style.border = '1px solid #fecaca';
+          text.textContent = 'Reference Benchmark';
+          timeVal.textContent = 'Closing Reference Benchmark';
         }
-        throw new Error('Incomplete data');
-      } catch (e) {
-        liveSarPkrRate = 74.24;
-        badge.style.background = '#fef2f2';
-        badge.style.color = '#991b1b';
-        badge.style.border = '1px solid #fecaca';
-        text.textContent = 'Live exchange rate temporarily unavailable';
-        timeVal.textContent = 'Live exchange rate temporarily unavailable';
         recalcPkr();
-      }
+      });
     }
 
     function setPkrAmt(val) {
@@ -1071,15 +1110,22 @@
 
     function recalcPkr() {
       const amt = parseFloat(document.getElementById('pkrAmount').value) || 0;
-      const rate = liveSarPkrRate || 74.24;
+      if (!window.DailyCalcRemittance) return;
+      const rate = window.DailyCalcRemittance.getRateFromSar('PKR') || 74.24;
 
       const payoutEl = document.getElementById('pkrPayout');
       const tagEl = document.getElementById('pkrRateTag');
       const priTag = document.getElementById('pkrPriTag');
+      const benchEl = document.getElementById('pkrWholesaleBench');
 
-      const total = amt * rate;
-      payoutEl.textContent = 'Rs ' + total.toLocaleString('en-PK', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      const topProvider = window.DailyCalcRemittance.providers[0]; // Barq
+      const calcTop = window.DailyCalcRemittance.calculateProviderPayout(topProvider, amt, 'PKR', rate);
+
+      payoutEl.textContent = 'Rs ' + calcTop.formattedPayout;
       tagEl.innerHTML = `<i class="fas fa-bolt" style="color:#fbbf24;"></i> <span>1 SAR = ${rate.toFixed(4)} PKR</span>`;
+      if (benchEl) {
+        benchEl.textContent = 'Wholesale Benchmark: Rs ' + window.DailyCalcRemittance.formatPayout(amt * rate, 'PKR');
+      }
 
       if (amt >= 375) {
         priTag.textContent = 'Eligible (Free PRI Transfer)';
@@ -1089,17 +1135,14 @@
         priTag.style.color = '#94a3b8';
       }
 
-            if (window.DailyCalcRemittance && window.DailyCalcRemittance.renderTable) {
-        window.DailyCalcRemittance.renderTable({
-          tbody: 'pkrTableBody',
-          amount: amt,
-          currency: 'PKR',
-          baseRate: rate,
-          symbol: 'Rs',
-          isArabic: false,
-          incentiveMultiplier: 1
-        });
-      }
+      window.DailyCalcRemittance.renderTable({
+        tbody: 'pkrTableBody',
+        amount: amt,
+        currency: 'PKR',
+        baseRate: rate,
+        symbol: 'Rs',
+        isArabic: false
+      });
     }
 
     document.addEventListener('DOMContentLoaded', () => {
@@ -1194,9 +1237,5 @@
       }
     }
   </script>
-  <script src="/remittance-providers.js?v=20260926c"></script>
-  <script src="/live-ticker.js" defer></script>
-  <script src="/theme.js" defer></script>
-  <script src="/share.js" defer></script>
 </body>
 </html>

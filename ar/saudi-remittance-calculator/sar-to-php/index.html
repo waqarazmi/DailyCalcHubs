@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
@@ -579,10 +579,10 @@
           </div>
         </div>
         <div class="mobile-header-actions">
-          <button type="button" class="mobile-theme-toggle dch-theme-toggle" id="mobileDrawerThemeToggle" aria-label="ØªØ¨Ø¯ÙŠÙ„ Ø§Ù„Ù…Ø¸Ù‡Ø±" title="ØªØ¨Ø¯ÙŠÙ„ Ø§Ù„Ù…Ø¸Ù‡Ø±">
+          <button type="button" class="mobile-theme-toggle dch-theme-toggle" id="mobileDrawerThemeToggle" aria-label="تبديل المظهر" title="تبديل المظهر">
             <i class="fas fa-moon"></i>
           </button>
-          <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Ø¥ØºÙ„Ø§Ù‚ Ø§Ù„Ù‚Ø§Ø¦Ù…Ø©">
+          <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="إغلاق القائمة">
             <i class="fas fa-xmark"></i>
           </button>
         </div>
@@ -827,18 +827,19 @@
           <div class="result-summary-box">
             <div class="result-row-top">
               <div>
-                <div class="result-label">المبلغ المستلم بالبيزو الفلبيني (سعر السوق)</div>
-                <div class="result-big-val" id="phpPayout">₱ 15,240.00</div>
+                <div class="result-label">أفضل تقدير لصافي المستلم (برق)</div>
+                <div class="result-big-val" id="phpPayout">₱ --.--</div>
+                <div id="phpWholesaleBench" style="font-size:11.5px; color:#94a3b8; margin-top:4px;">السعر المرجعي لسوق الجملة: --</div>
               </div>
               <div class="result-rate-tag" id="phpRateTag">
-                <i class="fas fa-bolt" style="color:#fbbf24;"></i> <span>1 SAR = 15.2400 PHP</span>
+                <i class="fas fa-bolt" style="color:#fbbf24;"></i> <span>جاري جلب سعر الصرف...</span>
               </div>
             </div>
 
             <div class="result-meta-grid">
               <div class="meta-box-inner">
-                <div class="meta-box-title">مصدر السعر</div>
-                <div class="meta-box-val" id="phpTimeVal">سعر السوق الفوري المباشر</div>
+                <div class="meta-box-title">مصدر السعر وحالته</div>
+                <div class="meta-box-val" id="phpTimeVal">السعر المرجعي الرسمي</div>
               </div>
               <div class="meta-box-inner">
                 <div class="meta-box-title">شبكة الإيداع</div>
@@ -864,7 +865,7 @@
             <span><i class="fas fa-wallet" style="color:#16a34a;"></i> مقارنة صافي المستلم لدى تطبيقات التحويل إلى الفلبين</span>
           </div>
           <div class="provider-table-wrap" style="overflow-x:auto;">
-            <table class="provider-table data-table" style="margin:0;">
+            <table class="provider-table data-table data-table-cards" style="margin:0;">
               <thead>
                 <tr>
                   <th>المزود</th>
@@ -912,6 +913,59 @@
         يعتمد مئات الآلاف من المقيمين الفلبينيين في المملكة العربية السعودية على خدمات التحويل المالي الرقمية والمصرفية المعتمدة من البنك المركزي السعودي (ساما) لإرسال الدعم المالي لأسرهم في الفلبين بأعلى درجات الأمان والسرعة.
       </p>
 
+      <h3>مثال عملي توضيحي: تحويل 2,000 ريال سعودي إلى الفلبين</h3>
+      <p>
+        يوضح الجدول التالي صافي المبالغ المستلمة بالبيزو الفلبيني عند تحويل 2,000 ريال عبر مختلف القنوات (سعر مرجعي توضيحي: 1 ريال = 15.65 بيزو):
+      </p>
+      <table class="data-table data-table-cards">
+        <thead>
+          <tr>
+            <th>المزود / القناة</th>
+            <th>رسوم الخدمة + 15% ضريبة</th>
+            <th>سعر التحويل للمزود</th>
+            <th>صافي المبلغ المستلم</th>
+            <th>الفارق عن الفرع التقليدي</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-label="المزود / القناة"><strong>تطبيق برق (Barq)</strong></td>
+            <td data-label="رسوم الخدمة + 15% ضريبة">0.00 ر.س (عرض مجاني)</td>
+            <td data-label="سعر التحويل للمزود">₱ 15.56 / ر.س</td>
+            <td data-label="صافي المبلغ المستلم"><strong>₱ 31,112.20</strong></td>
+            <td data-label="الفارق عن الفرع التقليدي"><span style="color:#16a34a; font-weight:700;">+ ₱ 940.84 إضافية</span></td>
+          </tr>
+          <tr>
+            <td data-label="المزود / القناة"><strong>محفظة يورباي (urpay)</strong></td>
+            <td data-label="رسوم الخدمة + 15% ضريبة">11.50 ر.س (10 + 1.50 ضريبة)</td>
+            <td data-label="سعر التحويل للمزود">₱ 15.54 / ر.س</td>
+            <td data-label="صافي المبلغ المستلم">₱ 30,902.18</td>
+            <td data-label="الفارق عن الفرع التقليدي"><span style="color:#16a34a; font-weight:700;">+ ₱ 730.82 إضافية</span></td>
+          </tr>
+          <tr>
+            <td data-label="المزود / القناة"><strong>بنك إس تي سي (STC Bank)</strong></td>
+            <td data-label="رسوم الخدمة + 15% ضريبة">17.25 ر.س (15 + 2.25 ضريبة)</td>
+            <td data-label="سعر التحويل للمزود">₱ 15.53 / ر.س</td>
+            <td data-label="صافي المبلغ المستلم">₱ 30,797.06</td>
+            <td data-label="الفارق عن الفرع التقليدي"><span style="color:#16a34a; font-weight:700;">+ ₱ 625.70 إضافية</span></td>
+          </tr>
+          <tr>
+            <td data-label="المزود / القناة"><strong>تحويل الراجحي</strong></td>
+            <td data-label="رسوم الخدمة + 15% ضريبة">17.25 ر.س (15 + 2.25 ضريبة)</td>
+            <td data-label="سعر التحويل للمزود">₱ 15.42 / ر.س</td>
+            <td data-label="صافي المبلغ المستلم">₱ 30,564.59</td>
+            <td data-label="الفارق عن الفرع التقليدي"><span style="color:#16a34a; font-weight:700;">+ ₱ 393.23 إضافية</span></td>
+          </tr>
+          <tr>
+            <td data-label="المزود / القناة"><strong>فرع البنك التقليدي</strong></td>
+            <td data-label="رسوم الخدمة + 15% ضريبة">28.75 ر.س (25 + 3.75 ضريبة)</td>
+            <td data-label="سعر التحويل للمزود">₱ 15.31 / ر.س</td>
+            <td data-label="صافي المبلغ المستلم">₱ 30,171.36</td>
+            <td data-label="الفارق عن الفرع التقليدي">سعر الأساس المقارن</td>
+          </tr>
+        </tbody>
+      </table>
+
       <h2>الأسئلة الشائعة حول تحويل الريال إلى البيزو</h2>
       <div class="faq-item">
         <div class="faq-question" onclick="toggleFaq(this)">
@@ -944,40 +998,35 @@
     </div>
   </main>
 
-  <script>
-    const FX_API_URL = 'https://open.er-api.com/v6/latest/USD';
-    let liveSarPhpRate = null;
+  <script src="/remittance-providers.js?v=20260927"></script>
+  <script src="/live-ticker.js" defer></script>
+  <script src="/theme.js" defer></script>
+  <script src="/share.js" defer></script>
 
-    async function initPhpCalc() {
+  <script>
+    function initPhpCalc() {
       const badge = document.getElementById('phpStatusBadge');
       const text = document.getElementById('phpStatusText');
       const timeVal = document.getElementById('phpTimeVal');
 
-      try {
-        const res = await fetch(FX_API_URL + '?ts=' + Date.now(), { cache: 'no-store' });
-        if (!res.ok) throw new Error('API down');
-        const data = await res.json();
-        if (data && data.rates && data.rates.SAR && data.rates.PHP) {
-          liveSarPhpRate = data.rates.PHP / data.rates.SAR;
+      if (!window.DailyCalcRemittance) return;
+
+      window.DailyCalcRemittance.fetchRates(function(rates, info) {
+        if (info && info.isLive) {
           badge.style.background = '#f0fdf4';
           badge.style.color = '#166534';
           badge.style.border = '1px solid #bbf7d0';
-          text.textContent = 'البيانات المباشرة نشطة';
-          const t = new Date().toLocaleTimeString('ar-SA', { hour: '2-digit', minute: '2-digit' });
-          timeVal.textContent = 'سعر السوق المباشر @ ' + t;
-          recalcPhp();
-          return;
+          text.textContent = info.statusAr || 'سعر الصرف المرجعي نشط';
+          if (timeVal) timeVal.textContent = info.timeFormattedAr || 'سعر الصرف المرجعي نشط';
+        } else {
+          badge.style.background = '#fef2f2';
+          badge.style.color = '#991b1b';
+          badge.style.border = '1px solid #fecaca';
+          text.textContent = 'سعر الإغلاق المرجعي';
+          if (timeVal) timeVal.textContent = 'سعر الإغلاق المرجعي المعتمد';
         }
-        throw new Error('Incomplete data');
-      } catch (e) {
-        liveSarPhpRate = 15.24;
-        badge.style.background = '#fef2f2';
-        badge.style.color = '#991b1b';
-        badge.style.border = '1px solid #fecaca';
-        text.textContent = 'السعر المباشر غير متاح مؤقتاً';
-        timeVal.textContent = 'السعر المباشر غير متاح مؤقتاً';
         recalcPhp();
-      }
+      });
     }
 
     function setPhpAmt(val) {
@@ -992,23 +1041,28 @@
 
     function recalcPhp() {
       const amt = parseFloat(document.getElementById('phpAmount').value) || 0;
-      const rate = liveSarPhpRate || 15.24;
-      const totalPayout = amt * rate;
+      if (!window.DailyCalcRemittance) return;
+      const rate = window.DailyCalcRemittance.getRateFromSar('PHP') || 15.65;
 
-      document.getElementById('phpPayout').textContent = '₱ ' + totalPayout.toLocaleString('en-PH', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-      document.getElementById('phpRateTag').innerHTML = `<i class="fas fa-bolt" style="color:#fbbf24;"></i> <span>1 SAR = ${rate.toFixed(4)} PHP</span>`;
+      const topProvider = window.DailyCalcRemittance.providers[0]; // Barq
+      const calcTop = window.DailyCalcRemittance.calculateProviderPayout(topProvider, amt, 'PHP', rate);
 
-            if (window.DailyCalcRemittance && window.DailyCalcRemittance.renderTable) {
-        window.DailyCalcRemittance.renderTable({
-          tbody: 'phpTableBody',
-          amount: amt,
-          currency: 'PHP',
-          baseRate: rate,
-          symbol: '\u20B1',
-          isArabic: true,
-          incentiveMultiplier: 1
-        });
+      document.getElementById('phpPayout').textContent = '₱ ' + calcTop.formattedPayout;
+      document.getElementById('phpRateTag').innerHTML = '<i class="fas fa-bolt" style="color:#fbbf24;"></i> <span>1 ر.س = ' + rate.toFixed(4) + ' بيزو</span>';
+      const benchEl = document.getElementById('phpWholesaleBench');
+      if (benchEl) {
+        benchEl.textContent = 'السعر المرجعي لسوق الجملة: ₱ ' + window.DailyCalcRemittance.formatPayout(amt * rate, 'PHP');
       }
+
+      window.DailyCalcRemittance.renderTable({
+        tbody: 'phpTableBody',
+        amount: amt,
+        currency: 'PHP',
+        baseRate: rate,
+        symbol: '\u20B1',
+        isArabic: true,
+        incentiveMultiplier: 1.0
+      });
     }
 
     document.addEventListener('DOMContentLoaded', () => {
@@ -1082,10 +1136,6 @@
       }
     }
   </script>
-  <script src="/remittance-providers.js?v=20260926c"></script>
-  <script src="/live-ticker.js" defer></script>
-  <script src="/theme.js" defer></script>
-  <script src="/share.js" defer></script>
   <script src="/mobile-nav.js" defer></script>
 </body>
 </html>

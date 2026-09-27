@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -857,10 +857,10 @@
             <div class="input-addon-badge"><i class="fas fa-building-columns" style="color:#0284c7;"></i> METHOD</div>
             <select id="feeChannel" class="calc-input select-currency-addon" onchange="recalcFee()">
               <option value="wallet_zero" selected>Promotional Digital Wallet (e.g. Barq - 0 SAR Fee)</option>
-              <option value="wallet_standard">Standard Digital Wallet (e.g. urpay - 10 SAR Fee)</option>
-              <option value="bank_app">Commercial Bank App / STC Pay (15 SAR Fee)</option>
-              <option value="branch_counter">Physical Exchange Counter (Tahweel / Enjaz - 17.25 SAR Fee)</option>
-              <option value="express_cash">Express Cash Pickup (Western Union / MoneyGram - 25 SAR Fee)</option>
+              <option value="wallet_standard">Standard Digital Wallet (e.g. urpay - 10 SAR Fee + 15% VAT)</option>
+              <option value="bank_app">Commercial Bank App / STC Pay / Enjaz (15 SAR Fee + 15% VAT)</option>
+              <option value="branch_counter">Physical Exchange Counter (25 SAR Fee + 15% VAT)</option>
+              <option value="express_cash">Express Cash Counter (Western Union / MoneyGram - 25 SAR Fee + 15% VAT)</option>
             </select>
           </div>
         </div>
@@ -907,7 +907,7 @@
             <span><i class="fas fa-list-check" style="color:#16a34a;"></i> Detailed Cost Component Breakdown</span>
           </div>
           <div class="provider-table-wrap">
-            <table class="provider-table">
+            <table class="provider-table data-table data-table-cards">
               <thead>
                 <tr>
                   <th>Cost Component</th>
@@ -1025,23 +1025,23 @@
       const ch = document.getElementById('feeChannel').value;
 
       let baseFee = 0;
-      let spreadPct = 0.012; // 1.2%
+      let spreadPct = 0.006; // 0.6%
 
       if (ch === 'wallet_zero') {
         baseFee = 0.0;
-        spreadPct = 0.012; // 1.2%
+        spreadPct = 0.006; // 0.6%
       } else if (ch === 'wallet_standard') {
         baseFee = 10.0;
-        spreadPct = 0.013; // 1.3%
+        spreadPct = 0.007; // 0.7%
       } else if (ch === 'bank_app') {
         baseFee = 15.0;
-        spreadPct = 0.014; // 1.4%
+        spreadPct = 0.015; // 1.5%
       } else if (ch === 'branch_counter') {
-        baseFee = 17.25;
-        spreadPct = 0.019; // 1.9%
+        baseFee = 25.0;
+        spreadPct = 0.020; // 2.0%
       } else if (ch === 'express_cash') {
         baseFee = 25.0;
-        spreadPct = 0.022; // 2.2%
+        spreadPct = 0.025; // 2.5%
       }
 
       const vat = baseFee * 0.15;
@@ -1058,28 +1058,28 @@
       const tbody = document.getElementById('feeBreakdownBody');
       tbody.innerHTML = `
         <tr>
-          <td><strong>Base Administrative Fee</strong></td>
-          <td>Flat Channel Fee</td>
-          <td>${baseFee.toFixed(2)} SAR</td>
-          <td>Charged by app / financial provider</td>
+          <td data-label="Cost Component"><strong>Base Administrative Fee</strong></td>
+          <td data-label="Rate / Basis">Flat Channel Fee</td>
+          <td data-label="Amount (SAR)">${baseFee.toFixed(2)} SAR</td>
+          <td data-label="Description">Charged by app / financial provider</td>
         </tr>
         <tr>
-          <td><strong>15% Value Added Tax (VAT)</strong></td>
-          <td>15% of Base Fee</td>
-          <td>${vat.toFixed(2)} SAR</td>
-          <td>Mandatory ZATCA tax on service fee only</td>
+          <td data-label="Cost Component"><strong>15% Value Added Tax (VAT)</strong></td>
+          <td data-label="Rate / Basis">15% of Base Fee</td>
+          <td data-label="Amount (SAR)">${vat.toFixed(2)} SAR</td>
+          <td data-label="Description">Mandatory ZATCA tax on service fee only</td>
         </tr>
         <tr>
-          <td><strong>Estimated FX Spread Margin</strong></td>
-          <td>~${(spreadPct * 100).toFixed(1)}% of Principal</td>
-          <td>${fxMargin.toFixed(2)} SAR</td>
-          <td>Difference between interbank spot &amp; retail rate</td>
+          <td data-label="Cost Component"><strong>Estimated FX Spread Margin</strong></td>
+          <td data-label="Rate / Basis">~${(spreadPct * 100).toFixed(1)}% of Principal</td>
+          <td data-label="Amount (SAR)">${fxMargin.toFixed(2)} SAR</td>
+          <td data-label="Description">Difference between wholesale interbank &amp; retail rate</td>
         </tr>
         <tr style="background:#f8fafc; font-weight:700;">
-          <td style="color:#16a34a;"><strong>TOTAL TRUE COST</strong></td>
-          <td style="color:#16a34a;">${effPct.toFixed(2)}% Effective</td>
-          <td style="color:#16a34a; font-size:15px;"><strong>${totalCost.toFixed(2)} SAR</strong></td>
-          <td style="color:#16a34a;">Total economic deduction from your transfer</td>
+          <td data-label="Cost Component" style="color:#16a34a;"><strong>TOTAL TRUE COST</strong></td>
+          <td data-label="Rate / Basis" style="color:#16a34a;">${effPct.toFixed(2)}% Effective</td>
+          <td data-label="Amount (SAR)" style="color:#16a34a; font-size:15px;"><strong>${totalCost.toFixed(2)} SAR</strong></td>
+          <td data-label="Description" style="color:#16a34a;">Total economic deduction from your transfer</td>
         </tr>
       `;
     }

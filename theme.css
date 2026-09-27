@@ -1,4 +1,4 @@
-﻿/**
+/**
  * DailyCalcHubs — Global Night Mode Design System
  * Theme Tokens, Component Overrides & Dark Mode Styles
  * Pilot Phase: Prayer Times, EOSB, Split Bill
@@ -2805,11 +2805,17 @@ html[lang="ar"] .footer-legal-links {
    ========================================================================== */
 
 /* D. Prevent .tool-layout min-content overflow strictly within Remittance layouts */
+.tool-layout:has(.provider-table-card) > div,
+.tool-layout:has(.provider-table-card) > section,
+.tool-layout > div,
+.tool-layout > section,
+.calc-main-layout > div,
 html[lang="ar"] .tool-layout:has(.provider-table-card) > div,
 html[lang="ar"] .tool-layout:has(.provider-table-card) > section {
   min-width: 0 !important;
 }
 
+.provider-table-card,
 html[lang="ar"] .provider-table-card {
   box-sizing: border-box !important;
   max-width: 100% !important;
@@ -4585,9 +4591,9 @@ html[data-theme="dark"] .provider-cta-btn:hover {
 }
 
 /* --------------------------------------------------------------------------
-   Mobile Provider Cards & Desktop Table System
+   Mobile & Tablet Provider Cards & Desktop Table System
    -------------------------------------------------------------------------- */
-@media (max-width: 768px) {
+@media (max-width: 860px) {
   /* Prevent horizontal scroll on mobile containers */
   .provider-table-wrap,
   .provider-table-card .provider-table-wrap,
@@ -4600,6 +4606,8 @@ html[data-theme="dark"] .provider-cta-btn:hover {
   /* Table transforms into a clean stacked vertical cards container */
   table.provider-table,
   table.comparison-table,
+  table.data-table-cards,
+  table.worked-example-table,
   .provider-table-card table {
     display: block !important;
     width: 100% !important;
@@ -4615,12 +4623,16 @@ html[data-theme="dark"] .provider-cta-btn:hover {
 
   table.provider-table thead,
   table.comparison-table thead,
+  table.data-table-cards thead,
+  table.worked-example-table thead,
   .provider-table-card table thead {
     display: none !important;
   }
 
   table.provider-table tbody,
   table.comparison-table tbody,
+  table.data-table-cards tbody,
+  table.worked-example-table tbody,
   .provider-table-card table tbody {
     display: flex !important;
     flex-direction: column !important;
@@ -4632,6 +4644,8 @@ html[data-theme="dark"] .provider-cta-btn:hover {
   /* Each row is a compact vertical card */
   table.provider-table tr,
   table.comparison-table tr,
+  table.data-table-cards tr,
+  table.worked-example-table tr,
   .provider-table-card table tr {
     display: flex !important;
     flex-direction: column !important;
@@ -4647,6 +4661,8 @@ html[data-theme="dark"] .provider-cta-btn:hover {
 
   table.provider-table tr:hover,
   table.comparison-table tr:hover,
+  table.data-table-cards tr:hover,
+  table.worked-example-table tr:hover,
   .provider-table-card table tr:hover {
     background: #ffffff !important;
   }
@@ -4654,6 +4670,8 @@ html[data-theme="dark"] .provider-cta-btn:hover {
   /* Base row cell styles */
   table.provider-table td,
   table.comparison-table td,
+  table.data-table-cards td,
+  table.worked-example-table td,
   .provider-table-card table td {
     display: flex !important;
     align-items: center !important;
@@ -4669,6 +4687,8 @@ html[data-theme="dark"] .provider-cta-btn:hover {
   /* Data Labels on the left (or right in RTL) */
   table.provider-table td::before,
   table.comparison-table td::before,
+  table.data-table-cards td::before,
+  table.worked-example-table td::before,
   .provider-table-card table td::before {
     content: attr(data-label);
     font-size: 13px !important;
@@ -4679,7 +4699,11 @@ html[data-theme="dark"] .provider-cta-btn:hover {
   }
 
   html[dir="rtl"] table.provider-table td::before,
-  html[lang="ar"] table.provider-table td::before {
+  html[lang="ar"] table.provider-table td::before,
+  html[dir="rtl"] table.data-table-cards td::before,
+  html[lang="ar"] table.data-table-cards td::before,
+  html[dir="rtl"] table.worked-example-table td::before,
+  html[lang="ar"] table.worked-example-table td::before {
     margin-right: 0 !important;
     margin-left: 12px !important;
   }

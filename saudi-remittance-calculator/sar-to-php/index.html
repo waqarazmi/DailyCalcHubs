@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -860,18 +860,19 @@
         <div class="result-summary-box">
           <div class="result-row-top">
             <div>
-              <div class="result-label">Net In-Hand Pesos Received</div>
-              <div class="result-big-val" id="phpPayout">&#8369; 15,650.00</div>
+              <div class="result-label">Best Estimated In-Hand Payout (Barq)</div>
+              <div class="result-big-val" id="phpPayout">&#8369; --.--</div>
+              <div id="phpWholesaleBench" style="font-size:11.5px; color:#94a3b8; margin-top:4px;">Wholesale Benchmark: --</div>
             </div>
             <div class="result-rate-tag" id="phpRateTag">
               <i class="fas fa-bolt" style="color:#fbbf24;"></i>
-              <span>1 SAR = 15.6500 PHP</span>
+              <span>Fetching exchange rate...</span>
             </div>
           </div>
           <div class="result-meta-grid">
             <div class="meta-box-inner">
-              <div class="meta-box-title">RATE SOURCE</div>
-              <div class="meta-box-val" id="phpTimeVal">Live Interbank Feed</div>
+              <div class="meta-box-title">RATE SOURCE &amp; STATUS</div>
+              <div class="meta-box-val" id="phpTimeVal">Official Market Benchmark</div>
             </div>
             <div class="meta-box-inner">
               <div class="meta-box-title">PAYOUT CHANNELS</div>
@@ -898,7 +899,7 @@
             <span><i class="fas fa-wallet" style="color:#16a34a;"></i> Saudi-to-Philippines Comparison</span>
           </div>
           <div class="provider-table-wrap">
-            <table class="provider-table">
+            <table class="provider-table data-table data-table-cards">
               <thead>
                 <tr>
                   <th>Provider</th>
@@ -950,13 +951,56 @@
 
       <h3>Worked Example: Sending 2,000 SAR to the Philippines</h3>
       <p>
-        Assuming a live interbank rate of 1 SAR = 15.65 PHP:
+        The table below demonstrates the actual net Philippine Pesos received for a 2,000 SAR transfer across different channels (Illustrative Benchmark: 1 SAR = 15.65 PHP):
       </p>
-      <ul>
-        <li><strong>Barq (0 fee, retail rate ~15.48 PHP):</strong> 2,000 &times; 15.48 = <strong>&#8369; 30,960.00 PHP</strong></li>
-        <li><strong>urpay (11.50 SAR fee, retail rate ~15.42 PHP):</strong> (2,000 - 11.50) &times; 15.42 = <strong>&#8369; 30,662.00 PHP</strong></li>
-        <li><strong>STC Pay (17.25 SAR fee, retail rate ~15.44 PHP):</strong> (2,000 - 17.25) &times; 15.44 = <strong>&#8369; 30,613.00 PHP</strong></li>
-      </ul>
+      <table class="data-table data-table-cards">
+        <thead>
+          <tr>
+            <th>Provider / Channel</th>
+            <th>Service Fee + 15% VAT</th>
+            <th>Retail Exchange Rate</th>
+            <th>Net In-Hand Payout</th>
+            <th>Net Difference</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-label="Provider / Channel"><strong>Barq (Digital App)</strong></td>
+            <td data-label="Service Fee + 15% VAT">0.00 SAR (Free Promo)</td>
+            <td data-label="Retail Exchange Rate">&#8369; 15.56 / SAR</td>
+            <td data-label="Net In-Hand Payout"><strong>&#8369; 31,112.20</strong></td>
+            <td data-label="Net Difference"><span style="color:#16a34a; font-weight:700;">+ &#8369; 940.84 Extra</span></td>
+          </tr>
+          <tr>
+            <td data-label="Provider / Channel"><strong>urpay (Digital Wallet)</strong></td>
+            <td data-label="Service Fee + 15% VAT">11.50 SAR (10 + 1.50 VAT)</td>
+            <td data-label="Retail Exchange Rate">&#8369; 15.54 / SAR</td>
+            <td data-label="Net In-Hand Payout">&#8369; 30,902.18</td>
+            <td data-label="Net Difference"><span style="color:#16a34a; font-weight:700;">+ &#8369; 730.82 Extra</span></td>
+          </tr>
+          <tr>
+            <td data-label="Provider / Channel"><strong>STC Bank (STC Pay)</strong></td>
+            <td data-label="Service Fee + 15% VAT">17.25 SAR (15 + 2.25 VAT)</td>
+            <td data-label="Retail Exchange Rate">&#8369; 15.53 / SAR</td>
+            <td data-label="Net In-Hand Payout">&#8369; 30,797.06</td>
+            <td data-label="Net Difference"><span style="color:#16a34a; font-weight:700;">+ &#8369; 625.70 Extra</span></td>
+          </tr>
+          <tr>
+            <td data-label="Provider / Channel"><strong>Tahweel Al Rajhi</strong></td>
+            <td data-label="Service Fee + 15% VAT">17.25 SAR (15 + 2.25 VAT)</td>
+            <td data-label="Retail Exchange Rate">&#8369; 15.42 / SAR</td>
+            <td data-label="Net In-Hand Payout">&#8369; 30,564.59</td>
+            <td data-label="Net Difference"><span style="color:#16a34a; font-weight:700;">+ &#8369; 393.23 Extra</span></td>
+          </tr>
+          <tr>
+            <td data-label="Provider / Channel"><strong>Traditional Bank Branch Counter</strong></td>
+            <td data-label="Service Fee + 15% VAT">28.75 SAR (25 + 3.75 VAT)</td>
+            <td data-label="Retail Exchange Rate">&#8369; 15.31 / SAR</td>
+            <td data-label="Net In-Hand Payout">&#8369; 30,171.36</td>
+            <td data-label="Net Difference">Baseline</td>
+          </tr>
+        </tbody>
+      </table>
 
       <h2>Frequently Asked Questions</h2>
       <div class="faq-item">
@@ -1009,40 +1053,35 @@
 
   </div>
 
-  <script>
-    const FX_API_URL = 'https://open.er-api.com/v6/latest/USD';
-    let liveSarPhpRate = null;
+  <script src="/remittance-providers.js?v=20260927"></script>
+  <script src="/live-ticker.js" defer></script>
+  <script src="/theme.js" defer></script>
+  <script src="/share.js" defer></script>
 
-    async function initPhpCalc() {
+  <script>
+    function initPhpCalc() {
       const badge = document.getElementById('phpStatusBadge');
       const text = document.getElementById('phpStatusText');
       const timeVal = document.getElementById('phpTimeVal');
 
-      try {
-        const res = await fetch(FX_API_URL + '?ts=' + Date.now(), { cache: 'no-store' });
-        if (!res.ok) throw new Error('API down');
-        const data = await res.json();
-        if (data && data.rates && data.rates.SAR && data.rates.PHP) {
-          liveSarPhpRate = data.rates.PHP / data.rates.SAR;
+      if (!window.DailyCalcRemittance) return;
+
+      window.DailyCalcRemittance.fetchRates(function(rates, info) {
+        if (info && info.isLive) {
           badge.style.background = '#f0fdf4';
           badge.style.color = '#166534';
           badge.style.border = '1px solid #bbf7d0';
-          text.textContent = 'Live Feed Active';
-          const t = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-          timeVal.textContent = 'Live Interbank @ ' + t;
-          recalcPhp();
-          return;
+          text.textContent = info.statusEn || 'Benchmark Active';
+          if (timeVal) timeVal.textContent = info.timeFormattedEn || 'Daily Spot Benchmark Active';
+        } else {
+          badge.style.background = '#fef2f2';
+          badge.style.color = '#991b1b';
+          badge.style.border = '1px solid #fecaca';
+          text.textContent = 'Reference Benchmark';
+          if (timeVal) timeVal.textContent = 'Closing Reference Benchmark';
         }
-        throw new Error('Incomplete data');
-      } catch (e) {
-        liveSarPhpRate = 15.65;
-        badge.style.background = '#fef2f2';
-        badge.style.color = '#991b1b';
-        badge.style.border = '1px solid #fecaca';
-        text.textContent = 'Live exchange rate temporarily unavailable';
-        timeVal.textContent = 'Live exchange rate temporarily unavailable';
         recalcPhp();
-      }
+      });
     }
 
     function setPhpAmt(val) {
@@ -1057,26 +1096,28 @@
 
     function recalcPhp() {
       const amt = parseFloat(document.getElementById('phpAmount').value) || 0;
-      const rate = liveSarPhpRate || 15.65;
+      if (!window.DailyCalcRemittance) return;
+      const rate = window.DailyCalcRemittance.getRateFromSar('PHP') || 15.65;
 
-      const payoutEl = document.getElementById('phpPayout');
-      const tagEl = document.getElementById('phpRateTag');
+      const topProvider = window.DailyCalcRemittance.providers[0]; // Barq
+      const calcTop = window.DailyCalcRemittance.calculateProviderPayout(topProvider, amt, 'PHP', rate);
 
-      const total = amt * rate;
-      payoutEl.textContent = '\u20B1 ' + total.toLocaleString('en-PH', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-      tagEl.innerHTML = `<i class="fas fa-bolt" style="color:#fbbf24;"></i> <span>1 SAR = ${rate.toFixed(4)} PHP</span>`;
-
-            if (window.DailyCalcRemittance && window.DailyCalcRemittance.renderTable) {
-        window.DailyCalcRemittance.renderTable({
-          tbody: 'phpTableBody',
-          amount: amt,
-          currency: 'PHP',
-          baseRate: rate,
-          symbol: '\u20B1',
-          isArabic: false,
-          incentiveMultiplier: 1
-        });
+      document.getElementById('phpPayout').textContent = '\u20B1 ' + calcTop.formattedPayout;
+      document.getElementById('phpRateTag').innerHTML = `<i class="fas fa-bolt" style="color:#fbbf24;"></i> <span>1 SAR = ${rate.toFixed(4)} PHP</span>`;
+      const benchEl = document.getElementById('phpWholesaleBench');
+      if (benchEl) {
+        benchEl.textContent = 'Wholesale Benchmark: \u20B1 ' + window.DailyCalcRemittance.formatPayout(amt * rate, 'PHP');
       }
+
+      window.DailyCalcRemittance.renderTable({
+        tbody: 'phpTableBody',
+        amount: amt,
+        currency: 'PHP',
+        baseRate: rate,
+        symbol: '\u20B1',
+        isArabic: false,
+        incentiveMultiplier: 1.0
+      });
     }
 
     document.addEventListener('DOMContentLoaded', () => {
@@ -1171,9 +1212,5 @@
       }
     }
   </script>
-  <script src="/remittance-providers.js?v=20260926c"></script>
-  <script src="/live-ticker.js" defer></script>
-  <script src="/theme.js" defer></script>
-  <script src="/share.js" defer></script>
 </body>
 </html>

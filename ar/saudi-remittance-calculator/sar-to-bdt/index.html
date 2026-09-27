@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
@@ -577,10 +577,10 @@
           </div>
         </div>
         <div class="mobile-header-actions">
-          <button type="button" class="mobile-theme-toggle dch-theme-toggle" id="mobileDrawerThemeToggle" aria-label="ØªØ¨Ø¯ÙŠÙ„ Ø§Ù„Ù…Ø¸Ù‡Ø±" title="ØªØ¨Ø¯ÙŠÙ„ Ø§Ù„Ù…Ø¸Ù‡Ø±">
+          <button type="button" class="mobile-theme-toggle dch-theme-toggle" id="mobileDrawerThemeToggle" aria-label="تبديل المظهر" title="تبديل المظهر">
             <i class="fas fa-moon"></i>
           </button>
-          <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Ø¥ØºÙ„Ø§Ù‚ Ø§Ù„Ù‚Ø§Ø¦Ù…Ø©">
+          <button type="button" class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="إغلاق القائمة">
             <i class="fas fa-xmark"></i>
           </button>
         </div>
@@ -832,22 +832,23 @@
           <div class="result-summary-box">
             <div class="result-row-top">
               <div>
-                <div class="result-label">إجمالي المبلغ المستلم بالتاكا (شاملاً الحافز)</div>
-                <div class="result-big-val" id="bdtPayout">৳ 33,128.00</div>
+                <div class="result-label">أفضل تقدير لصافي المستلم (برق + الحافز 2.5%)</div>
+                <div class="result-big-val" id="bdtPayout">৳ --.--</div>
+                <div id="bdtWholesaleBench" style="font-size:11.5px; color:#94a3b8; margin-top:4px;">السعر المرجعي لسوق الجملة: --</div>
               </div>
               <div class="result-rate-tag" id="bdtRateTag">
-                <i class="fas fa-bolt" style="color:#fbbf24;"></i> <span>1 SAR = 32.3200 BDT</span>
+                <i class="fas fa-bolt" style="color:#fbbf24;"></i> <span>جاري جلب سعر الصرف...</span>
               </div>
             </div>
 
             <div class="result-meta-grid">
               <div class="meta-box-inner">
-                <div class="meta-box-title">المبلغ الأساسي بالتاكا</div>
-                <div class="meta-box-val" id="bdtBaseVal">৳ 32,320.00</div>
+                <div class="meta-box-title">مصدر السعر وحالته</div>
+                <div class="meta-box-val" id="bdtTimeVal">السعر المرجعي الرسمي</div>
               </div>
               <div class="meta-box-inner">
                 <div class="meta-box-title">قيمة الحافز الحكومي (+2.5%)</div>
-                <div class="meta-box-val" id="bdtIncentiveVal" style="color:#4ade80;">+ ৳ 808.00</div>
+                <div class="meta-box-val" id="bdtIncentiveVal" style="color:#4ade80;">+ ৳ 0.00</div>
               </div>
             </div>
 
@@ -869,7 +870,7 @@
             <span><i class="fas fa-wallet" style="color:#16a34a;"></i> مقارنة صافي المستلم لدى تطبيقات التحويل إلى بنغلاديش</span>
           </div>
           <div class="provider-table-wrap" style="overflow-x:auto;">
-            <table class="provider-table data-table" style="margin:0;">
+            <table class="provider-table data-table data-table-cards" style="margin:0;">
               <thead>
                 <tr>
                   <th>المزود</th>
@@ -908,9 +909,44 @@
     </div>
 
     <article class="content-article">
-      <h2>دليل تحويل الأموال إلى بنغلاديش 2026</h2>
+      <h2>فهم الحافز الحكومي البنغلاديشي للحوالات بنسبة 2.5%</h2>
       <p>
-        تُعد الحوالات المالية من المملكة العربية السعودية إلى بنغلاديش شرياناً حيوياً للاقتصاد الأسري والوطني. ويوفر الحافز الحكومي البالغ 2.5% ميزة مالية مباشرة تزيد من القيمة الصافية المستلمة بالتاكا البنغلاديشية عند استخدام التطبيقات المرخصة.
+        تقدم حكومة بنغلاديش والبنك المركزي البنغلاديشي حافزاً نقدياً رسمياً بنسبة <strong>2.5% (برانودانا - Pranodona)</strong> على كافة التحويلات العمالية الواردة عبر القنوات المصرفية والمالية الرسمية وخدمات المحافظ الرقمية مثل bKash وNagad.
+      </p>
+
+      <h3>مثال عملي توضيحي: تحويل 1,500 ريال سعودي</h3>
+      <p>
+        بافتراض قيام مقيم في المملكة بتحويل مبلغ 1,500 ريال إلى حساب بنكي أو محفظة bKash في بنغلاديش وفق التسعيرات المعيارية (سعر مرجعي توضيحي: 1 ريال = 32.00 تاكا):
+      </p>
+      <table class="data-table data-table-cards">
+        <thead>
+          <tr>
+            <th>المزود / القناة</th>
+            <th>رسوم الخدمة + 15% ضريبة</th>
+            <th>المبلغ الأساسي بالتاكا</th>
+            <th>حافز الحكومة 2.5%</th>
+            <th>إجمالي المستلم للمستفيد</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-label="المزود / القناة"><strong>تطبيق برق (Barq - عرض بدون رسوم)</strong></td>
+            <td data-label="رسوم الخدمة + 15% ضريبة">0.00 ر.س</td>
+            <td data-label="المبلغ الأساسي بالتاكا">৳ 48,000.00</td>
+            <td data-label="حافز الحكومة 2.5%"><span style="color:#16a34a; font-weight:700;">+ ৳ 1,200.00</span></td>
+            <td data-label="إجمالي المستلم للمستفيد"><strong>৳ 49,200.00</strong></td>
+          </tr>
+          <tr>
+            <td data-label="المزود / القناة"><strong>بنك إس تي سي (STC Bank - الرسوم المعتمدة)</strong></td>
+            <td data-label="رسوم الخدمة + 15% ضريبة">17.25 ر.س (15 + 2.25 ضريبة)</td>
+            <td data-label="المبلغ الأساسي بالتاكا">৳ 47,448.00</td>
+            <td data-label="حافز الحكومة 2.5%"><span style="color:#16a34a; font-weight:700;">+ ৳ 1,186.20</span></td>
+            <td data-label="إجمالي المستلم للمستفيد"><strong>৳ 48,634.20</strong></td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        يُلاحظ أن رسوم التحويل تُخصم أولاً من المبلغ المرسل بالريال قبل التحويل للعملة الأجنبية، ثم تُحسب نسبة الـ 2.5% الحكومية على صافي التاكا المحولة وتودع تلقائياً للمستفيد دون الحاجة لملء أي نماذج مطالبة.
       </p>
 
       <h2>الأسئلة الشائعة</h2>
@@ -921,6 +957,15 @@
         </div>
         <div class="faq-answer" style="display:none;">
           يُضاف الحافز بنسبة 2.5% بشكل آلي ومباشر من قبل البنك المركزي البنغلاديشي إلى الحساب البنكي أو المحفظة الإلكترونية (مثل bKash) فور قيد الحوالة، دون الحاجة لتقديم أي طلب منفصل.
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>هل يمكن إرسال الأموال مباشرة إلى محفظة bKash من السعودية؟</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer" style="display:none;">
+          نعم، توفر المحافظ الرقمية السعودية الرائدة مثل برق (Barq) وSTC Pay ربطاً مباشراً مع bKash يتيح وصول الأموال في دقائق معدودة.
         </div>
       </div>
     </article>
@@ -937,36 +982,35 @@
     </div>
   </main>
 
-  <script>
-    const FX_API_URL = 'https://open.er-api.com/v6/latest/USD';
-    let liveSarBdtRate = null;
+  <script src="/remittance-providers.js?v=20260927"></script>
+  <script src="/live-ticker.js" defer></script>
+  <script src="/theme.js" defer></script>
+  <script src="/share.js" defer></script>
 
-    async function initBdtCalc() {
+  <script>
+    function initBdtCalc() {
       const badge = document.getElementById('bdtStatusBadge');
       const text = document.getElementById('bdtStatusText');
+      const timeVal = document.getElementById('bdtTimeVal');
 
-      try {
-        const res = await fetch(FX_API_URL + '?ts=' + Date.now(), { cache: 'no-store' });
-        if (!res.ok) throw new Error('API down');
-        const data = await res.json();
-        if (data && data.rates && data.rates.SAR && data.rates.BDT) {
-          liveSarBdtRate = data.rates.BDT / data.rates.SAR;
+      if (!window.DailyCalcRemittance) return;
+
+      window.DailyCalcRemittance.fetchRates(function(rates, info) {
+        if (info && info.isLive) {
           badge.style.background = '#f0fdf4';
           badge.style.color = '#166534';
           badge.style.border = '1px solid #bbf7d0';
-          text.textContent = 'البيانات المباشرة نشطة';
-          recalcBdt();
-          return;
+          text.textContent = info.statusAr || 'سعر الصرف المرجعي نشط';
+          if (timeVal) timeVal.textContent = info.timeFormattedAr || 'سعر الصرف المرجعي نشط';
+        } else {
+          badge.style.background = '#fef2f2';
+          badge.style.color = '#991b1b';
+          badge.style.border = '1px solid #fecaca';
+          text.textContent = 'سعر الإغلاق المرجعي';
+          if (timeVal) timeVal.textContent = 'سعر الإغلاق المرجعي المعتمد';
         }
-        throw new Error('Incomplete data');
-      } catch (e) {
-        liveSarBdtRate = 32.32;
-        badge.style.background = '#fef2f2';
-        badge.style.color = '#991b1b';
-        badge.style.border = '1px solid #fecaca';
-        text.textContent = 'السعر المباشر غير متاح مؤقتاً';
         recalcBdt();
-      }
+      });
     }
 
     function setBdtAmt(val) {
@@ -981,29 +1025,37 @@
 
     function recalcBdt() {
       const amt = parseFloat(document.getElementById('bdtAmount').value) || 0;
-      const rate = liveSarBdtRate || 32.32;
-      const includeIncentive = document.getElementById('bdtIncentiveCheck').checked;
+      if (!window.DailyCalcRemittance) return;
+      const rate = window.DailyCalcRemittance.getRateFromSar('BDT') || 32.32;
+      const includeIncentive = document.getElementById('bdtIncentiveCheck') ? document.getElementById('bdtIncentiveCheck').checked : true;
+      const mult = includeIncentive ? 1.025 : 1.0;
 
-      const baseTotal = amt * rate;
-      const incentiveAmt = includeIncentive ? (baseTotal * 0.025) : 0;
-      const finalTotal = baseTotal + incentiveAmt;
+      const topProvider = window.DailyCalcRemittance.providers[0]; // Barq
+      const calcTop = window.DailyCalcRemittance.calculateProviderPayout(topProvider, amt, 'BDT', rate, mult);
 
-      document.getElementById('bdtPayout').textContent = '৳ ' + finalTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-      document.getElementById('bdtRateTag').innerHTML = '<i class="fas fa-bolt" style="color:#fbbf24;"></i> <span>1 SAR = ' + rate.toFixed(4) + ' BDT</span>';
-      document.getElementById('bdtBaseVal').textContent = '৳ ' + baseTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-      document.getElementById('bdtIncentiveVal').textContent = includeIncentive ? ('+ ৳ ' + incentiveAmt.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })) : '৳ 0.00';
+      const baseWholesale = amt * rate;
+      const incentiveVal = includeIncentive ? (baseWholesale * 0.025) : 0;
 
-            if (window.DailyCalcRemittance && window.DailyCalcRemittance.renderTable) {
-        window.DailyCalcRemittance.renderTable({
-          tbody: 'bdtTableBody',
-          amount: amt,
-          currency: 'BDT',
-          baseRate: rate,
-          symbol: '\u09F3',
-          isArabic: true,
-          incentiveMultiplier: 1.025
-        });
+      document.getElementById('bdtPayout').textContent = '৳ ' + calcTop.formattedPayout;
+      document.getElementById('bdtRateTag').innerHTML = '<i class="fas fa-bolt" style="color:#fbbf24;"></i> <span>1 ر.س = ' + rate.toFixed(4) + ' تاكا</span>';
+      const benchEl = document.getElementById('bdtWholesaleBench');
+      if (benchEl) {
+        benchEl.textContent = 'السعر المرجعي لسوق الجملة: ৳ ' + window.DailyCalcRemittance.formatPayout(baseWholesale * mult, 'BDT');
       }
+      const incentiveValEl = document.getElementById('bdtIncentiveVal');
+      if (incentiveValEl) {
+        incentiveValEl.textContent = includeIncentive ? ('+ ৳ ' + window.DailyCalcRemittance.formatPayout(incentiveVal, 'BDT')) : '৳ 0.00';
+      }
+
+      window.DailyCalcRemittance.renderTable({
+        tbody: 'bdtTableBody',
+        amount: amt,
+        currency: 'BDT',
+        baseRate: rate,
+        symbol: '\u09F3',
+        isArabic: true,
+        incentiveMultiplier: mult
+      });
     }
 
     document.addEventListener('DOMContentLoaded', function() {
@@ -1080,9 +1132,5 @@
     }
   </script>
   <script src="/mobile-nav.js" defer></script>
-  <script src="/remittance-providers.js?v=20260926c"></script>
-  <script src="/live-ticker.js" defer></script>
-  <script src="/theme.js" defer></script>
-  <script src="/share.js" defer></script>
 </body>
 </html>
