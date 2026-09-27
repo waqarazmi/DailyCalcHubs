@@ -2613,11 +2613,15 @@ html[data-theme="dark"][lang="ar"] .site-header .header-actions {
     padding-right: 10px !important;
   }
   .header-right-actions,
-  html[lang="ar"] .header-right-actions {
+  .header-actions,
+  html[lang="ar"] .header-right-actions,
+  html[lang="ar"] .header-actions {
     gap: 6px !important;
   }
   .header-right-actions .lang-switch-btn,
-  html[lang="ar"] .header-right-actions .lang-switch-btn {
+  .header-actions .lang-switch-btn,
+  html[lang="ar"] .header-right-actions .lang-switch-btn,
+  html[lang="ar"] .header-actions .lang-switch-btn {
     padding: 4px 8px !important;
     font-size: 12px !important;
   }
@@ -2640,6 +2644,159 @@ html[data-theme="dark"][lang="ar"] .site-header .header-actions {
   .brand-logo-area .logo-subtitle,
   html[lang="ar"] .brand-logo-area .logo-subtitle {
     display: none !important;
+  }
+}
+
+/* 8b. Ultra-Narrow Screen Polish (320px to 380px) to prevent button and legal link clipping */
+@media (max-width: 380px) {
+  .site-header .container,
+  .site-header .header-inner,
+  .site-header .header-container,
+  html[lang="ar"] .site-header .container,
+  html[lang="ar"] .header-inner,
+  html[lang="ar"] .header-container {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+  }
+  .header-right-actions,
+  .header-actions,
+  html[lang="ar"] .header-right-actions,
+  html[lang="ar"] .header-actions {
+    gap: 5px !important;
+  }
+  .header-right-actions .lang-switch-btn,
+  .header-actions .lang-switch-btn,
+  html[lang="ar"] .header-right-actions .lang-switch-btn,
+  html[lang="ar"] .header-actions .lang-switch-btn {
+    padding: 3px 6px !important;
+    font-size: 11.5px !important;
+    height: 34px !important;
+    min-height: 34px !important;
+  }
+  .header-actions .theme-toggle-btn,
+  .header-actions .search-btn-circle,
+  .header-right-actions .theme-toggle-btn,
+  .header-right-actions .search-btn-circle,
+  .theme-toggle-btn,
+  .search-btn-circle {
+    width: 34px !important;
+    height: 34px !important;
+    min-width: 34px !important;
+    min-height: 34px !important;
+  }
+  .mobile-menu-toggle {
+    width: 36px !important;
+    height: 34px !important;
+    min-width: 36px !important;
+    padding: 0 !important;
+  }
+  .brand-logo-area,
+  html[lang="ar"] .brand-logo-area {
+    gap: 6px !important;
+  }
+  .brand-logo-area .logo-icon-box,
+  html[lang="ar"] .brand-logo-area .logo-icon-box {
+    width: 30px !important;
+    height: 30px !important;
+    font-size: 14px !important;
+  }
+  .brand-logo-area .logo-title,
+  html[lang="ar"] .brand-logo-area .logo-title {
+    font-size: 15px !important;
+  }
+}
+
+/* 8b-2. Ultra-Compact Screen Polish (<= 340px) */
+@media (max-width: 340px) {
+  .site-header .container,
+  .site-header .header-inner,
+  .site-header .header-container,
+  html[lang="ar"] .site-header .container,
+  html[lang="ar"] .header-inner,
+  html[lang="ar"] .header-container {
+    padding-left: 4px !important;
+    padding-right: 4px !important;
+  }
+  .header-right-actions,
+  .header-actions,
+  html[lang="ar"] .header-right-actions,
+  html[lang="ar"] .header-actions {
+    gap: 3px !important;
+  }
+  .header-right-actions .lang-switch-btn,
+  .header-actions .lang-switch-btn,
+  html[lang="ar"] .header-right-actions .lang-switch-btn,
+  html[lang="ar"] .header-actions .lang-switch-btn {
+    padding: 2px 4px !important;
+    font-size: 11px !important;
+    height: 30px !important;
+    min-height: 30px !important;
+  }
+  .header-actions .theme-toggle-btn,
+  .header-actions .search-btn-circle,
+  .header-right-actions .theme-toggle-btn,
+  .header-right-actions .search-btn-circle,
+  .theme-toggle-btn,
+  .search-btn-circle {
+    width: 30px !important;
+    height: 30px !important;
+    min-width: 30px !important;
+    min-height: 30px !important;
+  }
+  .mobile-menu-toggle {
+    width: 32px !important;
+    height: 30px !important;
+    min-width: 32px !important;
+    padding: 0 !important;
+  }
+  .brand-logo-area,
+  html[lang="ar"] .brand-logo-area {
+    gap: 4px !important;
+  }
+  .brand-logo-area .logo-icon-box,
+  html[lang="ar"] .brand-logo-area .logo-icon-box {
+    width: 26px !important;
+    height: 26px !important;
+    font-size: 12px !important;
+  }
+  .brand-logo-area .logo-title,
+  html[lang="ar"] .brand-logo-area .logo-title {
+    font-size: 13.5px !important;
+  }
+}
+
+/* 8c. Footer Legal Links Responsiveness (Sitewide) */
+.site-footer .footer-legal-links,
+.footer-legal-links,
+html[lang="ar"] .site-footer .footer-legal-links,
+html[lang="ar"] .footer-legal-links {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 8px 12px !important;
+}
+
+@media (max-width: 480px) {
+  .site-footer .footer-legal-links span,
+  .footer-legal-links span,
+  html[lang="ar"] .site-footer .footer-legal-links span,
+  html[lang="ar"] .footer-legal-links span {
+    display: none !important;
+  }
+  .site-footer .footer-legal-links,
+  .footer-legal-links,
+  html[lang="ar"] .site-footer .footer-legal-links,
+  html[lang="ar"] .footer-legal-links {
+    gap: 6px 10px !important;
+    font-size: 12px !important;
+  }
+  .site-footer .footer-legal-links a,
+  .footer-legal-links a,
+  html[lang="ar"] .site-footer .footer-legal-links a,
+  html[lang="ar"] .footer-legal-links a {
+    margin: 0 !important;
+    padding: 2px 4px !important;
   }
 }
 
