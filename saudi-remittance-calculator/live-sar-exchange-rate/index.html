@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -312,6 +312,200 @@
       .tool-title { font-size: 26px; }
       .calc-card { padding: 20px 16px; }
       .header-nav-links { display: none; }
+    }
+
+    /* ==========================================================================
+       Live Currency Board Grid & Currency Card Component
+       ========================================================================== */
+    .currency-board-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-bottom: 40px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    @media (max-width: 1024px) {
+      .currency-board-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .currency-board-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+        margin-bottom: 30px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .currency-board-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+    }
+
+    /* Currency Card Item Styles */
+    .currency-card-item {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 18px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+      transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+      min-width: 0;
+      box-sizing: border-box;
+      cursor: default;
+    }
+
+    .currency-card-item:hover {
+      border-color: #cbd5e1;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    }
+
+    .currency-card-top {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+      min-width: 0;
+    }
+
+    .currency-card-flag {
+      font-size: 26px;
+      line-height: 1;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .currency-card-title-wrap {
+      min-width: 0;
+      flex: 1;
+      overflow: hidden;
+    }
+
+    .currency-card-name {
+      font-size: 15px;
+      font-weight: 800;
+      color: #0f172a;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      line-height: 1.3;
+    }
+
+    .currency-card-sublabel {
+      font-size: 12px;
+      color: #64748b;
+      font-weight: 500;
+      line-height: 1.3;
+      margin-top: 2px;
+    }
+
+    .currency-card-body {
+      margin: 14px 0 12px;
+      min-width: 0;
+    }
+
+    .currency-card-amount {
+      font-size: 24px;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.5px;
+      line-height: 1.2;
+      word-break: break-word;
+    }
+
+    .currency-card-inverse {
+      font-size: 12px;
+      color: #64748b;
+      margin-top: 4px;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+    .currency-card-footer {
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid #f1f5f9;
+    }
+
+    .currency-card-link {
+      color: #16a34a;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 13px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      min-height: 36px;
+      transition: color 0.15s ease;
+    }
+
+    .currency-card-link:hover {
+      color: #15803d;
+      text-decoration: underline;
+    }
+
+    @media (max-width: 480px) {
+      .currency-card-item {
+        padding: 16px;
+      }
+      .currency-card-amount {
+        font-size: 22px;
+      }
+    }
+
+    /* Dark Mode Overrides */
+    html[data-theme="dark"] .currency-card-item {
+      background: #1e293b !important;
+      border-color: #334155 !important;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25) !important;
+    }
+
+    html[data-theme="dark"] .currency-card-item:hover {
+      border-color: #475569 !important;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4) !important;
+    }
+
+    html[data-theme="dark"] .currency-card-name {
+      color: #f8fafc !important;
+    }
+
+    html[data-theme="dark"] .currency-card-sublabel {
+      color: #94a3b8 !important;
+    }
+
+    html[data-theme="dark"] .currency-card-amount {
+      color: #f8fafc !important;
+    }
+
+    html[data-theme="dark"] .currency-card-inverse {
+      color: #94a3b8 !important;
+    }
+
+    html[data-theme="dark"] .currency-card-footer {
+      border-top-color: #334155 !important;
+    }
+
+    html[data-theme="dark"] .currency-card-link {
+      color: #4ade80 !important;
+    }
+
+    html[data-theme="dark"] .currency-card-link:hover {
+      color: #86efac !important;
+    }
+
+    html[data-theme="dark"] #boardTimestamp {
+      color: #94a3b8 !important;
     }
   </style>
   <link rel="stylesheet" href="/theme.css?v=2026.2">
@@ -834,7 +1028,7 @@
       </div>
 
       <!-- Currency Cards Grid -->
-      <div class="tool-grid" id="currencyBoardGrid" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); gap:20px; margin-bottom:40px;">
+      <div class="currency-board-grid" id="currencyBoardGrid">
         <!-- Generated dynamically via JS -->
       </div>
 
@@ -971,26 +1165,26 @@
         const invRate = targetRate > 0 ? (1 / targetRate) : 0;
 
         return `
-          <div class="tool-card-item" style="cursor:default;">
+          <div class="currency-card-item">
             <div>
-              <div class="tool-card-top">
-                <div style="font-size:24px;">${c.flag}</div>
-                <div>
-                  <div class="tool-card-name">${c.code} - ${c.name}</div>
-                  <div style="font-size:12px; color:#64748b;">Spot Benchmark</div>
+              <div class="currency-card-top">
+                <div class="currency-card-flag">${c.flag}</div>
+                <div class="currency-card-title-wrap">
+                  <div class="currency-card-name">${c.code} - ${c.name}</div>
+                  <div class="currency-card-sublabel">Spot Benchmark</div>
                 </div>
               </div>
-              <div style="margin:14px 0;">
-                <div style="font-size:24px; font-weight:800; color:#0f172a;">
+              <div class="currency-card-body">
+                <div class="currency-card-amount">
                   ${c.sym} ${targetRate.toFixed(4)}
                 </div>
-                <div style="font-size:12px; color:#64748b; margin-top:2px;">
+                <div class="currency-card-inverse">
                   1 ${c.code} = ${invRate.toFixed(4)} SAR
                 </div>
               </div>
             </div>
-            <div class="tool-card-footer">
-              <a href="${c.link}" style="color:#16a34a; text-decoration:none; font-weight:700; font-size:13px;">
+            <div class="currency-card-footer">
+              <a href="${c.link}" class="currency-card-link">
                 Open Calculator <i class="fas fa-chevron-right"></i>
               </a>
             </div>
