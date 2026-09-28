@@ -385,6 +385,26 @@
       align-items: center;
       justify-content: center;
     }
+    .currency-card-flag .flag-emoji {
+      display: none;
+      line-height: 1;
+    }
+    .currency-card-flag .flag-svg {
+      display: block;
+      width: 28px;
+      height: 20px;
+      border-radius: 3px;
+      object-fit: cover;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+    }
+    @media (max-width: 767px) {
+      .currency-card-flag .flag-emoji {
+        display: inline-block;
+      }
+      .currency-card-flag .flag-svg {
+        display: none;
+      }
+    }
 
     .currency-card-title-wrap {
       min-width: 0;
@@ -1108,18 +1128,18 @@
 
   <script>
     const currencies = [
-      { code: 'INR', name: 'Indian Rupee', flag: '\uD83C\uDDEE\uD83C\uDDF3', sym: '\u20B9', link: '/saudi-remittance-calculator/sar-to-inr/' },
-      { code: 'PKR', name: 'Pakistani Rupee', flag: '\uD83C\uDDF5\uD83C\uDDF0', sym: 'Rs', link: '/saudi-remittance-calculator/sar-to-pkr/' },
-      { code: 'BDT', name: 'Bangladeshi Taka', flag: '\uD83C\uDDE7\uD83C\uDDE9', sym: '\u09F3', link: '/saudi-remittance-calculator/sar-to-bdt/' },
-      { code: 'PHP', name: 'Philippine Peso', flag: '\uD83C\uDDF5\uD83C\uDDED', sym: '\u20B1', link: '/saudi-remittance-calculator/sar-to-php/' },
-      { code: 'NPR', name: 'Nepalese Rupee', flag: '\uD83C\uDDF3\uD83C\uDDF5', sym: 'Rs', link: '/saudi-remittance-calculator/sar-to-npr/' },
-      { code: 'LKR', name: 'Sri Lankan Rupee', flag: '\uD83C\uDDF1\uD83C\uDDF0', sym: 'Rs', link: '/saudi-remittance-calculator/sar-to-lkr/' },
-      { code: 'USD', name: 'US Dollar (Pegged)', flag: '\uD83C\uDDFA\uD83C\uDDF8', sym: '$', link: '/saudi-remittance-calculator/' },
-      { code: 'EUR', name: 'Euro', flag: '\uD83C\uDDEA\uD83C\uDDFA', sym: '\u20AC', link: '/saudi-remittance-calculator/' },
-      { code: 'GBP', name: 'British Pound', flag: '\uD83C\uDDEC\uD83C\uDDE7', sym: '\u00A3', link: '/saudi-remittance-calculator/' },
-      { code: 'AED', name: 'UAE Dirham', flag: '\uD83C\uDDE6\uD83C\uDDEA', sym: 'AED', link: '/saudi-remittance-calculator/' },
-      { code: 'EGP', name: 'Egyptian Pound', flag: '\uD83C\uDDEA\uD83C\uDDEC', sym: 'E\u00A3', link: '/saudi-remittance-calculator/' },
-      { code: 'CAD', name: 'Canadian Dollar', flag: '\uD83C\uDDE8\uD83C\uDDE6', sym: 'C$', link: '/saudi-remittance-calculator/' }
+      { code: 'INR', name: 'Indian Rupee', flag: '\uD83C\uDDEE\uD83C\uDDF3', cc: 'in', sym: '\u20B9', link: '/saudi-remittance-calculator/sar-to-inr/' },
+      { code: 'PKR', name: 'Pakistani Rupee', flag: '\uD83C\uDDF5\uD83C\uDDF0', cc: 'pk', sym: 'Rs', link: '/saudi-remittance-calculator/sar-to-pkr/' },
+      { code: 'BDT', name: 'Bangladeshi Taka', flag: '\uD83C\uDDE7\uD83C\uDDE9', cc: 'bd', sym: '\u09F3', link: '/saudi-remittance-calculator/sar-to-bdt/' },
+      { code: 'PHP', name: 'Philippine Peso', flag: '\uD83C\uDDF5\uD83C\uDDED', cc: 'ph', sym: '\u20B1', link: '/saudi-remittance-calculator/sar-to-php/' },
+      { code: 'NPR', name: 'Nepalese Rupee', flag: '\uD83C\uDDF3\uD83C\uDDF5', cc: 'np', sym: 'Rs', link: '/saudi-remittance-calculator/sar-to-npr/' },
+      { code: 'LKR', name: 'Sri Lankan Rupee', flag: '\uD83C\uDDF1\uD83C\uDDF0', cc: 'lk', sym: 'Rs', link: '/saudi-remittance-calculator/sar-to-lkr/' },
+      { code: 'USD', name: 'US Dollar (Pegged)', flag: '\uD83C\uDDFA\uD83C\uDDF8', cc: 'us', sym: '$', link: '/saudi-remittance-calculator/' },
+      { code: 'EUR', name: 'Euro', flag: '\uD83C\uDDEA\uD83C\uDDFA', cc: 'eu', sym: '\u20AC', link: '/saudi-remittance-calculator/' },
+      { code: 'GBP', name: 'British Pound', flag: '\uD83C\uDDEC\uD83C\uDDE7', cc: 'gb', sym: '\u00A3', link: '/saudi-remittance-calculator/' },
+      { code: 'AED', name: 'UAE Dirham', flag: '\uD83C\uDDE6\uD83C\uDDEA', cc: 'ae', sym: 'AED', link: '/saudi-remittance-calculator/' },
+      { code: 'EGP', name: 'Egyptian Pound', flag: '\uD83C\uDDEA\uD83C\uDDEC', cc: 'eg', sym: 'E\u00A3', link: '/saudi-remittance-calculator/' },
+      { code: 'CAD', name: 'Canadian Dollar', flag: '\uD83C\uDDE8\uD83C\uDDE6', cc: 'ca', sym: 'C$', link: '/saudi-remittance-calculator/' }
     ];
 
     function initLiveBoard() {
@@ -1171,7 +1191,10 @@
           <div class="currency-card-item">
             <div>
               <div class="currency-card-top">
-                <div class="currency-card-flag">${c.flag}</div>
+                <div class="currency-card-flag">
+                  <span class="flag-emoji">${c.flag}</span>
+                  <img src="/assets/img/flags/${c.cc}.svg" alt="${c.name} flag" width="28" height="20" class="flag-svg" loading="lazy">
+                </div>
                 <div class="currency-card-title-wrap">
                   <div class="currency-card-name">${c.code} - ${c.name}</div>
                   <div class="currency-card-sublabel">Spot Benchmark</div>

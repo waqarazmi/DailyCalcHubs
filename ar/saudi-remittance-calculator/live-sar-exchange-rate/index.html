@@ -356,6 +356,26 @@
       align-items: center;
       justify-content: center;
     }
+    .currency-card-flag .flag-emoji {
+      display: none;
+      line-height: 1;
+    }
+    .currency-card-flag .flag-svg {
+      display: block;
+      width: 28px;
+      height: 20px;
+      border-radius: 3px;
+      object-fit: cover;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+    }
+    @media (max-width: 767px) {
+      .currency-card-flag .flag-emoji {
+        display: inline-block;
+      }
+      .currency-card-flag .flag-svg {
+        display: none;
+      }
+    }
 
     .currency-card-title-wrap {
       min-width: 0;
@@ -1087,17 +1107,17 @@
 
   <script>
     const currencies = [
-      { code: 'INR', name: 'الروبية الهندية', flag: '🇮🇳', sym: '₹', link: '/ar/saudi-remittance-calculator/sar-to-inr/' },
-      { code: 'PKR', name: 'الروبية الباكستانية', flag: '🇵🇰', sym: 'Rs', link: '/ar/saudi-remittance-calculator/sar-to-pkr/' },
-      { code: 'BDT', name: 'التاكا البنغلاديشية', flag: '🇧🇩', sym: '৳', link: '/ar/saudi-remittance-calculator/sar-to-bdt/' },
-      { code: 'PHP', name: 'البيزو الفلبيني', flag: '🇵🇭', sym: '₱', link: '/ar/saudi-remittance-calculator/sar-to-php/' },
-      { code: 'NPR', name: 'الروبية النيبالية', flag: '🇳🇵', sym: 'NPR', link: '/ar/saudi-remittance-calculator/sar-to-npr/' },
-      { code: 'LKR', name: 'الروبية السريلانكية', flag: '🇱🇰', sym: 'LKR', link: '/ar/saudi-remittance-calculator/sar-to-lkr/' },
-      { code: 'EUR', name: 'اليورو الأوروبي', flag: '🇪🇺', sym: '€', link: '/ar/saudi-remittance-calculator/' },
-      { code: 'GBP', name: 'الجنيه الإسترليني', flag: '🇬🇧', sym: '£', link: '/ar/saudi-remittance-calculator/' },
-      { code: 'AED', name: 'الدرهم الإماراتي', flag: '🇦🇪', sym: 'د.إ', link: '/ar/saudi-remittance-calculator/' },
-      { code: 'EGP', name: 'الجنيه المصري', flag: '🇪🇬', sym: 'ج.م', link: '/ar/saudi-remittance-calculator/' },
-      { code: 'CAD', name: 'الدولار الكندي', flag: '🇨🇦', sym: 'C$', link: '/ar/saudi-remittance-calculator/' }
+      { code: 'INR', name: 'الروبية الهندية', flag: '🇮🇳', cc: 'in', sym: '₹', link: '/ar/saudi-remittance-calculator/sar-to-inr/' },
+      { code: 'PKR', name: 'الروبية الباكستانية', flag: '🇵🇰', cc: 'pk', sym: 'Rs', link: '/ar/saudi-remittance-calculator/sar-to-pkr/' },
+      { code: 'BDT', name: 'التاكا البنغلاديشية', flag: '🇧🇩', cc: 'bd', sym: '৳', link: '/ar/saudi-remittance-calculator/sar-to-bdt/' },
+      { code: 'PHP', name: 'البيزو الفلبيني', flag: '🇵🇭', cc: 'ph', sym: '₱', link: '/ar/saudi-remittance-calculator/sar-to-php/' },
+      { code: 'NPR', name: 'الروبية النيبالية', flag: '🇳🇵', cc: 'np', sym: 'NPR', link: '/ar/saudi-remittance-calculator/sar-to-npr/' },
+      { code: 'LKR', name: 'الروبية السريلانكية', flag: '🇱🇰', cc: 'lk', sym: 'LKR', link: '/ar/saudi-remittance-calculator/sar-to-lkr/' },
+      { code: 'EUR', name: 'اليورو الأوروبي', flag: '🇪🇺', cc: 'eu', sym: '€', link: '/ar/saudi-remittance-calculator/' },
+      { code: 'GBP', name: 'الجنيه الإسترليني', flag: '🇬🇧', cc: 'gb', sym: '£', link: '/ar/saudi-remittance-calculator/' },
+      { code: 'AED', name: 'الدرهم الإماراتي', flag: '🇦🇪', cc: 'ae', sym: 'د.إ', link: '/ar/saudi-remittance-calculator/' },
+      { code: 'EGP', name: 'الجنيه المصري', flag: '🇪🇬', cc: 'eg', sym: 'ج.م', link: '/ar/saudi-remittance-calculator/' },
+      { code: 'CAD', name: 'الدولار الكندي', flag: '🇨🇦', cc: 'ca', sym: 'C$', link: '/ar/saudi-remittance-calculator/' }
     ];
 
     function initLiveBoard() {
@@ -1148,7 +1168,10 @@
         return '<div class="currency-card-item">' +
             '<div>' +
               '<div class="currency-card-top">' +
-                '<div class="currency-card-flag">' + c.flag + '</div>' +
+                '<div class="currency-card-flag">' +
+                  '<span class="flag-emoji">' + c.flag + '</span>' +
+                  '<img src="/assets/img/flags/' + c.cc + '.svg" alt="علم ' + c.name + '" width="28" height="20" class="flag-svg" loading="lazy">' +
+                '</div>' +
                 '<div class="currency-card-title-wrap">' +
                   '<div class="currency-card-name">' + c.code + ' - ' + c.name + '</div>' +
                   '<div class="currency-card-sublabel">السعر المعياري الفوري</div>' +
