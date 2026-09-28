@@ -6,8 +6,10 @@
   'use strict';
 
   var FX_API_URL = 'https://open.er-api.com/v6/latest/USD';
-  var CACHE_KEY = 'dch_forex_cache_v2';
+  var CACHE_KEY = 'dch_forex_cache_v3';
   var CACHE_TTL = 300000; // 5 minutes in ms
+  var isBackgroundFetching = false;
+  var backgroundCallbacks = [];
 
   // Authoritative verified closing benchmark rates for fallback when offline
   var FALLBACK_RATES = {
@@ -234,14 +236,18 @@
   }
 
   /**
-   * Reads FX rates from sessionStorage cache if fresh (< 5 mins).
+   * Reads FX rates from persistent localStorage cache.
+   * Returns valid cached object if schema is valid.
    */
   function readCache() {
     try {
-      var cached = sessionStorage.getItem(CACHE_KEY);
+      var cached = localStorage.getItem(CACHE_KEY);
+      if (!cached) {
+        cached = sessionStorage.getItem('dch_forex_cache_v2');
+      }
       if (!cached) return null;
       var parsed = JSON.parse(cached);
-      if (parsed && parsed.ts && (Date.now() - parsed.ts < CACHE_TTL) && parsed.rates) {
+      if (parsed && parsed.rates && parsed.rates.SAR && parsed.rates.INR) {
         return parsed;
       }
     } catch (e) {}
@@ -249,16 +255,23 @@
   }
 
   /**
-   * Writes FX rates to sessionStorage cache.
+   * Writes FX rates to persistent localStorage cache.
    */
   function writeCache(rates, rawTimestamp) {
     try {
-      sessionStorage.setItem(CACHE_KEY, JSON.stringify({
+      localStorage.setItem(CACHE_KEY, JSON.stringify({
+        version: 3,
         ts: Date.now(),
         rates: rates,
         rawTimestamp: rawTimestamp || null
       }));
     } catch (e) {}
+  }
+
+  // Synchronous early hydration of in-memory live rates from local cache
+  var initialCache = readCache();
+  if (initialCache && initialCache.rates) {
+    window.dchLiveRates = initialCache.rates;
   }
 
   /**
@@ -279,7 +292,79 @@
   }
 
   /**
+   * Triggers silent background revalidation without clearing or disrupting visible UI.
+   */
+  function triggerSilentRevalidation(isArabic, isColdFirstVisit) {
+    if (isBackgroundFetching) return;
+    isBackgroundFetching = true;
+    var url = FX_API_URL + '?ts=' + Math.floor(Date.now() / 60000);
+
+    fetch(url)
+      .then(function (res) {
+        if (!res.ok) throw new Error('FX API HTTP ' + res.status);
+        return res.json();
+      })
+      .then(function (data) {
+        isBackgroundFetching = false;
+        if (data && data.rates && data.rates.SAR && data.rates.INR) {
+          window.dchLiveRates = data.rates;
+          var rawTs = data.time_last_update_utc || null;
+          writeCache(data.rates, rawTs);
+          window.dispatchEvent(new CustomEvent('dchRatesUpdated', { detail: data.rates }));
+
+          var formattedDate = formatApiDate(rawTs, isArabic);
+          var info = {
+            isLive: true,
+            rates: data.rates,
+            rawTimestamp: rawTs,
+            timeFormattedEn: formattedDate ? ('Updated: ' + formattedDate) : 'Daily Spot Benchmark Active',
+            timeFormattedAr: formattedDate ? ('تحديث: ' + formattedDate) : 'سعر الصرف المرجعي نشط',
+            statusEn: 'Benchmark Active',
+            statusAr: 'سعر الصرف المرجعي نشط',
+            isFresh: true
+          };
+
+          var cbs = backgroundCallbacks.slice();
+          backgroundCallbacks = [];
+          cbs.forEach(function (cb) {
+            try { cb(data.rates, info); } catch (e) {}
+          });
+        } else {
+          throw new Error('Incomplete FX payload');
+        }
+      })
+      .catch(function (err) {
+        isBackgroundFetching = false;
+        console.warn('DailyCalcHubs: FX fetch fallback active:', err.message);
+        var currentRates = window.dchLiveRates || FALLBACK_RATES;
+        var offlineInfo = {
+          isLive: false,
+          rates: currentRates,
+          rawTimestamp: null,
+          timeFormattedEn: 'Closing Reference Benchmark',
+          timeFormattedAr: 'سعر إغلاق مرجعي معتمد',
+          statusEn: 'Reference Closing Rate',
+          statusAr: 'سعر إغلاق مرجعي'
+        };
+
+        if (isColdFirstVisit) {
+          window.dchLiveRates = FALLBACK_RATES;
+          var cbs = backgroundCallbacks.slice();
+          backgroundCallbacks = [];
+          cbs.forEach(function (cb) {
+            try { cb(FALLBACK_RATES, offlineInfo); } catch (e) {}
+          });
+        } else {
+          // On silent background refresh failure: keep current visible state without disruption
+          backgroundCallbacks = [];
+        }
+      });
+  }
+
+  /**
    * Central FX Rate Engine: Fetches rates once, shares across all pages and widgets.
+   * Implements Stale-While-Revalidate: instantly restores valid local cache,
+   * then revalidates silently in background if stale.
    */
   function fetchRates(callback) {
     var cached = readCache();
@@ -295,61 +380,32 @@
         timeFormattedEn: formattedCachedDate ? ('Updated: ' + formattedCachedDate) : 'Spot Benchmark Active',
         timeFormattedAr: formattedCachedDate ? ('تحديث: ' + formattedCachedDate) : 'سعر الصرف المرجعي نشط',
         statusEn: 'Benchmark Active',
-        statusAr: 'سعر الصرف المرجعي نشط'
+        statusAr: 'سعر الصرف المرجعي نشط',
+        isCached: true
       };
+
       if (typeof callback === 'function') {
-        callback(cached.rates, cachedInfo);
+        try {
+          callback(cached.rates, cachedInfo);
+        } catch (e) {}
+      }
+
+      // If stale (> 5 mins), queue callback and trigger silent background revalidation
+      var isStale = !cached.ts || (Date.now() - cached.ts >= CACHE_TTL);
+      if (isStale) {
+        if (typeof callback === 'function') {
+          backgroundCallbacks.push(callback);
+        }
+        triggerSilentRevalidation(isArabic, false);
       }
       return;
     }
 
-    // Network request
-    var url = FX_API_URL + '?ts=' + Math.floor(Date.now() / 60000);
-    fetch(url)
-      .then(function (res) {
-        if (!res.ok) throw new Error('FX API HTTP ' + res.status);
-        return res.json();
-      })
-      .then(function (data) {
-        if (data && data.rates && data.rates.SAR && data.rates.INR) {
-          window.dchLiveRates = data.rates;
-          var rawTs = data.time_last_update_utc || null;
-          writeCache(data.rates, rawTs);
-          window.dispatchEvent(new CustomEvent('dchRatesUpdated', { detail: data.rates }));
-
-          var formattedDate = formatApiDate(rawTs, isArabic);
-          var info = {
-            isLive: true,
-            rates: data.rates,
-            rawTimestamp: rawTs,
-            timeFormattedEn: formattedDate ? ('Updated: ' + formattedDate) : 'Daily Spot Benchmark Active',
-            timeFormattedAr: formattedDate ? ('تحديث: ' + formattedDate) : 'سعر الصرف المرجعي نشط',
-            statusEn: 'Benchmark Active',
-            statusAr: 'سعر الصرف المرجعي نشط'
-          };
-          if (typeof callback === 'function') {
-            callback(data.rates, info);
-          }
-        } else {
-          throw new Error('Incomplete FX payload');
-        }
-      })
-      .catch(function (err) {
-        console.warn('DailyCalcHubs: FX fetch fallback active:', err.message);
-        window.dchLiveRates = FALLBACK_RATES;
-        var offlineInfo = {
-          isLive: false,
-          rates: FALLBACK_RATES,
-          rawTimestamp: null,
-          timeFormattedEn: 'Closing Reference Benchmark',
-          timeFormattedAr: 'سعر إغلاق مرجعي معتمد',
-          statusEn: 'Reference Closing Rate',
-          statusAr: 'سعر إغلاق مرجعي'
-        };
-        if (typeof callback === 'function') {
-          callback(FALLBACK_RATES, offlineInfo);
-        }
-      });
+    // Cold first-ever visit: register callback and fetch
+    if (typeof callback === 'function') {
+      backgroundCallbacks.push(callback);
+    }
+    triggerSilentRevalidation(isArabic, true);
   }
 
   /**

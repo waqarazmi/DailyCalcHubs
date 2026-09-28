@@ -320,6 +320,7 @@
     }
   </style>
   <link rel="stylesheet" href="/theme.css?v=2026.2">
+  <script src="/remittance-providers.js?v=20260928"></script>
   <script src="/mobile-nav.js" defer></script>
 </head>
 <body>
@@ -861,12 +862,12 @@
           <div class="result-row-top">
             <div>
               <div class="result-label">Best Estimated Payout (Barq)</div>
-              <div class="result-big-val" id="pkrPayout">Rs --.--</div>
-              <div id="pkrWholesaleBench" style="font-size:11.5px; color:#94a3b8; margin-top:4px;">Wholesale Benchmark: --</div>
+              <div class="result-big-val" id="pkrPayout">Rs <span style="font-size:18px;font-weight:600;opacity:0.85;">...</span></div>
+              <div id="pkrWholesaleBench" style="font-size:11.5px; color:#94a3b8; margin-top:4px;">Wholesale Benchmark: Calculating...</div>
             </div>
             <div class="result-rate-tag" id="pkrRateTag">
-              <i class="fas fa-bolt" style="color:#fbbf24;"></i>
-              <span>Fetching exchange rate...</span>
+              <i class="fas fa-spinner fa-spin" style="color:#fbbf24;"></i>
+              <span>Loading market rate...</span>
             </div>
           </div>
           <div class="result-meta-grid">
@@ -942,7 +943,7 @@
                 </tr>
               </thead>
               <tbody id="pkrTableBody">
-                <!-- Populated by JS -->
+                <tr><td colspan="6" style="text-align:center; padding:24px; color:#64748b;"><i class="fas fa-spinner fa-spin" style="margin-right:8px;"></i> Loading live provider rates...</td></tr>
               </tbody>
             </table>
           </div>
@@ -1094,7 +1095,6 @@
 
   </div>
 
-  <script src="/remittance-providers.js?v=20260927"></script>
   <script src="/live-ticker.js" defer></script>
   <script src="/theme.js" defer></script>
   <script src="/share.js" defer></script>
@@ -1109,17 +1109,21 @@
 
       window.DailyCalcRemittance.fetchRates(function(rates, info) {
         if (info && info.isLive) {
-          badge.style.background = '#f0fdf4';
-          badge.style.color = '#166534';
-          badge.style.border = '1px solid #bbf7d0';
-          text.textContent = info.statusEn || 'Benchmark Active';
-          timeVal.textContent = info.timeFormattedEn || 'Daily Spot Benchmark Active';
+          if (badge) {
+            badge.style.background = '#f0fdf4';
+            badge.style.color = '#166534';
+            badge.style.border = '1px solid #bbf7d0';
+          }
+          if (text) text.textContent = info.statusEn || 'Benchmark Active';
+          if (timeVal) timeVal.textContent = info.timeFormattedEn || 'Daily Spot Benchmark Active';
         } else {
-          badge.style.background = '#fef2f2';
-          badge.style.color = '#991b1b';
-          badge.style.border = '1px solid #fecaca';
-          text.textContent = 'Reference Benchmark';
-          timeVal.textContent = 'Closing Reference Benchmark';
+          if (badge) {
+            badge.style.background = '#fef2f2';
+            badge.style.color = '#991b1b';
+            badge.style.border = '1px solid #fecaca';
+          }
+          if (text) text.textContent = 'Reference Benchmark';
+          if (timeVal) timeVal.textContent = 'Closing Reference Benchmark';
         }
         recalcPkr();
       });
@@ -1148,18 +1152,20 @@
       const topProvider = window.DailyCalcRemittance.providers[0]; // Barq
       const calcTop = window.DailyCalcRemittance.calculateProviderPayout(topProvider, amt, 'PKR', rate);
 
-      payoutEl.textContent = 'Rs ' + calcTop.formattedPayout;
-      tagEl.innerHTML = `<i class="fas fa-bolt" style="color:#fbbf24;"></i> <span>1 SAR = ${rate.toFixed(4)} PKR</span>`;
+      if (payoutEl) payoutEl.textContent = 'Rs ' + calcTop.formattedPayout;
+      if (tagEl) tagEl.innerHTML = `<i class="fas fa-bolt" style="color:#fbbf24;"></i> <span>1 SAR = ${rate.toFixed(4)} PKR</span>`;
       if (benchEl) {
         benchEl.textContent = 'Wholesale Benchmark: Rs ' + window.DailyCalcRemittance.formatPayout(amt * rate, 'PKR');
       }
 
-      if (amt >= 375) {
-        priTag.textContent = 'Eligible (Free PRI Transfer)';
-        priTag.style.color = '#4ade80';
-      } else {
-        priTag.textContent = 'Under $100 PRI Threshold';
-        priTag.style.color = '#94a3b8';
+      if (priTag) {
+        if (amt >= 375) {
+          priTag.textContent = 'Eligible (Free PRI Transfer)';
+          priTag.style.color = '#4ade80';
+        } else {
+          priTag.textContent = 'Under $100 PRI Threshold';
+          priTag.style.color = '#94a3b8';
+        }
       }
 
       window.DailyCalcRemittance.renderTable({
@@ -1172,10 +1178,10 @@
       });
     }
 
-    document.addEventListener('DOMContentLoaded', () => {
-      document.getElementById('pkrAmount').addEventListener('input', recalcPkr);
-      initPkrCalc();
-    });
+    // Immediate synchronous execution on page load (zero flicker on refresh)
+    initPkrCalc();
+    const pkrAmtInput = document.getElementById('pkrAmount');
+    if (pkrAmtInput) pkrAmtInput.addEventListener('input', recalcPkr);
   </script>  <!-- AdSense Container -->
   <div class="ad-slot-container">
     <ins class="adsbygoogle"

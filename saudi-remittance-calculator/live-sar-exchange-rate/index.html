@@ -510,6 +510,7 @@
   </style>
   <link rel="stylesheet" href="/theme.css?v=2026.2">
   <script src="/mobile-nav.js" defer></script>
+  <script src="/remittance-providers.js?v=20260928"></script>
 </head>
 <body>
   <!-- Top Ticker -->
@@ -1029,7 +1030,9 @@
 
       <!-- Currency Cards Grid -->
       <div class="currency-board-grid" id="currencyBoardGrid">
-        <!-- Generated dynamically via JS -->
+        <div style="grid-column: 1 / -1; text-align: center; padding: 48px 16px; color: #64748b;">
+          <i class="fas fa-circle-notch fa-spin" style="margin-right: 8px; color: #16a34a;"></i> Loading live exchange rate board...
+        </div>
       </div>
 
     </div>
@@ -1102,7 +1105,7 @@
 
   </div>
 
-  <script src="/remittance-providers.js?v=20260927"></script>
+
   <script>
     const currencies = [
       { code: 'INR', name: 'Indian Rupee', flag: '\uD83C\uDDEE\uD83C\uDDF3', sym: '\u20B9', link: '/saudi-remittance-calculator/sar-to-inr/' },
@@ -1193,11 +1196,8 @@
       }).join('');
     }
 
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initLiveBoard);
-    } else {
-      initLiveBoard();
-    }
+    // Synchronous execution for zero-flicker cached hydration
+    initLiveBoard();
   </script>  <!-- AdSense Container -->
   <div class="ad-slot-container">
     <ins class="adsbygoogle"

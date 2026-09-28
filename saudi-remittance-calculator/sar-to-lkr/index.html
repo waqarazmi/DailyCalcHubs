@@ -316,6 +316,7 @@
   </style>
   <link rel="stylesheet" href="/theme.css?v=2026.2">
   <script src="/mobile-nav.js" defer></script>
+  <script src="/remittance-providers.js?v=20260928"></script>
 </head>
 <body>
   <!-- Top Ticker -->
@@ -856,12 +857,12 @@
           <div class="result-row-top">
             <div>
               <div class="result-label">Best Estimated In-Hand Payout (Barq)</div>
-              <div class="result-big-val" id="lkrPayout">Rs --.--</div>
-              <div id="lkrWholesaleBench" style="font-size:11.5px; color:#94a3b8; margin-top:4px;">Wholesale Benchmark: --</div>
+              <div class="result-big-val" id="lkrPayout"><span style="color:#94a3b8;font-size:24px;">Rs ...</span></div>
+              <div id="lkrWholesaleBench" style="font-size:11.5px; color:#94a3b8; margin-top:4px;">Wholesale Benchmark: Calculating...</div>
             </div>
             <div class="result-rate-tag" id="lkrRateTag">
               <i class="fas fa-bolt" style="color:#fbbf24;"></i>
-              <span>Fetching exchange rate...</span>
+              <span>Loading live rate...</span>
             </div>
           </div>
           <div class="result-meta-grid">
@@ -933,7 +934,7 @@
                 </tr>
               </thead>
               <tbody id="lkrTableBody">
-                <!-- Populated by JS -->
+                <tr><td colspan="5" style="text-align:center;padding:28px 16px;color:#64748b;"><i class="fas fa-circle-notch fa-spin" style="margin-right:8px;color:#16a34a;"></i> Loading provider payouts...</td></tr>
               </tbody>
             </table>
           </div>
@@ -1067,7 +1068,7 @@
 
   </div>
 
-  <script src="/remittance-providers.js?v=20260927"></script>
+
   <script src="/live-ticker.js" defer></script>
   <script src="/theme.js" defer></script>
   <script src="/share.js" defer></script>
@@ -1134,10 +1135,10 @@
       });
     }
 
-    document.addEventListener('DOMContentLoaded', () => {
+    // Synchronous execution for zero-flicker cached hydration
       document.getElementById('lkrAmount').addEventListener('input', recalcLkr);
       initLkrCalc();
-    });
+
   </script>  <!-- AdSense Container -->
   <div class="ad-slot-container">
     <ins class="adsbygoogle"

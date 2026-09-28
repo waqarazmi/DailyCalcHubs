@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
@@ -301,6 +301,7 @@
     .amount-chips-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
     .result-big-val, #nprRateTag, #nprTimeVal { direction: ltr; unicode-bidi: embed; }
   </style>
+  <script src="/remittance-providers.js?v=20260928"></script>
 </head>
 <body>
   <!-- Top Rates Ticker -->
@@ -831,11 +832,11 @@
             <div class="result-row-top">
               <div>
                 <div class="result-label">أفضل تقدير لصافي المستلم (برق)</div>
-                <div class="result-big-val" id="nprPayout">Rs --.--</div>
-                <div id="nprWholesaleBench" style="font-size:11.5px; color:#94a3b8; margin-top:4px;">السعر المرجعي لسوق الجملة: --</div>
+                <div class="result-big-val" id="nprPayout"><span style="color:#94a3b8;font-size:24px;">Rs ...</span></div>
+                <div id="nprWholesaleBench" style="font-size:11.5px; color:#94a3b8; margin-top:4px;">السعر المرجعي لسوق الجملة: جاري الحساب...</div>
               </div>
               <div class="result-rate-tag" id="nprRateTag">
-                <i class="fas fa-bolt" style="color:#fbbf24;"></i> <span>جاري جلب سعر الصرف...</span>
+                <i class="fas fa-bolt" style="color:#fbbf24;"></i> <span>جاري تحميل السعر المباشر...</span>
               </div>
             </div>
 
@@ -910,7 +911,7 @@
                 </tr>
               </thead>
               <tbody id="nprTableBody">
-                <!-- Populated by JS -->
+                <tr><td colspan="6" style="text-align:center;padding:28px 16px;color:#64748b;"><i class="fas fa-circle-notch fa-spin" style="margin-left:8px;color:#16a34a;"></i> جاري تحميل عروض ومبالغ الشركات...</td></tr>
               </tbody>
             </table>
           </div>
@@ -1044,7 +1045,7 @@
 
   </main>
 
-  <script src="/remittance-providers.js?v=20260927"></script>
+
   <script src="/live-ticker.js" defer></script>
   <script src="/theme.js" defer></script>
   <script src="/share.js" defer></script>
@@ -1111,10 +1112,10 @@
       });
     }
 
-    document.addEventListener('DOMContentLoaded', () => {
+    // Synchronous execution for zero-flicker cached hydration
       document.getElementById('nprAmount').addEventListener('input', recalcNpr);
       initNprCalc();
-    });
+
   </script>
 
   <footer class="site-footer">

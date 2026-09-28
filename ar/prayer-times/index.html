@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
@@ -1276,7 +1276,7 @@
             <div class="loc-meta-title">الموقع المحدد</div>
             <div class="loc-name-display">
               <span class="pulse-dot" title="تحديث الموقع التلقائي نشط"></span>
-              <span id="prayerLocLabel">الرياض، السعودية</span>
+              <span id="prayerLocLabel">جاري تحديد الموقع...</span>
             </div>
           </div>
         </div>
@@ -1291,6 +1291,34 @@
           </button>
         </div>
       </div>
+
+      <script>
+        (function() {
+          try {
+            var raw = localStorage.getItem('dch_prayer_location');
+            if (raw) {
+              var d = JSON.parse(raw);
+              if (d) {
+                if (d.label) {
+                  var lbl = document.getElementById('prayerLocLabel');
+                  if (lbl) lbl.textContent = d.label;
+                }
+                if (d.weather && typeof d.weather.temp === 'number') {
+                  var tVal = document.getElementById('prayerTempVal');
+                  var tIcon = document.getElementById('prayerWeatherIcon');
+                  var tBadge = document.getElementById('prayerWeatherBadge');
+                  if (tVal) tVal.textContent = d.weather.temp + '°م';
+                  if (tIcon && d.weather.iconClass) tIcon.className = d.weather.iconClass;
+                  if (tBadge) {
+                    tBadge.setAttribute('aria-label', 'درجة الحرارة الحالية: ' + d.weather.temp + '°م');
+                    tBadge.title = 'درجة الحرارة الحالية: ' + d.weather.temp + '°م';
+                  }
+                }
+              }
+            }
+          } catch (e) {}
+        })();
+      </script>
 
       <!-- B. Dual Date & Live Clock Banner -->
       <div class="dual-date-clock-grid">
@@ -1768,7 +1796,8 @@
   <!-- PRESERVED HIGH-PRECISION PRAYER TIMES ENGINE JAVASCRIPT -->
   <!-- ======================================================== -->
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function() {
+
 
       // FAQ accordion
       const faqQuestions = document.querySelectorAll('.faq-question');
@@ -1846,7 +1875,9 @@
             source: data.source || (isManual ? 'manual' : 'default'),
             timestamp: ts,
             isFresh: isFresh,
-            isManual: isManual
+            isManual: isManual,
+            schedule: data.schedule || null,
+            weather: data.weather || null
           };
         }
       } catch (e) {}
@@ -1855,7 +1886,13 @@
 
     function saveLocationToStorage(locData) {
       try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(locData));
+        let existing = {};
+        try {
+          const raw = localStorage.getItem(STORAGE_KEY);
+          if (raw) existing = JSON.parse(raw) || {};
+        } catch (err) {}
+        const merged = Object.assign({}, existing, locData);
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(merged));
       } catch (e) {}
     }
 
@@ -2356,7 +2393,7 @@
             (stagedSource === 'manual' ? ('City Selection (' + stagedLabel.split(',')[0] + ')') : (stagedSource === 'gps' ? 'GPS Precision' : 'Approximate Location (IP)'));
 
           updateQiblaDisplay(currentLatitude, currentLongitude, srcLabel);
-          fetchWeatherForCoords(currentLatitude, currentLongitude);
+          fetchWeatherForCoords(currentLatitude, currentLongitude, true);
 
           const matchingKey = stagedCityKey || findMatchingCityKey(currentLatitude, currentLongitude);
           highlightCityButton(matchingKey);
@@ -2368,6 +2405,7 @@
             label: currentCityLabel,
             timezone: currentTimezone,
             source: currentLocationSource,
+            schedule: validatedSchedule,
             timestamp: Date.now()
           });
 
@@ -2428,7 +2466,7 @@
       return 'fas fa-temperature-half';
     }
 
-    async function fetchWeatherForCoords(lat, lng) {
+    async function fetchWeatherForCoords(lat, lng, isSilent = false) {
       const tempEl = document.getElementById('prayerTempVal');
       const iconEl = document.getElementById('prayerWeatherIcon');
       const badgeEl = document.getElementById('prayerWeatherBadge');
@@ -2444,17 +2482,19 @@
       const now = Date.now();
       if (weatherCache[cacheKey] && (now - weatherCache[cacheKey].timestamp < 600000)) {
         const cached = weatherCache[cacheKey];
-        tempEl.textContent = cached.temp + '°C';
+        tempEl.textContent = cached.temp + '°م';
         iconEl.className = cached.iconClass;
-        badgeEl.setAttribute('aria-label', (IS_ARABIC ? 'درجة الحرارة الحالية: ' : 'Current temperature: ') + cached.temp + '°C');
-        badgeEl.title = (IS_ARABIC ? 'درجة الحرارة الحالية: ' : 'Current temperature: ') + cached.temp + '°C';
+        badgeEl.setAttribute('aria-label', (IS_ARABIC ? 'درجة الحرارة الحالية: ' : 'Current temperature: ') + cached.temp + '°م');
+        badgeEl.title = (IS_ARABIC ? 'درجة الحرارة الحالية: ' : 'Current temperature: ') + cached.temp + '°م';
         badgeEl.style.opacity = '1';
         lastWeatherFetchTimestamp = cached.timestamp;
         return;
       }
 
       const reqId = ++activeWeatherRequestId;
-      badgeEl.style.opacity = '0.75';
+      if (!isSilent) {
+        badgeEl.style.opacity = '0.75';
+      }
 
       try {
         const url = 'https://api.open-meteo.com/v1/forecast?latitude=' + encodeURIComponent(numLat.toFixed(4)) + '&longitude=' + encodeURIComponent(numLng.toFixed(4)) + '&current=temperature_2m,weather_code';
@@ -2479,11 +2519,18 @@
             timestamp: now
           };
 
-          tempEl.textContent = tempC + '°C';
+          tempEl.textContent = tempC + '°م';
           iconEl.className = iconClass;
-          badgeEl.setAttribute('aria-label', (IS_ARABIC ? 'درجة الحرارة الحالية: ' : 'Current temperature: ') + tempC + '°C');
-          badgeEl.title = (IS_ARABIC ? 'درجة الحرارة الحالية: ' : 'Current temperature: ') + tempC + '°C';
+          badgeEl.setAttribute('aria-label', (IS_ARABIC ? 'درجة الحرارة الحالية: ' : 'Current temperature: ') + tempC + '°م');
+          badgeEl.title = (IS_ARABIC ? 'درجة الحرارة الحالية: ' : 'Current temperature: ') + tempC + '°م';
           lastWeatherFetchTimestamp = now;
+          saveLocationToStorage({
+            weather: {
+              temp: tempC,
+              iconClass: iconClass,
+              timestamp: now
+            }
+          });
         }
       } catch (err) {
         console.warn('Weather fetch fallback:', err);
@@ -2498,7 +2545,7 @@
       if (document.hidden) return;
       if (typeof currentLatitude === 'number' && typeof currentLongitude === 'number' &&
           isFinite(currentLatitude) && isFinite(currentLongitude)) {
-        fetchWeatherForCoords(currentLatitude, currentLongitude);
+        fetchWeatherForCoords(currentLatitude, currentLongitude, true);
       }
     }
 
@@ -2858,10 +2905,13 @@
 
       // Update visible DOM
       const locLabelEl = document.getElementById('prayerLocLabel');
-      if (locLabelEl) locLabelEl.textContent = currentCityLabel;
-      highlightCityButton(matchingKey);
+      if (locLabelEl && stored) locLabelEl.textContent = currentCityLabel;
+      if (stored) highlightCityButton(matchingKey);
 
-      // Initial instantaneous DOM render from fallback
+      // Initial instantaneous DOM render: priority to cached schedule
+      if (stored && stored.schedule) {
+        applyPrayerTimesToDOM(stored.schedule);
+      } else if (stored) {
       const fallbackEntry = defaultPrayerMap[matchingKey] || defaultPrayerMap.riyadh;
       applyPrayerTimesToDOM({
         fajr: fallbackEntry.fajr,
@@ -2873,9 +2923,10 @@
         maghrib: fallbackEntry.maghrib,
         isha: fallbackEntry.isha,
         label: currentCityLabel,
-        hijri: getDynamicHijriFallback(false, currentTimezone),
+        hijri: getDynamicHijriFallback(true, currentTimezone),
         hijriAr: '(' + getDynamicHijriFallback(true, currentTimezone) + ')'
       });
+      }
 
       let initialSourceTag = IS_ARABIC ? 'الوضع الافتراضي' : 'Baseline Fallback';
       if (initSource === 'manual') {
@@ -2887,7 +2938,7 @@
       }
 
       updateQiblaDisplay(initLat, initLng, initialSourceTag);
-      fetchWeatherForCoords(initLat, initLng);
+      fetchWeatherForCoords(initLat, initLng, true);
       setupDeviceOrientation();
 
       // Start live clock ticking
@@ -2895,46 +2946,101 @@
       setInterval(updateLiveClocks, 1000);
       startWeatherPeriodicRefresh();
 
-      // Fetch fresh calculation for coordinates
-      await fetchPrayerForCoords(initLat, initLng, currentCityLabel, initSource, currentTimezone, matchingKey);
+      if (stored) {
+        // Revalidate stored location schedule silently
+        await fetchPrayerForCoords(initLat, initLng, currentCityLabel, initSource, currentTimezone, matchingKey);
 
-      // 2. Background IP Auto-Detection: ONLY run if needsAutoDetect is true AND source is not manual
-      if (needsAutoDetect && currentLocationSource !== 'manual') {
-        try {
-          const ipRes = await fetch('https://ipapi.co/json/', { cache: 'no-cache' });
-          if (ipRes.ok) {
-            const ipData = await ipRes.json();
-            if (ipData && ipData.latitude && ipData.longitude) {
-              if (currentLocationSource !== 'manual') {
+        if (initSource === 'gps') {
+          if (navigator.permissions && navigator.permissions.query) {
+            try {
+              const permStatus = await navigator.permissions.query({ name: 'geolocation' });
+              if (permStatus.state === 'granted') {
+                navigator.geolocation.getCurrentPosition(
+                  async function(pos) {
+                    if (pos && pos.coords) {
+                      const newLat = pos.coords.latitude;
+                      const newLng = pos.coords.longitude;
+                      const dist = calculateHaversineDistance(newLat, newLng, currentLatitude, currentLongitude);
+                      if (dist > 1.5) {
+                        const preciseLabel = await reverseGeocodeWithOSM(newLat, newLng, IS_ARABIC ? 'المنطقة المحلية' : 'Local Area', IS_ARABIC ? 'المملكة العربية السعودية' : 'Saudi Arabia');
+                        await fetchPrayerForCoords(newLat, newLng, preciseLabel, 'gps', null, null);
+                      }
+                    }
+                  },
+                  function() {},
+                  { enableHighAccuracy: true, timeout: 10000, maximumAge: 60000 }
+                );
+              }
+            } catch (pe) {}
+          }
+        } else if (initSource === 'ip') {
+          let gpsUpgraded = false;
+          if (navigator.permissions && navigator.permissions.query) {
+            try {
+              const permStatus = await navigator.permissions.query({ name: 'geolocation' });
+              if (permStatus.state === 'granted') {
+                gpsUpgraded = true;
+                executeGpsTrack(false);
+              }
+            } catch (pe) {}
+          }
+          if (!gpsUpgraded && needsAutoDetect) {
+            try {
+              const ipRes = await fetch('https://ipapi.co/json/', { cache: 'no-cache' });
+              if (ipRes.ok) {
+                const ipData = await ipRes.json();
+                if (ipData && ipData.latitude && ipData.longitude) {
+                  const dist = calculateHaversineDistance(parseFloat(ipData.latitude), parseFloat(ipData.longitude), currentLatitude, currentLongitude);
+                  if (dist > 25) {
+                    const ipLat = parseFloat(ipData.latitude);
+                    const ipLng = parseFloat(ipData.longitude);
+                    const ipCity = ipData.city || (IS_ARABIC ? 'المنطقة المحلية' : 'Local Area');
+                    const ipCountry = ipData.country_name || (IS_ARABIC ? 'المملكة العربية السعودية' : 'Saudi Arabia');
+                    const ipLabel = IS_ARABIC ? `${ipCity}، ${ipCountry}` : `${ipCity}, ${ipCountry}`;
+                    const ipTz = ipData.timezone || currentTimezone;
+
+                    await fetchPrayerForCoords(ipLat, ipLng, ipLabel, 'ip', ipTz, null);
+                  }
+                }
+              }
+            } catch (err) {
+              console.warn('IP Geolocation lookup skipped/fallback:', err);
+            }
+          }
+        }
+      } else {
+        // Cold first visit: attempt GPS (if granted) then IP lookup
+        let coldDetected = false;
+        if (navigator.permissions && navigator.permissions.query) {
+          try {
+            const permStatus = await navigator.permissions.query({ name: 'geolocation' });
+            if (permStatus.state === 'granted') {
+              coldDetected = true;
+              await executeGpsTrack(false);
+            }
+          } catch (pe) {}
+        }
+        if (!coldDetected) {
+          try {
+            const ipRes = await fetch('https://ipapi.co/json/', { cache: 'no-cache' });
+            if (ipRes.ok) {
+              const ipData = await ipRes.json();
+              if (ipData && ipData.latitude && ipData.longitude) {
                 const ipLat = parseFloat(ipData.latitude);
                 const ipLng = parseFloat(ipData.longitude);
                 const ipCity = ipData.city || (IS_ARABIC ? 'المنطقة المحلية' : 'Local Area');
                 const ipCountry = ipData.country_name || (IS_ARABIC ? 'المملكة العربية السعودية' : 'Saudi Arabia');
                 const ipLabel = IS_ARABIC ? `${ipCity}، ${ipCountry}` : `${ipCity}, ${ipCountry}`;
-                const ipTz = ipData.timezone || currentTimezone;
-
+                const ipTz = ipData.timezone || 'Asia/Riyadh';
+                coldDetected = true;
                 await fetchPrayerForCoords(ipLat, ipLng, ipLabel, 'ip', ipTz, null);
               }
             }
-          }
-        } catch (err) {
-          console.warn('IP Geolocation lookup skipped/fallback:', err);
+          } catch (err) {}
         }
-      }
-
-      // 3. Silent GPS permission sync: ONLY sync if needsAutoDetect is true AND source is not manual
-      if (needsAutoDetect && currentLocationSource !== 'manual' && navigator.permissions && navigator.permissions.query) {
-        try {
-          const permStatus = await navigator.permissions.query({ name: 'geolocation' });
-          if (permStatus.state === 'granted' && currentLocationSource !== 'manual') {
-            executeGpsTrack(false);
-          }
-          permStatus.onchange = function() {
-            if (permStatus.state === 'granted' && currentLocationSource !== 'manual') {
-              executeGpsTrack(false);
-            }
-          };
-        } catch (pe) {}
+        if (!coldDetected) {
+          await fetchPrayerForCoords(initLat, initLng, initLabel, 'default', initTz, 'riyadh');
+        }
       }
     }
 

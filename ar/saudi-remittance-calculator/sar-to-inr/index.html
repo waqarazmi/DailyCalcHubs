@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
@@ -331,6 +331,7 @@
     ]
   }
   </script>
+  <script src="/remittance-providers.js?v=20260928"></script>
 </head>
 <body>
   <header class="site-header">
@@ -860,11 +861,11 @@
             <div class="result-row-top">
               <div>
                 <div class="result-label">أفضل مبلغ تسليم مقدر (تطبيق برق)</div>
-                <div class="result-big-val" id="inrPayout">₹ --.--</div>
-                <div id="inrWholesaleBench" style="font-size:11.5px; color:#cbd5e1; margin-top:4px;">السعر المرجعي بين البنوك: --</div>
+                <div class="result-big-val" id="inrPayout">₹ <span style="font-size:18px;font-weight:600;opacity:0.85;">...</span></div>
+                <div id="inrWholesaleBench" style="font-size:11.5px; color:#cbd5e1; margin-top:4px;">السعر المرجعي بين البنوك: جاري الحساب...</div>
               </div>
               <div class="result-rate-tag" id="inrRateTag">
-                <i class="fas fa-bolt" style="color:#fbbf24;"></i> <span>جاري حساب سعر الصرف...</span>
+                <i class="fas fa-spinner fa-spin" style="color:#fbbf24;"></i> <span>جاري تحميل السعر المرجعي...</span>
               </div>
             </div>
 
@@ -949,7 +950,7 @@
                 </tr>
               </thead>
               <tbody id="inrTableBody">
-                <!-- Populated by JS -->
+                <tr><td colspan="6" style="text-align:center; padding:24px; color:#64748b;"><i class="fas fa-spinner fa-spin" style="margin-left:8px;"></i> جاري تحميل أسعار مزودي التحويل...</td></tr>
               </tbody>
             </table>
           </div>
@@ -1119,8 +1120,6 @@
     </div>
 </main>
 
-  <!-- Core Remittance Engine -->
-  <script src="/remittance-providers.js?v=20260927"></script>
   <script src="/live-ticker.js" defer></script>
   <script src="/theme.js" defer></script>
   <script src="/share.js" defer></script>
@@ -1135,17 +1134,21 @@
 
       window.DailyCalcRemittance.fetchRates(function(rates, info) {
         if (info && info.isLive) {
-          badge.style.background = '#f0fdf4';
-          badge.style.color = '#166534';
-          badge.style.border = '1px solid #bbf7d0';
-          text.textContent = info.statusAr || 'البيانات المرجعية نشطة';
-          timeVal.textContent = info.timeFormattedAr || 'سعر الصرف المرجعي نشط';
+          if (badge) {
+            badge.style.background = '#f0fdf4';
+            badge.style.color = '#166534';
+            badge.style.border = '1px solid #bbf7d0';
+          }
+          if (text) text.textContent = info.statusAr || 'البيانات المرجعية نشطة';
+          if (timeVal) timeVal.textContent = info.timeFormattedAr || 'سعر الصرف المرجعي نشط';
         } else {
-          badge.style.background = '#fef2f2';
-          badge.style.color = '#991b1b';
-          badge.style.border = '1px solid #fecaca';
-          text.textContent = 'سعر إغلاق مرجعي معتمد';
-          timeVal.textContent = 'سعر إغلاق مرجعي معتمد';
+          if (badge) {
+            badge.style.background = '#fef2f2';
+            badge.style.color = '#991b1b';
+            badge.style.border = '1px solid #fecaca';
+          }
+          if (text) text.textContent = 'سعر إغلاق مرجعي معتمد';
+          if (timeVal) timeVal.textContent = 'سعر إغلاق مرجعي معتمد';
         }
         recalcInr();
       });
@@ -1173,8 +1176,8 @@
       const topProvider = window.DailyCalcRemittance.providers[0]; // Barq
       const calcTop = window.DailyCalcRemittance.calculateProviderPayout(topProvider, amt, 'INR', rate);
 
-      payoutEl.innerHTML = '<span dir="ltr">₹ ' + calcTop.formattedPayout + '</span>';
-      tagEl.innerHTML = '<i class="fas fa-bolt" style="color:#fbbf24;"></i> <span dir="ltr">1 SAR = ' + rate.toFixed(4) + ' INR</span>';
+      if (payoutEl) payoutEl.innerHTML = '<span dir="ltr">₹ ' + calcTop.formattedPayout + '</span>';
+      if (tagEl) tagEl.innerHTML = '<i class="fas fa-bolt" style="color:#fbbf24;"></i> <span dir="ltr">1 SAR = ' + rate.toFixed(4) + ' INR</span>';
       if (benchEl) {
         benchEl.innerHTML = 'السعر المرجعي بين البنوك: <span dir="ltr">₹ ' + window.DailyCalcRemittance.formatPayout(amt * rate, 'INR') + '</span>';
       }
@@ -1189,10 +1192,10 @@
       });
     }
 
-    document.addEventListener('DOMContentLoaded', function() {
-      document.getElementById('inrAmount').addEventListener('input', recalcInr);
-      initInrCalc();
-    });
+    // Immediate synchronous execution on page load (zero flicker on refresh)
+    initInrCalc();
+    const inrAmtInput = document.getElementById('inrAmount');
+    if (inrAmtInput) inrAmtInput.addEventListener('input', recalcInr);
   </script>
 
   <footer class="site-footer">
