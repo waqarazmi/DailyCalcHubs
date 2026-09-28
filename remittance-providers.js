@@ -543,9 +543,9 @@
             '</div>' +
           '</div>' +
         '</td>' +
-        '<td class="provider-cell-rate" data-label="' + rateLabel + '"' + (isArabic ? ' dir="ltr" style="text-align:right;"' : '') + '>' + rateCell + '</td>' +
+        '<td class="provider-cell-rate" data-label="' + rateLabel + '">' + rateCell + '</td>' +
         '<td class="provider-cell-fee" data-label="' + feeLabel + '">' + feeCell + '</td>' +
-        '<td class="provider-cell-net" data-label="' + netLabel + '"' + (isArabic ? ' dir="ltr" style="text-align:right;"' : '') + '>' + netCell + '</td>' +
+        '<td class="provider-cell-net" data-label="' + netLabel + '">' + netCell + '</td>' +
         '<td class="provider-cell-speed" data-label="' + speedLabel + '">' + speedCell + '</td>' +
         '<td class="provider-cell-cta">' +
           '<a href="' + ctaUrl + '" class="provider-cta-btn"' + ctaTarget + ' aria-label="' + (isArabic ? ('إرسال عبر ' + (p.nameAr || p.nameEn)) : (ctaText + ' with ' + p.nameEn)) + '">' +

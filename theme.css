@@ -1,4 +1,4 @@
-﻿/**
+/**
  * DailyCalcHubs — Global Night Mode Design System
  * Theme Tokens, Component Overrides & Dark Mode Styles
  * Pilot Phase: Prayer Times, EOSB, Split Bill
@@ -1836,20 +1836,30 @@ html[data-theme="dark"] .mobile-menu-toggle:hover {
 /* 7. Tables, Formulas & Chips Responsive Fit */
 .data-table-wrap,
 .multi-table-wrap,
+.schedule-table-wrap,
 .formula-box {
   max-width: 100% !important;
   overflow-x: auto !important;
   -webkit-overflow-scrolling: touch !important;
 }
 @media (max-width: 768px) {
+  .tool-layout > div,
+  .tool-layout > section,
+  .content-article {
+    min-width: 0 !important;
+    max-width: 100% !important;
+  }
   table.data-table,
   table.salary-table,
   table.schedule-table,
-  table.breakdown-table {
+  table.breakdown-table,
+  .data-table {
     display: block !important;
+    width: 100% !important;
     max-width: 100% !important;
     overflow-x: auto !important;
     -webkit-overflow-scrolling: touch !important;
+    box-sizing: border-box !important;
   }
 }
 .preset-chips,
@@ -2900,10 +2910,12 @@ html[lang="ar"] .comparison-table-wrap {
    ========================================================================== */
 
 /* --- Desktop Main Navigation & Nav Link Items --- */
-.main-navigation {
+@media (min-width: 769px) {
+  .main-navigation {
   display: flex !important;
   align-items: center !important;
   gap: 16px !important;
+  }
 }
 
 .nav-link-item {
@@ -5163,4 +5175,22 @@ html[dir="rtl"] input[type="number"] {
 html[data-theme="dark"] .provider-table-card {
   background: #131b2e !important;
   border-color: #1e293b !important;
+}
+
+/* --------------------------------------------------------------------------
+   Mobile Hub Stat Cards & Hero Badge Responsive Containment
+   -------------------------------------------------------------------------- */
+@media (max-width: 640px) {
+  .hub-stats-row .hub-stat-card {
+    flex: 1 1 calc(50% - 16px) !important;
+    min-width: 130px !important;
+    box-sizing: border-box !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-badge-pill {
+    border-radius: 14px !important;
+    padding: 8px 14px !important;
+  }
 }
