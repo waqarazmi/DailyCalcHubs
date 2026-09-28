@@ -1700,24 +1700,16 @@
 
   <!-- Scripts -->
   <script src="/mobile-nav.js" defer></script>
-  <script>
-    const FX_API_URL = 'https://open.er-api.com/v6/latest/USD';
-    let liveUsdRates = null;
-    let isLiveAvailable = false;
-    let fetchTimestamp = null;
-
-    // Currency metadata
-    const currencySymbols = {
-      INR: '\u20B9', PKR: 'Rs', BDT: '\u09F3', PHP: '\u20B1', NPR: 'Rs',
-      LKR: 'Rs', EGP: 'E\u00A3', USD: '$', AED: 'AED'
-    };
-
-
   <script src="/live-ticker.js" defer></script>
   <script src="/theme.js" defer></script>
   <script src="/share.js" defer></script>
 
   <script>
+    // Currency metadata
+    const currencySymbols = {
+      INR: '\u20B9', PKR: 'Rs', BDT: '\u09F3', PHP: '\u20B1', NPR: 'Rs',
+      LKR: 'Rs', EGP: 'E\u00A3', USD: '$', AED: 'AED'
+    };
     function initRates() {
       const statusBadge = document.getElementById('liveStatusBadge');
       const statusText = document.getElementById('liveStatusText');
