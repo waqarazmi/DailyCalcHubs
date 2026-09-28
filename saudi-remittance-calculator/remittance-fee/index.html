@@ -246,7 +246,7 @@
     .meta-box-val { color: #f8fafc; font-weight: 700; }
 
     /* Table */
-    .provider-table-card { margin-top: 24px; border-top: 1px solid var(--border-light); padding-top: 20px; }
+    .provider-table-card { margin-top: 32px; margin-bottom: 32px; background: #ffffff; border-radius: 16px; border: 1px solid var(--border-light); box-shadow: var(--card-shadow); padding: 24px 28px; box-sizing: border-box; width: 100%; }
     .provider-table-title { font-size: 15px; font-weight: 800; color: var(--navy-dark); margin-bottom: 14px; display: flex; justify-content: space-between; align-items: center; }
     .provider-table-wrap { width: 100%; overflow-x: auto; }
     .provider-table { width: 100%; border-collapse: collapse; font-size: 13px; text-align: left; }
@@ -901,28 +901,6 @@
           </div>
         </div>
 
-        <!-- Cost Breakdown Table -->
-        <div class="provider-table-card">
-          <div class="provider-table-title">
-            <span><i class="fas fa-list-check" style="color:#16a34a;"></i> Detailed Cost Component Breakdown</span>
-          </div>
-          <div class="provider-table-wrap">
-            <table class="provider-table data-table data-table-cards">
-              <thead>
-                <tr>
-                  <th>Cost Component</th>
-                  <th>Rate / Basis</th>
-                  <th>Amount (SAR)</th>
-                  <th>Description</th>
-                </tr>
-              </thead>
-              <tbody id="feeBreakdownBody">
-                <!-- Populated by JS -->
-              </tbody>
-            </table>
-          </div>
-        </div>
-
       </div>
 
       <!-- Right Sidebar -->
@@ -947,6 +925,32 @@
       </div>
 
     </div>
+
+    <!-- Full-Width In-Hand Comparison Table -->
+    <div class="provider-table-card">
+          <div class="provider-table-title">
+            <span><i class="fas fa-list-check" style="color:#16a34a;"></i> Detailed Cost Component Breakdown</span>
+          </div>
+          <div class="provider-table-wrap">
+            <table class="provider-table data-table data-table-cards">
+              <thead>
+                <tr>
+                  <th>Cost Component</th>
+                  <th>Rate / Basis</th>
+                  <th>Amount (SAR)</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody id="feeBreakdownBody">
+                <!-- Populated by JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+
+    <!-- Full-Width In-Hand Comparison Table -->
+
 
     <!-- Article -->
     <div class="content-article">

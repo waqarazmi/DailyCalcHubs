@@ -5108,3 +5108,32 @@ html[lang="ar"] input[type="number"],
 html[dir="rtl"] input[type="number"] {
   -moz-appearance: textfield !important;
 }
+
+/* --------------------------------------------------------------------------
+   Desktop Full-Width Table Optimization (Min-width: 861px)
+   -------------------------------------------------------------------------- */
+@media (min-width: 861px) {
+  .provider-table-wrap {
+    width: 100% !important;
+  }
+  .provider-table {
+    width: 100% !important;
+  }
+}
+
+.provider-table-card {
+  margin-top: 32px;
+  margin-bottom: 32px;
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid var(--border-light, #e2e8f0);
+  box-shadow: var(--card-shadow, 0 1px 3px rgba(0,0,0,0.05));
+  padding: 24px 28px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+html[data-theme="dark"] .provider-table-card {
+  background: #131b2e !important;
+  border-color: #1e293b !important;
+}

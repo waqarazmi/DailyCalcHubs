@@ -246,7 +246,7 @@
     .meta-box-val { color: #f8fafc; font-weight: 700; }
 
     /* Table */
-    .provider-table-card { margin-top: 24px; border-top: 1px solid var(--border-light); padding-top: 20px; }
+    .provider-table-card { margin-top: 32px; margin-bottom: 32px; background: #ffffff; border-radius: 16px; border: 1px solid var(--border-light); box-shadow: var(--card-shadow); padding: 24px 28px; box-sizing: border-box; width: 100%; }
     .provider-table-title { font-size: 15px; font-weight: 800; color: var(--navy-dark); margin-bottom: 14px; display: flex; justify-content: space-between; align-items: center; }
     .provider-table-wrap { width: 100%; overflow-x: auto; }
     .provider-table { width: 100%; border-collapse: collapse; font-size: 13px; text-align: left; }
@@ -889,28 +889,6 @@
         </div>
 
         <!-- In-Hand Wallet Comparison -->
-        <div class="provider-table-card">
-          <div class="provider-table-title">
-            <span><i class="fas fa-wallet" style="color:#16a34a;"></i> Saudi-to-Nepal Wallet Comparison</span>
-          </div>
-          <div class="provider-table-wrap">
-            <table class="provider-table data-table data-table-cards">
-              <thead>
-                <tr>
-                  <th>Provider</th>
-                  <th>Retail Rate</th>
-                  <th>Fee + 15% VAT</th>
-                  <th>Net Rupee Payout</th>
-                  <th>Delivery Speed</th>
-                  <th>Send Money</th>
-                </tr>
-              </thead>
-              <tbody id="nprTableBody">
-                <!-- Populated by JS -->
-              </tbody>
-            </table>
-          </div>
-        </div>
 
       </div>
 
@@ -937,6 +915,34 @@
 
     </div>
 
+    <!-- Full-Width In-Hand Comparison Table -->
+    <div class="provider-table-card">
+          <div class="provider-table-title">
+            <span><i class="fas fa-wallet" style="color:#16a34a;"></i> Saudi-to-Nepal Wallet Comparison</span>
+          </div>
+          <div class="provider-table-wrap">
+            <table class="provider-table data-table data-table-cards">
+              <thead>
+                <tr>
+                  <th>Provider</th>
+                  <th>Retail Rate</th>
+                  <th>Fee + 15% VAT</th>
+                  <th>Net Rupee Payout</th>
+                  <th>Delivery Speed</th>
+                  <th>Send Money</th>
+                </tr>
+              </thead>
+              <tbody id="nprTableBody">
+                <!-- Populated by JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+
+    <!-- Full-Width In-Hand Comparison Table -->
+
+
     <!-- Article -->
     <div class="content-article">
       <h2>Sending Money from Saudi Arabia to Nepal</h2>
@@ -959,7 +965,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
+<tr>
             <td data-label="Provider / Channel"><strong>Barq (Digital App)</strong></td>
             <td data-label="Service Fee + 15% VAT">0.00 SAR (Free Promo)</td>
             <td data-label="Retail Exchange Rate">Rs 37.77 / SAR</td>
@@ -986,6 +992,27 @@
             <td data-label="Retail Exchange Rate">Rs 37.43 / SAR</td>
             <td data-label="Net In-Hand Payout">Rs 74,214.33</td>
             <td data-label="Net Difference"><span style="color:#16a34a; font-weight:700;">+ Rs 954.79 Extra</span></td>
+          </tr>
+          <tr>
+            <td data-label="Provider / Channel"><strong>Enjaz (Bank Albilad)</strong></td>
+            <td data-label="Service Fee + 15% VAT">17.25 SAR (15 + 2.25 VAT)</td>
+            <td data-label="Retail Exchange Rate">Rs 37.35 / SAR</td>
+            <td data-label="Net In-Hand Payout">Rs 74,055.71</td>
+            <td data-label="Net Difference"><span style="color:#16a34a; font-weight:700;">+ Rs 796.17 Extra</span></td>
+          </tr>
+          <tr>
+            <td data-label="Provider / Channel"><strong>Western Union</strong></td>
+            <td data-label="Service Fee + 15% VAT">17.25 SAR (15 + 2.25 VAT)</td>
+            <td data-label="Retail Exchange Rate">Rs 37.32 / SAR</td>
+            <td data-label="Net In-Hand Payout">Rs 73,996.23</td>
+            <td data-label="Net Difference"><span style="color:#16a34a; font-weight:700;">+ Rs 736.69 Extra</span></td>
+          </tr>
+          <tr>
+            <td data-label="Provider / Channel"><strong>Wise (Online Transfer)</strong></td>
+            <td data-label="Service Fee + 15% VAT">11.00 SAR (~0.55% variable)</td>
+            <td data-label="Retail Exchange Rate">Rs 37.92 / SAR</td>
+            <td data-label="Net In-Hand Payout">Rs 75,422.88</td>
+            <td data-label="Net Difference"><span style="color:#16a34a; font-weight:700;">+ Rs 2,163.34 Extra</span></td>
           </tr>
           <tr>
             <td data-label="Provider / Channel"><strong>Traditional Bank Branch Counter</strong></td>

@@ -235,7 +235,7 @@
     .meta-box-val { color: #f8fafc; font-weight: 700; }
 
     /* Table */
-    .provider-table-card { margin-top: 24px; border-top: 1px solid var(--border-light); padding-top: 20px; }
+    .provider-table-card { margin-top: 32px; margin-bottom: 32px; background: #ffffff; border-radius: 16px; border: 1px solid var(--border-light); box-shadow: var(--card-shadow); padding: 24px 28px; box-sizing: border-box; width: 100%; }
     .provider-table-title { font-size: 15px; font-weight: 800; color: var(--navy-dark); margin-bottom: 14px; display: flex; justify-content: space-between; align-items: center; }
     .provider-table-wrap { width: 100%; overflow-x: auto; }
     .provider-table { width: 100%; border-collapse: collapse; font-size: 13px; text-align: left; }
@@ -859,29 +859,6 @@
             </div>
           </div>
         </section>
-
-        <div class="provider-table-card" style="background:#fff; border:1px solid #e2e8f0; border-radius:16px; padding:24px; margin-top:24px;">
-          <div class="provider-table-title" style="font-weight:800; font-size:16px; color:#0f172a; margin-bottom:16px;">
-            <span><i class="fas fa-wallet" style="color:#16a34a;"></i> مقارنة صافي المستلم لدى تطبيقات التحويل إلى الفلبين</span>
-          </div>
-          <div class="provider-table-wrap" style="overflow-x:auto;">
-            <table class="provider-table data-table data-table-cards" style="margin:0;">
-              <thead>
-                <tr>
-                  <th>المزود</th>
-                  <th>سعر الصرف</th>
-                  <th>الرسوم + الضريبة 15%</th>
-                  <th>صافي المستلم بالبيزو</th>
-                  <th>سرعة الإيداع</th>
-                  <th>إرسال الأموال</th>
-                </tr>
-              </thead>
-              <tbody id="phpTableBody">
-                <!-- Populated by JS -->
-              </tbody>
-            </table>
-          </div>
-        </div>
       </div>
 
       <aside>
@@ -907,6 +884,34 @@
       </aside>
     </div>
 
+    <!-- Full-Width In-Hand Comparison Table -->
+    <div class="provider-table-card">
+          <div class="provider-table-title" style="font-weight:800; font-size:16px; color:#0f172a; margin-bottom:16px;">
+            <span><i class="fas fa-wallet" style="color:#16a34a;"></i> مقارنة صافي المستلم لدى تطبيقات التحويل إلى الفلبين</span>
+          </div>
+          <div class="provider-table-wrap" style="overflow-x:auto;">
+            <table class="provider-table data-table data-table-cards" style="margin:0;">
+              <thead>
+                <tr>
+                  <th>المزود</th>
+                  <th>سعر الصرف</th>
+                  <th>الرسوم + الضريبة 15%</th>
+                  <th>صافي المستلم بالبيزو</th>
+                  <th>سرعة الإيداع</th>
+                  <th>إرسال الأموال</th>
+                </tr>
+              </thead>
+              <tbody id="phpTableBody">
+                <!-- Populated by JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+
+    <!-- Full-Width In-Hand Comparison Table -->
+
+
     <article class="content-article">
       <h2>دليل تحويل الأموال للعمالة الفلبينية (OFWs) في السعودية</h2>
       <p>
@@ -928,40 +933,61 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td data-label="المزود / القناة"><strong>تطبيق برق (Barq)</strong></td>
-            <td data-label="رسوم الخدمة + 15% ضريبة">0.00 ر.س (عرض مجاني)</td>
-            <td data-label="سعر التحويل للمزود">₱ 15.56 / ر.س</td>
-            <td data-label="صافي المبلغ المستلم"><strong>₱ 31,112.20</strong></td>
-            <td data-label="الفارق عن الفرع التقليدي"><span style="color:#16a34a; font-weight:700;">+ ₱ 940.84 إضافية</span></td>
+<tr>
+            <td data-label="التطبيق / القناة"><strong>تطبيق برق (Barq)</strong></td>
+            <td data-label="رسوم التحويل + الضريبة 15%">0.00 ر.س (عرض مجاني)</td>
+            <td data-label="سعر صرف التحويل"><span dir="ltr">&#8369; 15.56 / SAR</span></td>
+            <td data-label="صافي المبلغ المستلم"><strong><span dir="ltr">&#8369; 31,112.20</span></strong></td>
+            <td data-label="فارق التوفير"><span style="color:#16a34a; font-weight:700;"><span dir="ltr">+ &#8369; 940.84</span> إضافية</span></td>
           </tr>
           <tr>
-            <td data-label="المزود / القناة"><strong>محفظة يورباي (urpay)</strong></td>
-            <td data-label="رسوم الخدمة + 15% ضريبة">11.50 ر.س (10 + 1.50 ضريبة)</td>
-            <td data-label="سعر التحويل للمزود">₱ 15.54 / ر.س</td>
-            <td data-label="صافي المبلغ المستلم">₱ 30,902.18</td>
-            <td data-label="الفارق عن الفرع التقليدي"><span style="color:#16a34a; font-weight:700;">+ ₱ 730.82 إضافية</span></td>
+            <td data-label="التطبيق / القناة"><strong>محفظة يورباي (urpay)</strong></td>
+            <td data-label="رسوم التحويل + الضريبة 15%">11.50 ر.س (10 + 1.50 ضريبة)</td>
+            <td data-label="سعر صرف التحويل"><span dir="ltr">&#8369; 15.54 / SAR</span></td>
+            <td data-label="صافي المبلغ المستلم"><span dir="ltr">&#8369; 30,902.18</span></td>
+            <td data-label="فارق التوفير"><span style="color:#16a34a; font-weight:700;"><span dir="ltr">+ &#8369; 730.82</span> إضافية</span></td>
           </tr>
           <tr>
-            <td data-label="المزود / القناة"><strong>بنك إس تي سي (STC Bank)</strong></td>
-            <td data-label="رسوم الخدمة + 15% ضريبة">17.25 ر.س (15 + 2.25 ضريبة)</td>
-            <td data-label="سعر التحويل للمزود">₱ 15.53 / ر.س</td>
-            <td data-label="صافي المبلغ المستلم">₱ 30,797.06</td>
-            <td data-label="الفارق عن الفرع التقليدي"><span style="color:#16a34a; font-weight:700;">+ ₱ 625.70 إضافية</span></td>
+            <td data-label="التطبيق / القناة"><strong>بنك STC (STC Pay)</strong></td>
+            <td data-label="رسوم التحويل + الضريبة 15%">17.25 ر.س (15 + 2.25 ضريبة)</td>
+            <td data-label="سعر صرف التحويل"><span dir="ltr">&#8369; 15.53 / SAR</span></td>
+            <td data-label="صافي المبلغ المستلم"><span dir="ltr">&#8369; 30,797.06</span></td>
+            <td data-label="فارق التوفير"><span style="color:#16a34a; font-weight:700;"><span dir="ltr">+ &#8369; 625.70</span> إضافية</span></td>
           </tr>
           <tr>
-            <td data-label="المزود / القناة"><strong>تحويل الراجحي</strong></td>
-            <td data-label="رسوم الخدمة + 15% ضريبة">17.25 ر.س (15 + 2.25 ضريبة)</td>
-            <td data-label="سعر التحويل للمزود">₱ 15.42 / ر.س</td>
-            <td data-label="صافي المبلغ المستلم">₱ 30,564.59</td>
-            <td data-label="الفارق عن الفرع التقليدي"><span style="color:#16a34a; font-weight:700;">+ ₱ 393.23 إضافية</span></td>
+            <td data-label="التطبيق / القناة"><strong>تحويل الراجحي</strong></td>
+            <td data-label="رسوم التحويل + الضريبة 15%">17.25 ر.س (15 + 2.25 ضريبة)</td>
+            <td data-label="سعر صرف التحويل"><span dir="ltr">&#8369; 15.42 / SAR</span></td>
+            <td data-label="صافي المبلغ المستلم"><span dir="ltr">&#8369; 30,564.59</span></td>
+            <td data-label="فارق التوفير"><span style="color:#16a34a; font-weight:700;"><span dir="ltr">+ &#8369; 393.23</span> إضافية</span></td>
           </tr>
           <tr>
-            <td data-label="المزود / القناة"><strong>فرع البنك التقليدي</strong></td>
-            <td data-label="رسوم الخدمة + 15% ضريبة">28.75 ر.س (25 + 3.75 ضريبة)</td>
-            <td data-label="سعر التحويل للمزود">₱ 15.31 / ر.س</td>
-            <td data-label="صافي المبلغ المستلم">₱ 30,171.36</td>
-            <td data-label="الفارق عن الفرع التقليدي">سعر الأساس المقارن</td>
+            <td data-label="التطبيق / القناة"><strong>إنجاز Enjaz (بنك البلاد)</strong></td>
+            <td data-label="رسوم التحويل + الضريبة 15%">17.25 ر.س (15 + 2.25 ضريبة)</td>
+            <td data-label="سعر صرف التحويل"><span dir="ltr">&#8369; 15.38 / SAR</span></td>
+            <td data-label="صافي المبلغ المستلم"><span dir="ltr">&#8369; 30,494.70</span></td>
+            <td data-label="فارق التوفير"><span style="color:#16a34a; font-weight:700;"><span dir="ltr">+ &#8369; 323.34</span> إضافية</span></td>
+          </tr>
+          <tr>
+            <td data-label="التطبيق / القناة"><strong>ويسترن يونيون (Western Union)</strong></td>
+            <td data-label="رسوم التحويل + الضريبة 15%">17.25 ر.س (15 + 2.25 ضريبة)</td>
+            <td data-label="سعر صرف التحويل"><span dir="ltr">&#8369; 15.37 / SAR</span></td>
+            <td data-label="صافي المبلغ المستلم"><span dir="ltr">&#8369; 30,474.87</span></td>
+            <td data-label="فارق التوفير"><span style="color:#16a34a; font-weight:700;"><span dir="ltr">+ &#8369; 303.51</span> إضافية</span></td>
+          </tr>
+          <tr>
+            <td data-label="التطبيق / القناة"><strong>وايز Wise (تحويل إلكتروني)</strong></td>
+            <td data-label="رسوم التحويل + الضريبة 15%">11.00 ر.س (رسم متغير ~0.55%)</td>
+            <td data-label="سعر صرف التحويل"><span dir="ltr">&#8369; 15.62 / SAR</span></td>
+            <td data-label="صافي المبلغ المستلم"><span dir="ltr">&#8369; 31,068.18</span></td>
+            <td data-label="فارق التوفير"><span style="color:#16a34a; font-weight:700;"><span dir="ltr">+ &#8369; 896.82</span> إضافية</span></td>
+          </tr>
+          <tr>
+            <td data-label="التطبيق / القناة"><strong>فرع البنك التقليدي</strong></td>
+            <td data-label="رسوم التحويل + الضريبة 15%">28.75 ر.س (25 + 3.75 ضريبة)</td>
+            <td data-label="سعر صرف التحويل"><span dir="ltr">&#8369; 15.31 / SAR</span></td>
+            <td data-label="صافي المبلغ المستلم"><span dir="ltr">&#8369; 30,171.36</span></td>
+            <td data-label="فارق التوفير">المستوى الأساسي للمقارنة</td>
           </tr>
         </tbody>
       </table>

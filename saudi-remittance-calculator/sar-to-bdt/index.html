@@ -251,7 +251,7 @@
     .meta-box-val { color: #f8fafc; font-weight: 700; }
 
     /* Table */
-    .provider-table-card { margin-top: 24px; border-top: 1px solid var(--border-light); padding-top: 20px; }
+    .provider-table-card { margin-top: 32px; margin-bottom: 32px; background: #ffffff; border-radius: 16px; border: 1px solid var(--border-light); box-shadow: var(--card-shadow); padding: 24px 28px; box-sizing: border-box; width: 100%; }
     .provider-table-title { font-size: 15px; font-weight: 800; color: var(--navy-dark); margin-bottom: 14px; display: flex; justify-content: space-between; align-items: center; }
     .provider-table-wrap { width: 100%; overflow-x: auto; }
     .provider-table { width: 100%; border-collapse: collapse; font-size: 13px; text-align: left; }
@@ -902,28 +902,6 @@
         </div>
 
         <!-- In-Hand Wallet Comparison -->
-        <div class="provider-table-card">
-          <div class="provider-table-title">
-            <span><i class="fas fa-wallet" style="color:#16a34a;"></i> Saudi-to-Bangladesh Wallet Comparison</span>
-          </div>
-          <div class="provider-table-wrap">
-            <table class="provider-table data-table-cards">
-              <thead>
-                <tr>
-                  <th>Provider</th>
-                  <th>Retail Rate</th>
-                  <th>Fee + 15% VAT</th>
-                  <th>Total Payout (+2.5% Incentive)</th>
-                  <th>Speed</th>
-                  <th>Send Money</th>
-                </tr>
-              </thead>
-              <tbody id="bdtTableBody">
-                <!-- Populated by JS -->
-              </tbody>
-            </table>
-          </div>
-        </div>
 
       </div>
 
@@ -950,6 +928,34 @@
 
     </div>
 
+    <!-- Full-Width In-Hand Comparison Table -->
+    <div class="provider-table-card">
+          <div class="provider-table-title">
+            <span><i class="fas fa-wallet" style="color:#16a34a;"></i> Saudi-to-Bangladesh Wallet Comparison</span>
+          </div>
+          <div class="provider-table-wrap">
+            <table class="provider-table data-table-cards">
+              <thead>
+                <tr>
+                  <th>Provider</th>
+                  <th>Retail Rate</th>
+                  <th>Fee + 15% VAT</th>
+                  <th>Total Payout (+2.5% Incentive)</th>
+                  <th>Speed</th>
+                  <th>Send Money</th>
+                </tr>
+              </thead>
+              <tbody id="bdtTableBody">
+                <!-- Populated by JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+
+    <!-- Full-Width In-Hand Comparison Table -->
+
+
     <!-- Article -->
     <div class="content-article">
       <h2>Understanding the Bangladesh 2.5% Remittance Incentive</h2>
@@ -972,19 +978,61 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
+<tr>
             <td data-label="Provider / Channel"><strong>Barq (0 Fee Promotion)</strong></td>
-            <td data-label="Service Fee + 15% VAT">0.00 SAR</td>
+            <td data-label="Service Fee + 15% VAT">0.00 SAR (Free)</td>
             <td data-label="Base Taka Amount">&#2547; 48,000.00</td>
             <td data-label="2.5% Govt Incentive"><span style="color:#16a34a; font-weight:700;">+ &#2547; 1,200.00</span></td>
             <td data-label="Total Received by Family"><strong>&#2547; 49,200.00</strong></td>
           </tr>
           <tr>
-            <td data-label="Provider / Channel"><strong>STC Bank (Standard Fee)</strong></td>
+            <td data-label="Provider / Channel"><strong>urpay (Digital Wallet)</strong></td>
+            <td data-label="Service Fee + 15% VAT">11.50 SAR (10 + 1.50 VAT)</td>
+            <td data-label="Base Taka Amount">&#2547; 47,632.00</td>
+            <td data-label="2.5% Govt Incentive"><span style="color:#16a34a; font-weight:700;">+ &#2547; 1,190.80</span></td>
+            <td data-label="Total Received by Family"><strong>&#2547; 48,822.80</strong></td>
+          </tr>
+          <tr>
+            <td data-label="Provider / Channel"><strong>STC Bank (STC Pay)</strong></td>
             <td data-label="Service Fee + 15% VAT">17.25 SAR (15 + 2.25 VAT)</td>
             <td data-label="Base Taka Amount">&#2547; 47,448.00</td>
             <td data-label="2.5% Govt Incentive"><span style="color:#16a34a; font-weight:700;">+ &#2547; 1,186.20</span></td>
             <td data-label="Total Received by Family"><strong>&#2547; 48,634.20</strong></td>
+          </tr>
+          <tr>
+            <td data-label="Provider / Channel"><strong>Tahweel Al Rajhi</strong></td>
+            <td data-label="Service Fee + 15% VAT">17.25 SAR (15 + 2.25 VAT)</td>
+            <td data-label="Base Taka Amount">&#2547; 47,448.00</td>
+            <td data-label="2.5% Govt Incentive"><span style="color:#16a34a; font-weight:700;">+ &#2547; 1,186.20</span></td>
+            <td data-label="Total Received by Family"><strong>&#2547; 48,634.20</strong></td>
+          </tr>
+          <tr>
+            <td data-label="Provider / Channel"><strong>Enjaz (Bank Albilad)</strong></td>
+            <td data-label="Service Fee + 15% VAT">17.25 SAR (15 + 2.25 VAT)</td>
+            <td data-label="Base Taka Amount">&#2547; 47,448.00</td>
+            <td data-label="2.5% Govt Incentive"><span style="color:#16a34a; font-weight:700;">+ &#2547; 1,186.20</span></td>
+            <td data-label="Total Received by Family"><strong>&#2547; 48,634.20</strong></td>
+          </tr>
+          <tr>
+            <td data-label="Provider / Channel"><strong>Western Union</strong></td>
+            <td data-label="Service Fee + 15% VAT">17.25 SAR (15 + 2.25 VAT)</td>
+            <td data-label="Base Taka Amount">&#2547; 47,448.00</td>
+            <td data-label="2.5% Govt Incentive"><span style="color:#16a34a; font-weight:700;">+ &#2547; 1,186.20</span></td>
+            <td data-label="Total Received by Family"><strong>&#2547; 48,634.20</strong></td>
+          </tr>
+          <tr>
+            <td data-label="Provider / Channel"><strong>Wise (Online Transfer)</strong></td>
+            <td data-label="Service Fee + 15% VAT">8.25 SAR (~0.55% variable)</td>
+            <td data-label="Base Taka Amount">&#2547; 47,736.00</td>
+            <td data-label="2.5% Govt Incentive"><span style="color:#16a34a; font-weight:700;">+ &#2547; 1,193.40</span></td>
+            <td data-label="Total Received by Family"><strong>&#2547; 48,929.40</strong></td>
+          </tr>
+          <tr>
+            <td data-label="Provider / Channel"><strong>Traditional Bank Branch Counter</strong></td>
+            <td data-label="Service Fee + 15% VAT">28.75 SAR (25 + 3.75 VAT)</td>
+            <td data-label="Base Taka Amount">&#2547; 47,080.00</td>
+            <td data-label="2.5% Govt Incentive"><span style="color:#16a34a; font-weight:700;">+ &#2547; 1,177.00</span></td>
+            <td data-label="Total Received by Family"><strong>&#2547; 48,257.00</strong></td>
           </tr>
         </tbody>
       </table>

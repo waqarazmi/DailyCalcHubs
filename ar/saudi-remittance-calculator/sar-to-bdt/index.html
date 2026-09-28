@@ -214,7 +214,7 @@
     .meta-box-val { color: #f8fafc; font-weight: 700; }
 
     /* Table */
-    .provider-table-card { margin-top: 24px; border-top: 1px solid var(--border-light); padding-top: 20px; }
+    .provider-table-card { margin-top: 32px; margin-bottom: 32px; background: #ffffff; border-radius: 16px; border: 1px solid var(--border-light); box-shadow: var(--card-shadow); padding: 24px 28px; box-sizing: border-box; width: 100%; }
     .provider-table-title { font-size: 15px; font-weight: 800; color: var(--navy-dark); margin-bottom: 14px; display: flex; justify-content: space-between; align-items: center; }
     .provider-table-wrap { width: 100%; overflow-x: auto; }
     .provider-table { width: 100%; border-collapse: collapse; font-size: 13px; text-align: left; }
@@ -864,8 +864,29 @@
             </div>
           </div>
         </section>
+      </div>
 
-        <div class="provider-table-card" style="background:#fff; border:1px solid #e2e8f0; border-radius:16px; padding:24px; margin-top:24px;">
+      <aside>
+        <div class="sidebar-info-card">
+          <div class="sidebar-card-heading">
+            <i class="fas fa-gift"></i> حافز الحكومة البنغلاديشية 2.5%
+          </div>
+          <ul class="rules-list">
+            <li class="rules-item">
+              <i class="fas fa-check-circle rules-icon"></i>
+              <div><strong>دعم فوري بنسبة 2.5%:</strong> تمنح الحكومة البنغلاديشية حافزاً نقدياً فورياً بنسبة 2.5% يُضاف تلقائياً إلى أي حوالة واردة عبر القنوات المصرفية الرسمية لتشجيع التحويل النظامي.</div>
+            </li>
+            <li class="rules-item">
+              <i class="fas fa-check-circle rules-icon"></i>
+              <div><strong>إيداع فوري بمحفظة bKash:</strong> تتيح التطبيقات مثل Barq وSTC Pay الإيداع الفوري المباشر في محافظ bKash وNagad المسجلة برقم الهاتف.</div>
+            </li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Full-Width In-Hand Comparison Table -->
+    <div class="provider-table-card">
           <div class="provider-table-title" style="font-weight:800; font-size:16px; color:#0f172a; margin-bottom:16px;">
             <span><i class="fas fa-wallet" style="color:#16a34a;"></i> مقارنة صافي المستلم لدى تطبيقات التحويل إلى بنغلاديش</span>
           </div>
@@ -887,26 +908,7 @@
             </table>
           </div>
         </div>
-      </div>
 
-      <aside>
-        <div class="sidebar-info-card">
-          <div class="sidebar-card-heading">
-            <i class="fas fa-gift"></i> حافز الحكومة البنغلاديشية 2.5%
-          </div>
-          <ul class="rules-list">
-            <li class="rules-item">
-              <i class="fas fa-check-circle rules-icon"></i>
-              <div><strong>دعم فوري بنسبة 2.5%:</strong> تمنح الحكومة البنغلاديشية حافزاً نقدياً فورياً بنسبة 2.5% يُضاف تلقائياً إلى أي حوالة واردة عبر القنوات المصرفية الرسمية لتشجيع التحويل النظامي.</div>
-            </li>
-            <li class="rules-item">
-              <i class="fas fa-check-circle rules-icon"></i>
-              <div><strong>إيداع فوري بمحفظة bKash:</strong> تتيح التطبيقات مثل Barq وSTC Pay الإيداع الفوري المباشر في محافظ bKash وNagad المسجلة برقم الهاتف.</div>
-            </li>
-          </ul>
-        </div>
-      </aside>
-    </div>
 
     <article class="content-article">
       <h2>فهم الحافز الحكومي البنغلاديشي للحوالات بنسبة 2.5%</h2>
@@ -929,19 +931,61 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
+<tr>
             <td data-label="المزود / القناة"><strong>تطبيق برق (Barq - عرض بدون رسوم)</strong></td>
-            <td data-label="رسوم الخدمة + 15% ضريبة">0.00 ر.س</td>
-            <td data-label="المبلغ الأساسي بالتاكا">৳ 48,000.00</td>
-            <td data-label="حافز الحكومة 2.5%"><span style="color:#16a34a; font-weight:700;">+ ৳ 1,200.00</span></td>
-            <td data-label="إجمالي المستلم للمستفيد"><strong>৳ 49,200.00</strong></td>
+            <td data-label="رسوم الخدمة + 15% ضريبة">0.00 ر.س (مجاني)</td>
+            <td data-label="المبلغ الأساسي بالتاكا"><span dir="ltr">৳ 48,000.00</span></td>
+            <td data-label="حافز الحكومة 2.5%"><span style="color:#16a34a; font-weight:700;"><span dir="ltr">+ ৳ 1,200.00</span></span></td>
+            <td data-label="إجمالي المستلم للمستفيد"><strong><span dir="ltr">৳ 49,200.00</span></strong></td>
           </tr>
           <tr>
-            <td data-label="المزود / القناة"><strong>بنك إس تي سي (STC Bank - الرسوم المعتمدة)</strong></td>
+            <td data-label="المزود / القناة"><strong>محفظة يورباي (urpay)</strong></td>
+            <td data-label="رسوم الخدمة + 15% ضريبة">11.50 ر.س (10 + 1.50 ضريبة)</td>
+            <td data-label="المبلغ الأساسي بالتاكا"><span dir="ltr">৳ 47,632.00</span></td>
+            <td data-label="حافز الحكومة 2.5%"><span style="color:#16a34a; font-weight:700;"><span dir="ltr">+ ৳ 1,190.80</span></span></td>
+            <td data-label="إجمالي المستلم للمستفيد"><strong><span dir="ltr">৳ 48,822.80</span></strong></td>
+          </tr>
+          <tr>
+            <td data-label="المزود / القناة"><strong>بنك إس تي سي (STC Bank)</strong></td>
             <td data-label="رسوم الخدمة + 15% ضريبة">17.25 ر.س (15 + 2.25 ضريبة)</td>
-            <td data-label="المبلغ الأساسي بالتاكا">৳ 47,448.00</td>
-            <td data-label="حافز الحكومة 2.5%"><span style="color:#16a34a; font-weight:700;">+ ৳ 1,186.20</span></td>
-            <td data-label="إجمالي المستلم للمستفيد"><strong>৳ 48,634.20</strong></td>
+            <td data-label="المبلغ الأساسي بالتاكا"><span dir="ltr">৳ 47,448.00</span></td>
+            <td data-label="حافز الحكومة 2.5%"><span style="color:#16a34a; font-weight:700;"><span dir="ltr">+ ৳ 1,186.20</span></span></td>
+            <td data-label="إجمالي المستلم للمستفيد"><strong><span dir="ltr">৳ 48,634.20</span></strong></td>
+          </tr>
+          <tr>
+            <td data-label="المزود / القناة"><strong>تحويل الراجحي</strong></td>
+            <td data-label="رسوم الخدمة + 15% ضريبة">17.25 ر.س (15 + 2.25 ضريبة)</td>
+            <td data-label="المبلغ الأساسي بالتاكا"><span dir="ltr">৳ 47,448.00</span></td>
+            <td data-label="حافز الحكومة 2.5%"><span style="color:#16a34a; font-weight:700;"><span dir="ltr">+ ৳ 1,186.20</span></span></td>
+            <td data-label="إجمالي المستلم للمستفيد"><strong><span dir="ltr">৳ 48,634.20</span></strong></td>
+          </tr>
+          <tr>
+            <td data-label="المزود / القناة"><strong>إنجاز Enjaz (بنك البلاد)</strong></td>
+            <td data-label="رسوم الخدمة + 15% ضريبة">17.25 ر.س (15 + 2.25 ضريبة)</td>
+            <td data-label="المبلغ الأساسي بالتاكا"><span dir="ltr">৳ 47,448.00</span></td>
+            <td data-label="حافز الحكومة 2.5%"><span style="color:#16a34a; font-weight:700;"><span dir="ltr">+ ৳ 1,186.20</span></span></td>
+            <td data-label="إجمالي المستلم للمستفيد"><strong><span dir="ltr">৳ 48,634.20</span></strong></td>
+          </tr>
+          <tr>
+            <td data-label="المزود / القناة"><strong>ويسترن يونيون (Western Union)</strong></td>
+            <td data-label="رسوم الخدمة + 15% ضريبة">17.25 ر.س (15 + 2.25 ضريبة)</td>
+            <td data-label="المبلغ الأساسي بالتاكا"><span dir="ltr">৳ 47,448.00</span></td>
+            <td data-label="حافز الحكومة 2.5%"><span style="color:#16a34a; font-weight:700;"><span dir="ltr">+ ৳ 1,186.20</span></span></td>
+            <td data-label="إجمالي المستلم للمستفيد"><strong><span dir="ltr">৳ 48,634.20</span></strong></td>
+          </tr>
+          <tr>
+            <td data-label="المزود / القناة"><strong>وايز Wise (تحويل إلكتروني)</strong></td>
+            <td data-label="رسوم الخدمة + 15% ضريبة">8.25 ر.س (رسم متغير ~0.55%)</td>
+            <td data-label="المبلغ الأساسي بالتاكا"><span dir="ltr">৳ 47,736.00</span></td>
+            <td data-label="حافز الحكومة 2.5%"><span style="color:#16a34a; font-weight:700;"><span dir="ltr">+ ৳ 1,193.40</span></span></td>
+            <td data-label="إجمالي المستلم للمستفيد"><strong><span dir="ltr">৳ 48,929.40</span></strong></td>
+          </tr>
+          <tr>
+            <td data-label="المزود / القناة"><strong>فرع البنك التقليدي</strong></td>
+            <td data-label="رسوم الخدمة + 15% ضريبة">28.75 ر.س (25 + 3.75 ضريبة)</td>
+            <td data-label="المبلغ الأساسي بالتاكا"><span dir="ltr">৳ 47,080.00</span></td>
+            <td data-label="حافز الحكومة 2.5%"><span style="color:#16a34a; font-weight:700;"><span dir="ltr">+ ৳ 1,177.00</span></span></td>
+            <td data-label="إجمالي المستلم للمستفيد"><strong><span dir="ltr">৳ 48,257.00</span></strong></td>
           </tr>
         </tbody>
       </table>

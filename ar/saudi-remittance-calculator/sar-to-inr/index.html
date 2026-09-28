@@ -214,7 +214,7 @@
     .meta-box-val { color: #f8fafc; font-weight: 700; }
 
     /* Table */
-    .provider-table-card { margin-top: 24px; border-top: 1px solid var(--border-light); padding-top: 20px; }
+    .provider-table-card { margin-top: 32px; margin-bottom: 32px; background: #ffffff; border-radius: 16px; border: 1px solid var(--border-light); box-shadow: var(--card-shadow); padding: 24px 28px; box-sizing: border-box; width: 100%; }
     .provider-table-title { font-size: 15px; font-weight: 800; color: var(--navy-dark); margin-bottom: 14px; display: flex; justify-content: space-between; align-items: center; }
     .provider-table-wrap { width: 100%; overflow-x: auto; }
     .provider-table { width: 100%; border-collapse: collapse; font-size: 13px; text-align: left; }
@@ -857,29 +857,6 @@
             </div>
           </div>
         </section>
-
-        <div class="provider-table-card" style="background:#fff; border:1px solid #e2e8f0; border-radius:16px; padding:24px; margin-top:24px;">
-          <div class="provider-table-title" style="font-weight:800; font-size:16px; color:#0f172a; margin-bottom:16px;">
-            <span><i class="fas fa-wallet" style="color:#16a34a;"></i> مقارنة صافي المستلم لدى تطبيقات التحويل إلى الهند</span>
-          </div>
-          <div class="provider-table-wrap" style="overflow-x:auto;">
-            <table class="provider-table data-table data-table-cards" style="margin:0;">
-              <thead>
-                <tr>
-                  <th>المزود</th>
-                  <th>سعر الصرف</th>
-                  <th>الرسوم + الضريبة 15%</th>
-                  <th>صافي المستلم بالروبية</th>
-                  <th>سرعة الإيداع</th>
-                  <th>إرسال الأموال</th>
-                </tr>
-              </thead>
-              <tbody id="inrTableBody">
-                <!-- Populated by JS -->
-              </tbody>
-            </table>
-          </div>
-        </div>
       </div>
 
       <aside>
@@ -905,6 +882,34 @@
       </aside>
     </div>
 
+    <!-- Full-Width In-Hand Comparison Table -->
+    <div class="provider-table-card">
+          <div class="provider-table-title" style="font-weight:800; font-size:16px; color:#0f172a; margin-bottom:16px;">
+            <span><i class="fas fa-wallet" style="color:#16a34a;"></i> مقارنة صافي المستلم لدى تطبيقات التحويل إلى الهند</span>
+          </div>
+          <div class="provider-table-wrap" style="overflow-x:auto;">
+            <table class="provider-table data-table data-table-cards" style="margin:0;">
+              <thead>
+                <tr>
+                  <th>المزود</th>
+                  <th>سعر الصرف</th>
+                  <th>الرسوم + الضريبة 15%</th>
+                  <th>صافي المستلم بالروبية</th>
+                  <th>سرعة الإيداع</th>
+                  <th>إرسال الأموال</th>
+                </tr>
+              </thead>
+              <tbody id="inrTableBody">
+                <!-- Populated by JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+
+    <!-- Full-Width In-Hand Comparison Table -->
+
+
     <article class="content-article">
       <h2>دليل التحويل المالي من السعودية إلى الهند</h2>
       <h3>مثال تطبيقي عملي: تحويل 3,000 ريال سعودي إلى الهند</h3>
@@ -922,7 +927,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
+<tr>
             <td data-label="التطبيق / القناة"><strong>تطبيق برق (Barq)</strong></td>
             <td data-label="رسوم التحويل + الضريبة 15%">0.00 ر.س (مجاني)</td>
             <td data-label="سعر صرف التحويل"><span dir="ltr">&#8377; 25.22 / SAR</span></td>
@@ -949,6 +954,27 @@
             <td data-label="سعر صرف التحويل"><span dir="ltr">&#8377; 25.04 / SAR</span></td>
             <td data-label="صافي المبلغ المستلم"><span dir="ltr">&#8377; 74,688.06</span></td>
             <td data-label="فارق التوفير"><span style="color:#16a34a; font-weight:700;"><span dir="ltr">+ &#8377; 555.37</span> إضافية</span></td>
+          </tr>
+          <tr>
+            <td data-label="التطبيق / القناة"><strong>إنجاز Enjaz (بنك البلاد)</strong></td>
+            <td data-label="رسوم التحويل + الضريبة 15%">17.25 ر.س (15 + 2.25 ضريبة)</td>
+            <td data-label="سعر صرف التحويل"><span dir="ltr">&#8377; 25.07 / SAR</span></td>
+            <td data-label="صافي المبلغ المستلم"><span dir="ltr">&#8377; 74,777.54</span></td>
+            <td data-label="فارق التوفير"><span style="color:#16a34a; font-weight:700;"><span dir="ltr">+ &#8377; 644.85</span> إضافية</span></td>
+          </tr>
+          <tr>
+            <td data-label="التطبيق / القناة"><strong>ويسترن يونيون (Western Union)</strong></td>
+            <td data-label="رسوم التحويل + الضريبة 15%">17.25 ر.س (15 + 2.25 ضريبة)</td>
+            <td data-label="سعر صرف التحويل"><span dir="ltr">&#8377; 25.04 / SAR</span></td>
+            <td data-label="صافي المبلغ المستلم"><span dir="ltr">&#8377; 74,688.06</span></td>
+            <td data-label="فارق التوفير"><span style="color:#16a34a; font-weight:700;"><span dir="ltr">+ &#8377; 555.37</span> إضافية</span></td>
+          </tr>
+          <tr>
+            <td data-label="التطبيق / القناة"><strong>وايز Wise (تحويل إلكتروني)</strong></td>
+            <td data-label="رسوم التحويل + الضريبة 15%">16.50 ر.س (رسم متغير ~0.55%)</td>
+            <td data-label="سعر صرف التحويل"><span dir="ltr">&#8377; 25.45 / SAR</span></td>
+            <td data-label="صافي المبلغ المستلم"><span dir="ltr">&#8377; 75,930.08</span></td>
+            <td data-label="فارق التوفير"><span style="color:#16a34a; font-weight:700;"><span dir="ltr">+ &#8377; 1,797.39</span> إضافية</span></td>
           </tr>
           <tr>
             <td data-label="التطبيق / القناة"><strong>فرع البنك التقليدي</strong></td>
