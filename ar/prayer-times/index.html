@@ -2205,37 +2205,47 @@
       }
     }
 
-    // High-Precision Universal Reverse Geocoder (Cleaned: no hardcoded street overrides)
+    // High-Precision Universal Reverse Geocoder (Cleaned: no hardcoded street overrides, resilient abort timeouts, global support)
     async function reverseGeocodeWithOSM(lat, lng, fallbackCity, fallbackCountry) {
+      const sep = IS_ARABIC ? '، ' : ', ';
+
+      // 1. Try OSM Nominatim with AbortController (3.5s timeout)
       try {
-        const osmUrl = 'https://nominatim.openstreetmap.org/reverse?format=json&lat=' + lat + '&lon=' + lng + '&zoom=18&addressdetails=1&accept-language=' + (IS_ARABIC ? 'ar' : 'en');
-        const res = await fetch(osmUrl, { headers: { 'Accept': 'application/json' } });
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 3500);
+        const osmUrl = 'https://nominatim.openstreetmap.org/reverse?format=json&lat=' + encodeURIComponent(lat) + '&lon=' + encodeURIComponent(lng) + '&zoom=18&addressdetails=1&accept-language=' + (IS_ARABIC ? 'ar' : 'en');
+        const res = await fetch(osmUrl, { headers: { 'Accept': 'application/json' }, signal: controller.signal });
+        clearTimeout(timeoutId);
         if (res.ok) {
           const data = await res.json();
           if (data && data.address) {
             const addr = data.address;
             let area = addr.village || addr.hamlet || addr.suburb || addr.neighbourhood || addr.quarter || addr.residential || addr.road || '';
-            const city = addr.city || addr.town || addr.state_district || addr.county || addr.district || addr.municipality || fallbackCity || '';
+            const city = addr.city || addr.town || addr.state_district || addr.county || addr.district || addr.municipality || addr.state || fallbackCity || '';
             const country = addr.country || fallbackCountry || '';
 
-            const sep = IS_ARABIC ? '، ' : ', ';
             if (area && city && area.toLowerCase() !== city.toLowerCase()) {
               return area + sep + city;
             } else if (city && country) {
               return city + sep + country;
             } else if (city) {
               return city;
+            } else if (country) {
+              return country;
             }
           }
         }
       } catch (e) {
-        console.warn('OSM reverse geocode fallback:', e);
+        // Fallback silently to BDC
       }
 
-      // Fallback: BigDataCloud Reverse Geocoding
+      // 2. Fallback: BigDataCloud Reverse Geocoding with AbortController (3.5s timeout)
       try {
-        const bdcUrl = 'https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=' + lat + '&longitude=' + lng + '&localityLanguage=' + (IS_ARABIC ? 'ar' : 'en');
-        const bRes = await fetch(bdcUrl);
+        const controller2 = new AbortController();
+        const timeoutId2 = setTimeout(() => controller2.abort(), 3500);
+        const bdcUrl = 'https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=' + encodeURIComponent(lat) + '&longitude=' + encodeURIComponent(lng) + '&localityLanguage=' + (IS_ARABIC ? 'ar' : 'en');
+        const bRes = await fetch(bdcUrl, { signal: controller2.signal });
+        clearTimeout(timeoutId2);
         if (bRes.ok) {
           const bData = await bRes.json();
           let area = bData.locality || '';
@@ -2243,31 +2253,34 @@
           if (!city && bData.localityInfo && Array.isArray(bData.localityInfo.administrative)) {
             const admin = bData.localityInfo.administrative;
             for (let i = 0; i < admin.length; i++) {
-              if (admin[i].adminLevel === 4 || admin[i].adminLevel === 5) {
+              if (admin[i].adminLevel === 4 || admin[i].adminLevel === 5 || admin[i].adminLevel === 6) {
                 city = admin[i].name;
                 break;
               }
             }
           }
-          if (!city) city = fallbackCity || '';
+          if (!city) city = bData.principalSubdivision || fallbackCity || '';
           const country = bData.countryName || fallbackCountry || '';
 
-          const sep = IS_ARABIC ? '، ' : ', ';
           if (area && city && area.toLowerCase() !== city.toLowerCase()) {
             return area + sep + city;
           } else if (city && country) {
             return city + sep + country;
           } else if (city) {
             return city;
+          } else if (country) {
+            return country;
           }
         }
       } catch (e2) {
-        console.warn('BDC reverse geocode error:', e2);
+        // Fallback to coordinates / generic label
       }
 
-      const defCity = fallbackCity || (IS_ARABIC ? 'الرياض' : 'Riyadh');
-      const defCountry = fallbackCountry || (IS_ARABIC ? 'المملكة العربية السعودية' : 'Saudi Arabia');
-      return defCity + (IS_ARABIC ? '، ' : ', ') + defCountry;
+      // 3. Fallback if both reverse-geocoders fail
+      const inSaudi = (lat >= 16.0 && lat <= 32.5 && lng >= 34.5 && lng <= 55.7);
+      const defCity = fallbackCity || (IS_ARABIC ? 'موقع محدد' : 'Detected Location');
+      const defCountry = fallbackCountry || (inSaudi ? (IS_ARABIC ? 'المملكة العربية السعودية' : 'Saudi Arabia') : '');
+      return defCountry ? (defCity + sep + defCountry) : defCity;
     }
 
     function showFailureNotice(msg) {
@@ -2802,7 +2815,7 @@
       fetchPrayerForCoords(lat, lng, label, 'manual', tz, cityKey);
     }
 
-    async function executeGpsTrack(isUserInitiated = false) {
+    async function syncCurrentDeviceLocation(isUserInitiated = false) {
       const btn = document.getElementById('btnDetectLoc');
       if (isUserInitiated && btn) {
         btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> ' + (IS_ARABIC ? 'جاري التحديد...' : 'Detecting...');
@@ -2814,53 +2827,69 @@
           btn.innerHTML = '<i class="fas fa-crosshairs"></i> ' + (IS_ARABIC ? 'تحديد موقعي تلقائياً' : 'Detect My Location');
           btn.disabled = false;
         }
-        return;
+        return false;
       }
 
-      navigator.geolocation.getCurrentPosition(
-        async function(pos) {
-          try {
-            if (pos && pos.coords) {
-              const gpsLat = pos.coords.latitude;
-              const gpsLng = pos.coords.longitude;
-              const preciseLabel = await reverseGeocodeWithOSM(gpsLat, gpsLng, IS_ARABIC ? 'المنطقة المحلية' : 'Local Area', IS_ARABIC ? 'المملكة العربية السعودية' : 'Saudi Arabia');
-              await fetchPrayerForCoords(gpsLat, gpsLng, preciseLabel, 'gps', null, null);
+      return new Promise((resolve) => {
+        navigator.geolocation.getCurrentPosition(
+          async function(pos) {
+            try {
+              if (pos && pos.coords) {
+                const gpsLat = pos.coords.latitude;
+                const gpsLng = pos.coords.longitude;
+                const inSaudi = (gpsLat >= 16.0 && gpsLat <= 32.5 && gpsLng >= 34.5 && gpsLng <= 55.7);
+                const fallbackCity = IS_ARABIC ? 'موقع محدد' : 'Detected Location';
+                const fallbackCountry = inSaudi ? (IS_ARABIC ? 'المملكة العربية السعودية' : 'Saudi Arabia') : '';
+                const preciseLabel = await reverseGeocodeWithOSM(gpsLat, gpsLng, fallbackCity, fallbackCountry);
+                const success = await fetchPrayerForCoords(gpsLat, gpsLng, preciseLabel, 'gps', null, null);
+                resolve(success);
+              } else {
+                resolve(false);
+              }
+            } catch (e) {
+              console.warn('GPS location handling error:', e);
+              resolve(false);
+            } finally {
+              if (btn) {
+                btn.innerHTML = '<i class="fas fa-crosshairs"></i> ' + (IS_ARABIC ? 'تحديد موقعي تلقائياً' : 'Detect My Location');
+                btn.disabled = false;
+              }
             }
-          } catch (e) {
-            console.warn('GPS location handling error:', e);
-          } finally {
+          },
+          function(err) {
+            console.log('GPS device status:', err.message);
+            if (isUserInitiated) {
+              let reason = IS_ARABIC ? 'نظام GPS غير متاح' : 'GPS Unavailable';
+              if (err.code === 1) {
+                reason = IS_ARABIC ? 'تم رفض إذن GPS (استخدام الموقع التلقائي)' : 'GPS Denied (Using Fallback)';
+              } else if (err.code === 2) {
+                reason = IS_ARABIC ? 'نظام GPS غير متوفر (استخدام الموقع التلقائي)' : 'GPS Unavailable (Using Fallback)';
+              } else if (err.code === 3) {
+                reason = IS_ARABIC ? 'انتهت مهلة GPS (استخدام الموقع التلقائي)' : 'GPS Timeout (Using Fallback)';
+              }
+              updateQiblaAccuracyTag(reason);
+              const locLabelEl = document.getElementById('prayerLocLabel');
+              if (locLabelEl && currentCityLabel) {
+                locLabelEl.textContent = currentCityLabel;
+              }
+            }
             if (btn) {
               btn.innerHTML = '<i class="fas fa-crosshairs"></i> ' + (IS_ARABIC ? 'تحديد موقعي تلقائياً' : 'Detect My Location');
               btn.disabled = false;
             }
-          }
-        },
-        function(err) {
-          console.log('GPS device status:', err.message);
-          let reason = IS_ARABIC ? 'نظام GPS غير متاح' : 'GPS Unavailable';
-          if (err.code === 1) {
-            reason = IS_ARABIC ? 'تم رفض إذن GPS (استخدام الموقع التلقائي)' : 'GPS Denied (Using Fallback)';
-          } else if (err.code === 2) {
-            reason = IS_ARABIC ? 'نظام GPS غير متوفر (استخدام الموقع التلقائي)' : 'GPS Unavailable (Using Fallback)';
-          } else if (err.code === 3) {
-            reason = IS_ARABIC ? 'انتهت مهلة GPS (استخدام الموقع التلقائي)' : 'GPS Timeout (Using Fallback)';
-          }
-          updateQiblaAccuracyTag(reason);
-          const locLabelEl = document.getElementById('prayerLocLabel');
-          if (locLabelEl && currentCityLabel) {
-            locLabelEl.textContent = currentCityLabel;
-          }
-          if (btn) {
-            btn.innerHTML = '<i class="fas fa-crosshairs"></i> ' + (IS_ARABIC ? 'تحديد موقعي تلقائياً' : 'Detect My Location');
-            btn.disabled = false;
-          }
-        },
-        { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
-      );
+            resolve(false);
+          },
+          { enableHighAccuracy: true, timeout: 9000, maximumAge: 0 }
+        );
+      });
     }
 
     function triggerGpsRefresh() {
-      executeGpsTrack(true);
+      return syncCurrentDeviceLocation(true);
+    }
+
+    function executeGpsTrack(isUserInitiated = false) {
+      return syncCurrentDeviceLocation(isUserInitiated);
     }
 
     async function initAutoPrayerTimes() {
@@ -2872,7 +2901,6 @@
       let initTz = 'Asia/Riyadh';
       let initSource = 'default';
       let matchingKey = 'riyadh';
-      let needsAutoDetect = false;
 
       if (stored) {
         initLat = stored.lat;
@@ -2881,20 +2909,13 @@
         initSource = stored.source || 'manual';
 
         matchingKey = findMatchingCityKey(initLat, initLng);
-        if (matchingKey && QUICK_CITIES[matchingKey]) {
+        // Locality Protection: stored.label is authoritative for locality display
+        if (stored.label) {
+          initLabel = stored.label;
+        } else if (matchingKey && QUICK_CITIES[matchingKey]) {
           initLabel = IS_ARABIC ? QUICK_CITIES[matchingKey].ar : QUICK_CITIES[matchingKey].en;
           initTz = QUICK_CITIES[matchingKey].tz || initTz;
-        } else if (stored.label) {
-          initLabel = stored.label;
         }
-
-        // If automatic location is expired, trigger refresh
-        if (!stored.isFresh) {
-          needsAutoDetect = true;
-        }
-      } else {
-        // Fresh first visit: trigger auto-detection
-        needsAutoDetect = true;
       }
 
       currentLatitude = initLat;
@@ -2903,7 +2924,7 @@
       currentTimezone = initTz;
       currentLocationSource = initSource;
 
-      // Update visible DOM
+      // Update visible DOM immediately (instant paint, zero layout shift)
       const locLabelEl = document.getElementById('prayerLocLabel');
       if (locLabelEl && stored) locLabelEl.textContent = currentCityLabel;
       if (stored) highlightCityButton(matchingKey);
@@ -2912,20 +2933,20 @@
       if (stored && stored.schedule) {
         applyPrayerTimesToDOM(stored.schedule);
       } else if (stored) {
-      const fallbackEntry = defaultPrayerMap[matchingKey] || defaultPrayerMap.riyadh;
-      applyPrayerTimesToDOM({
-        fajr: fallbackEntry.fajr,
-        sunrise: fallbackEntry.sunrise,
-        ishraq: fallbackEntry.ishraq,
-        chasht: fallbackEntry.chasht,
-        dhuhr: fallbackEntry.dhuhr,
-        asr: fallbackEntry.asr,
-        maghrib: fallbackEntry.maghrib,
-        isha: fallbackEntry.isha,
-        label: currentCityLabel,
-        hijri: getDynamicHijriFallback(true, currentTimezone),
-        hijriAr: '(' + getDynamicHijriFallback(true, currentTimezone) + ')'
-      });
+        const fallbackEntry = defaultPrayerMap[matchingKey] || defaultPrayerMap.riyadh;
+        applyPrayerTimesToDOM({
+          fajr: fallbackEntry.fajr,
+          sunrise: fallbackEntry.sunrise,
+          ishraq: fallbackEntry.ishraq,
+          chasht: fallbackEntry.chasht,
+          dhuhr: fallbackEntry.dhuhr,
+          asr: fallbackEntry.asr,
+          maghrib: fallbackEntry.maghrib,
+          isha: fallbackEntry.isha,
+          label: currentCityLabel,
+          hijri: getDynamicHijriFallback(true, currentTimezone),
+          hijriAr: '(' + getDynamicHijriFallback(true, currentTimezone) + ')'
+        });
       }
 
       let initialSourceTag = IS_ARABIC ? 'الوضع الافتراضي' : 'Baseline Fallback';
@@ -2946,83 +2967,27 @@
       setInterval(updateLiveClocks, 1000);
       startWeatherPeriodicRefresh();
 
-      if (stored) {
-        // Revalidate stored location schedule silently
-        await fetchPrayerForCoords(initLat, initLng, currentCityLabel, initSource, currentTimezone, matchingKey);
+      // 2. Authoritative Current Geolocation Check:
+      // Unconditionally query fresh device geolocation whenever supported.
+      // MaximumAge: 0 guarantees fresh coordinates; no permissions gating; no distance suppression.
+      let freshGpsAcquired = false;
+      if (navigator.geolocation) {
+        freshGpsAcquired = await syncCurrentDeviceLocation(false);
+      }
 
-        if (initSource === 'gps') {
-          if (navigator.permissions && navigator.permissions.query) {
-            try {
-              const permStatus = await navigator.permissions.query({ name: 'geolocation' });
-              if (permStatus.state === 'granted') {
-                navigator.geolocation.getCurrentPosition(
-                  async function(pos) {
-                    if (pos && pos.coords) {
-                      const newLat = pos.coords.latitude;
-                      const newLng = pos.coords.longitude;
-                      const dist = calculateHaversineDistance(newLat, newLng, currentLatitude, currentLongitude);
-                      if (dist > 1.5) {
-                        const preciseLabel = await reverseGeocodeWithOSM(newLat, newLng, IS_ARABIC ? 'المنطقة المحلية' : 'Local Area', IS_ARABIC ? 'المملكة العربية السعودية' : 'Saudi Arabia');
-                        await fetchPrayerForCoords(newLat, newLng, preciseLabel, 'gps', null, null);
-                      }
-                    }
-                  },
-                  function() {},
-                  { enableHighAccuracy: true, timeout: 10000, maximumAge: 60000 }
-                );
-              }
-            } catch (pe) {}
-          }
-        } else if (initSource === 'ip') {
-          let gpsUpgraded = false;
-          if (navigator.permissions && navigator.permissions.query) {
-            try {
-              const permStatus = await navigator.permissions.query({ name: 'geolocation' });
-              if (permStatus.state === 'granted') {
-                gpsUpgraded = true;
-                executeGpsTrack(false);
-              }
-            } catch (pe) {}
-          }
-          if (!gpsUpgraded && needsAutoDetect) {
-            try {
-              const ipRes = await fetch('https://ipapi.co/json/', { cache: 'no-cache' });
-              if (ipRes.ok) {
-                const ipData = await ipRes.json();
-                if (ipData && ipData.latitude && ipData.longitude) {
-                  const dist = calculateHaversineDistance(parseFloat(ipData.latitude), parseFloat(ipData.longitude), currentLatitude, currentLongitude);
-                  if (dist > 25) {
-                    const ipLat = parseFloat(ipData.latitude);
-                    const ipLng = parseFloat(ipData.longitude);
-                    const ipCity = ipData.city || (IS_ARABIC ? 'المنطقة المحلية' : 'Local Area');
-                    const ipCountry = ipData.country_name || (IS_ARABIC ? 'المملكة العربية السعودية' : 'Saudi Arabia');
-                    const ipLabel = IS_ARABIC ? `${ipCity}، ${ipCountry}` : `${ipCity}, ${ipCountry}`;
-                    const ipTz = ipData.timezone || currentTimezone;
-
-                    await fetchPrayerForCoords(ipLat, ipLng, ipLabel, 'ip', ipTz, null);
-                  }
-                }
-              }
-            } catch (err) {
-              console.warn('IP Geolocation lookup skipped/fallback:', err);
-            }
-          }
-        }
-      } else {
-        // Cold first visit: attempt GPS (if granted) then IP lookup
-        let coldDetected = false;
-        if (navigator.permissions && navigator.permissions.query) {
+      // 3. Fallback chain if live GPS is denied, timed out, or unavailable:
+      if (!freshGpsAcquired) {
+        if (stored) {
+          // Cleanly revalidate and preserve stored location schedule
+          await fetchPrayerForCoords(initLat, initLng, currentCityLabel, initSource, currentTimezone, matchingKey);
+        } else {
+          // Cold first visit without GPS: fallback to IP location, then baseline Riyadh
+          let ipDetected = false;
           try {
-            const permStatus = await navigator.permissions.query({ name: 'geolocation' });
-            if (permStatus.state === 'granted') {
-              coldDetected = true;
-              await executeGpsTrack(false);
-            }
-          } catch (pe) {}
-        }
-        if (!coldDetected) {
-          try {
-            const ipRes = await fetch('https://ipapi.co/json/', { cache: 'no-cache' });
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 4000);
+            const ipRes = await fetch('https://ipapi.co/json/', { cache: 'no-cache', signal: controller.signal });
+            clearTimeout(timeoutId);
             if (ipRes.ok) {
               const ipData = await ipRes.json();
               if (ipData && ipData.latitude && ipData.longitude) {
@@ -3032,14 +2997,16 @@
                 const ipCountry = ipData.country_name || (IS_ARABIC ? 'المملكة العربية السعودية' : 'Saudi Arabia');
                 const ipLabel = IS_ARABIC ? `${ipCity}، ${ipCountry}` : `${ipCity}, ${ipCountry}`;
                 const ipTz = ipData.timezone || 'Asia/Riyadh';
-                coldDetected = true;
+                ipDetected = true;
                 await fetchPrayerForCoords(ipLat, ipLng, ipLabel, 'ip', ipTz, null);
               }
             }
-          } catch (err) {}
-        }
-        if (!coldDetected) {
-          await fetchPrayerForCoords(initLat, initLng, initLabel, 'default', initTz, 'riyadh');
+          } catch (err) {
+            console.warn('IP Geolocation fallback error:', err);
+          }
+          if (!ipDetected) {
+            await fetchPrayerForCoords(initLat, initLng, initLabel, 'default', initTz, 'riyadh');
+          }
         }
       }
     }
