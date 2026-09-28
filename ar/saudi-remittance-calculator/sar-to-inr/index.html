@@ -103,6 +103,35 @@
           { "@type": "ListItem", "position": 2, "name": "حاسبة تحويل الأموال", "item": "https://dailycalchubs.com/ar/saudi-remittance-calculator/" },
           { "@type": "ListItem", "position": 3, "name": "الريال إلى الروبية الهندية", "item": "https://dailycalchubs.com/ar/saudi-remittance-calculator/sar-to-inr/" }
         ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "ما هو التطبيق الذي يقدم أعلى صافي استلام بالروبية الهندية؟",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "يقدم تطبيق برق (Barq) في كثير من الأحيان أعلى مبلغ تسليم صافٍ بالروبية الهندية بفضل انعدام رسوم التحويل مع هامش صرف ضيق. كما تعد تطبيقات بنك STC ويورباي منافسة للغاية خاصة للمبالغ التي تتجاوز 3,000 ريال سعودي."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "هل توجد ضريبة دخل في الهند على الأموال المحولة من السعودية؟",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "لا، الدخل المكتسب في المملكة العربية السعودية من قبل غير المقيمين (NRI) معفى تماماً بنسبة 100% من ضريبة الدخل في الهند. كما أن الحوالات المودعة في حسابات NRE أو المرسلة كإعالة للأقارب معفاة بموجب المادة 56(2)(x) من قانون الضريبة الهندي."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "ما هي سرعة إيداع الحوالة في الحسابات البنكية الهندية؟",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "الحوالات المرسلة عبر شبكة الدفع الفوري (IMPS) تودع في حسابات المستفيدين في بنوك SBI وHDFC وICICI وAxis وغيرها خلال 2 إلى 10 دقائق فقط، على مدار 24 ساعة طوال أيام السنة."
+            }
+          }
+        ]
       }
     ]
   }
@@ -859,27 +888,42 @@
         </section>
       </div>
 
-      <aside>
+            <aside>
         <div class="sidebar-info-card">
-          <div class="sidebar-card-heading">
+          <h3 class="sidebar-card-heading">
             <i class="fas fa-shield-halved"></i> معلومات هامة عن التحويل للهند
-          </div>
+          </h3>
           <ul class="rules-list">
             <li class="rules-item">
               <i class="fas fa-check-circle rules-icon"></i>
-              <div><strong>حسابات NRE معفاة من الضرائب:</strong> الحوالات المودعة في حسابات NRE في الهند معفاة تماماً بنسبة 100% من ضريبة الدخل الهندية.</div>
+              <div><strong>حسابات NRE معفاة من الضرائب:</strong> الحوالات المودعة في حسابات NRE في الهند معفاة تماماً بنسبة 100% من ضريبة الدخل الهندية بموجب المادة 10(4)(ii).</div>
             </li>
             <li class="rules-item">
               <i class="fas fa-check-circle rules-icon"></i>
-              <div><strong>إيداع فوري IMPS:</strong> التحويلات المرسلة إلى بنوك SBI وHDFC وICICI تودع في الحساب خلال دقائق معدودة.</div>
+              <div><strong>سرعة التحويل الفوري (IMPS):</strong> أغلب التحويلات الموجهة إلى البنوك الهندية عبر المحافظ الرقمية تصل خلال دقائق معدودة على مدار 24 ساعة.</div>
             </li>
             <li class="rules-item">
               <i class="fas fa-check-circle rules-icon"></i>
-              <div><strong>ضريبة القيمة المضافة 15%:</strong> تُطبق حصراً على رسم التحويل فقط (مثال: 1.50 ريال على رسم الـ 10 ريالات) ولا تُفرض إطلاقاً على أصل المبلغ المحول.</div>
+              <div><strong>عدم تطبيق ضريبة الاستقطاع (TCS):</strong> تُطبق ضريبة المنبع الهندية (TCS) بموجب المادة 206C حصراً على الحوالات الخارجة من الهند، ولا تُفرض إطلاقاً على تحويلات المغتربين الواردة إلى الهند.</div>
+            </li>
+            <li class="rules-item">
+              <i class="fas fa-check-circle rules-icon"></i>
+              <div><strong>ضريبة القيمة المضافة 15%:</strong> تُطبق ضريبة ZATCA فقط على رسوم التحويل الإدارية (مثال: 1.50 ريال على رسم الـ 10 ريالات) ولا تُفرض إطلاقاً على أصل المبلغ المحول بالريال.</div>
             </li>
           </ul>
         </div>
+
+        <div class="sidebar-info-card" style="background:#f8fafc;">
+          <h3 class="sidebar-card-heading" style="color:#0f172a;">
+            <i class="fas fa-book-open"></i> أدلة التحويل إلى الهند
+          </h3>
+          <p style="font-size:13px; color:#475569; margin-bottom:12px;">راجع دليلنا الشامل المحدث لضرائب المغتربين والامتثال المصرفي والنظامي:</p>
+          <a href="/ar/saudi-remittance-calculator/saudi-to-india-remittance-guide/" style="display:inline-flex; align-items:center; gap:6px; color:#16a34a; font-weight:700; text-decoration:none; font-size:13.5px;">
+            <span>قراءة دليل المغتربين من السعودية إلى الهند</span> <i class="fas fa-arrow-left"></i>
+          </a>
+        </div>
       </aside>
+
     </div>
 
     <!-- Full-Width In-Hand Comparison Table -->
@@ -910,12 +954,36 @@
     <!-- Full-Width In-Hand Comparison Table -->
 
 
-    <article class="content-article">
+        <article class="content-article">
       <h2>دليل التحويل المالي من السعودية إلى الهند</h2>
+      <p>
+        يمثل ممر التحويلات المالية بين المملكة العربية السعودية وجمهورية الهند أضخم ممر ثنائي للتحويلات في منطقة الشرق الأوسط، حيث يقيم ويعمل أكثر من 2.5 مليون هندي في المملكة يرسلون مدخراتهم لدعم عائلاتهم وبناء استثماراتهم المصرفية والعقارية في الهند.
+      </p>
+
+      <h3>كيفية استخدام حاسبة التحويل</h3>
+      <ol style="padding-right:20px; margin-bottom:20px; line-height:1.8; color:#334155;">
+        <li><strong>أدخل مبلغ التحويل:</strong> اكتب المبلغ المطلوب بالريال السعودي أو اختر من أزرار المبالغ السريعة (500، 1,000، 3,000، 5,000، أو 10,000 ريال).</li>
+        <li><strong>متابعة سعر الصرف المباشر:</strong> تعرض الحاسبة سعر الصرف المرجعي اللحظي المستند إلى أسعار التداول العالمية.</li>
+        <li><strong>مقارنة صافي المستلم:</strong> قارن بين ما يصل للمستفيد بالروبية الهندية لدى التطبيقات المرخصة بعد خصم الرسوم وضريبة القيمة المضافة 15%.</li>
+        <li><strong>تنفيذ التحويل بأمان:</strong> افتح التطبيق المرخص المفضل لديك لتثبيت السعر وتأكيد الإرسال فورياً.</li>
+      </ol>
+
+      <h3>معادلة الاحتساب وشرح هامش سعر الصرف (FX Spread)</h3>
+      <p>
+        يُحسب المبلغ الصافي الفعلي الذي يستلمه المستفيد في حسابه البنكي بالهند وفق المعادلة التالية:
+      </p>
+      <div class="content-callout" style="background:#f1f5f9; padding:14px 18px; border-right:4px solid #16a34a; border-radius:6px; margin:16px 0; font-family:monospace; direction:ltr; text-align:left;">
+        <code>Net INR Received = (Transfer Amount in SAR - (Service Fee + 15% VAT)) &times; Retail SAR/INR Rate</code>
+      </div>
+      <p>
+        <strong>فهم فارق سعر الصرف:</strong> السعر بين البنوك هو سعر الجملة العالمي، أما التطبيقات فتمنح سعر تجزئة يقل عادة بفارق 0.25 إلى 0.40 روبية لكل ريال. مع ذلك، فإن التطبيقات المجانية بدون رسوم تحويل (مثل تطبيق برق) تعوض هذا الفارق وتمنح صافي استلام أعلى من البنوك التقليدية ذات الرسوم المرتفعة.
+      </p>
+
       <h3>مثال تطبيقي عملي: تحويل 3,000 ريال سعودي إلى الهند</h3>
       <p>
         لنحسب صافي المبلغ المستلم عند تحويل 3,000 ريال سعودي إلى حساب بنكي في الهند بموجب أسعار السوق القياسية المعتمدة (سعر الصرف المرجعي: 1 ريال = 25.50 روبية):
       </p>
+
       <table class="data-table data-table-cards">
         <thead>
           <tr>
@@ -986,30 +1054,65 @@
         </tbody>
       </table>
 
+      <h3>إرشادات تنظيمية وضريبية هامة</h3>
+      <ul style="padding-right:20px; margin-bottom:24px; line-height:1.8; color:#334155;">
+        <li><strong>حسابات NRE مقابل NRO:</strong> يُفضل دائماً إيداع الحوالات الواردة من السعودية في حساب توفير خارجي لغير المقيمين (NRE). الفوائد المكتسبة على حسابات NRE معفاة تماماً بنسبة 100% من الضرائب في الهند وأصل المبلغ قابل للتحويل للخارج بحرية كاملة.</li>
+        <li><strong>إعفاءات ضريبة الدخل في الهند:</strong> الدخل الخارجي للمغتربين المحول إلى الهند غير خاضع لضريبة الدخل الهندية بموجب المادة 10(4)(ii). والتحويلات للوالدين أو الزوجة أو الأبناء أو الإخوة تعد هدايا عائلية معفاة قانوناً بموجب المادة 56(2)(x).</li>
+        <li><strong>نظام حماية الأجور (WPS) ومطابقة ساما:</strong> يراقب البنك المركزي السعودي الحوالات الدولية ومطابقتها مع الرواتب الموثقة للمقيمين عبر منصة التأمينات الاجتماعية (GOSI). احتفظ دائماً بسجلات الرواتب للحوالات الكبيرة.</li>
+        <li><strong>دليل الامتثال الشامل:</strong> للاطلاع على كافة اللوائح الضريبية والبنكية بالتفصيل، راجع <a href="/ar/saudi-remittance-calculator/saudi-to-india-remittance-guide/" style="color:#16a34a; font-weight:700;">دليل التحويل الشامل من السعودية إلى الهند</a>.</li>
+      </ul>
+
       <h2>الأسئلة الشائعة</h2>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>ما هو التطبيق الذي يقدم أعلى صافي استلام بالروبية الهندية؟</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer" style="display:none;">
+          يقدم تطبيق برق (Barq) في كثير من الأحيان أعلى مبلغ تسليم صافٍ بالروبية الهندية بفضل انعدام رسوم التحويل مع هامش صرف ضيق. كما تعد تطبيقات بنك STC (STC Pay) ويورباي منافسة للغاية خاصة للمبالغ التي تتجاوز 3,000 ريال سعودي.
+        </div>
+      </div>
       <div class="faq-item">
         <div class="faq-question" onclick="toggleFaq(this)">
           <span>هل توجد ضريبة دخل في الهند على الأموال المحولة من السعودية؟</span>
           <i class="fas fa-chevron-down"></i>
         </div>
         <div class="faq-answer" style="display:none;">
-          لا، الدخل المكتسب في المملكة العربية السعودية من قبل غير المقيمين (NRI) معفى تماماً من ضريبة الدخل في الهند بموجب القوانين والاتفاقيات الضريبية.
+          لا، الدخل المكتسب في المملكة العربية السعودية من قبل غير المقيمين (NRI) معفى تماماً بنسبة 100% من ضريبة الدخل في الهند. كما أن الحوالات المودعة في حسابات NRE أو المرسلة كإعالة للأقارب معفاة بموجب المادة 56(2)(x) من قانون الضريبة الهندي.
         </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>ما هي سرعة إيداع الحوالة في الحسابات البنكية الهندية؟</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer" style="display:none;">
+          الحوالات المرسلة عبر شبكة الدفع الفوري (IMPS) تودع في حسابات المستفيدين في بنوك SBI وHDFC وICICI وAxis وغيرها خلال 2 إلى 10 دقائق فقط، على مدار 24 ساعة طوال أيام السنة.
+        </div>
+      </div>
+
+      <!-- Disclaimer -->
+      <div style="margin-top:36px; padding:18px; background:#fffbeb; border:1px solid #fde68a; border-radius:10px; font-size:13px; color:#92400e;">
+        <strong><i class="fas fa-circle-info"></i> إخلاء مسؤولية مالية:</strong>
+        الأسعار والمقارنات المعروضة هي تقديرات إرشادية مبنية على أسعار السوق بين البنوك لحظياً. يتم اعتماد السعر النهائي والرسوم الفعلية داخل التطبيق المرخص عند تأكيد التحويل. موقع ديلي كالك هَبز منصة معلوماتية مستقلة وليس جهة حكومية.
       </div>
     </article>
 
-    <div class="related-tools-box">
-      <div class="related-title"><i class="fas fa-grid-2" style="color:#16a34a; margin-right:8px;"></i>استكشف حاسبات التحويل الأخرى</div>
+
+        <div class="related-tools-box">
+      <div class="related-title"><i class="fas fa-grid-2" style="color:#16a34a; margin-left:8px;"></i>استكشف حاسبات التحويل الأخرى</div>
       <div class="related-grid">
         <a href="/ar/saudi-remittance-calculator/" class="related-link-card"><span>حاسبة التحويل الرئيسية</span> <i class="fas fa-arrow-left"></i></a>
         <a href="/ar/saudi-remittance-calculator/saudi-to-india-remittance-guide/" class="related-link-card"><span>دليل التحويل إلى الهند</span> <i class="fas fa-arrow-left"></i></a>
         <a href="/ar/saudi-remittance-calculator/remittance-comparison/" class="related-link-card"><span>مقارنة منصات التحويل</span> <i class="fas fa-arrow-left"></i></a>
         <a href="/ar/saudi-remittance-calculator/sar-to-pkr/" class="related-link-card"><span>تحويل إلى الروبية الباكستانية</span> <i class="fas fa-arrow-left"></i></a>
         <a href="/ar/saudi-remittance-calculator/sar-to-bdt/" class="related-link-card"><span>تحويل إلى التاكا البنغلاديشية</span> <i class="fas fa-arrow-left"></i></a>
-        <a href="/ar/saudi-remittance-calculator/live-sar-exchange-rate/" class="related-link-card"><span>لوحة أسعار الصرف</span> <i class="fas fa-arrow-left"></i></a>
+        <a href="/ar/saudi-remittance-calculator/sar-to-php/" class="related-link-card"><span>تحويل إلى البيزو الفلبيني</span> <i class="fas fa-arrow-left"></i></a>
+        <a href="/ar/saudi-remittance-calculator/remittance-fee/" class="related-link-card"><span>حاسبة رسوم التحويل والضريبة</span> <i class="fas fa-arrow-left"></i></a>
+        <a href="/ar/saudi-remittance-calculator/live-sar-exchange-rate/" class="related-link-card"><span>لوحة أسعار الصرف المباشرة</span> <i class="fas fa-arrow-left"></i></a>
       </div>
     </div>
-  </main>
+</main>
 
   <!-- Core Remittance Engine -->
   <script src="/remittance-providers.js?v=20260927"></script>
@@ -1143,14 +1246,14 @@
   </footer>
   <script>
     function toggleFaq(el) {
-      const ans = el.nextElementSibling;
-      const icon = el.querySelector('i');
+      var ans = el.nextElementSibling;
+      var icon = el.querySelector('i');
       if (ans.style.display === 'none' || !ans.style.display) {
         ans.style.display = 'block';
-        icon.className = 'fas fa-chevron-up';
+        if (icon) icon.className = 'fas fa-chevron-up';
       } else {
         ans.style.display = 'none';
-        icon.className = 'fas fa-chevron-down';
+        if (icon) icon.className = 'fas fa-chevron-down';
       }
     }
   </script>

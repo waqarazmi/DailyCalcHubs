@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
@@ -809,15 +809,16 @@
             <label class="form-label" for="feeAmount">مبلغ الحوالة الأساسي بالريال السعودي (SAR)</label>
             <div class="input-with-addons">
               <div class="input-addon-badge"><i class="fas fa-coins" style="color:#16a34a;"></i> ر.س</div>
-              <input type="number" id="feeAmount" class="calc-input" value="1000" min="1" max="100000" step="10" placeholder="أدخل المبلغ بالريال" dir="ltr" inputmode="decimal">
+              <input type="number" id="feeAmount" class="calc-input" value="2000" min="1" max="100000" step="10" placeholder="أدخل المبلغ بالريال" dir="ltr" inputmode="decimal">
             </div>
-            <div class="amount-chips-row">
+                        <div class="amount-chips-row">
               <button type="button" class="amount-chip-btn" onclick="setFeeAmt(500)">500 ر.س</button>
-              <button type="button" class="amount-chip-btn active" onclick="setFeeAmt(1000)">1,000 ر.س</button>
-              <button type="button" class="amount-chip-btn" onclick="setFeeAmt(2500)">2,500 ر.س</button>
+              <button type="button" class="amount-chip-btn" onclick="setFeeAmt(1000)">1,000 ر.س</button>
+              <button type="button" class="amount-chip-btn active" onclick="setFeeAmt(2000)">2,000 ر.س</button>
               <button type="button" class="amount-chip-btn" onclick="setFeeAmt(5000)">5,000 ر.س</button>
               <button type="button" class="amount-chip-btn" onclick="setFeeAmt(10000)">10,000 ر.س</button>
             </div>
+
           </div>
 
           <div class="form-group">
@@ -869,9 +870,9 @@
 
       <aside>
         <div class="sidebar-info-card">
-          <div class="sidebar-card-heading">
+          <h3 class="sidebar-card-heading">
             <i class="fas fa-shield-halved"></i> قواعد ضريبة التحويل في السعودية
-          </div>
+          </h3>
           <ul class="rules-list">
             <li class="rules-item">
               <i class="fas fa-check-circle rules-icon"></i>
@@ -941,9 +942,17 @@
           هو الفرق بين سعر العملة في سوق التداول الفعلي المباشر والسعر الذي يمنحه لك تطبيق التحويل. يمثل هذا الفارق ربحاً إضافياً لشركة الصرافة ويتراوح عادة بين 0.8% إلى 2.5%.
         </div>
       </div>
+    
+      <!-- إخلاء المسؤولية المالية -->
+      <div style="margin-top:36px; padding:18px; background:#fffbeb; border:1px solid #fde68a; border-radius:10px; font-size:13px; color:#92400e;">
+        <strong><i class="fas fa-circle-info"></i> إخلاء مسؤولية مالية:</strong>
+        تُحدث جداول الرسوم وهوامش المزودين دورياً وفقاً للتعرفات المعلنة رسمياً. يحق للمزودين المرخصين تعديل العروض الترويجية والرسوم وفق تقديرهم الخاص. منصة DailyCalcHubs أداة معلوماتية حسابية مستقلة وليست جهة حكومية أو مصرفية.
+      </div>
+
+
     </article>
 
-    <div class="related-tools-box">
+        <div class="related-tools-box">
       <div class="related-title"><i class="fas fa-grid-2" style="color:#16a34a; margin-left:8px;"></i>استكشف حاسبات التحويل الأخرى</div>
       <div class="related-grid">
         <a href="/ar/saudi-remittance-calculator/" class="related-link-card"><span>حاسبة التحويل الرئيسية</span> <i class="fas fa-arrow-left"></i></a>
@@ -951,9 +960,12 @@
         <a href="/ar/saudi-remittance-calculator/saudi-to-india-remittance-guide/" class="related-link-card"><span>دليل التحويل إلى الهند</span> <i class="fas fa-arrow-left"></i></a>
         <a href="/ar/saudi-remittance-calculator/sar-to-inr/" class="related-link-card"><span>تحويل إلى الروبية الهندية</span> <i class="fas fa-arrow-left"></i></a>
         <a href="/ar/saudi-remittance-calculator/sar-to-pkr/" class="related-link-card"><span>تحويل إلى الروبية الباكستانية</span> <i class="fas fa-arrow-left"></i></a>
+        <a href="/ar/saudi-remittance-calculator/sar-to-bdt/" class="related-link-card"><span>تحويل إلى التاكا البنغلاديشية</span> <i class="fas fa-arrow-left"></i></a>
         <a href="/ar/saudi-remittance-calculator/sar-to-php/" class="related-link-card"><span>تحويل إلى البيزو الفلبيني</span> <i class="fas fa-arrow-left"></i></a>
+        <a href="/ar/saudi-remittance-calculator/live-sar-exchange-rate/" class="related-link-card"><span>لوحة أسعار الصرف</span> <i class="fas fa-arrow-left"></i></a>
       </div>
     </div>
+
   </main>
 
   <script>

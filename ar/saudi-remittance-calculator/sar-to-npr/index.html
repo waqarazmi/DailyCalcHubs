@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
@@ -806,7 +806,7 @@
             <div class="amount-chips-row">
               <button type="button" class="amount-chip-btn" onclick="setNprAmt(500)">500 ر.س</button>
               <button type="button" class="amount-chip-btn active" onclick="setNprAmt(1000)">1,000 ر.س</button>
-              <button type="button" class="amount-chip-btn" onclick="setNprAmt(3000)">3,000 ر.س</button>
+              <button type="button" class="amount-chip-btn" onclick="setNprAmt(2000)">2,000 ر.س</button>
               <button type="button" class="amount-chip-btn" onclick="setNprAmt(5000)">5,000 ر.س</button>
               <button type="button" class="amount-chip-btn" onclick="setNprAmt(10000)">10,000 ر.س</button>
             </div>
@@ -849,27 +849,32 @@
         </section>
       </div>
 
-      <aside>
+            <aside>
         <div class="sidebar-info-card">
-          <div class="sidebar-card-heading">
-            <i class="fas fa-shield-halved"></i> نصائح هامة للتحويل إلى نيبال
-          </div>
+          <h3 class="sidebar-card-heading">
+            <i class="fas fa-shield-halved"></i> إرشادات وقواعد التحويل إلى نيبال
+          </h3>
           <ul class="rules-list">
             <li class="rules-item">
               <i class="fas fa-check-circle rules-icon"></i>
-              <div><strong>شبكات IME Pay وeSewa:</strong> إمكانية الاستلام الفوري في نيبال عبر المحافظ الرقمية المعتمدة.</div>
+              <div><strong>ربط العملة الثابت (1 INR = 1.60 NPR):</strong> يربط البنك المركزي النيبالي (NRB) سعر صرف الروبية النيبالية بالروبية الهندية بسعر ثابت، مما يحد من تقلبات سعر الصرف.</div>
             </li>
             <li class="rules-item">
               <i class="fas fa-check-circle rules-icon"></i>
-              <div><strong>إيداع الحسابات البنكية:</strong> تودع الحوالات المرسلة إلى بنوك نيبال خلال دقائق معدودة.</div>
+              <div><strong>محافظ eSewa وIME Pay:</strong> تتيح المحافظ الرقمية السعودية إيداعاً لحظياً مباشراً في المحافظ الإلكترونية في كافة مقاطعات نيبال السبع.</div>
             </li>
             <li class="rules-item">
               <i class="fas fa-check-circle rules-icon"></i>
-              <div><strong>ضريبة القيمة المضافة 15%:</strong> تُفرض على رسم التحويل فقط ولا تُخصم إطلاقاً من أصل الحوالة.</div>
+              <div><strong>إعفاء ضريبي كامل 100%:</strong> الحوالات المالية القانونية للأجور المرسلة عبر البنوك معفاة تماماً من أي ضرائب دخل في نيبال.</div>
+            </li>
+            <li class="rules-item">
+              <i class="fas fa-check-circle rules-icon"></i>
+              <div><strong>ضريبة القيمة المضافة 15%:</strong> تُطبق ضريبة ZATCA في السعودية فقط على رسوم التحويل الإدارية دون اقتطاع من أصل الحوالة.</div>
             </li>
           </ul>
         </div>
       </aside>
+
     </div>
 
     <!-- Full-Width In-Hand Comparison Table -->
@@ -980,29 +985,48 @@
         </tbody>
       </table>
 
-      <h2>الأسئلة الشائعة حول تحويل الريال إلى الروبية النيبالية</h2>
+            <h2>الأسئلة الشائعة حول تحويل الريال إلى الروبية النيبالية</h2>
       <div class="faq-item">
         <div class="faq-question" onclick="toggleFaq(this)">
-          <span>ما هي أفضل طريقة لإرسال الأموال إلى نيبال؟</span>
+          <span>لماذا يرتبط سعر صرف الريال إلى الروبية النيبالية بسعر الريال إلى الروبية الهندية؟</span>
           <i class="fas fa-chevron-down"></i>
         </div>
         <div class="faq-answer" style="display:none;">
-          تطبيقات التحويل الرقمية مثل برق ويورباي وإس تي سي باي توفر أفضل أسعار صرف وأقل رسوم مقارنة بالتحويل التقليدي من الفروع.
+          يربط البنك المركزي النيبالي (Nepal Rastra Bank) سعر صرف الروبية النيبالية بالروبية الهندية بسعر ثابت رسمي يبلغ 1.60 روبية نيبالية لكل روبية هندية واحدة، ولذلك يتحرك سعر صرف الريال السعودي مقابل الروبية النيبالية بتطابق تام مع سعر صرفه مقابل الروبية الهندية مضروباً في 1.60.
         </div>
       </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>هل يمكن إرسال الأموال مباشرة إلى محفظة eSewa أو IME Pay؟</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer" style="display:none;">
+          نعم، تدعم كبرى قنوات التحويل الرقمي في السعودية المربوطة بشبكات ويسترن يونيون وIME Remit الإيداع الفوري المباشر في حسابات محافظ eSewa وKhalti وIME Pay في نيبال.
+        </div>
+      </div>
+
+      <!-- إخلاء المسؤولية المالية -->
+      <div style="margin-top:36px; padding:18px; background:#fffbeb; border:1px solid #fde68a; border-radius:10px; font-size:13px; color:#92400e;">
+        <strong><i class="fas fa-circle-info"></i> إخلاء مسؤولية مالية:</strong>
+        الأسعار المعروضة هي تقديرات إرشادية مستندة إلى أسعار الصرف المرجعية بين البنوك اللحظية. تقوم المؤسسات المالية والتطبيقات الرقمية المرخصة بتثبيت السعر النهائي قبل إتمام عملية الإرسال داخل التطبيق. منصة DailyCalcHubs أداة معلوماتية حسابية مستقلة وليست جهة حكومية أو مصرفية.
+      </div>
+
     </article>
 
-    <div class="related-tools-box">
+        <div class="related-tools-box">
       <div class="related-title"><i class="fas fa-grid-2" style="color:#16a34a; margin-left:8px;"></i>استكشف حاسبات التحويل الأخرى</div>
       <div class="related-grid">
         <a href="/ar/saudi-remittance-calculator/" class="related-link-card"><span>حاسبة التحويل الرئيسية</span> <i class="fas fa-arrow-left"></i></a>
-        <a href="/ar/saudi-remittance-calculator/sar-to-lkr/" class="related-link-card"><span>تحويل إلى الروبية السريلانكية</span> <i class="fas fa-arrow-left"></i></a>
-        <a href="/ar/saudi-remittance-calculator/remittance-comparison/" class="related-link-card"><span>مقارنة منصات التحويل</span> <i class="fas fa-arrow-left"></i></a>
         <a href="/ar/saudi-remittance-calculator/sar-to-inr/" class="related-link-card"><span>تحويل إلى الروبية الهندية</span> <i class="fas fa-arrow-left"></i></a>
         <a href="/ar/saudi-remittance-calculator/sar-to-pkr/" class="related-link-card"><span>تحويل إلى الروبية الباكستانية</span> <i class="fas fa-arrow-left"></i></a>
-        <a href="/ar/saudi-remittance-calculator/remittance-fee/" class="related-link-card"><span>حاسبة رسوم التحويل</span> <i class="fas fa-arrow-left"></i></a>
+        <a href="/ar/saudi-remittance-calculator/sar-to-bdt/" class="related-link-card"><span>تحويل إلى التاكا البنغلاديشية</span> <i class="fas fa-arrow-left"></i></a>
+        <a href="/ar/saudi-remittance-calculator/sar-to-lkr/" class="related-link-card"><span>تحويل إلى الروبية السريلانكية</span> <i class="fas fa-arrow-left"></i></a>
+        <a href="/ar/saudi-remittance-calculator/remittance-fee/" class="related-link-card"><span>حاسبة الرسوم والضريبة</span> <i class="fas fa-arrow-left"></i></a>
+        <a href="/ar/saudi-remittance-calculator/remittance-comparison/" class="related-link-card"><span>مقارنة منصات التحويل</span> <i class="fas fa-arrow-left"></i></a>
+        <a href="/ar/saudi-remittance-calculator/live-sar-exchange-rate/" class="related-link-card"><span>لوحة أسعار الصرف</span> <i class="fas fa-arrow-left"></i></a>
       </div>
     </div>
+
   </main>
 
   <script src="/remittance-providers.js?v=20260927"></script>
