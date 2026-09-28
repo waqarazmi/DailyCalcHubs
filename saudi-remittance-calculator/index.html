@@ -926,6 +926,42 @@
       .calc-card { padding: 20px 16px; }
       .header-nav-links { display: none; }
     }
+
+    /* ==========================================================================
+       Dark Mode Page-Scoped Visual & Contrast Refinements
+       Preserves 100% of Light Mode; resolves 5 audited dark mode defects.
+       ========================================================================== */
+    html[data-theme="dark"] .tools-grid-section {
+      background: #0b0f19 !important;
+      border-top-color: #1e293b !important;
+      border-bottom-color: #1e293b !important;
+    }
+    html[data-theme="dark"] .tools-grid-section .section-title {
+      color: #f8fafc !important;
+    }
+    html[data-theme="dark"] .tools-grid-section .section-subtitle {
+      color: #94a3b8 !important;
+    }
+    html[data-theme="dark"] .hub-badge-item {
+      background: #1a233a !important;
+      border-color: #1e293b !important;
+      color: #cbd5e1 !important;
+    }
+    html[data-theme="dark"] .sidebar-info-card p {
+      color: #94a3b8 !important;
+    }
+    html[data-theme="dark"] .sidebar-info-card a {
+      color: #38bdf8 !important;
+    }
+    html[data-theme="dark"] .sidebar-info-card a:hover {
+      color: #7dd3fc !important;
+    }
+    html[data-theme="dark"] .hub-lead {
+      color: #94a3b8 !important;
+    }
+    html[data-theme="dark"] .select-currency-addon {
+      border-left-color: #334155 !important;
+    }
   </style>
   <link rel="stylesheet" href="/theme.css?v=2026.2">
   <script src="/mobile-nav.js" defer></script>
