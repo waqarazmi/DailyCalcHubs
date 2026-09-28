@@ -1,4 +1,4 @@
-/**
+﻿/**
  * DailyCalcHubs — Global Night Mode Design System
  * Theme Tokens, Component Overrides & Dark Mode Styles
  * Pilot Phase: Prayer Times, EOSB, Split Bill
@@ -1060,7 +1060,21 @@ html[data-theme="dark"] .ticker-item strong {
 }
 
 /* 10. Mobile Responsive Header Actions */
-@media (max-width: 480px) {
+@media (max-width: 640px) {
+  .header-right-actions .lang-switch-btn span,
+  .header-actions .lang-switch-btn span,
+  html[lang="ar"] .header-right-actions .lang-switch-btn span,
+  html[lang="ar"] .header-actions .lang-switch-btn span {
+    display: none !important;
+  }
+  .header-right-actions .lang-switch-btn,
+  .header-actions .lang-switch-btn,
+  html[lang="ar"] .header-right-actions .lang-switch-btn,
+  html[lang="ar"] .header-actions .lang-switch-btn {
+    padding: 6px 10px !important;
+    min-width: 36px !important;
+    justify-content: center !important;
+  }
   .header-right-actions .saudi-badge-header {
     display: none !important;
   }
@@ -1730,7 +1744,8 @@ html[data-theme="dark"] .service-pill:hover .pill-badge {
 }
 
 /* 2. Mobile Hamburger Toggle Button */
-.mobile-menu-toggle {
+.mobile-menu-toggle,
+.mobile-menu-btn {
   display: none;
   background: none;
   border: 1px solid var(--border-color, #cbd5e1);
@@ -2274,6 +2289,9 @@ html[lang="ar"] .brand-logo-area .logo-icon-box {
 }
 
 html[lang="ar"] .brand-logo-area .logo-title {
+  direction: ltr !important;
+  unicode-bidi: isolate !important;
+  display: inline-block;
   font-size: 22px;
   font-weight: 800;
   letter-spacing: -0.5px;
@@ -2639,6 +2657,9 @@ html[data-theme="dark"][lang="ar"] .site-header .header-actions {
   html[lang="ar"] .brand-logo,
   .brand-logo-area .logo-title,
   html[lang="ar"] .brand-logo-area .logo-title {
+  direction: ltr !important;
+  unicode-bidi: isolate !important;
+  display: inline-block;
     font-size: clamp(15px, 4vw, 18px) !important;
   }
   .brand-logo-area .logo-subtitle,
@@ -2702,6 +2723,9 @@ html[data-theme="dark"][lang="ar"] .site-header .header-actions {
   }
   .brand-logo-area .logo-title,
   html[lang="ar"] .brand-logo-area .logo-title {
+  direction: ltr !important;
+  unicode-bidi: isolate !important;
+  display: inline-block;
     font-size: 15px !important;
   }
 }
@@ -2761,6 +2785,9 @@ html[data-theme="dark"][lang="ar"] .site-header .header-actions {
   }
   .brand-logo-area .logo-title,
   html[lang="ar"] .brand-logo-area .logo-title {
+  direction: ltr !important;
+  unicode-bidi: isolate !important;
+  display: inline-block;
     font-size: 13.5px !important;
   }
 }
