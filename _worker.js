@@ -7,7 +7,12 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
 
-    // 1. Intercept /api/export-pdf
+    // 1. Block any accidental exposure of /functions/*
+    if (url.pathname.startsWith('/functions/')) {
+      return new Response('Not Found', { status: 404 });
+    }
+
+    // 2. Intercept /api/export-pdf
     if (url.pathname === '/api/export-pdf') {
       const corsHeaders = {
         'Access-Control-Allow-Origin': '*',
@@ -42,8 +47,8 @@ export default {
           const reqPath = payload.path || '';
           const inputs = payload.inputs || {};
 
-          // Validate path
-          const allowedPathPattern = /^\/(ar\/)?(saudi-salary-calculator|saudi-iqama-calculator|saudi-remittance-calculator|everyday-smart-calculator|travel-booking-calculator|shariah-sip-calculator)\/[a-zA-Z0-9\-_/]+$/;
+          // Validate path (both hub pages e.g. /saudi-remittance-calculator/ and subtools e.g. /saudi-remittance-calculator/sar-to-inr/)
+          const allowedPathPattern = /^\/(ar\/)?(saudi-salary-calculator|saudi-iqama-calculator|saudi-remittance-calculator|everyday-smart-calculator|travel-booking-calculator|shariah-sip-calculator)(\/.*)?$/;
           if (!allowedPathPattern.test(reqPath) || reqPath.includes('..')) {
             return new Response(JSON.stringify({ error: 'Invalid or unauthorized calculator path' }), {
               status: 400,
@@ -61,12 +66,42 @@ export default {
             });
           }
 
-          // If browser binding exists, use quickAction or puppeteer
+          // Build absolute target URL
           const targetUrl = new URL(reqPath, request.url).toString();
+
+          const injectionScript = `
+(function() {
+  try {
+    var cb = document.querySelector('.cookie-consent-banner') || document.getElementById('cookieConsentBanner');
+    if (cb) cb.style.display = 'none';
+
+    var inputs = ${JSON.stringify(inputs)};
+    for (var id in inputs) {
+      if (Object.prototype.hasOwnProperty.call(inputs, id)) {
+        var val = inputs[id];
+        var el = document.getElementById(id) || document.querySelector('[name="' + id + '"]');
+        if (el) {
+          if (el.type === 'checkbox' || el.type === 'radio') {
+            el.checked = !!val;
+          } else {
+            el.value = val;
+          }
+          el.dispatchEvent(new Event('input', { bubbles: true }));
+          el.dispatchEvent(new Event('change', { bubbles: true }));
+        }
+      }
+    }
+    if (typeof initPrintFooter === 'function') initPrintFooter();
+  } catch (e) {}
+})();
+`;
 
           if (typeof browser.quickAction === 'function') {
             const pdfResponse = await browser.quickAction('pdf', {
               url: targetUrl,
+              addScriptTag: [
+                { content: injectionScript }
+              ],
               pdfOptions: {
                 printBackground: true,
                 preferCSSPageSize: true
@@ -81,11 +116,10 @@ export default {
               headers: {
                 ...corsHeaders,
                 'Content-Type': 'application/pdf',
-                'Content-Disposition': `attachment; filename="${filename}"`
+                'Content-Disposition': `attachment; filename="${filename}"`,
+                'Cache-Control': 'no-store, no-cache, must-revalidate'
               }
             });
-          }
-
           } else {
             return new Response(JSON.stringify({
               error: 'Browser quickAction method not supported on this browser binding',
@@ -108,7 +142,7 @@ export default {
       }
     }
 
-    // 2. Delegate all static assets to env.ASSETS
+    // 3. Delegate all static assets to env.ASSETS
     return env.ASSETS.fetch(request);
   }
 };
