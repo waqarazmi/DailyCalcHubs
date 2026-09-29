@@ -86,53 +86,15 @@ export default {
             });
           }
 
-          // Fallback to @cloudflare/puppeteer
-          const puppeteer = await import('@cloudflare/puppeteer');
-          const b = await puppeteer.launch(browser);
-          const page = await b.newPage();
-          await page.goto(targetUrl, { waitUntil: 'networkidle0', timeout: 15000 });
-
-          // Inject user calculation inputs
-          await page.evaluate((inputsObj) => {
-            const cb = document.querySelector('.cookie-consent-banner') || document.getElementById('cookieConsentBanner');
-            if (cb) cb.style.display = 'none';
-
-            for (const [id, val] of Object.entries(inputsObj)) {
-              const el = document.getElementById(id) || document.querySelector('[name="' + id + '"]');
-              if (el) {
-                if (el.type === 'checkbox' || el.type === 'radio') {
-                  el.checked = !!val;
-                } else {
-                  el.value = val;
-                }
-                el.dispatchEvent(new Event('input', { bubbles: true }));
-                el.dispatchEvent(new Event('change', { bubbles: true }));
-              }
-            }
-            if (typeof initPrintFooter === 'function') initPrintFooter();
-          }, inputs);
-
-          await page.evaluate(() => document.fonts.ready);
-
-          const pdfBuffer = await page.pdf({
-            printBackground: true,
-            preferCSSPageSize: true,
-            displayHeaderFooter: false
-          });
-
-          await b.close();
-
-          const cleanSlug = reqPath.replace(/^\/(ar\/)?/, '').replace(/\/$/, '').replace(/\//g, '_');
-          const filename = `DailyCalcHubs_${cleanSlug || 'Calculation'}.pdf`;
-
-          return new Response(pdfBuffer, {
-            status: 200,
-            headers: {
-              ...corsHeaders,
-              'Content-Type': 'application/pdf',
-              'Content-Disposition': `attachment; filename="${filename}"`
-            }
-          });
+          } else {
+            return new Response(JSON.stringify({
+              error: 'Browser quickAction method not supported on this browser binding',
+              browserMethods: Object.getOwnPropertyNames(Object.getPrototypeOf(browser))
+            }), {
+              status: 500,
+              headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+            });
+          }
 
         } catch (err) {
           return new Response(JSON.stringify({
