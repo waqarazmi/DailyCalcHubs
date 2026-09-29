@@ -2394,7 +2394,8 @@ html[lang="ar"] .site-footer {
   direction: rtl;
 }
 
-html[lang="ar"] .site-footer .footer-columns-grid {
+html[lang="ar"] .site-footer .footer-columns-grid,
+html[lang="ar"] .site-footer .footer-grid {
   display: grid;
   grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
   gap: 36px;
@@ -2402,14 +2403,35 @@ html[lang="ar"] .site-footer .footer-columns-grid {
 }
 
 @media (max-width: 840px) {
-  html[lang="ar"] .site-footer .footer-columns-grid {
+  html[lang="ar"] .site-footer .footer-columns-grid,
+  html[lang="ar"] .site-footer .footer-grid {
     grid-template-columns: 1fr 1fr;
   }
 }
 
 @media (max-width: 540px) {
-  html[lang="ar"] .site-footer .footer-columns-grid {
+  html[lang="ar"] .site-footer .footer-columns-grid,
+  html[lang="ar"] .site-footer .footer-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+/* Homepage Mobile 1-Column Footer Parity (<768px) */
+@media (max-width: 768px) {
+  html[lang="ar"] body:has(.hero-saudi-section) .site-footer .footer-columns-grid,
+  html[lang="ar"] .hero-saudi-section ~ .site-footer .footer-columns-grid {
+    grid-template-columns: 1fr !important;
+    gap: 28px !important;
+  }
+}
+
+/* Mobile Horizontal Breathing Room for .footer-container (23 Pages) */
+@media (max-width: 768px) {
+  html[lang="ar"] .site-footer .footer-container {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
   }
 }
 
@@ -2420,24 +2442,60 @@ html[lang="ar"] .site-footer .footer-col-heading {
   margin-bottom: 16px;
 }
 
-html[lang="ar"] .site-footer .footer-nav-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+/* Consistent List Reset for All Arabic Footer Navigation Lists (Fixes 40px User-Agent Indentation) */
+html[lang="ar"] .site-footer .footer-nav-list,
+html[lang="ar"] .site-footer .footer-col ul {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
-html[lang="ar"] .site-footer .footer-nav-list li {
+html[lang="ar"] .site-footer .footer-nav-list li,
+html[lang="ar"] .site-footer .footer-col ul li {
   margin-bottom: 10px;
 }
 
-html[lang="ar"] .site-footer .footer-nav-list a {
+html[lang="ar"] .site-footer .footer-nav-list a,
+html[lang="ar"] .site-footer .footer-col ul a {
   color: #94a3b8;
   text-decoration: none;
   transition: color 0.15s;
 }
 
-html[lang="ar"] .site-footer .footer-nav-list a:hover {
+html[lang="ar"] .site-footer .footer-nav-list a:hover,
+html[lang="ar"] .site-footer .footer-col ul a:hover {
   color: #38bdf8;
+}
+
+/* Saudi Community Badge (Footer Col 4) for Category Hub Pages */
+html[lang="ar"] .footer-saudi-community-btn {
+  background: #064e3b !important;
+  border: 1px solid #059669 !important;
+  border-radius: 10px !important;
+  padding: 10px 16px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  text-decoration: none !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2) !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  margin-top: 14px;
+}
+
+html[lang="ar"] .footer-saudi-community-btn svg {
+  width: 26px !important;
+  height: 26px !important;
+  flex-shrink: 0 !important;
+}
+
+html[lang="ar"] .saudi-community-title {
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
+  line-height: 1.2 !important;
+  text-align: right !important;
 }
 
 html[lang="ar"] .site-footer .footer-bottom-bar {
@@ -2460,7 +2518,6 @@ html[lang="ar"] .site-footer .footer-legal-links a {
 html[lang="ar"] .site-footer .footer-legal-links a:hover {
   color: #ffffff;
 }
-
 /* 6. Form Input & Addon Parity for Arabic */
 html[lang="ar"] .calc-input {
   border: 1.5px solid #cbd5e1;
