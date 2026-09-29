@@ -1559,6 +1559,8 @@ html[data-theme="dark"] .service-pill:hover .pill-badge {
   .seo-article,
   article,
   #dch-owner-mode-badge,
+  .cookie-consent-banner,
+  #cookieConsentBanner,
   .header-actions {
     display: none !important;
   }
