@@ -1,14 +1,9 @@
 /**
- * DailyCalcHubs - Calculation Print, Real PDF Generation & WhatsApp Sharing Engine
- * Standardized, zero-dependency utility for all active tool pages.
+ * DailyCalcHubs - Calculation Print, Real PDF & WhatsApp Sharing Engine
+ * Standardized, zero-dependency, 100% client-side utility for all active tool pages.
  */
 (function(window) {
   'use strict';
-
-  var isMobile = (function() {
-    return window.matchMedia('(max-width: 768px)').matches || 
-           /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-  })();
 
   /**
    * Helper to clean whitespace and multiple spaces
@@ -72,261 +67,66 @@
   }
 
   /**
-   * Dynamic Responsive Print / Share Button Identity Manager
-   * Keeps Desktop strictly aligned with original "Print / Save Summary (PDF)"
-   * Keeps Mobile strictly aligned with "Share PDF on WhatsApp"
+   * Universal Print Button Label Initializer
+   * Sets authentic, clear labels:
+   * EN: Print / Save Summary (PDF)
+   * AR: طباعة / حفظ الملخص (PDF)
    */
   function updatePrintButtonLabels() {
-    var mobileNow = window.matchMedia('(max-width: 768px)').matches || 
-                    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     var isAr = (document.documentElement.getAttribute('lang') === 'ar' || document.documentElement.lang === 'ar');
     var printBtns = document.querySelectorAll('.btn-action-print');
 
     for (var i = 0; i < printBtns.length; i++) {
       var btn = printBtns[i];
-      if (btn.querySelector('.fa-spinner')) continue;
-
       var span = btn.querySelector('span');
-      if (!span) continue;
-
-      if (mobileNow) {
-        span.textContent = isAr ? 'مشاركة تقرير PDF عبر واتساب' : 'Share PDF on WhatsApp';
-        btn.setAttribute('aria-label', isAr ? 'مشاركة تقرير PDF عبر واتساب' : 'Share calculation summary PDF on WhatsApp');
-        btn.setAttribute('title', isAr ? 'مشاركة تقرير PDF عبر واتساب' : 'Share PDF on WhatsApp');
-      } else {
+      if (span) {
         span.textContent = isAr ? 'طباعة / حفظ الملخص (PDF)' : 'Print / Save Summary (PDF)';
-        btn.setAttribute('aria-label', isAr ? 'طباعة أو حفظ الملخص بصيغة PDF' : 'Print or save calculation summary as PDF');
-        btn.setAttribute('title', isAr ? 'طباعة / حفظ الملخص (PDF)' : 'Print / Save Summary (PDF)');
       }
+      btn.setAttribute('aria-label', isAr ? 'طباعة أو حفظ الملخص بصيغة PDF' : 'Print or save calculation summary as PDF');
+      btn.setAttribute('title', isAr ? 'طباعة / حفظ الملخص (PDF)' : 'Print / Save Summary (PDF)');
     }
   }
 
-  // Pre-mount print footer defensively and initialize responsive labels
+  /**
+   * Action 1: Universal Clean Print / Save Summary as PDF
+   * Uses browser-native high-definition vector printing with zero external libraries or servers.
+   * Inserts the active clickable canonical link repeated on printed pages.
+   * 100% faithful to the actual calculator DOM on every page (EN and AR).
+   */
+  window.dchPrintSummary = function(btn) {
+    try {
+      var canonicalUrl = getCanonicalCalculatorUrl();
+      ensurePrintFooter(canonicalUrl);
+      window.print();
+    } catch (e) {
+      console.error('DailyCalcHubs: Print error', e);
+    }
+  };
+
+  // Full backwards-compatibility alias in case any element has onclick="dchSharePdfWhatsApp(this)"
+  window.dchSharePdfWhatsApp = window.dchPrintSummary;
+
+  // Pre-mount print footer defensively and initialize labels
   function initPrintFooter() {
     try {
       var url = getCanonicalCalculatorUrl();
       ensurePrintFooter(url);
+      updatePrintButtonLabels();
     } catch (e) {
       // Non-critical
     }
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', function() {
-      initPrintFooter();
-      updatePrintButtonLabels();
-    });
+    document.addEventListener('DOMContentLoaded', initPrintFooter);
   } else {
     initPrintFooter();
-    updatePrintButtonLabels();
-  }
-
-  if (window.matchMedia) {
-    try {
-      var mq = window.matchMedia('(max-width: 768px)');
-      if (mq.addEventListener) {
-        mq.addEventListener('change', updatePrintButtonLabels);
-      } else if (mq.addListener) {
-        mq.addListener(updatePrintButtonLabels);
-      }
-    } catch (e) {}
   }
 
   /**
-   * Extract Active Calculator Input State as Key-Value Pairs
-   */
-  function extractCalculatorState() {
-    var state = {};
-    var elements = document.querySelectorAll('input, select, textarea');
-    elements.forEach(function(el) {
-      if (el.id) {
-        if (el.type === 'checkbox' || el.type === 'radio') {
-          state[el.id] = el.checked;
-        } else {
-          state[el.id] = el.value;
-        }
-      } else if (el.name) {
-        if (el.type === 'checkbox' || el.type === 'radio') {
-          if (el.checked) state[el.name] = el.value;
-        } else {
-          state[el.name] = el.value;
-        }
-      }
-    });
-    return state;
-  }
-
-  /**
-   * Action 1: PRINT / SHARE CALCULATION PDF SUMMARY
-   * - DESKTOP: Strictly preserves original browser print/save PDF flow (window.print())
-   * - MOBILE: Obtains canonical headless Chromium PDF and opens native Web Share sheet with file attached
-   */
-  window.dchSharePdfWhatsApp = async function(btn) {
-    var originalHtml = btn ? btn.innerHTML : '';
-    var isAr = (document.documentElement.getAttribute('lang') === 'ar' || document.documentElement.lang === 'ar');
-    var mobileNow = window.matchMedia('(max-width: 768px)').matches || 
-                    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-
-    // =========================================================================
-    // DESKTOP: STRICTLY PRESERVE ORIGINAL OLD BROWSER PRINT / SAVE PDF EXPERIENCE
-    // Zero server fetch, zero file download, zero WhatsApp Web opening, zero toasts.
-    // =========================================================================
-    if (!mobileNow) {
-      try {
-        var canonicalUrl = getCanonicalCalculatorUrl();
-        ensurePrintFooter(canonicalUrl);
-        window.print();
-      } catch (e) {
-        console.error('DailyCalcHubs: Desktop print error', e);
-      }
-      return;
-    }
-
-    // =========================================================================
-    // MOBILE: CANONICAL HEADLESS CHROMIUM PDF & NATIVE WEB SHARE
-    // Zero fallback to Android "Save as PDF" / Print Spooler.
-    // =========================================================================
-    try {
-      // 1. Identify active calculation container
-      var container = btn && btn.closest ? 
-        btn.closest('.result-summary-box, .results-panel, .mini-result-box, .calc-card, .calculator-card') : null;
-
-      // 2. Extract Tool Title
-      var toolTitle = '';
-      var h1El = document.querySelector('.tool-title') || document.querySelector('h1');
-      if (h1El) {
-        toolTitle = cleanText(h1El.innerText);
-      }
-      if (!toolTitle && container) {
-        var cardTitle = container.closest('.calc-card, .calculator-card, .feature-card');
-        if (cardTitle) {
-          var titleEl = cardTitle.querySelector('.calc-card-title, .card-main-title, h2, h3');
-          if (titleEl) toolTitle = cleanText(titleEl.innerText);
-        }
-      }
-      if (!toolTitle) {
-        toolTitle = cleanText(document.title.split(/[\u2014\u2013\-\|]/)[0]);
-      }
-
-      // 3. Extract Primary Result Value & Validation
-      var primaryVal = '';
-      if (container) {
-        var bigValEl = container.querySelector('.result-big-val, .total-amount-display, .mini-result-val, .big-amount');
-        if (bigValEl) primaryVal = cleanText(bigValEl.innerText);
-      }
-      if (!primaryVal) {
-        var fallbackIds = [
-          'takeHomeDisplay', 'inrAmount', 'bdtAmount', 'pkrAmount', 'phpAmount', 'lkrAmount', 'nprAmount',
-          'resEosbTotal', 'resNetSettlement', 'resAnnualTakeHome', 'resGrandTotal', 'resCost12Total',
-          'resTotalDepFee', 'resPerPersonShare', 'resBmiVal', 'resTotalFuelCost', 'resPeriodCost',
-          'resTotalWealth', 'totalCheckoutAmount', 'resTotalBudget', 'resFinalPrice', 'resDailyWage',
-          'resHourlyRate', 'resTotalOtPay', 'resNewNet', 'thNetDisplay', 'resNominalCorpus', 'resGoalMonthly'
-        ];
-        for (var f = 0; f < fallbackIds.length; f++) {
-          var el = document.getElementById(fallbackIds[f]);
-          if (el && el.innerText && el.innerText.trim() !== '') {
-            primaryVal = cleanText(el.innerText);
-            break;
-          }
-        }
-      }
-
-      if (!primaryVal || primaryVal === '--' || (primaryVal === '0.00 SAR' && !container)) {
-        alert(isAr ? 'يرجى إجراء الحساب أولاً لإنشاء تقرير PDF الخاص بك.' : 'Please perform a calculation first to generate your PDF report.');
-        return;
-      }
-
-      // 4. Set Loading State on Button
-      if (btn) {
-        btn.disabled = true;
-        btn.style.opacity = '0.75';
-        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> <span>' + (isAr ? 'جاري تجهيز تقرير PDF...' : 'Generating PDF Report...') + '</span>';
-      }
-
-      // 5. Build Filename & Canonical Link
-      var canonicalUrl = getCanonicalCalculatorUrl();
-      var currentPath = window.location.pathname;
-      var dateSlug = new Date().toISOString().slice(0, 10);
-      var toolSlug = currentPath.replace(/^\/(ar\/)?/, '').replace(/\/$/, '').replace(/\//g, '_') || 'Calculation';
-      var fileName = 'DailyCalcHubs_' + toolSlug + '_' + dateSlug + '.pdf';
-
-      // 6. Fetch Canonical Headless Chromium PDF from Serverless Endpoint
-      var inputsState = extractCalculatorState();
-      var response = await fetch('/api/export-pdf', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          path: currentPath,
-          inputs: inputsState
-        })
-      });
-
-      if (!response.ok) {
-        var errJson = await response.json().catch(function() { return {}; });
-        var errMsg = errJson.error || ('HTTP ' + response.status);
-        console.error('DailyCalcHubs: Serverless PDF export failed:', errMsg);
-        alert(isAr ? 'تعذر إنشاء تقرير PDF حالياً من الخادم. يرجى المحاولة مرة أخرى.' : 'Unable to generate canonical PDF report at this time. Please try again.');
-        return;
-      }
-
-      var pdfBlob = await response.blob();
-      if (!pdfBlob || pdfBlob.size < 500) {
-        alert(isAr ? 'الملف الناتج غير صالح. يرجى المحاولة مرة أخرى.' : 'Invalid PDF generated. Please try again.');
-        return;
-      }
-
-      // 7. Dispatch Real PDF File via Native Web Share API
-      var shareText = (isAr ? 'تقرير حساب من DailyCalcHubs: ' : 'DailyCalcHubs Calculation Report: ') + toolTitle +
-                      '\n' + (isAr ? 'للتحقق وإعادة الحساب: ' : 'Verify / Recalculate: ') + canonicalUrl;
-
-      if (navigator.canShare && typeof File !== 'undefined') {
-        try {
-          var pdfFile = new File([pdfBlob], fileName, { type: 'application/pdf' });
-          if (navigator.canShare({ files: [pdfFile] })) {
-            await navigator.share({
-              files: [pdfFile],
-              title: toolTitle,
-              text: shareText
-            });
-            return;
-          }
-        } catch (shareErr) {
-          if (shareErr.name === 'AbortError') {
-            return; // Clean user cancel without doing anything
-          }
-        }
-      }
-
-      // If Web Share API Level 2 file sharing is not supported by the browser, download directly:
-      var blobUrl = URL.createObjectURL(pdfBlob);
-      var a = document.createElement('a');
-      a.href = blobUrl;
-      a.download = fileName;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      setTimeout(function() { URL.revokeObjectURL(blobUrl); }, 2000);
-      alert(isAr ? 'تم تنزيل تقرير PDF بنجاح على جهازك لمشاركته مباشرة عبر واتساب.' : 'PDF report downloaded successfully to your device for direct sharing on WhatsApp.');
-
-    } catch (err) {
-      console.error('DailyCalcHubs: PDF Share error', err);
-      alert(isAr ? 'حدث خطأ أثناء إنشاء التقرير. يرجى المحاولة مجدداً.' : 'An error occurred while generating the report. Please try again.');
-    } finally {
-      if (btn) {
-        btn.disabled = false;
-        btn.style.opacity = '1';
-        btn.innerHTML = originalHtml;
-      }
-      updatePrintButtonLabels();
-    }
-  };
-
-  // Alias dchPrintSummary to dchSharePdfWhatsApp for full backwards compatibility
-  window.dchPrintSummary = window.dchSharePdfWhatsApp;
-
-  /**
-   * Action 2: SHARE ON WHATSAPP (Text-Only Standard WhatsApp Share)
-   * 100% PRESERVED & UNCHANGED.
+   * Action 2: Share Calculation Summary on WhatsApp
+   * Dynamically constructs a clean, privacy-safe message from active calculation output.
+   * 100% UNTOUCHED & PRESERVED.
    */
   window.dchShareWhatsApp = function(btn) {
     try {
