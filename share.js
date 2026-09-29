@@ -66,7 +66,37 @@
     return footer;
   }
 
-  // Pre-mount print footer defensively so browser shortcuts (Ctrl+P / Cmd+P) also carry the canonical link
+  /**
+   * Dynamic Responsive Print / Share Button Identity Manager
+   * Keeps Desktop strictly aligned with original "Print / Save Summary (PDF)"
+   * Keeps Mobile strictly aligned with "Share PDF on WhatsApp"
+   */
+  function updatePrintButtonLabels() {
+    var isMobile = window.matchMedia('(max-width: 768px)').matches || 
+                   /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    var isAr = (document.documentElement.getAttribute('lang') === 'ar' || document.documentElement.lang === 'ar');
+    var printBtns = document.querySelectorAll('.btn-action-print');
+
+    for (var i = 0; i < printBtns.length; i++) {
+      var btn = printBtns[i];
+      if (btn.querySelector('.fa-spinner')) continue;
+
+      var span = btn.querySelector('span');
+      if (!span) continue;
+
+      if (isMobile) {
+        span.textContent = isAr ? 'مشاركة تقرير PDF عبر واتساب' : 'Share PDF on WhatsApp';
+        btn.setAttribute('aria-label', isAr ? 'مشاركة تقرير PDF عبر واتساب' : 'Share calculation summary PDF on WhatsApp');
+        btn.setAttribute('title', isAr ? 'مشاركة تقرير PDF عبر واتساب' : 'Share PDF on WhatsApp');
+      } else {
+        span.textContent = isAr ? 'طباعة / حفظ الملخص (PDF)' : 'Print / Save Summary (PDF)';
+        btn.setAttribute('aria-label', isAr ? 'طباعة أو حفظ الملخص بصيغة PDF' : 'Print or save calculation summary as PDF');
+        btn.setAttribute('title', isAr ? 'طباعة / حفظ الملخص (PDF)' : 'Print / Save Summary (PDF)');
+      }
+    }
+  }
+
+  // Pre-mount print footer defensively and initialize responsive labels
   function initPrintFooter() {
     try {
       var url = getCanonicalCalculatorUrl();
@@ -77,80 +107,24 @@
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initPrintFooter);
+    document.addEventListener('DOMContentLoaded', function() {
+      initPrintFooter();
+      updatePrintButtonLabels();
+    });
   } else {
     initPrintFooter();
+    updatePrintButtonLabels();
   }
 
-  /**
-   * Universal Toast Notification for Download / Share Feedback
-   */
-  function showToast(message, isAr) {
-    var existing = document.getElementById('dch-share-toast');
-    if (existing && existing.parentNode) {
-      existing.parentNode.removeChild(existing);
-    }
-
-    var toast = document.createElement('div');
-    toast.id = 'dch-share-toast';
-    toast.style.cssText = [
-      'position: fixed',
-      'bottom: 24px',
-      'left: 50%',
-      'transform: translateX(-50%)',
-      'background: #0f172a',
-      'color: #ffffff',
-      'padding: 12px 20px',
-      'border-radius: 10px',
-      'box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1)',
-      'font-family: inherit',
-      'font-size: 14px',
-      'font-weight: 600',
-      'z-index: 999999',
-      'display: flex',
-      'align-items: center',
-      'gap: 10px',
-      'max-width: 90vw',
-      'width: max-content',
-      'direction: ' + (isAr ? 'rtl' : 'ltr'),
-      'transition: opacity 0.3s ease, transform 0.3s ease',
-      'opacity: 0'
-    ].join(';');
-
-    var iconHtml = '<i class="fas fa-file-pdf" style="color:#38bdf8; font-size:16px;"></i>';
-    toast.innerHTML = iconHtml + '<span>' + message + '</span>';
-    document.body.appendChild(toast);
-
-    // Animate in
-    setTimeout(function() {
-      toast.style.opacity = '1';
-      toast.style.transform = 'translateX(-50%) translateY(0)';
-    }, 10);
-
-    // Auto dismiss after 4.5 seconds
-    setTimeout(function() {
-      toast.style.opacity = '0';
-      toast.style.transform = 'translateX(-50%) translateY(10px)';
-      setTimeout(function() {
-        if (toast.parentNode) toast.parentNode.removeChild(toast);
-      }, 350);
-    }, 4500);
-  }
-
-  /**
-   * Browser File Download Trigger
-   */
-  function triggerDownload(blob, filename) {
-    var url = URL.createObjectURL(blob);
-    var a = document.createElement('a');
-    a.href = url;
-    a.download = filename;
-    document.body.appendChild(a);
-    a.click();
-    setTimeout(function() {
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
-    }, 200);
+  if (window.matchMedia) {
+    try {
+      var mq = window.matchMedia('(max-width: 768px)');
+      if (mq.addEventListener) {
+        mq.addEventListener('change', updatePrintButtonLabels);
+      } else if (mq.addListener) {
+        mq.addListener(updatePrintButtonLabels);
+      }
+    } catch (e) {}
   }
 
   /**
@@ -179,38 +153,33 @@
   }
 
   /**
-   * Fallback for Desktops & Non-File-Share Browsers:
-   * 1. Saves/Downloads genuine PDF file directly to device
-   * 2. Opens WhatsApp Web with calculation summary & direct verification link
-   * 3. Displays user-friendly notification
-   */
-  function fallbackDesktopShare(pdfBlob, fileName, shareText, isAr) {
-    // 1. Download genuine PDF file locally
-    triggerDownload(pdfBlob, fileName);
-
-    // 2. Open WhatsApp Web / App with structured summary
-    var waUrl = 'https://api.whatsapp.com/send?text=' + encodeURIComponent(shareText);
-    window.open(waUrl, '_blank', 'noopener,noreferrer');
-
-    // 3. User feedback toast
-    var toastMsg = isAr ?
-      'تم تنزيل تقرير PDF الكامل! يمكنك الآن إرفاق الملف في محادثة واتساب.' :
-      'Full PDF report downloaded! You can now attach the file to your WhatsApp chat.';
-    showToast(toastMsg, isAr);
-  }
-
-  /**
-   * Action 1: SHARE PDF ON WHATSAPP (Server-Side Native Multi-Page Headless PDF Engine)
-   * 1. Preserves the complete old print-style PDF with 100% fidelity.
-   * 2. Dynamically counts pages (1, 2, 3, 5, etc.) based on content length.
-   * 3. Preserves all clickable hyperlinks (canonical recalculate links, provider links).
-   * 4. Shares PDF directly on mobile via Web Share API v2 (navigator.share).
-   * 5. Downloads genuine PDF & launches WhatsApp Web on desktop with toast guide.
+   * Action 1: PRINT / SHARE CALCULATION PDF SUMMARY
+   * - DESKTOP: Strictly preserves original browser print/save PDF flow (window.print())
+   * - MOBILE: Generates old-style vector PDF and opens native Web Share sheet with file attached
    */
   window.dchSharePdfWhatsApp = async function(btn) {
     var originalHtml = btn ? btn.innerHTML : '';
     var isAr = (document.documentElement.getAttribute('lang') === 'ar' || document.documentElement.lang === 'ar');
+    var isMobile = window.matchMedia('(max-width: 768px)').matches || 
+                   /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
+    // =========================================================================
+    // DESKTOP: STRICTLY RESTORE ORIGINAL OLD BROWSER PRINT / SAVE PDF EXPERIENCE
+    // =========================================================================
+    if (!isMobile) {
+      try {
+        var canonicalUrl = getCanonicalCalculatorUrl();
+        ensurePrintFooter(canonicalUrl);
+        window.print();
+      } catch (e) {
+        console.error('DailyCalcHubs: Desktop print error', e);
+      }
+      return;
+    }
+
+    // =========================================================================
+    // MOBILE: SERVER-SIDE PDF GENERATION & NATIVE WEB SHARE FILE ATTACHMENT
+    // =========================================================================
     try {
       // 1. Identify active calculation container
       var container = btn && btn.closest ? 
@@ -301,7 +270,7 @@
         var shareText = (isAr ? 'تقرير حساب من DailyCalcHubs: ' : 'DailyCalcHubs Calculation Report: ') + toolTitle +
                         '\n' + (isAr ? 'للتحقق وإعادة الحساب: ' : 'Verify / Recalculate: ') + canonicalUrl;
 
-        // Check for Web Share API v2 with file support (Mobile Chrome / Safari)
+        // Supported Mobile Web Share file flow
         var fileShared = false;
         if (navigator.canShare && typeof File !== 'undefined') {
           try {
@@ -321,12 +290,13 @@
           }
         }
 
-        // Desktop & Unsupported Fallback:
+        // If mobile share was not completed or unsupported browser:
         if (!fileShared) {
-          fallbackDesktopShare(pdfBlob, fileName, shareText, isAr);
+          ensurePrintFooter(canonicalUrl);
+          window.print();
         }
       } else {
-        // Fallback: If server is offline or static preview, open native print dialog with existing @media print CSS
+        // Fallback: If server is offline or static preview, open native print dialog
         ensurePrintFooter(canonicalUrl);
         window.print();
       }
@@ -344,6 +314,7 @@
         btn.style.opacity = '1';
         btn.innerHTML = originalHtml;
       }
+      updatePrintButtonLabels();
     }
   };
 
