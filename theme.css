@@ -1855,6 +1855,27 @@ html[data-theme="dark"] .service-pill:hover .pill-badge {
     page-break-inside: avoid !important;
     break-inside: avoid !important;
   }
+
+  /* Avoid breaking cards, widgets, and tools across page splits */
+  .tool-card,
+  .category-tools-grid .tool-card,
+  .tools-grid-section .tool-card,
+  .provider-card,
+  .provider-table-card,
+  .calc-card,
+  .result-summary-box,
+  .feature-card {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  /* Keep section headers attached to their content */
+  .tools-grid-section h2,
+  .tools-grid-section .section-header,
+  .section-title {
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+  }
 }
 
 /* ==========================================================================
