@@ -3832,6 +3832,68 @@ html[lang="ar"] .mobile-nav-body {
     align-items: center !important;
     gap: 12px !important;
     min-width: 0 !important;
+    flex: 1 !important;
+  }
+
+  /* Category Tool Count Badges */
+  .mobile-acc-title-group::after {
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    padding: 2px 7.5px !important;
+    min-width: 20px !important;
+    text-align: center !important;
+    border-radius: 10px !important;
+    background: #f1f5f9 !important;
+    color: #64748b !important;
+    border: none !important;
+    flex-shrink: 0 !important;
+    line-height: 1.25 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-inline-start: auto !important;
+    margin-inline-end: 12px !important;
+    transition: background 0.15s ease, color 0.15s ease !important;
+  }
+
+  .mobile-accordion-item:nth-child(1) .mobile-acc-title-group::after,
+  .mobile-accordion-item:nth-of-type(1) .mobile-acc-title-group::after {
+    content: "10" !important;
+  }
+
+  .mobile-accordion-item:nth-child(2) .mobile-acc-title-group::after,
+  .mobile-accordion-item:nth-of-type(2) .mobile-acc-title-group::after {
+    content: "1" !important;
+  }
+
+  .mobile-accordion-item:nth-child(3) .mobile-acc-title-group::after,
+  .mobile-accordion-item:nth-of-type(3) .mobile-acc-title-group::after {
+    content: "12" !important;
+  }
+
+  .mobile-accordion-item:nth-child(4) .mobile-acc-title-group::after,
+  .mobile-accordion-item:nth-of-type(4) .mobile-acc-title-group::after {
+    content: "11" !important;
+  }
+
+  .mobile-accordion-item:nth-child(5) .mobile-acc-title-group::after,
+  .mobile-accordion-item:nth-of-type(5) .mobile-acc-title-group::after {
+    content: "12" !important;
+  }
+
+  .mobile-accordion-item:nth-child(6) .mobile-acc-title-group::after,
+  .mobile-accordion-item:nth-of-type(6) .mobile-acc-title-group::after {
+    content: "4" !important;
+  }
+
+  .mobile-accordion-item:nth-child(7) .mobile-acc-title-group::after,
+  .mobile-accordion-item:nth-of-type(7) .mobile-acc-title-group::after {
+    content: "5" !important;
+  }
+
+  .mobile-accordion-item.active .mobile-acc-title-group::after {
+    background: #e0f2fe !important;
+    color: #0369a1 !important;
   }
 
   .mobile-acc-title {
@@ -4062,7 +4124,14 @@ html[lang="ar"] .mobile-nav-body {
     color: #64748b !important;
   }
 
-  html[data-theme="dark"] .mobile-accordion-item.active .mobile-acc-chevron {
+  /* Dark Mode Category Count Badges */
+  html[data-theme="dark"] .mobile-acc-title-group::after {
+    background: #1e293b !important;
+    color: #94a3b8 !important;
+  }
+
+  html[data-theme="dark"] .mobile-accordion-item.active .mobile-acc-title-group::after {
+    background: #0c4a6e !important;
     color: #38bdf8 !important;
   }
 
