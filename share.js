@@ -1,6 +1,6 @@
 /**
- * DailyCalcHubs - Calculation Print, Real PDF & WhatsApp Sharing Engine
- * Standardized, zero-dependency, 100% client-side utility for all active tool pages.
+ * DailyCalcHubs - Calculation Print & WhatsApp Sharing Engine
+ * Standardized, zero-dependency utility for 57 active tool pages.
  */
 (function(window) {
   'use strict';
@@ -67,31 +67,9 @@
   }
 
   /**
-   * Universal Print Button Label Initializer
-   * Sets authentic, clear labels:
-   * EN: Print / Save Summary (PDF)
-   * AR: طباعة / حفظ الملخص (PDF)
-   */
-  function updatePrintButtonLabels() {
-    var isAr = (document.documentElement.getAttribute('lang') === 'ar' || document.documentElement.lang === 'ar');
-    var printBtns = document.querySelectorAll('.btn-action-print');
-
-    for (var i = 0; i < printBtns.length; i++) {
-      var btn = printBtns[i];
-      var span = btn.querySelector('span');
-      if (span) {
-        span.textContent = isAr ? 'طباعة / حفظ الملخص (PDF)' : 'Print / Save Summary (PDF)';
-      }
-      btn.setAttribute('aria-label', isAr ? 'طباعة أو حفظ الملخص بصيغة PDF' : 'Print or save calculation summary as PDF');
-      btn.setAttribute('title', isAr ? 'طباعة / حفظ الملخص (PDF)' : 'Print / Save Summary (PDF)');
-    }
-  }
-
-  /**
-   * Action 1: Universal Clean Print / Save Summary as PDF
-   * Uses browser-native high-definition vector printing with zero external libraries or servers.
-   * Inserts the active clickable canonical link repeated on printed pages.
-   * 100% faithful to the actual calculator DOM on every page (EN and AR).
+   * Print / Save Summary as PDF
+   * Uses browser-native printing with zero external libraries.
+   * Inserts an active clickable canonical blue link repeated on every printed page.
    */
   window.dchPrintSummary = function(btn) {
     try {
@@ -103,15 +81,11 @@
     }
   };
 
-  // Full backwards-compatibility alias in case any element has onclick="dchSharePdfWhatsApp(this)"
-  window.dchSharePdfWhatsApp = window.dchPrintSummary;
-
-  // Pre-mount print footer defensively and initialize labels
+  // Pre-mount print footer defensively so browser shortcuts (Ctrl+P / Cmd+P) also carry the canonical link
   function initPrintFooter() {
     try {
       var url = getCanonicalCalculatorUrl();
       ensurePrintFooter(url);
-      updatePrintButtonLabels();
     } catch (e) {
       // Non-critical
     }
@@ -124,9 +98,8 @@
   }
 
   /**
-   * Action 2: Share Calculation Summary on WhatsApp
+   * Share Calculation Summary on WhatsApp
    * Dynamically constructs a clean, privacy-safe message from active calculation output.
-   * 100% UNTOUCHED & PRESERVED.
    */
   window.dchShareWhatsApp = function(btn) {
     try {

@@ -268,8 +268,8 @@
     /* Action Bar */
     .calc-action-bar { display: flex; gap: 12px; margin-top: 20px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.1); flex-wrap: wrap; }
     .btn-action-print, .btn-action-whatsapp { flex: 1; min-width: 160px; padding: 12px 18px; border-radius: 8px; font-size: 13.5px; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: none; font-family: inherit; transition: all 0.2s; }
-    /* .btn-action-print handled by theme.css */
-    
+    .btn-action-print { background: rgba(255, 255, 255, 0.15); color: white; border: 1px solid rgba(255, 255, 255, 0.25); }
+    .btn-action-print:hover { background: rgba(255, 255, 255, 0.25); }
     .btn-action-whatsapp { background: #25d366; color: white; }
     .btn-action-whatsapp:hover { background: #1ebc59; }
 
@@ -948,11 +948,10 @@
       
         <!-- Calculation Result Actions: Print/PDF & WhatsApp Share -->
         <div class="calc-action-bar">
-          <button type="button" class="btn-action-print" onclick="dchSharePdfWhatsApp(this)" aria-label="مشاركة تقرير الحساب بصيغة PDF عبر واتساب">
-              <i class="fas fa-file-pdf"></i>
-              <i class="fab fa-whatsapp"></i>
-              <span>مشاركة تقرير PDF عبر واتساب</span>
-            </button>
+          <button type="button" class="btn-action-print" onclick="dchPrintSummary(this)" aria-label="طباعة أو حفظ ملخص الحساب بصيغة PDF">
+            <i class="fas fa-file-pdf"></i>
+            <span>طباعة / حفظ الملخص (PDF)</span>
+          </button>
           <button type="button" class="btn-action-whatsapp" onclick="dchShareWhatsApp(this)" aria-label="مشاركة ملخص الحساب عبر واتساب">
             <i class="fab fa-whatsapp"></i>
             <span>مشاركة عبر واتساب</span>
