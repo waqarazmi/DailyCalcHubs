@@ -18,6 +18,12 @@
 
       exploreBtn.addEventListener('click', function(e) {
         e.stopPropagation();
+        var catDropdown = document.getElementById('currentCategoryDropdown');
+        var catBtn = document.getElementById('currentCategoryBtn');
+        if (catDropdown) {
+          catDropdown.classList.remove('active');
+          if (catBtn) catBtn.setAttribute('aria-expanded', 'false');
+        }
         var isOpen = exploreDropdown.classList.contains('active');
         exploreDropdown.classList.toggle('active', !isOpen);
         exploreBtn.setAttribute('aria-expanded', String(!isOpen));
@@ -88,6 +94,43 @@
             switchCategory(targetTab.getAttribute('data-cat'));
           }
         });
+      });
+    }
+  }
+
+  function initCategoryDropdown() {
+    var catBtn = document.getElementById('currentCategoryBtn');
+    var catDropdown = document.getElementById('currentCategoryDropdown');
+    var exploreDropdown = document.getElementById('exploreToolsDropdown');
+    var exploreBtn = document.getElementById('exploreToolsBtn');
+
+    if (catBtn && catDropdown) {
+      if (catBtn.dataset.catInitialized === 'true') return;
+      catBtn.dataset.catInitialized = 'true';
+
+      catBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (exploreDropdown) {
+          exploreDropdown.classList.remove('active');
+          if (exploreBtn) exploreBtn.setAttribute('aria-expanded', 'false');
+        }
+        var isOpen = catDropdown.classList.contains('active');
+        catDropdown.classList.toggle('active', !isOpen);
+        catBtn.setAttribute('aria-expanded', String(!isOpen));
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!catDropdown.contains(e.target)) {
+          catDropdown.classList.remove('active');
+          catBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          catDropdown.classList.remove('active');
+          catBtn.setAttribute('aria-expanded', 'false');
+        }
       });
     }
   }
@@ -270,10 +313,15 @@
     var exploreBtn = document.getElementById('exploreToolsBtn');
     if (exploreDropdown) exploreDropdown.classList.remove('active');
     if (exploreBtn) exploreBtn.setAttribute('aria-expanded', 'false');
+    var catDropdown = document.getElementById('currentCategoryDropdown');
+    var catBtn = document.getElementById('currentCategoryBtn');
+    if (catDropdown) catDropdown.classList.remove('active');
+    if (catBtn) catBtn.setAttribute('aria-expanded', 'false');
   };
 
   function initAll() {
     initExploreDropdown();
+    initCategoryDropdown();
     initMobileNav();
   }
 
