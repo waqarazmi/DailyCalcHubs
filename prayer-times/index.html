@@ -1500,6 +1500,233 @@
         </div>
       </div>
 
+      <!-- Instant Early Rehydration for Cached Prayer Times & Widgets -->
+      <script>
+        (function() {
+          try {
+            var raw = localStorage.getItem('dch_prayer_location');
+            if (!raw) return;
+            var d = JSON.parse(raw);
+            if (!d) return;
+
+            var s = d.schedule;
+            var tz = d.timezone || 'Asia/Riyadh';
+
+            function fmt12(timeStr) {
+              if (!timeStr) return '--:-- --';
+              var clean = timeStr.split(' ')[0];
+              var parts = clean.split(':');
+              if (parts.length < 2) return timeStr;
+              var h = parseInt(parts[0], 10);
+              var m = parts[1];
+              var ampm = h >= 12 ? 'PM' : 'AM';
+              h = h % 12 || 12;
+              return (h < 10 ? '0' + h : h) + ':' + m + ' ' + ampm;
+            }
+
+            // 1. Populate Prayer Times if cached schedule exists
+            if (s) {
+              var elFajr = document.getElementById('timeFajr');
+              var elSunrise = document.getElementById('timeSunrise');
+              var elIshraq = document.getElementById('timeIshraq');
+              var elChasht = document.getElementById('timeChasht');
+              var elDhuhr = document.getElementById('timeDhuhr');
+              var elAsr = document.getElementById('timeAsr');
+              var elMaghrib = document.getElementById('timeMaghrib');
+              var elIsha = document.getElementById('timeIsha');
+
+              if (elFajr && s.fajr) elFajr.textContent = fmt12(s.fajr);
+              if (elSunrise && s.sunrise) elSunrise.textContent = fmt12(s.sunrise);
+              if (elIshraq && s.ishraq) elIshraq.textContent = fmt12(s.ishraq);
+              if (elChasht && s.chasht) elChasht.textContent = fmt12(s.chasht);
+              if (elDhuhr && s.dhuhr) elDhuhr.textContent = fmt12(s.dhuhr);
+              if (elAsr && s.asr) elAsr.textContent = fmt12(s.asr);
+              if (elMaghrib && s.maghrib) elMaghrib.textContent = fmt12(s.maghrib);
+              if (elIsha && s.isha) elIsha.textContent = fmt12(s.isha);
+
+              if (s.hijri) {
+                var elHijri = document.getElementById('liveHijriDate');
+                if (elHijri) elHijri.textContent = s.hijri;
+              }
+              if (s.hijriAr) {
+                var elHijriAr = document.getElementById('liveHijriArabic');
+                if (elHijriAr) elHijriAr.textContent = s.hijriAr;
+              }
+
+              var chashtSubEl = document.getElementById('chashtDynamicSub');
+              if (chashtSubEl && s.sunrise && s.dhuhr) {
+                try {
+                  var sParts = s.sunrise.split(' ')[0].split(':');
+                  var dParts = s.dhuhr.split(' ')[0].split(':');
+                  var diff = Math.round((parseInt(dParts[0], 10) * 60 + parseInt(dParts[1], 10) - (parseInt(sParts[0], 10) * 60 + parseInt(sParts[1], 10))) / 2);
+                  var dh = Math.floor(diff / 60);
+                  var dmin = diff % 60;
+                  chashtSubEl.textContent = '⚡ Midpoint (Sunrise + ' + dh + 'h ' + dmin + 'm)';
+                  chashtSubEl.title = 'Astronomically calculated midpoint between Sunrise (' + s.sunrise + ') & Dhuhr (' + s.dhuhr + ')';
+                } catch(e) {}
+              }
+
+              // Countdown & next prayer slot
+              try {
+                var now = new Date();
+                var formatter = new Intl.DateTimeFormat('en-US', { timeZone: tz, hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: false });
+                var parts = formatter.formatToParts(now);
+                var curH = 0, curM = 0, curS = 0;
+                for (var i = 0; i < parts.length; i++) {
+                  if (parts[i].type === 'hour') curH = parseInt(parts[i].value, 10);
+                  if (parts[i].type === 'minute') curM = parseInt(parts[i].value, 10);
+                  if (parts[i].type === 'second') curS = parseInt(parts[i].value, 10);
+                }
+                if (curH === 24) curH = 0;
+                var nowTotalSecs = curH * 3600 + curM * 60 + curS;
+
+                function tToSec(tStr) {
+                  if (!tStr) return 0;
+                  var p = tStr.split(' ')[0].split(':');
+                  return parseInt(p[0], 10) * 3600 + parseInt(p[1], 10) * 60;
+                }
+
+                var slots = [
+                  { key: 'Fajr', name: 'Fajr', time: s.fajr, cardId: 'pCardFajr' },
+                  { key: 'Sunrise', name: 'Sunrise', time: s.sunrise, cardId: 'pCardSunrise' },
+                  { key: 'Ishraq', name: 'Ishraq', time: s.ishraq, cardId: 'pCardIshraq' },
+                  { key: 'Chasht', name: 'Chasht (Duha)', time: s.chasht, cardId: 'pCardChasht' },
+                  { key: 'Dhuhr', name: 'Dhuhr', time: s.dhuhr, cardId: 'pCardDhuhr' },
+                  { key: 'Asr', name: 'Asr', time: s.asr, cardId: 'pCardAsr' },
+                  { key: 'Maghrib', name: 'Maghrib', time: s.maghrib, cardId: 'pCardMaghrib' },
+                  { key: 'Isha', name: 'Isha', time: s.isha, cardId: 'pCardIsha' }
+                ];
+
+                var nextSlot = null;
+                var remSecs = 0;
+                for (var j = 0; j < slots.length; j++) {
+                  var slotSecs = tToSec(slots[j].time);
+                  if (slotSecs > nowTotalSecs) {
+                    nextSlot = slots[j];
+                    remSecs = slotSecs - nowTotalSecs;
+                    break;
+                  }
+                }
+                if (!nextSlot) {
+                  nextSlot = slots[0];
+                  remSecs = (86400 - nowTotalSecs) + tToSec(slots[0].time);
+                }
+                if (nextSlot) {
+                  var nh = Math.floor(remSecs / 3600);
+                  var nm = Math.floor((remSecs % 3600) / 60);
+                  var ns = remSecs % 60;
+                  var hEl = document.getElementById('timerHours');
+                  var mEl = document.getElementById('timerMinutes');
+                  var sEl = document.getElementById('timerSeconds');
+                  var nameEl = document.getElementById('nextPrayerName');
+                  var timeEl = document.getElementById('nextPrayerTime');
+                  if (hEl) hEl.textContent = (nh < 10 ? '0' : '') + nh;
+                  if (mEl) mEl.textContent = (nm < 10 ? '0' : '') + nm;
+                  if (sEl) sEl.textContent = (ns < 10 ? '0' : '') + ns;
+                  if (nameEl) nameEl.textContent = nextSlot.name;
+                  if (timeEl) timeEl.textContent = fmt12(nextSlot.time);
+
+                  for (var k = 0; k < slots.length; k++) {
+                    var card = document.getElementById(slots[k].cardId);
+                    if (card) {
+                      if (slots[k].key === nextSlot.key) card.classList.add('active-prayer');
+                      else card.classList.remove('active-prayer');
+                    }
+                  }
+                }
+              } catch(e) {}
+            }
+
+            // 2. Dual Date & Live Clock Banner
+            try {
+              var now = new Date();
+              var dateEl = document.getElementById('liveGregorianDate');
+              if (dateEl) {
+                dateEl.textContent = now.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', timeZone: tz });
+              }
+              var clockEl = document.getElementById('liveClockVal');
+              if (clockEl) {
+                clockEl.textContent = new Intl.DateTimeFormat('en-US', { timeZone: tz, hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true }).format(now);
+              }
+            } catch(e) {}
+
+            // 3. Qibla Direction & Bearing
+            if (typeof d.lat === 'number' && typeof d.lng === 'number') {
+              var KLAT = 21.422487;
+              var KLNG = 39.826206;
+              var dLat = (KLAT - d.lat) * (Math.PI / 180);
+              var dLon = (KLNG - d.lng) * (Math.PI / 180);
+              var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(d.lat * (Math.PI / 180)) * Math.cos(KLAT * (Math.PI / 180)) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+              var distKm = Math.round(6371 * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)));
+
+              var phiU = d.lat * (Math.PI / 180);
+              var phiK = KLAT * (Math.PI / 180);
+              var deltaL = (KLNG - d.lng) * (Math.PI / 180);
+              var y = Math.sin(deltaL);
+              var x = Math.cos(phiU) * Math.tan(phiK) - Math.sin(phiU) * Math.cos(deltaL);
+              var bearing = Math.round(((Math.atan2(y, x) * 180 / Math.PI) + 360) % 360);
+
+              var points = ['N','NNE','NE','ENE','E','ESE','SE','SSE','S','SSW','SW','WSW','W','WNW','NW','NNW'];
+              var windDir = points[Math.round(bearing / 22.5) % 16];
+
+              var degEl = document.getElementById('qiblaDegreeVal');
+              var dirEl = document.getElementById('qiblaDirectionLabel');
+              var distEl = document.getElementById('qiblaDistVal');
+              var needle = document.getElementById('qiblaNeedleGroup');
+              var kaaba = document.getElementById('kaabaDialMarker');
+
+              if (degEl) degEl.textContent = bearing + '°';
+              if (dirEl) dirEl.textContent = windDir;
+              if (distEl) distEl.textContent = distKm.toLocaleString() + ' km';
+              if (needle) needle.setAttribute('transform', 'rotate(' + bearing + ' 80 80)');
+              if (kaaba) kaaba.setAttribute('transform', 'rotate(' + bearing + ' 80 80)');
+
+              // Source tag
+              var srcTag = d.sourceTag;
+              if (!srcTag) {
+                var src = d.source || 'default';
+                if (src === 'manual') srcTag = 'City Selection (' + (d.label || 'Riyadh').split(',')[0] + ')';
+                else if (src === 'gps') srcTag = 'GPS Precision';
+                else if (src === 'ip') srcTag = 'Approximate Location (IP)';
+                else srcTag = 'Baseline Fallback';
+              }
+              var accEl = document.getElementById('qiblaAccuracyTag');
+              if (accEl && srcTag) {
+                var icon = 'fa-satellite-dish';
+                var color = '#94a3b8';
+                var sLower = srcTag.toLowerCase();
+                if (sLower.indexOf('gps') !== -1) { icon = 'fa-crosshairs'; color = '#34d399'; }
+                else if (sLower.indexOf('ip') !== -1 || sLower.indexOf('approximate') !== -1) { icon = 'fa-network-wired'; color = '#38bdf8'; }
+                else if (sLower.indexOf('city') !== -1) { icon = 'fa-city'; color = '#fbbf24'; }
+                accEl.innerHTML = '<i class="fas ' + icon + '" style="color: ' + color + ';"></i> ' + srcTag;
+              }
+            }
+
+            // 4. Highlight City Button if matching
+            if (typeof d.lat === 'number' && typeof d.lng === 'number') {
+              var buttons = document.querySelectorAll('.city-btn');
+              for (var b = 0; b < buttons.length; b++) {
+                var oc = buttons[b].getAttribute('onclick') || '';
+                var m = oc.match(/selectCity\s*\([^,]+,\s*'([^']+)'/);
+                if (m && m[1]) {
+                  var k = m[1];
+                  var isMatch = false;
+                  if (k === 'riyadh' && Math.abs(d.lat - 24.7136) < 0.05 && Math.abs(d.lng - 46.6753) < 0.05) isMatch = true;
+                  else if (k === 'makkah' && Math.abs(d.lat - 21.4225) < 0.05 && Math.abs(d.lng - 39.8262) < 0.05) isMatch = true;
+                  else if (k === 'madinah' && Math.abs(d.lat - 24.4672) < 0.05 && Math.abs(d.lng - 39.6111) < 0.05) isMatch = true;
+                  else if (k === 'jeddah' && Math.abs(d.lat - 21.5433) < 0.05 && Math.abs(d.lng - 39.1728) < 0.05) isMatch = true;
+                  else if (k === 'dammam' && Math.abs(d.lat - 26.4207) < 0.05 && Math.abs(d.lng - 50.0888) < 0.05) isMatch = true;
+                  else if (k === 'khobar' && Math.abs(d.lat - 26.2818) < 0.05 && Math.abs(d.lng - 50.2084) < 0.05) isMatch = true;
+                  else if (k === 'dubai' && Math.abs(d.lat - 25.2048) < 0.05 && Math.abs(d.lng - 55.2708) < 0.05) isMatch = true;
+                  if (isMatch) buttons[b].classList.add('active');
+                  else buttons[b].classList.remove('active');
+                }
+              }
+            }
+          } catch(e) {}
+        })();
+      </script>
+
       <!-- Methodology Note -->
       <div class="method-standard-box">
         <div>
@@ -1790,6 +2017,7 @@
             label: data.label,
             timezone: data.timezone || 'Asia/Riyadh',
             source: data.source || (isManual ? 'manual' : 'default'),
+            sourceTag: data.sourceTag || null,
             timestamp: ts,
             isFresh: isFresh,
             isManual: isManual,
@@ -2214,7 +2442,7 @@
       noticeEl._timeout = setTimeout(() => { noticeEl.style.opacity = '0'; }, 4000);
     }
 
-    async function fetchPrayerForCoords(stagedLat, stagedLng, stagedLabel, stagedSource, stagedTz, stagedCityKey) {
+    async function fetchPrayerForCoords(stagedLat, stagedLng, stagedLabel, stagedSource, stagedTz, stagedCityKey, isSilent = false) {
       const reqId = ++activePrayerRequestId;
 
       try {
@@ -2335,6 +2563,7 @@
             label: currentCityLabel,
             timezone: currentTimezone,
             source: currentLocationSource,
+            sourceTag: srcLabel,
             schedule: validatedSchedule,
             timestamp: Date.now()
           });
@@ -2345,6 +2574,12 @@
         }
       } catch (e) {
         if (reqId !== activePrayerRequestId) return; // Drop stale response
+        const fallbackStored = !prayerSchedule ? getStoredLocation() : null;
+        if (fallbackStored && fallbackStored.schedule && !prayerSchedule) {
+          prayerSchedule = fallbackStored.schedule;
+          hasCommittedPrayerSchedule = true;
+          applyPrayerTimesToDOM(prayerSchedule);
+        }
         if (hasCommittedPrayerSchedule && prayerSchedule) {
           // A valid prayer schedule is ALREADY COMMITTED from a prior successful fetch:
           // Retain current valid location, coordinates, timezone, city label, and current prayer times
@@ -2354,11 +2589,13 @@
           const locLabelEl = document.getElementById('prayerLocLabel');
           if (locLabelEl) locLabelEl.textContent = currentCityLabel;
 
-          const failMsg = IS_ARABIC ?
-            'تعذر تحميل مواقيت الصلاة للموقع المطلوب. تم الاحتفاظ بالموقع الحالي.' :
-            'Unable to load prayer times for the requested location. Retaining current location.';
-          showFailureNotice(failMsg);
-          updateQiblaAccuracyTag(IS_ARABIC ? 'خطأ في الاتصال' : 'Connection Error');
+          if (!isSilent) {
+            const failMsg = IS_ARABIC ?
+              'تعذر تحميل مواقيت الصلاة للموقع المطلوب. تم الاحتفاظ بالموقع الحالي.' :
+              'Unable to load prayer times for the requested location. Retaining current location.';
+            showFailureNotice(failMsg);
+            updateQiblaAccuracyTag(IS_ARABIC ? 'خطأ في الاتصال' : 'Connection Error');
+          }
           return false;
         } else {
           // NO valid prayer schedule was ever committed (e.g. fresh load or initial failure):
@@ -2620,7 +2857,7 @@
 
       if (typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOrientationEvent.requestPermission === 'function') {
         if (btn) btn.style.display = 'inline-flex';
-        if (label) label.innerHTML = '<i class="fas fa-compass"></i> ' + (IS_ARABIC ? 'بوصلة ثابتة (اضغط للتفعيل المباشر)' : 'Static (Tap to Enable Live)');
+        if (label) label.innerHTML = '<i class="fas fa-compass"></i> ' + (IS_ARABIC ? 'بوصلة رقمية (اضغط للتفعيل)' : 'Digital Compass (Tap to Enable)');
         return;
       }
 
@@ -2848,6 +3085,8 @@
 
       // Initial instantaneous DOM render: priority to cached schedule
       if (stored && stored.schedule) {
+        hasCommittedPrayerSchedule = true;
+        prayerSchedule = stored.schedule;
         applyPrayerTimesToDOM(stored.schedule);
       } else if (stored) {
         const fallbackEntry = defaultPrayerMap[matchingKey] || defaultPrayerMap.riyadh;
@@ -2866,13 +3105,17 @@
         });
       }
 
-      let initialSourceTag = IS_ARABIC ? 'الوضع الافتراضي' : 'Baseline Fallback';
-      if (initSource === 'manual') {
-        initialSourceTag = IS_ARABIC ? ('اختيار المدينة (' + initLabel.split('،')[0].split(',')[0] + ')') : ('City Selection (' + initLabel.split(',')[0] + ')');
-      } else if (initSource === 'gps') {
-        initialSourceTag = IS_ARABIC ? 'دقة نظام GPS' : 'GPS Precision';
-      } else if (initSource === 'ip') {
-        initialSourceTag = IS_ARABIC ? 'موقع تقريبي (IP)' : 'Approximate Location (IP)';
+      let initialSourceTag = (stored && stored.sourceTag) || null;
+      if (!initialSourceTag) {
+        if (initSource === 'manual') {
+          initialSourceTag = IS_ARABIC ? ('اختيار المدينة (' + initLabel.split('،')[0].split(',')[0] + ')') : ('City Selection (' + initLabel.split(',')[0] + ')');
+        } else if (initSource === 'gps') {
+          initialSourceTag = IS_ARABIC ? 'دقة نظام GPS' : 'GPS Precision';
+        } else if (initSource === 'ip') {
+          initialSourceTag = IS_ARABIC ? 'موقع تقريبي (IP)' : 'Approximate Location (IP)';
+        } else {
+          initialSourceTag = IS_ARABIC ? 'الوضع الافتراضي' : 'Baseline Fallback';
+        }
       }
 
       updateQiblaDisplay(initLat, initLng, initialSourceTag);
@@ -2884,6 +3127,21 @@
       setInterval(updateLiveClocks, 1000);
       startWeatherPeriodicRefresh();
 
+      // Silent non-blocking background revalidation when valid cached data exists
+      if (stored && stored.schedule) {
+        (async function() {
+          let freshGpsAcquired = false;
+          if (navigator.geolocation && (initSource === 'gps' || initSource === 'default')) {
+            freshGpsAcquired = await syncCurrentDeviceLocation(false);
+          }
+          if (!freshGpsAcquired) {
+            await fetchPrayerForCoords(initLat, initLng, currentCityLabel, initSource, currentTimezone, matchingKey, true);
+          }
+        })();
+        return;
+      }
+
+      // Cold first visit without cached schedule:
       // 2. Authoritative Current Geolocation Check:
       // Unconditionally query fresh device geolocation whenever supported.
       // MaximumAge: 0 guarantees fresh coordinates; no permissions gating; no distance suppression.
