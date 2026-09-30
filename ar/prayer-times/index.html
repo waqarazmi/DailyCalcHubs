@@ -1652,7 +1652,7 @@
               // Countdown & next prayer slot
               try {
                 var now = new Date();
-                var formatter = new Intl.DateTimeFormat('ar-SA', { timeZone: tz, hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: false });
+                var formatter = new Intl.DateTimeFormat('en-US', { timeZone: tz, hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: false });
                 var parts = formatter.formatToParts(now);
                 var curH = 0, curM = 0, curS = 0;
                 for (var i = 0; i < parts.length; i++) {
