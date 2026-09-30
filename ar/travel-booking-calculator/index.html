@@ -1169,7 +1169,7 @@
   <main class="container">
 
     <!-- Interactive Showcase Section -->
-    <div class="interactive-showcase-section">
+    <div class="interactive-showcase-section calc-card">
       <div class="showcase-header">
         <div class="showcase-title">
           <i class="fas fa-suitcase-rolling" style="color:#e11d48;"></i>
@@ -1270,31 +1270,31 @@
       </div>
 
       <!-- Results Display (Switched dynamically) -->
-      <div id="resultsTripWrap">
+      <div id="resultsTripWrap" class="result-summary-box">
         <div class="travel-results-row">
           <div class="travel-result-card highlight">
-            <span class="travel-result-label">إجمالي الميزانية التقديرية للرحلة</span>
-            <span class="travel-result-val" id="resHubTripTotal">8,700 ر.س</span>
-            <span class="travel-result-sub" id="resHubTripPerDay">1,243 ر.س / يوم</span>
+            <span class="travel-result-label result-label">إجمالي الميزانية التقديرية للرحلة</span>
+            <span class="travel-result-val result-big-val" id="resHubTripTotal">8,700 ر.س</span>
+            <span class="travel-result-sub result-rate-tag" id="resHubTripPerDay">1,243 ر.س / يوم</span>
           </div>
-          <div class="travel-result-card">
-            <span class="travel-result-label">نصيب الشخص الواحد</span>
-            <span class="travel-result-val" id="resHubTripPerPerson" style="font-size:18px;">4,350 ر.س</span>
+          <div class="travel-result-card meta-box-inner">
+            <span class="travel-result-label meta-box-title">نصيب الشخص الواحد</span>
+            <span class="travel-result-val meta-box-val" id="resHubTripPerPerson" style="font-size:18px;">4,350 ر.س</span>
             <span class="travel-result-sub">شامل الطيران والفندق والمصاريف</span>
           </div>
-          <div class="travel-result-card">
-            <span class="travel-result-label">إجمالي تذاكر الطيران</span>
-            <span class="travel-result-val" id="resHubFlightsSub" style="font-size:18px;">2,400 ر.س</span>
+          <div class="travel-result-card meta-box-inner">
+            <span class="travel-result-label meta-box-title">إجمالي تذاكر الطيران</span>
+            <span class="travel-result-val meta-box-val" id="resHubFlightsSub" style="font-size:18px;">2,400 ر.س</span>
             <span class="travel-result-sub">لكل المسافرين</span>
           </div>
-          <div class="travel-result-card">
-            <span class="travel-result-label">إجمالي تكلفة الفندق</span>
-            <span class="travel-result-val" id="resHubHotelSub" style="font-size:18px;">3,500 ر.س</span>
+          <div class="travel-result-card meta-box-inner">
+            <span class="travel-result-label meta-box-title">إجمالي تكلفة الفندق</span>
+            <span class="travel-result-val meta-box-val" id="resHubHotelSub" style="font-size:18px;">3,500 ر.س</span>
             <span class="travel-result-sub">لإجمالي عدد الليالي</span>
           </div>
-          <div class="travel-result-card">
-            <span class="travel-result-label">إجمالي مصاريف الإعاشة</span>
-            <span class="travel-result-val" id="resHubFoodSub" style="font-size:18px;">2,800 ر.س</span>
+          <div class="travel-result-card meta-box-inner">
+            <span class="travel-result-label meta-box-title">إجمالي مصاريف الإعاشة</span>
+            <span class="travel-result-val meta-box-val" id="resHubFoodSub" style="font-size:18px;">2,800 ر.س</span>
             <span class="travel-result-sub">طعام ومواصلات وأنشطة</span>
           </div>
         </div>

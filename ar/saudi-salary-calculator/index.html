@@ -1243,7 +1243,7 @@
   <main class="container">
 
     <!-- Interactive Salary Calculator Card -->
-    <div class="calc-interactive-section">
+    <div class="calc-interactive-section calc-card">
       <div class="live-card-header">
         <div class="live-card-title">
           <i class="fas fa-wallet" style="color:#4f46e5;"></i>
@@ -1335,28 +1335,28 @@
       <!-- Result Cards -->
       <div class="salary-results-row">
         <div class="salary-result-card highlight">
-          <span class="salary-result-label">صافي الراتب الشهري المحول للبنك</span>
-          <span class="salary-result-val" id="takeHomeDisplay">10,800.00 ر.س</span>
-          <span class="salary-result-sub" id="grossTotalTag">
+          <span class="salary-result-label result-label">صافي الراتب الشهري المحول للبنك</span>
+          <span class="salary-result-val result-big-val" id="takeHomeDisplay">10,800.00 ر.س</span>
+          <span class="salary-result-sub result-rate-tag" id="grossTotalTag">
             <i class="fas fa-wallet" style="color:#fbbf24;"></i> <span>الإجمالي: 10,800.00 ر.س</span>
           </span>
         </div>
 
-        <div class="salary-result-card">
-          <span class="salary-result-label">استقطاع تأمينات الموظف (GOSI)</span>
-          <span class="salary-result-val" id="gosiDeductionVal" style="font-size:18px;">0.00 ر.س</span>
+        <div class="salary-result-card meta-box-inner">
+          <span class="salary-result-label meta-box-title">استقطاع تأمينات الموظف (GOSI)</span>
+          <span class="salary-result-val meta-box-val" id="gosiDeductionVal" style="font-size:18px;">0.00 ر.س</span>
           <span class="salary-result-sub" id="employerGosiVal" style="color:#059669;">200.00 ر.س (مساهمة صاحب العمل 2%)</span>
         </div>
 
-        <div class="salary-result-card">
-          <span class="salary-result-label">معدل الأجر اليومي التقريبي</span>
-          <span class="salary-result-val" id="dailySalaryVal" style="font-size:18px;">360.00 ر.س / يوم</span>
+        <div class="salary-result-card meta-box-inner">
+          <span class="salary-result-label meta-box-title">معدل الأجر اليومي التقريبي</span>
+          <span class="salary-result-val meta-box-val" id="dailySalaryVal" style="font-size:18px;">360.00 ر.س / يوم</span>
           <span class="salary-result-sub">محسوب على أساس 30 يوماً في الشهر</span>
         </div>
 
-        <div class="salary-result-card">
-          <span class="salary-result-label">معدل أجر الساعة (المعياري)</span>
-          <span class="salary-result-val" id="hourlySalaryVal" style="font-size:18px;">45.00 ر.س / ساعة</span>
+        <div class="salary-result-card meta-box-inner">
+          <span class="salary-result-label meta-box-title">معدل أجر الساعة (المعياري)</span>
+          <span class="salary-result-val meta-box-val" id="hourlySalaryVal" style="font-size:18px;">45.00 ر.س / ساعة</span>
           <span class="salary-result-sub">محسوب على أساس 240 ساعة شهرياً (نظام العمل)</span>
         </div>
       </div>
