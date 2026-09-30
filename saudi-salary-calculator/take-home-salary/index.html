@@ -891,6 +891,16 @@
             </select>
           </div>
         </div>
+        <div class="form-group" id="thCohortGroup" style="display:none;">
+          <label class="form-label" for="thCohort">Contributor Cohort (Saudi Nationals):</label>
+          <div class="input-with-addons">
+            <div class="input-addon-badge"><i class="fas fa-user-clock" style="color:#7c3aed;"></i> COHORT</div>
+            <select id="thCohort" class="calc-input select-input-addon" onchange="recalcTh()">
+              <option value="existing" selected>Existing Contributor — Enrolled before July 3, 2024 (9.75% Default)</option>
+              <option value="new">New Entrant — Joined on/after July 3, 2024 (10.75% Current 2026 Rate)</option>
+            </select>
+          </div>
+        </div>
 
         <div class="form-group">
           <label class="form-label" for="thBasic">Monthly Basic Salary (SAR):</label>
@@ -1065,7 +1075,7 @@
         </tbody>
       </table>
       <div style="margin-top:14px; padding:12px 16px; background:#f8fafc; border:1px solid #e2e8f0; border-left:4px solid #7c3aed; border-radius:6px; font-size:13px; line-height:1.6; color:#475569;">
-        <strong>Statutory Applicability Note:</strong> The standard 9.75% employee rate shown above applies to existing Saudi contributors enrolled under the previous Social Insurance Law (9% Annuities + 0.75% SANED). For new workforce entrants joining after July 2024 under the New Social Insurance Law (Royal Decree M/186), annuity contribution rates follow a gradual annual phase-in schedule as regulated by GOSI. Expatriate workers have 0% employee social insurance deductions.
+        <strong>Statutory Applicability Note:</strong> The standard 9.75% employee rate shown above applies to existing Saudi contributors enrolled under the previous Social Insurance Law (9% Annuities + 0.75% SANED). For new workforce entrants joining after July 2024 under the New Social Insurance Law (Royal Decree No. M/273), annuity contribution rates follow a gradual annual phase-in schedule as regulated by GOSI. Expatriate workers have 0% employee social insurance deductions.
       </div>
 
       <p>
@@ -1139,6 +1149,9 @@
 
     function recalcTh() {
       const type = document.getElementById('thType').value;
+      const cohortGroup = document.getElementById('thCohortGroup');
+      if (cohortGroup) cohortGroup.style.display = type === 'saudi' ? 'block' : 'none';
+      const cohort = document.getElementById('thCohort') ? document.getElementById('thCohort').value : 'existing';
       const basic = Math.max(0, parseFloat(document.getElementById('thBasic').value) || 0);
       const housing = Math.max(0, parseFloat(document.getElementById('thHousing').value) || 0);
       const other = Math.max(0, parseFloat(document.getElementById('thOther').value) || 0);
@@ -1153,8 +1166,10 @@
       if (type === 'saudi') {
 
         const gosiBase = Math.min(45000, basic + housing);
-        gosi = gosiBase * 0.0975;
-        gosiTagText = `GOSI: -${gosi.toFixed(2)} SAR (9.75%)`;
+        const rate = cohort === 'new' ? 0.1075 : 0.0975;
+        const rateLabel = cohort === 'new' ? '10.75%' : '9.75%';
+        gosi = gosiBase * rate;
+        gosiTagText = `GOSI: -${gosi.toFixed(2)} SAR (${rateLabel})`;
       } else {
         gosi = 0;
         gosiTagText = 'GOSI: 0.00 SAR (Expat 0%)';
@@ -1175,6 +1190,7 @@
       document.getElementById('thHousing').addEventListener('input', recalcTh);
       document.getElementById('thOther').addEventListener('input', recalcTh);
       document.getElementById('thDeduct').addEventListener('input', recalcTh);
+      if (document.getElementById('thCohort')) document.getElementById('thCohort').addEventListener('change', recalcTh);
       recalcTh();
     });
   </script>  <!-- AdSense Container -->

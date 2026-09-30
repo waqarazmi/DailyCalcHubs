@@ -837,6 +837,16 @@
             </select>
           </div>
         </div>
+        <div class="form-group" id="gosiCohortGroup">
+          <label class="form-label" for="gosiCohort">شريحة المشترك (للمواطنين السعوديين):</label>
+          <div class="input-with-addons">
+            <div class="input-addon-badge"><i class="fas fa-user-clock" style="color:#7c3aed;"></i> الشريحة</div>
+            <select id="gosiCohort" class="calc-input select-input-addon" onchange="recalcGosi()">
+              <option value="existing" selected>مشترك حالي — مسجل قبل 3 يوليو 2024 (النسبة القياسية 9.75%)</option>
+              <option value="new">منضم جديد — مسجل في أو بعد 3 يوليو 2024 (النسبة الحالية لعام 2026: 10.75%)</option>
+            </select>
+          </div>
+        </div>
         <div class="form-group">
           <label class="form-label" for="gosiBasic">الراتب الأساسي (SAR):</label>
           <div class="input-with-addons">
@@ -916,7 +926,7 @@
       <h3>الوضع التأميني للموظف الوافد</h3>
       <p>لا يُسجل الموظف غير السعودي في فرع المعاشات أو ساند، وبالتالي <strong>لا يُستقطع أي مبلغ من راتب الموظف الوافد (0%)</strong>. يقتصر التزام صاحب العمل على سداد نسبة 2% عن فرع الأخطار المهنية.</p>
       <div style="margin-top:14px; padding:12px 16px; background:#f8fafc; border:1px solid #e2e8f0; border-right:4px solid #7c3aed; border-radius:6px; font-size:13px; line-height:1.6; color:#475569;">
-        <strong>ملاحظة تطبيقية نظامية:</strong> تطبق نسب الاشتراكات الموضحة أعلاه (9.75% على الموظف و11.75% على المنشأة) على المشتركين السعوديين الحاليين المشمولين بنظام التأمينات الاجتماعية السابق. أما المنضمون الجدد لسوق العمل بعد يوليو 2024 بموجب نظام التأمينات الاجتماعية الجديد (المرسوم الملكي م/186)، فتخضع اشتراكات فرع المعاشات لديهم لجدول تدرج سنوي محدد من قِبل المؤسسة العامة للتأمينات الاجتماعية. ويبقى الموظفون غير السعوديين خاضعين حصراً لاشتراك فرع الأخطار المهنية بنسبة 2.00% يتحملها صاحب العمل بالكامل.
+        <strong>ملاحظة تطبيقية نظامية:</strong> تطبق نسب الاشتراكات الموضحة أعلاه (9.75% على الموظف و11.75% على المنشأة) على المشتركين السعوديين الحاليين المشمولين بنظام التأمينات الاجتماعية السابق. أما المنضمون الجدد لسوق العمل بعد يوليو 2024 بموجب نظام التأمينات الاجتماعية الجديد (المرسوم الملكي رقم (م/273))، فتخضع اشتراكات فرع المعاشات لديهم لجدول تدرج سنوي محدد من قِبل المؤسسة العامة للتأمينات الاجتماعية. ويبقى الموظفون غير السعوديين خاضعين حصراً لاشتراك فرع الأخطار المهنية بنسبة 2.00% يتحملها صاحب العمل بالكامل.
       </div>
     </div>
     <div class="related-tools-box">
@@ -934,6 +944,10 @@
   <script>
     function recalcGosi() {
       const type = document.getElementById('gosiType').value;
+      const cohortGroup = document.getElementById('gosiCohortGroup');
+      if (cohortGroup) cohortGroup.style.display = type === 'saudi' ? 'block' : 'none';
+      const cohort = document.getElementById('gosiCohort') ? document.getElementById('gosiCohort').value : 'existing';
+      const annuityRate = cohort === 'new' ? 0.10 : 0.09;
       const basic = Math.max(0, parseFloat(document.getElementById('gosiBasic').value) || 0);
       const housing = Math.max(0, parseFloat(document.getElementById('gosiHousing').value) || 0);
       const rawBase = basic + housing;
@@ -942,8 +956,8 @@
       let empSaned = 0, compSaned = 0;
       let compOh = 0;
       if (type === 'saudi') {
-        empAnnuity = base * 0.09;
-        compAnnuity = base * 0.09;
+        empAnnuity = base * annuityRate;
+        compAnnuity = base * annuityRate;
         empSaned = base * 0.0075;
         compSaned = base * 0.0075;
         compOh = base * 0.02;
@@ -953,15 +967,17 @@
       const totalEmp = empAnnuity + empSaned;
       const totalComp = compAnnuity + compSaned + compOh;
       document.getElementById('gosiEmpDisplay').textContent = totalEmp.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' ر.س';
-      document.getElementById('gosiRateTag').innerHTML = '<i class="fas fa-percent" style="color:#fbbf24;"></i> <span>' + (type === 'saudi' ? 'نسبة الموظف 9.75%' : 'نسبة المقيم 0%') + '</span>';
+      const empRatePct = (type === 'saudi' ? (cohort === 'new' ? '10.75%' : '9.75%') : '0%');
+      const compRatePct = (type === 'saudi' ? (cohort === 'new' ? '12.75%' : '11.75%') : '2.0% أخطار مهنية');
+      document.getElementById('gosiRateTag').innerHTML = '<i class="fas fa-percent" style="color:#fbbf24;"></i> <span>' + (type === 'saudi' ? 'نسبة الموظف ' + empRatePct : 'نسبة المقيم 0%') + '</span>';
       document.getElementById('gosiBaseVal').textContent = base.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' ر.س' + (rawBase > 45000 ? ' (الحد الأقصى)' : '');
-      document.getElementById('gosiCompVal').textContent = totalComp.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' ر.س (' + (type === 'saudi' ? '11.75%' : '2.0% أخطار مهنية') + ')';
+      document.getElementById('gosiCompVal').textContent = totalComp.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' ر.س (' + compRatePct + ')';
       const tbody = document.getElementById('gosiTableBody');
       tbody.innerHTML = `
         <tr>
           <td><strong>المعاشات التقاعدية (التقاعد)</strong></td>
-          <td>${type === 'saudi' ? '9.00% (' + empAnnuity.toFixed(2) + ' ر.س)' : '0%'}</td>
-          <td>${type === 'saudi' ? '9.00% (' + compAnnuity.toFixed(2) + ' ر.س)' : '0%'}</td>
+          <td>${type === 'saudi' ? (annuityRate * 100).toFixed(2) + '% (' + empAnnuity.toFixed(2) + ' ر.س)' : '0%'}</td>
+          <td>${type === 'saudi' ? (annuityRate * 100).toFixed(2) + '% (' + compAnnuity.toFixed(2) + ' ر.س)' : '0%'}</td>
           <td>${(empAnnuity + compAnnuity).toFixed(2)} ر.س</td>
         </tr>
         <tr>
@@ -987,6 +1003,7 @@
     document.addEventListener('DOMContentLoaded', () => {
       document.getElementById('gosiBasic').addEventListener('input', recalcGosi);
       document.getElementById('gosiHousing').addEventListener('input', recalcGosi);
+      if (document.getElementById('gosiCohort')) document.getElementById('gosiCohort').addEventListener('change', recalcGosi);
       recalcGosi();
     });
   </script>

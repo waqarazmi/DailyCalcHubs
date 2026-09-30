@@ -891,6 +891,16 @@
             </select>
           </div>
         </div>
+        <div class="form-group" id="gosiCohortGroup">
+          <label class="form-label" for="gosiCohort">Contributor Cohort (Saudi Nationals):</label>
+          <div class="input-with-addons">
+            <div class="input-addon-badge"><i class="fas fa-user-clock" style="color:#7c3aed;"></i> COHORT</div>
+            <select id="gosiCohort" class="calc-input select-input-addon" onchange="recalcGosi()">
+              <option value="existing" selected>Existing Contributor — Enrolled before July 3, 2024 (9.75% Default)</option>
+              <option value="new">New Entrant — Joined on/after July 3, 2024 (10.75% Current 2026 Rate)</option>
+            </select>
+          </div>
+        </div>
 
         <div class="form-group">
           <label class="form-label" for="gosiBasic">Basic Salary (SAR):</label>
@@ -1041,7 +1051,7 @@
         </tbody>
       </table>
       <div style="margin-top:14px; padding:12px 16px; background:#f8fafc; border:1px solid #e2e8f0; border-left:4px solid #7c3aed; border-radius:6px; font-size:13px; line-height:1.6; color:#475569;">
-        <strong>Statutory Applicability Note:</strong> The standard 9.75% employee and 11.75% employer rates shown above apply to existing Saudi contributors enrolled under the previous Social Insurance Law. For new workforce entrants joining after July 2024 under the New Social Insurance Law (Royal Decree M/186), annuity contribution rates follow a gradual annual phase-in schedule as regulated by GOSI. Expatriate workers remain subject solely to the 2.00% Occupational Hazards contribution paid entirely by the employer.
+        <strong>Statutory Applicability Note:</strong> The standard 9.75% employee and 11.75% employer rates shown above apply to existing Saudi contributors enrolled under the previous Social Insurance Law. For new workforce entrants joining after July 2024 under the New Social Insurance Law (Royal Decree No. M/273), annuity contribution rates follow a gradual annual phase-in schedule as regulated by GOSI. Expatriate workers remain subject solely to the 2.00% Occupational Hazards contribution paid entirely by the employer.
       </div>
 
       <h2>Frequently Asked Questions</h2>
@@ -1088,6 +1098,10 @@
   <script>
     function recalcGosi() {
       const type = document.getElementById('gosiType').value;
+      const cohortGroup = document.getElementById('gosiCohortGroup');
+      if (cohortGroup) cohortGroup.style.display = type === 'saudi' ? 'block' : 'none';
+      const cohort = document.getElementById('gosiCohort') ? document.getElementById('gosiCohort').value : 'existing';
+      const annuityRate = cohort === 'new' ? 0.10 : 0.09;
       const basic = Math.max(0, parseFloat(document.getElementById('gosiBasic').value) || 0);
       const housing = Math.max(0, parseFloat(document.getElementById('gosiHousing').value) || 0);
 
@@ -1099,8 +1113,8 @@
       let compOh = 0;
 
       if (type === 'saudi') {
-        empAnnuity = base * 0.09;
-        compAnnuity = base * 0.09;
+        empAnnuity = base * annuityRate;
+        compAnnuity = base * annuityRate;
         empSaned = base * 0.0075;
         compSaned = base * 0.0075;
         compOh = base * 0.02;
@@ -1112,16 +1126,18 @@
       const totalComp = compAnnuity + compSaned + compOh;
 
       document.getElementById('gosiEmpDisplay').textContent = totalEmp.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SAR';
-      document.getElementById('gosiRateTag').innerHTML = `<i class="fas fa-percent" style="color:#fbbf24;"></i> <span>${type === 'saudi' ? '9.75% Citizen Rate' : '0% Expat Rate'}</span>`;
+      const empRatePct = (type === 'saudi' ? (cohort === 'new' ? '10.75%' : '9.75%') : '0%');
+      const compRatePct = (type === 'saudi' ? (cohort === 'new' ? '12.75%' : '11.75%') : '2.0% OH');
+      document.getElementById('gosiRateTag').innerHTML = `<i class="fas fa-percent" style="color:#fbbf24;"></i> <span>${type === 'saudi' ? empRatePct + ' Citizen Rate' : '0% Expat Rate'}</span>`;
       document.getElementById('gosiBaseVal').textContent = base.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SAR' + (rawBase > 45000 ? ' (Capped)' : '');
-      document.getElementById('gosiCompVal').textContent = totalComp.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SAR (' + (type === 'saudi' ? '11.75%' : '2.0% OH') + ')';
+      document.getElementById('gosiCompVal').textContent = totalComp.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SAR (' + compRatePct + ')';
 
       const tbody = document.getElementById('gosiTableBody');
       tbody.innerHTML = `
         <tr>
           <td><strong>Annuity (Retirement Pension)</strong></td>
-          <td>${type === 'saudi' ? '9.00% (' + empAnnuity.toFixed(2) + ' SAR)' : '0%'}</td>
-          <td>${type === 'saudi' ? '9.00% (' + compAnnuity.toFixed(2) + ' SAR)' : '0%'}</td>
+          <td>${type === 'saudi' ? (annuityRate * 100).toFixed(2) + '% (' + empAnnuity.toFixed(2) + ' SAR)' : '0%'}</td>
+          <td>${type === 'saudi' ? (annuityRate * 100).toFixed(2) + '% (' + compAnnuity.toFixed(2) + ' SAR)' : '0%'}</td>
           <td>${(empAnnuity + compAnnuity).toFixed(2)} SAR</td>
         </tr>
         <tr>
@@ -1148,6 +1164,7 @@
     document.addEventListener('DOMContentLoaded', () => {
       document.getElementById('gosiBasic').addEventListener('input', recalcGosi);
       document.getElementById('gosiHousing').addEventListener('input', recalcGosi);
+      if (document.getElementById('gosiCohort')) document.getElementById('gosiCohort').addEventListener('change', recalcGosi);
       recalcGosi();
     });
   </script>  <!-- AdSense Container -->

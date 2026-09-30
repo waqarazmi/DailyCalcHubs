@@ -838,6 +838,16 @@
             </select>
           </div>
         </div>
+        <div class="form-group" id="thCohortGroup" style="display:none;">
+          <label class="form-label" for="thCohort">شريحة المشترك (للمواطنين السعوديين):</label>
+          <div class="input-with-addons">
+            <div class="input-addon-badge"><i class="fas fa-user-clock" style="color:#7c3aed;"></i> الشريحة</div>
+            <select id="thCohort" class="calc-input select-input-addon" onchange="recalcTh()">
+              <option value="existing" selected>مشترك حالي — مسجل قبل 3 يوليو 2024 (النسبة القياسية 9.75%)</option>
+              <option value="new">منضم جديد — مسجل في أو بعد 3 يوليو 2024 (النسبة الحالية لعام 2026: 10.75%)</option>
+            </select>
+          </div>
+        </div>
         <div class="form-group">
           <label class="form-label" for="thBasic">الراتب الأساسي الشهري (ر.س):</label>
           <div class="input-with-addons">
@@ -971,7 +981,7 @@
         </tbody>
       </table>
       <div style="margin-top:14px; padding:12px 16px; background:#f8fafc; border:1px solid #e2e8f0; border-right:4px solid #7c3aed; border-radius:6px; font-size:13px; line-height:1.6; color:#475569;">
-        <strong>ملاحظة تطبيقية نظامية:</strong> تطبق نسبة استقطاع التأمينات الموضحة للموظف (9.75%) على المشتركين السعوديين الحاليين المشمولين بنظام التأمينات الاجتماعية السابق (9% المعاشات + 0.75% ساند). أما المنضمون الجدد لسوق العمل بعد يوليو 2024 بموجب نظام التأمينات الاجتماعية الجديد (المرسوم الملكي م/186)، فتخضع اشتراكات فرع المعاشات لديهم لجدول تدرج سنوي محدد من قِبل المؤسسة العامة للتأمينات الاجتماعية. ولا يخضع الموظفون غير السعوديين لأي استقطاع تقاعدي (0%).
+        <strong>ملاحظة تطبيقية نظامية:</strong> تطبق نسبة استقطاع التأمينات الموضحة للموظف (9.75%) على المشتركين السعوديين الحاليين المشمولين بنظام التأمينات الاجتماعية السابق (9% المعاشات + 0.75% ساند). أما المنضمون الجدد لسوق العمل بعد يوليو 2024 بموجب نظام التأمينات الاجتماعية الجديد (المرسوم الملكي رقم (م/273))، فتخضع اشتراكات فرع المعاشات لديهم لجدول تدرج سنوي محدد من قِبل المؤسسة العامة للتأمينات الاجتماعية. ولا يخضع الموظفون غير السعوديين لأي استقطاع تقاعدي (0%).
       </div>
     </div>
     <div class="related-tools-box">
@@ -1010,6 +1020,9 @@
     }
     function recalcTh() {
       const type = document.getElementById('thType').value;
+      const cohortGroup = document.getElementById('thCohortGroup');
+      if (cohortGroup) cohortGroup.style.display = type === 'saudi' ? 'block' : 'none';
+      const cohort = document.getElementById('thCohort') ? document.getElementById('thCohort').value : 'existing';
       const basic = Math.max(0, parseFloat(document.getElementById('thBasic').value) || 0);
       const housing = Math.max(0, parseFloat(document.getElementById('thHousing').value) || 0);
       const other = Math.max(0, parseFloat(document.getElementById('thOther').value) || 0);
@@ -1021,8 +1034,10 @@
       let gosiTagText = '';
       if (type === 'saudi') {
         const gosiBase = Math.min(45000, basic + housing);
-        gosi = gosiBase * 0.0975;
-        gosiTagText = 'التأمينات: -' + gosi.toFixed(2) + ' ر.س (9.75%)';
+        const rate = cohort === 'new' ? 0.1075 : 0.0975;
+        const rateLabel = cohort === 'new' ? '10.75%' : '9.75%';
+        gosi = gosiBase * rate;
+        gosiTagText = 'التأمينات: -' + gosi.toFixed(2) + ' ر.س (' + rateLabel + ')';
       } else {
         gosi = 0;
         gosiTagText = 'التأمينات: 0.00 ر.س (المقيم 0%)';
@@ -1040,6 +1055,7 @@
       document.getElementById('thHousing').addEventListener('input', recalcTh);
       document.getElementById('thOther').addEventListener('input', recalcTh);
       document.getElementById('thDeduct').addEventListener('input', recalcTh);
+      if (document.getElementById('thCohort')) document.getElementById('thCohort').addEventListener('change', recalcTh);
       recalcTh();
     });
   </script>
