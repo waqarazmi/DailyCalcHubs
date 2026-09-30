@@ -14,6 +14,247 @@
     })();
   </script>
 
+  <!-- Instant Early Rehydration for Cached Prayer Times (Zero Placeholder FOUC) -->
+  <script>
+    (function() {
+      try {
+        var raw = localStorage.getItem('dch_prayer_location');
+        if (!raw) return;
+        var d = JSON.parse(raw);
+        if (!d || !d.schedule) return;
+        window.__dchCachedLocation = d;
+        var s = d.schedule;
+        var tz = d.timezone || 'Asia/Riyadh';
+        var IS_AR = true;
+
+        function fmt12(timeStr) {
+          if (!timeStr) return '--:-- --';
+          var clean = timeStr.split(' ')[0];
+          var parts = clean.split(':');
+          if (parts.length < 2) return timeStr;
+          var h = parseInt(parts[0], 10);
+          var m = parts[1];
+          var ampm = h >= 12 ? 'م' : 'ص';
+          h = h % 12 || 12;
+          return (h < 10 ? '0' + h : h) + ':' + m + ' ' + ampm;
+        }
+
+        function tToSec(tStr) {
+          if (!tStr) return 0;
+          var p = tStr.split(' ')[0].split(':');
+          return parseInt(p[0], 10) * 3600 + parseInt(p[1], 10) * 60;
+        }
+
+        var countdownMemo = null;
+        function getCountdown() {
+          if (countdownMemo) return countdownMemo;
+          try {
+            var now = new Date();
+            var formatter = new Intl.DateTimeFormat('en-US', { timeZone: tz, hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: false });
+            var parts = formatter.formatToParts(now);
+            var curH = 0, curM = 0, curS = 0;
+            for (var i = 0; i < parts.length; i++) {
+              if (parts[i].type === 'hour') curH = parseInt(parts[i].value, 10);
+              if (parts[i].type === 'minute') curM = parseInt(parts[i].value, 10);
+              if (parts[i].type === 'second') curS = parseInt(parts[i].value, 10);
+            }
+            if (curH === 24) curH = 0;
+            var nowTotalSecs = curH * 3600 + curM * 60 + curS;
+
+            var slots = [
+              { key: 'Fajr', name: 'الفجر', time: s.fajr, cardId: 'pCardFajr' },
+              { key: 'Sunrise', name: 'الشروق', time: s.sunrise, cardId: 'pCardSunrise' },
+              { key: 'Ishraq', name: 'الإشراق', time: s.ishraq, cardId: 'pCardIshraq' },
+              { key: 'Chasht', name: 'الضحى', time: s.chasht, cardId: 'pCardChasht' },
+              { key: 'Dhuhr', name: 'الظهر', time: s.dhuhr, cardId: 'pCardDhuhr' },
+              { key: 'Asr', name: 'العصر', time: s.asr, cardId: 'pCardAsr' },
+              { key: 'Maghrib', name: 'المغرب', time: s.maghrib, cardId: 'pCardMaghrib' },
+              { key: 'Isha', name: 'العشاء', time: s.isha, cardId: 'pCardIsha' }
+            ];
+
+            var nextSlot = null;
+            var remSecs = 0;
+            for (var j = 0; j < slots.length; j++) {
+              var slotSecs = tToSec(slots[j].time);
+              if (slotSecs > nowTotalSecs) {
+                nextSlot = slots[j];
+                remSecs = slotSecs - nowTotalSecs;
+                break;
+              }
+            }
+            if (!nextSlot) {
+              nextSlot = slots[0];
+              remSecs = (86400 - nowTotalSecs) + tToSec(slots[0].time);
+            }
+            var nh = Math.floor(remSecs / 3600);
+            var nm = Math.floor((remSecs % 3600) / 60);
+            var ns = remSecs % 60;
+            countdownMemo = {
+              slot: nextSlot,
+              slots: slots,
+              hours: (nh < 10 ? '0' : '') + nh,
+              minutes: (nm < 10 ? '0' : '') + nm,
+              seconds: (ns < 10 ? '0' : '') + ns
+            };
+            return countdownMemo;
+          } catch(e) {
+            return null;
+          }
+        }
+
+        var clockMemo = null;
+        function getClock() {
+          if (clockMemo) return clockMemo;
+          try {
+            var now = new Date();
+            var gregStr = now.toLocaleDateString('ar-SA-u-ca-gregory', {
+              timeZone: tz,
+              weekday: 'long',
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric'
+            });
+            var clockFormatter = new Intl.DateTimeFormat('ar-SA', {
+              timeZone: tz,
+              hour: '2-digit',
+              minute: '2-digit',
+              second: '2-digit',
+              hour12: true
+            });
+            clockMemo = { greg: gregStr, clock: clockFormatter.format(now) };
+            return clockMemo;
+          } catch(e) {
+            return null;
+          }
+        }
+
+        var qiblaMemo = null;
+        function getQibla() {
+          if (qiblaMemo !== null) return qiblaMemo;
+          try {
+            if (typeof d.lat === 'number' && typeof d.lng === 'number') {
+              var kLat = 21.422487 * Math.PI / 180;
+              var kLng = 39.826206 * Math.PI / 180;
+              var phi = d.lat * Math.PI / 180;
+              var lambda = d.lng * Math.PI / 180;
+              var dL = kLng - lambda;
+              var y = Math.sin(dL) * Math.cos(kLat);
+              var x = Math.cos(phi) * Math.sin(kLat) - Math.sin(phi) * Math.cos(kLat) * Math.cos(dL);
+              var deg = Math.round(((Math.atan2(y, x) * 180 / Math.PI) + 360) % 360);
+              qiblaMemo = deg;
+              return deg;
+            }
+          } catch(e) {}
+          return null;
+        }
+
+        function hydrateNode(el) {
+          if (!el || el.nodeType !== 1) return;
+          var id = el.id;
+          if (id) {
+            if (id === 'prayerLocLabel' && d.label) el.textContent = d.label;
+            else if (id === 'prayerTempVal' && d.weather && typeof d.weather.temp === 'number') {
+              el.textContent = d.weather.temp + '°م';
+            }
+            else if (id === 'prayerWeatherIcon' && d.weather && d.weather.iconClass) {
+              el.className = d.weather.iconClass;
+            }
+            else if (id === 'timeFajr' && s.fajr) el.textContent = fmt12(s.fajr);
+            else if (id === 'timeSunrise' && s.sunrise) el.textContent = fmt12(s.sunrise);
+            else if (id === 'timeIshraq' && s.ishraq) el.textContent = fmt12(s.ishraq);
+            else if (id === 'timeChasht' && s.chasht) el.textContent = fmt12(s.chasht);
+            else if (id === 'timeDhuhr' && s.dhuhr) el.textContent = fmt12(s.dhuhr);
+            else if (id === 'timeAsr' && s.asr) el.textContent = fmt12(s.asr);
+            else if (id === 'timeMaghrib' && s.maghrib) el.textContent = fmt12(s.maghrib);
+            else if (id === 'timeIsha' && s.isha) el.textContent = fmt12(s.isha);
+            else if (id === 'liveHijriDate' && s.hijri) el.textContent = s.hijri;
+            else if (id === 'liveHijriArabic' && s.hijriAr) el.textContent = s.hijriAr;
+            else if (id === 'liveGregorianDate') {
+              var c = getClock();
+              if (c) el.textContent = c.greg;
+            }
+            else if (id === 'liveClockVal') {
+              var c = getClock();
+              if (c) el.textContent = c.clock;
+            }
+            else if (id === 'nextPrayerName') {
+              var cd = getCountdown();
+              if (cd && cd.slot) el.textContent = cd.slot.name;
+            }
+            else if (id === 'nextPrayerTime') {
+              var cd = getCountdown();
+              if (cd && cd.slot) el.textContent = fmt12(cd.slot.time);
+            }
+            else if (id === 'timerHours') {
+              var cd = getCountdown();
+              if (cd) el.textContent = cd.hours;
+            }
+            else if (id === 'timerMinutes') {
+              var cd = getCountdown();
+              if (cd) el.textContent = cd.minutes;
+            }
+            else if (id === 'timerSeconds') {
+              var cd = getCountdown();
+              if (cd) el.textContent = cd.seconds;
+            }
+            else if (id === 'qiblaDegreeVal') {
+              var q = getQibla();
+              if (q !== null) el.textContent = q + '°';
+            }
+            else if (id === 'qiblaAccuracyTag') {
+              el.textContent = d.sourceTag || 'تقريبي للموقع (IP)';
+            }
+            else if (id === 'compassOrientationLabel') {
+              el.textContent = 'بوصلة رقمية (اضغط للتفعيل)';
+            }
+            else if (id === 'chashtDynamicSub' && s.sunrise && s.dhuhr) {
+              try {
+                var sParts = s.sunrise.split(' ')[0].split(':');
+                var dParts = s.dhuhr.split(' ')[0].split(':');
+                var diff = Math.round((parseInt(dParts[0], 10) * 60 + parseInt(dParts[1], 10) - (parseInt(sParts[0], 10) * 60 + parseInt(sParts[1], 10))) / 2);
+                var dh = Math.floor(diff / 60);
+                var dmin = diff % 60;
+                el.textContent = '⚡ منتصف الضحى (الشروق + ' + dh + 'س ' + dmin + 'د)';
+              } catch(e) {}
+            }
+            else if (id === 'kaabaDialMarker') {
+              var q = getQibla();
+              if (q !== null) el.setAttribute('transform', 'rotate(' + q + ' 80 80)');
+            }
+            else if (id === 'compassNeedle') {
+              var q = getQibla();
+              if (q !== null) el.style.transform = 'rotate(' + q + 'deg)';
+            }
+          }
+
+          if (el.firstElementChild) {
+            var children = el.querySelectorAll('[id]');
+            for (var i = 0; i < children.length; i++) {
+              hydrateNode(children[i]);
+            }
+          }
+        }
+
+        window.__dchEarlyHydrate = hydrateNode;
+
+        var observer = new MutationObserver(function(mutations) {
+          for (var i = 0; i < mutations.length; i++) {
+            var added = mutations[i].addedNodes;
+            for (var j = 0; j < added.length; j++) {
+              hydrateNode(added[j]);
+            }
+          }
+        });
+
+        observer.observe(document.documentElement, { childList: true, subtree: true });
+
+        document.addEventListener('DOMContentLoaded', function() {
+          observer.disconnect();
+        }, { once: true });
+      } catch (e) {}
+    })();
+  </script>
+
   <title>مواقيت الصلاة في السعودية | أوقات الأذان والعد التنازلي واتجاه القبلة 2026</title>
   <meta name="description" content="مواقيت الصلاة الدقيقة في الرياض ومكة وجدة وكافة مدن المملكة بتقويم أم القرى الفلكي. عد تنازلي مباشر للأذان القادم، اتجاه القبلة والبوصلة، وأوقات الإشراق والضحى.">
   <meta name="keywords" content="مواقيت الصلاة في السعودية, أوقات الصلاة الرياض, أذان الفجر مكة, تقويم أم القرى, اتجاه القبلة, وقت صلاة الضحى, عد تنازلي للصلاة">
