@@ -1168,6 +1168,17 @@
           <span class="calc-result-label">عمرك الحالي بدقة</span>
           <span class="calc-result-val" id="quickAgeResult">30 سنة، 9 أشهر، 3 أيام</span>
           <span class="calc-result-sub" id="quickAgeNextBday">عيد الميلاد القادم: خلال 88 يوماً</span>
+          <!-- Calculation Result Actions: Print/PDF & WhatsApp Share -->
+          <div class="calc-action-bar">
+            <button type="button" class="btn-action-print" onclick="dchPrintSummary(this)" aria-label="طباعة أو حفظ التقرير كملف PDF">
+              <i class="fas fa-file-pdf"></i>
+              <span>طباعة / حفظ التقرير (PDF)</span>
+            </button>
+            <button type="button" class="btn-action-whatsapp" onclick="dchShareWhatsApp(this)" aria-label="مشاركة ملخص الحساب عبر واتساب">
+              <i class="fab fa-whatsapp"></i>
+              <span>مشاركة عبر واتساب</span>
+            </button>
+          </div>
         </div>
       </div>
 
