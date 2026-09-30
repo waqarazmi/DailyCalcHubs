@@ -1489,14 +1489,14 @@ html[data-theme="dark"] .service-pill:hover .pill-badge {
     margin-right: 12mm;
   }
 
-  /* Force light theme on paper */
+  /* Force light theme on paper and reserve safe clearance for fixed footer */
   html, body {
     background: #ffffff !important;
     color: #0f172a !important;
     font-size: 11pt !important;
     line-height: 1.4 !important;
     margin: 0 !important;
-    padding: 0 0 6mm 0 !important;
+    padding: 0 0 16mm 0 !important;
   }
 
   /* Hide website navigation, footers, ads, tickers, buttons, sidebars */
@@ -1609,12 +1609,18 @@ html[data-theme="dark"] .service-pill:hover .pill-badge {
     margin-bottom: 0 !important;
   }
 
-  /* Printable Cards & Result Panels */
+  /* Printable Cards, Tool Suite, & Result Panels */
   .calc-card,
   .calculator-card,
   .result-summary-box,
   .results-panel,
-  .mini-result-box {
+  .mini-result-box,
+  .provider-card,
+  .provider-table-card,
+  .tool-card,
+  .category-tools-grid .tool-card,
+  .tools-grid-section .tool-card,
+  .feature-card {
     background: #ffffff !important;
     color: #0f172a !important;
     border: 1px solid #cbd5e1 !important;
@@ -1624,6 +1630,16 @@ html[data-theme="dark"] .service-pill:hover .pill-badge {
     padding: 16px !important;
     page-break-inside: avoid !important;
     break-inside: avoid !important;
+  }
+
+  /* Prevent section headings from being orphaned at the bottom of a page */
+  .tools-grid-section h2,
+  .tools-grid-section .section-header,
+  .tools-grid-section p,
+  .provider-table-title,
+  .calc-hero {
+    page-break-after: avoid !important;
+    break-after: avoid !important;
   }
 
   /* Ensure result highlights are bold and legible */
@@ -4948,7 +4964,7 @@ html[data-theme="dark"] .provider-cta-btn:hover {
 /* --------------------------------------------------------------------------
    Mobile & Tablet Provider Cards & Desktop Table System
    -------------------------------------------------------------------------- */
-@media (max-width: 860px) {
+@media screen and (max-width: 860px) {
   /* Prevent horizontal scroll on mobile containers */
   .provider-table-wrap,
   .provider-table-card .provider-table-wrap,
