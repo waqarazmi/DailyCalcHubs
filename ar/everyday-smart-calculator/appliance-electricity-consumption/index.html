@@ -1035,14 +1035,15 @@
           <div class="form-group">
             <label class="form-label" for="rateInput">تعرفة الكهرباء (لكل وحدة / kWh)</label>
             <div class="calc-input-wrap">
-              <input type="number" id="rateInput" value="8" min="0" max="500" step="0.25" oninput="recalcSingle()" dir="ltr" inputmode="decimal">
-              <span class="calc-input-addon" id="rateUnitLabel">₹ / وحدة</span>
+              <input type="number" id="rateInput" value="0.18" min="0" max="500" step="0.01" oninput="recalcSingle()" dir="ltr" inputmode="decimal">
+              <span class="calc-input-addon" id="rateUnitLabel">ر.س / وحدة</span>
             </div>
             <div class="preset-chips">
-              <button type="button" class="preset-chip" onclick="setRatePreset(6)">6</button>
-              <button type="button" class="preset-chip" onclick="setRatePreset(8)">8</button>
-              <button type="button" class="preset-chip" onclick="setRatePreset(10)">10</button>
-              <button type="button" class="preset-chip" onclick="setRatePreset(12)">12</button>
+              <button type="button" class="preset-chip" onclick="setRatePreset(0.18)">الكهرباء شريحة 1 (0.18)</button>
+              <button type="button" class="preset-chip" onclick="setRatePreset(0.30)">الكهرباء شريحة 2 (0.30)</button>
+
+
+
             </div>
           </div>
 
@@ -1051,8 +1052,8 @@
             <label class="form-label" for="currSelect">عملة العرض</label>
             <div class="calc-select">
               <select id="currSelect" onchange="onCurrencyChange()">
-                <option value="INR" selected>₹ — الروبية الهندية (INR)</option>
-                <option value="SAR">SAR — الريال السعودي (SAR)</option>
+                <option value="SAR" selected>SAR — الريال السعودي (SAR)</option>
+                <option value="INR">₹ — الروبية الهندية (INR)</option>
                 <option value="USD">$ — الدولار الأمريكي (USD)</option>
                 <option value="AED">AED — الدرهم الإماراتي (AED)</option>
                 <option value="PKR">Rs — الروبية الباكستانية (PKR)</option>
@@ -1070,7 +1071,7 @@
         <div class="tariff-info-note">
           <i class="fas fa-info-circle"></i>
           <div>
-            <strong>إرشادات التعرفة:</strong> تختلف أسعار الكهرباء بحسب الدولة وشركة التوزيع وشريحة الاستهلاك. أدخل التعرفة المطبقة في فاتورتك للحصول على تقدير أدق للتكلفة.
+            <strong>إرشادات تعرفة الكهرباء السكنية (SEC):</strong> تعتمد الشركة السعودية للكهرباء تعرفة سكنية رسمية بنظام الشريحتين: <strong>0.18 ريال/ك.و.س</strong> للشريحة الأولى (من 1 إلى 6,000 ك.و.س/شهرياً) و <strong>0.30 ريال/ك.و.س</strong> للشريحة الثانية (أكثر من 6,000 ك.و.س/شهرياً). كما يمكن للمستخدمين الدوليين اختيار العملة المناسبة وإدخال تعرفة مخصصة.
           </div>
         </div>
 
@@ -1079,7 +1080,7 @@
           <div class="result-row-top">
             <div>
               <div class="result-label">التكلفة التقديرية لإجمالي الفترة</div>
-              <div class="result-big-val" id="resTotalCost">₹240.00</div>
+              <div class="result-big-val" id="resTotalCost">5.40 ر.س</div>
             </div>
             <div>
               <div class="energy-badge">
@@ -1099,7 +1100,7 @@
             </div>
             <div class="meta-box-inner">
               <div class="meta-box-title">التكلفة اليومية التقديرية</div>
-              <div class="meta-box-val" id="resDailyCost">₹8.00 / يوم</div>
+              <div class="meta-box-val" id="resDailyCost">0.18 ر.س / يوم</div>
             </div>
             <div class="meta-box-inner">
               <div class="meta-box-title">إجمالي وحدات الكهرباء</div>
@@ -1111,7 +1112,7 @@
             </div>
             <div class="meta-box-inner">
               <div class="meta-box-title">التكلفة السنوية المتوقعة</div>
-              <div class="meta-box-val" id="resAnnualCost">₹2,920.00 / سنة</div>
+              <div class="meta-box-val" id="resAnnualCost">65.70 ر.س / سنة</div>
             </div>
           </div>
 
@@ -1144,8 +1145,8 @@
           <div class="form-group">
             <label class="form-label" for="multiRateInput">تعرفة الكهرباء (لكل وحدة / kWh)</label>
             <div class="calc-input-wrap">
-              <input type="number" id="multiRateInput" value="8" min="0" step="0.25" oninput="recalcMulti()" dir="ltr" inputmode="decimal">
-              <span class="calc-input-addon" id="multiRateUnitLabel">₹ / وحدة</span>
+              <input type="number" id="multiRateInput" value="0.18" min="0" step="0.01" oninput="recalcMulti()" dir="ltr" inputmode="decimal">
+              <span class="calc-input-addon" id="multiRateUnitLabel">ر.س / وحدة</span>
             </div>
           </div>
           <div class="form-group">
@@ -1603,8 +1604,8 @@
 
   <!-- JavaScript Calculator Logic -->
   <script>
-    const BASE_CURRENCY = 'INR';
-    let selectedCurrency = 'INR';
+    const BASE_CURRENCY = 'SAR';
+    let selectedCurrency = 'SAR';
     let currentMode = 'single';
 
     const CURRENCY_CONFIG = {
@@ -1652,13 +1653,13 @@
       const notice = document.getElementById('fxRateNotice');
       if (!notice) return;
       if (selectedCurrency === BASE_CURRENCY) {
-        notice.innerHTML = '<i class="fas fa-circle-check" style="color:#10b981; margin-left:4px;"></i> عملة التعرفة الأساسية: <strong>الروبية الهندية (₹)</strong>';
+        notice.innerHTML = '<i class="fas fa-circle-check" style="color:#10b981; margin-left:4px;"></i> عملة التعرفة الأساسية: <strong>الريال السعودي (ر.س)</strong>';
         return;
       }
       const rate = getFxConversionRate(selectedCurrency);
       if (rate !== null) {
         const rateDisplay = rate < 0.1 ? rate.toFixed(4) : rate.toFixed(2);
-        notice.innerHTML = `<i class="fas fa-arrows-rotate" style="color:#0284c7; margin-left:4px;"></i> تم تطبيق سعر الصرف المباشر: 1 INR ≈ ${rateDisplay} ${selectedCurrency}`;
+        notice.innerHTML = `<i class="fas fa-arrows-rotate" style="color:#0284c7; margin-left:4px;"></i> تم تطبيق سعر الصرف المباشر: 1 SAR ≈ ${rateDisplay} ${selectedCurrency}`;
       } else {
         notice.innerHTML = `<i class="fas fa-triangle-exclamation" style="color:#f59e0b; margin-left:4px;"></i> أسعار الصرف الحية غير متوفرة لعملة ${selectedCurrency}`;
       }

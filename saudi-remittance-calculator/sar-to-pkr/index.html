@@ -1187,7 +1187,7 @@
     }
 
     function recalcPkr() {
-      const amt = parseFloat(document.getElementById('pkrAmount').value) || 0;
+      const amt = Math.max(0, parseFloat(document.getElementById('pkrAmount').value) || 0);
       if (!window.DailyCalcRemittance) return;
       const rate = window.DailyCalcRemittance.getRateFromSar('PKR') || 74.24;
 
@@ -1202,7 +1202,7 @@
       if (payoutEl) payoutEl.textContent = 'Rs ' + calcTop.formattedPayout;
       if (tagEl) tagEl.innerHTML = `<i class="fas fa-bolt" style="color:#fbbf24;"></i> <span>1 SAR = ${rate.toFixed(4)} PKR</span>`;
       if (benchEl) {
-        benchEl.textContent = 'Wholesale Benchmark: Rs ' + window.DailyCalcRemittance.formatPayout(amt * rate, 'PKR');
+        benchEl.textContent = 'Wholesale Benchmark: Rs ' + window.DailyCalcRemittance.formatPayout(Math.max(0, amt * rate), 'PKR');
       }
 
       if (priTag) {

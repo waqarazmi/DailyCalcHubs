@@ -1805,7 +1805,7 @@
     }
 
     function recalculate() {
-      const sarAmount = parseFloat(document.getElementById('sarAmountInput').value) || 0;
+      const sarAmount = Math.max(0, parseFloat(document.getElementById('sarAmountInput').value) || 0);
       const targetCur = document.getElementById('destCurrencySelect').value;
       const symbol = currencySymbols[targetCur] || '';
       
@@ -1850,7 +1850,7 @@
       payoutDisplay.innerHTML = '<span dir="ltr">' + symbol + ' ' + calcTop.formattedPayout + '</span>';
       rateDisplay.innerHTML = `<i class="fas fa-bolt" style="color:#fbbf24;"></i> <span dir="ltr">1 SAR = ${baseRate.toFixed(4)} ${targetCur}</span>`;
       if (benchmarkVal) {
-        const wholesaleGross = sarAmount * baseRate * incentiveMultiplier;
+        const wholesaleGross = Math.max(0, sarAmount * baseRate * incentiveMultiplier);
         benchmarkVal.innerHTML = 'السعر المرجعي بين البنوك: <span dir="ltr">' + symbol + ' ' + window.DailyCalcRemittance.formatPayout(wholesaleGross, targetCur) + '</span>' + (targetCur === 'BDT' ? ' (شامل الحافز 2.5%)' : '');
       }
       if (compareNote) {

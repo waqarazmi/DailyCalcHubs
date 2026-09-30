@@ -1690,7 +1690,7 @@
     function runQuickAge() {
       const dobVal = document.getElementById('quickDob').value;
       if (!dobVal) return;
-      const dob = new Date(dobVal);
+      const dob = new Date(dobVal + 'T00:00:00');
       const today = new Date();
 
       if (dob > today) {

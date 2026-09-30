@@ -1063,7 +1063,11 @@
       const target = document.getElementById('incTarget').value;
       const nat = document.getElementById('incNationality').value;
 
-      const valLabel = document.getElementById('incValLabel');
+      const valLabel = document.getElementById('incValueLabel');
+      const valBadge = document.getElementById('incValueBadge');
+      if (valBadge) {
+        valBadge.textContent = mode === 'pct' ? '%' : 'ر.س';
+      }
       if (valLabel) {
         valLabel.textContent = mode === 'pct' ? 'مقدار الزيادة المقترحة (%)' : 'مقدار الزيادة المقترحة (SAR شهرياً)';
       }

@@ -1217,7 +1217,7 @@
     }
 
     function recalcInr() {
-      const amt = parseFloat(document.getElementById('inrAmount').value) || 0;
+      const amt = Math.max(0, parseFloat(document.getElementById('inrAmount').value) || 0);
       if (!window.DailyCalcRemittance) return;
       const rate = window.DailyCalcRemittance.getRateFromSar('INR') || 25.21;
 
@@ -1231,7 +1231,7 @@
       if (payoutEl) payoutEl.textContent = '₹ ' + calcTop.formattedPayout;
       if (tagEl) tagEl.innerHTML = `<i class="fas fa-bolt" style="color:#fbbf24;"></i> <span>1 SAR = ${rate.toFixed(4)} INR</span>`;
       if (benchEl) {
-        benchEl.textContent = 'Wholesale Benchmark: ₹ ' + window.DailyCalcRemittance.formatPayout(amt * rate, 'INR');
+        benchEl.textContent = 'Wholesale Benchmark: ₹ ' + window.DailyCalcRemittance.formatPayout(Math.max(0, amt * rate), 'INR');
       }
 
       window.DailyCalcRemittance.renderTable({

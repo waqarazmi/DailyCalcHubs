@@ -1157,7 +1157,7 @@
     }
 
     function recalcLkr() {
-      const amt = parseFloat(document.getElementById('lkrAmount').value) || 0;
+      const amt = Math.max(0, parseFloat(document.getElementById('lkrAmount').value) || 0);
       if (!window.DailyCalcRemittance) return;
       const rate = window.DailyCalcRemittance.getRateFromSar('LKR') || 80.66;
 
@@ -1168,7 +1168,7 @@
       document.getElementById('lkrRateTag').innerHTML = `<i class="fas fa-bolt" style="color:#fbbf24;"></i> <span>1 SAR = ${rate.toFixed(4)} LKR</span>`;
       const benchEl = document.getElementById('lkrWholesaleBench');
       if (benchEl) {
-        benchEl.textContent = 'Wholesale Benchmark: Rs ' + window.DailyCalcRemittance.formatPayout(amt * rate, 'LKR');
+        benchEl.textContent = 'Wholesale Benchmark: Rs ' + window.DailyCalcRemittance.formatPayout(Math.max(0, amt * rate), 'LKR');
       }
 
       window.DailyCalcRemittance.renderTable({

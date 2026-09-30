@@ -1185,7 +1185,7 @@
     }
 
     function recalcBdt() {
-      const amt = parseFloat(document.getElementById('bdtAmount').value) || 0;
+      const amt = Math.max(0, parseFloat(document.getElementById('bdtAmount').value) || 0);
       if (!window.DailyCalcRemittance) return;
       const rate = window.DailyCalcRemittance.getRateFromSar('BDT') || 32.32;
       const includeIncentive = document.getElementById('bdtIncentiveCheck') ? document.getElementById('bdtIncentiveCheck').checked : true;
@@ -1194,7 +1194,7 @@
       const topProvider = window.DailyCalcRemittance.providers[0]; // Barq
       const calcTop = window.DailyCalcRemittance.calculateProviderPayout(topProvider, amt, 'BDT', rate, mult);
 
-      const baseWholesale = amt * rate;
+      const baseWholesale = Math.max(0, amt * rate);
       const incentiveVal = includeIncentive ? (baseWholesale * 0.025) : 0;
 
       const payoutEl = document.getElementById('bdtPayout');
@@ -1205,7 +1205,7 @@
       if (payoutEl) payoutEl.textContent = '\u09F3 ' + calcTop.formattedPayout;
       if (tagEl) tagEl.innerHTML = `<i class="fas fa-bolt" style="color:#fbbf24;"></i> <span>1 SAR = ${rate.toFixed(4)} BDT</span>`;
       if (benchEl) {
-        benchEl.textContent = 'Wholesale Benchmark: \u09F3 ' + window.DailyCalcRemittance.formatPayout(baseWholesale * mult, 'BDT');
+        benchEl.textContent = 'Wholesale Benchmark: \u09F3 ' + window.DailyCalcRemittance.formatPayout(Math.max(0, baseWholesale * mult), 'BDT');
       }
       if (incentiveValEl) {
         incentiveValEl.textContent = includeIncentive ? ('+ \u09F3 ' + window.DailyCalcRemittance.formatPayout(incentiveVal, 'BDT')) : '\u09F3 0.00';

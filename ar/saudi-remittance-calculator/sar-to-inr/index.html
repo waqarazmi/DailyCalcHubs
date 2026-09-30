@@ -1212,7 +1212,7 @@
     }
 
     function recalcInr() {
-      const amt = parseFloat(document.getElementById('inrAmount').value) || 0;
+      const amt = Math.max(0, parseFloat(document.getElementById('inrAmount').value) || 0);
       if (!window.DailyCalcRemittance) return;
       const rate = window.DailyCalcRemittance.getRateFromSar('INR') || 25.21;
 
@@ -1226,7 +1226,7 @@
       if (payoutEl) payoutEl.innerHTML = '<span dir="ltr">₹ ' + calcTop.formattedPayout + '</span>';
       if (tagEl) tagEl.innerHTML = '<i class="fas fa-bolt" style="color:#fbbf24;"></i> <span dir="ltr">1 SAR = ' + rate.toFixed(4) + ' INR</span>';
       if (benchEl) {
-        benchEl.innerHTML = 'السعر المرجعي بين البنوك: <span dir="ltr">₹ ' + window.DailyCalcRemittance.formatPayout(amt * rate, 'INR') + '</span>';
+        benchEl.innerHTML = 'السعر المرجعي بين البنوك: <span dir="ltr">₹ ' + window.DailyCalcRemittance.formatPayout(Math.max(0, amt * rate), 'INR') + '</span>';
       }
 
       window.DailyCalcRemittance.renderTable({

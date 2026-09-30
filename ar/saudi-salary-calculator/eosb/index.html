@@ -962,7 +962,7 @@
           <div class="result-row-top">
             <div>
               <div class="result-label">مكافأة نهاية الخدمة المستحقة</div>
-              <div class="result-big-val" id="resEosbTotal">46,666.67 ر.س</div>
+              <div class="result-big-val" id="resEosbTotal">46,000.00 ر.س</div>
             </div>
             <div class="result-rate-tag">
               <i class="fas fa-check-double" style="color:#4ade80;"></i> <span id="resEosbRateTier">100% استحقاق كامل</span>
@@ -980,11 +980,11 @@
             </div>
             <div class="meta-box-inner">
               <div class="meta-box-title">الشريحة الثانية (ما زاد عن 5 @ 1.0 شهر/سنة)</div>
-              <div class="meta-box-val" id="resTier2Val">16,666.67 ر.س</div>
+              <div class="meta-box-val" id="resTier2Val">16,000.00 ر.س</div>
             </div>
             <div class="meta-box-inner">
               <div class="meta-box-title">المكافأة الإجمالية قبل نسبة الاستحقاق</div>
-              <div class="meta-box-val" id="resGrossAward">46,666.67 ر.س</div>
+              <div class="meta-box-val" id="resGrossAward">46,000.00 ر.س</div>
             </div>
           </div>
 
@@ -1007,7 +1007,7 @@
             <i class="fas fa-receipt settlement-return-icon"></i>
             <div>
               <div class="settlement-return-title">العودة إلى حاسبة تصفية المستحقات</div>
-              <div class="settlement-return-sub">تطبيق هذه المكافأة المحسوبة (<strong id="returnEosbAmount">46,666.67 ر.س</strong>) مباشرة في تصفية مستحقات نهاية الخدمة.</div>
+              <div class="settlement-return-sub">تطبيق هذه المكافأة المحسوبة (<strong id="returnEosbAmount">46,000.00 ر.س</strong>) مباشرة في تصفية مستحقات نهاية الخدمة.</div>
             </div>
           </div>
           <button type="button" class="btn-return-action" onclick="applyGratuityToSettlement()">
@@ -1140,7 +1140,7 @@
   </main>
 
   <script>
-    let latestCalculatedEosb = 0;
+    let latestCalculatedEosb = 46000.00;
 
     function setEosbAmount(val) {
       document.getElementById('lastGrossSalary').value = val;

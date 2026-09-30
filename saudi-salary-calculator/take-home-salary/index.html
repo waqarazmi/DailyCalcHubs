@@ -893,11 +893,37 @@
         </div>
 
         <div class="form-group">
-          <label class="form-label" for="thGross">Monthly Gross Salary (SAR):</label>
+          <label class="form-label" for="thBasic">Monthly Basic Salary (SAR):</label>
           <div class="input-with-addons">
-            <div class="input-addon-badge"><i class="fas fa-coins" style="color:#16a34a;"></i> SAR</div>
-            <input type="number" id="thGross" class="calc-input" value="8000" min="0" step="100" placeholder="Enter gross salary" inputmode="decimal">
+            <div class="input-addon-badge">SAR</div>
+            <input type="number" id="thBasic" class="calc-input" value="6000" min="0" step="100" placeholder="Basic salary" inputmode="decimal">
           </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="thHousing">Monthly Housing Allowance (SAR):</label>
+          <div class="input-with-addons">
+            <div class="input-addon-badge">SAR</div>
+            <input type="number" id="thHousing" class="calc-input" value="1500" min="0" step="50" placeholder="Housing allowance" inputmode="decimal">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="thOther">Other Allowances (Transport, Mobile, etc.) (SAR):</label>
+          <div class="input-with-addons">
+            <div class="input-addon-badge">SAR</div>
+            <input type="number" id="thOther" class="calc-input" value="500" min="0" step="50" placeholder="Other allowances" inputmode="decimal">
+          </div>
+        </div>
+
+        <input type="hidden" id="thGross" value="8000">
+
+        <div class="form-group">
+          <label class="form-label">Quick Package Presets (Gross):</label>
+
+
+
+
           <div class="amount-chips-row">
             <button class="amount-chip-btn" onclick="setThAmt(4000)">4,000 SAR</button>
             <button class="amount-chip-btn" onclick="setThAmt(6000)">6,000 SAR</button>
@@ -1016,7 +1042,7 @@
             <td><strong>GOSI Contributory Base</strong></td>
             <td>8,500.00 SAR</td>
             <td>N/A (Employer-paid)</td>
-            <td>Basic Salary + Housing Allowance (modeled at ~85% of gross, capped at 45k)</td>
+            <td>Basic Salary (7,000 SAR) + Housing Allowance (1,500 SAR), capped at 45,000 SAR statutory limit</td>
           </tr>
           <tr>
             <td><strong>Employee GOSI Deduction</strong></td>
@@ -1038,6 +1064,9 @@
           </tr>
         </tbody>
       </table>
+      <div style="margin-top:14px; padding:12px 16px; background:#f8fafc; border:1px solid #e2e8f0; border-left:4px solid #7c3aed; border-radius:6px; font-size:13px; line-height:1.6; color:#475569;">
+        <strong>Statutory Applicability Note:</strong> The standard 9.75% employee rate shown above applies to existing Saudi contributors enrolled under the previous Social Insurance Law (9% Annuities + 0.75% SANED). For new workforce entrants joining after July 2024 under the New Social Insurance Law (Royal Decree M/186), annuity contribution rates follow a gradual annual phase-in schedule as regulated by GOSI. Expatriate workers have 0% employee social insurance deductions.
+      </div>
 
       <p>
         For a comprehensive breakdown of contributory salary caps, annuity pension percentages, and the employer-paid 2% Occupational Hazards contribution, use our dedicated <a href="/saudi-salary-calculator/gosi-calculator/" style="color:#7c3aed; font-weight:700; text-decoration:underline;">Saudi GOSI Contribution Calculator</a>.
@@ -1087,7 +1116,19 @@
 
   <script>
     function setThAmt(val) {
-      document.getElementById('thGross').value = val;
+      if (val === 8000) {
+        document.getElementById('thBasic').value = 6000;
+        document.getElementById('thHousing').value = 1500;
+        document.getElementById('thOther').value = 500;
+      } else {
+        const b = Math.round(val * 0.75);
+        const h = Math.round(val * 0.25);
+        document.getElementById('thBasic').value = b;
+        document.getElementById('thHousing').value = h;
+        document.getElementById('thOther').value = 0;
+      }
+      const grossEl = document.getElementById('thGross');
+      if (grossEl) grossEl.value = val;
       const chips = document.querySelectorAll('.amount-chip-btn');
       chips.forEach(c => {
         if (parseInt(c.textContent.replace(/[^0-9]/g, '')) === val) c.classList.add('active');
@@ -1098,15 +1139,20 @@
 
     function recalcTh() {
       const type = document.getElementById('thType').value;
-      const gross = Math.max(0, parseFloat(document.getElementById('thGross').value) || 0);
+      const basic = Math.max(0, parseFloat(document.getElementById('thBasic').value) || 0);
+      const housing = Math.max(0, parseFloat(document.getElementById('thHousing').value) || 0);
+      const other = Math.max(0, parseFloat(document.getElementById('thOther').value) || 0);
+      const gross = basic + housing + other;
+      const grossEl = document.getElementById('thGross');
+      if (grossEl) grossEl.value = gross;
       const deduct = Math.max(0, parseFloat(document.getElementById('thDeduct').value) || 0);
 
       let gosi = 0;
       let gosiTagText = '';
 
       if (type === 'saudi') {
-        // Assume basic + housing is ~85% of gross, capped at 45k
-        const gosiBase = Math.min(45000, gross * 0.85);
+
+        const gosiBase = Math.min(45000, basic + housing);
         gosi = gosiBase * 0.0975;
         gosiTagText = `GOSI: -${gosi.toFixed(2)} SAR (9.75%)`;
       } else {
@@ -1125,7 +1171,9 @@
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-      document.getElementById('thGross').addEventListener('input', recalcTh);
+      document.getElementById('thBasic').addEventListener('input', recalcTh);
+      document.getElementById('thHousing').addEventListener('input', recalcTh);
+      document.getElementById('thOther').addEventListener('input', recalcTh);
       document.getElementById('thDeduct').addEventListener('input', recalcTh);
       recalcTh();
     });

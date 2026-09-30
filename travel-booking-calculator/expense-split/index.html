@@ -1026,6 +1026,14 @@
                 <span>Net Settlement Status:</span>
                 <span id="settlementStatus" class="status-owed">You are owed SAR 2,525</span>
               </div>
+              <div class="settle-item" style="border-top:1px dashed #cbd5e1; margin-top:10px; padding-top:8px;">
+                <span>Total Recorded by Group:</span>
+                <strong id="groupTotalPaid">SAR 6,500</strong>
+              </div>
+              <div class="settle-item" style="font-size: 14px; margin-top: 4px;">
+                <span>Group Account Balance:</span>
+                <span id="groupFundingStatus" class="status-owed">Fully Covered &amp; Balanced</span>
+              </div>
             </div>
 
           </div>
@@ -1247,6 +1255,7 @@
         const transit = Math.max(0, parseFloat(transitSharedInput.value) || 0);
         const activities = Math.max(0, parseFloat(activitiesSharedInput.value) || 0);
         const paidYou = Math.max(0, parseFloat(paidByYouInput.value) || 0);
+        const paidOthers = Math.max(0, parseFloat(paidByOthersInput.value) || 0);
 
         const totalSpend = lodging + food + transit + activities;
         const fairShare = totalSpend / travelers;
@@ -1279,6 +1288,27 @@
         } else {
           settlementStatus.className = 'status-owed';
           settlementStatus.textContent = 'Settled! Your account is balanced.';
+        }
+
+        const totalPaidGroup = paidYou + paidOthers;
+        const groupDiff = totalPaidGroup - totalSpend;
+        const groupTotalPaidDisplay = document.getElementById('groupTotalPaid');
+        const groupFundingStatusDisplay = document.getElementById('groupFundingStatus');
+
+        if (groupTotalPaidDisplay) {
+          groupTotalPaidDisplay.textContent = 'SAR ' + Math.round(totalPaidGroup).toLocaleString();
+        }
+        if (groupFundingStatusDisplay) {
+          if (groupDiff > 0.5) {
+            groupFundingStatusDisplay.className = 'status-owed';
+            groupFundingStatusDisplay.textContent = `Surplus: SAR ${Math.round(groupDiff).toLocaleString()} overpaid by group`;
+          } else if (groupDiff < -0.5) {
+            groupFundingStatusDisplay.className = 'status-owes';
+            groupFundingStatusDisplay.textContent = `Deficit: SAR ${Math.round(Math.abs(groupDiff)).toLocaleString()} unpaid`;
+          } else {
+            groupFundingStatusDisplay.className = 'status-owed';
+            groupFundingStatusDisplay.textContent = 'Fully Covered & Balanced';
+          }
         }
       }
 

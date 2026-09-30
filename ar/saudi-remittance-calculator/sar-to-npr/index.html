@@ -1134,7 +1134,7 @@
     }
 
     function recalcNpr() {
-      const amt = parseFloat(document.getElementById('nprAmount').value) || 0;
+      const amt = Math.max(0, parseFloat(document.getElementById('nprAmount').value) || 0);
       if (!window.DailyCalcRemittance) return;
       const rate = window.DailyCalcRemittance.getRateFromSar('NPR') || 38.00;
 
@@ -1145,7 +1145,7 @@
       document.getElementById('nprRateTag').innerHTML = '<i class="fas fa-bolt" style="color:#fbbf24;"></i> <span>1 ر.س = ' + rate.toFixed(4) + ' روبية نيبالية</span>';
       const benchEl = document.getElementById('nprWholesaleBench');
       if (benchEl) {
-        benchEl.textContent = 'السعر المرجعي لسوق الجملة: Rs ' + window.DailyCalcRemittance.formatPayout(amt * rate, 'NPR');
+        benchEl.textContent = 'السعر المرجعي لسوق الجملة: Rs ' + window.DailyCalcRemittance.formatPayout(Math.max(0, amt * rate), 'NPR');
       }
 
       window.DailyCalcRemittance.renderTable({

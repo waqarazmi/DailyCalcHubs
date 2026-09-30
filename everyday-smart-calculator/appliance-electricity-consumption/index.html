@@ -1045,14 +1045,15 @@
           <div class="form-group">
             <label class="form-label" for="rateInput">Electricity Rate (per Unit / kWh)</label>
             <div class="calc-input-wrap">
-              <input type="number" id="rateInput" value="8" min="0" max="500" step="0.25" oninput="recalcSingle()" inputmode="decimal">
-              <span class="calc-input-addon" id="rateUnitLabel">₹ / Unit</span>
+              <input type="number" id="rateInput" value="0.18" min="0" max="500" step="0.01" oninput="recalcSingle()" inputmode="decimal">
+              <span class="calc-input-addon" id="rateUnitLabel">SAR / Unit</span>
             </div>
             <div class="preset-chips">
-              <button type="button" class="preset-chip" onclick="setRatePreset(6)">6</button>
-              <button type="button" class="preset-chip" onclick="setRatePreset(8)">8</button>
-              <button type="button" class="preset-chip" onclick="setRatePreset(10)">10</button>
-              <button type="button" class="preset-chip" onclick="setRatePreset(12)">12</button>
+              <button type="button" class="preset-chip" onclick="setRatePreset(0.18)">SEC Tier 1 (0.18)</button>
+              <button type="button" class="preset-chip" onclick="setRatePreset(0.30)">SEC Tier 2 (0.30)</button>
+
+
+
             </div>
           </div>
 
@@ -1061,8 +1062,8 @@
             <label class="form-label" for="currSelect">Display Currency</label>
             <div class="calc-select">
               <select id="currSelect" onchange="onCurrencyChange()">
-                <option value="INR" selected>₹ — Indian Rupee (INR)</option>
-                <option value="SAR">SAR — Saudi Riyal (SAR)</option>
+                <option value="SAR" selected>SAR — Saudi Riyal (SAR)</option>
+                <option value="INR">₹ — Indian Rupee (INR)</option>
                 <option value="USD">$ — US Dollar (USD)</option>
                 <option value="AED">AED — UAE Dirham (AED)</option>
                 <option value="PKR">Rs — Pakistani Rupee (PKR)</option>
@@ -1080,7 +1081,7 @@
         <div class="tariff-info-note">
           <i class="fas fa-info-circle"></i>
           <div>
-            <strong>Tariff Guidance:</strong> Electricity rates vary by location, DISCOM, and tariff plan. Enter your applicable rate per unit for a more accurate cost estimate.
+            <strong>SEC Residential Tariff Guidance:</strong> In Saudi Arabia, the Saudi Electricity Company (SEC) charges residential consumption in two official slabs: <strong>0.18 SAR/kWh</strong> for Tier 1 (1–6,000 kWh/month) and <strong>0.30 SAR/kWh</strong> for Tier 2 (6,001+ kWh/month). International users can select their local currency and enter custom rates.
           </div>
         </div>
 
@@ -1089,7 +1090,7 @@
           <div class="result-row-top">
             <div>
               <div class="result-label">Estimated Electricity Cost</div>
-              <div class="result-big-val" id="resTotalCost">₹240.00</div>
+              <div class="result-big-val" id="resTotalCost">SAR 5.40</div>
             </div>
             <div>
               <div class="energy-badge">
@@ -1109,7 +1110,7 @@
             </div>
             <div class="meta-box-inner">
               <div class="meta-box-title">Daily Electricity Cost</div>
-              <div class="meta-box-val" id="resDailyCost">₹8.00 / day</div>
+              <div class="meta-box-val" id="resDailyCost">SAR 0.18 / day</div>
             </div>
             <div class="meta-box-inner">
               <div class="meta-box-title">Total Electricity Units</div>
@@ -1121,7 +1122,7 @@
             </div>
             <div class="meta-box-inner">
               <div class="meta-box-title">Projected Annual Cost</div>
-              <div class="meta-box-val" id="resAnnualCost">₹2,920.00 / yr</div>
+              <div class="meta-box-val" id="resAnnualCost">SAR 65.70 / yr</div>
             </div>
           </div>
 
@@ -1154,8 +1155,8 @@
           <div class="form-group">
             <label class="form-label" for="multiRateInput">Electricity Rate (per Unit / kWh)</label>
             <div class="calc-input-wrap">
-              <input type="number" id="multiRateInput" value="8" min="0" step="0.25" oninput="recalcMulti()" inputmode="decimal">
-              <span class="calc-input-addon" id="multiRateUnitLabel">₹ / Unit</span>
+              <input type="number" id="multiRateInput" value="0.18" min="0" step="0.01" oninput="recalcMulti()" inputmode="decimal">
+              <span class="calc-input-addon" id="multiRateUnitLabel">SAR / Unit</span>
             </div>
           </div>
           <div class="form-group">
@@ -1616,8 +1617,8 @@
 
   <!-- JavaScript Calculator Logic -->
   <script>
-    const BASE_CURRENCY = 'INR';
-    let selectedCurrency = 'INR';
+    const BASE_CURRENCY = 'SAR';
+    let selectedCurrency = 'SAR';
     let currentMode = 'single';
 
     const CURRENCY_CONFIG = {
@@ -1665,13 +1666,13 @@
       const notice = document.getElementById('fxRateNotice');
       if (!notice) return;
       if (selectedCurrency === BASE_CURRENCY) {
-        notice.innerHTML = '<i class="fas fa-circle-check" style="color:#10b981; margin-right:4px;"></i> Base Tariff Currency: <strong>INR (₹)</strong>';
+        notice.innerHTML = '<i class="fas fa-circle-check" style="color:#10b981; margin-right:4px;"></i> Base Tariff Currency: <strong>SAR (Saudi Riyal)</strong>';
         return;
       }
       const rate = getFxConversionRate(selectedCurrency);
       if (rate !== null) {
         const rateDisplay = rate < 0.1 ? rate.toFixed(4) : rate.toFixed(2);
-        notice.innerHTML = `<i class="fas fa-arrows-rotate" style="color:#0284c7; margin-right:4px;"></i> Live FX Applied: 1 INR ≈ ${rateDisplay} ${selectedCurrency}`;
+        notice.innerHTML = `<i class="fas fa-arrows-rotate" style="color:#0284c7; margin-right:4px;"></i> Live FX Applied: 1 SAR ≈ ${rateDisplay} ${selectedCurrency}`;
       } else {
         notice.innerHTML = `<i class="fas fa-triangle-exclamation" style="color:#f59e0b; margin-right:4px;"></i> Live exchange rates unavailable for ${selectedCurrency}`;
       }

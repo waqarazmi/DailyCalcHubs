@@ -839,11 +839,33 @@
           </div>
         </div>
         <div class="form-group">
-          <label class="form-label" for="thGross">الراتب الإجمالي الشهري (الأساسي + البدلات):</label>
+          <label class="form-label" for="thBasic">الراتب الأساسي الشهري (ر.س):</label>
           <div class="input-with-addons">
-            <div class="input-addon-badge"><i class="fas fa-coins" style="color:#16a34a;"></i> ر.س</div>
-            <input type="number" id="thGross" class="calc-input" value="8000" min="0" step="100" placeholder="أدخل الراتب الإجمالي" dir="ltr" inputmode="decimal">
+            <div class="input-addon-badge">ر.س</div>
+            <input type="number" id="thBasic" class="calc-input" value="6000" min="0" step="100" placeholder="الراتب الأساسي" dir="ltr" inputmode="decimal">
           </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="thHousing">بدل السكن الشهري (ر.س):</label>
+          <div class="input-with-addons">
+            <div class="input-addon-badge">ر.س</div>
+            <input type="number" id="thHousing" class="calc-input" value="1500" min="0" step="50" placeholder="بدل السكن" dir="ltr" inputmode="decimal">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="thOther">بدلات أخرى ثابتة (نقل، اتصال، وغيرها) (ر.س):</label>
+          <div class="input-with-addons">
+            <div class="input-addon-badge">ر.س</div>
+            <input type="number" id="thOther" class="calc-input" value="500" min="0" step="50" placeholder="بدلات أخرى" dir="ltr" inputmode="decimal">
+          </div>
+        </div>
+        <input type="hidden" id="thGross" value="8000">
+        <div class="form-group">
+          <label class="form-label">نماذج سريعة لإجمالي الراتب:</label>
+
+
+
+
           <div class="amount-chips-row">
             <button class="amount-chip-btn" onclick="setThAmt(4000)">4,000 ر.س</button>
             <button class="amount-chip-btn" onclick="setThAmt(6000)">6,000 ر.س</button>
@@ -926,7 +948,7 @@
             <td><strong>وعاء التأمينات الخاضع للاشتراك</strong></td>
             <td>8,500.00 ر.س</td>
             <td>غير خاضع لاستقطاع الموظف</td>
-            <td>الراتب الأساسي + بدل السكن (سقف الوعاء 45 ألف ريال)</td>
+            <td>الراتب الأساسي (7,000 ر.س) + بدل السكن (1,500 ر.س)، بحد أقصى نظامي 45,000 ر.س</td>
           </tr>
           <tr>
             <td><strong>استقطاع التأمينات من الموظف (GOSI)</strong></td>
@@ -948,6 +970,9 @@
           </tr>
         </tbody>
       </table>
+      <div style="margin-top:14px; padding:12px 16px; background:#f8fafc; border:1px solid #e2e8f0; border-right:4px solid #7c3aed; border-radius:6px; font-size:13px; line-height:1.6; color:#475569;">
+        <strong>ملاحظة تطبيقية نظامية:</strong> تطبق نسبة استقطاع التأمينات الموضحة للموظف (9.75%) على المشتركين السعوديين الحاليين المشمولين بنظام التأمينات الاجتماعية السابق (9% المعاشات + 0.75% ساند). أما المنضمون الجدد لسوق العمل بعد يوليو 2024 بموجب نظام التأمينات الاجتماعية الجديد (المرسوم الملكي م/186)، فتخضع اشتراكات فرع المعاشات لديهم لجدول تدرج سنوي محدد من قِبل المؤسسة العامة للتأمينات الاجتماعية. ولا يخضع الموظفون غير السعوديين لأي استقطاع تقاعدي (0%).
+      </div>
     </div>
     <div class="related-tools-box">
       <div class="related-title"><i class="fas fa-grid-2" style="color:#7c3aed; margin-left:8px;"></i>حاسبات الرواتب والعمل في السعودية</div>
@@ -963,7 +988,19 @@
   </div>
   <script>
     function setThAmt(val) {
-      document.getElementById('thGross').value = val;
+      if (val === 8000) {
+        document.getElementById('thBasic').value = 6000;
+        document.getElementById('thHousing').value = 1500;
+        document.getElementById('thOther').value = 500;
+      } else {
+        const b = Math.round(val * 0.75);
+        const h = Math.round(val * 0.25);
+        document.getElementById('thBasic').value = b;
+        document.getElementById('thHousing').value = h;
+        document.getElementById('thOther').value = 0;
+      }
+      const grossEl = document.getElementById('thGross');
+      if (grossEl) grossEl.value = val;
       const chips = document.querySelectorAll('.amount-chip-btn');
       chips.forEach(c => {
         if (parseInt(c.textContent.replace(/[^0-9]/g, '')) === val) c.classList.add('active');
@@ -973,12 +1010,17 @@
     }
     function recalcTh() {
       const type = document.getElementById('thType').value;
-      const gross = Math.max(0, parseFloat(document.getElementById('thGross').value) || 0);
+      const basic = Math.max(0, parseFloat(document.getElementById('thBasic').value) || 0);
+      const housing = Math.max(0, parseFloat(document.getElementById('thHousing').value) || 0);
+      const other = Math.max(0, parseFloat(document.getElementById('thOther').value) || 0);
+      const gross = basic + housing + other;
+      const grossEl = document.getElementById('thGross');
+      if (grossEl) grossEl.value = gross;
       const deduct = Math.max(0, parseFloat(document.getElementById('thDeduct').value) || 0);
       let gosi = 0;
       let gosiTagText = '';
       if (type === 'saudi') {
-        const gosiBase = Math.min(45000, gross * 0.85);
+        const gosiBase = Math.min(45000, basic + housing);
         gosi = gosiBase * 0.0975;
         gosiTagText = 'التأمينات: -' + gosi.toFixed(2) + ' ر.س (9.75%)';
       } else {
@@ -994,7 +1036,9 @@
       document.getElementById('thAnnualVal').textContent = annual.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' ر.س / سنة';
     }
     document.addEventListener('DOMContentLoaded', () => {
-      document.getElementById('thGross').addEventListener('input', recalcTh);
+      document.getElementById('thBasic').addEventListener('input', recalcTh);
+      document.getElementById('thHousing').addEventListener('input', recalcTh);
+      document.getElementById('thOther').addEventListener('input', recalcTh);
       document.getElementById('thDeduct').addEventListener('input', recalcTh);
       recalcTh();
     });

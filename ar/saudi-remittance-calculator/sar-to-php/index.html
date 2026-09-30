@@ -1152,7 +1152,7 @@
     }
 
     function recalcPhp() {
-      const amt = parseFloat(document.getElementById('phpAmount').value) || 0;
+      const amt = Math.max(0, parseFloat(document.getElementById('phpAmount').value) || 0);
       if (!window.DailyCalcRemittance) return;
       const rate = window.DailyCalcRemittance.getRateFromSar('PHP') || 15.65;
 
@@ -1163,7 +1163,7 @@
       document.getElementById('phpRateTag').innerHTML = '<i class="fas fa-bolt" style="color:#fbbf24;"></i> <span>1 ر.س = ' + rate.toFixed(4) + ' بيزو</span>';
       const benchEl = document.getElementById('phpWholesaleBench');
       if (benchEl) {
-        benchEl.textContent = 'السعر المرجعي لسوق الجملة: ₱ ' + window.DailyCalcRemittance.formatPayout(amt * rate, 'PHP');
+        benchEl.textContent = 'السعر المرجعي لسوق الجملة: ₱ ' + window.DailyCalcRemittance.formatPayout(Math.max(0, amt * rate), 'PHP');
       }
 
       window.DailyCalcRemittance.renderTable({

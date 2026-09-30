@@ -2127,7 +2127,7 @@
     }
 
     function recalculate() {
-      const sarAmount = parseFloat(document.getElementById('sarAmountInput').value) || 0;
+      const sarAmount = Math.max(0, parseFloat(document.getElementById('sarAmountInput').value) || 0);
       const targetCur = document.getElementById('destCurrencySelect').value;
       const symbol = currencySymbols[targetCur] || '';
       
@@ -2172,7 +2172,7 @@
       payoutDisplay.textContent = symbol + ' ' + calcTop.formattedPayout;
       rateDisplay.innerHTML = `<i class="fas fa-bolt" style="color:#fbbf24;"></i> <span>1 SAR = ${baseRate.toFixed(4)} ${targetCur}</span>`;
       if (benchmarkVal) {
-        const wholesaleGross = sarAmount * baseRate * incentiveMultiplier;
+        const wholesaleGross = Math.max(0, sarAmount * baseRate * incentiveMultiplier);
         benchmarkVal.textContent = 'Wholesale Benchmark: ' + symbol + ' ' + window.DailyCalcRemittance.formatPayout(wholesaleGross, targetCur) + (targetCur === 'BDT' ? ' (incl. 2.5% incentive)' : '');
       }
       if (compareNote) {

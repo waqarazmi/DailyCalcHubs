@@ -1181,7 +1181,7 @@
     }
 
     function recalcBdt() {
-      const amt = parseFloat(document.getElementById('bdtAmount').value) || 0;
+      const amt = Math.max(0, parseFloat(document.getElementById('bdtAmount').value) || 0);
       if (!window.DailyCalcRemittance) return;
       const rate = window.DailyCalcRemittance.getRateFromSar('BDT') || 32.32;
       const includeIncentive = document.getElementById('bdtIncentiveCheck') ? document.getElementById('bdtIncentiveCheck').checked : true;
@@ -1190,14 +1190,14 @@
       const topProvider = window.DailyCalcRemittance.providers[0]; // Barq
       const calcTop = window.DailyCalcRemittance.calculateProviderPayout(topProvider, amt, 'BDT', rate, mult);
 
-      const baseWholesale = amt * rate;
+      const baseWholesale = Math.max(0, amt * rate);
       const incentiveVal = includeIncentive ? (baseWholesale * 0.025) : 0;
 
       document.getElementById('bdtPayout').textContent = '৳ ' + calcTop.formattedPayout;
       document.getElementById('bdtRateTag').innerHTML = '<i class="fas fa-bolt" style="color:#fbbf24;"></i> <span>1 ر.س = ' + rate.toFixed(4) + ' تاكا</span>';
       const benchEl = document.getElementById('bdtWholesaleBench');
       if (benchEl) {
-        benchEl.textContent = 'السعر المرجعي لسوق الجملة: ৳ ' + window.DailyCalcRemittance.formatPayout(baseWholesale * mult, 'BDT');
+        benchEl.textContent = 'السعر المرجعي لسوق الجملة: ৳ ' + window.DailyCalcRemittance.formatPayout(Math.max(0, baseWholesale * mult), 'BDT');
       }
       const incentiveValEl = document.getElementById('bdtIncentiveVal');
       if (incentiveValEl) {
