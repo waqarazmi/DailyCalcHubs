@@ -243,6 +243,7 @@
     .result-big-val { font-size: 32px; font-weight: 800; color: #38bdf8; line-height: 1.1; }
     .result-rate-tag { font-size: 13px; color: #e2e8f0; display: flex; align-items: center; gap: 6px; }
     .result-meta-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 14px; font-size: 13px; }
+      @media (max-width: 480px) { .result-meta-grid { grid-template-columns: 1fr; } }
     .meta-box-inner { background: rgba(255, 255, 255, 0.05); padding: 10px 14px; border-radius: 8px; }
     .meta-box-title { color: #fed7aa; font-size: 11.5px; font-weight: 600; margin-bottom: 3px; }
     .meta-box-val { color: #f8fafc; font-weight: 700; }
@@ -1256,7 +1257,6 @@
       }
     }
   </script>
-  <script src="/live-ticker.js" defer></script>
   <script src="/theme.js" defer></script>
   <script src="/share.js" defer></script>
 </body>
