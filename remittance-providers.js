@@ -1,6 +1,6 @@
 /**
  * DailyCalcHubs — Unified Remittance Providers, Rate Engine & Send Money Module
- * Authoritative provider dataset, official branding, unified FX cache, and device-aware CTA URLs.
+ * Unified provider dataset and FX cache, unified FX cache, and device-aware CTA URLs.
  */
 (function () {
   'use strict';
@@ -11,7 +11,7 @@
   var isBackgroundFetching = false;
   var backgroundCallbacks = [];
 
-  // Authoritative verified closing benchmark rates for fallback when offline
+  // Closing reference benchmark rates for fallback for fallback when offline
   var FALLBACK_RATES = {
     USD: 1.0,
     SAR: 3.75,
@@ -341,8 +341,8 @@
           isLive: false,
           rates: currentRates,
           rawTimestamp: null,
-          timeFormattedEn: 'Closing Reference Benchmark',
-          timeFormattedAr: 'سعر إغلاق مرجعي معتمد',
+          timeFormattedEn: 'Reference Closing Rate',
+          timeFormattedAr: 'سعر الإغلاق المرجعي',
           statusEn: 'Reference Closing Rate',
           statusAr: 'سعر إغلاق مرجعي'
         };
