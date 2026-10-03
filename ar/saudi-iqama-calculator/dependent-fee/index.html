@@ -833,11 +833,22 @@
               <input type="number" id="numDependents" class="calc-input" value="3" min="0" max="25" step="1" required oninput="calculateDep()" dir="ltr" inputmode="numeric">
             </div>
             <div class="amount-chips-row">
-              <button type="button" class="amount-chip-btn" onclick="setDepCount(1)">1 مرافق</button>
-              <button type="button" class="amount-chip-btn" onclick="setDepCount(2)">2 مرافقين</button>
-              <button type="button" class="amount-chip-btn active" onclick="setDepCount(3)">3 مرافقين</button>
-              <button type="button" class="amount-chip-btn" onclick="setDepCount(4)">4 مرافقين</button>
-              <button type="button" class="amount-chip-btn" onclick="setDepCount(5)">5 مرافقين</button>
+              <button type="button" class="amount-chip-btn" onclick="setDepMonths(3)">3 أشهر</button>
+              <button type="button" class="amount-chip-btn" onclick="setDepMonths(6)">6 أشهر</button>
+              <button type="button" class="amount-chip-btn" onclick="setDepMonths(9)">9 أشهر</button>
+              <button type="button" class="amount-chip-btn active" onclick="setDepMonths(12)">12 شهراً</button>
+              <button type="button" class="amount-chip-btn" onclick="setDepMonths(24)">24 شهراً</button>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="exitReentryToggle">تأشيرة الخروج والعودة (اختياري)</label>
+            <div class="input-with-addons">
+              <span class="input-addon-badge"><i class="fas fa-plane-departure"></i></span>
+              <select id="exitReentryToggle" class="select-input-addon" onchange="calculateDep()">
+                <option value="none" selected>بدون تأشيرة (تجديد إقامة فقط)</option>
+                <option value="single">مفردة (200 ر.س للفرد)</option>
+                <option value="multiple">متعددة (500 ر.س للفرد)</option>
+              </select>
             </div>
           </div>
           <div class="form-group">
@@ -982,13 +993,18 @@
     function calculateDep() {
       const deps = Math.max(0, parseInt(document.getElementById('numDependents').value) || 0);
       const months = Math.max(1, parseInt(document.getElementById('validityMonths').value) || 12);
+      const exitReentryType = document.getElementById('exitReentryToggle').value;
       const monthlyFee = deps * 400;
-      const totalFee = monthlyFee * months;
+      const levyTotal = monthlyFee * months;
+      let exitReentryTotal = 0;
+      if (exitReentryType === 'single') { exitReentryTotal = 200 * deps; }
+      else if (exitReentryType === 'multiple') { exitReentryTotal = 500 * deps; }
+      const totalFee = levyTotal + exitReentryTotal;
       const annualPerPerson = 4800;
       document.getElementById('resDepTotal').innerText = totalFee.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' ر.س';
       document.getElementById('resDepMonthly').innerText = monthlyFee.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' ر.س / شهر';
       document.getElementById('resNextFeeDue').innerText = annualPerPerson.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' ر.س / سنة للفرد';
-      document.getElementById('resDepCountLabel').innerText = deps + ' مرافقين • ' + months + ' شهراً';
+      document.getElementById('resDepCountLabel').innerText = deps + ' مرافقين • ' + months + ' شهراً' + (exitReentryTotal > 0 ? ' • مع الخروج والعودة' : '');
     }
     window.addEventListener('DOMContentLoaded', calculateDep);
   </script>

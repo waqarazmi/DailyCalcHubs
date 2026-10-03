@@ -1030,28 +1030,24 @@
       const salary = parseFloat(document.getElementById('monthlySalaryHourly').value) || 0;
       const sched = document.getElementById('workSchedule').value;
       const dailyHours = parseFloat(document.getElementById('dailyHours').value) || 8;
-
       let monthlyHours = 240;
       let labelText = 'محسوب على 240 ساعة شهرياً';
-
-      if (sched === 'standard_40') {
-        monthlyHours = 200; // (40 / 5) * 25 or approx 200
-        labelText = 'معيار 200 ساعة شهرياً (40 ساعة/أسبوع)';
-      } else if (sched === 'ramadan_36') {
-        monthlyHours = 180; // (36 / 6) * 30
+      if (sched === 'standard_40' || sched === '173.33') {
+        monthlyHours = 173.33;
+        labelText = 'معيار 173.33 ساعة شهرياً (40 ساعة/أسبوع)';
+      } else if (sched === 'ramadan_36' || sched === '180') {
+        monthlyHours = 180;
         labelText = 'ساعات رمضان (180 ساعة شهرياً)';
       } else {
         monthlyHours = 240;
         labelText = 'معيار 240 ساعة شهرياً (48 ساعة/أسبوع)';
       }
-
       const hourlyRate = salary > 0 ? (salary / monthlyHours) : 0;
       const minuteRate = hourlyRate / 60;
       const dailyRate = hourlyRate * dailyHours;
       const overtimeRate = hourlyRate * 1.5;
-      const weeklyPay = hourlyRate * (monthlyHours / 4.33);
-
-      document.getElementById('resHourlyRate').textContent = hourlyRate.toFixed(2) + ' ر.س';
+      const weeklyPay = hourlyRate * (monthlyHours === 173.33 ? 40 : 48);
+document.getElementById('resHourlyRate').textContent = hourlyRate.toFixed(2) + ' ر.س';
       document.getElementById('resMonthlyHoursLabel').innerHTML = `<i class="fas fa-business-time" style="color:#10b981;"></i> <span>${labelText}</span>`;
       document.getElementById('resMinuteRate').textContent = minuteRate.toFixed(2) + ' ر.س / دقيقة';
       document.getElementById('resDailyRate').textContent = dailyRate.toFixed(2) + ' ر.س / يوم';
@@ -1136,5 +1132,6 @@
   </script>
   <script src="/theme.js" defer></script>
   <script src="/mobile-nav.js" defer></script>
+  <script src="/share.js" defer></script>
 </body>
 </html>
