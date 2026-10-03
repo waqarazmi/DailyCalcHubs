@@ -1,3 +1,4 @@
+html { scroll-padding-top: 80px; }
 /**
  * DailyCalcHubs — Global Night Mode Design System
  * Theme Tokens, Component Overrides & Dark Mode Styles
@@ -2275,14 +2276,18 @@ html[lang="ar"] .top-rates-ticker .ticker-tag-green {
   font-weight: 700;
 }
 
-/* 3. Base Site Header & Navigation for Arabic */
-html[lang="ar"] .site-header {
+/* 2b. Base Site Header (Universal) */
+.site-header {
   background: #ffffff;
   border-bottom: 1px solid #e2e8f0;
   position: sticky;
   top: 0;
   z-index: 1000;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+/* 3. Base Site Header & Navigation for Arabic */
+html[lang="ar"] .site-header {
   direction: rtl;
 }
 
