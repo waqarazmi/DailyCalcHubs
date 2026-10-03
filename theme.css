@@ -5559,3 +5559,20 @@ html[data-theme="dark"] .mega-tool-item.active .mega-tool-bullet {
   background: #38bdf8 !important;
   box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.25) !important;
 }
+
+/* About Us Hover Stability Fix */
+#aboutUsDropdown .category-dropdown-menu {
+  left: auto !important;
+  right: 0 !important;
+}
+
+html[dir="rtl"] #aboutUsDropdown .category-dropdown-menu,
+html[lang="ar"] #aboutUsDropdown .category-dropdown-menu {
+  left: 0 !important;
+  right: auto !important;
+}
+
+/* Prevent About Us trigger from widening when active */
+#aboutUsDropdown .nav-dropdown-btn.active {
+  font-weight: 600 !important;
+}
