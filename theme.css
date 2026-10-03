@@ -5531,3 +5531,9 @@ html[data-theme="dark"] .provider-table-card {
     padding: 8px 14px !important;
   }
 }
+/* Mobile Field Vertical Alignment Fix */
+@media (max-width: 768px) {
+  .mobile-align-bottom {
+    align-items: end !important;
+  }
+}
