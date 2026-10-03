@@ -628,7 +628,7 @@
         </div>
 
         <div class="mobile-accordion" id="mobileAccordion">
-          
+
           <!-- 1. Remittance -->
           <div class="mobile-accordion-item">
             <button type="button" class="mobile-accordion-header" aria-expanded="false">
@@ -878,7 +878,7 @@
           <div class="form-group">
             <label class="form-label" for="incMode">نوع وطبيعة الزيادة</label>
             <select id="incMode" class="calc-input" onchange="calculateSalaryIncrement()">
-              <option value="pct" selected>نسبة مئوية من الراتب (%)</option>
+              <option value="percent" selected>نسبة مئوية من الراتب (%)</option>
               <option value="fixed">مبلغ مقطوع شهري ثابت (ريال)</option>
             </select>
           </div>
@@ -894,8 +894,8 @@
           <div class="form-group">
             <label class="form-label" for="incTarget">عنصر الراتب المستهدف بالزيادة</label>
             <select id="incTarget" class="calc-input" onchange="calculateSalaryIncrement()">
-              <option value="basic_only" selected>زيادة على الراتب الأساسي فقط</option>
-              <option value="gross_proportional">زيادة نسبية على إجمالي الباقة (الأساسي والبدلات)</option>
+              <option value="basic" selected>زيادة على الراتب الأساسي فقط</option>
+              <option value="gross">زيادة نسبية على إجمالي الباقة (الأساسي والبدلات)</option>
             </select>
           </div>
 
@@ -1067,10 +1067,10 @@
       const valLabel = document.getElementById('incValueLabel');
       const valBadge = document.getElementById('incValueBadge');
       if (valBadge) {
-        valBadge.textContent = mode === 'pct' ? '%' : 'ر.س';
+        valBadge.textContent = mode === 'percent' ? '%' : 'ر.س';
       }
       if (valLabel) {
-        valLabel.textContent = mode === 'pct' ? 'مقدار الزيادة المقترحة (%)' : 'مقدار الزيادة المقترحة (SAR شهرياً)';
+        valLabel.textContent = mode === 'percent' ? 'مقدار الزيادة المقترحة (%)' : 'مقدار الزيادة المقترحة (SAR شهرياً)';
       }
 
       const oldGross = basic + housing + transport;
@@ -1083,28 +1083,26 @@
       let newHousing = housing;
       let newTransport = transport;
 
-      if (mode === 'pct') {
-        const multiplier = 1 + (val / 100);
-        if (target === 'basic_only') {
-          newBasic = basic * multiplier;
+      if (mode === 'percent') {
+        if (target === 'basic') {
+          newBasic = basic * (1 + (val / 100));
+          // If housing was 25% of basic, keep proportion
+          if (basic > 0 && Math.abs(housing - (basic * 0.25)) < 5) {
+            newHousing = newBasic * 0.25;
+          }
         } else {
-          newBasic = basic * multiplier;
-          newHousing = housing * multiplier;
-          newTransport = transport * multiplier;
+          newBasic = basic * (1 + (val / 100));
+          newHousing = housing * (1 + (val / 100));
+          newTransport = transport * (1 + (val / 100));
         }
       } else {
-        // Fixed SAR amount
-        if (target === 'basic_only') {
+        // Fixed amount
+        if (target === 'basic') {
           newBasic = basic + val;
         } else {
-          // Distribute proportionally
-          if (oldGross > 0) {
-            newBasic = basic + (val * (basic / oldGross));
-            newHousing = housing + (val * (housing / oldGross));
-            newTransport = transport + (val * (transport / oldGross));
-          } else {
-            newBasic = basic + val;
-          }
+          newBasic = basic + (val * 0.70);
+          newHousing = housing + (val * 0.20);
+          newTransport = transport + (val * 0.10);
         }
       }
 
@@ -1116,6 +1114,9 @@
       const monthlyNetRaise = newNet - oldNet;
       const annualGrossRaise = (newGross - oldGross) * 12;
       const annualNetRaise = monthlyNetRaise * 12;
+
+      // 5-year EOSB difference (half month for first 5 years = 2.5 months salary)
+      const eosbImpact = (newGross - oldGross) * 2.5;
 
       document.getElementById('resNewNet').textContent = newNet.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' ر.س';
       document.getElementById('resNetRaiseMonthly').innerHTML = `<i class="fas fa-arrow-up" style="color:#10b981;"></i> <span>زيادة في الصافي: +${monthlyNetRaise.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} ر.س / شهر</span>`;
@@ -1156,7 +1157,7 @@
 
       if (tbON) tbON.textContent = oldNet.toFixed(2) + ' ر.س';
       if (tbNN) tbNN.textContent = newNet.toFixed(2) + ' ر.س';
-      if (tbDN) tbDN.textContent = '+' + monthlyNetRaise.toFixed(2) + ' ر.س';
+      if (tbDN) tbDN.textContent = '+' + eosbImpact.toFixed(2) + ' ر.س';
     }
 
     document.addEventListener('DOMContentLoaded', () => {
