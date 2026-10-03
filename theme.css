@@ -5537,3 +5537,25 @@ html[data-theme="dark"] .provider-table-card {
     align-items: end !important;
   }
 }
+/* Current tool active state for Mega Menu and Mobile Accordion Parity */
+.mega-tool-item.active,
+.mobile-acc-tool-link.active {
+  background: #f0f9ff !important;
+  color: #0284c7 !important;
+}
+
+html[data-theme="dark"] .mega-tool-item.active,
+html[data-theme="dark"] .mobile-acc-tool-link.active {
+  background: rgba(56, 189, 248, 0.16) !important;
+  color: #38bdf8 !important;
+}
+
+.mega-tool-item.active .mega-tool-bullet {
+  background: #0284c7 !important;
+  transform: scale(1.4) !important;
+}
+
+html[data-theme="dark"] .mega-tool-item.active .mega-tool-bullet {
+  background: #38bdf8 !important;
+  box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.25) !important;
+}
