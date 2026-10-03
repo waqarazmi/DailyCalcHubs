@@ -1275,12 +1275,13 @@
         <div class="calc-input-group">
           <label for="basicSalary">الراتب الأساسي الشهري (SAR)</label>
           <div class="calc-input-wrap">
-            <input type="number" id="basicSalary" value="8000" min="0" step="500" placeholder="8000" dir="ltr" inputmode="decimal">
+            <input type="number" id="basicSalary" value="5000" min="0" step="500" placeholder="5000" dir="ltr" inputmode="decimal">
             <span class="calc-currency-badge">SAR</span>
           </div>
           <div class="quick-chips-row">
-            <button type="button" class="amount-chip-btn" onclick="setBasicSalary(5000)">5,000 ر.س</button>
-            <button type="button" class="amount-chip-btn active" onclick="setBasicSalary(8000)">8,000 ر.س</button>
+            <button type="button" class="amount-chip-btn" onclick="setBasicSalary(3000)">3,000 ر.س</button>
+            <button type="button" class="amount-chip-btn active" onclick="setBasicSalary(5000)">5,000 ر.س</button>
+            <button type="button" class="amount-chip-btn" onclick="setBasicSalary(8000)">8,000 ر.س</button>
             <button type="button" class="amount-chip-btn" onclick="setBasicSalary(12000)">12,000 ر.س</button>
             <button type="button" class="amount-chip-btn" onclick="setBasicSalary(20000)">20,000 ر.س</button>
           </div>
@@ -1290,7 +1291,7 @@
         <div class="calc-input-group">
           <label for="housingAllowance">بدل السكن الشهري (SAR)</label>
           <div class="calc-input-wrap">
-            <input type="number" id="housingAllowance" value="2000" min="0" step="100" placeholder="2000" dir="ltr" inputmode="decimal">
+            <input type="number" id="housingAllowance" value="1250" min="0" step="100" placeholder="1250" dir="ltr" inputmode="decimal">
             <span class="calc-currency-badge">SAR</span>
           </div>
           <span class="form-label-action" onclick="setHousingPercent(25)">تلقائي 25% أساسي</span>
@@ -1303,7 +1304,7 @@
         <div class="calc-input-group">
           <label for="transportAllowance">بدل النقل والمواصلات (SAR)</label>
           <div class="calc-input-wrap">
-            <input type="number" id="transportAllowance" value="800" min="0" step="100" placeholder="800" dir="ltr" inputmode="decimal">
+            <input type="number" id="transportAllowance" value="500" min="0" step="100" placeholder="500" dir="ltr" inputmode="decimal">
             <span class="calc-currency-badge">SAR</span>
           </div>
           <span class="form-label-action" onclick="setTransportPercent(10)">تلقائي 10% أساسي</span>

@@ -848,7 +848,7 @@
             <label class="form-label" for="monthlySalary">الراتب الشهري المعتمد (الأساسي أو الفعلي بالريال)</label>
             <div class="input-with-addons">
               <span class="input-addon-badge">ر.س</span>
-              <input type="number" id="monthlySalary" class="calc-input" value="6000" min="500" max="200000" step="100" placeholder="أدخل الراتب الشهري" dir="ltr" inputmode="decimal">
+              <input type="number" id="monthlySalary" class="calc-input" value="9000" min="500" max="200000" step="100" placeholder="أدخل الراتب الشهري" oninput="calculateDailySalary()" dir="ltr" inputmode="decimal">
             </div>
             <div class="amount-chips-row">
               <button type="button" class="amount-chip-btn" onclick="setDailyAmount(4000)">4,000 ر.س</button>
