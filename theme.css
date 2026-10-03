@@ -1,6 +1,6 @@
 html { scroll-padding-top: 80px; }
 /**
- * DailyCalcHubs — Global Night Mode Design System
+ * DailyCalcHubs â€” Global Night Mode Design System
  * Theme Tokens, Component Overrides & Dark Mode Styles
  * Pilot Phase: Prayer Times, EOSB, Split Bill
  */
@@ -1324,7 +1324,7 @@ html[data-theme="dark"] .btn-booking-deals:hover {
   background: linear-gradient(135deg, #334155, #475569);
 }
 
-/* Secondary Travel Service Pills — Family-Style Visual Match */
+/* Secondary Travel Service Pills â€” Family-Style Visual Match */
 .smart-service-pills {
   display: flex;
   flex-wrap: wrap;
@@ -1894,7 +1894,7 @@ html[data-theme="dark"] .mobile-menu-toggle:hover {
 
 /* --------------------------------------------------------------------------
    1. Language Switcher Component Style System (.lang-switch-btn)
-   Dormant styles for future EN | العربية header & mobile drawer component
+   Dormant styles for future EN | Ø§Ù„Ø¹Ø±Ø¨ÙŠØ© header & mobile drawer component
    -------------------------------------------------------------------------- */
 .lang-switch-btn {
   display: inline-flex;
@@ -2194,7 +2194,7 @@ html[dir="rtl"] .cookie-consent-banner {
 }
 
 /* ============================================================
-   DAILYCALCHUBS — ARABIC MULTILINGUAL EXPANSION DESIGN SYSTEM
+   DAILYCALCHUBS â€” ARABIC MULTILINGUAL EXPANSION DESIGN SYSTEM
    Strictly Scoped to html[lang="ar"] (English 100% Protected)
    ============================================================ */
 
@@ -2226,7 +2226,7 @@ html[lang="ar"] * {
   letter-spacing: normal !important;
 }
 
-/* 1. Mobile Navigation Drawer — Scoped unified styles defined in Navigation System section */
+/* 1. Mobile Navigation Drawer â€” Scoped unified styles defined in Navigation System section */
 
 /* 2. Base Top Rates Ticker for Arabic */
 html[lang="ar"] .top-rates-ticker {
@@ -2633,7 +2633,7 @@ html[lang="ar"] .site-header .container {
   max-width: 1280px;
 }
 
-/* Point 13: Global English ↔ Arabic Language Control Separation */
+/* Point 13: Global English â†” Arabic Language Control Separation */
 .site-header .header-right-actions,
 .site-header .header-actions,
 html[lang="ar"] .site-header .header-right-actions,
@@ -2731,7 +2731,7 @@ html[data-theme="dark"][lang="ar"] .site-header .header-actions {
   }
 }
 
-/* 8. Small Screen / Mobile Polish (320px–390px) */
+/* 8. Small Screen / Mobile Polish (320pxâ€“390px) */
 @media (max-width: 480px) {
   .site-header .container,
   .site-header .header-inner,
@@ -3912,6 +3912,11 @@ html[lang="ar"] .mobile-nav-body {
     content: "5" !important;
   }
 
+  .mobile-accordion-item:nth-child(8) .mobile-acc-title-group::after,
+  .mobile-accordion-item:nth-of-type(8) .mobile-acc-title-group::after {
+    content: "5" !important;
+  }
+
   .mobile-accordion-item.active .mobile-acc-title-group::after {
     background: #e0f2fe !important;
     color: #0369a1 !important;
@@ -4164,6 +4169,7 @@ html[lang="ar"] .mobile-nav-body {
   html[data-theme="dark"] .mobile-accordion-item:nth-child(5) .mobile-acc-icon { background: #082f49 !important; color: #38bdf8 !important; border-color: #0369a1 !important; }
   html[data-theme="dark"] .mobile-accordion-item:nth-child(6) .mobile-acc-icon { background: #451a03 !important; color: #fcd34d !important; border-color: #b45309 !important; }
   html[data-theme="dark"] .mobile-accordion-item:nth-child(7) .mobile-acc-icon { background: #4c0519 !important; color: #fb7185 !important; border-color: #be123c !important; }
+    html[data-theme="dark"] .mobile-accordion-item:nth-child(8) .mobile-acc-icon { background: #312e81 !important; color: #818cf8 !important; border-color: #4f46e5 !important; }
 
   html[data-theme="dark"] .mobile-accordion-body {
     background: transparent !important;
@@ -4302,7 +4308,7 @@ html[data-theme="dark"] .mega-footer-link {
 
 
 /* ==========================================================================
-   DAILYCALCHUBS — COMPREHENSIVE DARK MODE DESIGN SYSTEM (EN & AR)
+   DAILYCALCHUBS â€” COMPREHENSIVE DARK MODE DESIGN SYSTEM (EN & AR)
    ========================================================================== */
 
 /* 1. Article, Content & SEO Text Readability */
@@ -5560,16 +5566,29 @@ html[data-theme="dark"] .mega-tool-item.active .mega-tool-bullet {
   box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.25) !important;
 }
 
-/* About Us Hover Stability Fix */
+/* About Us Hover Stability Fix - Center Origin Geometry */
 #aboutUsDropdown .category-dropdown-menu {
-  left: auto !important;
-  right: 0 !important;
+  left: 50% !important;
+  right: auto !important;
+  transform: translateX(-50%) translateY(8px) !important;
+}
+#aboutUsDropdown:hover .category-dropdown-menu,
+#aboutUsDropdown.active .category-dropdown-menu,
+#aboutUsDropdown:focus-within .category-dropdown-menu {
+  transform: translateX(-50%) translateY(0) !important;
 }
 
 html[dir="rtl"] #aboutUsDropdown .category-dropdown-menu,
 html[lang="ar"] #aboutUsDropdown .category-dropdown-menu {
-  left: 0 !important;
+  left: 50% !important;
   right: auto !important;
+  transform: translateX(50%) translateY(8px) !important;
+}
+html[dir="rtl"] #aboutUsDropdown:hover .category-dropdown-menu,
+html[lang="ar"] #aboutUsDropdown:hover .category-dropdown-menu,
+html[dir="rtl"] #aboutUsDropdown.active .category-dropdown-menu,
+html[lang="ar"] #aboutUsDropdown.active .category-dropdown-menu {
+  transform: translateX(50%) translateY(0) !important;
 }
 
 /* Prevent About Us trigger from widening when active */
