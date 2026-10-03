@@ -870,12 +870,10 @@
 
           <div class="form-group">
             <label class="form-label" for="dailyHours">ساعات العمل في اليوم العادي</label>
-            <select id="dailyHours" class="calc-input" onchange="calculateHourlySalary()">
-              <option value="8" selected>8 ساعات يومياً (الحد الأقصى النظامي)</option>
-              <option value="6">6 ساعات يومياً (ساعات رمضان المخفضة)</option>
-              <option value="7">7 ساعات يومياً</option>
-              <option value="9">9 ساعات يومياً (الأعمال الموسمية المستثناة)</option>
-            </select>
+            <div class="input-with-addons">
+              <span class="input-addon-badge"><i class="fas fa-business-time"></i></span>
+              <input type="number" id="dailyHours" class="calc-input" value="8" min="1" max="12" step="0.5" oninput="calculateHourlySalary()" dir="ltr" inputmode="decimal">
+            </div>
           </div>
 
           <div class="result-summary-box">
