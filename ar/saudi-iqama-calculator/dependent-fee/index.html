@@ -830,14 +830,14 @@
             <label class="form-label" for="numDependents">عدد المرافقين والتابعين المشمولين</label>
             <div class="input-with-addons">
               <span class="input-addon-badge"><i class="fas fa-user-group"></i></span>
-              <input type="number" id="numDependents" class="calc-input" value="3" min="0" max="25" step="1" required oninput="calculateDep()" dir="ltr" inputmode="numeric">
+              <input type="number" id="numDependents" class="calc-input" value="2" min="1" max="15" step="1" placeholder="مثال: 2" required oninput="calculateDep()" dir="ltr" inputmode="numeric">
             </div>
             <div class="amount-chips-row">
-              <button type="button" class="amount-chip-btn" onclick="setDepMonths(3)">3 أشهر</button>
-              <button type="button" class="amount-chip-btn" onclick="setDepMonths(6)">6 أشهر</button>
-              <button type="button" class="amount-chip-btn" onclick="setDepMonths(9)">9 أشهر</button>
-              <button type="button" class="amount-chip-btn active" onclick="setDepMonths(12)">12 شهراً</button>
-              <button type="button" class="amount-chip-btn" onclick="setDepMonths(24)">24 شهراً</button>
+              <button type="button" class="amount-chip-btn" onclick="setDepCount(1)">1 مرافق</button>
+              <button type="button" class="amount-chip-btn active" onclick="setDepCount(2)">2 مرافقين</button>
+              <button type="button" class="amount-chip-btn" onclick="setDepCount(3)">3 مرافقين</button>
+              <button type="button" class="amount-chip-btn" onclick="setDepCount(4)">4 مرافقين</button>
+              <button type="button" class="amount-chip-btn" onclick="setDepCount(5)">5 مرافقين</button>
             </div>
           </div>
           <div class="form-group">
@@ -855,18 +855,19 @@
             <label class="form-label" for="validityMonths">مدة التجديد المطلوبة (بالأشهر)</label>
             <div class="input-with-addons">
               <span class="input-addon-badge"><i class="fas fa-calendar-alt"></i></span>
-              <select id="validityMonths" class="select-input-addon" onchange="calculateDep()">
-                <option value="3">3 أشهر (تجديد ربع سنوي)</option>
-                <option value="6">6 أشهر (نصف سنوي)</option>
-                <option value="9">9 أشهر (3 أرباع السنة)</option>
-                <option value="12" selected>12 شهراً (سنة كاملة)</option>
-              </select>
+              <input type="number" id="validityMonths" class="calc-input" value="12" min="1" max="36" step="1" placeholder="مثال: 12" required oninput="calculateDep()" dir="ltr" inputmode="numeric">
+
+
+
+
+
             </div>
             <div class="amount-chips-row">
               <button type="button" class="amount-chip-btn" onclick="setDepMonths(3)">3 أشهر</button>
               <button type="button" class="amount-chip-btn" onclick="setDepMonths(6)">6 أشهر</button>
-              <button type="button" class="amount-chip-btn" onclick="setDepMonths(9)">9 أشهر</button>
-              <button type="button" class="amount-chip-btn active" onclick="setDepMonths(12)">12 شهراً</button>
+
+              <button type="button" class="amount-chip-btn active" onclick="setDepMonths(12)">12 شهراً (سنة)</button>
+              <button type="button" class="amount-chip-btn" onclick="setDepMonths(24)">24 شهراً (سنتين)</button>
             </div>
           </div>
         </form>
@@ -991,8 +992,8 @@
       calculateDep();
     }
     function calculateDep() {
-      const deps = Math.max(0, parseInt(document.getElementById('numDependents').value) || 0);
-      const months = Math.max(1, parseInt(document.getElementById('validityMonths').value) || 12);
+      const deps = parseInt(document.getElementById('numDependents').value) || 0;
+      const months = parseInt(document.getElementById('validityMonths').value) || 0;
       const exitReentryType = document.getElementById('exitReentryToggle').value;
       const monthlyFee = deps * 400;
       const levyTotal = monthlyFee * months;
