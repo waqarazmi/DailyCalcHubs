@@ -3445,7 +3445,7 @@ html[dir="rtl"] .mega-cat-tab.active .mega-tab-arrow {
 .category-dropdown-menu {
   display: none;
   position: absolute !important;
-  top: 100% !important;
+  top: calc(100% + 20px) !important;
   left: 0 !important;
   right: auto !important;
   transform: translateY(8px) !important;
@@ -3468,7 +3468,17 @@ html[dir="rtl"] .mega-cat-tab.active .mega-tab-arrow {
 }
 
 html[lang="en"] .category-dropdown-menu {
-  top: calc(100% + 4px) !important;
+  top: calc(100% + 24px) !important;
+}
+
+.category-dropdown-menu::before {
+  content: "" !important;
+  position: absolute !important;
+  top: -30px !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 30px !important;
+  background: transparent !important;
 }
 
 /* RTL layout */
