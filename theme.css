@@ -3467,6 +3467,10 @@ html[dir="rtl"] .mega-cat-tab.active .mega-tab-arrow {
   scrollbar-width: thin !important;
 }
 
+html[lang="en"] .category-dropdown-menu {
+  top: calc(100% + 4px) !important;
+}
+
 /* RTL layout */
 html[dir="rtl"] .category-dropdown-menu,
 html[lang="ar"] .category-dropdown-menu {
