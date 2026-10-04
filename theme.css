@@ -3490,8 +3490,7 @@ html[lang="ar"] .category-dropdown-menu {
 
 /* Open states */
 .category-dropdown-item:hover .category-dropdown-menu,
-.category-dropdown-item.active .category-dropdown-menu,
-.category-dropdown-item:focus-within .category-dropdown-menu {
+.category-dropdown-item.active .category-dropdown-menu {
   display: flex !important;
   flex-direction: column !important;
   gap: 2px !important;
@@ -5603,8 +5602,7 @@ html[data-theme="dark"] .mega-tool-item.active .mega-tool-bullet {
   transform: translateX(-50%) translateY(8px) !important;
 }
 #aboutUsDropdown:hover .category-dropdown-menu,
-#aboutUsDropdown.active .category-dropdown-menu,
-#aboutUsDropdown:focus-within .category-dropdown-menu {
+#aboutUsDropdown.active .category-dropdown-menu {
   transform: translateX(-50%) translateY(0) !important;
 }
 
