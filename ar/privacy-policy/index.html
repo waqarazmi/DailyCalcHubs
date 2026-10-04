@@ -174,7 +174,7 @@
     /* Main Container */
     .main-container { max-width: 1000px; margin: 36px auto 60px; padding: 0 20px; }
     .content-card { background: var(--bg-white); border-radius: 18px; border: 1px solid var(--border-color); box-shadow: var(--shadow-md); padding: 40px; margin-bottom: 36px; }
-    
+
     .content-card h2 { font-size: 21px; font-weight: 800; color: var(--navy-dark); margin: 32px 0 14px; border-bottom: 1px solid #f1f5f9; padding-bottom: 8px; display: flex; align-items: center; gap: 10px; }
     .content-card h2:first-of-type { margin-top: 0; }
     .content-card h2 i { color: var(--brand-primary); font-size: 18px; }
@@ -238,12 +238,12 @@
             <span>استكشف الحاسبات</span>
             <i class="fas fa-chevron-down nav-dropdown-arrow"></i>
           </button>
-          
+
     <div class="explore-mega-menu" id="exploreToolsMenu" role="menu" aria-label="استكشف الحاسبات والأدوات">
       <div class="mega-menu-split-layout">
         <!-- Category Rail (Left in LTR / Right in RTL) -->
         <div class="mega-cat-rail" role="tablist" aria-orientation="vertical" aria-label="استكشف الحاسبات والأدوات">
-          
+
         <button type="button" class="mega-cat-tab active" role="tab" id="tab-remittance" aria-selected="true" aria-controls="panel-remittance" data-cat="remittance" tabindex="0">
           <span class="mega-cat-icon-badge" style="background:#f0fdf4; color:#15803d; border:1px solid #bbf7d0;">
             <i class="fas fa-exchange-alt"></i>
@@ -312,7 +312,7 @@
 
         <!-- Selected Category Content Panel -->
         <div class="mega-panels-container">
-          
+
         <div class="mega-category-panel active" id="panel-remittance" role="tabpanel" aria-labelledby="tab-remittance">
           <div class="mega-panel-header">
             <div class="mega-panel-title-group">
@@ -492,7 +492,7 @@
         </a>
       </div>
     </div>
-    
+
         </div>
           <div class="nav-dropdown-item category-dropdown-item" id="aboutUsDropdown">
             <button type="button" class="nav-link-item nav-dropdown-btn active" aria-expanded="false" aria-haspopup="true">
@@ -560,12 +560,10 @@
         <div class="mobile-nav-top-row">
           <a href="/ar/" class="nav-link-item"><i class="fas fa-home"></i> <span>الرئيسية</span></a>
         </div>
-        <ul>
-          <li><strong>معالجة نموذج الاتصال:</strong> نستخدم FormSubmit لمعالجة وتوجيه استفسارات الاتصال. عندما ترسل رسالة، يتم نقل اسمك وعنوان بريدك الإلكتروني ومحتوى الرسالة المقدمة إلى FormSubmit لتسليم البريد الإلكتروني إلى فريق الدعم لدينا.</li>
-        </ul>
+
 
         <div class="mobile-accordion" id="mobileAccordion">
-          
+
           <!-- 1. Remittance -->
           <div class="mobile-accordion-item">
             <button type="button" class="mobile-accordion-header" aria-expanded="false">
@@ -794,7 +792,7 @@
 
   <div class="main-container">
     <div class="content-card">
-      
+
       <p>مرحباً بك في منصة <strong>DailyCalcHubs</strong> (<a href="https://dailycalchubs.com/ar/">https://dailycalchubs.com/ar/</a>). نحن ندرك أهمية خصوصية بياناتك المالية والوظيفية والشخصية، ونلتزم بأعلى معايير الشفافية في توضيح كيفية جمع واستخدام وحماية المعلومات عند زيارتك لمنصتنا واستخدام أدواتنا الحسابية.</p>
 
       <div class="highlight-box">
@@ -847,7 +845,15 @@
         <li><strong>نزاهة المعادلات:</strong> لا تؤثر أي علاقة تسويقية بالعمولة على نتائج المعادلات الحسابية الرياضية أو تقديرات النفقات التي تعرضها حاسباتنا التقديرية.</li>
       </ul>
 
-      <h2><i class="fas fa-shield-halved"></i> 7. نظام حماية البيانات الشخصية السعودي (PDPL)</h2>
+      <h2><i class="fas fa-network-wired"></i> 7. واجهات برمجة التطبيقات (APIs) والخدمات الخارجية</h2>
+      <p>تتصل بعض الأدوات على DailyCalcHubs بواجهات برمجة تطبيقات عامة للحصول على بيانات مرجعية في الوقت الفعلي:</p>
+      <ul>
+        <li><strong>معالجة نموذج الاتصال:</strong> نستخدم FormSubmit لمعالجة وتوجيه استفسارات الاتصال. عندما تقوم بإرسال رسالة، يتم نقل اسمك وعنوان بريدك الإلكتروني ومحتوى الرسالة إلى FormSubmit لتسليم البريد الإلكتروني إلى فريق الدعم الخاص بنا.</li>
+        <li><strong>تحديثات العملات الأجنبية:</strong> توفر الخلاصات المرجعية بين البنوك (مثل خلاصات أسعار الصرف المفتوحة) أسعار صرف فورية استرشادية لمقارنات العملات.</li>
+        <li><strong>محرك أوقات الصلاة:</strong> يتم إرسال الإحداثيات الجغرافية إلى نقاط حساب فلكية (مثل Aladhan API) لحساب مواقيت أم القرى. تستخدم استعلامات تحديد الموقع الجغرافي إحداثيات المتصفح فقط بناءً على إذن صريح من المستخدم.</li>
+      </ul>
+
+      <h2><i class="fas fa-shield-halved"></i> 8. نظام حماية البيانات الشخصية السعودي (PDPL)</h2>
       <p>حرصاً على الشفافية والامتثال للمنظومة التنظيمية للمملكة العربية السعودية، تخضع معالجة البيانات للمبادئ العامة المقررة بموجب <strong>نظام حماية البيانات الشخصية</strong> الصادر بالمرسوم الملكي رقم (م/19) وتعديلاته بالمرسوم الملكي رقم (م/148) ولوائحه التنفيذية الصادرة عن الهيئة السعودية للبيانات والذكاء الاصطناعي (<strong>سدايا - SDAIA</strong>):</p>
       <ul>
         <li><strong>مبدأ تقليل البيانات:</strong> لا نطلب ولا نجمع أي بيانات تعريف شخصية (مثل الاسم أو رقم الهوية أو رقم الإقامة أو بيانات الحساب البنكي) لاستخدام الحاسبات المجانية.</li>
@@ -855,7 +861,7 @@
         <li><strong>نقل البيانات عبر الحدود:</strong> تلتزم المنصة بضوابط نقل البيانات الشخصية إلى خارج المملكة، مع الاعتماد على المعالجة المحلية من جانب العميل لتقليص أي نقل للبيانات إلى الحد الأدنى التقني اللازم لخدمات شبكة توزيع المحتوى ومكافحة التهديدات السيبرانية.</li>
       </ul>
 
-      <h2><i class="fas fa-globe"></i> 8. حقوق الخصوصية الدولية (GDPR و CCPA/CPRA)</h2>
+      <h2><i class="fas fa-globe"></i> 9. حقوق الخصوصية الدولية (GDPR و CCPA/CPRA)</h2>
       <p>للمستخدمين في المنطقة الاقتصادية الأوروبية (GDPR) والمقيمين في ولاية كاليفورنيا (CCPA/CPRA):</p>
       <ul>
         <li><strong>الحق في المعرفة والوصول:</strong> معرفة فئات المعلومات التي يتم جمعها وكيفية معالجتها.</li>
@@ -863,16 +869,16 @@
         <li><strong>إلغاء التتبع:</strong> يمكنك تفعيل إشارات "عدم التعقب" (Do Not Track / Global Privacy Control) في متصفحك وسيحترم موقعنا هذه الإشارات فيما يخص التفضيلات غير الأساسية.</li>
       </ul>
 
-      <h2><i class="fas fa-child"></i> 9. حماية خصوصية الأطفال (COPPA)</h2>
+      <h2><i class="fas fa-child"></i> 10. حماية خصوصية الأطفال (COPPA)</h2>
       <p>أدوات DailyCalcHubs مخصصة للبالغين وأرباب الأسر والمقيمين والمهنيين لأغراض التخطيط الإداري والمالي. نحن لا نجمع عن علم أو قصد أي بيانات شخصية تعريفية من الأطفال دون سن الثالثة عشرة (أو دون سن الأهلية القانونية في بلد إقامتك).</p>
 
-      <h2><i class="fas fa-lock"></i> 10. أمن وسلامة البيانات</h2>
+      <h2><i class="fas fa-lock"></i> 11. أمن وسلامة البيانات</h2>
       <p>نطبق بروتوكولات حماية تقنية متقدمة تشمل التشفير الكامل لجميع الاتصالات عبر بروتوكول HTTPS مع تفعيل خاصية الأمان الصارم للنقل (HSTS)، واستخدام جدران حماية تطبيق الويب (WAF) المدارة بواسطة شبكة Cloudflare للحماية من الاستغلال البرمجي والاختراقات.</p>
 
-      <h2><i class="fas fa-arrows-rotate"></i> 11. التعديلات والتحديثات على سياسة الخصوصية</h2>
+      <h2><i class="fas fa-arrows-rotate"></i> 12. التعديلات والتحديثات على سياسة الخصوصية</h2>
       <p>نحتفظ بالحق في تعديل أو تحديث سياسة الخصوصية هذه بصورة دورية لمواكبة المتطلبات التنظيمية أو التغييرات التقنية في أدواتنا. يتم نشر أي تعديل مباشرة على هذه الصفحة مع تحديث تاريخ "تاريخ التحديث" في أعلى الوثيقة. يُعد استمرارك في استخدام الموقع بعد سريان التعديلات إقراراً منك وموافقة على الشروط المحدثة.</p>
 
-      <h2><i class="fas fa-envelope"></i> 12. قنوات الاستفسار والتواصل بخصوص الخصوصية</h2>
+      <h2><i class="fas fa-envelope"></i> 13. قنوات الاستفسار والتواصل بخصوص الخصوصية</h2>
       <p>إذا كانت لديك أي أسئلة أو ملاحظات أو استفسارات حول سياسة الخصوصية هذه أو ممارسات حماية البيانات في DailyCalcHubs، يمكنك التواصل مع فريق التحرير والدعم الفني عبر القنوات الرسمية:</p>
       <div class="highlight-box">
         <strong>مكتب دعم الخصوصية والبيانات في DailyCalcHubs:</strong><br>
