@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -47,7 +47,17 @@
       } catch (e) {}
     })();
   </script>
-  <!-- Google Analytics (GA4) -->
+  <!-- Google Consent Mode v2 Default State -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      'ad_storage': 'denied',
+      'analytics_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied'
+    });
+  </script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-18Y3LNHDR8"></script>
   <script>
     window.dataLayer = window.dataLayer || [];

@@ -169,6 +169,14 @@
       window['ga-disable-G-18Y3LNHDR8'] = true;
     } else if (choice === 'all') {
       window['ga-disable-G-18Y3LNHDR8'] = false;
+      if (typeof window.gtag === 'function') {
+        window.gtag('consent', 'update', {
+          'ad_storage': 'granted',
+          'analytics_storage': 'granted',
+          'ad_user_data': 'granted',
+          'ad_personalization': 'granted'
+        });
+      }
     }
 
     var banner = document.getElementById('cookieConsentBanner');
@@ -181,6 +189,16 @@
     var consent = getConsent();
     if (consent === 'essential') {
       window['ga-disable-G-18Y3LNHDR8'] = true;
+    } else if (consent === 'all') {
+      window['ga-disable-G-18Y3LNHDR8'] = false;
+      if (typeof window.gtag === 'function') {
+        window.gtag('consent', 'update', {
+          'ad_storage': 'granted',
+          'analytics_storage': 'granted',
+          'ad_user_data': 'granted',
+          'ad_personalization': 'granted'
+        });
+      }
     }
 
     var existingBanner = document.getElementById('cookieConsentBanner');

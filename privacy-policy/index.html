@@ -84,6 +84,17 @@
     })();
   </script>
   <!-- Google AdSense -->
+  <!-- Google Consent Mode v2 Default State -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      'ad_storage': 'denied',
+      'analytics_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied'
+    });
+  </script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6944579701716470" crossorigin="anonymous"></script>
 
   <!-- Google Analytics (GA4) -->
@@ -811,7 +822,8 @@
       <h2>7. Third-Party APIs &amp; External Services</h2>
       <p>Certain tools on DailyCalcHubs interface with publicly accessible APIs to retrieve real-time reference data:</p>
       <ul>
-        <li><strong>Forex &amp; Currency Feeds:</strong> Interbank reference feeds (e.g. open exchange rate feeds) provide indicative spot rates for currency comparisons.</li>
+        <li><strong>Contact Form Processing:</strong> We utilize FormSubmit to process and route contact inquiries. When you submit a message, your provided name, email address, and message content are transmitted to FormSubmit to deliver the email to our support team.</li>
+          <li><strong>Forex &amp; Currency Feeds:</strong> Interbank reference feeds (e.g. open exchange rate feeds) provide indicative spot rates for currency comparisons.</li>
         <li><strong>Prayer Times Engine:</strong> Coordinates are submitted to astronomical calculation endpoints (such as Aladhan API) to compute Umm Al-Qura timings. Geolocation queries use browser-level coordinates only with explicit user permission.</li>
       </ul>
       <p>Our website may also contain links to external sites (such as government portals or flight aggregators). We have no control over the content or privacy practices of external third-party sites.</p>
