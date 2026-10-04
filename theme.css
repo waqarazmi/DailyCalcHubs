@@ -3129,6 +3129,10 @@ html[data-theme="dark"] .nav-link-item.active::after {
   transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease !important;
   box-sizing: border-box !important;
 }
+
+html[lang="en"] .explore-mega-menu {
+  top: calc(100% + 24px) !important;
+}
 /* Invisible bridge for hover continuity */
 .explore-mega-menu::before {
   content: "" !important;
