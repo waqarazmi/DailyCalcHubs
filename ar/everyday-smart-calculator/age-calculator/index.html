@@ -1385,6 +1385,7 @@
       document.getElementById('resTotalSeconds').innerText = totalSeconds.toLocaleString('en-US') + ' ثانية';
       document.getElementById('resTotalWeeks').innerText = totalWeeks.toLocaleString('en-US') + ' أسبوع';
       document.getElementById('resTotalMonths').innerText = totalMonths.toLocaleString('en-US') + ' شهر';
+    if (typeof window.dchTrackCalculation === 'function') window.dchTrackCalculation('everyday-smart-calculator_age-calculator');
     }
 
     function toggleFaq(elem) {

@@ -1138,6 +1138,7 @@
       document.getElementById('thGosiTag').innerHTML = '<i class="fas fa-shield-halved" style="color:#fbbf24;"></i> <span>' + gosiTagText + '</span>';
       document.getElementById('thDailyVal').textContent = daily.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' ر.س / يوم';
       document.getElementById('thAnnualVal').textContent = annual.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' ر.س / سنة';
+    if (typeof window.dchTrackCalculation === 'function') window.dchTrackCalculation('saudi-salary-calculator_take-home-salary');
     }
     document.addEventListener('DOMContentLoaded', () => {
       document.getElementById('thBasic').addEventListener('input', recalcTh);

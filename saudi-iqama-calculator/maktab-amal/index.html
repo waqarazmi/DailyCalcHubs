@@ -1237,6 +1237,7 @@
       document.getElementById('resMaktabWorkersTag').innerText = workers + ' Worker' + (workers > 1 ? 's' : '') + ' (' + duration + ' Mo)';
       document.getElementById('resPerWorkerCost').innerText = perWorkerCost.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SAR / worker';
       document.getElementById('resMonthlyRunRate').innerText = monthlyRunRate.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SAR / month';
+    if (typeof window.dchTrackCalculation === 'function') window.dchTrackCalculation('saudi-iqama-calculator_maktab-amal');
     }
 
     window.addEventListener('DOMContentLoaded', calculateMaktab);

@@ -1917,6 +1917,7 @@
       document.getElementById('resTotalUnits').innerText = formatNumber(totalUnits) + ' وحدة';
       document.getElementById('resTotalKwh').innerText = formatNumber(totalKwh) + ' kWh';
       document.getElementById('resAnnualCost').innerText = (annualCost !== null ? formatMoney(annualCost, selectedCurrency) + ' / سنة' : 'غير متوفر (الأسعار غير متصلة)');
+    if (typeof window.dchTrackCalculation === 'function') window.dchTrackCalculation('everyday-smart-calculator_appliance-electricity-consumption');
     }
 
     function showValidation(msg) {
@@ -2061,6 +2062,7 @@
       document.getElementById('multiDailyCost').innerText = (dailyCost !== null ? formatMoney(dailyCost, selectedCurrency) + ' / يوم' : 'غير متوفر (الأسعار غير متصلة)');
       document.getElementById('multiPeriodKwh').innerText = formatNumber(totalPeriodKwh) + ' kWh';
       document.getElementById('multiPeriodUnits').innerText = formatNumber(totalUnits) + ' وحدة';
+    if (typeof window.dchTrackCalculation === 'function') window.dchTrackCalculation('everyday-smart-calculator_appliance-electricity-consumption');
     }
 
     // FAQ Accordion

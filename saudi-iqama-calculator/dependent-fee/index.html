@@ -1259,6 +1259,7 @@
       document.getElementById('resMonthlyRateTag').innerText = monthlyTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SAR / Month Total';
       document.getElementById('resExitReentryPart').innerText = exitReentryTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SAR';
       document.getElementById('resQuarterlyPart').innerText = quarterlyAmount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SAR';
+    if (typeof window.dchTrackCalculation === 'function') window.dchTrackCalculation('saudi-iqama-calculator_dependent-fee');
     }
 
     window.addEventListener('DOMContentLoaded', calculateDep);

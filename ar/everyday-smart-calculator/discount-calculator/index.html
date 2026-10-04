@@ -1376,6 +1376,7 @@
       document.getElementById('resEffectivePct').innerText = effectivePct.toFixed(2) + '% خصم إجمالي';
       document.getElementById('resBaseBeforeVat').innerText = baseBeforeVat.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' ر.س';
       document.getElementById('resVatAmount').innerText = vatAmount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' ر.س';
+    if (typeof window.dchTrackCalculation === 'function') window.dchTrackCalculation('everyday-smart-calculator_discount-calculator');
     }
 
     function toggleFaq(elem) {

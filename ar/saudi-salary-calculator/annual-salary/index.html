@@ -1203,6 +1203,7 @@
 
       if (tdNetAnn) tdNetAnn.innerHTML = '<strong>' + annualTakeHome.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' ر.س</strong>';
       if (tdNetMon) tdNetMon.innerHTML = '<strong>' + monthlyNetAvg.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' ر.س</strong>';
+    if (typeof window.dchTrackCalculation === 'function') window.dchTrackCalculation('saudi-salary-calculator_annual-salary');
     }
 
     document.addEventListener('DOMContentLoaded', () => {

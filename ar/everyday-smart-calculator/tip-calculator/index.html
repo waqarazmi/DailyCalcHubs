@@ -1156,6 +1156,7 @@
       document.getElementById('resTotalPerPerson').innerText = totalPerPerson.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' ' + currSymbol;
       document.getElementById('resTipPerPerson').innerText = tipPerPerson.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' ' + currSymbol;
       document.getElementById('resBillPerPerson').innerText = billPerPerson.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' ' + currSymbol;
+    if (typeof window.dchTrackCalculation === 'function') window.dchTrackCalculation('everyday-smart-calculator_tip-calculator');
     }
 
     function toggleFaq(el) {

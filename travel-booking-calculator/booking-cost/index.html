@@ -1269,7 +1269,8 @@
 
   <!-- Script -->
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function() {
+
 
       // Calculation elements
       const baseAmountInput = document.getElementById('baseAmount');
@@ -1342,6 +1343,7 @@
         rowWaiver.textContent = 'SAR ' + Math.round(waiver).toLocaleString();
         rowDiscount.textContent = '-SAR ' + Math.round(discount).toLocaleString();
         rowFinalBilled.textContent = 'SAR ' + Math.round(finalPayable).toLocaleString();
+    if (typeof window.dchTrackCalculation === 'function') window.dchTrackCalculation('travel-booking-calculator_booking-cost');
       }
 
       // Attach event listeners

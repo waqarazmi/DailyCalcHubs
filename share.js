@@ -66,6 +66,11 @@
     return footer;
   }
 
+  function getSafeCalculatorId() {
+    var rawPath = window.location.pathname.replace(/^\/ar\//, '/').replace(/^\/|\/$/g, '');
+    return rawPath ? rawPath.replace(/\//g, '_') : 'home';
+  }
+
   /**
    * Print / Save Summary as PDF
    * Uses browser-native printing with zero external libraries.
@@ -73,6 +78,12 @@
    */
   window.dchPrintSummary = function(btn) {
     try {
+      if (typeof gtag === 'function') {
+        gtag('event', 'print_result', {
+          'calculator_id': getSafeCalculatorId(),
+          'language': document.documentElement.lang || 'en'
+        });
+      }
       var canonicalUrl = getCanonicalCalculatorUrl();
       ensurePrintFooter(canonicalUrl);
       window.print();
@@ -243,6 +254,13 @@
       var messageText = lines.join('\n');
 
       // 7. Dispatch to WhatsApp
+      if (typeof gtag === 'function') {
+        gtag('event', 'share', {
+          'method': 'whatsapp',
+          'calculator_id': getSafeCalculatorId(),
+          'language': document.documentElement.lang || 'en'
+        });
+      }
       var waUrl = 'https://api.whatsapp.com/send?text=' + encodeURIComponent(messageText);
       window.open(waUrl, '_blank', 'noopener,noreferrer');
     } catch (err) {

@@ -1125,6 +1125,7 @@
       document.getElementById('resMaktab12').innerText = maktab.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' ر.س';
       document.getElementById('resEmployer12').innerText = employerTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' ر.س';
       document.getElementById('resDep12').innerText = depTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' ر.س';
+    if (typeof window.dchTrackCalculation === 'function') window.dchTrackCalculation('saudi-iqama-calculator_12-month-cost');
     }
 
     window.addEventListener('DOMContentLoaded', calculateCost12);

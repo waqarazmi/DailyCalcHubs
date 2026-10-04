@@ -1298,6 +1298,7 @@
 
       document.getElementById('valTo').value = formatFloat(res);
       updateDisplayBanner(val, uFromKey, res, uToKey);
+    if (typeof window.dchTrackCalculation === 'function') window.dchTrackCalculation('everyday-smart-calculator_unit-converter');
     }
 
     function convertTo() {
@@ -1324,6 +1325,7 @@
 
       document.getElementById('valFrom').value = formatFloat(res);
       updateDisplayBanner(res, uFromKey, val, uToKey);
+    if (typeof window.dchTrackCalculation === 'function') window.dchTrackCalculation('everyday-smart-calculator_unit-converter');
     }
 
     function convertTemperature(v, from, to) {

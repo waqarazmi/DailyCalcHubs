@@ -1301,6 +1301,7 @@
         isArabic: true,
         incentiveMultiplier: mult
       });
+    if (typeof window.dchTrackCalculation === 'function') window.dchTrackCalculation('saudi-remittance-calculator_sar-to-bdt');
     }
 
     // Synchronous execution for zero-flicker cached hydration

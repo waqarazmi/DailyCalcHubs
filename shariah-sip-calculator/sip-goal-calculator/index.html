@@ -1142,6 +1142,7 @@
       document.getElementById('resGoalGainPct').innerText = gainPct + '% of Goal';
       document.getElementById('resGoalTimeline').innerText = n + ' Months (' + y + ' Yrs)';
       document.getElementById('resGoalBadge').innerText = 'Goal Target: ' + Math.round(target).toLocaleString('en-US') + ' SAR';
+    if (typeof window.dchTrackCalculation === 'function') window.dchTrackCalculation('shariah-sip-calculator_sip-goal-calculator');
     }
 
     function toggleFaq(elem) {

@@ -1267,6 +1267,7 @@
         rowCleaning.textContent = Math.round(cleaningFee).toLocaleString('en-US') + ' ر.س';
         rowGrandTotal.textContent = Math.round(grandTotal).toLocaleString('en-US') + ' ر.س';
         rowDepositHold.textContent = Math.round(deposit).toLocaleString('en-US') + ' ر.س';
+    if (typeof window.dchTrackCalculation === 'function') window.dchTrackCalculation('travel-booking-calculator_hotel-cost');
       }
 
       // Attach event listeners

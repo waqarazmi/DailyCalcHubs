@@ -1678,6 +1678,7 @@
       document.getElementById('resLeaveCashout').innerText = leaveCashout.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SAR';
       document.getElementById('resFinalProratedPay').innerText = proratedSalary.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SAR';
       document.getElementById('resTotalDeductions').innerText = '-' + deductions.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SAR';
+    if (typeof window.dchTrackCalculation === 'function') window.dchTrackCalculation('saudi-salary-calculator_final-settlement');
     }
 
     // Run immediately and listen for DOM and navigation events

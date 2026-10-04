@@ -1303,7 +1303,8 @@
 
   <!-- Script -->
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function() {
+
 
       // Calculation elements
       const baseFareInput = document.getElementById('baseFare');
@@ -1386,6 +1387,7 @@
         rowSeats.textContent = 'SAR ' + Math.round(seatTotal).toLocaleString();
         rowMeals.textContent = 'SAR ' + Math.round(mealTotal).toLocaleString();
         rowTotalPayable.textContent = 'SAR ' + Math.round(grandTotal).toLocaleString();
+    if (typeof window.dchTrackCalculation === 'function') window.dchTrackCalculation('travel-booking-calculator_flight-cost');
       }
 
       // Attach event listeners

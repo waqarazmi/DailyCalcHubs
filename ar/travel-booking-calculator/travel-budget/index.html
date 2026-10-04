@@ -1213,6 +1213,7 @@
       document.getElementById('itemTransit').innerText = Math.round(totalTransit).toLocaleString('en-US') + ' ر.س';
       document.getElementById('itemActivities').innerText = Math.round(activities).toLocaleString('en-US') + ' ر.س';
       document.getElementById('itemBuffer').innerText = Math.round(bufferAmount).toLocaleString('en-US') + ' ر.س';
+    if (typeof window.dchTrackCalculation === 'function') window.dchTrackCalculation('travel-booking-calculator_travel-budget');
     }
 
     function toggleFaq(elem) {

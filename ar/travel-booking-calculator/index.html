@@ -1831,6 +1831,7 @@
       document.getElementById('resHubFlightsSub').innerText = Math.round(totalFlights).toLocaleString('en-US') + ' ر.س';
       document.getElementById('resHubHotelSub').innerText = Math.round(totalHotel).toLocaleString('en-US') + ' ر.س (' + days + ' ليالٍ)';
       document.getElementById('resHubFoodSub').innerText = Math.round(totalFood).toLocaleString('en-US') + ' ر.س';
+    if (typeof window.dchTrackCalculation === 'function') window.dchTrackCalculation('travel-booking-calculator_calculateHubTrip');
     }
 
     // Tab 2: Group Expense Split
@@ -1850,6 +1851,7 @@
       document.getElementById('resHubSplitGrandTotal').innerText = Math.round(grandTotal).toLocaleString('en-US') + ' ر.س';
       document.getElementById('resHubSplitCount').innerText = people + ' أشخاص';
       document.getElementById('resHubSplitTipAmount').innerText = tipAmount.toFixed(2) + ' ر.س (' + tipPct + '%)';
+    if (typeof window.dchTrackCalculation === 'function') window.dchTrackCalculation('travel-booking-calculator_calculateHubSplit');
     }
 
     function toggleFaq(elem) {

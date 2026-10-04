@@ -1148,6 +1148,7 @@
       document.getElementById('resGrossSurcharge').innerText = grossSurcharge.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' ر.س';
       document.getElementById('resSubsidyRebate').innerText = subsidyRebate.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' ر.س';
       document.getElementById('resWorkerMonthlyFee').innerText = effectiveMonthly.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' ر.س / شهرياً';
+    if (typeof window.dchTrackCalculation === 'function') window.dchTrackCalculation('saudi-iqama-calculator_work-permit');
     }
 
     window.addEventListener('DOMContentLoaded', calculateWp);

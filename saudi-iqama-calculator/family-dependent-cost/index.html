@@ -1210,6 +1210,7 @@
       document.getElementById('resGovLevyTotal').innerText = govLevyTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SAR';
       document.getElementById('resFamilyInsurance').innerText = insuranceProrated.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SAR';
       document.getElementById('resFamilyQuarterly').innerText = quarterlyAmount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SAR';
+    if (typeof window.dchTrackCalculation === 'function') window.dchTrackCalculation('saudi-iqama-calculator_family-dependent-cost');
     }
 
     window.addEventListener('DOMContentLoaded', calculateFamily);

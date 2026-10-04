@@ -1201,6 +1201,7 @@
 
       document.getElementById('duelSipVal').innerText = Math.round(sipFv).toLocaleString('en-US') + ' ر.س';
       document.getElementById('duelSipGain').innerText = '+' + Math.round(sipGain).toLocaleString('en-US') + ' ر.س أرباح (' + Math.round(pEquiv).toLocaleString('en-US') + ' ر.س/شهرياً)';
+    if (typeof window.dchTrackCalculation === 'function') window.dchTrackCalculation('shariah-sip-calculator_lump-sum-calculator');
     }
 
     function toggleFaq(elem) {

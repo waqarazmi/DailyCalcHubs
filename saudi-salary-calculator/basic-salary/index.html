@@ -1142,6 +1142,7 @@
       document.getElementById('basicPctTag').innerHTML = `<i class="fas fa-pie-chart" style="color:#fbbf24;"></i> <span>${(bPct * 100).toFixed(0)}% of Package</span>`;
       document.getElementById('basicHousingVal').textContent = housing.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SAR (' + (hPct * 100).toFixed(0) + '%)';
       document.getElementById('basicTransportVal').textContent = transport.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SAR (' + (tPct * 100).toFixed(0) + '%)';
+    if (typeof window.dchTrackCalculation === 'function') window.dchTrackCalculation('saudi-salary-calculator_basic-salary');
     }
 
     document.addEventListener('DOMContentLoaded', () => {

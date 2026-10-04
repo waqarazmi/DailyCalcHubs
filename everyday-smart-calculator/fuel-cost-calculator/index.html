@@ -1270,6 +1270,7 @@
       document.getElementById('resCostPerPax').innerText = `${costPerPax.toFixed(2)} SAR / pax`;
       document.getElementById('resCostPerKm').innerText = `${costPerKm.toFixed(2)} SAR / km`;
       document.getElementById('resTotalDist').innerText = `${totalDist.toFixed(2)} km`;
+    if (typeof window.dchTrackCalculation === 'function') window.dchTrackCalculation('everyday-smart-calculator_fuel-cost-calculator');
     }
 
     function toggleFaq(el) {

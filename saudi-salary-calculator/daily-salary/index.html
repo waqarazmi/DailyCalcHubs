@@ -1225,6 +1225,7 @@
       document.getElementById('resHourlyEquiv').innerText = hourlyWage.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SAR / hr';
       document.getElementById('resDeductionTotal').innerText = deduction.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SAR';
       document.getElementById('resAdjustedMonthly').innerText = adjustedMonthly.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SAR';
+    if (typeof window.dchTrackCalculation === 'function') window.dchTrackCalculation('saudi-salary-calculator_daily-salary');
     }
 
     window.addEventListener('DOMContentLoaded', calculateDailySalary);

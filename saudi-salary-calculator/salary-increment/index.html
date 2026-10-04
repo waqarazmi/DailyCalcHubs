@@ -1260,6 +1260,7 @@
       document.getElementById('resAnnualIncrease').innerText = '+' + annualIncrease.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SAR / yr';
       document.getElementById('resNewGosiWage').innerText = newGosiWage.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SAR';
       document.getElementById('resEosbImpact').innerText = '+' + eosbImpact.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SAR (5-Yr Gain)';
+    if (typeof window.dchTrackCalculation === 'function') window.dchTrackCalculation('saudi-salary-calculator_salary-increment');
     }
 
     window.addEventListener('DOMContentLoaded', calculateIncrement);

@@ -1284,6 +1284,7 @@
       document.getElementById('resDailyKwh').innerText = dailyKwh.toFixed(2) + ' ك.و.س / يوم';
       document.getElementById('resDailyCost').innerText = dailyCost.toFixed(2) + ' ' + currCode + ' / يوم';
       document.getElementById('resAnnualCost').innerText = annualCost.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' ' + currCode + ' / سنة';
+    if (typeof window.dchTrackCalculation === 'function') window.dchTrackCalculation('everyday-smart-calculator_electricity-cost-calculator');
     }
 
     function toggleFaq(el) {

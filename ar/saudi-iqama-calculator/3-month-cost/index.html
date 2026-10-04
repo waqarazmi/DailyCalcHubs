@@ -1195,6 +1195,7 @@
       document.getElementById('resMaktab3').innerText = maktab.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' ر.س';
       document.getElementById('resEmployer3').innerText = employerTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' ر.س';
       document.getElementById('resDep3').innerText = depTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' ر.س';
+    if (typeof window.dchTrackCalculation === 'function') window.dchTrackCalculation('saudi-iqama-calculator_3-month-cost');
     }
 
     window.addEventListener('DOMContentLoaded', calculateCost3);

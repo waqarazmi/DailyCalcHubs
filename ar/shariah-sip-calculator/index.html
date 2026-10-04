@@ -1788,6 +1788,7 @@
       document.getElementById('resHubSipInvested').innerText = Math.round(totalInvested).toLocaleString('en-US') + ' ر.س';
       document.getElementById('resHubSipProfit').innerText = '+' + Math.round(profit).toLocaleString('en-US') + ' ر.س';
       document.getElementById('resHubSipDuration').innerText = y + ' سنوات (' + n + ' شهراً)';
+    if (typeof window.dchTrackCalculation === 'function') window.dchTrackCalculation('shariah-sip-calculator_calculateHubSip');
     }
 
     // Tab 2: Goal Functions
@@ -1816,6 +1817,7 @@
       document.getElementById('resHubGoalInvested').innerText = Math.round(totalInvested).toLocaleString('en-US') + ' ر.س';
       document.getElementById('resHubGoalGain').innerText = '+' + Math.round(gain).toLocaleString('en-US') + ' ر.س';
       document.getElementById('resHubGoalHorizon').innerText = y + ' سنوات (' + n + ' شهراً)';
+    if (typeof window.dchTrackCalculation === 'function') window.dchTrackCalculation('shariah-sip-calculator_calculateHubGoal');
     }
 
     function toggleFaq(elem) {

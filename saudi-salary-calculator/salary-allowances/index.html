@@ -1139,6 +1139,7 @@
       document.getElementById('alAnnualTag').innerHTML = `<i class="fas fa-calendar" style="color:#fbbf24;"></i> <span>Annual: ${annual.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} SAR</span>`;
       document.getElementById('alGosiBaseVal').textContent = gosiBase.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SAR (Basic + Housing)';
       document.getElementById('alGosiExemptVal').textContent = exempt.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SAR (Transport &amp; Other)';
+    if (typeof window.dchTrackCalculation === 'function') window.dchTrackCalculation('saudi-salary-calculator_salary-allowances');
     }
 
     document.addEventListener('DOMContentLoaded', () => {

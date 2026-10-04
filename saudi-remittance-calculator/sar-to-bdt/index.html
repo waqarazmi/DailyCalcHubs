@@ -1307,6 +1307,7 @@
         isArabic: false,
         incentiveMultiplier: mult
       });
+    if (typeof window.dchTrackCalculation === 'function') window.dchTrackCalculation('saudi-remittance-calculator_sar-to-bdt');
     }
 
     // Immediate synchronous execution on page load (zero flicker on refresh)

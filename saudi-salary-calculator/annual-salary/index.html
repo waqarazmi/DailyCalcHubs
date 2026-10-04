@@ -1216,6 +1216,7 @@
       document.getElementById('resAnnualGosiEmployee').innerText = annualEmployeeGosi.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SAR';
       document.getElementById('resAnnualGosiEmployer').innerText = annualEmployerGosi.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SAR';
       document.getElementById('resTotalCtc').innerText = totalCtc.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SAR';
+    if (typeof window.dchTrackCalculation === 'function') window.dchTrackCalculation('saudi-salary-calculator_annual-salary');
     }
 
     window.addEventListener('DOMContentLoaded', calculateAnnualSalary);

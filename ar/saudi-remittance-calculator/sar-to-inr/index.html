@@ -1325,6 +1325,7 @@
         symbol: '₹',
         isArabic: true
       });
+    if (typeof window.dchTrackCalculation === 'function') window.dchTrackCalculation('saudi-remittance-calculator_sar-to-inr');
     }
 
     // Immediate synchronous execution on page load (zero flicker on refresh)

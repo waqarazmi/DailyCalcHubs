@@ -1181,6 +1181,7 @@
       document.getElementById('resDailyRate').innerText = dailyRate.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SAR';
       document.getElementById('resOvertimeRate').innerText = overtimeRate.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SAR / hr';
       document.getElementById('resWeeklyPay').innerText = weeklyPay.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SAR';
+    if (typeof window.dchTrackCalculation === 'function') window.dchTrackCalculation('saudi-salary-calculator_hourly-salary');
     }
 
     window.addEventListener('DOMContentLoaded', calculateHourlySalary);

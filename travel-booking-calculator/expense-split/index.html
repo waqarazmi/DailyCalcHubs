@@ -1304,7 +1304,8 @@
 
   <!-- Script -->
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function() {
+
 
       // Calculation inputs
       const numTravelersInput = document.getElementById('numTravelers');
@@ -1397,6 +1398,7 @@
             groupFundingStatusDisplay.textContent = 'Fully Covered & Balanced';
           }
         }
+    if (typeof window.dchTrackCalculation === 'function') window.dchTrackCalculation('travel-booking-calculator_expense-split');
       }
 
       // Attach listeners

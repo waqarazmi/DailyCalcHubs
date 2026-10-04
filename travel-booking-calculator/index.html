@@ -1536,6 +1536,7 @@
       document.getElementById('resHubFlightsSub').innerText = Math.round(totalFlights).toLocaleString('en-US') + ' SAR';
       document.getElementById('resHubHotelSub').innerText = Math.round(totalHotel).toLocaleString('en-US') + ' SAR (' + days + ' nights)';
       document.getElementById('resHubFoodSub').innerText = Math.round(totalFood).toLocaleString('en-US') + ' SAR';
+    if (typeof window.dchTrackCalculation === 'function') window.dchTrackCalculation('travel-booking-calculator_calculateHubTrip');
     }
 
     // Tab 2: Group Expense Split
@@ -1555,6 +1556,7 @@
       document.getElementById('resHubSplitGrandTotal').innerText = Math.round(grandTotal).toLocaleString('en-US') + ' SAR';
       document.getElementById('resHubSplitCount').innerText = people + ' People';
       document.getElementById('resHubSplitTipAmount').innerText = tipAmount.toFixed(2) + ' SAR (' + tipPct + '%)';
+    if (typeof window.dchTrackCalculation === 'function') window.dchTrackCalculation('travel-booking-calculator_calculateHubSplit');
     }
 
     function toggleFaq(elem) {

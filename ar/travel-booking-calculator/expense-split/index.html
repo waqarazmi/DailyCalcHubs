@@ -1300,6 +1300,7 @@
             groupFundingStatusDisplay.textContent = 'مغطى بالكامل ومتوازن';
           }
         }
+    if (typeof window.dchTrackCalculation === 'function') window.dchTrackCalculation('travel-booking-calculator_expense-split');
       }
 
       // Attach listeners

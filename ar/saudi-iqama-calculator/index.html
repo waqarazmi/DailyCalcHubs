@@ -1878,6 +1878,7 @@
       document.getElementById('resEmployeeCost').innerText = employeeCost.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' ر.س';
       document.getElementById('resJawazatFee').innerText = jawazatProrated.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' ر.س';
       document.getElementById('resMaktabFee').innerText = maktabTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' ر.س';
+    if (typeof window.dchTrackCalculation === 'function') window.dchTrackCalculation('saudi-iqama-calculator_calculateHubIqama');
     }
 
     window.addEventListener('DOMContentLoaded', calculateHubIqama);

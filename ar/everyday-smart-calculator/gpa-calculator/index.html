@@ -1304,6 +1304,7 @@
       } else {
         document.getElementById('resCumulativeGpa').innerText = '--';
       }
+    if (typeof window.dchTrackCalculation === 'function') window.dchTrackCalculation('everyday-smart-calculator_gpa-calculator');
     }
 
     function toggleFaq(el) {

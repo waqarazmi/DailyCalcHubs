@@ -1247,6 +1247,7 @@
         rowWaiver.textContent = Math.round(waiver).toLocaleString('en-US') + ' ر.س';
         rowDiscount.textContent = '-' + Math.round(discount).toLocaleString('en-US') + ' ر.س';
         rowFinalBilled.textContent = Math.round(finalPayable).toLocaleString('en-US') + ' ر.س';
+    if (typeof window.dchTrackCalculation === 'function') window.dchTrackCalculation('travel-booking-calculator_booking-cost');
       }
 
       // Attach event listeners

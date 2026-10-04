@@ -1094,6 +1094,7 @@
       document.getElementById('resDepMonthly').innerText = monthlyFee.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' ر.س / شهر';
       document.getElementById('resNextFeeDue').innerText = annualPerPerson.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' ر.س / سنة للفرد';
       document.getElementById('resDepCountLabel').innerText = deps + ' مرافقين • ' + months + ' شهراً' + (exitReentryTotal > 0 ? ' • مع الخروج والعودة' : '');
+    if (typeof window.dchTrackCalculation === 'function') window.dchTrackCalculation('saudi-iqama-calculator_dependent-fee');
     }
     window.addEventListener('DOMContentLoaded', calculateDep);
   </script>

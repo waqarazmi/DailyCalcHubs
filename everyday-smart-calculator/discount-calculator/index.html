@@ -1487,6 +1487,7 @@
       document.getElementById('resEffectivePct').innerText = effectivePct.toFixed(2) + '% Total Off';
       document.getElementById('resBaseBeforeVat').innerText = baseBeforeVat.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SAR';
       document.getElementById('resVatAmount').innerText = vatAmount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SAR';
+    if (typeof window.dchTrackCalculation === 'function') window.dchTrackCalculation('everyday-smart-calculator_discount-calculator');
     }
 
     function toggleFaq(elem) {

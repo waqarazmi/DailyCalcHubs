@@ -1165,6 +1165,7 @@
       document.getElementById('barGain').style.width = returnPct + '%';
       document.getElementById('lblInvestedPct').innerText = investedPct + '%';
       document.getElementById('lblGainPct').innerText = returnPct + '%';
+    if (typeof window.dchTrackCalculation === 'function') window.dchTrackCalculation('shariah-sip-calculator_sip-calculator');
     }
 
     function toggleFaq(elem) {

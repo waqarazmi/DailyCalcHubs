@@ -1221,6 +1221,7 @@
           <td data-label="Description" style="color:#16a34a;">Total economic deduction from your transfer</td>
         </tr>
       `;
+    if (typeof window.dchTrackCalculation === 'function') window.dchTrackCalculation('saudi-remittance-calculator_remittance-fee');
     }
 
     document.addEventListener('DOMContentLoaded', () => {

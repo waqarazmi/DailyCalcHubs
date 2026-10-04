@@ -1351,6 +1351,7 @@
       document.getElementById('resHealthyRange').innerText = healthyRangeStr;
       document.getElementById('resWeightDiff').innerText = diffStr;
       document.getElementById('resPonderal').innerText = ponderal.toFixed(2) + ' kg/m³';
+    if (typeof window.dchTrackCalculation === 'function') window.dchTrackCalculation('everyday-smart-calculator_bmi-calculator');
     }
 
     function showInvalidBMI() {

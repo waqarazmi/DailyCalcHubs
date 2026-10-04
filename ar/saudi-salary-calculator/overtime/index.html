@@ -1066,6 +1066,7 @@
       document.getElementById('resWeekdayEarnings').innerText = weekdayEarnings.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' ر.س';
       document.getElementById('resHolidayEarnings').innerText = holidayEarnings.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' ر.س';
       document.getElementById('resTotalMonthlyGross').innerText = totalMonthlyGross.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' ر.س';
+    if (typeof window.dchTrackCalculation === 'function') window.dchTrackCalculation('saudi-salary-calculator_overtime');
     }
     window.addEventListener('DOMContentLoaded', calculateOvertime);
   </script>

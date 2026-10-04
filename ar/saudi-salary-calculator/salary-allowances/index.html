@@ -1147,6 +1147,7 @@
           <td style="color:#7c3aed;">الراتب الإجمالي المحول لنظام حماية الأجور</td>
         </tr>
       `;
+    if (typeof window.dchTrackCalculation === 'function') window.dchTrackCalculation('saudi-salary-calculator_salary-allowances');
     }
 
     document.addEventListener('DOMContentLoaded', () => {

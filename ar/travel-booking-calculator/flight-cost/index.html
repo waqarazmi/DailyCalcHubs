@@ -1291,6 +1291,7 @@
         rowSeats.textContent = Math.round(seatTotal).toLocaleString('en-US') + ' ر.س';
         rowMeals.textContent = Math.round(mealTotal).toLocaleString('en-US') + ' ر.س';
         rowTotalPayable.textContent = Math.round(grandTotal).toLocaleString('en-US') + ' ر.س';
+    if (typeof window.dchTrackCalculation === 'function') window.dchTrackCalculation('travel-booking-calculator_flight-cost');
       }
 
       // Attach event listeners

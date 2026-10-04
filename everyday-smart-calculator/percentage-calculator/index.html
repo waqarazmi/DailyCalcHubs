@@ -1187,6 +1187,7 @@
       document.getElementById('resPrimaryVal').innerText = formatNum(res);
       document.getElementById('resBadgeTag').innerText = `${p}% of ${y}`;
       document.getElementById('resStepsText').innerHTML = `Formula: (${p} Ã· 100) × ${y} = <strong>${formatNum(res)}</strong>`;
+    if (typeof window.dchTrackCalculation === 'function') window.dchTrackCalculation('everyday-smart-calculator_percentage-calculator');
     }
 
     function calcMode2() {
@@ -1206,6 +1207,7 @@
       document.getElementById('resPrimaryVal').innerText = formatNum(res) + '%';
       document.getElementById('resBadgeTag').innerText = `${x} of ${y}`;
       document.getElementById('resStepsText').innerHTML = `Formula: (${x} Ã· ${y}) × 100 = <strong>${formatNum(res)}%</strong>`;
+    if (typeof window.dchTrackCalculation === 'function') window.dchTrackCalculation('everyday-smart-calculator_percentage-calculator');
     }
 
     function calcMode3() {
@@ -1229,6 +1231,7 @@
       document.getElementById('resPrimaryVal').innerText = (isUp ? '+' : '') + formatNum(pctChange) + '%';
       document.getElementById('resBadgeTag').innerText = isUp ? 'Increase' : 'Decrease';
       document.getElementById('resStepsText').innerHTML = `Difference: ${diff >= 0 ? '+' : ''}${formatNum(diff)} | Formula: [(${newVal} - ${oldVal}) Ã· |${oldVal}|] × 100 = <strong>${(isUp ? '+' : '') + formatNum(pctChange)}%</strong>`;
+    if (typeof window.dchTrackCalculation === 'function') window.dchTrackCalculation('everyday-smart-calculator_percentage-calculator');
     }
 
     function calcMode4() {
@@ -1248,6 +1251,7 @@
       document.getElementById('resPrimaryVal').innerText = formatNum(increased);
       document.getElementById('resBadgeTag').innerText = `+${p}%: ${formatNum(increased)} | -${p}%: ${formatNum(decreased)}`;
       document.getElementById('resStepsText').innerHTML = `Delta Amount: <strong>${formatNum(delta)}</strong><br>After ${p}% Increase: <strong>${formatNum(increased)}</strong> | After ${p}% Decrease: <strong>${formatNum(decreased)}</strong>`;
+    if (typeof window.dchTrackCalculation === 'function') window.dchTrackCalculation('everyday-smart-calculator_percentage-calculator');
     }
 
     function formatNum(n) {

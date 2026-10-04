@@ -1313,6 +1313,7 @@
       if (returnAmountEl) {
         returnAmountEl.innerText = formattedAward;
       }
+    if (typeof window.dchTrackCalculation === 'function') window.dchTrackCalculation('saudi-salary-calculator_eosb');
     }
 
     function applyGratuityToSettlement() {

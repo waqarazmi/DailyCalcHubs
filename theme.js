@@ -301,3 +301,43 @@
     bindMobileNav();
   }
 })();
+
+// GA4 Calculation Tracking Gatekeeper
+(function() {
+  'use strict';
+  var calcTimers = {};
+  var userHasInteracted = false;
+
+  function unlockTracking() {
+    userHasInteracted = true;
+  }
+
+  // Bind to document to capture genuine human interaction
+  document.addEventListener('input', unlockTracking, { once: true });
+  document.addEventListener('click', unlockTracking, { once: true });
+  document.addEventListener('change', unlockTracking, { once: true });
+
+  window.dchTrackCalculation = function(calculatorId) {
+    // 1. Block automated DOMContentLoaded executions (no false positives on page load)
+    if (!userHasInteracted) return;
+
+    // 2. Validate calculatorId
+    if (!calculatorId || typeof calculatorId !== 'string') return;
+
+    // 3. Independent debounce per calculator (prevents Hub page collisions)
+    if (calcTimers[calculatorId]) {
+      clearTimeout(calcTimers[calculatorId]);
+    }
+
+    // 4. 2000ms debounce timer (prevents keystroke spam)
+    calcTimers[calculatorId] = setTimeout(function() {
+      if (typeof gtag === 'function') {
+        var lang = document.documentElement.lang || 'en';
+        gtag('event', 'calculation_completed', {
+          'calculator_id': calculatorId,
+          'language': lang
+        });
+      }
+    }, 2000);
+  };
+})();

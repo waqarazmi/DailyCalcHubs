@@ -1196,6 +1196,7 @@
 
       document.getElementById('resMeta3Title').innerText = 'Total Seconds';
       document.getElementById('resMeta3Val').innerText = totalSecs.toLocaleString() + ' Seconds';
+    if (typeof window.dchTrackCalculation === 'function') window.dchTrackCalculation('everyday-smart-calculator_time-duration-calculator');
     }
 
     function calcDateMath() {
@@ -1227,6 +1228,7 @@
 
       document.getElementById('resMeta3Title').innerText = 'ISO Timestamp';
       document.getElementById('resMeta3Val').innerText = targetDate.toISOString().slice(0, 16).replace('T', ' ');
+    if (typeof window.dchTrackCalculation === 'function') window.dchTrackCalculation('everyday-smart-calculator_time-duration-calculator');
     }
 
     function toggleFaq(el) {

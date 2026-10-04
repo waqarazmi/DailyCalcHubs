@@ -1287,6 +1287,7 @@
       document.getElementById('resTotalEmployee').innerText = employeeTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' ر.س';
       document.getElementById('resGovFees').innerText = (jawazatProrated + maktabTotal).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' ر.س';
       document.getElementById('resTotalInsurance').innerText = totalInsurance.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' ر.س (' + (dependents + 1) + ' أفراد)';
+    if (typeof window.dchTrackCalculation === 'function') window.dchTrackCalculation('saudi-iqama-calculator_iqama-cost');
     }
 
     window.addEventListener('DOMContentLoaded', calculateTotalCost);

@@ -1192,6 +1192,7 @@
           <td data-label="ملاحظات وتوجيهات تنظيمية" style="color:#16a34a;">إجمالي ما يُستقطع فعلياً من قيمة تحويلك</td>
         </tr>
       `;
+    if (typeof window.dchTrackCalculation === 'function') window.dchTrackCalculation('saudi-remittance-calculator_remittance-fee');
     }
 
     document.addEventListener('DOMContentLoaded', () => {
