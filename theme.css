@@ -5603,7 +5603,16 @@ html[data-theme="dark"] .mega-tool-item.active .mega-tool-bullet {
 }
 #aboutUsDropdown:hover .category-dropdown-menu,
 #aboutUsDropdown.active .category-dropdown-menu {
+  display: flex !important;
+  opacity: 1 !important;
+  visibility: visible !important;
   transform: translateX(-50%) translateY(0) !important;
+}
+
+#aboutUsDropdown .category-dropdown-menu::before {
+  left: 0 !important;
+  right: 0 !important;
+  width: auto !important;
 }
 
 html[dir="rtl"] #aboutUsDropdown .category-dropdown-menu,
@@ -5616,6 +5625,9 @@ html[dir="rtl"] #aboutUsDropdown:hover .category-dropdown-menu,
 html[lang="ar"] #aboutUsDropdown:hover .category-dropdown-menu,
 html[dir="rtl"] #aboutUsDropdown.active .category-dropdown-menu,
 html[lang="ar"] #aboutUsDropdown.active .category-dropdown-menu {
+  display: flex !important;
+  opacity: 1 !important;
+  visibility: visible !important;
   transform: translateX(50%) translateY(0) !important;
 }
 
