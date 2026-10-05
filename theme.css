@@ -5602,7 +5602,8 @@ html[data-theme="dark"] .mega-tool-item.active .mega-tool-bullet {
   transform: translateX(-50%) translateY(8px) !important;
 }
 #aboutUsDropdown:hover .category-dropdown-menu,
-#aboutUsDropdown.active .category-dropdown-menu {
+#aboutUsDropdown.active .category-dropdown-menu,
+#aboutUsDropdown .category-dropdown-menu:focus-within {
   display: flex !important;
   opacity: 1 !important;
   visibility: visible !important;
@@ -5624,7 +5625,9 @@ html[lang="ar"] #aboutUsDropdown .category-dropdown-menu {
 html[dir="rtl"] #aboutUsDropdown:hover .category-dropdown-menu,
 html[lang="ar"] #aboutUsDropdown:hover .category-dropdown-menu,
 html[dir="rtl"] #aboutUsDropdown.active .category-dropdown-menu,
-html[lang="ar"] #aboutUsDropdown.active .category-dropdown-menu {
+html[lang="ar"] #aboutUsDropdown.active .category-dropdown-menu,
+html[dir="rtl"] #aboutUsDropdown .category-dropdown-menu:focus-within,
+html[lang="ar"] #aboutUsDropdown .category-dropdown-menu:focus-within {
   display: flex !important;
   opacity: 1 !important;
   visibility: visible !important;
