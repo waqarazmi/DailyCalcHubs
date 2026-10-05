@@ -5891,3 +5891,32 @@ html[data-theme="dark"] i[style*="background:#eff6ff"] {
   background: #152238 !important;
   border-color: #1e3a5f !important;
 }
+
+/* --------------------------------------------------------------------------
+   D9: Final Remittance Mobile Night Mode Enforcements (Cascade Fixes)
+   -------------------------------------------------------------------------- */
+@media screen and (max-width: 860px) {
+  /* Force mobile cards to be dark, overriding both the mobile light rule and inline JS backgrounds */
+  html[data-theme="dark"] table.provider-table tr,
+  html[data-theme="dark"] table.provider-table tr[style*="background"],
+  html[data-theme="dark"] table.comparison-table tr,
+  html[data-theme="dark"] table.comparison-table tr[style*="background"],
+  html[data-theme="dark"] table.data-table-cards tr,
+  html[data-theme="dark"] table.data-table-cards tr[style*="background"],
+  html[data-theme="dark"] table.worked-example-table tr,
+  html[data-theme="dark"] .provider-table-card table tr,
+  html[data-theme="dark"] .provider-table-card table tr[style*="background"] {
+    background: #131b2e !important;
+    border-color: #1e293b !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3) !important;
+  }
+
+  /* Ensure the dynamic "Retail Rate" / "Transfer Fee" data labels retain high contrast */
+  html[data-theme="dark"] table.provider-table td::before,
+  html[data-theme="dark"] table.comparison-table td::before,
+  html[data-theme="dark"] table.data-table-cards td::before,
+  html[data-theme="dark"] table.worked-example-table td::before,
+  html[data-theme="dark"] .provider-table-card table td::before {
+    color: #cbd5e1 !important;
+  }
+}
