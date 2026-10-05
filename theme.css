@@ -5605,6 +5605,9 @@ html[data-theme="dark"] .mega-tool-item.active .mega-tool-bullet {
 #aboutUsDropdown.active .category-dropdown-menu,
 #aboutUsDropdown .category-dropdown-menu:focus-within {
   display: flex !important;
+  flex-direction: column !important;
+  gap: 2px !important;
+  box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.5), 0 0 1px 1px rgba(255, 255, 255, 0.05) !important;
   opacity: 1 !important;
   visibility: visible !important;
   transform: translateX(-50%) translateY(0) !important;
@@ -5629,6 +5632,9 @@ html[lang="ar"] #aboutUsDropdown.active .category-dropdown-menu,
 html[dir="rtl"] #aboutUsDropdown .category-dropdown-menu:focus-within,
 html[lang="ar"] #aboutUsDropdown .category-dropdown-menu:focus-within {
   display: flex !important;
+  flex-direction: column !important;
+  gap: 2px !important;
+  box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.5), 0 0 1px 1px rgba(255, 255, 255, 0.05) !important;
   opacity: 1 !important;
   visibility: visible !important;
   transform: translateX(50%) translateY(0) !important;
