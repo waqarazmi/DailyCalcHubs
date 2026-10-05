@@ -5194,28 +5194,48 @@ html[data-theme="dark"] .provider-cta-btn:hover {
   }
 
   /* Dark mode overrides for cards */
-  html[data-theme="dark"] table.provider-table tr {
+  html[data-theme="dark"] table.provider-table tr,
+  html[data-theme="dark"] table.comparison-table tr,
+  html[data-theme="dark"] table.data-table-cards tr,
+  html[data-theme="dark"] table.worked-example-table tr,
+  html[data-theme="dark"] .provider-table-card table tr {
     background: #131b2e !important;
     border-color: #1e293b !important;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3) !important;
   }
 
-  html[data-theme="dark"] table.provider-table tr:hover {
+  html[data-theme="dark"] table.provider-table tr:hover,
+  html[data-theme="dark"] table.comparison-table tr:hover,
+  html[data-theme="dark"] table.data-table-cards tr:hover,
+  html[data-theme="dark"] table.worked-example-table tr:hover,
+  html[data-theme="dark"] .provider-table-card table tr:hover {
     background: #131b2e !important;
   }
 
   html[data-theme="dark"] table.provider-table td.provider-cell-header,
-  html[data-theme="dark"] table.provider-table td:first-child {
+  html[data-theme="dark"] table.provider-table td:first-child,
+  html[data-theme="dark"] table.comparison-table td:first-child,
+  html[data-theme="dark"] table.data-table-cards td:first-child,
+  html[data-theme="dark"] table.worked-example-table td:first-child,
+  html[data-theme="dark"] .provider-table-card table td:first-child {
     border-bottom-color: #1e293b !important;
   }
 
   html[data-theme="dark"] table.provider-table td.provider-cell-cta,
-  html[data-theme="dark"] table.provider-table td:last-child {
+  html[data-theme="dark"] table.provider-table td:last-child,
+  html[data-theme="dark"] table.comparison-table td:last-child,
+  html[data-theme="dark"] table.data-table-cards td:last-child,
+  html[data-theme="dark"] table.worked-example-table td:last-child,
+  html[data-theme="dark"] .provider-table-card table td:last-child {
     border-top-color: #1e293b !important;
   }
 
-  html[data-theme="dark"] table.provider-table td::before {
-    color: #94a3b8 !important;
+  html[data-theme="dark"] table.provider-table td::before,
+  html[data-theme="dark"] table.comparison-table td::before,
+  html[data-theme="dark"] table.data-table-cards td::before,
+  html[data-theme="dark"] table.worked-example-table td::before,
+  html[data-theme="dark"] .provider-table-card table td::before {
+    color: #cbd5e1 !important;
   }
 }
 
@@ -5691,4 +5711,84 @@ html[data-theme="dark"] .mobile-acc-tool-link:focus-visible::before {
 html[data-theme="dark"] .mobile-acc-tool-link.active::before {
   background: #38bdf8 !important;
   box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.25) !important;
+}
+
+/* --------------------------------------------------------------------------
+   D7: Sitewide Audit Missing Layouts & Components (Visual Parity Fixes)
+   -------------------------------------------------------------------------- */
+/* Full Width Sections */
+html[data-theme="dark"] .hub-tools-section,
+html[data-theme="dark"] .tools-grid-section,
+html[data-theme="dark"] .interactive-showcase-section {
+  background: #0b0f19 !important;
+  border-color: #1e293b !important;
+}
+
+/* Article/Content Containers */
+html[data-theme="dark"] .seo-content-section {
+  background: #131b2e !important;
+  border-color: #1e293b !important;
+  color: #cbd5e1 !important;
+}
+html[data-theme="dark"] .seo-content-section h1,
+html[data-theme="dark"] .seo-content-section h2,
+html[data-theme="dark"] .seo-content-section h3,
+html[data-theme="dark"] .seo-content-section h4 {
+  color: #f8fafc !important;
+}
+
+/* Addons and Badges */
+html[data-theme="dark"] .mini-input-addons {
+  background: #1a233a !important;
+  border-color: #334155 !important;
+}
+html[data-theme="dark"] .hub-badge-item {
+  background: #1a233a !important;
+  border-color: #1e293b !important;
+  color: #f8fafc !important;
+}
+
+/* Alert / Callout Boxes */
+html[data-theme="dark"] .disclaimer-box-important {
+  background: #2b1d24 !important;
+  border-color: #501625 !important;
+  color: #cbd5e1 !important;
+}
+html[data-theme="dark"] .disclaimer-box-important strong,
+html[data-theme="dark"] .disclaimer-box-important .disclaimer-title {
+  color: #fca5a5 !important;
+}
+
+/* AR specific guide callout (from Salary page) */
+html[data-theme="dark"] .guide-callout {
+  background: #1e1d38 !important;
+  border-color: #3b2b6b !important;
+  color: #cbd5e1 !important;
+}
+html[data-theme="dark"] .guide-callout strong {
+  color: #c4b5fd !important;
+}
+
+/* Icon Boxes */
+html[data-theme="dark"] .card-top-icon-box {
+  background: #2b1d24 !important;
+  border-color: #501625 !important;
+}
+
+/* Links / Hub Items */
+html[data-theme="dark"] .related-hub-item {
+  background: #1a233a !important;
+  border-color: #1e293b !important;
+  color: #f8fafc !important;
+}
+html[data-theme="dark"] .related-hub-item:hover {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+}
+
+/* Inline Monospace Formula Boxes (Arabic Pages) */
+html[data-theme="dark"] div[style*="font-family:monospace"] {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+  color: #cbd5e1 !important;
 }
