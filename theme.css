@@ -5792,3 +5792,102 @@ html[data-theme="dark"] div[style*="font-family:monospace"] {
   border-color: #334155 !important;
   color: #cbd5e1 !important;
 }
+
+/* --------------------------------------------------------------------------
+   D8: Sitewide Audit Missing Inline Style Overrides (Visual Parity Fixes)
+   -------------------------------------------------------------------------- */
+
+/* 1. Quote Card / Homepage "Small Tools" */
+html[data-theme="dark"] .quote-card-box {
+  background: #152238 !important;
+  border-color: #1e3a5f !important;
+  color: #cbd5e1 !important;
+}
+
+/* 2. Extend Inline Badges to Span & I elements */
+html[data-theme="dark"] span[style*="background:#fff1f2"],
+html[data-theme="dark"] i[style*="background:#fff1f2"],
+html[data-theme="dark"] div[style*="background:#fee2e2"],
+html[data-theme="dark"] span[style*="background:#fee2e2"],
+html[data-theme="dark"] i[style*="background:#fee2e2"] {
+  background: #251017 !important;
+  border-color: #4c1d29 !important;
+}
+
+html[data-theme="dark"] span[style*="background:#fffbeb"],
+html[data-theme="dark"] i[style*="background:#fffbeb"],
+html[data-theme="dark"] div[style*="background:#fefce8"],
+html[data-theme="dark"] span[style*="background:#fefce8"],
+html[data-theme="dark"] i[style*="background:#fefce8"] {
+  background: #261c0c !important;
+  border-color: #523811 !important;
+}
+
+html[data-theme="dark"] span[style*="background:#f0fdf4"],
+html[data-theme="dark"] i[style*="background:#f0fdf4"],
+html[data-theme="dark"] span[style*="background: #f0fdf4"],
+html[data-theme="dark"] i[style*="background: #f0fdf4"] {
+  background: #0d2319 !important;
+  border-color: #164e32 !important;
+}
+
+html[data-theme="dark"] span[style*="background:#f8fafc"],
+html[data-theme="dark"] i[style*="background:#f8fafc"],
+html[data-theme="dark"] span[style*="background: #f8fafc"],
+html[data-theme="dark"] i[style*="background: #f8fafc"],
+html[data-theme="dark"] div[style*="background:#f1f5f9"],
+html[data-theme="dark"] span[style*="background:#f1f5f9"],
+html[data-theme="dark"] i[style*="background:#f1f5f9"] {
+  background: #131b2e !important;
+}
+
+html[data-theme="dark"] span[style*="background:#f5f3ff"],
+html[data-theme="dark"] i[style*="background:#f5f3ff"] {
+  background: #231b40 !important;
+}
+
+/* 3. New Inline Colors Missed in Original Sweep */
+/* Pinkish-white (Travel Budget) */
+html[data-theme="dark"] div[style*="background:#fff9f9"],
+html[data-theme="dark"] span[style*="background:#fff9f9"] {
+  background: #2b1d24 !important;
+  border-color: #501625 !important;
+}
+
+/* Orange-50 */
+html[data-theme="dark"] div[style*="background:#fff7ed"],
+html[data-theme="dark"] span[style*="background:#fff7ed"],
+html[data-theme="dark"] i[style*="background:#fff7ed"] {
+  background: #2a1f1a !important;
+  border-color: #4a2f1d !important;
+}
+
+/* Green-100 / Emerald-50 */
+html[data-theme="dark"] div[style*="background:#dcfce7"],
+html[data-theme="dark"] span[style*="background:#dcfce7"],
+html[data-theme="dark"] i[style*="background:#dcfce7"],
+html[data-theme="dark"] div[style*="background:#ecfdf5"],
+html[data-theme="dark"] span[style*="background:#ecfdf5"],
+html[data-theme="dark"] i[style*="background:#ecfdf5"] {
+  background: #0d2319 !important;
+  border-color: #164e32 !important;
+}
+
+/* Indigo-50 */
+html[data-theme="dark"] div[style*="background:#eef2ff"],
+html[data-theme="dark"] span[style*="background:#eef2ff"],
+html[data-theme="dark"] i[style*="background:#eef2ff"] {
+  background: #1e1d38 !important;
+  border-color: #3b2b6b !important;
+}
+
+/* Sky-50 / Blue-50 */
+html[data-theme="dark"] div[style*="background:#f0f9ff"],
+html[data-theme="dark"] span[style*="background:#f0f9ff"],
+html[data-theme="dark"] i[style*="background:#f0f9ff"],
+html[data-theme="dark"] div[style*="background:#eff6ff"],
+html[data-theme="dark"] span[style*="background:#eff6ff"],
+html[data-theme="dark"] i[style*="background:#eff6ff"] {
+  background: #152238 !important;
+  border-color: #1e3a5f !important;
+}
