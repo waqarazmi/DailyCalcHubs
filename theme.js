@@ -168,7 +168,13 @@
     if (choice === 'essential') {
       window['ga-disable-G-18Y3LNHDR8'] = true;
     } else if (choice === 'all') {
-      window['ga-disable-G-18Y3LNHDR8'] = false;
+      try {
+        if (localStorage.getItem('dch_owner_mode') !== 'active') {
+          window['ga-disable-G-18Y3LNHDR8'] = false;
+        }
+      } catch (e) {
+        window['ga-disable-G-18Y3LNHDR8'] = false;
+      }
       if (typeof window.gtag === 'function') {
         window.gtag('consent', 'update', {
           'ad_storage': 'granted',
@@ -190,7 +196,13 @@
     if (consent === 'essential') {
       window['ga-disable-G-18Y3LNHDR8'] = true;
     } else if (consent === 'all') {
-      window['ga-disable-G-18Y3LNHDR8'] = false;
+      try {
+        if (localStorage.getItem('dch_owner_mode') !== 'active') {
+          window['ga-disable-G-18Y3LNHDR8'] = false;
+        }
+      } catch (e) {
+        window['ga-disable-G-18Y3LNHDR8'] = false;
+      }
       if (typeof window.gtag === 'function') {
         window.gtag('consent', 'update', {
           'ad_storage': 'granted',
