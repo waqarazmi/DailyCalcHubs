@@ -3145,11 +3145,20 @@
 
         matchingKey = findMatchingCityKey(initLat, initLng);
         // Locality Protection: stored.label is authoritative for locality display
-        if (stored.label) {
+        const currentLang = IS_ARABIC ? 'ar' : 'en';
+        if (stored.lang !== currentLang) {
+          stored.sourceTag = null;
+        }
+
+        // Locality Protection: stored.label is authoritative for locality display
+        if (stored.label && stored.lang === currentLang) {
           initLabel = stored.label;
         } else if (matchingKey && QUICK_CITIES[matchingKey]) {
           initLabel = IS_ARABIC ? QUICK_CITIES[matchingKey].ar : QUICK_CITIES[matchingKey].en;
           initTz = QUICK_CITIES[matchingKey].tz || initTz;
+        } else {
+          const fallbackCity = IS_ARABIC ? 'الموقع' : 'Location';
+          initLabel = await reverseGeocodeWithOSM(initLat, initLng, fallbackCity, '');
         }
       }
 

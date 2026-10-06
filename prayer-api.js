@@ -203,7 +203,8 @@
             source: currentLocationSource,
             sourceTag: srcLabel,
             schedule: validatedSchedule,
-            timestamp: Date.now()
+            timestamp: Date.now(),
+            lang: IS_ARABIC ? 'ar' : 'en'
           });
 
           return true;
