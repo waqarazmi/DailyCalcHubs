@@ -238,7 +238,7 @@
     .form-label { display: block; font-size: 13.5px; font-weight: 700; color: #1e293b; margin-bottom: 8px; }
     .input-with-addons { display: flex; align-items: center; border: 2px solid #cbd5e1; border-radius: 10px; background: #fff; overflow: hidden; transition: border-color 0.15s; }
     .input-with-addons:focus-within { border-color: var(--purple-saudi); box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.15); }
-    .input-addon-badge { background: #f8fafc; padding: 12px 16px; font-size: 14px; font-weight: 800; color: var(--navy-dark); border-right: 1px solid #e2e8f0; display: flex; align-items: center; gap: 6px; }
+    .input-addon-badge { background: #f8fafc; padding: 12px 16px; font-size: 14px; font-weight: 800; color: var(--navy-dark); border-left: 1px solid #e2e8f0; display: flex; align-items: center; gap: 6px; }
     .calc-input { flex: 1; border: none; outline: none; padding: 12px 16px; font-size: 17px; font-weight: 700; color: var(--navy-dark); font-family: inherit; width: 100%; }
     .select-input-addon { border: none; outline: none; background: #f8fafc; padding: 12px 14px; font-size: 14px; font-weight: 700; color: #0f172a; cursor: pointer; font-family: inherit; width: 100%; }
 
@@ -255,7 +255,7 @@
     .date-input-wrap { position: relative; flex: 1; display: flex; align-items: center; min-width: 0; }
     .date-picker-addon-btn {
       border: none;
-      border-right: 1px solid #e2e8f0;
+      border-left: 1px solid #e2e8f0;
       font-family: inherit;
       margin: 0;
       outline: none;
@@ -328,7 +328,7 @@
     }
     html[data-theme="dark"] .date-picker-addon-btn {
       background: #1e293b;
-      border-right-color: #334155;
+      border-left-color: #334155;
       color: #cbd5e1;
     }
     html[data-theme="dark"] .date-picker-addon-btn:hover,
@@ -1112,24 +1112,28 @@
           <div class="mobile-align-bottom" style="display:grid; grid-template-columns: 1fr 1fr; gap:16px;">
             <div class="form-group">
               <label class="form-label" for="joiningDate">تاريخ بداية الخدمة (Joining Date)</label>
-              <div class="input-with-addons">
-                <input type="date" id="joiningDate" class="calc-input date-input-hidden" dir="ltr">
-                <input type="text" id="joiningDateMobile" class="calc-input date-input-visible" placeholder="DD-MM-YYYY" maxlength="10" dir="ltr" inputmode="numeric">
-                <button type="button" id="btnJoiningDatePicker" class="date-picker-addon-btn" aria-label="اختر تاريخ بداية الخدمة">
-                  <i class="fas fa-calendar-alt"></i>
-                </button>
-              </div>
+              <div class="input-with-addons date-input-group" id="groupJoiningDate">
+                  <button type="button" id="btnJoiningDatePicker" class="date-picker-addon-btn" aria-label="اختر تاريخ بداية الخدمة">
+                    <i class="fas fa-calendar-alt"></i>
+                  </button>
+                  <div class="date-input-wrap">
+                    <input type="date" id="joiningDate" class="calc-input date-input-hidden" dir="ltr">
+                    <input type="text" id="joiningDateMobile" class="calc-input date-input-visible" placeholder="DD-MM-YYYY" maxlength="10" dir="ltr" inputmode="numeric">
+                  </div>
+                </div>
             </div>
 
             <div class="form-group">
               <label class="form-label" for="exitDate">تاريخ انتهاء الخدمة (Exit Date)</label>
-              <div class="input-with-addons">
-                <input type="date" id="exitDate" class="calc-input date-input-hidden" dir="ltr">
-                <input type="text" id="exitDateMobile" class="calc-input date-input-visible" placeholder="DD-MM-YYYY" maxlength="10" dir="ltr" inputmode="numeric">
-                <button type="button" id="btnExitDatePicker" class="date-picker-addon-btn" aria-label="اختر تاريخ نهاية الخدمة">
-                  <i class="fas fa-calendar-alt"></i>
-                </button>
-              </div>
+              <div class="input-with-addons date-input-group" id="groupExitDate">
+                  <button type="button" id="btnExitDatePicker" class="date-picker-addon-btn" aria-label="اختر تاريخ نهاية الخدمة">
+                    <i class="fas fa-calendar-alt"></i>
+                  </button>
+                  <div class="date-input-wrap">
+                    <input type="date" id="exitDate" class="calc-input date-input-hidden" dir="ltr">
+                    <input type="text" id="exitDateMobile" class="calc-input date-input-visible" placeholder="DD-MM-YYYY" maxlength="10" dir="ltr" inputmode="numeric">
+                  </div>
+                </div>
             </div>
           </div>
 
