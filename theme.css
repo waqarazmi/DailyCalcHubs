@@ -1918,6 +1918,7 @@ html[data-theme="dark"] .mobile-menu-toggle:hover {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
   box-sizing: border-box;
   line-height: 1;
+  white-space: nowrap !important;
 }
 
 .lang-switch-btn i {
@@ -3034,6 +3035,7 @@ html[lang="ar"] .comparison-table-wrap {
   background: transparent !important;
   border: none !important;
   cursor: pointer !important;
+  white-space: nowrap !important;
 }
 
 .nav-link-item:hover {
@@ -3090,6 +3092,7 @@ html[data-theme="dark"] .nav-link-item.active::after {
   padding: 8px 12px !important;
   border-radius: 8px !important;
   transition: all 0.15s ease !important;
+  white-space: nowrap !important;
 }
 
 .nav-dropdown-btn:hover,
