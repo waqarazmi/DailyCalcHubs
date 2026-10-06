@@ -2421,8 +2421,9 @@
             isFresh: isFresh,
             isManual: isManual,
             schedule: data.schedule || null,
-            weather: data.weather || null
-          };
+              weather: data.weather || null,
+              lang: data.lang || null
+            };
         }
       } catch (e) {}
       return null;
@@ -3158,7 +3159,7 @@
           initTz = QUICK_CITIES[matchingKey].tz || initTz;
         } else {
           const fallbackCity = IS_ARABIC ? 'الموقع' : 'Location';
-          initLabel = await reverseGeocodeWithOSM(initLat, initLng, fallbackCity, '');
+          initLabel = fallbackCity;
         }
       }
 
