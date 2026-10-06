@@ -939,7 +939,6 @@
   </style>
   <link rel="stylesheet" href="/theme.css?v=2026.2">
 <script src="/prayer-api.js" defer></script>
-<script src="/prayer-api.js" defer></script>
 </head>
 <body>
 
@@ -2680,17 +2679,6 @@
         });
       }
     }
-
-        // Fallback to coordinates / generic label
-      }
-
-      // 3. Fallback if both reverse-geocoders fail
-      const inSaudi = (lat >= 16.0 && lat <= 32.5 && lng >= 34.5 && lng <= 55.7);
-      const defCity = fallbackCity || (IS_ARABIC ? 'موقع محدد' : 'Detected Location');
-      const defCountry = fallbackCountry || (inSaudi ? (IS_ARABIC ? 'المملكة العربية السعودية' : 'Saudi Arabia') : '');
-      return defCountry ? (defCity + sep + defCountry) : defCity;
-    }
-
     function showFailureNotice(msg) {
       let noticeEl = document.getElementById('prayerFailureNotice');
       if (!noticeEl) {
@@ -2725,35 +2713,6 @@
       if (code >= 85 && code <= 86) return 'fas fa-snowflake';
       if (code >= 95 && code <= 99) return 'fas fa-bolt';
       return 'fas fa-temperature-half';
-    }
-          const iconClass = mapWmoToWeatherIcon(data.current.weather_code);
-
-          weatherCache[cacheKey] = {
-            temp: tempC,
-            iconClass: iconClass,
-            timestamp: now
-          };
-
-          tempEl.textContent = tempC + '°C';
-          iconEl.className = iconClass;
-          badgeEl.setAttribute('aria-label', (IS_ARABIC ? 'درجة الحرارة الحالية: ' : 'Current temperature: ') + tempC + '°C');
-          badgeEl.title = (IS_ARABIC ? 'درجة الحرارة الحالية: ' : 'Current temperature: ') + tempC + '°C';
-          lastWeatherFetchTimestamp = now;
-          saveLocationToStorage({
-            weather: {
-              temp: tempC,
-              iconClass: iconClass,
-              timestamp: now
-            }
-          });
-        }
-      } catch (err) {
-        console.warn('Weather fetch fallback:', err);
-      } finally {
-        if (reqId === activeWeatherRequestId) {
-          badgeEl.style.opacity = '1';
-        }
-      }
     }
 
     function triggerPeriodicWeatherRefresh() {
