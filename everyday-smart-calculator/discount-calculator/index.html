@@ -567,6 +567,7 @@
   </style>
   <link rel="stylesheet" href="/theme.css?v=2026.2">
   <script src="/mobile-nav.js" defer></script>
+<script src="/constants.js" defer></script>
 </head>
 <body>
 
@@ -1470,7 +1471,7 @@
         vatAmount = finalPayable - baseBeforeVat;
       } else if (vatOption === 'add_vat') {
         baseBeforeVat = finalBeforeVatAdjustment;
-        vatAmount = baseBeforeVat * 0.15;
+        vatAmount = baseBeforeVat * window.DCH_CONSTANTS.SAUDI_VAT_RATE;
         finalPayable = baseBeforeVat + vatAmount;
       } else {
         finalPayable = finalBeforeVatAdjustment;

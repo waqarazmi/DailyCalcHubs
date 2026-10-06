@@ -313,6 +313,7 @@
     ]
   }
   </script>
+<script src="/constants.js" defer></script>
 </head>
 <body>
   <header class="site-header">
@@ -1169,7 +1170,7 @@
     }
 
     function calculateMaktab() {
-      const rateMonthly = parseFloat(document.getElementById('companySaudization').value) || 800;
+      const rateMonthly = parseFloat(document.getElementById('companySaudization').value) || window.DCH_CONSTANTS.MAKTAB_AMAL_HIGH;
       const workers = parseInt(document.getElementById('numWorkers').value) || 1;
       const duration = parseInt(document.getElementById('maktabDuration').value) || 12;
 

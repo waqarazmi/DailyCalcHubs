@@ -305,6 +305,7 @@
     ]
   }
   </script>
+<script src="/constants.js" defer></script>
 </head>
 <body>
   <header class="site-header">
@@ -1116,7 +1117,7 @@
     function calculateWp() {
       const sector = document.getElementById('industrySector').value;
       const ratioGroup = document.getElementById('wpRatioGroup');
-      const rateMonthly = parseFloat(document.getElementById('wpRatioSelect').value) || 800;
+      const rateMonthly = parseFloat(document.getElementById('wpRatioSelect').value) || window.DCH_CONSTANTS.MAKTAB_AMAL_HIGH;
       const employees = parseInt(document.getElementById('wpEmployees').value) || 1;
       const period = parseInt(document.getElementById('wpPeriod').value) || 12;
 

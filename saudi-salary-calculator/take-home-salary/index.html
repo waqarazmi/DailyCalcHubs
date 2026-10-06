@@ -317,6 +317,7 @@
   </style>
   <link rel="stylesheet" href="/theme.css?v=2026.2">
   <script src="/mobile-nav.js" defer></script>
+<script src="/constants.js" defer></script>
 </head>
 <body>
   <!-- Top Ticker -->
@@ -1253,8 +1254,8 @@
 
       if (type === 'saudi') {
 
-        const gosiBase = Math.min(45000, basic + housing);
-        const rate = cohort === 'new' ? 0.1075 : 0.0975;
+        const gosiBase = Math.min(window.DCH_CONSTANTS.GOSI_WAGE_CAP, basic + housing);
+        const rate = cohort === 'new' ? window.DCH_CONSTANTS.GOSI_EMP_NEW_RATE : window.DCH_CONSTANTS.GOSI_EMP_RATE;
         const rateLabel = cohort === 'new' ? '10.75%' : '9.75%';
         gosi = gosiBase * rate;
         gosiTagText = `GOSI: -${gosi.toFixed(2)} SAR (${rateLabel})`;

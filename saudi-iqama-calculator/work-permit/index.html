@@ -319,6 +319,7 @@
   </style>
   <link rel="stylesheet" href="/theme.css?v=2026.2">
   <script src="/mobile-nav.js" defer></script>
+<script src="/constants.js" defer></script>
 </head>
 <body>
   <!-- Top Ticker -->
@@ -1217,7 +1218,7 @@
     function calculateWp() {
       const sector = document.getElementById('industrySector').value;
       const ratioGroup = document.getElementById('wpRatioGroup');
-      const rateMonthly = parseFloat(document.getElementById('wpRatioSelect').value) || 800;
+      const rateMonthly = parseFloat(document.getElementById('wpRatioSelect').value) || window.DCH_CONSTANTS.MAKTAB_AMAL_HIGH;
       const employees = parseInt(document.getElementById('wpEmployees').value) || 1;
       const period = parseInt(document.getElementById('wpPeriod').value) || 12;
 

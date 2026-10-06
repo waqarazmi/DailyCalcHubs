@@ -289,6 +289,7 @@
     .tool-layout { direction: rtl; }
     .amount-chips-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
   </style>
+<script src="/constants.js" defer></script>
 </head>
 <body>
   <header class="site-header">
@@ -1123,8 +1124,8 @@
       let gosi = 0;
       let gosiTagText = '';
       if (type === 'saudi') {
-        const gosiBase = Math.min(45000, basic + housing);
-        const rate = cohort === 'new' ? 0.1075 : 0.0975;
+        const gosiBase = Math.min(window.DCH_CONSTANTS.GOSI_WAGE_CAP, basic + housing);
+        const rate = cohort === 'new' ? window.DCH_CONSTANTS.GOSI_EMP_NEW_RATE : window.DCH_CONSTANTS.GOSI_EMP_RATE;
         const rateLabel = cohort === 'new' ? '10.75%' : '9.75%';
         gosi = gosiBase * rate;
         gosiTagText = 'التأمينات: -' + gosi.toFixed(2) + ' ر.س (' + rateLabel + ')';

@@ -352,6 +352,7 @@
     ]
   }
   </script>
+<script src="/constants.js" defer></script>
 </head>
 <body>
   <!-- Top Ticker -->
@@ -1257,22 +1258,22 @@
   <script>
     function calculateTotalCost() {
       const workerType = document.getElementById('workerTypeTotal').value;
-      const maktabRate = parseFloat(document.getElementById('maktabTierTotal').value) || 800;
+      const maktabRate = parseFloat(document.getElementById('maktabTierTotal').value) || window.DCH_CONSTANTS.MAKTAB_AMAL_HIGH;
       const duration = parseInt(document.getElementById('durationTotal').value) || 12;
       const dependents = parseInt(document.getElementById('dependentsTotal').value) || 0;
       const insuranceRate = parseFloat(document.getElementById('insurancePerHead').value) || 0;
 
-      let jawazatBase = 650;
+      let jawazatBase = window.DCH_CONSTANTS.IQAMA_JAWAZAT_CORP;
       let maktabMonthly = maktabRate;
 
       if (workerType === 'domestic') {
-        jawazatBase = 600;
+        jawazatBase = window.DCH_CONSTANTS.IQAMA_JAWAZAT_DOMESTIC;
         maktabMonthly = 0;
       }
 
       const jawazatProrated = (jawazatBase / 12) * duration;
       const maktabTotal = maktabMonthly * duration;
-      const dependentLevy = (400 * dependents) * duration;
+      const dependentLevy = (window.DCH_CONSTANTS.IQAMA_DEPENDENT_MONTHLY * dependents) * duration;
 
       const workerInsurance = insuranceRate;
       const dependentInsurance = insuranceRate * dependents;

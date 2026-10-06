@@ -319,6 +319,7 @@
   </style>
   <link rel="stylesheet" href="/theme.css?v=2026.2">
   <script src="/mobile-nav.js" defer></script>
+<script src="/constants.js" defer></script>
 </head>
 <body>
   <!-- Top Ticker -->
@@ -1240,7 +1241,7 @@
       const newGross = newBasic + newHousing + newTransport;
       const grossDiff = newGross - oldGross;
 
-      const oldGosiWage = Math.min(basic + housing, 45000);
+      const oldGosiWage = Math.min(basic + housing, window.DCH_CONSTANTS.GOSI_WAGE_CAP);
       const newGosiWage = Math.min(newBasic + newHousing, 45000);
 
       let oldEmployeeGosi = (nationality === 'saudi') ? (oldGosiWage * 0.0975) : 0;

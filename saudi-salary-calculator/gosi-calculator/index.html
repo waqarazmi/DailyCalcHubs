@@ -317,6 +317,7 @@
   </style>
   <link rel="stylesheet" href="/theme.css?v=2026.2">
   <script src="/mobile-nav.js" defer></script>
+<script src="/constants.js" defer></script>
 </head>
 <body>
   <!-- Top Ticker -->
@@ -1189,12 +1190,12 @@
       const cohortGroup = document.getElementById('gosiCohortGroup');
       if (cohortGroup) cohortGroup.style.display = type === 'saudi' ? 'block' : 'none';
       const cohort = document.getElementById('gosiCohort') ? document.getElementById('gosiCohort').value : 'existing';
-      const annuityRate = cohort === 'new' ? 0.10 : 0.09;
+      const annuityRate = cohort === 'new' ? window.DCH_CONSTANTS.GOSI_ANNUITY_NEW_RATE : window.DCH_CONSTANTS.GOSI_ANNUITY_RATE;
       const basic = Math.max(0, parseFloat(document.getElementById('gosiBasic').value) || 0);
       const housing = Math.max(0, parseFloat(document.getElementById('gosiHousing').value) || 0);
 
       const rawBase = basic + housing;
-      const base = Math.min(45000, rawBase);
+      const base = Math.min(window.DCH_CONSTANTS.GOSI_WAGE_CAP, rawBase);
 
       let empAnnuity = 0, compAnnuity = 0;
       let empSaned = 0, compSaned = 0;
@@ -1203,11 +1204,11 @@
       if (type === 'saudi') {
         empAnnuity = base * annuityRate;
         compAnnuity = base * annuityRate;
-        empSaned = base * 0.0075;
-        compSaned = base * 0.0075;
-        compOh = base * 0.02;
+        empSaned = base * window.DCH_CONSTANTS.GOSI_SANED_RATE;
+        compSaned = base * window.DCH_CONSTANTS.GOSI_SANED_RATE;
+        compOh = base * window.DCH_CONSTANTS.GOSI_EXPAT_OH;
       } else {
-        compOh = base * 0.02;
+        compOh = base * window.DCH_CONSTANTS.GOSI_EXPAT_OH;
       }
 
       const totalEmp = empAnnuity + empSaned;
@@ -1217,7 +1218,7 @@
       const empRatePct = (type === 'saudi' ? (cohort === 'new' ? '10.75%' : '9.75%') : '0%');
       const compRatePct = (type === 'saudi' ? (cohort === 'new' ? '12.75%' : '11.75%') : '2.0% OH');
       document.getElementById('gosiRateTag').innerHTML = `<i class="fas fa-percent" style="color:#fbbf24;"></i> <span>${type === 'saudi' ? empRatePct + ' Citizen Rate' : '0% Expat Rate'}</span>`;
-      document.getElementById('gosiBaseVal').textContent = base.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SAR' + (rawBase > 45000 ? ' (Capped)' : '');
+      document.getElementById('gosiBaseVal').textContent = base.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SAR' + (rawBase > window.DCH_CONSTANTS.GOSI_WAGE_CAP ? ' (Capped)' : '');
       document.getElementById('gosiCompVal').textContent = totalComp.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SAR (' + compRatePct + ')';
 
       const tbody = document.getElementById('gosiTableBody');

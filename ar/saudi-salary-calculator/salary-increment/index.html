@@ -304,6 +304,7 @@
     .amount-chips-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
     .result-big-val, #resNewNet, #resNetRaiseMonthly, #resNewGross, #resAnnualIncrease, #resNewGosiWage, #resEosbImpact { direction: ltr; unicode-bidi: embed; }
   </style>
+<script src="/constants.js" defer></script>
 </head>
 <body>
   <!-- Top Rates Ticker -->
@@ -1163,7 +1164,7 @@
       }
 
       const oldGross = basic + housing + transport;
-      const oldGosiWage = Math.min(45000, basic + housing);
+      const oldGosiWage = Math.min(window.DCH_CONSTANTS.GOSI_WAGE_CAP, basic + housing);
       const empGosiPct = nat === 'saudi' ? 0.0975 : 0.0;
       const oldGosiDeduct = oldGosiWage * empGosiPct;
       const oldNet = oldGross - oldGosiDeduct;
@@ -1196,7 +1197,7 @@
       }
 
       const newGross = newBasic + newHousing + newTransport;
-      const newGosiWage = Math.min(45000, newBasic + newHousing);
+      const newGosiWage = Math.min(window.DCH_CONSTANTS.GOSI_WAGE_CAP, newBasic + newHousing);
       const newGosiDeduct = newGosiWage * empGosiPct;
       const newNet = newGross - newGosiDeduct;
 

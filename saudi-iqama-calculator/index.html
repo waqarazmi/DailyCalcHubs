@@ -344,6 +344,7 @@
   </style>
   <link rel="stylesheet" href="/theme.css?v=2026.2">
   <script src="/mobile-nav.js" defer></script>
+<script src="/constants.js" defer></script>
 </head>
 <body>
   <!-- Top Rates Ticker -->
@@ -1402,7 +1403,7 @@
 
     function calculateHubIqama() {
       const workerType = document.getElementById('workerType').value;
-      const maktabCat = parseFloat(document.getElementById('maktabCategory').value) || 800;
+      const maktabCat = parseFloat(document.getElementById('maktabCategory').value) || window.DCH_CONSTANTS.MAKTAB_AMAL_HIGH;
       const months = parseInt(document.getElementById('iqamaDuration').value) || 12;
       const dependents = parseInt(document.getElementById('dependentCount').value) || 0;
       const maktabGroup = document.getElementById('maktabAmalGroup');
@@ -1426,7 +1427,7 @@
 
       const jawazatProrated = (jawazatYearly / 12) * months;
       const maktabTotal = maktabMonthly * months;
-      const dependentTotal = (400 * dependents) * months;
+      const dependentTotal = (window.DCH_CONSTANTS.IQAMA_DEPENDENT_MONTHLY * dependents) * months;
 
       const employerCost = jawazatProrated + maktabTotal;
       const employeeCost = dependentTotal;

@@ -304,6 +304,7 @@
     .amount-chips-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
     .result-big-val, #resAnnualTakeHome, #resMonthlyNetAvg, #resAnnualGross, #resAnnualGosiEmployee, #resAnnualGosiEmployer, #resTotalCtc { direction: ltr; unicode-bidi: embed; }
   </style>
+<script src="/constants.js" defer></script>
 </head>
 <body>
   <!-- Top Rates Ticker -->
@@ -1150,7 +1151,7 @@
       const monthlyGross = basic + housing + transport;
       const annualGross = (monthlyGross * 12) + bonus;
 
-      const gosiWage = Math.min(45000, basic + housing);
+      const gosiWage = Math.min(window.DCH_CONSTANTS.GOSI_WAGE_CAP, basic + housing);
       let empGosiPct = 0;
       let emprGosiPct = 0;
 
