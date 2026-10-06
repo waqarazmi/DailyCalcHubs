@@ -71,7 +71,14 @@
         }
       } catch (e2) {
         // Fallback to coordinates / generic label
+      }
 
+      // 3. Fallback if both reverse-geocoders fail
+      const inSaudi = (lat >= 16.0 && lat <= 32.5 && lng >= 34.5 && lng <= 55.7);
+      const defCity = fallbackCity || (IS_ARABIC ? 'موقع محدد' : 'Detected Location');
+      const defCountry = fallbackCountry || (inSaudi ? (IS_ARABIC ? 'المملكة العربية السعودية' : 'Saudi Arabia') : '');
+      return defCountry ? (defCity + sep + defCountry) : defCity;
+    }
 
     async function fetchPrayerForCoords(stagedLat, stagedLng, stagedLabel, stagedSource, stagedTz, stagedCityKey, isSilent = false) {
       const reqId = ++activePrayerRequestId;
