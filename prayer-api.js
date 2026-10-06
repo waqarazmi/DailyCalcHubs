@@ -291,6 +291,36 @@
           const tempC = Math.round(data.current.temperature_2m);
           const iconClass = mapWmoToWeatherIcon(data.current.weather_code);
 
+          weatherCache[cacheKey] = {
+            temp: tempC,
+            iconClass: iconClass,
+            timestamp: now
+          };
+
+          if (tempEl) tempEl.textContent = tempC + '°C';
+          if (iconEl) iconEl.className = iconClass;
+          if (badgeEl) {
+            badgeEl.setAttribute('aria-label', (IS_ARABIC ? 'درجة الحرارة الحالية: ' : 'Current temperature: ') + tempC + '°C');
+            badgeEl.title = (IS_ARABIC ? 'درجة الحرارة الحالية: ' : 'Current temperature: ') + tempC + '°C';
+          }
+          lastWeatherFetchTimestamp = now;
+          saveLocationToStorage({
+            weather: {
+              temp: tempC,
+              iconClass: iconClass,
+              timestamp: now
+            }
+          });
+        }
+      } catch (err) {
+        console.warn('Weather fetch fallback:', err);
+      } finally {
+        if (reqId === activeWeatherRequestId) {
+          if (badgeEl) badgeEl.style.opacity = '1';
+        }
+      }
+    }
+
     async function fetchIPLocationFallback(initLat, initLng, initLabel, initTz) {
           let ipDetected = false;
           try {
