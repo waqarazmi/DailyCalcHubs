@@ -253,7 +253,7 @@
     .service-dates-title { font-size: 13.5px; font-weight: 700; color: var(--navy-dark); display: flex; align-items: center; gap: 8px; }
     .date-error-banner { margin-top: 12px; padding: 10px 14px; background: #fef2f2; border: 1px solid #fca5a5; color: #b91c1c; border-radius: 8px; font-size: 13px; font-weight: 600; display: flex; align-items: center; gap: 8px; }
     .date-input-wrap { position: relative; flex: 1; display: flex; align-items: center; min-width: 0; }
-    .date-picker-trigger {
+    .date-picker-addon-btn {
       border: none;
       border-right: 1px solid #e2e8f0;
       font-family: inherit;
@@ -261,32 +261,32 @@
       outline: none;
       background: #f8fafc;
     }
-    .mobile-date-input { display: none; }
+    .date-input-visible { display: none; }
 
     @media (max-width: 640px) {
       .service-dates-card .grid-2col-dates { grid-template-columns: 1fr !important; }
       .date-input-group { position: relative; }
-      .date-picker-trigger {
+      .date-picker-addon-btn {
         cursor: pointer;
         user-select: none;
         transition: background 0.15s;
         z-index: 2;
       }
-      .date-picker-trigger:hover, .date-picker-trigger:active {
+      .date-picker-addon-btn:hover, .date-picker-addon-btn:active {
         background: #ede9fe;
         color: #6d28d9;
       }
-      .mobile-date-input {
+      .date-input-visible {
         display: block !important;
         width: 100% !important;
         font-size: 16px !important;
       }
-      .mobile-date-input::placeholder {
+      .date-input-visible::placeholder {
         color: #94a3b8;
         font-weight: 500;
         letter-spacing: 0.5px;
       }
-      .native-date-input {
+      .date-input-hidden {
         position: absolute !important;
         left: 0 !important;
         top: 0 !important;
@@ -302,16 +302,16 @@
     }
 
     @media (min-width: 641px) {
-      .native-date-input {
+      .date-input-hidden {
         position: static !important;
         opacity: 1 !important;
         width: 100% !important;
         display: block !important;
       }
-      .mobile-date-input {
+      .date-input-visible {
         display: none !important;
       }
-      .date-picker-trigger {
+      .date-picker-addon-btn {
         pointer-events: none !important;
         cursor: default !important;
       }
@@ -326,17 +326,17 @@
       border-color: #7f1d1d;
       color: #fca5a5;
     }
-    html[data-theme="dark"] .date-picker-trigger {
+    html[data-theme="dark"] .date-picker-addon-btn {
       background: #1e293b;
       border-right-color: #334155;
       color: #cbd5e1;
     }
-    html[data-theme="dark"] .date-picker-trigger:hover,
-    html[data-theme="dark"] .date-picker-trigger:active {
+    html[data-theme="dark"] .date-picker-addon-btn:hover,
+    html[data-theme="dark"] .date-picker-addon-btn:active {
       background: #2e1065;
       color: #c4b5fd;
     }
-    html[data-theme="dark"] .mobile-date-input::placeholder {
+    html[data-theme="dark"] .date-input-visible::placeholder {
       color: #64748b;
     }
 

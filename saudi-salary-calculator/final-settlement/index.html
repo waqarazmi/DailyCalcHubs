@@ -1114,27 +1114,30 @@
           </div>
 
           <div class="mobile-align-bottom" style="display:grid; grid-template-columns: 1fr 1fr; gap:16px;">
-            <div class="form-group">
+            <div class="form-group" style="margin-bottom: 0;">
               <label class="form-label" for="settlementEosb">Approved EOSB Gratuity (SAR)</label>
               <div class="input-with-addons">
                 <span class="input-addon-badge">SAR</span>
                 <input type="number" id="settlementEosb" class="calc-input" value="45000" min="0" step="1000" oninput="calculateSettlement()" inputmode="decimal">
               </div>
-              <div class="eosb-helper-row">
-                <span class="eosb-helper-prompt">Don’t know your gratuity?</span>
-                <a href="/saudi-salary-calculator/eosb/?ref=settlement&wage=12000" id="linkCalcEosb" class="eosb-helper-link">
-                  Calculate EOSB Gratuity &rarr;
-                </a>
-              </div>
             </div>
 
-            <div class="form-group">
+            <div class="form-group" style="margin-bottom: 0;">
               <label class="form-label" for="unusedLeaveDays">Unused Annual Leave Balance (Days)</label>
               <div class="input-with-addons">
                 <span class="input-addon-badge"><i class="fas fa-umbrella-beach"></i></span>
                 <input type="number" id="unusedLeaveDays" class="calc-input" value="18" min="0" max="90" step="1" oninput="calculateSettlement()" inputmode="decimal">
               </div>
             </div>
+          </div>
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap:16px; margin-bottom: 18px;">
+            <div class="eosb-helper-row">
+              <span class="eosb-helper-prompt">Don't know your gratuity?</span>
+              <a href="/saudi-salary-calculator/eosb/?ref=settlement&wage=12000" id="linkCalcEosb" class="eosb-helper-link">
+                Calculate EOSB Gratuity &rarr;
+              </a>
+            </div>
+            <div></div>
           </div>
 
           <div class="mobile-align-bottom" style="display:grid; grid-template-columns: 1fr 1fr; gap:16px;">

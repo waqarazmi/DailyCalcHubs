@@ -939,31 +939,33 @@
     <!-- Calculator Card -->
     <div class="calc-card">
       <form id="travelBudgetForm" onsubmit="event.preventDefault(); calculateDetailedBudget();">
-        <div class="mobile-align-bottom" style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
-          <div class="form-group">
+                <div class="mobile-align-bottom" style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+          <div class="form-group" style="margin-bottom: 0;">
             <label class="form-label" for="tbTravelers">Number of Travelers</label>
             <div class="input-with-addons">
               <span class="input-addon-badge"><i class="fas fa-user-group"></i></span>
               <input type="number" id="tbTravelers" class="calc-input" value="2" min="1" max="50" step="1" required oninput="calculateDetailedBudget()" inputmode="numeric">
             </div>
-            <div class="amount-chips-row">
-              <button type="button" class="amount-chip-btn" onclick="setTbTravelers(1)">1 Solo</button>
-              <button type="button" class="amount-chip-btn" onclick="setTbTravelers(2)">2 Couple</button>
-              <button type="button" class="amount-chip-btn" onclick="setTbTravelers(4)">4 Family</button>
-            </div>
           </div>
 
-          <div class="form-group">
+          <div class="form-group" style="margin-bottom: 0;">
             <label class="form-label" for="tbDays">Trip Duration (Days)</label>
             <div class="input-with-addons">
               <span class="input-addon-badge"><i class="fas fa-calendar-days"></i></span>
               <input type="number" id="tbDays" class="calc-input" value="7" min="1" max="180" step="1" required oninput="calculateDetailedBudget()" inputmode="numeric">
             </div>
-            <div class="amount-chips-row">
-              <button type="button" class="amount-chip-btn" onclick="setTbDays(3)">3 Days</button>
-              <button type="button" class="amount-chip-btn" onclick="setTbDays(7)">7 Days</button>
-              <button type="button" class="amount-chip-btn" onclick="setTbDays(14)">14 Days</button>
-            </div>
+          </div>
+        </div>
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:16px; margin-bottom: 18px;">
+          <div class="amount-chips-row">
+            <button type="button" class="amount-chip-btn" onclick="setTbTravelers(1)">1 Solo</button>
+            <button type="button" class="amount-chip-btn" onclick="setTbTravelers(2)">2 Couple</button>
+            <button type="button" class="amount-chip-btn" onclick="setTbTravelers(4)">4 Family</button>
+          </div>
+          <div class="amount-chips-row">
+            <button type="button" class="amount-chip-btn" onclick="setTbDays(3)">3 Days</button>
+            <button type="button" class="amount-chip-btn" onclick="setTbDays(7)">7 Days</button>
+            <button type="button" class="amount-chip-btn" onclick="setTbDays(14)">14 Days</button>
           </div>
         </div>
 
