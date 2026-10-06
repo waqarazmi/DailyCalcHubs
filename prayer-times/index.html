@@ -2303,6 +2303,7 @@
     let currentLongitude = 46.6753;
     let currentTimezone = 'Asia/Riyadh';
     let currentLocationSource = 'default';
+    let currentLocationIntent = 'auto'; // 'auto', 'manual', 'gps'
     let activePrayerRequestId = 0;
     let lastFetchedDateString = '';
 
@@ -2970,6 +2971,7 @@
     });
 
     function selectCity(btnEl, cityKey, lat, lng, label) {
+      currentLocationIntent = 'manual';
       let tz = 'Asia/Riyadh';
       if (QUICK_CITIES[cityKey] && QUICK_CITIES[cityKey].tz) {
         tz = QUICK_CITIES[cityKey].tz;
@@ -2978,6 +2980,7 @@
     }
 
     async function syncCurrentDeviceLocation(isUserInitiated = false) {
+      if (isUserInitiated) currentLocationIntent = 'gps';
       const btn = document.getElementById('btnDetectLoc');
       if (isUserInitiated && btn) {
         btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> ' + (IS_ARABIC ? 'جاري التحديد...' : 'Detecting...');
@@ -2997,12 +3000,19 @@
           async function(pos) {
             try {
               if (pos && pos.coords) {
+                // Abort if the user manually selected a city while waiting for GPS lock
+                if (!isUserInitiated && currentLocationIntent === 'manual') return resolve(false);
+
                 const gpsLat = pos.coords.latitude;
                 const gpsLng = pos.coords.longitude;
                 const inSaudi = (gpsLat >= 16.0 && gpsLat <= 32.5 && gpsLng >= 34.5 && gpsLng <= 55.7);
                 const fallbackCity = IS_ARABIC ? 'موقع محدد' : 'Detected Location';
                 const fallbackCountry = inSaudi ? (IS_ARABIC ? 'المملكة العربية السعودية' : 'Saudi Arabia') : '';
                 const preciseLabel = await reverseGeocodeWithOSM(gpsLat, gpsLng, fallbackCity, fallbackCountry);
+                
+                // Abort again if the user clicked during reverse geocoding network request
+                if (!isUserInitiated && currentLocationIntent === 'manual') return resolve(false);
+
                 const success = await fetchPrayerForCoords(gpsLat, gpsLng, preciseLabel, 'gps', null, null);
                 resolve(success);
               } else {
@@ -3097,8 +3107,8 @@
 
       // Update visible DOM immediately (instant paint, zero layout shift)
       const locLabelEl = document.getElementById('prayerLocLabel');
-      if (locLabelEl && stored) locLabelEl.textContent = currentCityLabel;
-      if (stored) highlightCityButton(matchingKey);
+      if (locLabelEl) locLabelEl.textContent = currentCityLabel;
+      highlightCityButton(matchingKey);
 
       // Initial instantaneous DOM render: priority to cached schedule
       if (stored && stored.schedule) {
@@ -3107,6 +3117,21 @@
         applyPrayerTimesToDOM(stored.schedule);
       } else if (stored) {
         const fallbackEntry = defaultPrayerMap[matchingKey] || defaultPrayerMap.riyadh;
+        applyPrayerTimesToDOM({
+          fajr: fallbackEntry.fajr,
+          sunrise: fallbackEntry.sunrise,
+          ishraq: fallbackEntry.ishraq,
+          chasht: fallbackEntry.chasht,
+          dhuhr: fallbackEntry.dhuhr,
+          asr: fallbackEntry.asr,
+          maghrib: fallbackEntry.maghrib,
+          isha: fallbackEntry.isha,
+          label: currentCityLabel,
+          hijri: getDynamicHijriFallback(false, currentTimezone),
+          hijriAr: '(' + getDynamicHijriFallback(true, currentTimezone) + ')'
+        });
+      } else {
+        const fallbackEntry = defaultPrayerMap.riyadh;
         applyPrayerTimesToDOM({
           fajr: fallbackEntry.fajr,
           sunrise: fallbackEntry.sunrise,
