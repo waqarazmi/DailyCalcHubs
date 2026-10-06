@@ -3148,7 +3148,7 @@
       if (stored && stored.schedule) {
         (async function() {
           let freshGpsAcquired = false;
-          if (navigator.geolocation && (initSource === 'gps' || initSource === 'default')) {
+          if (navigator.geolocation) {
             freshGpsAcquired = await syncCurrentDeviceLocation(false);
           }
           if (!freshGpsAcquired) {
