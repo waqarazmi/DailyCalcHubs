@@ -311,6 +311,11 @@
     .tool-layout { direction: rtl; }
     .amount-chips-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
     .result-big-val, #basicResultDisplay { direction: ltr; unicode-bidi: embed; }
+      /* Fix for Basic Salary Night Mode Badge */
+      html[data-theme="dark"] .calc-card-header div[style*="color:#4c1d95"] {
+        color: #c4b5fd !important;
+        border-color: #5b21b6 !important;
+      }
   </style>
 <script src="/constants.js" defer></script>
 </head>
