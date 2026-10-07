@@ -1656,7 +1656,7 @@
           <div>
             <div class="date-meta-sub">التاريخ الميلادي والوقت الحالي</div>
             <div class="date-meta-val" id="liveGregorianDate">--</div>
-            <div id="liveClockVal" class="clock-live-time" dir="ltr">--:--:-- --</div>
+            <div id="liveClockVal" class="clock-live-time" dir="ltr"><span style="visibility:hidden">--:--:-- --</span></div>
           </div>
         </div>
 
@@ -1668,7 +1668,7 @@
             <div class="date-meta-sub">تقويم أم القرى الهجري الرسمي</div>
             <div class="date-meta-val">
               <span id="liveHijriArabic" class="hijri-arabic-val">--</span>
-              <span id="liveHijriDate" style="font-size: 13px; color: var(--text-muted); margin-right: 6px;" dir="ltr">--</span>
+              <span id="liveHijriDate" style="font-size: 13px; color: var(--text-muted); margin-right: 6px;" dir="ltr"><span style="visibility:hidden">--</span></span>
             </div>
             <div style="font-size: 11.5px; color: var(--emerald-accent); font-weight: 600; margin-top: 2px;">المعيار الفلكي الرسمي المعتمد في المملكة</div>
           </div>
@@ -1679,7 +1679,7 @@
       <div class="next-prayer-hero countdown-card">
         <div>
           <div class="next-prayer-tag"><i class="fas fa-hourglass-half"></i> متبقي حتى الصلاة القادمة</div>
-          <div class="next-prayer-name" id="nextPrayerName">--</div>
+          <div class="next-prayer-name" id="nextPrayerName"><span style="visibility:hidden">--</span></div>
           <div class="next-prayer-azan-time">
             وقت الأذان: <strong id="nextPrayerTime" dir="ltr">--:-- --</strong>
           </div>
@@ -1687,17 +1687,17 @@
 
         <div class="countdown-timer-wrap timer-digits" dir="ltr">
           <div class="timer-block digit-box">
-            <div class="timer-digit digit-val" id="timerHours">00</div>
+            <div class="timer-digit digit-val" id="timerHours"><span style="visibility:hidden">00</span></div>
             <div class="timer-unit digit-lbl">ساعة</div>
           </div>
           <div class="timer-colon digit-sep">:</div>
           <div class="timer-block digit-box">
-            <div class="timer-digit digit-val" id="timerMinutes">00</div>
+            <div class="timer-digit digit-val" id="timerMinutes"><span style="visibility:hidden">00</span></div>
             <div class="timer-unit digit-lbl">دقيقة</div>
           </div>
           <div class="timer-colon digit-sep">:</div>
           <div class="timer-block digit-box">
-            <div class="timer-digit digit-val" id="timerSeconds">00</div>
+            <div class="timer-digit digit-val" id="timerSeconds"><span style="visibility:hidden">00</span></div>
             <div class="timer-unit digit-lbl">ثانية</div>
           </div>
         </div>
@@ -1829,7 +1829,7 @@
         <div class="prayer-card-item" id="pCardFajr">
           <div class="slot-icon"><i class="fas fa-cloud-sun"></i></div>
           <div class="prayer-name">الفجر</div>
-          <div class="prayer-time-val" id="timeFajr" dir="ltr">--:-- --</div>
+          <div class="prayer-time-val" id="timeFajr" dir="ltr"><span style="visibility:hidden">--:-- --</span></div>
           <div class="slot-subtext">الفجر الصادق</div>
         </div>
 
@@ -1837,7 +1837,7 @@
         <div class="prayer-card-item" id="pCardSunrise">
           <div class="slot-icon"><i class="fas fa-sun" style="color: #f59e0b;"></i></div>
           <div class="prayer-name">الشروق</div>
-          <div class="prayer-time-val" id="timeSunrise" dir="ltr">--:-- --</div>
+          <div class="prayer-time-val" id="timeSunrise" dir="ltr"><span style="visibility:hidden">--:-- --</span></div>
           <div class="slot-subtext">شروق الشمس (خروج الفجر)</div>
         </div>
 
@@ -1845,7 +1845,7 @@
         <div class="prayer-card-item" id="pCardDhuhr">
           <div class="slot-icon"><i class="fas fa-sun" style="color: #0284c7;"></i></div>
           <div class="prayer-name">الظهر</div>
-          <div class="prayer-time-val" id="timeDhuhr" dir="ltr">--:-- --</div>
+          <div class="prayer-time-val" id="timeDhuhr" dir="ltr"><span style="visibility:hidden">--:-- --</span></div>
           <div class="slot-subtext">زوال الشمس</div>
         </div>
 
@@ -1853,7 +1853,7 @@
         <div class="prayer-card-item" id="pCardAsr">
           <div class="slot-icon"><i class="fas fa-cloud-sun" style="color: #0369a1;"></i></div>
           <div class="prayer-name">العصر</div>
-          <div class="prayer-time-val" id="timeAsr" dir="ltr">--:-- --</div>
+          <div class="prayer-time-val" id="timeAsr" dir="ltr"><span style="visibility:hidden">--:-- --</span></div>
           <div class="slot-subtext">المذهب الشافعي / القياسي</div>
         </div>
 
@@ -1861,7 +1861,7 @@
         <div class="prayer-card-item" id="pCardMaghrib">
           <div class="slot-icon"><i class="fas fa-cloud-moon" style="color: #ea580c;"></i></div>
           <div class="prayer-name">المغرب</div>
-          <div class="prayer-time-val" id="timeMaghrib" dir="ltr">--:-- --</div>
+          <div class="prayer-time-val" id="timeMaghrib" dir="ltr"><span style="visibility:hidden">--:-- --</span></div>
           <div class="slot-subtext">غروب الشمس / الإفطار</div>
         </div>
 
@@ -1869,7 +1869,7 @@
         <div class="prayer-card-item" id="pCardIsha">
           <div class="slot-icon"><i class="fas fa-moon" style="color: #6366f1;"></i></div>
           <div class="prayer-name">العشاء</div>
-          <div class="prayer-time-val" id="timeIsha" dir="ltr">--:-- --</div>
+          <div class="prayer-time-val" id="timeIsha" dir="ltr"><span style="visibility:hidden">--:-- --</span></div>
           <div class="slot-subtext">تقويم أم القرى (+90 دقيقة)</div>
         </div>
       </div>
@@ -1892,7 +1892,7 @@
                 <div class="nawafil-calc-note">الشروق + 18 دقيقة</div>
               </div>
             </div>
-            <div class="nawafil-time" id="timeIshraq" dir="ltr">--:-- --</div>
+            <div class="nawafil-time" id="timeIshraq" dir="ltr"><span style="visibility:hidden">--:-- --</span></div>
           </div>
 
           <!-- Chasht / Duha -->
@@ -1905,7 +1905,7 @@
                 <div class="nawafil-calc-note" id="chashtDynamicSub">⚡ منتصف النهار الشمسي الفلكي</div>
               </div>
             </div>
-            <div class="nawafil-time" id="timeChasht" dir="ltr">--:-- --</div>
+            <div class="nawafil-time" id="timeChasht" dir="ltr"><span style="visibility:hidden">--:-- --</span></div>
           </div>
         </div>
       </div>
@@ -2098,7 +2098,7 @@
                 if (src === 'manual') srcTag = 'اختيار المدينة (' + (d.label || 'الرياض').split('،')[0].split(',')[0] + ')';
                 else if (src === 'gps') srcTag = 'دقة نظام GPS';
                 else if (src === 'ip') srcTag = 'موقع تقريبي (IP)';
-                else srcTag = 'الوضع الافتراضي';
+                else srcTag = 'جاري تحديد الموقع...';
               }
               var accEl = document.getElementById('qiblaAccuracyTag');
               if (accEl && srcTag) {
@@ -2826,7 +2826,7 @@
 
     let currentQiblaBearing = 244;
     let currentQiblaDistanceKm = 1181;
-    let locationSourceType = IS_ARABIC ? 'الوضع الافتراضي' : 'Baseline Fallback';
+    let locationSourceType = IS_ARABIC ? 'جاري تحديد الموقع...' : 'Detecting Location...';
     let isLiveOrientationActive = false;
     let liveDeviceHeading = null;
     let orientationRafId = null;
@@ -3264,7 +3264,7 @@
           const safeSchedule = Object.assign({}, stored.schedule);
           safeSchedule.label = currentCityLabel;
           applyPrayerTimesToDOM(safeSchedule);
-      } else if (stored) {
+      } else if (stored && matchingKey && defaultPrayerMap[matchingKey]) {
         const fallbackEntry = defaultPrayerMap[matchingKey] || defaultPrayerMap.riyadh;
         applyPrayerTimesToDOM({
           fajr: fallbackEntry.fajr,
@@ -3290,7 +3290,7 @@
         } else if (initSource === 'ip') {
           initialSourceTag = IS_ARABIC ? 'موقع تقريبي (IP)' : 'Approximate Location (IP)';
         } else {
-          initialSourceTag = IS_ARABIC ? 'الوضع الافتراضي' : 'Baseline Fallback';
+          initialSourceTag = IS_ARABIC ? 'جاري تحديد الموقع...' : 'Detecting Location...';
         }
       }
 
