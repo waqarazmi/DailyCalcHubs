@@ -1,0 +1,29 @@
+﻿          const iconClass = mapWmoToWeatherIcon(data.current.weather_code);
+
+          weatherCache[cacheKey] = {
+            temp: tempC,
+            iconClass: iconClass,
+            timestamp: now
+          };
+
+          tempEl.textContent = tempC + '°C';
+          iconEl.className = iconClass;
+          badgeEl.setAttribute('aria-label', (IS_ARABIC ? 'درجة الحرارة الحالية: ' : 'Current temperature: ') + tempC + '°C');
+          badgeEl.title = (IS_ARABIC ? 'درجة الحرارة الحالية: ' : 'Current temperature: ') + tempC + '°C';
+          lastWeatherFetchTimestamp = now;
+          saveLocationToStorage({
+            weather: {
+              temp: tempC,
+              iconClass: iconClass,
+              timestamp: now
+            }
+          });
+        }
+      } catch (err) {
+        console.warn('Weather fetch fallback:', err);
+      } finally {
+        if (reqId === activeWeatherRequestId) {
+          badgeEl.style.opacity = '1';
+        }
+      }
+    }

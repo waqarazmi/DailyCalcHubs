@@ -3050,6 +3050,10 @@
       if (QUICK_CITIES[cityKey] && QUICK_CITIES[cityKey].tz) {
         tz = QUICK_CITIES[cityKey].tz;
       }
+      const locLabelEl = document.getElementById('prayerLocLabel');
+      if (locLabelEl) locLabelEl.textContent = label;
+      highlightCityButton(cityKey);
+
       fetchPrayerForCoords(lat, lng, label, 'manual', tz, cityKey);
     }
 
@@ -3078,11 +3082,17 @@
                 if (!isUserInitiated && currentLocationIntent === 'manual') return resolve(false);
 
                 const gpsLat = pos.coords.latitude;
-                const gpsLng = pos.coords.longitude;
-                const inSaudi = (gpsLat >= 16.0 && gpsLat <= 32.5 && gpsLng >= 34.5 && gpsLng <= 55.7);
-                const fallbackCity = IS_ARABIC ? 'موقع محدد' : 'Detected Location';
-                const fallbackCountry = inSaudi ? (IS_ARABIC ? 'المملكة العربية السعودية' : 'Saudi Arabia') : '';
-                const preciseLabel = await reverseGeocodeWithOSM(gpsLat, gpsLng, fallbackCity, fallbackCountry);
+                  const gpsLng = pos.coords.longitude;
+
+                  let preciseLabel = currentCityLabel;
+                  const needsGeocoding = isUserInitiated || !preciseLabel || preciseLabel === 'Location' || preciseLabel === 'الموقع' || preciseLabel === 'Detected Location' || preciseLabel === 'الموقع المكتشف';
+
+                  if (needsGeocoding) {
+                    const inSaudi = (gpsLat >= 16.0 && gpsLat <= 32.5 && gpsLng >= 34.5 && gpsLng <= 55.7);
+                    const fallbackCity = IS_ARABIC ? 'الموقع المكتشف' : 'Detected Location';
+                    const fallbackCountry = inSaudi ? (IS_ARABIC ? 'المملكة العربية السعودية' : 'Saudi Arabia') : '';
+                    preciseLabel = await reverseGeocodeWithOSM(gpsLat, gpsLng, fallbackCity, fallbackCountry);
+                  }
                 
                 // Abort again if the user clicked during reverse geocoding network request
                 if (!isUserInitiated && currentLocationIntent === 'manual') return resolve(false);

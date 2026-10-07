@@ -339,7 +339,10 @@
             if (ipRes.ok) {
               const ipData = await ipRes.json();
               if (ipData && ipData.latitude && ipData.longitude) {
-                const ipLat = parseFloat(ipData.latitude);
+                // Protect manual city selection from delayed IP responses
+                  if (typeof currentLocationIntent !== 'undefined' && currentLocationIntent === 'manual') return;
+
+                  const ipLat = parseFloat(ipData.latitude);
                 const ipLng = parseFloat(ipData.longitude);
                 const ipCity = ipData.city || (IS_ARABIC ? 'المنطقة المحلية' : 'Local Area');
                 const ipCountry = ipData.country_name || (IS_ARABIC ? 'المملكة العربية السعودية' : 'Saudi Arabia');
