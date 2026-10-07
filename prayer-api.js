@@ -18,8 +18,17 @@
           if (data && data.address) {
             const addr = data.address;
             let area = addr.village || addr.hamlet || addr.suburb || addr.neighbourhood || addr.quarter || addr.residential || addr.road || '';
-            const city = addr.city || addr.town || addr.state_district || addr.county || addr.district || addr.municipality || addr.state || fallbackCity || '';
-            const country = addr.country || fallbackCountry || '';
+              let city = addr.city || addr.town || addr.state_district || addr.county || addr.district || addr.municipality || addr.state || fallbackCity || '';
+              let country = addr.country || fallbackCountry || '';
+              if (!IS_ARABIC) {
+                if (/[\u0600-\u06FF]/.test(area)) area = '';
+                if (/[\u0600-\u06FF]/.test(city)) city = fallbackCity || '';
+                if (/[\u0600-\u06FF]/.test(country)) country = fallbackCountry || '';
+              } else {
+                if (/[A-Za-z]/.test(area)) area = '';
+                if (/[A-Za-z]/.test(city)) city = fallbackCity || '';
+                if (/[A-Za-z]/.test(country)) country = fallbackCountry || '';
+              }
 
             if (area && city && area.toLowerCase() !== city.toLowerCase()) {
               return area + sep + city;
@@ -57,7 +66,16 @@
             }
           }
           if (!city) city = bData.principalSubdivision || fallbackCity || '';
-          const country = bData.countryName || fallbackCountry || '';
+            let country = bData.countryName || fallbackCountry || '';
+              if (!IS_ARABIC) {
+                if (/[\u0600-\u06FF]/.test(area)) area = '';
+                if (/[\u0600-\u06FF]/.test(city)) city = fallbackCity || '';
+                if (/[\u0600-\u06FF]/.test(country)) country = fallbackCountry || '';
+              } else {
+                if (/[A-Za-z]/.test(area)) area = '';
+                if (/[A-Za-z]/.test(city)) city = fallbackCity || '';
+                if (/[A-Za-z]/.test(country)) country = fallbackCountry || '';
+              }
 
           if (area && city && area.toLowerCase() !== city.toLowerCase()) {
             return area + sep + city;

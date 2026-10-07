@@ -1625,10 +1625,10 @@
             if (raw) {
               var d = JSON.parse(raw);
               if (d) {
-                if (d.label) {
-                  var lbl = document.getElementById('prayerLocLabel');
-                  if (lbl) lbl.textContent = d.label;
-                }
+                if (d.label && d.lang === 'ar') {
+                    var lbl = document.getElementById('prayerLocLabel');
+                    if (lbl) lbl.textContent = d.label;
+                  }
                 if (d.weather && typeof d.weather.temp === 'number') {
                   var tVal = document.getElementById('prayerTempVal');
                   var tIcon = document.getElementById('prayerWeatherIcon');
@@ -3139,8 +3139,9 @@
               } else if (err.code === 2) {
                 reason = IS_ARABIC ? 'نظام GPS غير متوفر (استخدام الموقع التلقائي)' : 'GPS Unavailable (Using Fallback)';
               } else if (err.code === 3) {
-                reason = IS_ARABIC ? 'انتهت مهلة GPS (استخدام الموقع التلقائي)' : 'GPS Timeout (Using Fallback)';
-              }
+                  reason = IS_ARABIC ? 'انتهت مهلة GPS (باستخدام الموقع البديل)' : 'GPS Timeout (Using Fallback)';
+                  showFailureNotice(IS_ARABIC ? 'إشارة GPS ضعيفة. يرجى النقر مرة أخرى.' : 'GPS signal weak. Please tap again.');
+                }
               updateQiblaAccuracyTag(reason);
               const locLabelEl = document.getElementById('prayerLocLabel');
               if (locLabelEl && currentCityLabel) {
@@ -3153,7 +3154,7 @@
             }
             resolve(false);
           },
-          { enableHighAccuracy: true, timeout: 9000, maximumAge: 0 }
+          { enableHighAccuracy: true, timeout: (isUserInitiated ? 15000 : 9000), maximumAge: 0 }
         );
       });
     }
