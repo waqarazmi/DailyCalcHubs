@@ -4,13 +4,13 @@
 
     // High-Precision Universal Reverse Geocoder (Cleaned: no hardcoded street overrides, resilient abort timeouts, global support)
     async function reverseGeocodeWithOSM(lat, lng, fallbackCity, fallbackCountry) {
-      const sep = IS_ARABIC ? '، ' : ', ';
+      const sep = IS_ARABIC ? 'ØŒ ' : ', ';
 
       // 1. Try OSM Nominatim with AbortController (3.5s timeout)
       try {
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), 3500);
-        const osmUrl = 'https://nominatim.openstreetmap.org/reverse?format=json&lat=' + encodeURIComponent(lat) + '&lon=' + encodeURIComponent(lng) + '&zoom=18&addressdetails=1&accept-language=' + (IS_ARABIC ? 'ar' : 'en');
+        const osmUrl = 'https://nominatim.openstreetmap.org/reverse?format=json&lat=' + encodeURIComponent(lat) + '&lon=' + encodeURIComponent(lng) + '&zoom=18&addressdetails=1&accept-language=' + (isAr ? 'ar' : 'en');
         const res = await fetch(osmUrl, { headers: { 'Accept': 'application/json' }, signal: controller.signal });
         clearTimeout(timeoutId);
         if (res.ok) {
@@ -20,7 +20,7 @@
             let area = addr.village || addr.hamlet || addr.suburb || addr.neighbourhood || addr.quarter || addr.residential || addr.road || '';
               let city = addr.city || addr.town || addr.state_district || addr.county || addr.district || addr.municipality || addr.state || fallbackCity || '';
               let country = addr.country || fallbackCountry || '';
-              if (!IS_ARABIC) {
+              if (!isAr) {
                 if (/[\u0600-\u06FF]/.test(area)) area = '';
                 if (/[\u0600-\u06FF]/.test(city)) city = fallbackCity || '';
                 if (/[\u0600-\u06FF]/.test(country)) country = fallbackCountry || '';
@@ -49,7 +49,7 @@
       try {
         const controller2 = new AbortController();
         const timeoutId2 = setTimeout(() => controller2.abort(), 3500);
-        const bdcUrl = 'https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=' + encodeURIComponent(lat) + '&longitude=' + encodeURIComponent(lng) + '&localityLanguage=' + (IS_ARABIC ? 'ar' : 'en');
+        const bdcUrl = 'https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=' + encodeURIComponent(lat) + '&longitude=' + encodeURIComponent(lng) + '&localityLanguage=' + (isAr ? 'ar' : 'en');
         const bRes = await fetch(bdcUrl, { signal: controller2.signal });
         clearTimeout(timeoutId2);
         if (bRes.ok) {
@@ -67,7 +67,7 @@
           }
           if (!city) city = bData.principalSubdivision || fallbackCity || '';
             let country = bData.countryName || fallbackCountry || '';
-              if (!IS_ARABIC) {
+              if (!isAr) {
                 if (/[\u0600-\u06FF]/.test(area)) area = '';
                 if (/[\u0600-\u06FF]/.test(city)) city = fallbackCity || '';
                 if (/[\u0600-\u06FF]/.test(country)) country = fallbackCountry || '';
@@ -93,8 +93,8 @@
 
       // 3. Fallback if both reverse-geocoders fail
       const inSaudi = (lat >= 16.0 && lat <= 32.5 && lng >= 34.5 && lng <= 55.7);
-      const defCity = fallbackCity || (IS_ARABIC ? 'موقع محدد' : 'Detected Location');
-      const defCountry = fallbackCountry || (inSaudi ? (IS_ARABIC ? 'المملكة العربية السعودية' : 'Saudi Arabia') : '');
+      const defCity = fallbackCity || (IS_ARABIC ? 'Ù…ÙˆÙ‚Ø¹ Ù…Ø­Ø¯Ø¯' : 'Detected Location');
+      const defCountry = fallbackCountry || (inSaudi ? (IS_ARABIC ? 'Ø§Ù„Ù…Ù…Ù„ÙƒØ© Ø§Ù„Ø¹Ø±Ø¨ÙŠØ© Ø§Ù„Ø³Ø¹ÙˆØ¯ÙŠØ©' : 'Saudi Arabia') : '');
       return defCountry ? (defCity + sep + defCountry) : defCity;
     }
 
@@ -165,7 +165,7 @@
           if (pData.data.date && pData.data.date.hijri) {
             const h = pData.data.date.hijri;
             hijriStr = h.day + ' ' + h.month.en + ' ' + h.year + ' AH';
-            hijriArStr = '(' + h.day + ' ' + h.month.ar + ' ' + h.year + ' هـ)';
+            hijriArStr = '(' + h.day + ' ' + h.month.ar + ' ' + h.year + ' Ù‡Ù€)';
           } else {
             hijriStr = getDynamicHijriFallback(false, resolvedTz);
             hijriArStr = '(' + getDynamicHijriFallback(true, resolvedTz) + ')';
@@ -203,7 +203,7 @@
           applyPrayerTimesToDOM(validatedSchedule);
 
           const srcLabel = IS_ARABIC ?
-            (stagedSource === 'manual' ? ('اختيار المدينة (' + stagedLabel.split('،')[0].split(',')[0] + ')') : (stagedSource === 'gps' ? 'دقة نظام GPS' : 'موقع تقريبي (IP)')) :
+            (stagedSource === 'manual' ? ('Ø§Ø®ØªÙŠØ§Ø± Ø§Ù„Ù…Ø¯ÙŠÙ†Ø© (' + stagedLabel.split('ØŒ')[0].split(',')[0] + ')') : (stagedSource === 'gps' ? 'Ø¯Ù‚Ø© Ù†Ø¸Ø§Ù… GPS' : 'Ù…ÙˆÙ‚Ø¹ ØªÙ‚Ø±ÙŠØ¨ÙŠ (IP)')) :
             (stagedSource === 'manual' ? ('City Selection (' + stagedLabel.split(',')[0] + ')') : (stagedSource === 'gps' ? 'GPS Precision' : 'Approximate Location (IP)'));
 
           updateQiblaDisplay(currentLatitude, currentLongitude, srcLabel);
@@ -213,10 +213,15 @@
           highlightCityButton(matchingKey);
 
           // Persist to storage
+          let existingStored = getStoredLocation() || {};
+          let isSameLoc = existingStored.lat && Math.abs(existingStored.lat - currentLatitude) < 0.05 && Math.abs(existingStored.lng - currentLongitude) < 0.05;
+
           saveLocationToStorage({
             lat: currentLatitude,
             lng: currentLongitude,
             label: currentCityLabel,
+            labelEn: labelEn || (!IS_ARABIC ? currentCityLabel : (isSameLoc ? existingStored.labelEn : null)),
+            labelAr: labelAr || (IS_ARABIC ? currentCityLabel : (isSameLoc ? existingStored.labelAr : null)),
             timezone: currentTimezone,
             source: currentLocationSource,
             sourceTag: srcLabel,
@@ -248,20 +253,20 @@
 
           if (!isSilent) {
             const failMsg = IS_ARABIC ?
-              'تعذر تحميل مواقيت الصلاة للموقع المطلوب. تم الاحتفاظ بالموقع الحالي.' :
+              'ØªØ¹Ø°Ø± ØªØ­Ù…ÙŠÙ„ Ù…ÙˆØ§Ù‚ÙŠØª Ø§Ù„ØµÙ„Ø§Ø© Ù„Ù„Ù…ÙˆÙ‚Ø¹ Ø§Ù„Ù…Ø·Ù„ÙˆØ¨. ØªÙ… Ø§Ù„Ø§Ø­ØªÙØ§Ø¸ Ø¨Ø§Ù„Ù…ÙˆÙ‚Ø¹ Ø§Ù„Ø­Ø§Ù„ÙŠ.' :
               'Unable to load prayer times for the requested location. Retaining current location.';
             showFailureNotice(failMsg);
-            updateQiblaAccuracyTag(IS_ARABIC ? 'خطأ في الاتصال' : 'Connection Error');
+            updateQiblaAccuracyTag(IS_ARABIC ? 'Ø®Ø·Ø£ ÙÙŠ Ø§Ù„Ø§ØªØµØ§Ù„' : 'Connection Error');
           }
           return false;
         } else {
           // NO valid prayer schedule was ever committed (e.g. fresh load or initial failure):
           renderUnavailablePrayerState();
           const unavailableMsg = IS_ARABIC ?
-            'تعذر تحميل مواقيت الصلاة. يرجى التحقق من الاتصال.' :
+            'ØªØ¹Ø°Ø± ØªØ­Ù…ÙŠÙ„ Ù…ÙˆØ§Ù‚ÙŠØª Ø§Ù„ØµÙ„Ø§Ø©. ÙŠØ±Ø¬Ù‰ Ø§Ù„ØªØ­Ù‚Ù‚ Ù…Ù† Ø§Ù„Ø§ØªØµØ§Ù„.' :
             'Unable to load prayer times. Please check your connection.';
           showFailureNotice(unavailableMsg);
-          updateQiblaAccuracyTag(IS_ARABIC ? 'غير متاح' : 'Unavailable');
+          updateQiblaAccuracyTag(IS_ARABIC ? 'ØºÙŠØ± Ù…ØªØ§Ø­' : 'Unavailable');
           return false;
         }
       }
@@ -286,10 +291,10 @@
       const now = Date.now();
       if (weatherCache[cacheKey] && (now - weatherCache[cacheKey].timestamp < 600000)) {
         const cached = weatherCache[cacheKey];
-        tempEl.textContent = cached.temp + '°C';
+        tempEl.textContent = cached.temp + 'Â°C';
         iconEl.className = cached.iconClass;
-        badgeEl.setAttribute('aria-label', (IS_ARABIC ? 'درجة الحرارة الحالية: ' : 'Current temperature: ') + cached.temp + '°C');
-        badgeEl.title = (IS_ARABIC ? 'درجة الحرارة الحالية: ' : 'Current temperature: ') + cached.temp + '°C';
+        badgeEl.setAttribute('aria-label', (IS_ARABIC ? 'Ø¯Ø±Ø¬Ø© Ø§Ù„Ø­Ø±Ø§Ø±Ø© Ø§Ù„Ø­Ø§Ù„ÙŠØ©: ' : 'Current temperature: ') + cached.temp + 'Â°C');
+        badgeEl.title = (IS_ARABIC ? 'Ø¯Ø±Ø¬Ø© Ø§Ù„Ø­Ø±Ø§Ø±Ø© Ø§Ù„Ø­Ø§Ù„ÙŠØ©: ' : 'Current temperature: ') + cached.temp + 'Â°C';
         badgeEl.style.opacity = '1';
         lastWeatherFetchTimestamp = cached.timestamp;
         return;
@@ -323,11 +328,11 @@
             timestamp: now
           };
 
-          if (tempEl) tempEl.textContent = tempC + '°C';
+          if (tempEl) tempEl.textContent = tempC + 'Â°C';
           if (iconEl) iconEl.className = iconClass;
           if (badgeEl) {
-            badgeEl.setAttribute('aria-label', (IS_ARABIC ? 'درجة الحرارة الحالية: ' : 'Current temperature: ') + tempC + '°C');
-            badgeEl.title = (IS_ARABIC ? 'درجة الحرارة الحالية: ' : 'Current temperature: ') + tempC + '°C';
+            badgeEl.setAttribute('aria-label', (IS_ARABIC ? 'Ø¯Ø±Ø¬Ø© Ø§Ù„Ø­Ø±Ø§Ø±Ø© Ø§Ù„Ø­Ø§Ù„ÙŠØ©: ' : 'Current temperature: ') + tempC + 'Â°C');
+            badgeEl.title = (IS_ARABIC ? 'Ø¯Ø±Ø¬Ø© Ø§Ù„Ø­Ø±Ø§Ø±Ø© Ø§Ù„Ø­Ø§Ù„ÙŠØ©: ' : 'Current temperature: ') + tempC + 'Â°C';
           }
           lastWeatherFetchTimestamp = now;
           saveLocationToStorage({
@@ -362,9 +367,9 @@
 
                   const ipLat = parseFloat(ipData.latitude);
                 const ipLng = parseFloat(ipData.longitude);
-                const ipCity = ipData.city || (IS_ARABIC ? 'المنطقة المحلية' : 'Local Area');
-                const ipCountry = ipData.country_name || (IS_ARABIC ? 'المملكة العربية السعودية' : 'Saudi Arabia');
-                const ipLabel = IS_ARABIC ? `${ipCity}، ${ipCountry}` : `${ipCity}, ${ipCountry}`;
+                const ipCity = ipData.city || (IS_ARABIC ? 'Ø§Ù„Ù…Ù†Ø·Ù‚Ø© Ø§Ù„Ù…Ø­Ù„ÙŠØ©' : 'Local Area');
+                const ipCountry = ipData.country_name || (IS_ARABIC ? 'Ø§Ù„Ù…Ù…Ù„ÙƒØ© Ø§Ù„Ø¹Ø±Ø¨ÙŠØ© Ø§Ù„Ø³Ø¹ÙˆØ¯ÙŠØ©' : 'Saudi Arabia');
+                const ipLabel = IS_ARABIC ? `${ipCity}ØŒ ${ipCountry}` : `${ipCity}, ${ipCountry}`;
                 const ipTz = ipData.timezone || 'Asia/Riyadh';
                 ipDetected = true;
                 await fetchPrayerForCoords(ipLat, ipLng, ipLabel, 'ip', ipTz, null);
@@ -386,7 +391,7 @@
         });
         return f.format(new Date());
       } catch (e) {
-        return isAr ? 'مواقيت أم القرى' : 'Umm al-Qura Schedule';
+        return isAr ? 'Ù…ÙˆØ§Ù‚ÙŠØª Ø£Ù… Ø§Ù„Ù‚Ø±Ù‰' : 'Umm al-Qura Schedule';
       }
     }
 

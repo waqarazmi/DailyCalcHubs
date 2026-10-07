@@ -3108,15 +3108,21 @@
 
                   if (needsGeocoding) {
                     const inSaudi = (gpsLat >= 16.0 && gpsLat <= 32.5 && gpsLng >= 34.5 && gpsLng <= 55.7);
-                    const fallbackCity = IS_ARABIC ? 'الموقع المكتشف' : 'Detected Location';
-                    const fallbackCountry = inSaudi ? (IS_ARABIC ? 'المملكة العربية السعودية' : 'Saudi Arabia') : '';
-                    preciseLabel = await reverseGeocodeWithOSM(gpsLat, gpsLng, fallbackCity, fallbackCountry);
+                    const fallbackCityEn = 'Detected Location';
+                    const fallbackCountryEn = inSaudi ? 'Saudi Arabia' : '';
+                    const fallbackCityAr = 'الموقع الدقيق';
+                    const fallbackCountryAr = inSaudi ? 'المملكة العربية السعودية' : '';
+                    const [preciseLabelEn, preciseLabelAr] = await Promise.all([
+                      reverseGeocodeWithOSM(gpsLat, gpsLng, fallbackCityEn, fallbackCountryEn, 'en'),
+                      reverseGeocodeWithOSM(gpsLat, gpsLng, fallbackCityAr, fallbackCountryAr, 'ar')
+                    ]);
+                    preciseLabel = IS_ARABIC ? preciseLabelAr : preciseLabelEn;
                   }
-                
-                // Abort again if the user clicked during reverse geocoding network request
+                  
+                  // Abort again if the user clicked during reverse geocoding network request
                 if (!isUserInitiated && currentLocationIntent !== 'auto') return resolve(false);
 
-                const success = await fetchPrayerForCoords(gpsLat, gpsLng, preciseLabel, 'gps', null, null);
+                const success = await fetchPrayerForCoords(gpsLat, gpsLng, preciseLabel, 'gps', null, null, false, preciseLabelEn, preciseLabelAr);
                 resolve(success);
               } else {
                 resolve(false);
@@ -3183,20 +3189,34 @@
         initLng = stored.lng;
         initTz = stored.timezone || 'Asia/Riyadh';
         initSource = stored.source || 'manual';
+          if (initSource === 'manual') currentLocationIntent = 'manual';
+          if (initSource === 'gps') currentLocationIntent = 'gps';
 
         matchingKey = findMatchingCityKey(initLat, initLng);
         // Locality Protection: stored.label is authoritative for locality display
         const currentLang = IS_ARABIC ? 'ar' : 'en';
-        if (stored.lang !== currentLang) {
-          stored.sourceTag = null;
-        }
+        let resolvedLabel = null;
+          let isTranslationMissing = false;
 
-        // Locality Protection: stored.label is authoritative for locality display
-        if (stored.label && stored.lang === currentLang) {
-          initLabel = stored.label;
-        } else if (matchingKey && QUICK_CITIES[matchingKey]) {
+          if (stored.lang !== currentLang) {
+            stored.sourceTag = null;
+            if (IS_ARABIC && stored.labelAr) {
+               resolvedLabel = stored.labelAr;
+            } else if (!IS_ARABIC && stored.labelEn) {
+               resolvedLabel = stored.labelEn;
+            } else {
+               isTranslationMissing = true;
+            }
+          } else {
+            resolvedLabel = stored.label;
+          }
+
+          if (resolvedLabel) {
+            initLabel = resolvedLabel;
+          } else if (matchingKey && QUICK_CITIES[matchingKey]) {
           initLabel = IS_ARABIC ? QUICK_CITIES[matchingKey].ar : QUICK_CITIES[matchingKey].en;
-          initTz = QUICK_CITIES[matchingKey].tz || initTz;
+            initTz = QUICK_CITIES[matchingKey].tz || initTz;
+            isTranslationMissing = false;
         } else {
           const fallbackCity = IS_ARABIC ? 'الموقع' : 'Location';
           initLabel = fallbackCity;
@@ -3216,9 +3236,11 @@
 
       // Initial instantaneous DOM render: priority to cached schedule
       if (stored && stored.schedule) {
-        hasCommittedPrayerSchedule = true;
-        prayerSchedule = stored.schedule;
-        applyPrayerTimesToDOM(stored.schedule);
+          hasCommittedPrayerSchedule = true;
+          prayerSchedule = stored.schedule;
+          const safeSchedule = Object.assign({}, stored.schedule);
+          safeSchedule.label = currentCityLabel;
+          applyPrayerTimesToDOM(safeSchedule);
       } else if (stored) {
         const fallbackEntry = defaultPrayerMap[matchingKey] || defaultPrayerMap.riyadh;
         applyPrayerTimesToDOM({
@@ -3261,15 +3283,15 @@
       // Silent non-blocking background revalidation when valid cached data exists
       if (stored && stored.schedule) {
         (async function() {
-          let freshGpsAcquired = false;
-          if (navigator.geolocation) {
-            freshGpsAcquired = await syncCurrentDeviceLocation(false);
-          }
-          if (typeof currentLocationIntent !== 'undefined' && currentLocationIntent !== 'auto') return;
-            if (!freshGpsAcquired) {
-              await fetchPrayerForCoords(initLat, initLng, currentCityLabel, initSource, currentTimezone, matchingKey, true);
+            let freshGpsAcquired = false;
+            if (navigator.geolocation && (currentLocationIntent === 'auto' || isTranslationMissing)) {
+              freshGpsAcquired = await syncCurrentDeviceLocation(false);
             }
-        })();
+            if (typeof currentLocationIntent !== 'undefined' && currentLocationIntent !== 'auto' && !isTranslationMissing) return;
+            if (!freshGpsAcquired && (!stored.schedule || isTranslationMissing)) {
+                await fetchPrayerForCoords(initLat, initLng, currentCityLabel, initSource, currentTimezone, matchingKey, true);
+            }
+          })();
         return;
       }
 
