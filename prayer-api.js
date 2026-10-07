@@ -107,46 +107,51 @@
         let pData = null;
         let usedDateStr = null;
 
-        // Stage 1: If timezone is known, construct date in that timezone;
-        // if timezone is not known (e.g. raw GPS), query coordinate endpoint so Aladhan resolves timezone.
-        if (resolvedTz) {
-          const locDateParts = new Intl.DateTimeFormat('en-GB', { timeZone: resolvedTz }).format(new Date()).split('/');
-          usedDateStr = locDateParts[0] + '-' + locDateParts[1] + '-' + locDateParts[2];
-          const aladhanUrl = 'https://api.aladhan.com/v1/timings/' + usedDateStr + '?latitude=' + stagedLat + '&longitude=' + stagedLng + '&method=4';
-          const pRes = await fetch(aladhanUrl);
-          if (reqId !== activePrayerRequestId) return; // Drop stale response
-          if (pRes.ok) {
-            pData = await pRes.json();
-          }
-        } else {
-          // GPS / unknown timezone: query coordinate endpoint without date so API resolves timezone
-          const aladhanUrl = 'https://api.aladhan.com/v1/timings?latitude=' + stagedLat + '&longitude=' + stagedLng + '&method=4';
-          const pRes = await fetch(aladhanUrl);
-          if (reqId !== activePrayerRequestId) return; // Drop stale response
-          if (pRes.ok) {
-            const tempPData = await pRes.json();
-            if (tempPData && tempPData.data && tempPData.data.meta && tempPData.data.meta.timezone) {
-              resolvedTz = tempPData.data.meta.timezone;
-              // Two-stage validation: verify that returned date matches local calendar date in resolved timezone
-              const expectedDate = new Intl.DateTimeFormat('en-GB', { timeZone: resolvedTz }).format(new Date()).split('/').join('-');
-              const apiDate = tempPData.data.date?.gregorian?.date;
-              if (apiDate && apiDate === expectedDate) {
-                pData = tempPData;
-                usedDateStr = expectedDate;
-              } else {
-                usedDateStr = expectedDate;
-                const reUrl = 'https://api.aladhan.com/v1/timings/' + expectedDate + '?latitude=' + stagedLat + '&longitude=' + stagedLng + '&method=4';
-                const reRes = await fetch(reUrl);
-                if (reqId !== activePrayerRequestId) return;
-                if (reRes.ok) {
-                  pData = await reRes.json();
-                }
+        // Stage 1: Construct initial bootstrap date using either the known timezone or the browser's native timezone.
+        // The native timezone is strictly temporary and is never used as the authoritative GPS timezone.
+        const bootTz = resolvedTz || Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC';
+        const bootDateParts = new Intl.DateTimeFormat('en-GB', { timeZone: bootTz }).format(new Date()).split('/');
+        const bootDateStr = bootDateParts[0] + '-' + bootDateParts[1] + '-' + bootDateParts[2];
+        
+        // Query the safe date-specific endpoint to bypass failing dateless endpoint
+        const aladhanUrl = 'https://api.aladhan.com/v1/timings/' + bootDateStr + '?latitude=' + stagedLat + '&longitude=' + stagedLng + '&method=4';
+        const pRes = await fetch(aladhanUrl);
+        if (reqId !== activePrayerRequestId) return; // Drop stale response
+        
+        if (pRes.ok) {
+          const tempPData = await pRes.json();
+          if (tempPData && tempPData.data && tempPData.data.meta && tempPData.data.meta.timezone) {
+            // Extract the exact mathematically correct IANA timezone from Aladhan's GPS response
+            resolvedTz = tempPData.data.meta.timezone;
+
+            // Stage 2: Calculate the actual date for the location using the newly resolved true timezone
+            const expectedDateParts = new Intl.DateTimeFormat('en-GB', { timeZone: resolvedTz }).format(new Date()).split('/');
+            const expectedDateStr = expectedDateParts[0] + '-' + expectedDateParts[1] + '-' + expectedDateParts[2];
+            const apiDate = tempPData.data.date?.gregorian?.date;
+            
+            // If the calculated location calendar date perfectly matches the bootstrap response, it is safe to use.
+            if ((apiDate && apiDate === expectedDateStr) || bootDateStr === expectedDateStr) {
+              pData = tempPData;
+              usedDateStr = expectedDateStr;
+            } else {
+              // Location calendar date differs from bootstrap date (e.g., crossing midnight). Re-fetch with correct actual date.
+              usedDateStr = expectedDateStr;
+              const reUrl = 'https://api.aladhan.com/v1/timings/' + expectedDateStr + '?latitude=' + stagedLat + '&longitude=' + stagedLng + '&method=4';
+              const reRes = await fetch(reUrl);
+              if (reqId !== activePrayerRequestId) return;
+              if (reRes.ok) {
+                pData = await reRes.json();
               }
             }
           }
         }
 
         if (reqId !== activePrayerRequestId) return; // Drop stale response
+
+        // Validate prayer response safely. If structurally invalid, explicitly throw to trigger standard unavailable state.
+        if (!pData || !pData.data || !pData.data.timings || !pData.data.timings.Fajr || !pData.data.timings.Dhuhr) {
+          throw new Error('API Data Invalid');
+        }
 
         // Validate prayer response
         if (pData && pData.data && pData.data.timings && pData.data.timings.Fajr && pData.data.timings.Dhuhr) {
