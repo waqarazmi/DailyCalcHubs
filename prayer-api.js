@@ -5,11 +5,10 @@
     let nominatimQueue = Promise.resolve();
 
     // High-Precision Universal Reverse Geocoder (Cleaned: no hardcoded street overrides, resilient abort timeouts, global support)
-    async function reverseGeocodeWithOSM(lat, lng, fallbackCity, fallbackCountry, langOverride = null) {
+    async function reverseGeocodeWithOSM(lat, lng, fallbackCity, fallbackCountry, langOverride = null, restrictedKeys = null) {
       const isAr = langOverride ? (langOverride === 'ar') : IS_ARABIC;
       const sep = isAr ? '، ' : ', ';
 
-      // 1. Primary: OSM Nominatim with AbortController (3s timeout)
       try {
         const osmUrl = 'https://nominatim.openstreetmap.org/reverse?format=json&lat=' + encodeURIComponent(lat) + '&lon=' + encodeURIComponent(lng) + '&accept-language=' + (isAr ? 'ar' : 'en');
         const res = await new Promise((resolve, reject) => {
@@ -31,22 +30,50 @@
           const data = await res.json();
           if (data && data.address) {
             const addr = data.address;
-            let area = addr.neighbourhood || addr.suburb || addr.city_district || addr.district || addr.borough || addr.village || addr.hamlet || addr.quarter || addr.residential || '';
-            let city = addr.city || addr.town || addr.municipality || addr.county || addr.state_district || addr.state || '';
+            let area = '';
+            let city = '';
+            let areaKey = null;
+            let cityKey = null;
+
+            if (restrictedKeys) {
+              if (restrictedKeys.area) area = addr[restrictedKeys.area] || '';
+              if (restrictedKeys.city) city = addr[restrictedKeys.city] || '';
+            }
+
+            if (!restrictedKeys || (!area && !city)) {
+              restrictedKeys = null;
+              const areaHierarchy = ['neighbourhood', 'suburb', 'city_district', 'district', 'borough', 'village', 'hamlet', 'quarter', 'residential'];
+              for (let i = 0; i < areaHierarchy.length; i++) {
+                if (addr[areaHierarchy[i]]) {
+                  area = addr[areaHierarchy[i]];
+                  areaKey = areaHierarchy[i];
+                  break;
+                }
+              }
+              const cityHierarchy = ['city', 'town', 'municipality', 'county', 'state_district', 'state'];
+              for (let i = 0; i < cityHierarchy.length; i++) {
+                if (addr[cityHierarchy[i]]) {
+                  city = addr[cityHierarchy[i]];
+                  cityKey = cityHierarchy[i];
+                  break;
+                }
+              }
+            }
+
+            const usedKeys = restrictedKeys || { area: areaKey, city: cityKey };
 
             if (area && city && area.toLowerCase() !== city.toLowerCase()) {
-              return area + sep + city;
+              return { label: area + sep + city, keys: usedKeys };
             } else if (area) {
-              return area;
+              return { label: area, keys: usedKeys };
             } else if (city) {
-              return city;
+              return { label: city, keys: usedKeys };
             }
           }
         }
       } catch (e) {
-        // Fallback silently to BDC
       }
-
+      
       // 2. Fallback: BigDataCloud Reverse Geocoding with AbortController (3.5s timeout)
       try {
         const controller2 = new AbortController();
@@ -69,13 +96,13 @@
           }
           if (!city) city = bData.principalSubdivision || '';
 
-          if (area && city && area.toLowerCase() !== city.toLowerCase()) {
-              return area + sep + city;
-            } else if (area) {
-              return area;
-            } else if (city) {
-              return city;
-            }
+                      if (area && city && area.toLowerCase() !== city.toLowerCase()) {
+                return { label: area + sep + city, keys: null };
+              } else if (area) {
+                return { label: area, keys: null };
+              } else if (city) {
+                return { label: city, keys: null };
+              }
         }
       } catch (e2) {
         // Fallback to coordinates / generic label
@@ -85,10 +112,10 @@
       const inSaudi = (lat >= 16.0 && lat <= 32.5 && lng >= 34.5 && lng <= 55.7);
       const defCity = fallbackCity || (IS_ARABIC ? 'موقع محدد' : 'Detected Location');
       const defCountry = fallbackCountry || (inSaudi ? (IS_ARABIC ? 'المملكة العربية السعودية' : 'Saudi Arabia') : '');
-      return defCountry ? (defCity + sep + defCountry) : defCity;
+      return { label: defCountry ? (defCity + sep + defCountry) : defCity, keys: null };
     }
 
-    async function fetchPrayerForCoords(stagedLat, stagedLng, stagedLabel, stagedSource, stagedTz, stagedCityKey, isSilent = false, labelEn = null, labelAr = null) {
+    async function fetchPrayerForCoords(stagedLat, stagedLng, stagedLabel, stagedSource, stagedTz, stagedCityKey, isSilent = false, labelEn = null, labelAr = null, labelKeys = null) {
       const reqId = ++activePrayerRequestId;
 
       try {

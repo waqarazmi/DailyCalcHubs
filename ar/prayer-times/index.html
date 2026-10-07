@@ -1656,7 +1656,7 @@
           <div>
             <div class="date-meta-sub">التاريخ الميلادي والوقت الحالي</div>
             <div class="date-meta-val" id="liveGregorianDate">--</div>
-            <div id="liveClockVal" class="clock-live-time" dir="ltr">--:--:-- --</div>
+            <div id="liveClockVal" class="clock-live-time" dir="ltr"><span style="visibility:hidden">--:--:-- --</span></div>
           </div>
         </div>
 
@@ -1668,7 +1668,7 @@
             <div class="date-meta-sub">تقويم أم القرى الهجري الرسمي</div>
             <div class="date-meta-val">
               <span id="liveHijriArabic" class="hijri-arabic-val">--</span>
-              <span id="liveHijriDate" style="font-size: 13px; color: var(--text-muted); margin-right: 6px;" dir="ltr">--</span>
+              <span id="liveHijriDate" style="font-size: 13px; color: var(--text-muted); margin-right: 6px;" dir="ltr"><span style="visibility:hidden">--</span></span>
             </div>
             <div style="font-size: 11.5px; color: var(--emerald-accent); font-weight: 600; margin-top: 2px;">المعيار الفلكي الرسمي المعتمد في المملكة</div>
           </div>
@@ -1679,7 +1679,7 @@
       <div class="next-prayer-hero countdown-card">
         <div>
           <div class="next-prayer-tag"><i class="fas fa-hourglass-half"></i> متبقي حتى الصلاة القادمة</div>
-          <div class="next-prayer-name" id="nextPrayerName">--</div>
+          <div class="next-prayer-name" id="nextPrayerName"><span style="visibility:hidden">--</span></div>
           <div class="next-prayer-azan-time">
             وقت الأذان: <strong id="nextPrayerTime" dir="ltr">--:-- --</strong>
           </div>
@@ -1687,17 +1687,17 @@
 
         <div class="countdown-timer-wrap timer-digits" dir="ltr">
           <div class="timer-block digit-box">
-            <div class="timer-digit digit-val" id="timerHours">00</div>
+            <div class="timer-digit digit-val" id="timerHours"><span style="visibility:hidden">00</span></div>
             <div class="timer-unit digit-lbl">ساعة</div>
           </div>
           <div class="timer-colon digit-sep">:</div>
           <div class="timer-block digit-box">
-            <div class="timer-digit digit-val" id="timerMinutes">00</div>
+            <div class="timer-digit digit-val" id="timerMinutes"><span style="visibility:hidden">00</span></div>
             <div class="timer-unit digit-lbl">دقيقة</div>
           </div>
           <div class="timer-colon digit-sep">:</div>
           <div class="timer-block digit-box">
-            <div class="timer-digit digit-val" id="timerSeconds">00</div>
+            <div class="timer-digit digit-val" id="timerSeconds"><span style="visibility:hidden">00</span></div>
             <div class="timer-unit digit-lbl">ثانية</div>
           </div>
         </div>
@@ -1829,7 +1829,7 @@
         <div class="prayer-card-item" id="pCardFajr">
           <div class="slot-icon"><i class="fas fa-cloud-sun"></i></div>
           <div class="prayer-name">الفجر</div>
-          <div class="prayer-time-val" id="timeFajr" dir="ltr">--:-- --</div>
+          <div class="prayer-time-val" id="timeFajr" dir="ltr"><span style="visibility:hidden">--:-- --</span></div>
           <div class="slot-subtext">الفجر الصادق</div>
         </div>
 
@@ -1837,7 +1837,7 @@
         <div class="prayer-card-item" id="pCardSunrise">
           <div class="slot-icon"><i class="fas fa-sun" style="color: #f59e0b;"></i></div>
           <div class="prayer-name">الشروق</div>
-          <div class="prayer-time-val" id="timeSunrise" dir="ltr">--:-- --</div>
+          <div class="prayer-time-val" id="timeSunrise" dir="ltr"><span style="visibility:hidden">--:-- --</span></div>
           <div class="slot-subtext">شروق الشمس (خروج الفجر)</div>
         </div>
 
@@ -1845,7 +1845,7 @@
         <div class="prayer-card-item" id="pCardDhuhr">
           <div class="slot-icon"><i class="fas fa-sun" style="color: #0284c7;"></i></div>
           <div class="prayer-name">الظهر</div>
-          <div class="prayer-time-val" id="timeDhuhr" dir="ltr">--:-- --</div>
+          <div class="prayer-time-val" id="timeDhuhr" dir="ltr"><span style="visibility:hidden">--:-- --</span></div>
           <div class="slot-subtext">زوال الشمس</div>
         </div>
 
@@ -1853,7 +1853,7 @@
         <div class="prayer-card-item" id="pCardAsr">
           <div class="slot-icon"><i class="fas fa-cloud-sun" style="color: #0369a1;"></i></div>
           <div class="prayer-name">العصر</div>
-          <div class="prayer-time-val" id="timeAsr" dir="ltr">--:-- --</div>
+          <div class="prayer-time-val" id="timeAsr" dir="ltr"><span style="visibility:hidden">--:-- --</span></div>
           <div class="slot-subtext">المذهب الشافعي / القياسي</div>
         </div>
 
@@ -1861,7 +1861,7 @@
         <div class="prayer-card-item" id="pCardMaghrib">
           <div class="slot-icon"><i class="fas fa-cloud-moon" style="color: #ea580c;"></i></div>
           <div class="prayer-name">المغرب</div>
-          <div class="prayer-time-val" id="timeMaghrib" dir="ltr">--:-- --</div>
+          <div class="prayer-time-val" id="timeMaghrib" dir="ltr"><span style="visibility:hidden">--:-- --</span></div>
           <div class="slot-subtext">غروب الشمس / الإفطار</div>
         </div>
 
@@ -1869,7 +1869,7 @@
         <div class="prayer-card-item" id="pCardIsha">
           <div class="slot-icon"><i class="fas fa-moon" style="color: #6366f1;"></i></div>
           <div class="prayer-name">العشاء</div>
-          <div class="prayer-time-val" id="timeIsha" dir="ltr">--:-- --</div>
+          <div class="prayer-time-val" id="timeIsha" dir="ltr"><span style="visibility:hidden">--:-- --</span></div>
           <div class="slot-subtext">تقويم أم القرى (+90 دقيقة)</div>
         </div>
       </div>
@@ -1892,7 +1892,7 @@
                 <div class="nawafil-calc-note">الشروق + 18 دقيقة</div>
               </div>
             </div>
-            <div class="nawafil-time" id="timeIshraq" dir="ltr">--:-- --</div>
+            <div class="nawafil-time" id="timeIshraq" dir="ltr"><span style="visibility:hidden">--:-- --</span></div>
           </div>
 
           <!-- Chasht / Duha -->
@@ -1905,7 +1905,7 @@
                 <div class="nawafil-calc-note" id="chashtDynamicSub">⚡ منتصف النهار الشمسي الفلكي</div>
               </div>
             </div>
-            <div class="nawafil-time" id="timeChasht" dir="ltr">--:-- --</div>
+            <div class="nawafil-time" id="timeChasht" dir="ltr"><span style="visibility:hidden">--:-- --</span></div>
           </div>
         </div>
       </div>
@@ -2098,7 +2098,7 @@
                 if (src === 'manual') srcTag = 'اختيار المدينة (' + (d.label || 'الرياض').split('،')[0].split(',')[0] + ')';
                 else if (src === 'gps') srcTag = 'دقة نظام GPS';
                 else if (src === 'ip') srcTag = 'موقع تقريبي (IP)';
-                else srcTag = 'الوضع الافتراضي';
+                else srcTag = 'جاري تحديد الموقع...';
               }
               var accEl = document.getElementById('qiblaAccuracyTag');
               if (accEl && srcTag) {
@@ -2826,7 +2826,7 @@
 
     let currentQiblaBearing = 244;
     let currentQiblaDistanceKm = 1181;
-    let locationSourceType = IS_ARABIC ? 'الوضع الافتراضي' : 'Baseline Fallback';
+    let locationSourceType = IS_ARABIC ? 'جاري تحديد الموقع...' : 'Detecting Location...';
     let isLiveOrientationActive = false;
     let liveDeviceHeading = null;
     let orientationRafId = null;
@@ -3116,36 +3116,43 @@
                       const fallbackCityAr = '\u0627\u0644\u0645\u0648\u0642\u0639 \u0627\u0644\u0645\u062d\u062f\u062f';
                       const fallbackCountryAr = inSaudi ? '\u0627\u0644\u0645\u0645\u0644\u0643\u0629 \u0627\u0644\u0639\u0631\u0628\u064a\u0629 \u0627\u0644\u0633\u0639\u0648\u062f\u064a\u0629' : '';
                       
-                      if (!IS_ARABIC) {
-                        preciseLabelEn = await reverseGeocodeWithOSM(gpsLat, gpsLng, fallbackCityEn, fallbackCountryEn, 'en');
-                        preciseLabel = preciseLabelEn;
-                        setTimeout(async () => {
-                          const arLabel = await reverseGeocodeWithOSM(gpsLat, gpsLng, fallbackCityAr, fallbackCountryAr, 'ar');
-                          const current = getStoredLocation();
-                          if (current && Math.abs(current.lat - gpsLat) < 0.0001 && Math.abs(current.lng - gpsLng) < 0.0001) {
-                            current.labelAr = arLabel;
-                            saveLocationToStorage(current);
-                          }
-                        }, 0);
-                      } else {
-                        preciseLabelAr = await reverseGeocodeWithOSM(gpsLat, gpsLng, fallbackCityAr, fallbackCountryAr, 'ar');
-                        preciseLabel = preciseLabelAr;
-                        setTimeout(async () => {
-                          const enLabel = await reverseGeocodeWithOSM(gpsLat, gpsLng, fallbackCityEn, fallbackCountryEn, 'en');
-                          const current = getStoredLocation();
-                          if (current && Math.abs(current.lat - gpsLat) < 0.0001 && Math.abs(current.lng - gpsLng) < 0.0001) {
-                            current.labelEn = enLabel;
-                            saveLocationToStorage(current);
-                          }
-                        }, 0);
-                      }
+                                              let preciseLabelKeys = null;
+                        if (!IS_ARABIC) {
+                          const resultEn = await reverseGeocodeWithOSM(gpsLat, gpsLng, fallbackCityEn, fallbackCountryEn, 'en');
+                          preciseLabelEn = resultEn.label;
+                          preciseLabel = preciseLabelEn;
+                          preciseLabelKeys = resultEn.keys;
+                          setTimeout(async () => {
+                            const resultAr = await reverseGeocodeWithOSM(gpsLat, gpsLng, fallbackCityAr, fallbackCountryAr, 'ar', resultEn.keys);
+                            const current = getStoredLocation();
+                            if (current && Math.abs(current.lat - gpsLat) < 0.0001 && Math.abs(current.lng - gpsLng) < 0.0001) {
+                              current.labelAr = resultAr.label;
+                              current.labelKeys = resultAr.keys || resultEn.keys;
+                              saveLocationToStorage(current);
+                            }
+                          }, 0);
+                        } else {
+                          const resultAr = await reverseGeocodeWithOSM(gpsLat, gpsLng, fallbackCityAr, fallbackCountryAr, 'ar');
+                          preciseLabelAr = resultAr.label;
+                          preciseLabel = preciseLabelAr;
+                          preciseLabelKeys = resultAr.keys;
+                          setTimeout(async () => {
+                            const resultEn = await reverseGeocodeWithOSM(gpsLat, gpsLng, fallbackCityEn, fallbackCountryEn, 'en', resultAr.keys);
+                            const current = getStoredLocation();
+                            if (current && Math.abs(current.lat - gpsLat) < 0.0001 && Math.abs(current.lng - gpsLng) < 0.0001) {
+                              current.labelEn = resultEn.label;
+                              current.labelKeys = resultEn.keys || resultAr.keys;
+                              saveLocationToStorage(current);
+                            }
+                          }, 0);
+                        }
                     }
                   
                   // Abort again if the user clicked during reverse geocoding network request
                   const expectedIntent = isUserInitiated ? 'gps' : 'auto';
                   if (currentLocationIntent !== expectedIntent) return resolve(false);
 
-                const success = await fetchPrayerForCoords(gpsLat, gpsLng, preciseLabel, 'gps', null, null, false, preciseLabelEn, preciseLabelAr);
+                const success = await fetchPrayerForCoords(gpsLat, gpsLng, preciseLabel, 'gps', null, null, false, preciseLabelEn, preciseLabelAr, preciseLabelKeys);
                 resolve(success);
               } else {
                 resolve(false);
@@ -3221,9 +3228,15 @@
         let resolvedLabel = null;
           let isTranslationMissing = false;
 
-          if (stored.lang !== currentLang) {
-            stored.sourceTag = null;
-            if (IS_ARABIC && stored.labelAr) {
+                      if (stored.lang !== currentLang) {
+              stored.sourceTag = null;
+              
+              if (stored.source === 'gps' && !stored.labelKeys) {
+                  if (IS_ARABIC) stored.labelAr = null;
+                  else stored.labelEn = null;
+              }
+
+              if (IS_ARABIC && stored.labelAr) {
                resolvedLabel = stored.labelAr;
             } else if (!IS_ARABIC && stored.labelEn) {
                resolvedLabel = stored.labelEn;
@@ -3236,7 +3249,7 @@
 
           if (resolvedLabel) {
             initLabel = resolvedLabel;
-          } else if (matchingKey && QUICK_CITIES[matchingKey]) {
+          } else if (matchingKey && QUICK_CITIES[matchingKey] && stored.source !== 'gps') {
           initLabel = IS_ARABIC ? QUICK_CITIES[matchingKey].ar : QUICK_CITIES[matchingKey].en;
             initTz = QUICK_CITIES[matchingKey].tz || initTz;
             isTranslationMissing = false;
@@ -3264,7 +3277,7 @@
           const safeSchedule = Object.assign({}, stored.schedule);
           safeSchedule.label = currentCityLabel;
           applyPrayerTimesToDOM(safeSchedule);
-      } else if (stored) {
+      } else if (stored && matchingKey && defaultPrayerMap[matchingKey]) {
         const fallbackEntry = defaultPrayerMap[matchingKey] || defaultPrayerMap.riyadh;
         applyPrayerTimesToDOM({
           fajr: fallbackEntry.fajr,
@@ -3290,7 +3303,7 @@
         } else if (initSource === 'ip') {
           initialSourceTag = IS_ARABIC ? 'موقع تقريبي (IP)' : 'Approximate Location (IP)';
         } else {
-          initialSourceTag = IS_ARABIC ? 'الوضع الافتراضي' : 'Baseline Fallback';
+          initialSourceTag = IS_ARABIC ? 'جاري تحديد الموقع...' : 'Detecting Location...';
         }
       }
 
@@ -3311,9 +3324,32 @@
               freshGpsAcquired = await syncCurrentDeviceLocation(false);
             }
             if (typeof currentLocationIntent !== 'undefined' && currentLocationIntent !== 'auto' && !isTranslationMissing) return;
-            if (!freshGpsAcquired && (!stored.schedule || isTranslationMissing)) {
-                await fetchPrayerForCoords(initLat, initLng, currentCityLabel, initSource, currentTimezone, matchingKey, true);
-            }
+                          if (!freshGpsAcquired && (!stored.schedule || isTranslationMissing)) {
+                  let fetchLabel = currentCityLabel;
+                  if (isTranslationMissing && initSource === 'gps') {
+                      const inSaudi = (initLat >= 16.0 && initLat <= 32.5 && initLng >= 34.5 && initLng <= 55.7);
+                      const fCtryEn = inSaudi ? 'Saudi Arabia' : '';
+                      const fCtryAr = inSaudi ? 'المملكة العربية السعودية' : '';
+                      
+                      let primaryKeys = stored.labelKeys;
+                      if (!primaryKeys) {
+                          const primResult = await reverseGeocodeWithOSM(initLat, initLng, IS_ARABIC ? 'Detected Location' : 'الموقع المحدد', IS_ARABIC ? fCtryEn : fCtryAr, IS_ARABIC ? 'en' : 'ar');
+                          primaryKeys = primResult.keys;
+                      }
+                      const secResult = await reverseGeocodeWithOSM(initLat, initLng, IS_ARABIC ? 'الموقع المحدد' : 'Detected Location', IS_ARABIC ? fCtryAr : fCtryEn, IS_ARABIC ? 'ar' : 'en', primaryKeys);
+                      
+                      fetchLabel = secResult.label;
+                      currentCityLabel = fetchLabel;
+                      const locLabelEl = document.getElementById('prayerLocLabel');
+                      if (locLabelEl) locLabelEl.textContent = currentCityLabel;
+                      
+                      stored.labelEn = IS_ARABIC ? stored.labelEn : fetchLabel;
+                      stored.labelAr = IS_ARABIC ? fetchLabel : stored.labelAr;
+                      stored.labelKeys = primaryKeys;
+                  }
+                  
+                  await fetchPrayerForCoords(initLat, initLng, fetchLabel, initSource, currentTimezone, matchingKey, true, stored.labelEn, stored.labelAr, stored.labelKeys);
+              }
           })();
       } else {
         // Cold first visit without cached schedule:
