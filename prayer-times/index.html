@@ -3006,7 +3006,8 @@
             try {
               if (pos && pos.coords) {
                 // Abort if the user manually selected a city while waiting for GPS lock
-                if (!isUserInitiated && currentLocationIntent !== 'auto') return resolve(false);
+                  const expectedIntentPre = isUserInitiated ? 'gps' : 'auto';
+                  if (currentLocationIntent !== expectedIntentPre) return resolve(false);
 
                 const gpsLat = pos.coords.latitude;
                   const gpsLng = pos.coords.longitude;
@@ -3022,21 +3023,43 @@
                     }
                   }
 
-                  if (needsGeocoding) {
-                    const inSaudi = (gpsLat >= 16.0 && gpsLat <= 32.5 && gpsLng >= 34.5 && gpsLng <= 55.7);
-                    const fallbackCityEn = 'Detected Location';
-                    const fallbackCountryEn = inSaudi ? 'Saudi Arabia' : '';
-                    const fallbackCityAr = 'الموقع الدقيق';
-                    const fallbackCountryAr = inSaudi ? 'المملكة العربية السعودية' : '';
-                    const [preciseLabelEn, preciseLabelAr] = await Promise.all([
-                      reverseGeocodeWithOSM(gpsLat, gpsLng, fallbackCityEn, fallbackCountryEn, 'en'),
-                      reverseGeocodeWithOSM(gpsLat, gpsLng, fallbackCityAr, fallbackCountryAr, 'ar')
-                    ]);
-                    preciseLabel = IS_ARABIC ? preciseLabelAr : preciseLabelEn;
-                  }
+                                      let preciseLabelEn = null;
+                    let preciseLabelAr = null;
+                    if (needsGeocoding) {
+                      const inSaudi = (gpsLat >= 16.0 && gpsLat <= 32.5 && gpsLng >= 34.5 && gpsLng <= 55.7);
+                      const fallbackCityEn = 'Detected Location';
+                      const fallbackCountryEn = inSaudi ? 'Saudi Arabia' : '';
+                      const fallbackCityAr = '\u0627\u0644\u0645\u0648\u0642\u0639 \u0627\u0644\u0645\u062d\u062f\u062f';
+                      const fallbackCountryAr = inSaudi ? '\u0627\u0644\u0645\u0645\u0644\u0643\u0629 \u0627\u0644\u0639\u0631\u0628\u064a\u0629 \u0627\u0644\u0633\u0639\u0648\u062f\u064a\u0629' : '';
+                      
+                      if (!IS_ARABIC) {
+                        preciseLabelEn = await reverseGeocodeWithOSM(gpsLat, gpsLng, fallbackCityEn, fallbackCountryEn, 'en');
+                        preciseLabel = preciseLabelEn;
+                        setTimeout(async () => {
+                          const arLabel = await reverseGeocodeWithOSM(gpsLat, gpsLng, fallbackCityAr, fallbackCountryAr, 'ar');
+                          const current = getStoredLocation();
+                          if (current && Math.abs(current.lat - gpsLat) < 0.0001 && Math.abs(current.lng - gpsLng) < 0.0001) {
+                            current.labelAr = arLabel;
+                            saveLocationToStorage(current);
+                          }
+                        }, 0);
+                      } else {
+                        preciseLabelAr = await reverseGeocodeWithOSM(gpsLat, gpsLng, fallbackCityAr, fallbackCountryAr, 'ar');
+                        preciseLabel = preciseLabelAr;
+                        setTimeout(async () => {
+                          const enLabel = await reverseGeocodeWithOSM(gpsLat, gpsLng, fallbackCityEn, fallbackCountryEn, 'en');
+                          const current = getStoredLocation();
+                          if (current && Math.abs(current.lat - gpsLat) < 0.0001 && Math.abs(current.lng - gpsLng) < 0.0001) {
+                            current.labelEn = enLabel;
+                            saveLocationToStorage(current);
+                          }
+                        }, 0);
+                      }
+                    }
                   
                   // Abort again if the user clicked during reverse geocoding network request
-                if (!isUserInitiated && currentLocationIntent !== 'auto') return resolve(false);
+                  const expectedIntent = isUserInitiated ? 'gps' : 'auto';
+                  if (currentLocationIntent !== expectedIntent) return resolve(false);
 
                 const success = await fetchPrayerForCoords(gpsLat, gpsLng, preciseLabel, 'gps', null, null, false, preciseLabelEn, preciseLabelAr);
                 resolve(success);
@@ -3200,7 +3223,7 @@
       if (stored && stored.schedule) {
         (async function() {
             let freshGpsAcquired = false;
-            if (navigator.geolocation && (currentLocationIntent === 'auto' || isTranslationMissing)) {
+            if (navigator.geolocation && currentLocationIntent === 'auto') {
               freshGpsAcquired = await syncCurrentDeviceLocation(false);
             }
             if (typeof currentLocationIntent !== 'undefined' && currentLocationIntent !== 'auto' && !isTranslationMissing) return;
@@ -3208,27 +3231,22 @@
                 await fetchPrayerForCoords(initLat, initLng, currentCityLabel, initSource, currentTimezone, matchingKey, true);
             }
           })();
-        return;
-      }
+      } else {
+        // Cold first visit without cached schedule:
+        // 2. Authoritative Current Geolocation Check:
+        if (navigator.geolocation) {
+          syncCurrentDeviceLocation(false);
+        }
 
-      // Cold first visit without cached schedule:
-      // 2. Authoritative Current Geolocation Check:
-      // Unconditionally query fresh device geolocation whenever supported.
-      // MaximumAge: 0 guarantees fresh coordinates; no permissions gating; no distance suppression.
-      let freshGpsAcquired = false;
-      if (navigator.geolocation) {
-        freshGpsAcquired = await syncCurrentDeviceLocation(false);
-      }
-
-      // 3. Fallback chain if live GPS is denied, timed out, or unavailable:
-        if (typeof currentLocationIntent !== 'undefined' && currentLocationIntent !== 'auto') return;
-        if (!freshGpsAcquired) {
-        if (stored) {
+        // 3. Fallback chain if live GPS is denied, timed out, or unavailable:
+        if (typeof currentLocationIntent === 'undefined' || currentLocationIntent === 'auto') {
+          if (stored) {
           // Cleanly revalidate and preserve stored location schedule
           await fetchPrayerForCoords(initLat, initLng, currentCityLabel, initSource, currentTimezone, matchingKey);
         } else {
           // Cold first visit without GPS: fallback to IP location, then baseline Riyadh
           await fetchIPLocationFallback(initLat, initLng, initLabel, initTz);
+          }
         }
       }
     }

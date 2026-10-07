@@ -2,43 +2,44 @@
 // CENTRALIZED PRAYER API FETCH LOGIC
 // ==========================================
 
+    let nominatimQueue = Promise.resolve();
+
     // High-Precision Universal Reverse Geocoder (Cleaned: no hardcoded street overrides, resilient abort timeouts, global support)
-    async function reverseGeocodeWithOSM(lat, lng, fallbackCity, fallbackCountry) {
+    async function reverseGeocodeWithOSM(lat, lng, fallbackCity, fallbackCountry, langOverride = null) {
       const isAr = langOverride ? (langOverride === 'ar') : IS_ARABIC;
       const sep = isAr ? '، ' : ', ';
 
-      // 1. Try OSM Nominatim with AbortController (3.5s timeout)
+      // 1. Primary: OSM Nominatim with AbortController (3s timeout)
       try {
-        const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 3500);
-        const osmUrl = 'https://nominatim.openstreetmap.org/reverse?format=json&lat=' + encodeURIComponent(lat) + '&lon=' + encodeURIComponent(lng) + '&zoom=18&addressdetails=1&accept-language=' + (isAr ? 'ar' : 'en');
-        const res = await fetch(osmUrl, { headers: { 'Accept': 'application/json' }, signal: controller.signal });
-        clearTimeout(timeoutId);
+        const osmUrl = 'https://nominatim.openstreetmap.org/reverse?format=json&lat=' + encodeURIComponent(lat) + '&lon=' + encodeURIComponent(lng) + '&accept-language=' + (isAr ? 'ar' : 'en');
+        const res = await new Promise((resolve, reject) => {
+          nominatimQueue = nominatimQueue.then(async () => {
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 3000);
+            try {
+              const r = await fetch(osmUrl, { headers: { 'Accept': 'application/json' }, signal: controller.signal });
+              clearTimeout(timeoutId);
+              resolve(r);
+            } catch (err) {
+              clearTimeout(timeoutId);
+              reject(err);
+            }
+            await new Promise(timer => setTimeout(timer, 1100));
+          });
+        });
         if (res.ok) {
           const data = await res.json();
           if (data && data.address) {
             const addr = data.address;
-            let area = addr.village || addr.hamlet || addr.suburb || addr.neighbourhood || addr.quarter || addr.residential || addr.road || '';
-              let city = addr.city || addr.town || addr.state_district || addr.county || addr.district || addr.municipality || addr.state || fallbackCity || '';
-              let country = addr.country || fallbackCountry || '';
-              if (!isAr) {
-                if (/[\u0600-\u06FF]/.test(area)) area = '';
-                if (/[\u0600-\u06FF]/.test(city)) city = fallbackCity || '';
-                if (/[\u0600-\u06FF]/.test(country)) country = fallbackCountry || '';
-              } else {
-                if (/[A-Za-z]/.test(area)) area = '';
-                if (/[A-Za-z]/.test(city)) city = fallbackCity || '';
-                if (/[A-Za-z]/.test(country)) country = fallbackCountry || '';
-              }
+            let area = addr.neighbourhood || addr.suburb || addr.city_district || addr.district || addr.borough || addr.village || addr.hamlet || addr.quarter || addr.residential || '';
+            let city = addr.city || addr.town || addr.municipality || addr.county || addr.state_district || addr.state || '';
 
             if (area && city && area.toLowerCase() !== city.toLowerCase()) {
               return area + sep + city;
-            } else if (city && country) {
-              return city + sep + country;
+            } else if (area) {
+              return area;
             } else if (city) {
               return city;
-            } else if (country) {
-              return country;
             }
           }
         }
@@ -66,27 +67,15 @@
               }
             }
           }
-          if (!city) city = bData.principalSubdivision || fallbackCity || '';
-            let country = bData.countryName || fallbackCountry || '';
-              if (!isAr) {
-                if (/[\u0600-\u06FF]/.test(area)) area = '';
-                if (/[\u0600-\u06FF]/.test(city)) city = fallbackCity || '';
-                if (/[\u0600-\u06FF]/.test(country)) country = fallbackCountry || '';
-              } else {
-                if (/[A-Za-z]/.test(area)) area = '';
-                if (/[A-Za-z]/.test(city)) city = fallbackCity || '';
-                if (/[A-Za-z]/.test(country)) country = fallbackCountry || '';
-              }
+          if (!city) city = bData.principalSubdivision || '';
 
           if (area && city && area.toLowerCase() !== city.toLowerCase()) {
-            return area + sep + city;
-          } else if (city && country) {
-            return city + sep + country;
-          } else if (city) {
-            return city;
-          } else if (country) {
-            return country;
-          }
+              return area + sep + city;
+            } else if (area) {
+              return area;
+            } else if (city) {
+              return city;
+            }
         }
       } catch (e2) {
         // Fallback to coordinates / generic label
@@ -107,46 +96,51 @@
         let pData = null;
         let usedDateStr = null;
 
-        // Stage 1: If timezone is known, construct date in that timezone;
-        // if timezone is not known (e.g. raw GPS), query coordinate endpoint so Aladhan resolves timezone.
-        if (resolvedTz) {
-          const locDateParts = new Intl.DateTimeFormat('en-GB', { timeZone: resolvedTz }).format(new Date()).split('/');
-          usedDateStr = locDateParts[0] + '-' + locDateParts[1] + '-' + locDateParts[2];
-          const aladhanUrl = 'https://api.aladhan.com/v1/timings/' + usedDateStr + '?latitude=' + stagedLat + '&longitude=' + stagedLng + '&method=4';
-          const pRes = await fetch(aladhanUrl);
-          if (reqId !== activePrayerRequestId) return; // Drop stale response
-          if (pRes.ok) {
-            pData = await pRes.json();
-          }
-        } else {
-          // GPS / unknown timezone: query coordinate endpoint without date so API resolves timezone
-          const aladhanUrl = 'https://api.aladhan.com/v1/timings?latitude=' + stagedLat + '&longitude=' + stagedLng + '&method=4';
-          const pRes = await fetch(aladhanUrl);
-          if (reqId !== activePrayerRequestId) return; // Drop stale response
-          if (pRes.ok) {
-            const tempPData = await pRes.json();
-            if (tempPData && tempPData.data && tempPData.data.meta && tempPData.data.meta.timezone) {
-              resolvedTz = tempPData.data.meta.timezone;
-              // Two-stage validation: verify that returned date matches local calendar date in resolved timezone
-              const expectedDate = new Intl.DateTimeFormat('en-GB', { timeZone: resolvedTz }).format(new Date()).split('/').join('-');
-              const apiDate = tempPData.data.date?.gregorian?.date;
-              if (apiDate && apiDate === expectedDate) {
-                pData = tempPData;
-                usedDateStr = expectedDate;
-              } else {
-                usedDateStr = expectedDate;
-                const reUrl = 'https://api.aladhan.com/v1/timings/' + expectedDate + '?latitude=' + stagedLat + '&longitude=' + stagedLng + '&method=4';
-                const reRes = await fetch(reUrl);
-                if (reqId !== activePrayerRequestId) return;
-                if (reRes.ok) {
-                  pData = await reRes.json();
-                }
+        // Stage 1: Construct initial bootstrap date using either the known timezone or the browser's native timezone.
+        // The native timezone is strictly temporary and is never used as the authoritative GPS timezone.
+        const bootTz = resolvedTz || Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC';
+        const bootDateParts = new Intl.DateTimeFormat('en-GB', { timeZone: bootTz }).format(new Date()).split('/');
+        const bootDateStr = (bootDateParts[0] + '-' + bootDateParts[1] + '-' + bootDateParts[2]).replace(/[\u200E\u200F]/g, '');
+        
+        // Query the safe date-specific endpoint to bypass failing dateless endpoint
+        const aladhanUrl = 'https://api.aladhan.com/v1/timings/' + bootDateStr + '?latitude=' + stagedLat + '&longitude=' + stagedLng + '&method=4';
+        const pRes = await fetch(aladhanUrl);
+        if (reqId !== activePrayerRequestId) return; // Drop stale response
+        
+        if (pRes.ok) {
+          const tempPData = await pRes.json();
+          if (tempPData && tempPData.data && tempPData.data.meta && tempPData.data.meta.timezone) {
+            // Extract the exact mathematically correct IANA timezone from Aladhan's GPS response
+            resolvedTz = tempPData.data.meta.timezone;
+
+            // Stage 2: Calculate the actual date for the location using the newly resolved true timezone
+            const expectedDateParts = new Intl.DateTimeFormat('en-GB', { timeZone: resolvedTz }).format(new Date()).split('/');
+            const expectedDateStr = (expectedDateParts[0] + '-' + expectedDateParts[1] + '-' + expectedDateParts[2]).replace(/[\u200E\u200F]/g, '');
+            const apiDate = tempPData.data.date?.gregorian?.date;
+            
+            // If the calculated location calendar date perfectly matches the bootstrap response, it is safe to use.
+            if ((apiDate && apiDate === expectedDateStr) || bootDateStr === expectedDateStr) {
+              pData = tempPData;
+              usedDateStr = expectedDateStr;
+            } else {
+              // Location calendar date differs from bootstrap date (e.g., crossing midnight). Re-fetch with correct actual date.
+              usedDateStr = expectedDateStr;
+              const reUrl = 'https://api.aladhan.com/v1/timings/' + expectedDateStr + '?latitude=' + stagedLat + '&longitude=' + stagedLng + '&method=4';
+              const reRes = await fetch(reUrl);
+              if (reqId !== activePrayerRequestId) return;
+              if (reRes.ok) {
+                pData = await reRes.json();
               }
             }
           }
         }
 
         if (reqId !== activePrayerRequestId) return; // Drop stale response
+
+        // Validate prayer response safely. If structurally invalid, explicitly throw to trigger standard unavailable state.
+        if (!pData || !pData.data || !pData.data.timings || !pData.data.timings.Fajr || !pData.data.timings.Dhuhr) {
+          throw new Error('API Data Invalid');
+        }
 
         // Validate prayer response
         if (pData && pData.data && pData.data.timings && pData.data.timings.Fajr && pData.data.timings.Dhuhr) {
