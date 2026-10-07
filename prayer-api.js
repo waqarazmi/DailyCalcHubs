@@ -111,7 +111,7 @@
         // The native timezone is strictly temporary and is never used as the authoritative GPS timezone.
         const bootTz = resolvedTz || Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC';
         const bootDateParts = new Intl.DateTimeFormat('en-GB', { timeZone: bootTz }).format(new Date()).split('/');
-        const bootDateStr = bootDateParts[0] + '-' + bootDateParts[1] + '-' + bootDateParts[2];
+        const bootDateStr = (bootDateParts[0] + '-' + bootDateParts[1] + '-' + bootDateParts[2]).replace(/[\u200E\u200F]/g, '');
         
         // Query the safe date-specific endpoint to bypass failing dateless endpoint
         const aladhanUrl = 'https://api.aladhan.com/v1/timings/' + bootDateStr + '?latitude=' + stagedLat + '&longitude=' + stagedLng + '&method=4';
@@ -126,7 +126,7 @@
 
             // Stage 2: Calculate the actual date for the location using the newly resolved true timezone
             const expectedDateParts = new Intl.DateTimeFormat('en-GB', { timeZone: resolvedTz }).format(new Date()).split('/');
-            const expectedDateStr = expectedDateParts[0] + '-' + expectedDateParts[1] + '-' + expectedDateParts[2];
+            const expectedDateStr = (expectedDateParts[0] + '-' + expectedDateParts[1] + '-' + expectedDateParts[2]).replace(/[\u200E\u200F]/g, '');
             const apiDate = tempPData.data.date?.gregorian?.date;
             
             // If the calculated location calendar date perfectly matches the bootstrap response, it is safe to use.

@@ -3288,7 +3288,7 @@
       if (stored && stored.schedule) {
         (async function() {
             let freshGpsAcquired = false;
-            if (navigator.geolocation && (currentLocationIntent === 'auto' || isTranslationMissing)) {
+            if (navigator.geolocation && currentLocationIntent === 'auto') {
               freshGpsAcquired = await syncCurrentDeviceLocation(false);
             }
             if (typeof currentLocationIntent !== 'undefined' && currentLocationIntent !== 'auto' && !isTranslationMissing) return;
@@ -3303,14 +3303,13 @@
       // 2. Authoritative Current Geolocation Check:
       // Unconditionally query fresh device geolocation whenever supported.
       // MaximumAge: 0 guarantees fresh coordinates; no permissions gating; no distance suppression.
-      let freshGpsAcquired = false;
       if (navigator.geolocation) {
-        freshGpsAcquired = await syncCurrentDeviceLocation(false);
+        syncCurrentDeviceLocation(false);
       }
 
       // 3. Fallback chain if live GPS is denied, timed out, or unavailable:
         if (typeof currentLocationIntent !== 'undefined' && currentLocationIntent !== 'auto') return;
-        if (!freshGpsAcquired) {
+        if (true) {
         if (stored) {
           // Cleanly revalidate and preserve stored location schedule
           await fetchPrayerForCoords(initLat, initLng, currentCityLabel, initSource, currentTimezone, matchingKey);
