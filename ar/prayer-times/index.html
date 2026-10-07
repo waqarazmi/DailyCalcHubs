@@ -3116,36 +3116,43 @@
                       const fallbackCityAr = '\u0627\u0644\u0645\u0648\u0642\u0639 \u0627\u0644\u0645\u062d\u062f\u062f';
                       const fallbackCountryAr = inSaudi ? '\u0627\u0644\u0645\u0645\u0644\u0643\u0629 \u0627\u0644\u0639\u0631\u0628\u064a\u0629 \u0627\u0644\u0633\u0639\u0648\u062f\u064a\u0629' : '';
                       
-                      if (!IS_ARABIC) {
-                        preciseLabelEn = await reverseGeocodeWithOSM(gpsLat, gpsLng, fallbackCityEn, fallbackCountryEn, 'en');
-                        preciseLabel = preciseLabelEn;
-                        setTimeout(async () => {
-                          const arLabel = await reverseGeocodeWithOSM(gpsLat, gpsLng, fallbackCityAr, fallbackCountryAr, 'ar');
-                          const current = getStoredLocation();
-                          if (current && Math.abs(current.lat - gpsLat) < 0.0001 && Math.abs(current.lng - gpsLng) < 0.0001) {
-                            current.labelAr = arLabel;
-                            saveLocationToStorage(current);
-                          }
-                        }, 0);
-                      } else {
-                        preciseLabelAr = await reverseGeocodeWithOSM(gpsLat, gpsLng, fallbackCityAr, fallbackCountryAr, 'ar');
-                        preciseLabel = preciseLabelAr;
-                        setTimeout(async () => {
-                          const enLabel = await reverseGeocodeWithOSM(gpsLat, gpsLng, fallbackCityEn, fallbackCountryEn, 'en');
-                          const current = getStoredLocation();
-                          if (current && Math.abs(current.lat - gpsLat) < 0.0001 && Math.abs(current.lng - gpsLng) < 0.0001) {
-                            current.labelEn = enLabel;
-                            saveLocationToStorage(current);
-                          }
-                        }, 0);
-                      }
+                                              let preciseLabelKeys = null;
+                        if (!IS_ARABIC) {
+                          const resultEn = await reverseGeocodeWithOSM(gpsLat, gpsLng, fallbackCityEn, fallbackCountryEn, 'en');
+                          preciseLabelEn = resultEn.label;
+                          preciseLabel = preciseLabelEn;
+                          preciseLabelKeys = resultEn.keys;
+                          setTimeout(async () => {
+                            const resultAr = await reverseGeocodeWithOSM(gpsLat, gpsLng, fallbackCityAr, fallbackCountryAr, 'ar', resultEn.keys);
+                            const current = getStoredLocation();
+                            if (current && Math.abs(current.lat - gpsLat) < 0.0001 && Math.abs(current.lng - gpsLng) < 0.0001) {
+                              current.labelAr = resultAr.label;
+                              current.labelKeys = resultAr.keys || resultEn.keys;
+                              saveLocationToStorage(current);
+                            }
+                          }, 0);
+                        } else {
+                          const resultAr = await reverseGeocodeWithOSM(gpsLat, gpsLng, fallbackCityAr, fallbackCountryAr, 'ar');
+                          preciseLabelAr = resultAr.label;
+                          preciseLabel = preciseLabelAr;
+                          preciseLabelKeys = resultAr.keys;
+                          setTimeout(async () => {
+                            const resultEn = await reverseGeocodeWithOSM(gpsLat, gpsLng, fallbackCityEn, fallbackCountryEn, 'en', resultAr.keys);
+                            const current = getStoredLocation();
+                            if (current && Math.abs(current.lat - gpsLat) < 0.0001 && Math.abs(current.lng - gpsLng) < 0.0001) {
+                              current.labelEn = resultEn.label;
+                              current.labelKeys = resultEn.keys || resultAr.keys;
+                              saveLocationToStorage(current);
+                            }
+                          }, 0);
+                        }
                     }
                   
                   // Abort again if the user clicked during reverse geocoding network request
                   const expectedIntent = isUserInitiated ? 'gps' : 'auto';
                   if (currentLocationIntent !== expectedIntent) return resolve(false);
 
-                const success = await fetchPrayerForCoords(gpsLat, gpsLng, preciseLabel, 'gps', null, null, false, preciseLabelEn, preciseLabelAr);
+                const success = await fetchPrayerForCoords(gpsLat, gpsLng, preciseLabel, 'gps', null, null, false, preciseLabelEn, preciseLabelAr, preciseLabelKeys);
                 resolve(success);
               } else {
                 resolve(false);
@@ -3221,9 +3228,15 @@
         let resolvedLabel = null;
           let isTranslationMissing = false;
 
-          if (stored.lang !== currentLang) {
-            stored.sourceTag = null;
-            if (IS_ARABIC && stored.labelAr) {
+                      if (stored.lang !== currentLang) {
+              stored.sourceTag = null;
+              
+              if (stored.source === 'gps' && !stored.labelKeys) {
+                  if (IS_ARABIC) stored.labelAr = null;
+                  else stored.labelEn = null;
+              }
+
+              if (IS_ARABIC && stored.labelAr) {
                resolvedLabel = stored.labelAr;
             } else if (!IS_ARABIC && stored.labelEn) {
                resolvedLabel = stored.labelEn;
@@ -3236,7 +3249,7 @@
 
           if (resolvedLabel) {
             initLabel = resolvedLabel;
-          } else if (matchingKey && QUICK_CITIES[matchingKey]) {
+          } else if (matchingKey && QUICK_CITIES[matchingKey] && stored.source !== 'gps') {
           initLabel = IS_ARABIC ? QUICK_CITIES[matchingKey].ar : QUICK_CITIES[matchingKey].en;
             initTz = QUICK_CITIES[matchingKey].tz || initTz;
             isTranslationMissing = false;
@@ -3311,9 +3324,32 @@
               freshGpsAcquired = await syncCurrentDeviceLocation(false);
             }
             if (typeof currentLocationIntent !== 'undefined' && currentLocationIntent !== 'auto' && !isTranslationMissing) return;
-            if (!freshGpsAcquired && (!stored.schedule || isTranslationMissing)) {
-                await fetchPrayerForCoords(initLat, initLng, currentCityLabel, initSource, currentTimezone, matchingKey, true);
-            }
+                          if (!freshGpsAcquired && (!stored.schedule || isTranslationMissing)) {
+                  let fetchLabel = currentCityLabel;
+                  if (isTranslationMissing && initSource === 'gps') {
+                      const inSaudi = (initLat >= 16.0 && initLat <= 32.5 && initLng >= 34.5 && initLng <= 55.7);
+                      const fCtryEn = inSaudi ? 'Saudi Arabia' : '';
+                      const fCtryAr = inSaudi ? 'المملكة العربية السعودية' : '';
+                      
+                      let primaryKeys = stored.labelKeys;
+                      if (!primaryKeys) {
+                          const primResult = await reverseGeocodeWithOSM(initLat, initLng, IS_ARABIC ? 'Detected Location' : 'الموقع المحدد', IS_ARABIC ? fCtryEn : fCtryAr, IS_ARABIC ? 'en' : 'ar');
+                          primaryKeys = primResult.keys;
+                      }
+                      const secResult = await reverseGeocodeWithOSM(initLat, initLng, IS_ARABIC ? 'الموقع المحدد' : 'Detected Location', IS_ARABIC ? fCtryAr : fCtryEn, IS_ARABIC ? 'ar' : 'en', primaryKeys);
+                      
+                      fetchLabel = secResult.label;
+                      currentCityLabel = fetchLabel;
+                      const locLabelEl = document.getElementById('prayerLocLabel');
+                      if (locLabelEl) locLabelEl.textContent = currentCityLabel;
+                      
+                      stored.labelEn = IS_ARABIC ? stored.labelEn : fetchLabel;
+                      stored.labelAr = IS_ARABIC ? fetchLabel : stored.labelAr;
+                      stored.labelKeys = primaryKeys;
+                  }
+                  
+                  await fetchPrayerForCoords(initLat, initLng, fetchLabel, initSource, currentTimezone, matchingKey, true, stored.labelEn, stored.labelAr, stored.labelKeys);
+              }
           })();
       } else {
         // Cold first visit without cached schedule:
