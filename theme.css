@@ -981,6 +981,20 @@ html[data-theme="dark"] .breakdown-item {
   border-bottom-color: #1e293b !important;
 }
 
+html[data-theme="dark"] .settlement-box {
+  background: #131b2e !important;
+  border-color: #1e293b !important;
+}
+
+html[data-theme="dark"] .settlement-title,
+html[data-theme="dark"] .settle-item strong {
+  color: #f8fafc !important;
+}
+
+html[data-theme="dark"] .settle-item {
+  border-bottom: 1px solid #1e293b !important;
+}
+
 /* 7. Tables & Grids */
 html[data-theme="dark"] table {
   border-color: #1e293b !important;
