@@ -3154,6 +3154,7 @@
             } else if (!IS_ARABIC && stored.labelEn) {
                resolvedLabel = stored.labelEn;
             } else {
+               resolvedLabel = IS_ARABIC ? stored.labelEn : stored.labelAr;
                isTranslationMissing = true;
             }
           } else {
