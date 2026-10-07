@@ -3,7 +3,7 @@
 // ==========================================
 
     // High-Precision Universal Reverse Geocoder (Cleaned: no hardcoded street overrides, resilient abort timeouts, global support)
-    async function reverseGeocodeWithOSM(lat, lng, fallbackCity, fallbackCountry) {
+    async function reverseGeocodeWithOSM(lat, lng, fallbackCity, fallbackCountry, langOverride = null) {
       const isAr = langOverride ? (langOverride === 'ar') : IS_ARABIC;
       const sep = isAr ? '، ' : ', ';
 

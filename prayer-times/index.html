@@ -3022,16 +3022,20 @@
                     }
                   }
 
+                  let preciseLabelEn = null;
+                  let preciseLabelAr = null;
                   if (needsGeocoding) {
                     const inSaudi = (gpsLat >= 16.0 && gpsLat <= 32.5 && gpsLng >= 34.5 && gpsLng <= 55.7);
                     const fallbackCityEn = 'Detected Location';
                     const fallbackCountryEn = inSaudi ? 'Saudi Arabia' : '';
                     const fallbackCityAr = 'الموقع الدقيق';
                     const fallbackCountryAr = inSaudi ? 'المملكة العربية السعودية' : '';
-                    const [preciseLabelEn, preciseLabelAr] = await Promise.all([
+                    const [geocodedEn, geocodedAr] = await Promise.all([
                       reverseGeocodeWithOSM(gpsLat, gpsLng, fallbackCityEn, fallbackCountryEn, 'en'),
                       reverseGeocodeWithOSM(gpsLat, gpsLng, fallbackCityAr, fallbackCountryAr, 'ar')
                     ]);
+                    preciseLabelEn = geocodedEn;
+                    preciseLabelAr = geocodedAr;
                     preciseLabel = IS_ARABIC ? preciseLabelAr : preciseLabelEn;
                   }
                   
