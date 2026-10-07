@@ -340,7 +340,7 @@
               const ipData = await ipRes.json();
               if (ipData && ipData.latitude && ipData.longitude) {
                 // Protect manual city selection from delayed IP responses
-                  if (typeof currentLocationIntent !== 'undefined' && currentLocationIntent === 'manual') return;
+                  if (typeof currentLocationIntent !== 'undefined' && currentLocationIntent !== 'auto') return;
 
                   const ipLat = parseFloat(ipData.latitude);
                 const ipLng = parseFloat(ipData.longitude);
@@ -356,8 +356,9 @@
             console.warn('IP Geolocation fallback error:', err);
           }
           if (!ipDetected) {
-            await fetchPrayerForCoords(initLat, initLng, initLabel, 'default', initTz, 'riyadh');
-          }
+              if (typeof currentLocationIntent !== 'undefined' && currentLocationIntent !== 'auto') return;
+              await fetchPrayerForCoords(initLat, initLng, initLabel, 'default', initTz, 'riyadh');
+            }
     }
 
     function getDynamicHijriFallback(isAr, tz) {

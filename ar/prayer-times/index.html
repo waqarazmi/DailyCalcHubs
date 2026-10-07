@@ -3079,7 +3079,7 @@
             try {
               if (pos && pos.coords) {
                 // Abort if the user manually selected a city while waiting for GPS lock
-                if (!isUserInitiated && currentLocationIntent === 'manual') return resolve(false);
+                if (!isUserInitiated && currentLocationIntent !== 'auto') return resolve(false);
 
                 const gpsLat = pos.coords.latitude;
                   const gpsLng = pos.coords.longitude;
@@ -3103,7 +3103,7 @@
                   }
                 
                 // Abort again if the user clicked during reverse geocoding network request
-                if (!isUserInitiated && currentLocationIntent === 'manual') return resolve(false);
+                if (!isUserInitiated && currentLocationIntent !== 'auto') return resolve(false);
 
                 const success = await fetchPrayerForCoords(gpsLat, gpsLng, preciseLabel, 'gps', null, null);
                 resolve(success);
@@ -3222,21 +3222,6 @@
           hijri: getDynamicHijriFallback(true, currentTimezone),
           hijriAr: '(' + getDynamicHijriFallback(true, currentTimezone) + ')'
         });
-      } else {
-        const fallbackEntry = defaultPrayerMap.riyadh;
-        applyPrayerTimesToDOM({
-          fajr: fallbackEntry.fajr,
-          sunrise: fallbackEntry.sunrise,
-          ishraq: fallbackEntry.ishraq,
-          chasht: fallbackEntry.chasht,
-          dhuhr: fallbackEntry.dhuhr,
-          asr: fallbackEntry.asr,
-          maghrib: fallbackEntry.maghrib,
-          isha: fallbackEntry.isha,
-          label: currentCityLabel,
-          hijri: getDynamicHijriFallback(true, currentTimezone),
-          hijriAr: '(' + getDynamicHijriFallback(true, currentTimezone) + ')'
-        });
       }
 
       let initialSourceTag = (stored && stored.sourceTag) || null;
@@ -3268,7 +3253,7 @@
           if (navigator.geolocation) {
             freshGpsAcquired = await syncCurrentDeviceLocation(false);
           }
-          if (typeof currentLocationIntent !== 'undefined' && currentLocationIntent === 'manual') return;
+          if (typeof currentLocationIntent !== 'undefined' && currentLocationIntent !== 'auto') return;
             if (!freshGpsAcquired) {
               await fetchPrayerForCoords(initLat, initLng, currentCityLabel, initSource, currentTimezone, matchingKey, true);
             }
@@ -3286,7 +3271,7 @@
       }
 
       // 3. Fallback chain if live GPS is denied, timed out, or unavailable:
-        if (typeof currentLocationIntent !== 'undefined' && currentLocationIntent === 'manual') return;
+        if (typeof currentLocationIntent !== 'undefined' && currentLocationIntent !== 'auto') return;
         if (!freshGpsAcquired) {
         if (stored) {
           // Cleanly revalidate and preserve stored location schedule
