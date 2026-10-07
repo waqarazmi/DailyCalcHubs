@@ -3090,7 +3090,8 @@
             try {
               if (pos && pos.coords) {
                 // Abort if the user manually selected a city while waiting for GPS lock
-                if (!isUserInitiated && currentLocationIntent !== 'auto') return resolve(false);
+                  const expectedIntentPre = isUserInitiated ? 'gps' : 'auto';
+                  if (currentLocationIntent !== expectedIntentPre) return resolve(false);
 
                 const gpsLat = pos.coords.latitude;
                   const gpsLng = pos.coords.longitude;
@@ -3118,18 +3119,31 @@
                       if (!IS_ARABIC) {
                         preciseLabelEn = await reverseGeocodeWithOSM(gpsLat, gpsLng, fallbackCityEn, fallbackCountryEn, 'en');
                         preciseLabel = preciseLabelEn;
-                        await new Promise(r => setTimeout(r, 1100));
-                        preciseLabelAr = await reverseGeocodeWithOSM(gpsLat, gpsLng, fallbackCityAr, fallbackCountryAr, 'ar');
+                        setTimeout(async () => {
+                          const arLabel = await reverseGeocodeWithOSM(gpsLat, gpsLng, fallbackCityAr, fallbackCountryAr, 'ar');
+                          const current = getStoredLocation();
+                          if (current && Math.abs(current.lat - gpsLat) < 0.0001 && Math.abs(current.lng - gpsLng) < 0.0001) {
+                            current.labelAr = arLabel;
+                            saveLocationToStorage(current);
+                          }
+                        }, 0);
                       } else {
                         preciseLabelAr = await reverseGeocodeWithOSM(gpsLat, gpsLng, fallbackCityAr, fallbackCountryAr, 'ar');
                         preciseLabel = preciseLabelAr;
-                        await new Promise(r => setTimeout(r, 1100));
-                        preciseLabelEn = await reverseGeocodeWithOSM(gpsLat, gpsLng, fallbackCityEn, fallbackCountryEn, 'en');
+                        setTimeout(async () => {
+                          const enLabel = await reverseGeocodeWithOSM(gpsLat, gpsLng, fallbackCityEn, fallbackCountryEn, 'en');
+                          const current = getStoredLocation();
+                          if (current && Math.abs(current.lat - gpsLat) < 0.0001 && Math.abs(current.lng - gpsLng) < 0.0001) {
+                            current.labelEn = enLabel;
+                            saveLocationToStorage(current);
+                          }
+                        }, 0);
                       }
                     }
                   
                   // Abort again if the user clicked during reverse geocoding network request
-                if (!isUserInitiated && currentLocationIntent !== 'auto') return resolve(false);
+                  const expectedIntent = isUserInitiated ? 'gps' : 'auto';
+                  if (currentLocationIntent !== expectedIntent) return resolve(false);
 
                 const success = await fetchPrayerForCoords(gpsLat, gpsLng, preciseLabel, 'gps', null, null, false, preciseLabelEn, preciseLabelAr);
                 resolve(success);

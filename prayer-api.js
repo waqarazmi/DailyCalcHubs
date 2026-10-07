@@ -2,18 +2,31 @@
 // CENTRALIZED PRAYER API FETCH LOGIC
 // ==========================================
 
+    let nominatimQueue = Promise.resolve();
+
     // High-Precision Universal Reverse Geocoder (Cleaned: no hardcoded street overrides, resilient abort timeouts, global support)
     async function reverseGeocodeWithOSM(lat, lng, fallbackCity, fallbackCountry, langOverride = null) {
       const isAr = langOverride ? (langOverride === 'ar') : IS_ARABIC;
       const sep = isAr ? '، ' : ', ';
 
-            // 1. Try OSM Nominatim with AbortController (3.5s timeout)
+      // 1. Primary: OSM Nominatim with AbortController (3s timeout)
       try {
-        const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 3500);
-        const osmUrl = 'https://nominatim.openstreetmap.org/reverse?format=json&lat=' + encodeURIComponent(lat) + '&lon=' + encodeURIComponent(lng) + '&zoom=18&addressdetails=1&accept-language=' + (isAr ? 'ar' : 'en');
-        const res = await fetch(osmUrl, { headers: { 'Accept': 'application/json' }, signal: controller.signal });
-        clearTimeout(timeoutId);
+        const osmUrl = 'https://nominatim.openstreetmap.org/reverse?format=json&lat=' + encodeURIComponent(lat) + '&lon=' + encodeURIComponent(lng) + '&accept-language=' + (isAr ? 'ar' : 'en');
+        const res = await new Promise((resolve, reject) => {
+          nominatimQueue = nominatimQueue.then(async () => {
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 3000);
+            try {
+              const r = await fetch(osmUrl, { headers: { 'Accept': 'application/json' }, signal: controller.signal });
+              clearTimeout(timeoutId);
+              resolve(r);
+            } catch (err) {
+              clearTimeout(timeoutId);
+              reject(err);
+            }
+            await new Promise(timer => setTimeout(timer, 1100));
+          });
+        });
         if (res.ok) {
           const data = await res.json();
           if (data && data.address) {
