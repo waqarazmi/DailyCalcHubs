@@ -244,6 +244,7 @@
             label: currentCityLabel,
             labelEn: labelEn || (!IS_ARABIC ? currentCityLabel : (isSameLoc ? existingStored.labelEn : null)),
             labelAr: labelAr || (IS_ARABIC ? currentCityLabel : (isSameLoc ? existingStored.labelAr : null)),
+            labelKeys: labelKeys || (isSameLoc ? existingStored.labelKeys : null),
             timezone: currentTimezone,
             source: currentLocationSource,
             sourceTag: srcLabel,

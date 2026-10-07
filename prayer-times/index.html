@@ -3147,10 +3147,7 @@
                       if (stored.lang !== currentLang) {
               stored.sourceTag = null;
               
-              if (stored.source === 'gps' && !stored.labelKeys) {
-                  if (IS_ARABIC) stored.labelAr = null;
-                  else stored.labelEn = null;
-              }
+              if (stored.source === 'gps' && !stored.labelKeys) { isTranslationMissing = true; }
 
               if (IS_ARABIC && stored.labelAr) {
                resolvedLabel = stored.labelAr;
@@ -3245,14 +3242,14 @@
                   if (isTranslationMissing && initSource === 'gps') {
                       const inSaudi = (initLat >= 16.0 && initLat <= 32.5 && initLng >= 34.5 && initLng <= 55.7);
                       const fCtryEn = inSaudi ? 'Saudi Arabia' : '';
-                      const fCtryAr = inSaudi ? 'المملكة العربية السعودية' : '';
+                      const fCtryAr = inSaudi ? '\u0627\u0644\u0645\u0645\u0644\u0643\u0629 \u0627\u0644\u0639\u0631\u0628\u064a\u0629 \u0627\u0644\u0633\u0639\u0648\u062f\u064a\u0629' : '';
                       
                       let primaryKeys = stored.labelKeys;
                       if (!primaryKeys) {
-                          const primResult = await reverseGeocodeWithOSM(initLat, initLng, IS_ARABIC ? 'Detected Location' : 'الموقع المحدد', IS_ARABIC ? fCtryEn : fCtryAr, IS_ARABIC ? 'en' : 'ar');
+                          const primResult = await reverseGeocodeWithOSM(initLat, initLng, IS_ARABIC ? 'Detected Location' : '\u0627\u0644\u0645\u0648\u0642\u0639 \u0627\u0644\u0645\u062d\u062f\u062f', IS_ARABIC ? fCtryEn : fCtryAr, IS_ARABIC ? 'en' : 'ar');
                           primaryKeys = primResult.keys;
                       }
-                      const secResult = await reverseGeocodeWithOSM(initLat, initLng, IS_ARABIC ? 'الموقع المحدد' : 'Detected Location', IS_ARABIC ? fCtryAr : fCtryEn, IS_ARABIC ? 'ar' : 'en', primaryKeys);
+                      const secResult = await reverseGeocodeWithOSM(initLat, initLng, IS_ARABIC ? '\u0627\u0644\u0645\u0648\u0642\u0639 \u0627\u0644\u0645\u062d\u062f\u062f' : 'Detected Location', IS_ARABIC ? fCtryAr : fCtryEn, IS_ARABIC ? 'ar' : 'en', primaryKeys);
                       
                       fetchLabel = secResult.label;
                       currentCityLabel = fetchLabel;
