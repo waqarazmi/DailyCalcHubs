@@ -371,17 +371,5 @@
       }
     }
 
-    function applyPrayerTimesToDOM(data) {
-      if (!data) return;
-      prayerSchedule = data;
-      const tFajr = document.getElementById('timeFajr');
-      const tSunrise = document.getElementById('timeSunrise');
-      const tIshraq = document.getElementById('timeIshraq');
-      const tChasht = document.getElementById('timeChasht');
-      const tDhuhr = document.getElementById('timeDhuhr');
-      const tAsr = document.getElementById('timeAsr');
-      const tMaghrib = document.getElementById('timeMaghrib');
-      const tIsha = document.getElementById('timeIsha');
 
-    }
 
