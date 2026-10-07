@@ -3301,26 +3301,22 @@
                 await fetchPrayerForCoords(initLat, initLng, currentCityLabel, initSource, currentTimezone, matchingKey, true);
             }
           })();
-        return;
-      }
+      } else {
+        // Cold first visit without cached schedule:
+        // 2. Authoritative Current Geolocation Check:
+        if (navigator.geolocation) {
+          syncCurrentDeviceLocation(false);
+        }
 
-      // Cold first visit without cached schedule:
-      // 2. Authoritative Current Geolocation Check:
-      // Unconditionally query fresh device geolocation whenever supported.
-      // MaximumAge: 0 guarantees fresh coordinates; no permissions gating; no distance suppression.
-      if (navigator.geolocation) {
-        syncCurrentDeviceLocation(false);
-      }
-
-      // 3. Fallback chain if live GPS is denied, timed out, or unavailable:
-        if (typeof currentLocationIntent !== 'undefined' && currentLocationIntent !== 'auto') return;
-        if (true) {
-        if (stored) {
+        // 3. Fallback chain if live GPS is denied, timed out, or unavailable:
+        if (typeof currentLocationIntent === 'undefined' || currentLocationIntent === 'auto') {
+          if (stored) {
           // Cleanly revalidate and preserve stored location schedule
           await fetchPrayerForCoords(initLat, initLng, currentCityLabel, initSource, currentTimezone, matchingKey);
         } else {
           // Cold first visit without GPS: fallback to IP location, then baseline Riyadh
           await fetchIPLocationFallback(initLat, initLng, initLabel, initTz);
+          }
         }
       }
     }

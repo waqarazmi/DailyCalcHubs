@@ -23,6 +23,8 @@
 
             if (area && city && area.toLowerCase() !== city.toLowerCase()) {
               return area + sep + city;
+            } else if (area) {
+              return area;
             } else if (city) {
               return city;
             }
@@ -55,10 +57,12 @@
           if (!city) city = bData.principalSubdivision || '';
 
           if (area && city && area.toLowerCase() !== city.toLowerCase()) {
-            return area + sep + city;
-          } else if (city) {
-            return city;
-          }
+              return area + sep + city;
+            } else if (area) {
+              return area;
+            } else if (city) {
+              return city;
+            }
         }
       } catch (e2) {
         // Fallback to coordinates / generic label
