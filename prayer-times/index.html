@@ -3194,9 +3194,10 @@
           if (navigator.geolocation) {
             freshGpsAcquired = await syncCurrentDeviceLocation(false);
           }
-          if (!freshGpsAcquired) {
-            await fetchPrayerForCoords(initLat, initLng, currentCityLabel, initSource, currentTimezone, matchingKey, true);
-          }
+          if (typeof currentLocationIntent !== 'undefined' && currentLocationIntent === 'manual') return;
+            if (!freshGpsAcquired) {
+              await fetchPrayerForCoords(initLat, initLng, currentCityLabel, initSource, currentTimezone, matchingKey, true);
+            }
         })();
         return;
       }
@@ -3211,7 +3212,8 @@
       }
 
       // 3. Fallback chain if live GPS is denied, timed out, or unavailable:
-      if (!freshGpsAcquired) {
+        if (typeof currentLocationIntent !== 'undefined' && currentLocationIntent === 'manual') return;
+        if (!freshGpsAcquired) {
         if (stored) {
           // Cleanly revalidate and preserve stored location schedule
           await fetchPrayerForCoords(initLat, initLng, currentCityLabel, initSource, currentTimezone, matchingKey);
