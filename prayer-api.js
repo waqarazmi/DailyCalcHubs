@@ -7,7 +7,7 @@
       const isAr = langOverride ? (langOverride === 'ar') : IS_ARABIC;
       const sep = isAr ? '، ' : ', ';
 
-      // 1. Try OSM Nominatim with AbortController (3.5s timeout)
+            // 1. Try OSM Nominatim with AbortController (3.5s timeout)
       try {
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), 3500);
@@ -18,27 +18,13 @@
           const data = await res.json();
           if (data && data.address) {
             const addr = data.address;
-            let area = addr.village || addr.hamlet || addr.suburb || addr.neighbourhood || addr.quarter || addr.residential || addr.road || '';
-              let city = addr.city || addr.town || addr.state_district || addr.county || addr.district || addr.municipality || addr.state || fallbackCity || '';
-              let country = addr.country || fallbackCountry || '';
-              if (!isAr) {
-                if (/[\u0600-\u06FF]/.test(area)) area = '';
-                if (/[\u0600-\u06FF]/.test(city)) city = fallbackCity || '';
-                if (/[\u0600-\u06FF]/.test(country)) country = fallbackCountry || '';
-              } else {
-                if (/[A-Za-z]/.test(area)) area = '';
-                if (/[A-Za-z]/.test(city)) city = fallbackCity || '';
-                if (/[A-Za-z]/.test(country)) country = fallbackCountry || '';
-              }
+            let area = addr.neighbourhood || addr.suburb || addr.city_district || addr.district || addr.borough || addr.village || addr.hamlet || addr.quarter || addr.residential || '';
+            let city = addr.city || addr.town || addr.municipality || addr.county || addr.state_district || addr.state || '';
 
             if (area && city && area.toLowerCase() !== city.toLowerCase()) {
               return area + sep + city;
-            } else if (city && country) {
-              return city + sep + country;
             } else if (city) {
               return city;
-            } else if (country) {
-              return country;
             }
           }
         }
@@ -66,26 +52,12 @@
               }
             }
           }
-          if (!city) city = bData.principalSubdivision || fallbackCity || '';
-            let country = bData.countryName || fallbackCountry || '';
-              if (!isAr) {
-                if (/[\u0600-\u06FF]/.test(area)) area = '';
-                if (/[\u0600-\u06FF]/.test(city)) city = fallbackCity || '';
-                if (/[\u0600-\u06FF]/.test(country)) country = fallbackCountry || '';
-              } else {
-                if (/[A-Za-z]/.test(area)) area = '';
-                if (/[A-Za-z]/.test(city)) city = fallbackCity || '';
-                if (/[A-Za-z]/.test(country)) country = fallbackCountry || '';
-              }
+          if (!city) city = bData.principalSubdivision || '';
 
           if (area && city && area.toLowerCase() !== city.toLowerCase()) {
             return area + sep + city;
-          } else if (city && country) {
-            return city + sep + country;
           } else if (city) {
             return city;
-          } else if (country) {
-            return country;
           }
         }
       } catch (e2) {
