@@ -3011,7 +3011,15 @@
                   const gpsLng = pos.coords.longitude;
 
                   let preciseLabel = currentCityLabel;
-                  const needsGeocoding = isUserInitiated || !preciseLabel || preciseLabel === 'Location' || preciseLabel === 'الموقع' || preciseLabel === 'Detected Location' || preciseLabel === 'الموقع المكتشف';
+                  let needsGeocoding = isUserInitiated || !preciseLabel || preciseLabel === 'Location' || preciseLabel === 'الموقع' || preciseLabel === 'Detected Location' || preciseLabel === 'الموقع المكتشف';
+                  
+                  // Validate cached label against fresh physical coordinates (5km threshold)
+                  if (!needsGeocoding && typeof currentLatitude === 'number' && typeof currentLongitude === 'number') {
+                    const distKm = calculateHaversineDistance(currentLatitude, currentLongitude, gpsLat, gpsLng);
+                    if (distKm > 5) {
+                      needsGeocoding = true;
+                    }
+                  }
 
                   if (needsGeocoding) {
                     const inSaudi = (gpsLat >= 16.0 && gpsLat <= 32.5 && gpsLng >= 34.5 && gpsLng <= 55.7);
