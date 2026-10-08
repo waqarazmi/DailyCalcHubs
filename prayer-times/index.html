@@ -2571,7 +2571,7 @@
         const currentTzDate = getTargetDateString(currentTimezone);
         if (lastFetchedDateString && currentTzDate !== lastFetchedDateString) {
           lastFetchedDateString = currentTzDate;
-          fetchPrayerForCoords(currentLatitude, currentLongitude, currentCityLabel, currentLocationSource, currentTimezone);
+          fetchPrayerForCoords(currentLatitude, currentLongitude, currentCityLabel, currentLocationSource, currentTimezone, null, true);
         }
       }
 
@@ -3242,7 +3242,7 @@
         if (typeof currentLocationIntent === 'undefined' || currentLocationIntent === 'auto') {
           if (stored) {
           // Cleanly revalidate and preserve stored location schedule
-          await fetchPrayerForCoords(initLat, initLng, currentCityLabel, initSource, currentTimezone, matchingKey);
+          await fetchPrayerForCoords(initLat, initLng, currentCityLabel, initSource, currentTimezone, matchingKey, true);
         } else {
           // Cold first visit without GPS: fallback to IP location, then baseline Riyadh
           await fetchIPLocationFallback(initLat, initLng, initLabel, initTz);
