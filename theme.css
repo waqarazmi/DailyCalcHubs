@@ -426,6 +426,14 @@ html[data-theme="dark"] .prayer-card-item.active-prayer .slot-icon {
   color: #ffffff !important;
 }
 
+html[data-theme="dark"] .slot-icon i {
+  color: #38bdf8 !important;
+}
+
+html[data-theme="dark"] .prayer-card-item.active-prayer .slot-icon i {
+  color: #ffffff !important;
+}
+
 html[data-theme="dark"] .prayer-card-item .prayer-name {
   color: #94a3b8 !important;
 }
