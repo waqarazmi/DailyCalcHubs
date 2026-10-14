@@ -6069,3 +6069,54 @@ html[data-theme="dark"] .checkbox-row {
 html[data-theme="dark"] .checkbox-row label {
   color: #cbd5e1 !important;
 }
+
+/* --------------------------------------------------------------------------
+   D11: Lump Sum vs. SIP Wealth Projection Calculator Night Mode Overrides
+   Scope: /shariah-sip-calculator/lump-sum-calculator/ (English & Arabic)
+   -------------------------------------------------------------------------- */
+html[data-theme="dark"] .comparison-duel-card {
+  background: rgba(255, 255, 255, 0.04) !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+html[data-theme="dark"] .duel-title {
+  color: #fde68a !important;
+}
+
+html[data-theme="dark"] .duel-box {
+  background: rgba(255, 255, 255, 0.03) !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+html[data-theme="dark"] .duel-box.winner {
+  background: rgba(34, 197, 94, 0.08) !important;
+  border-color: #22c55e !important;
+}
+
+html[data-theme="dark"] .duel-val {
+  color: #ffffff !important;
+}
+
+html[data-theme="dark"] .duel-gain {
+  color: #86efac !important;
+}
+
+html[data-theme="dark"] #duelSipGain {
+  color: #7dd3fc !important;
+}
+
+html[data-theme="dark"] .tag-lump,
+html[data-theme="dark"] .duel-tag.tag-lump {
+  background: rgba(245, 158, 11, 0.15) !important;
+  color: #fde68a !important;
+}
+
+html[data-theme="dark"] .tag-sip,
+html[data-theme="dark"] .duel-tag.tag-sip {
+  background: rgba(14, 165, 233, 0.15) !important;
+  color: #7dd3fc !important;
+}
+
+html[data-theme="dark"] .comparison-duel-card > div:last-child {
+  color: #94a3b8 !important;
+}
