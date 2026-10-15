@@ -188,7 +188,7 @@
       pkg: 'com.transferwise.android',
       playUrl: 'https://play.google.com/store/apps/details?id=com.transferwise.android',
       iosUrl: 'https://apps.apple.com/app/wise-ex-transferwise/id612261027',
-      webUrl: 'https://wise.com',
+      webUrl: 'https://wise.prf.hn/click/camref:1100l6v4zQ',
       status: 'VARIABLE_PRICING',
       spreadPct: 0.002, // Mid-market near zero spread (~0.2%)
       variableFeePct: 0.0055, // ~0.55% variable partner clearing fee via card/bank transfer
@@ -203,6 +203,9 @@
    * Resolves the device-aware Send Money CTA destination URL.
    */
   function getSendMoneyUrl(provider, isArabic) {
+    if (provider.id === 'wise') {
+      return provider.webUrl;
+    }
     var ua = navigator.userAgent || '';
     var isAndroid = /android/i.test(ua);
     var isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
@@ -528,6 +531,9 @@
 
       var isAndroid = /android/i.test(navigator.userAgent || '');
       var ctaTarget = isAndroid ? '' : ' target="_blank" rel="noopener noreferrer"';
+      if (p.id === 'wise') {
+        ctaTarget = ' target="_blank" rel="noopener noreferrer sponsored"';
+      }
 
       var logoHtml = p.logoImg
         ? '<img class="provider-logo-img" src="' + p.logoImg + '" alt="' + (isArabic ? ('شعار ' + (p.nameAr || p.nameEn)) : (p.nameEn + ' logo')) + '" width="28" height="28" loading="lazy" />'
@@ -572,7 +578,10 @@
       for (var j = 0; j < REMITTANCE_PROVIDERS.length; j++) {
         if (REMITTANCE_PROVIDERS[j].id === pid) {
           btn.href = getSendMoneyUrl(REMITTANCE_PROVIDERS[j], isArabic);
-          if (isAndroid) {
+          if (pid === 'wise') {
+            btn.setAttribute('target', '_blank');
+            btn.setAttribute('rel', 'noopener noreferrer sponsored');
+          } else if (isAndroid) {
             btn.removeAttribute('target');
             btn.removeAttribute('rel');
           }
