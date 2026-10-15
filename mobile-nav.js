@@ -213,6 +213,7 @@
         }
 
         updateDrawerThemeIcon();
+        syncActiveCategory();
       }
 
       function closeMenu() {
@@ -280,6 +281,83 @@
       }
     }
 
+    // Synchronize active mobile category & About Us state
+    function syncActiveCategory() {
+      var rawPath = window.location.pathname || '';
+      var cleanPath = (rawPath.replace(/\/index\.html$/i, '').replace(/\/+$/, '') || '/').toLowerCase();
+
+      var accItems = document.querySelectorAll('.mobile-accordion-item');
+      if (!accItems || accItems.length === 0) return;
+
+      // 1. Guard against highlighting on homepage ('/' or '/ar')
+      if (cleanPath === '/' || cleanPath === '/ar') {
+        accItems.forEach(function(item) {
+          item.classList.remove('active');
+          var btn = item.querySelector('.mobile-accordion-header');
+          if (btn) btn.setAttribute('aria-expanded', 'false');
+        });
+        return;
+      }
+
+      var categoryRoots = [
+        'saudi-remittance-calculator',
+        'prayer-times',
+        'saudi-salary-calculator',
+        'saudi-iqama-calculator',
+        'everyday-smart-calculator',
+        'shariah-sip-calculator',
+        'travel-booking-calculator'
+      ];
+
+      var isAboutPage = (cleanPath === '/about' || cleanPath === '/ar/about');
+      var targetItem = null;
+
+      if (isAboutPage) {
+        // Target 8: About Us
+        for (var i = 0; i < accItems.length; i++) {
+          var aboutLink = accItems[i].querySelector('a[href="/about/"], a[href="/ar/about/"]');
+          if (aboutLink) {
+            targetItem = accItems[i];
+            break;
+          }
+        }
+      } else {
+        // Targets 1 to 7: Tool Categories
+        var matchedSlug = null;
+        for (var c = 0; c < categoryRoots.length; c++) {
+          var slug = categoryRoots[c];
+          if (cleanPath === '/' + slug || cleanPath.indexOf('/' + slug + '/') === 0 ||
+              cleanPath === '/ar/' + slug || cleanPath.indexOf('/ar/' + slug + '/') === 0) {
+            matchedSlug = slug;
+            break;
+          }
+        }
+
+        if (matchedSlug) {
+          for (var j = 0; j < accItems.length; j++) {
+            var toolLink = accItems[j].querySelector('a[href*="/' + matchedSlug + '/"]');
+            if (toolLink) {
+              targetItem = accItems[j];
+              break;
+            }
+          }
+        }
+      }
+
+      // Synchronize accordion item active state across all items
+      accItems.forEach(function(item) {
+        if (targetItem && item === targetItem) {
+          item.classList.add('active');
+          var btn = item.querySelector('.mobile-accordion-header');
+          if (btn) btn.setAttribute('aria-expanded', 'true');
+        } else {
+          item.classList.remove('active');
+          var otherBtn = item.querySelector('.mobile-accordion-header');
+          if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+
     // Mobile Accordion Items
     var accHeaders = document.querySelectorAll('.mobile-accordion-header');
     accHeaders.forEach(function(btn) {
@@ -305,6 +383,8 @@
         }
       });
     });
+
+    syncActiveCategory();
   }
 
   // Global helper for inline clicks
