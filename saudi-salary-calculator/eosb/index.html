@@ -322,12 +322,12 @@
             <span>Explore Tools</span>
             <i class="fas fa-chevron-down nav-dropdown-arrow"></i>
           </button>
-          
+
     <div class="explore-mega-menu" id="exploreToolsMenu" role="menu" aria-label="Explore Calculators and Tools">
       <div class="mega-menu-split-layout">
         <!-- Category Rail (Left in LTR / Right in RTL) -->
         <div class="mega-cat-rail" role="tablist" aria-orientation="vertical" aria-label="Explore Calculators and Tools">
-          
+
         <button type="button" class="mega-cat-tab active" role="tab" id="tab-remittance" aria-selected="true" aria-controls="panel-remittance" data-cat="remittance" tabindex="0">
           <span class="mega-cat-icon-badge" style="background:#f0fdf4; color:#15803d; border:1px solid #bbf7d0;">
             <i class="fas fa-exchange-alt"></i>
@@ -396,7 +396,7 @@
 
         <!-- Selected Category Content Panel -->
         <div class="mega-panels-container">
-          
+
         <div class="mega-category-panel active" id="panel-remittance" role="tabpanel" aria-labelledby="tab-remittance">
           <div class="mega-panel-header">
             <div class="mega-panel-title-group">
@@ -576,7 +576,7 @@
         </a>
       </div>
     </div>
-    
+
         </div>
                 <div class="nav-dropdown-item category-dropdown-item" id="currentCategoryDropdown">
           <button type="button" class="nav-link-item nav-dropdown-btn active" id="currentCategoryBtn" aria-expanded="false" aria-haspopup="true" aria-controls="currentCategoryMenu">
@@ -706,7 +706,7 @@
         </div>
 
         <div class="mobile-accordion" id="mobileAccordion">
-          
+
           <!-- 1. Remittance -->
           <div class="mobile-accordion-item">
             <button type="button" class="mobile-accordion-header" aria-expanded="false">
@@ -1025,7 +1025,7 @@
               <div class="meta-box-val" id="resGrossAward">46,000.00 SAR</div>
             </div>
           </div>
-        
+
           <!-- Calculation Result Actions: Print/PDF & WhatsApp Share -->
           <div class="calc-action-bar">
             <button type="button" class="btn-action-print" onclick="dchPrintSummary(this)" aria-label="Print or save calculation summary as PDF">
@@ -1281,30 +1281,120 @@
     if (typeof window.dchTrackCalculation === 'function') window.dchTrackCalculation('saudi-salary-calculator_eosb');
     }
 
+    function cleanSensitiveQueryParams(sensitiveKeys) {
+      try {
+        if (!window.location.search) return;
+        const url = new URL(window.location.href);
+        let changed = false;
+        sensitiveKeys.forEach(function(k) {
+          if (url.searchParams.has(k)) {
+            url.searchParams.delete(k);
+            changed = true;
+          }
+        });
+        if (changed) {
+          const searchStr = url.searchParams.toString();
+          const newUrl = url.pathname + (searchStr ? '?' + searchStr : '') + url.hash;
+          window.history.replaceState(window.history.state || null, document.title, newUrl);
+        }
+      } catch (e) {}
+    }
+
     function applyGratuityToSettlement() {
       const wageInput = document.getElementById('lastGrossSalary');
       const rawWage = wageInput ? parseFloat(wageInput.value) : 0;
       let targetUrl = '/saudi-salary-calculator/final-settlement/';
-      const qParams = [];
+      let storedStateSaved = false;
 
-      if (isFinite(latestCalculatedEosb) && !isNaN(latestCalculatedEosb) && latestCalculatedEosb >= 0 && latestCalculatedEosb <= 100000000) {
-        qParams.push('eosb=' + encodeURIComponent(latestCalculatedEosb.toFixed(2)));
+      try {
+        let state = null;
+        const raw = sessionStorage.getItem('dch_transfer_eosb_settlement');
+        if (raw) {
+          state = JSON.parse(raw);
+        }
+        if (!state || typeof state !== 'object') {
+          state = { source: 'eosb', lang: 'en' };
+        }
+        state.target = 'final-settlement';
+        state.status = 'returning_settlement';
+        state.lang = 'en';
+        state.timestamp = Date.now();
+        state.returnedEosb = (isFinite(latestCalculatedEosb) && latestCalculatedEosb >= 0) ? latestCalculatedEosb : 0;
+        if (isFinite(rawWage) && rawWage > 0) {
+          state.wage = rawWage;
+        }
+        sessionStorage.setItem('dch_transfer_eosb_settlement', JSON.stringify(state));
+        storedStateSaved = true;
+      } catch (e) {
+        console.warn('Storage save error in applyGratuityToSettlement:', e);
       }
-      if (isFinite(rawWage) && !isNaN(rawWage) && rawWage > 0 && rawWage <= 10000000) {
-        qParams.push('wage=' + encodeURIComponent(rawWage.toFixed(2)));
+
+      if (storedStateSaved) {
+        window.location.href = targetUrl;
+      } else {
+        const errorMsg = 'Unable to transfer calculation automatically because browser storage is disabled or blocked. Please enter the gratuity amount directly into the Final Settlement calculator.';
+        let errEl = document.getElementById('settlementTransferError');
+        if (!errEl) {
+          errEl = document.createElement('div');
+          errEl.id = 'settlementTransferError';
+          errEl.style.cssText = 'color:#b91c1c; background:#fef2f2; border:1px solid #fecaca; border-radius:8px; padding:10px 14px; margin-top:10px; font-size:13px; display:flex; align-items:center; gap:8px; width:100%;';
+          const banner = document.getElementById('settlementReturnBanner');
+          if (banner) {
+            banner.appendChild(errEl);
+          }
+        }
+        errEl.innerHTML = '<i class="fas fa-exclamation-triangle"></i> <span>' + errorMsg + '</span>';
+        errEl.style.display = 'flex';
       }
-      if (qParams.length > 0) {
-        targetUrl += '?' + qParams.join('&');
-      }
-      window.location.href = targetUrl;
     }
 
     function checkSettlementReturnMode() {
       try {
         const params = new URLSearchParams(window.location.search);
-        if (params.get('ref') === 'settlement') {
-          const banner = document.getElementById('settlementReturnBanner');
+        let hasRef = params.get('ref') === 'settlement';
+        let storedState = null;
+
+        try {
+          const raw = sessionStorage.getItem('dch_transfer_eosb_settlement');
+          if (raw) {
+            const parsed = JSON.parse(raw);
+            const isFresh = (Date.now() - (parsed.timestamp || 0)) < 86400000;
+            if (parsed && parsed.lang === 'en' && isFresh && (parsed.status === 'pending_eosb' || parsed.status === 'returning_settlement' || parsed.status === 'applied')) {
+              storedState = parsed;
+            }
+          }
+        } catch (e) {}
+
+        const isTransferMode = Boolean(storedState && (storedState.status === 'pending_eosb' || storedState.status === 'returning_settlement'));
+
+        const banner = document.getElementById('settlementReturnBanner');
+        if (isTransferMode) {
           if (banner) banner.style.display = 'flex';
+
+          if (storedState) {
+            if (isFinite(storedState.wage) && storedState.wage > 0 && storedState.wage <= 10000000) {
+              const wageInput = document.getElementById('lastGrossSalary');
+              if (wageInput) {
+                wageInput.value = storedState.wage;
+                document.querySelectorAll('.amount-chip-btn').forEach(function(b) {
+                  b.classList.toggle('active', parseFloat(b.innerText.replace(/[^0-9]/g, '')) === storedState.wage);
+                });
+              }
+            }
+
+            if (storedState.duration && typeof storedState.duration === 'object') {
+              const d = storedState.duration;
+              if (isFinite(d.years) && d.years >= 0) {
+                document.getElementById('serviceYears').value = d.years;
+              }
+              if (isFinite(d.months) && d.months >= 0) {
+                document.getElementById('serviceMonths').value = d.months;
+              }
+              if (isFinite(d.days) && d.days >= 0) {
+                document.getElementById('serviceDays').value = d.days;
+              }
+            }
+          }
 
           if (params.has('wage')) {
             const rawWage = parseFloat(params.get('wage'));
@@ -1312,13 +1402,20 @@
               const wageInput = document.getElementById('lastGrossSalary');
               if (wageInput) {
                 wageInput.value = rawWage;
-                document.querySelectorAll('.amount-chip-btn').forEach(b => {
+                document.querySelectorAll('.amount-chip-btn').forEach(function(b) {
                   b.classList.toggle('active', parseFloat(b.innerText.replace(/[^0-9]/g, '')) === rawWage);
                 });
               }
             }
+            cleanSensitiveQueryParams(['wage']);
           }
+
           calculateEosb();
+        } else {
+          if (banner) banner.style.display = 'none';
+          if (params.has('wage')) {
+            cleanSensitiveQueryParams(['wage']);
+          }
         }
       } catch (e) {
         console.warn('Settlement return mode error:', e);

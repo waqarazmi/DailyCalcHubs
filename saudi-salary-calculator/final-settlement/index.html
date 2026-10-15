@@ -406,12 +406,12 @@
             <span>Explore Tools</span>
             <i class="fas fa-chevron-down nav-dropdown-arrow"></i>
           </button>
-          
+
     <div class="explore-mega-menu" id="exploreToolsMenu" role="menu" aria-label="Explore Calculators and Tools">
       <div class="mega-menu-split-layout">
         <!-- Category Rail (Left in LTR / Right in RTL) -->
         <div class="mega-cat-rail" role="tablist" aria-orientation="vertical" aria-label="Explore Calculators and Tools">
-          
+
         <button type="button" class="mega-cat-tab active" role="tab" id="tab-remittance" aria-selected="true" aria-controls="panel-remittance" data-cat="remittance" tabindex="0">
           <span class="mega-cat-icon-badge" style="background:#f0fdf4; color:#15803d; border:1px solid #bbf7d0;">
             <i class="fas fa-exchange-alt"></i>
@@ -480,7 +480,7 @@
 
         <!-- Selected Category Content Panel -->
         <div class="mega-panels-container">
-          
+
         <div class="mega-category-panel active" id="panel-remittance" role="tabpanel" aria-labelledby="tab-remittance">
           <div class="mega-panel-header">
             <div class="mega-panel-title-group">
@@ -660,7 +660,7 @@
         </a>
       </div>
     </div>
-    
+
         </div>
                 <div class="nav-dropdown-item category-dropdown-item" id="currentCategoryDropdown">
           <button type="button" class="nav-link-item nav-dropdown-btn active" id="currentCategoryBtn" aria-expanded="false" aria-haspopup="true" aria-controls="currentCategoryMenu">
@@ -790,7 +790,7 @@
         </div>
 
         <div class="mobile-accordion" id="mobileAccordion">
-          
+
           <!-- 1. Remittance -->
           <div class="mobile-accordion-item">
             <button type="button" class="mobile-accordion-header" aria-expanded="false">
@@ -1097,7 +1097,7 @@
           <div style="display:grid; grid-template-columns: 1fr 1fr; gap:16px; margin-bottom: 18px;">
             <div class="eosb-helper-row">
               <span class="eosb-helper-prompt">Don't know your gratuity?</span>
-              <a href="/saudi-salary-calculator/eosb/?ref=settlement&wage=12000" id="linkCalcEosb" class="eosb-helper-link">
+              <a href="/saudi-salary-calculator/eosb/?ref=settlement" id="linkCalcEosb" class="eosb-helper-link" onclick="handleEosbTransfer(event)">
                 Calculate EOSB Gratuity &rarr;
               </a>
             </div>
@@ -1165,7 +1165,7 @@
               <div class="meta-box-val" id="resServiceDuration" style="word-break: break-word;">--</div>
             </div>
           </div>
-        
+
           <!-- Calculation Result Actions: Print/PDF & WhatsApp Share -->
           <div class="calc-action-bar">
             <button type="button" class="btn-action-print" onclick="dchPrintSummary(this)" aria-label="Print or save calculation summary as PDF">
@@ -1346,15 +1346,91 @@
       calculateSettlement();
     }
 
+    function getServiceDurationData() {
+      const joiningEl = document.getElementById('joiningDate');
+      const exitEl = document.getElementById('exitDate');
+      const joiningVal = joiningEl ? joiningEl.value : '';
+      const exitVal = exitEl ? exitEl.value : '';
+      if (!joiningVal || !exitVal) return null;
+      const start = new Date(joiningVal + 'T00:00:00');
+      const end = new Date(exitVal + 'T00:00:00');
+      if (isNaN(start.getTime()) || isNaN(end.getTime()) || end < start) return null;
+
+      const d1 = start.getDate();
+      const m1 = start.getMonth();
+      const y1 = start.getFullYear();
+
+      const inclusiveEnd = new Date(end.getTime());
+      inclusiveEnd.setDate(inclusiveEnd.getDate() + 1);
+
+      let d2 = inclusiveEnd.getDate();
+      let m2 = inclusiveEnd.getMonth();
+      let y2 = inclusiveEnd.getFullYear();
+
+      let days = d2 - d1;
+      let months = m2 - m1;
+      let years = y2 - y1;
+
+      if (days < 0) {
+        const prevMonthDays = new Date(y2, m2, 0).getDate();
+        days += prevMonthDays;
+        months--;
+      }
+      if (months < 0) {
+        months += 12;
+        years--;
+      }
+      return { years: years, months: months, days: days, joiningDate: joiningVal, exitDate: exitVal };
+    }
+
+    function handleEosbTransfer(event) {
+      let saved = false;
+      try {
+        const wageVal = parseFloat(document.getElementById('settlementGrossWage').value) || 0;
+        const durData = getServiceDurationData();
+        const payload = {
+          source: 'final-settlement',
+          target: 'eosb',
+          status: 'pending_eosb',
+          lang: 'en',
+          timestamp: Date.now(),
+          wage: wageVal,
+          joiningDate: document.getElementById('joiningDate').value || '',
+          exitDate: document.getElementById('exitDate').value || '',
+          duration: durData,
+          unusedLeaveDays: document.getElementById('unusedLeaveDays').value,
+          lastMonthDays: document.getElementById('lastMonthDays').value,
+          pendingOtClaims: document.getElementById('pendingOtClaims').value,
+          companyDeductions: document.getElementById('companyDeductions').value
+        };
+        sessionStorage.setItem('dch_transfer_eosb_settlement', JSON.stringify(payload));
+        saved = true;
+      } catch (e) {
+        console.warn('Session storage transfer error:', e);
+      }
+
+      if (!saved) {
+        if (event && event.preventDefault) event.preventDefault();
+        const msg = 'Unable to transfer calculation automatically because browser storage is blocked or disabled. Please open the EOSB calculator directly to calculate your gratuity.';
+        let errEl = document.getElementById('fsTransferError');
+        if (!errEl) {
+          errEl = document.createElement('div');
+          errEl.id = 'fsTransferError';
+          errEl.style.cssText = 'color:#b91c1c; background:#fef2f2; border:1px solid #fecaca; border-radius:8px; padding:8px 12px; margin-top:8px; font-size:12.5px; display:flex; align-items:center; gap:6px; grid-column: 1 / -1;';
+          const linkEl = document.getElementById('linkCalcEosb');
+          if (linkEl && linkEl.parentElement) {
+            linkEl.parentElement.appendChild(errEl);
+          }
+        }
+        errEl.innerHTML = '<i class="fas fa-exclamation-triangle"></i> <span>' + msg + '</span>';
+        errEl.style.display = 'flex';
+      }
+    }
+
     function updateEosbHelperLink() {
       const link = document.getElementById('linkCalcEosb');
       if (!link) return;
-      const wageVal = parseFloat(document.getElementById('settlementGrossWage').value);
-      if (isFinite(wageVal) && wageVal > 0) {
-        link.href = '/saudi-salary-calculator/eosb/?ref=settlement&wage=' + encodeURIComponent(wageVal);
-      } else {
-        link.href = '/saudi-salary-calculator/eosb/?ref=settlement';
-      }
+      link.href = '/saudi-salary-calculator/eosb/?ref=settlement';
     }
 
     function calculateServiceDuration() {
@@ -1398,32 +1474,15 @@
 
       if (errorEl) errorEl.style.display = 'none';
 
-      // Inclusive duration: add 1 day to end date
-      const d1 = start.getDate();
-      const m1 = start.getMonth();
-      const y1 = start.getFullYear();
-
-      const inclusiveEnd = new Date(end.getTime());
-      inclusiveEnd.setDate(inclusiveEnd.getDate() + 1);
-
-      let d2 = inclusiveEnd.getDate();
-      let m2 = inclusiveEnd.getMonth();
-      let y2 = inclusiveEnd.getFullYear();
-
-      let days = d2 - d1;
-      let months = m2 - m1;
-      let years = y2 - y1;
-
-      if (days < 0) {
-        const prevMonthDays = new Date(y2, m2, 0).getDate();
-        days += prevMonthDays;
-        months--;
+      const dur = getServiceDurationData();
+      if (!dur) {
+        if (resDurationEl) resDurationEl.textContent = '--';
+        return;
       }
 
-      if (months < 0) {
-        months += 12;
-        years--;
-      }
+      const years = dur.years;
+      const months = dur.months;
+      const days = dur.days;
 
       const yrLabel = years === 1 ? '1 Year' : years + ' Years';
       const moLabel = months === 1 ? '1 Month' : months + ' Months';
@@ -1596,10 +1655,140 @@
       setupMobileDateSync('exitDate', 'exitDateMobile', 'btnExitDatePicker');
     }
 
-    function checkIncomingUrlParams() {
+    function cleanSensitiveQueryParams(sensitiveKeys) {
+      try {
+        if (!window.location.search) return;
+        const url = new URL(window.location.href);
+        let changed = false;
+        sensitiveKeys.forEach(function(k) {
+          if (url.searchParams.has(k)) {
+            url.searchParams.delete(k);
+            changed = true;
+          }
+        });
+        if (changed) {
+          const searchStr = url.searchParams.toString();
+          const newUrl = url.pathname + (searchStr ? '?' + searchStr : '') + url.hash;
+          window.history.replaceState(window.history.state || null, document.title, newUrl);
+        }
+      } catch (e) {}
+    }
+
+    function saveFormSnapshotToHistory() {
+      try {
+        const wage = document.getElementById('settlementGrossWage').value;
+        const eosb = document.getElementById('settlementEosb').value;
+        const leave = document.getElementById('unusedLeaveDays').value;
+        const month = document.getElementById('lastMonthDays').value;
+        const ot = document.getElementById('pendingOtClaims').value;
+        const deduct = document.getElementById('companyDeductions').value;
+        const joining = document.getElementById('joiningDate').value;
+        const exit = document.getElementById('exitDate').value;
+
+        const existingState = (window.history && window.history.state && typeof window.history.state === 'object') ? window.history.state : {};
+        existingState.dchSettlement = {
+          wage: wage,
+          eosb: eosb,
+          unusedLeaveDays: leave,
+          lastMonthDays: month,
+          pendingOtClaims: ot,
+          companyDeductions: deduct,
+          joiningDate: joining,
+          exitDate: exit,
+          timestamp: Date.now()
+        };
+        window.history.replaceState(existingState, document.title);
+      } catch (e) {}
+    }
+
+    function checkIncomingTransferState() {
+      let stateApplied = false;
+
+      // 1. Check native sessionStorage protocol (payload returning from EOSB)
+      try {
+        const raw = sessionStorage.getItem('dch_transfer_eosb_settlement');
+        if (raw) {
+          const state = JSON.parse(raw);
+          const isFresh = (Date.now() - (state.timestamp || 0)) < 86400000;
+
+          if (state && state.lang === 'en' && isFresh && (state.status === 'returning_settlement' || state.status === 'applied')) {
+            if (isFinite(state.wage) && state.wage > 0) {
+              document.getElementById('settlementGrossWage').value = state.wage;
+              document.querySelectorAll('.amount-chip-btn').forEach(function(b) {
+                b.classList.toggle('active', parseFloat(b.innerText.replace(/[^0-9]/g, '')) === state.wage);
+              });
+            }
+            if (isFinite(state.returnedEosb) && state.returnedEosb >= 0) {
+              document.getElementById('settlementEosb').value = Number(state.returnedEosb).toFixed(2);
+            }
+            if (state.unusedLeaveDays !== undefined) {
+              document.getElementById('unusedLeaveDays').value = state.unusedLeaveDays;
+            }
+            if (state.lastMonthDays !== undefined) {
+              document.getElementById('lastMonthDays').value = state.lastMonthDays;
+            }
+            if (state.pendingOtClaims !== undefined) {
+              document.getElementById('pendingOtClaims').value = state.pendingOtClaims;
+            }
+            if (state.companyDeductions !== undefined) {
+              document.getElementById('companyDeductions').value = state.companyDeductions;
+            }
+            if (state.joiningDate !== undefined) {
+              document.getElementById('joiningDate').value = state.joiningDate;
+              const jMobile = document.getElementById('joiningDateMobile');
+              if (jMobile) jMobile.value = isoToDisplay(state.joiningDate);
+            }
+            if (state.exitDate !== undefined) {
+              document.getElementById('exitDate').value = state.exitDate;
+              const eMobile = document.getElementById('exitDateMobile');
+              if (eMobile) eMobile.value = isoToDisplay(state.exitDate);
+            }
+
+            sessionStorage.removeItem('dch_transfer_eosb_settlement');
+            stateApplied = true;
+          }
+        }
+      } catch (e) {
+        console.warn('Storage read error:', e);
+      }
+
+      // 2. Check history.state for page reload, back and forward persistence
+      if (!stateApplied && window.history && window.history.state && window.history.state.dchSettlement) {
+        try {
+          const h = window.history.state.dchSettlement;
+          if (isFinite(h.wage) && parseFloat(h.wage) > 0) {
+            document.getElementById('settlementGrossWage').value = h.wage;
+            document.querySelectorAll('.amount-chip-btn').forEach(function(b) {
+              b.classList.toggle('active', parseFloat(b.innerText.replace(/[^0-9]/g, '')) === parseFloat(h.wage));
+            });
+          }
+          if (h.eosb !== undefined && isFinite(h.eosb) && parseFloat(h.eosb) >= 0) {
+            document.getElementById('settlementEosb').value = Number(h.eosb).toFixed(2);
+          }
+          if (h.unusedLeaveDays !== undefined) document.getElementById('unusedLeaveDays').value = h.unusedLeaveDays;
+          if (h.lastMonthDays !== undefined) document.getElementById('lastMonthDays').value = h.lastMonthDays;
+          if (h.pendingOtClaims !== undefined) document.getElementById('pendingOtClaims').value = h.pendingOtClaims;
+          if (h.companyDeductions !== undefined) document.getElementById('companyDeductions').value = h.companyDeductions;
+          if (h.joiningDate !== undefined) {
+            document.getElementById('joiningDate').value = h.joiningDate;
+            const jMobile = document.getElementById('joiningDateMobile');
+            if (jMobile) jMobile.value = isoToDisplay(h.joiningDate);
+          }
+          if (h.exitDate !== undefined) {
+            document.getElementById('exitDate').value = h.exitDate;
+            const eMobile = document.getElementById('exitDateMobile');
+            if (eMobile) eMobile.value = isoToDisplay(h.exitDate);
+          }
+          stateApplied = true;
+        } catch (e) {
+          console.warn('History state read error:', e);
+        }
+      }
+
+      // 2. Legacy URL parameter fallback
       try {
         const params = new URLSearchParams(window.location.search);
-        let paramsApplied = false;
+        let urlApplied = false;
 
         if (params.has('eosb')) {
           const rawEosb = parseFloat(params.get('eosb'));
@@ -1607,7 +1796,7 @@
             const eosbInput = document.getElementById('settlementEosb');
             if (eosbInput) {
               eosbInput.value = rawEosb.toFixed(2);
-              paramsApplied = true;
+              urlApplied = true;
             }
           }
         }
@@ -1618,19 +1807,25 @@
             const wageInput = document.getElementById('settlementGrossWage');
             if (wageInput) {
               wageInput.value = rawWage;
-              document.querySelectorAll('.amount-chip-btn').forEach(b => {
+              document.querySelectorAll('.amount-chip-btn').forEach(function(b) {
                 b.classList.toggle('active', parseFloat(b.innerText.replace(/[^0-9]/g, '')) === rawWage);
               });
-              paramsApplied = true;
+              urlApplied = true;
             }
           }
         }
 
-        if (paramsApplied) {
-          calculateSettlement();
+        if (urlApplied) {
+          stateApplied = true;
+          cleanSensitiveQueryParams(['eosb', 'wage']);
         }
       } catch (e) {
         console.warn('URL param reading error:', e);
+      }
+
+      if (stateApplied) {
+        calculateSettlement();
+        calculateServiceDuration();
       }
     }
 
@@ -1656,28 +1851,29 @@
       document.getElementById('resFinalProratedPay').innerText = proratedSalary.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SAR';
       document.getElementById('resTotalDeductions').innerText = '-' + deductions.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SAR';
     if (typeof window.dchTrackCalculation === 'function') window.dchTrackCalculation('saudi-salary-calculator_final-settlement');
+      saveFormSnapshotToHistory();
     }
 
     // Run immediately and listen for DOM and navigation events
-    checkIncomingUrlParams();
     initMobileDateSync();
+    checkIncomingTransferState();
     calculateSettlement();
     calculateServiceDuration();
     updateEosbHelperLink();
 
     window.addEventListener('DOMContentLoaded', function() {
-      checkIncomingUrlParams();
       initMobileDateSync();
       calculateSettlement();
       calculateServiceDuration();
       updateEosbHelperLink();
+      checkIncomingTransferState();
     });
     window.addEventListener('popstate', function() {
-      checkIncomingUrlParams();
       initMobileDateSync();
       calculateSettlement();
       calculateServiceDuration();
       updateEosbHelperLink();
+      checkIncomingTransferState();
     });
   </script>
 
