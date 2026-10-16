@@ -2437,7 +2437,8 @@ html[lang="ar"] .site-footer {
   direction: rtl;
 }
 
-html[lang="ar"] .site-footer .footer-columns-grid {
+html[lang="ar"] .site-footer .footer-columns-grid,
+html[lang="ar"] .site-footer .iqama-footer-grid {
   display: grid;
   grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
   gap: 36px;
@@ -2445,13 +2446,15 @@ html[lang="ar"] .site-footer .footer-columns-grid {
 }
 
 @media (max-width: 840px) {
-  html[lang="ar"] .site-footer .footer-columns-grid {
+  html[lang="ar"] .site-footer .footer-columns-grid,
+  html[lang="ar"] .site-footer .iqama-footer-grid {
     grid-template-columns: 1fr 1fr;
   }
 }
 
 @media (max-width: 540px) {
-  html[lang="ar"] .site-footer .footer-columns-grid {
+  html[lang="ar"] .site-footer .footer-columns-grid,
+  html[lang="ar"] .site-footer .iqama-footer-grid {
     grid-template-columns: 1fr;
   }
 }
