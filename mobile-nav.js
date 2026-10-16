@@ -309,7 +309,20 @@
         'travel-booking-calculator'
       ];
 
-      var isAboutPage = (cleanPath === '/about' || cleanPath === '/ar/about');
+      var aboutPages = [
+        '/about',
+        '/contact',
+        '/disclaimer',
+        '/privacy-policy',
+        '/terms',
+        '/ar/about',
+        '/ar/contact',
+        '/ar/disclaimer',
+        '/ar/privacy-policy',
+        '/ar/terms'
+      ];
+
+      var isAboutPage = aboutPages.indexOf(cleanPath) !== -1;
       var targetItem = null;
 
       if (isAboutPage) {
