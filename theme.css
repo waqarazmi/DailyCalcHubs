@@ -6123,3 +6123,25 @@ html[data-theme="dark"] .duel-tag.tag-sip {
 html[data-theme="dark"] .comparison-duel-card > div:last-child {
   color: #94a3b8 !important;
 }
+
+/* ==========================================================================
+   English Footer Brand Logo Parity
+   ========================================================================== */
+.site-footer .footer-brand-logo,
+.site-footer a.footer-brand-logo,
+html[data-theme="dark"] .site-footer .footer-brand-logo,
+html[data-theme="dark"] .site-footer a.footer-brand-logo {
+  text-decoration: none !important;
+}
+.site-footer .footer-brand-logo .logo-title,
+html[data-theme="dark"] .site-footer .footer-brand-logo .logo-title {
+  color: #ffffff !important;
+}
+.site-footer .footer-brand-logo .logo-title span,
+html[data-theme="dark"] .site-footer .footer-brand-logo .logo-title span {
+  color: #38bdf8 !important;
+}
+.site-footer .footer-brand-logo .logo-subtitle,
+html[data-theme="dark"] .site-footer .footer-brand-logo .logo-subtitle {
+  color: #94a3b8 !important;
+}
