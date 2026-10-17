@@ -2399,6 +2399,29 @@ html[lang="ar"] .brand-logo span {
   color: #0ea5e9;
 }
 
+/* ==========================================================================
+   Sitewide Sticky Breadcrumbs Bar (Universal for English and Arabic)
+   Keeps breadcrumbs locked directly beneath the sticky .site-header on scroll
+   ========================================================================== */
+:root {
+  --site-header-height: 74px;
+}
+
+@media (max-width: 992px) {
+  :root {
+    --site-header-height: 65px;
+  }
+}
+
+.breadcrumbs-bar,
+.breadcrumb-bar,
+.breadcrumbs-section {
+  position: sticky !important;
+  top: var(--site-header-height, 74px) !important;
+  z-index: 990 !important;
+  background-color: var(--bg-white, #ffffff);
+}
+
 /* 4. Base Breadcrumbs for Arabic */
 html[lang="ar"] .breadcrumbs-bar {
   background: #ffffff;

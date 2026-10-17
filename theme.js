@@ -300,17 +300,51 @@
     // Delegated entirely to mobile-nav.js across English and Arabic layouts.
   }
 
+  /**
+   * Keep sticky breadcrumbs bar aligned directly beneath .site-header
+   * Dynamically tracks rendered header height across breakpoints, zoom levels, and language layouts.
+   */
+  function syncStickyHeaderHeight() {
+    var header = document.querySelector('.site-header');
+    if (!header) return;
+
+    function update() {
+      var height = header.offsetHeight;
+      if (height > 0) {
+        document.documentElement.style.setProperty('--site-header-height', height + 'px');
+      }
+    }
+
+    update();
+
+    if (window.ResizeObserver) {
+      try {
+        var ro = new ResizeObserver(function () {
+          update();
+        });
+        ro.observe(header);
+      } catch (e) {
+        window.addEventListener('resize', update, { passive: true });
+      }
+    } else {
+      window.addEventListener('resize', update, { passive: true });
+    }
+    window.addEventListener('load', update, { passive: true });
+  }
+
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function () {
       renderCookieBanner();
       bindConsentTriggers();
       bindMobileNav();
+      syncStickyHeaderHeight();
     });
   } else {
     renderCookieBanner();
     bindConsentTriggers();
     bindMobileNav();
+    syncStickyHeaderHeight();
   }
 })();
 
