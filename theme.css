@@ -6145,3 +6145,14 @@ html[data-theme="dark"] .site-footer .footer-brand-logo .logo-title span {
 html[data-theme="dark"] .site-footer .footer-brand-logo .logo-subtitle {
   color: #94a3b8 !important;
 }
+
+/* ==========================================================================
+   Arabic Footer Brand Logo Parity (RTL)
+   ========================================================================== */
+html[dir="rtl"] .site-footer .footer-brand-logo {
+  direction: rtl;
+  text-align: right;
+}
+html[dir="rtl"] .site-footer .footer-brand-logo .logo-text-group {
+  text-align: right;
+}
