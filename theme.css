@@ -5386,7 +5386,8 @@ html[data-theme="dark"] .disclaimer-alert {
   border-color: rgba(239, 68, 68, 0.3) !important;
   color: #fca5a5 !important;
 }
-html[data-theme="dark"] .formula-card {
+html[data-theme="dark"] .formula-card,
+html[data-theme="dark"] .formula-highlight-card {
   background: rgba(245, 158, 11, 0.12) !important;
   border-color: rgba(245, 158, 11, 0.3) !important;
   color: #fde68a !important;

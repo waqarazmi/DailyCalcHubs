@@ -225,9 +225,15 @@
       background: #f8fafc;
     }
     .mobile-date-input { display: none; }
+    .settlement-eosb-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
 
     @media (max-width: 640px) {
       .service-dates-card .grid-2col-dates { grid-template-columns: 1fr !important; }
+      .settlement-eosb-grid { grid-template-columns: 1fr !important; }
       .date-input-group { position: relative; }
       .date-picker-trigger {
         cursor: pointer;
@@ -1077,7 +1083,7 @@
             <div id="dateValidationError" class="date-error-banner" style="display:none;" role="alert"></div>
           </div>
 
-          <div class="mobile-align-bottom" style="display:grid; grid-template-columns: 1fr 1fr; gap:16px;">
+          <div class="mobile-align-bottom settlement-eosb-grid">
             <div class="form-group" style="margin-bottom: 0;">
               <label class="form-label" for="settlementEosb">Approved EOSB Gratuity (SAR)</label>
               <div class="input-with-addons">
