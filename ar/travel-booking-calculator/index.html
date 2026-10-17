@@ -579,6 +579,66 @@
       color: #e11d48;
       font-size: 12px;
     }
+    /* Footer */
+    .site-footer {
+      background: var(--navy-footer);
+      color: #94a3b8;
+      padding: 48px 0 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 13.5px;
+    }
+    .footer-columns-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+      gap: 36px;
+      margin-bottom: 36px;
+    }
+    @media (max-width: 840px) { .footer-columns-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 540px) { .footer-columns-grid { grid-template-columns: 1fr; } }
+    .footer-col-heading {
+      color: #fff;
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .footer-nav-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .footer-nav-list li {
+      margin-bottom: 10px;
+    }
+    .footer-nav-list a {
+      color: #94a3b8;
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+    .footer-nav-list a:hover {
+      color: #38bdf8;
+    }
+    .footer-bottom-bar {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 12.5px;
+    }
+    .footer-legal-links a {
+      color: #94a3b8;
+      text-decoration: none;
+      margin: 0 8px;
+    }
+    .footer-legal-links a:hover {
+      color: #fff;
+    }
+    .inshallah-phrase {
+      color: #64748b;
+      font-size: 12px;
+    }
   </style>
   <script type="application/ld+json">
   {
