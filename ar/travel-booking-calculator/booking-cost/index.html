@@ -293,6 +293,16 @@
     .faq-question i { font-size: 14px; color: var(--crimson-primary); transition: transform 0.2s; }
     .faq-answer { font-size: 14px; color: #475569; line-height: 1.8; margin-top: 10px; }
 
+    /* Related Tools Grid */
+    .related-section { margin-bottom: 40px; }
+    .related-title { font-size: 20px; font-weight: 800; color: var(--navy-dark); margin-bottom: 16px; }
+    .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+    .related-card { background: white; border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; transition: transform 0.2s, box-shadow 0.2s; display: block; text-decoration: none; }
+    .related-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); border-color: var(--crimson-primary); }
+    .related-card-badge { display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase; padding: 4px 8px; border-radius: 4px; background: #fff1f2; color: #e11d48; margin-bottom: 10px; }
+    .related-card-name { font-size: 16px; font-weight: 700; color: var(--navy-dark); margin-bottom: 6px; }
+    .related-card-desc { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+
     /* Footer */
     .site-footer { background: var(--navy-footer); color: #cbd5e1; padding: 48px 20px 24px; font-size: 13.5px; }
     .footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 32px; margin-bottom: 36px; }
@@ -1141,6 +1151,28 @@
         <div class="faq-answer">تتيح لك حماية الإلغاء استرداد قيمة التذكرة نقداً أو برصيد محفظة في حال طرأت ظروف غير متوقعة منعتك من السفر. وهي خيار مفيد إذا كانت مواعيد سفرك غير مؤكدة تماماً.</div>
       </div>
     </section>
+
+    <!-- Related Tools Grid -->
+    <div class="related-section">
+      <h2 class="related-title">استكشف المزيد من حاسبات السفر الذكية</h2>
+      <div class="related-grid">
+        <a href="/ar/travel-booking-calculator/travel-budget/" class="related-card">
+          <span class="related-card-badge">ميزانية شاملة</span>
+          <div class="related-card-name"><i class="fas fa-wallet" style="margin-left:8px;"></i>حاسبة ميزانية السفر الشاملة</div>
+          <div class="related-card-desc">احسب إجمالي ميزانية الرحلة متضمنة الطيران، الفنادق، الإعاشة، والتنقل مع هامش الطوارئ.</div>
+        </a>
+        <a href="/ar/travel-booking-calculator/hotel-cost/" class="related-card">
+          <span class="related-card-badge">فنادق</span>
+          <div class="related-card-name"><i class="fas fa-hotel" style="margin-left:8px;"></i>حاسبة تكلفة الإقامة الفندقية</div>
+          <div class="related-card-desc">احسب تكلفة الغرف والليالي مع ضريبة القيمة المضافة 15% ورسوم البلدية ورسوم الخدمة.</div>
+        </a>
+        <a href="/ar/travel-booking-calculator/flight-cost/" class="related-card">
+          <span class="related-card-badge">طيران</span>
+          <div class="related-card-name"><i class="fas fa-plane-departure" style="margin-left:8px;"></i>حاسبة تكلفة تذاكر الطيران</div>
+          <div class="related-card-desc">احسب تكلفة التذاكر مع الأمتعة الإضافية، اختيار المقاعد، والضرائب ورسوم المغادرة.</div>
+        </a>
+      </div>
+    </div>
 
   </div>
 
