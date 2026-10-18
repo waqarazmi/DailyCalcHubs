@@ -1,10 +1,108 @@
-/**
- * DailyCalcHubs — Dedicated Navigation Controller
+﻿/**
+ * DailyCalcHubs â€” Dedicated Navigation Controller
  * Handles desktop Explore Tools dropdown, category tabs, and mobile navigation drawer.
  * Universal across English and Arabic layouts.
+ * Includes dynamic hydration of directory tools from shared cached data.
  */
 (function() {
   'use strict';
+
+  var DCH_DEFAULT_NAV_DATA = {"version":"1.0","categories":[{"key":"remittance","enTabTitle":"Remittance \u0026 Forex","arTabTitle":"تحويل الأموال والصرف","enTitle":"Remittance \u0026 Forex","arTitle":"تحويل الأموال والصرف","enDesc":"SAR Exchange Rate References, transfer fees \u0026 corridors","arDesc":"أسعار الصرف المرجعية للريال، مقارنة رسوم التحويل والدليل الإرشادي","enHub":"/saudi-remittance-calculator/","arHub":"/ar/saudi-remittance-calculator/","enTools":[{"url":"/saudi-remittance-calculator/live-sar-exchange-rate/","title":"SAR Exchange Rate References"},{"url":"/saudi-remittance-calculator/sar-to-inr/","title":"SAR to INR (India)"},{"url":"/saudi-remittance-calculator/sar-to-pkr/","title":"SAR to PKR (Pakistan)"},{"url":"/saudi-remittance-calculator/sar-to-bdt/","title":"SAR to BDT (Bangladesh)"},{"url":"/saudi-remittance-calculator/sar-to-php/","title":"SAR to PHP (Philippines)"},{"url":"/saudi-remittance-calculator/sar-to-npr/","title":"SAR to NPR (Nepal)"},{"url":"/saudi-remittance-calculator/sar-to-lkr/","title":"SAR to LKR (Sri Lanka)"},{"url":"/saudi-remittance-calculator/remittance-comparison/","title":"Remittance Comparison Tool"},{"url":"/saudi-remittance-calculator/remittance-fee/","title":"Remittance Fee Calculator"},{"url":"/saudi-remittance-calculator/saudi-to-india-remittance-guide/","title":"Saudi to India Remittance Guide"}],"arTools":[{"url":"/ar/saudi-remittance-calculator/live-sar-exchange-rate/","title":"أسعار الصرف المرجعية للريال"},{"url":"/ar/saudi-remittance-calculator/sar-to-inr/","title":"تحويل الريال إلى الروبية الهندية (INR)"},{"url":"/ar/saudi-remittance-calculator/sar-to-pkr/","title":"تحويل الريال إلى الروبية الباكستانية (PKR)"},{"url":"/ar/saudi-remittance-calculator/sar-to-bdt/","title":"تحويل الريال إلى التاكا البنغلاديشية (BDT)"},{"url":"/ar/saudi-remittance-calculator/sar-to-php/","title":"تحويل الريال إلى البيزو الفلبيني (PHP)"},{"url":"/ar/saudi-remittance-calculator/sar-to-npr/","title":"تحويل الريال إلى الروبية النيبالية (NPR)"},{"url":"/ar/saudi-remittance-calculator/sar-to-lkr/","title":"تحويل الريال إلى الروبية السريلانكية (LKR)"},{"url":"/ar/saudi-remittance-calculator/remittance-comparison/","title":"مقارنة رسوم ومنصات تحويل الأموال"},{"url":"/ar/saudi-remittance-calculator/remittance-fee/","title":"حاسبة رسوم التحويل المالي الدولي"},{"url":"/ar/saudi-remittance-calculator/saudi-to-india-remittance-guide/","title":"دليل تحويل الأموال من السعودية إلى الهند"}]},{"key":"prayer","enTabTitle":"Prayer \u0026 Religious","arTabTitle":"مواقيت الصلاة والقبلة","enTitle":"Prayer \u0026 Religious","arTitle":"مواقيت الصلاة والقبلة","enDesc":"Accurate Umm Al-Qura prayer times and Qibla direction","arDesc":"مواقيت الصلاة الدقيقة حسب تقويم أم القرى واتجاه القبلة","enHub":"/prayer-times/","arHub":"/ar/prayer-times/","enTools":[{"url":"/prayer-times/","title":"Umm Al-Qura Prayer Times \u0026 Qibla"}],"arTools":[{"url":"/ar/prayer-times/","title":"مواقيت الصلاة بتقويم أم القرى واتجاه القبلة"}]},{"key":"salary","enTabTitle":"Salary \u0026 Labor Law","arTabTitle":"الرواتب ونظام العمل","enTitle":"Salary \u0026 Labor Law","arTitle":"الرواتب ونظام العمل","enDesc":"EOSB gratuity, wage breakdowns, overtime \u0026 labor rules","arDesc":"مكافأة نهاية الخدمة، صافي الراتب، استقطاع التأمينات والعمل الإضافي","enHub":"/saudi-salary-calculator/","arHub":"/ar/saudi-salary-calculator/","enTools":[{"url":"/saudi-salary-calculator/eosb/","title":"End of Service (EOSB) Gratuity"},{"url":"/saudi-salary-calculator/take-home-salary/","title":"Net Take-Home Salary Calculator"},{"url":"/saudi-salary-calculator/gosi-calculator/","title":"GOSI Contribution Calculator"},{"url":"/saudi-salary-calculator/overtime/","title":"Overtime Calculator (Article 107)"},{"url":"/saudi-salary-calculator/final-settlement/","title":"Final Settlement Calculator"},{"url":"/saudi-salary-calculator/resignation-gratuity/","title":"Resignation Gratuity (Article 85)"},{"url":"/saudi-salary-calculator/basic-salary/","title":"Basic Salary Calculator"},{"url":"/saudi-salary-calculator/salary-allowances/","title":"Salary Allowances Calculator"},{"url":"/saudi-salary-calculator/daily-salary/","title":"Daily Salary Calculator"},{"url":"/saudi-salary-calculator/hourly-salary/","title":"Hourly Salary Calculator"},{"url":"/saudi-salary-calculator/annual-salary/","title":"Annual Salary Calculator"},{"url":"/saudi-salary-calculator/salary-increment/","title":"Salary Increment Calculator"}],"arTools":[{"url":"/ar/saudi-salary-calculator/eosb/","title":"حاسبة مكافأة نهاية الخدمة (EOSB)"},{"url":"/ar/saudi-salary-calculator/take-home-salary/","title":"حاسبة صافي الراتب المستلم"},{"url":"/ar/saudi-salary-calculator/gosi-calculator/","title":"حاسبة التأمينات الاجتماعية (GOSI)"},{"url":"/ar/saudi-salary-calculator/overtime/","title":"حاسبة ساعات العمل الإضافي"},{"url":"/ar/saudi-salary-calculator/final-settlement/","title":"حاسبة تصفية المستحقات النهائية"},{"url":"/ar/saudi-salary-calculator/resignation-gratuity/","title":"حاسبة مكافأة الاستقالة"},{"url":"/ar/saudi-salary-calculator/basic-salary/","title":"حاسبة الراتب الأساسي"},{"url":"/ar/saudi-salary-calculator/salary-allowances/","title":"حاسبة البدلات والمزايا"},{"url":"/ar/saudi-salary-calculator/daily-salary/","title":"حاسبة أجر اليوم وخصم الغياب"},{"url":"/ar/saudi-salary-calculator/hourly-salary/","title":"حاسبة أجر الساعة"},{"url":"/ar/saudi-salary-calculator/annual-salary/","title":"حاسبة الراتب السنوي والدخل الإجمالي"},{"url":"/ar/saudi-salary-calculator/salary-increment/","title":"حاسبة العلاوة وزيادة الراتب"}]},{"key":"iqama","enTabTitle":"Iqama \u0026 Residency","arTabTitle":"الإقامة ورخص العمل","enTitle":"Iqama \u0026 Residency","arTitle":"الإقامة ورخص العمل","enDesc":"Iqama renewal costs, dependent levies \u0026 work permits","arDesc":"رسوم تجديد الإقامة، مقابل المرافقين المالي ورخص العمل","enHub":"/saudi-iqama-calculator/","arHub":"/ar/saudi-iqama-calculator/","enTools":[{"url":"/saudi-iqama-calculator/iqama-cost/","title":"Total Saudi Iqama Cost"},{"url":"/saudi-iqama-calculator/dependent-fee/","title":"Saudi Dependent Fee \u0026 Levy"},{"url":"/saudi-iqama-calculator/family-dependent-cost/","title":"Family Dependent Cost Calculator"},{"url":"/saudi-iqama-calculator/maktab-amal/","title":"Maktab Amal Work Permit Fee"},{"url":"/saudi-iqama-calculator/renewal-fee/","title":"Iqama Renewal Fee Calculator"},{"url":"/saudi-iqama-calculator/renewal-guide/","title":"Complete Iqama Renewal Guide"},{"url":"/saudi-iqama-calculator/work-permit/","title":"Work Permit (Karat Amal) Fee"},{"url":"/saudi-iqama-calculator/?duration=3","title":"3-Month Quarterly Iqama Cost"},{"url":"/saudi-iqama-calculator/?duration=6","title":"6-Month Half-Year Iqama Cost"},{"url":"/saudi-iqama-calculator/?duration=9","title":"9-Month Iqama Cost"},{"url":"/saudi-iqama-calculator/?duration=12","title":"12-Month Annual Iqama Cost"}],"arTools":[{"url":"/ar/saudi-iqama-calculator/iqama-cost/","title":"حاسبة التكلفة الإجمالية للإقامة"},{"url":"/ar/saudi-iqama-calculator/dependent-fee/","title":"حاسبة رسوم المرافقين"},{"url":"/ar/saudi-iqama-calculator/family-dependent-cost/","title":"حاسبة تكلفة إقامة المرافقين والتابعين"},{"url":"/ar/saudi-iqama-calculator/maktab-amal/","title":"حاسبة المقابل المالي لمكتب العمل"},{"url":"/ar/saudi-iqama-calculator/renewal-fee/","title":"حاسبة رسوم تجديد الإقامة"},{"url":"/ar/saudi-iqama-calculator/renewal-guide/","title":"دليل تجديد الإقامة خطوة بخطوة"},{"url":"/ar/saudi-iqama-calculator/work-permit/","title":"حاسبة رسوم رخصة العمل"},{"url":"/ar/saudi-iqama-calculator/?duration=3","title":"حاسبة تجديد الإقامة 3 أشهر"},{"url":"/ar/saudi-iqama-calculator/?duration=6","title":"حاسبة تجديد الإقامة 6 أشهر"},{"url":"/ar/saudi-iqama-calculator/?duration=9","title":"حاسبة تجديد الإقامة 9 أشهر"},{"url":"/ar/saudi-iqama-calculator/?duration=12","title":"تكلفة تجديد الإقامة السنوية 12 شهراً"}]},{"key":"everyday","enTabTitle":"Everyday Smart Tools","arTabTitle":"أدوات الحياة اليومية","enTitle":"Everyday Smart Tools","arTitle":"أدوات الحياة اليومية","enDesc":"Age, discounts, fuel, electricity, BMI, bills \u0026 converters","arDesc":"العمر، الخصومات، الوقود، الكهرباء، مؤشر كتلة الجسم وتقسيم الفواتير","enHub":"/everyday-smart-calculator/","arHub":"/ar/everyday-smart-calculator/","enTools":[{"url":"/everyday-smart-calculator/age-calculator/","title":"Age \u0026 Date of Birth Calculator"},{"url":"/everyday-smart-calculator/discount-calculator/","title":"Smart Discount \u0026 Sale Price"},{"url":"/everyday-smart-calculator/percentage-calculator/","title":"Percentage Calculator (4 Modes)"},{"url":"/everyday-smart-calculator/split-bill-calculator/","title":"Split Bill \u0026 Group Expense"},{"url":"/everyday-smart-calculator/fuel-cost-calculator/","title":"Fuel \u0026 Petrol Cost Calculator"},{"url":"/everyday-smart-calculator/electricity-cost-calculator/","title":"Electricity / Unit Cost Calculator"},{"url":"/everyday-smart-calculator/appliance-electricity-consumption/","title":"Appliance Electricity Consumption"},{"url":"/everyday-smart-calculator/bmi-calculator/","title":"BMI Health Calculator"},{"url":"/everyday-smart-calculator/tip-calculator/","title":"Tip \u0026 Gratuity Calculator"},{"url":"/everyday-smart-calculator/time-duration-calculator/","title":"Time Duration \u0026 Date Difference"},{"url":"/everyday-smart-calculator/gpa-calculator/","title":"GPA / Grade Point Calculator"},{"url":"/everyday-smart-calculator/unit-converter/","title":"Universal Unit Converter"}],"arTools":[{"url":"/ar/everyday-smart-calculator/age-calculator/","title":"حاسبة العمر وتاريخ الميلاد"},{"url":"/ar/everyday-smart-calculator/discount-calculator/","title":"حاسبة الخصم وضريبة القيمة المضافة"},{"url":"/ar/everyday-smart-calculator/percentage-calculator/","title":"حاسبة النسبة المئوية (4 أوضاع)"},{"url":"/ar/everyday-smart-calculator/split-bill-calculator/","title":"حاسبة تقسيم الفاتورة بالتساوي"},{"url":"/ar/everyday-smart-calculator/fuel-cost-calculator/","title":"حاسبة تكلفة استهلاك الوقود"},{"url":"/ar/everyday-smart-calculator/electricity-cost-calculator/","title":"حاسبة فاتورة الكهرباء السعودية"},{"url":"/ar/everyday-smart-calculator/appliance-electricity-consumption/","title":"حاسبة استهلاك الأجهزة للطاقة"},{"url":"/ar/everyday-smart-calculator/bmi-calculator/","title":"حاسبة مؤشر كتلة الجسم (BMI)"},{"url":"/ar/everyday-smart-calculator/tip-calculator/","title":"حاسبة البقشيش والإكرامية"},{"url":"/ar/everyday-smart-calculator/time-duration-calculator/","title":"حاسبة الفترات الزمنية والتواريخ"},{"url":"/ar/everyday-smart-calculator/gpa-calculator/","title":"حاسبة المعدل التراكمي الجامعي (GPA)"},{"url":"/ar/everyday-smart-calculator/unit-converter/","title":"محول الوحدات القياسية الشامل"}]},{"key":"sip","enTabTitle":"Shariah SIP \u0026 Wealth","arTabTitle":"الاستثمار الشرعي (SIP)","enTitle":"Shariah SIP \u0026 Wealth","arTitle":"الاستثمار الشرعي (SIP)","enDesc":"Halal mutual funds, goal planning \u0026 wealth compounding","arDesc":"صناديق الاستثمار المتوافقة مع الشريعة، خطط الأهداف ونمو الثروة","enHub":"/shariah-sip-calculator/","arHub":"/ar/shariah-sip-calculator/","enTools":[{"url":"/shariah-sip-calculator/sip-calculator/","title":"Shariah SIP Calculator"},{"url":"/shariah-sip-calculator/sip-goal-calculator/","title":"Shariah SIP Goal Calculator"},{"url":"/shariah-sip-calculator/monthly-investment-calculator/","title":"Monthly Investment Compounding"},{"url":"/shariah-sip-calculator/lump-sum-calculator/","title":"Lump Sum vs SIP Wealth Projection"}],"arTools":[{"url":"/ar/shariah-sip-calculator/sip-calculator/","title":"حاسبة الاستثمار الشهري التراكمي (SIP)"},{"url":"/ar/shariah-sip-calculator/sip-goal-calculator/","title":"حاسبة تحقيق الهدف المالي الاستثماري"},{"url":"/ar/shariah-sip-calculator/monthly-investment-calculator/","title":"حاسبة الاستثمار الشهري التراكمي"},{"url":"/ar/shariah-sip-calculator/lump-sum-calculator/","title":"حاسبة الاستثمار بمبلغ مقطوع مقابل SIP"}]},{"key":"travel","enTabTitle":"Travel \u0026 Booking","arTabTitle":"السفر وحجوزات الطيران","enTitle":"Travel \u0026 Booking","arTitle":"السفر وحجوزات الطيران","enDesc":"Flight, hotel, travel expense splitter \u0026 trip budgets","arDesc":"تكاليف الطيران، الفنادق، ميزانية الرحلة وتقسيم مصاريف السفر","enHub":"/travel-booking-calculator/","arHub":"/ar/travel-booking-calculator/","enTools":[{"url":"/travel-booking-calculator/flight-cost/","title":"Flight Cost Calculator"},{"url":"/travel-booking-calculator/hotel-cost/","title":"Hotel Cost Calculator"},{"url":"/travel-booking-calculator/expense-split/","title":"Travel Expense Splitter"},{"url":"/travel-booking-calculator/booking-cost/","title":"Booking Cost \u0026 Fee Calculator"},{"url":"/travel-booking-calculator/travel-budget/","title":"Travel Budget Calculator"}],"arTools":[{"url":"/ar/travel-booking-calculator/flight-cost/","title":"حاسبة تكلفة تذاكر الطيران"},{"url":"/ar/travel-booking-calculator/hotel-cost/","title":"حاسبة تكلفة الفنادق والإقامة"},{"url":"/ar/travel-booking-calculator/expense-split/","title":"حاسبة تقسيم مصاريف السفر والرحلات"},{"url":"/ar/travel-booking-calculator/booking-cost/","title":"حاسبة رسوم الحجز والرسوم الإضافية"},{"url":"/ar/travel-booking-calculator/travel-budget/","title":"حاسبة ميزانية السفر الشاملة"}]},{"key":"about","enTabTitle":"About Us","arTabTitle":"من نحن","enTitle":"About Us","arTitle":"من نحن","enDesc":"Company information and legal policies","arDesc":"معلومات الشركة والسياسات القانونية","enHub":"/about/","arHub":"/ar/about/","enTools":[{"url":"/about/","title":"About Us"},{"url":"/contact/","title":"Contact"},{"url":"/disclaimer/","title":"Disclaimer"},{"url":"/privacy-policy/","title":"Privacy Policy"},{"url":"/terms/","title":"Terms of Use"}],"arTools":[{"url":"/ar/about/","title":"من نحن"},{"url":"/ar/contact/","title":"اتصل بنا"},{"url":"/ar/disclaimer/","title":"إخلاء المسؤولية"},{"url":"/ar/privacy-policy/","title":"سياسة الخصوصية"},{"url":"/ar/terms/","title":"شروط الاستخدام"}]}]};
+  window.DCH_NAV_DATA = window.DCH_NAV_DATA || DCH_DEFAULT_NAV_DATA;
+
+  function hydrateNavMenu(data) {
+    if (!data || !data.categories) return;
+    var isAr = (document.documentElement.getAttribute('lang') === 'ar' || (window.location.pathname && window.location.pathname.indexOf('/ar/') === 0));
+
+    data.categories.forEach(function(cat) {
+      var tools = isAr ? cat.arTools : cat.enTools;
+      if (!tools || tools.length === 0) return;
+
+      // 1. Desktop Mega Panel
+      var panel = document.getElementById('panel-' + cat.key);
+      if (panel) {
+        var grid = panel.querySelector('.mega-panel-tools-grid');
+        if (grid && grid.children.length === 0) {
+          var frag = document.createDocumentFragment();
+          tools.forEach(function(t) {
+            var a = document.createElement('a');
+            a.href = t.url;
+            a.className = 'mega-tool-item';
+            a.setAttribute('role', 'menuitem');
+
+            var bullet = document.createElement('span');
+            bullet.className = 'mega-tool-bullet';
+
+            var text = document.createElement('span');
+            text.className = 'mega-tool-text';
+            text.textContent = t.title;
+
+            a.appendChild(bullet);
+            a.appendChild(text);
+            frag.appendChild(a);
+          });
+          grid.appendChild(frag);
+        }
+      }
+
+      // 2. Mobile Accordion Item
+      var mobItem = document.querySelector('.mobile-accordion-item[data-cat="' + cat.key + '"]');
+      if (!mobItem) {
+        var catKeys = ['remittance', 'prayer', 'salary', 'iqama', 'everyday', 'sip', 'travel', 'about'];
+        var idx = catKeys.indexOf(cat.key);
+        var allMobItems = document.querySelectorAll('.mobile-accordion-item');
+        if (idx >= 0 && idx < allMobItems.length && (!allMobItems[idx].hasAttribute('data-cat') || allMobItems[idx].getAttribute('data-cat') === cat.key)) {
+          mobItem = allMobItems[idx];
+          mobItem.setAttribute('data-cat', cat.key);
+        }
+      }
+      if (mobItem) {
+        var list = mobItem.querySelector('.mobile-acc-links-list');
+        if (list && list.children.length === 0) {
+          var mobFrag = document.createDocumentFragment();
+          tools.forEach(function(t) {
+            var a = document.createElement('a');
+            a.href = t.url;
+            a.className = 'mobile-acc-tool-link';
+            a.textContent = t.title;
+            mobFrag.appendChild(a);
+          });
+          list.appendChild(mobFrag);
+        }
+      }
+    });
+  }
+
+  // Background fetch to update cached navigation data if updated
+  function fetchRemoteNavData() {
+    if (typeof fetch !== 'function') return;
+    try {
+      var cached = sessionStorage.getItem('dch_nav_data_v1');
+      if (cached) {
+        window.DCH_NAV_DATA = JSON.parse(cached);
+        hydrateNavMenu(window.DCH_NAV_DATA);
+        return;
+      }
+    } catch (e) {}
+
+    fetch('/navigation-data.json')
+      .then(function(res) {
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        return res.json();
+      })
+      .then(function(data) {
+        if (data && data.categories) {
+          window.DCH_NAV_DATA = data;
+          hydrateNavMenu(data);
+          try {
+            sessionStorage.setItem('dch_nav_data_v1', JSON.stringify(data));
+          } catch (e) {}
+        }
+      })
+      .catch(function() {
+        // Fallback already hydrated synchronously
+      });
+  }
 
   function initExploreDropdown() {
     var exploreBtn = document.getElementById('exploreToolsBtn');
@@ -460,10 +558,12 @@
   }
 
   function initAll() {
+    hydrateNavMenu(window.DCH_NAV_DATA);
     initExploreDropdown();
     initCategoryDropdown();
     initAboutUsDropdown();
     initMobileNav();
+    fetchRemoteNavData();
   }
 
   if (document.readyState === 'loading') {
