@@ -2383,7 +2383,7 @@
     <div class="cookie-consent-container">
       <div class="cookie-consent-text">
         <i class="fas fa-cookie-bite" style="color:#38bdf8; margin-right:6px;"></i>
-        We use cookies and anonymized analytics to ensure proper functionality and support our free calculation tools per our <a href="/privacy-policy/">Privacy Policy</a>.
+        We use essential cookies and storage for site tools, and optional analytics and advertising to improve services and support free calculators per our <a href="/privacy-policy/">Privacy Policy</a>.
       </div>
       <div class="cookie-consent-actions">
         <button type="button" id="cookieConsentEssential" class="cookie-btn cookie-btn-secondary" onclick="handleCookieChoice('essential')">Essential Only</button>
@@ -2471,9 +2471,36 @@
     function handleCookieChoice(choice) {
       if (window.DailyCalcHubsCookies && typeof window.DailyCalcHubsCookies.choose === 'function') {
         window.DailyCalcHubsCookies.choose(choice);
+      } else if (window.DailyCalcHubsConsent && typeof window.DailyCalcHubsConsent.applyConsent === 'function') {
+        window.DailyCalcHubsConsent.applyConsent(choice);
       } else {
         try {
           localStorage.setItem('dch_cookie_consent', choice);
+          if (choice === 'essential') {
+            window['ga-disable-G-18Y3LNHDR8'] = true;
+            window.adsbygoogle = window.adsbygoogle || [];
+            window.adsbygoogle.pauseAdRequests = 1;
+            if (typeof gtag === 'function') {
+              gtag('consent', 'update', {
+                'ad_storage': 'denied',
+                'analytics_storage': 'denied',
+                'ad_user_data': 'denied',
+                'ad_personalization': 'denied'
+              });
+            }
+          } else if (choice === 'all') {
+            window['ga-disable-G-18Y3LNHDR8'] = false;
+            window.adsbygoogle = window.adsbygoogle || [];
+            window.adsbygoogle.pauseAdRequests = 0;
+            if (typeof gtag === 'function') {
+              gtag('consent', 'update', {
+                'ad_storage': 'granted',
+                'analytics_storage': 'granted',
+                'ad_user_data': 'granted',
+                'ad_personalization': 'granted'
+              });
+            }
+          }
         } catch (e) {}
         const banner = document.getElementById('cookieConsentBanner');
         if (banner) banner.style.display = 'none';

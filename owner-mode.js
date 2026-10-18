@@ -16,11 +16,111 @@
       window.history.replaceState({}, document.title, cleanUrl);
     }
 
-    if (localStorage.getItem('dch_owner_mode') === 'active') {
+    var isOwner = false;
+    var savedConsent = null;
+    try {
+      isOwner = localStorage.getItem('dch_owner_mode') === 'active';
+      savedConsent = localStorage.getItem('dch_cookie_consent');
+    } catch (e) {}
+
+    // Early suppression for returning visitors and owner mode before tags initialize
+    if (isOwner || savedConsent === 'essential') {
       window['ga-disable-G-18Y3LNHDR8'] = true;
       window.adsbygoogle = window.adsbygoogle || [];
       window.adsbygoogle.pauseAdRequests = 1;
+    } else if (savedConsent === 'all' && !isOwner) {
+      window['ga-disable-G-18Y3LNHDR8'] = false;
+      window.adsbygoogle = window.adsbygoogle || [];
+      window.adsbygoogle.pauseAdRequests = 0;
+    }
 
+    // Google Consent Mode v2 Early Hook:
+    // When the subsequent <head> script calls gtag('consent', 'default', ...),
+    // automatically sequence the returning visitor's update immediately after default.
+    window.dataLayer = window.dataLayer || [];
+    var origPush = window.dataLayer.push.bind(window.dataLayer);
+    window.dataLayer.push = function() {
+      var res = origPush.apply(window.dataLayer, arguments);
+      for (var i = 0; i < arguments.length; i++) {
+        var item = arguments[i];
+        if (item && item[0] === 'consent' && item[1] === 'default') {
+          var currentConsent = null;
+          var currentOwner = false;
+          try {
+            currentConsent = localStorage.getItem('dch_cookie_consent');
+            currentOwner = localStorage.getItem('dch_owner_mode') === 'active';
+          } catch (e) {}
+
+          if (currentOwner || currentConsent === 'essential') {
+            origPush(['consent', 'update', {
+              'ad_storage': 'denied',
+              'analytics_storage': 'denied',
+              'ad_user_data': 'denied',
+              'ad_personalization': 'denied'
+            }]);
+            window.__dch_consent_applied = 'essential';
+          } else if (currentConsent === 'all' && !currentOwner) {
+            origPush(['consent', 'update', {
+              'ad_storage': 'granted',
+              'analytics_storage': 'granted',
+              'ad_user_data': 'granted',
+              'ad_personalization': 'granted'
+            }]);
+            window.__dch_consent_applied = 'all';
+          }
+        }
+      }
+      return res;
+    };
+
+    // Unified Consent API available synchronously to all scripts and buttons
+    window.DailyCalcHubsConsent = {
+      applyConsent: function(choice) {
+        try {
+          localStorage.setItem('dch_cookie_consent', choice);
+        } catch (e) {}
+
+        var isOwnerActive = false;
+        try {
+          isOwnerActive = localStorage.getItem('dch_owner_mode') === 'active';
+        } catch (e) {}
+
+        if (choice === 'essential') {
+          window['ga-disable-G-18Y3LNHDR8'] = true;
+          window.adsbygoogle = window.adsbygoogle || [];
+          window.adsbygoogle.pauseAdRequests = 1;
+          if (typeof window.gtag === 'function') {
+            window.gtag('consent', 'update', {
+              'ad_storage': 'denied',
+              'analytics_storage': 'denied',
+              'ad_user_data': 'denied',
+              'ad_personalization': 'denied'
+            });
+          }
+          window.__dch_consent_applied = 'essential';
+        } else if (choice === 'all') {
+          if (!isOwnerActive) {
+            window['ga-disable-G-18Y3LNHDR8'] = false;
+            window.adsbygoogle = window.adsbygoogle || [];
+            window.adsbygoogle.pauseAdRequests = 0;
+          }
+          if (typeof window.gtag === 'function') {
+            window.gtag('consent', 'update', {
+              'ad_storage': 'granted',
+              'analytics_storage': 'granted',
+              'ad_user_data': 'granted',
+              'ad_personalization': 'granted'
+            });
+          }
+          window.__dch_consent_applied = 'all';
+        }
+
+        var banner = document.getElementById('cookieConsentBanner');
+        if (banner) banner.style.display = 'none';
+      }
+    };
+
+    if (isOwner) {
       window.addEventListener('DOMContentLoaded', function() {
         if (!document.getElementById('dch-owner-mode-badge')) {
           var isArabic = document.documentElement.lang === 'ar' || document.documentElement.dir === 'rtl' || window.location.pathname.indexOf('/ar/') === 0 || window.location.pathname === '/ar';

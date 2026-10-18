@@ -161,19 +161,38 @@
   }
 
   function setConsent(choice) {
+    if (window.DailyCalcHubsConsent && typeof window.DailyCalcHubsConsent.applyConsent === 'function') {
+      window.DailyCalcHubsConsent.applyConsent(choice);
+      return;
+    }
+
     try {
       localStorage.setItem(COOKIE_KEY, choice);
     } catch (e) {}
 
+    var isOwnerActive = false;
+    try {
+      isOwnerActive = localStorage.getItem('dch_owner_mode') === 'active';
+    } catch (e) {}
+
     if (choice === 'essential') {
       window['ga-disable-G-18Y3LNHDR8'] = true;
+      window.adsbygoogle = window.adsbygoogle || [];
+      window.adsbygoogle.pauseAdRequests = 1;
+      if (typeof window.gtag === 'function') {
+        window.gtag('consent', 'update', {
+          'ad_storage': 'denied',
+          'analytics_storage': 'denied',
+          'ad_user_data': 'denied',
+          'ad_personalization': 'denied'
+        });
+      }
+      window.__dch_consent_applied = 'essential';
     } else if (choice === 'all') {
-      try {
-        if (localStorage.getItem('dch_owner_mode') !== 'active') {
-          window['ga-disable-G-18Y3LNHDR8'] = false;
-        }
-      } catch (e) {
+      if (!isOwnerActive) {
         window['ga-disable-G-18Y3LNHDR8'] = false;
+        window.adsbygoogle = window.adsbygoogle || [];
+        window.adsbygoogle.pauseAdRequests = 0;
       }
       if (typeof window.gtag === 'function') {
         window.gtag('consent', 'update', {
@@ -183,6 +202,7 @@
           'ad_personalization': 'granted'
         });
       }
+      window.__dch_consent_applied = 'all';
     }
 
     var banner = document.getElementById('cookieConsentBanner');
@@ -193,23 +213,9 @@
 
   function renderCookieBanner() {
     var consent = getConsent();
-    if (consent === 'essential') {
-      window['ga-disable-G-18Y3LNHDR8'] = true;
-    } else if (consent === 'all') {
-      try {
-        if (localStorage.getItem('dch_owner_mode') !== 'active') {
-          window['ga-disable-G-18Y3LNHDR8'] = false;
-        }
-      } catch (e) {
-        window['ga-disable-G-18Y3LNHDR8'] = false;
-      }
-      if (typeof window.gtag === 'function') {
-        window.gtag('consent', 'update', {
-          'ad_storage': 'granted',
-          'analytics_storage': 'granted',
-          'ad_user_data': 'granted',
-          'ad_personalization': 'granted'
-        });
+    if (consent) {
+      if (window.__dch_consent_applied !== consent) {
+        setConsent(consent);
       }
     }
 
@@ -239,10 +245,10 @@
         '<div class="cookie-consent-container">',
         '  <div class="cookie-consent-text">',
         '    <i class="fas fa-cookie-bite" style="color: #38bdf8; margin-left: 6px;"></i>',
-        '    نستخدم ملفات تعريف الارتباط الأساسية لضمان عمل الأدوات الحسابية وتذكر تفضيلاتك وتطوير خدماتنا وفقاً لـ <a href="/ar/privacy-policy/">سياسة الخصوصية</a>.',
+        '    نستخدم ملفات تعريف الارتباط والتخزين الضروري لتشغيل الأدوات، وتحليلات وإعلانات اختيارية لتطوير الخدمات ودعم حاسباتنا المجانية وفقاً لـ <a href="/ar/privacy-policy/">سياسة الخصوصية</a>.',
         '  </div>',
         '  <div class="cookie-consent-actions">',
-        '    <button type="button" class="cookie-btn cookie-btn-secondary" onclick="window.DailyCalcHubsCookies.choose(\'essential\')">الأساسية فقط</button>',
+        '    <button type="button" class="cookie-btn cookie-btn-secondary" onclick="window.DailyCalcHubsCookies.choose(\'essential\')">الضرورية فقط</button>',
         '    <button type="button" class="cookie-btn cookie-btn-primary" onclick="window.DailyCalcHubsCookies.choose(\'all\')">قبول الكل</button>',
         '  </div>',
         '</div>'
@@ -252,7 +258,7 @@
         '<div class="cookie-consent-container">',
         '  <div class="cookie-consent-text">',
         '    <i class="fas fa-cookie-bite" style="color: #38bdf8; margin-right: 6px;"></i>',
-        '    We use essential cookies to ensure calculation tools operate smoothly and remember your preferences per our <a href="/privacy-policy/">Privacy Policy</a>.',
+        '    We use essential cookies and storage for site tools, and optional analytics and advertising to improve services and support free calculators per our <a href="/privacy-policy/">Privacy Policy</a>.',
         '  </div>',
         '  <div class="cookie-consent-actions">',
         '    <button type="button" class="cookie-btn cookie-btn-secondary" onclick="window.DailyCalcHubsCookies.choose(\'essential\')">Essential Only</button>',

@@ -2456,7 +2456,7 @@
     <div class="cookie-consent-container">
       <div class="cookie-consent-text">
         <i class="fas fa-cookie-bite" style="color:#38bdf8; margin-left:6px;"></i>
-        نستخدم ملفات تعريف الارتباط والتحليلات مجهولة المصدر لضمان عمل الأدوات الحسابية المجانية وفقاً لـ <a href="/ar/privacy-policy/">سياسة الخصوصية</a>.
+        نستخدم ملفات تعريف الارتباط والتخزين الضروري لتشغيل الأدوات، وتحليلات وإعلانات اختيارية لتطوير الخدمات ودعم حاسباتنا المجانية وفقاً لـ <a href="/ar/privacy-policy/">سياسة الخصوصية</a>.
       </div>
       <div class="cookie-consent-actions">
         <button type="button" id="cookieConsentEssential" class="cookie-btn cookie-btn-secondary" onclick="handleCookieChoice('essential')">الضرورية فقط</button>
@@ -2541,9 +2541,36 @@
     function handleCookieChoice(choice) {
       if (window.DailyCalcHubsCookies && typeof window.DailyCalcHubsCookies.choose === 'function') {
         window.DailyCalcHubsCookies.choose(choice);
+      } else if (window.DailyCalcHubsConsent && typeof window.DailyCalcHubsConsent.applyConsent === 'function') {
+        window.DailyCalcHubsConsent.applyConsent(choice);
       } else {
         try {
           localStorage.setItem('dch_cookie_consent', choice);
+          if (choice === 'essential') {
+            window['ga-disable-G-18Y3LNHDR8'] = true;
+            window.adsbygoogle = window.adsbygoogle || [];
+            window.adsbygoogle.pauseAdRequests = 1;
+            if (typeof gtag === 'function') {
+              gtag('consent', 'update', {
+                'ad_storage': 'denied',
+                'analytics_storage': 'denied',
+                'ad_user_data': 'denied',
+                'ad_personalization': 'denied'
+              });
+            }
+          } else if (choice === 'all') {
+            window['ga-disable-G-18Y3LNHDR8'] = false;
+            window.adsbygoogle = window.adsbygoogle || [];
+            window.adsbygoogle.pauseAdRequests = 0;
+            if (typeof gtag === 'function') {
+              gtag('consent', 'update', {
+                'ad_storage': 'granted',
+                'analytics_storage': 'granted',
+                'ad_user_data': 'granted',
+                'ad_personalization': 'granted'
+              });
+            }
+          }
         } catch (e) {}
         const banner = document.getElementById('cookieConsentBanner');
         if (banner) banner.style.display = 'none';
