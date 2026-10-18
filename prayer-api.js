@@ -279,8 +279,19 @@
             applyPrayerTimesToDOM(prayerSchedule);
           }
         }
+        if (!prayerSchedule) {
+          const fallbackRiyadh = (typeof RIYADH_FALLBACK !== 'undefined') ? RIYADH_FALLBACK : {
+            fajr: '04:36', sunrise: '05:54', ishraq: '06:12', chasht: '08:48',
+            dhuhr: '11:42', asr: '15:02', maghrib: '17:28', isha: '18:58',
+            label: IS_ARABIC ? 'الرياض، السعودية' : 'Riyadh, Saudi Arabia'
+          };
+          prayerSchedule = Object.assign({}, fallbackRiyadh);
+          hasCommittedPrayerSchedule = true;
+          applyPrayerTimesToDOM(prayerSchedule);
+        }
+
         if (hasCommittedPrayerSchedule && prayerSchedule) {
-          // A valid prayer schedule is ALREADY COMMITTED from a prior successful fetch:
+          // A valid prayer schedule is ALREADY COMMITTED (live or fallback):
           // Retain current valid location, coordinates, timezone, city label, and current prayer times
           const committedKey = findMatchingCityKey(currentLatitude, currentLongitude);
           highlightCityButton(committedKey);
@@ -289,21 +300,15 @@
           if (locLabelEl) locLabelEl.textContent = currentCityLabel;
 
           if (!isSilent) {
+            const isDefaultRiyadh = (stagedSource === 'default' || stagedCityKey === 'riyadh');
             const failMsg = IS_ARABIC ?
-              'تعذر تحميل مواقيت الصلاة للموقع المطلوب. تم الاحتفاظ بالموقع الحالي.' :
-              'Unable to load prayer times for the requested location. Retaining current location.';
+              (isDefaultRiyadh ? 'تعذر الاتصال بالخادم لمواقيت الصلاة المباشرة. يتم عرض المواقيت الافتراضية.' : 'تعذر تحميل مواقيت الصلاة للموقع المطلوب. تم الاحتفاظ بالموقع الحالي.') :
+              (isDefaultRiyadh ? 'Unable to connect to live prayer API. Displaying default fallback timings.' : 'Unable to load prayer times for the requested location. Retaining current location.');
             showFailureNotice(failMsg);
-            updateQiblaAccuracyTag(IS_ARABIC ? 'خطأ في الاتصال' : 'Connection Error');
+            if (!isDefaultRiyadh) {
+              updateQiblaAccuracyTag(IS_ARABIC ? 'خطأ في الاتصال' : 'Connection Error');
+            }
           }
-          return false;
-        } else {
-          // NO valid prayer schedule was ever committed (e.g. fresh load or initial failure):
-          renderUnavailablePrayerState();
-          const unavailableMsg = IS_ARABIC ?
-            'تعذر تحميل مواقيت الصلاة. يرجى التحقق من الاتصال.' :
-            'Unable to load prayer times. Please check your connection.';
-          showFailureNotice(unavailableMsg);
-          updateQiblaAccuracyTag(IS_ARABIC ? 'غير متاح' : 'Unavailable');
           return false;
         }
       }

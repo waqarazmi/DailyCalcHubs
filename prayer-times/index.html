@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -1481,25 +1481,25 @@
       <div class="next-prayer-hero">
         <div>
           <div class="next-prayer-tag"><i class="fas fa-hourglass-half"></i> Next Prayer Coming Up</div>
-          <div class="next-prayer-name" id="nextPrayerName"><span style="visibility:hidden">--</span></div>
+          <div class="next-prayer-name" id="nextPrayerName">Dhuhr</div>
           <div class="next-prayer-azan-time">
-            Azan Time: <strong id="nextPrayerTime">--:-- --</strong>
+            Azan Time: <strong id="nextPrayerTime">11:42 AM</strong>
           </div>
         </div>
 
         <div class="countdown-timer-wrap">
           <div class="timer-block">
-            <div class="timer-digit" id="timerHours"><span style="visibility:hidden">00</span></div>
+            <div class="timer-digit" id="timerHours">00</div>
             <div class="timer-unit">Hours</div>
           </div>
           <div class="timer-colon">:</div>
           <div class="timer-block">
-            <div class="timer-digit" id="timerMinutes"><span style="visibility:hidden">00</span></div>
+            <div class="timer-digit" id="timerMinutes">00</div>
             <div class="timer-unit">Mins</div>
           </div>
           <div class="timer-colon">:</div>
           <div class="timer-block">
-            <div class="timer-digit" id="timerSeconds"><span style="visibility:hidden">00</span></div>
+            <div class="timer-digit" id="timerSeconds">00</div>
             <div class="timer-unit">Secs</div>
           </div>
         </div>
@@ -1561,7 +1561,7 @@
             <div class="qibla-meta-container">
               <div class="qibla-header-row">
                 <div class="qibla-badge"><i class="fas fa-kaaba"></i> Qibla Direction</div>
-                <span class="qibla-accuracy-tag" id="qiblaAccuracyTag"><i class="fas fa-satellite-dish"></i> Calculating...</span>
+                <span class="qibla-accuracy-tag" id="qiblaAccuracyTag"><i class="fas fa-location-dot" style="color: #a855f7;"></i> Default Location (Riyadh)</span>
               </div>
 
               <div class="qibla-bearing-display">
@@ -1631,7 +1631,7 @@
         <div class="prayer-card-item" id="pCardFajr">
           <div class="slot-icon"><i class="fas fa-cloud-sun"></i></div>
           <div class="prayer-name">Fajr</div>
-          <div class="prayer-time-val" id="timeFajr"><span style="visibility:hidden">--:-- --</span></div>
+          <div class="prayer-time-val" id="timeFajr">04:36 AM</div>
           <div class="slot-subtext">True Dawn</div>
         </div>
 
@@ -1639,15 +1639,15 @@
         <div class="prayer-card-item" id="pCardSunrise">
           <div class="slot-icon"><i class="fas fa-sun" style="color: #f59e0b;"></i></div>
           <div class="prayer-name">Sunrise</div>
-          <div class="prayer-time-val" id="timeSunrise"><span style="visibility:hidden">--:-- --</span></div>
+          <div class="prayer-time-val" id="timeSunrise">05:54 AM</div>
           <div class="slot-subtext">Shuruq (Prohibited)</div>
         </div>
 
         <!-- 3. Dhuhr -->
-        <div class="prayer-card-item" id="pCardDhuhr">
+        <div class="prayer-card-item active-prayer" id="pCardDhuhr">
           <div class="slot-icon"><i class="fas fa-sun" style="color: #0284c7;"></i></div>
           <div class="prayer-name">Dhuhr</div>
-          <div class="prayer-time-val" id="timeDhuhr"><span style="visibility:hidden">--:-- --</span></div>
+          <div class="prayer-time-val" id="timeDhuhr">11:42 AM</div>
           <div class="slot-subtext">Solar Zenith</div>
         </div>
 
@@ -1655,7 +1655,7 @@
         <div class="prayer-card-item" id="pCardAsr">
           <div class="slot-icon"><i class="fas fa-cloud-sun" style="color: #0369a1;"></i></div>
           <div class="prayer-name">Asr</div>
-          <div class="prayer-time-val" id="timeAsr"><span style="visibility:hidden">--:-- --</span></div>
+          <div class="prayer-time-val" id="timeAsr">03:02 PM</div>
           <div class="slot-subtext">Shafi'i / Standard</div>
         </div>
 
@@ -1663,7 +1663,7 @@
         <div class="prayer-card-item" id="pCardMaghrib">
           <div class="slot-icon"><i class="fas fa-cloud-moon" style="color: #ea580c;"></i></div>
           <div class="prayer-name">Maghrib</div>
-          <div class="prayer-time-val" id="timeMaghrib"><span style="visibility:hidden">--:-- --</span></div>
+          <div class="prayer-time-val" id="timeMaghrib">05:28 PM</div>
           <div class="slot-subtext">Sunset / Iftar</div>
         </div>
 
@@ -1671,7 +1671,7 @@
         <div class="prayer-card-item" id="pCardIsha">
           <div class="slot-icon"><i class="fas fa-moon" style="color: #6366f1;"></i></div>
           <div class="prayer-name">Isha</div>
-          <div class="prayer-time-val" id="timeIsha"><span style="visibility:hidden">--:-- --</span></div>
+          <div class="prayer-time-val" id="timeIsha">06:58 PM</div>
           <div class="slot-subtext">+90m Umm Al-Qura</div>
         </div>
       </div>
@@ -1694,7 +1694,7 @@
                 <div class="nawafil-calc-note">Sunrise + 18 minutes</div>
               </div>
             </div>
-            <div class="nawafil-time" id="timeIshraq"><span style="visibility:hidden">--:-- --</span></div>
+            <div class="nawafil-time" id="timeIshraq">06:12 AM</div>
           </div>
 
           <!-- Chasht / Duha -->
@@ -1707,7 +1707,7 @@
                 <div class="nawafil-calc-note" id="chashtDynamicSub">⚡ Dynamic Sun Midpoint</div>
               </div>
             </div>
-            <div class="nawafil-time" id="timeChasht"><span style="visibility:hidden">--:-- --</span></div>
+            <div class="nawafil-time" id="timeChasht">08:48 AM</div>
           </div>
         </div>
       </div>
@@ -2215,11 +2215,12 @@
     };
 
     const defaultPrayerMap = {
-      riyadh: { fajr: '04:20', sunrise: '05:39', ishraq: '05:57', chasht: '08:35', dhuhr: '11:56', asr: '15:24', maghrib: '18:12', isha: '19:42', label: 'Riyadh, Saudi Arabia' },
+      riyadh: { fajr: '04:36', sunrise: '05:54', ishraq: '06:12', chasht: '08:48', dhuhr: '11:42', asr: '15:02', maghrib: '17:28', isha: '18:58', label: 'Riyadh, Saudi Arabia' },
       dammam: { fajr: '04:12', sunrise: '05:31', ishraq: '05:49', chasht: '08:30', dhuhr: '11:48', asr: '15:18', maghrib: '18:05', isha: '19:35', label: 'Dammam, Saudi Arabia' },
       jeddah: { fajr: '04:45', sunrise: '06:03', ishraq: '06:21', chasht: '08:50', dhuhr: '12:21', asr: '15:46', maghrib: '18:38', isha: '20:08', label: 'Jeddah, Saudi Arabia' },
       dubai:  { fajr: '04:36', sunrise: '05:54', ishraq: '06:12', chasht: '08:45', dhuhr: '12:15', asr: '15:44', maghrib: '18:35', isha: '19:55', label: 'Dubai, UAE' }
     };
+    const RIYADH_FALLBACK = defaultPrayerMap.riyadh;
 
     const AUTO_LOCATION_MAX_AGE_MS = 24 * 60 * 60 * 1000; // 24 hours freshness TTL
 
@@ -2460,31 +2461,16 @@
     }
 
     function renderUnavailablePrayerState() {
-      prayerSchedule = null;
-      const ids = ['timeFajr', 'timeSunrise', 'timeIshraq', 'timeChasht', 'timeDhuhr', 'timeAsr', 'timeMaghrib', 'timeIsha'];
-      ids.forEach(id => {
-        const el = document.getElementById(id);
-        if (el) el.textContent = '--:-- --';
-      });
-      const cardIds = ['pCardFajr', 'pCardSunrise', 'pCardIshraq', 'pCardChasht', 'pCardDhuhr', 'pCardAsr', 'pCardMaghrib', 'pCardIsha'];
-      cardIds.forEach(id => {
-        const el = document.getElementById(id);
-        if (el) el.classList.remove('active-prayer');
-      });
-      const hEl = document.getElementById('timerHours');
-      const mEl = document.getElementById('timerMinutes');
-      const sEl = document.getElementById('timerSeconds');
-      const nameEl = document.getElementById('nextPrayerName');
-      const timeEl = document.getElementById('nextPrayerTime');
-      if (hEl) hEl.textContent = '--';
-      if (mEl) mEl.textContent = '--';
-      if (sEl) sEl.textContent = '--';
-      if (nameEl) nameEl.textContent = IS_ARABIC ? 'غير متاح' : 'Unavailable';
-      if (timeEl) timeEl.textContent = '--:-- --';
-      const chashtSubEl = document.getElementById('chashtDynamicSub');
-      if (chashtSubEl) {
-        chashtSubEl.textContent = IS_ARABIC ? '⚡ منتصف الضحى: غير متاح' : '⚡ Midpoint: Unavailable';
+      const fallback = (typeof RIYADH_FALLBACK !== 'undefined') ? RIYADH_FALLBACK : {
+        fajr: '04:36', sunrise: '05:54', ishraq: '06:12', chasht: '08:48',
+        dhuhr: '11:42', asr: '15:02', maghrib: '17:28', isha: '18:58',
+        label: IS_ARABIC ? 'الرياض، السعودية' : 'Riyadh, Saudi Arabia'
+      };
+      if (!prayerSchedule) {
+        prayerSchedule = Object.assign({}, fallback);
+        hasCommittedPrayerSchedule = true;
       }
+      applyPrayerTimesToDOM(prayerSchedule);
     }
 
     function updateLiveClocks() {
@@ -3103,7 +3089,7 @@
         } catch(e) {}
       }
 
-      // Initial instantaneous DOM render: priority to cached schedule if valid for today
+      // Initial instantaneous DOM render: priority to cached schedule if valid for today, otherwise temporary Riyadh fallback
       if (isStoredValidToday && stored && stored.schedule) {
           hasCommittedPrayerSchedule = true;
           prayerSchedule = stored.schedule;
@@ -3111,8 +3097,10 @@
           safeSchedule.label = currentCityLabel;
           applyPrayerTimesToDOM(safeSchedule);
       } else {
-          // Fresh first visit or stale cache: render loading state while Aladhan fetches
-          renderLoadingPrayerState();
+          // Cold first visit or stale cache: apply temporary Riyadh fallback so timings and countdown remain populated
+          hasCommittedPrayerSchedule = true;
+          prayerSchedule = Object.assign({}, RIYADH_FALLBACK);
+          applyPrayerTimesToDOM(prayerSchedule);
       }
 
       let initialSourceTag = (isStoredValidToday && stored && stored.sourceTag) || null;
