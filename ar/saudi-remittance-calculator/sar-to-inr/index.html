@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
@@ -291,6 +291,21 @@
     body { font-family: 'Plus Jakarta Sans', 'Noto Sans Arabic', system-ui, -apple-system, sans-serif; }
     .tool-layout { direction: rtl; }
     .amount-chips-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+
+    @media screen and (max-width: 860px) {
+      #inrTableBody td.provider-cell-speed {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding: 5px 0 !important;
+        border-top: none !important;
+        margin-top: 0 !important;
+      }
+      #inrTableBody td.provider-cell-speed::before {
+        display: inline-block !important;
+        content: attr(data-label) !important;
+      }
+    }
   </style>
   <script type="application/ld+json">
   {
@@ -912,11 +927,10 @@
                   <th>الرسوم + الضريبة 15%</th>
                   <th>صافي المستلم بالروبية</th>
                   <th>سرعة الإيداع</th>
-                  <th>إرسال الأموال</th>
                 </tr>
               </thead>
               <tbody id="inrTableBody">
-                <tr><td colspan="6" style="text-align:center; padding:24px; color:#64748b;"><i class="fas fa-spinner fa-spin" style="margin-left:8px;"></i> جاري تحميل أسعار مزودي التحويل...</td></tr>
+                <tr><td colspan="5" style="text-align:center; padding:24px; color:#64748b;"><i class="fas fa-spinner fa-spin" style="margin-left:8px;"></i> جاري تحميل أسعار مزودي التحويل...</td></tr>
               </tbody>
             </table>
           </div>
@@ -1153,7 +1167,8 @@
         currency: 'INR',
         baseRate: rate,
         symbol: '₹',
-        isArabic: true
+        isArabic: true,
+        hideCta: true
       });
     if (typeof window.dchTrackCalculation === 'function') window.dchTrackCalculation('saudi-remittance-calculator_sar-to-inr');
     }

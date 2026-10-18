@@ -478,9 +478,11 @@
     var sym = opts.symbol || '';
     var isArabic = !!opts.isArabic || document.documentElement.lang === 'ar';
     var incentiveMultiplier = Number(opts.incentiveMultiplier) || 1.0;
+    var hideCta = !!opts.hideCta || (typeof opts.tbody === 'string' && opts.tbody === 'inrTableBody') || (tbody.id === 'inrTableBody');
 
     if (!rate || rate <= 0) {
-      tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding:18px; color:#94a3b8;">' +
+      var colSpan = hideCta ? 5 : 6;
+      tbody.innerHTML = '<tr><td colspan="' + colSpan + '" style="text-align:center; padding:18px; color:#94a3b8;">' +
         (isArabic ? 'بيانات أسعار الصرف غير متاحة حالياً' : 'Exchange rate data temporarily unavailable') +
         '</td></tr>';
       return;
@@ -539,6 +541,16 @@
         ? '<img class="provider-logo-img" src="' + p.logoImg + '" alt="' + (isArabic ? ('شعار ' + (p.nameAr || p.nameEn)) : (p.nameEn + ' logo')) + '" width="28" height="28" loading="lazy" />'
         : (isArabic && p.logoSvg ? p.logoSvg.replace(/aria-label="[^"]*"/, 'aria-label="شعار ' + (p.nameAr || p.nameEn) + '"') : p.logoSvg);
 
+      var ctaCell = '';
+      if (!hideCta) {
+        ctaCell = '<td class="provider-cell-cta">' +
+          '<a href="' + ctaUrl + '" class="provider-cta-btn"' + ctaTarget + ' aria-label="' + (isArabic ? ('إرسال عبر ' + (p.nameAr || p.nameEn)) : (ctaText + ' with ' + p.nameEn)) + '">' +
+            '<span>' + ctaText + '</span>' +
+            '<i class="fas fa-arrow-up-right-from-square"></i>' +
+          '</a>' +
+        '</td>';
+      }
+
       html += '<tr>' +
         '<td class="provider-cell-header">' +
           '<div class="provider-name-cell">' +
@@ -553,12 +565,7 @@
         '<td class="provider-cell-fee" data-label="' + feeLabel + '">' + feeCell + '</td>' +
         '<td class="provider-cell-net" data-label="' + netLabel + '">' + netCell + '</td>' +
         '<td class="provider-cell-speed" data-label="' + speedLabel + '">' + speedCell + '</td>' +
-        '<td class="provider-cell-cta">' +
-          '<a href="' + ctaUrl + '" class="provider-cta-btn"' + ctaTarget + ' aria-label="' + (isArabic ? ('إرسال عبر ' + (p.nameAr || p.nameEn)) : (ctaText + ' with ' + p.nameEn)) + '">' +
-            '<span>' + ctaText + '</span>' +
-            '<i class="fas fa-arrow-up-right-from-square"></i>' +
-          '</a>' +
-        '</td>' +
+        ctaCell +
       '</tr>';
     }
 

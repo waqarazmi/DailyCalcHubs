@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -292,6 +292,21 @@
       .tool-title { font-size: 26px; }
       .calc-card { padding: 20px 16px; }
       .header-nav-links { display: none; }
+    }
+
+    @media screen and (max-width: 860px) {
+      #inrTableBody td.provider-cell-speed {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding: 5px 0 !important;
+        border-top: none !important;
+        margin-top: 0 !important;
+      }
+      #inrTableBody td.provider-cell-speed::before {
+        display: inline-block !important;
+        content: attr(data-label) !important;
+      }
     }
   </style>
   <link rel="stylesheet" href="/theme.css?v=2026.2">
@@ -910,11 +925,10 @@
                   <th>Fee + 15% VAT</th>
                   <th>Net Rupee Payout</th>
                   <th>Delivery Speed</th>
-                  <th>Send Money</th>
                 </tr>
               </thead>
               <tbody id="inrTableBody">
-                <tr><td colspan="6" style="text-align:center; padding:24px; color:#64748b;"><i class="fas fa-spinner fa-spin" style="margin-right:8px;"></i> Loading provider rates...</td></tr>
+                <tr><td colspan="5" style="text-align:center; padding:24px; color:#64748b;"><i class="fas fa-spinner fa-spin" style="margin-right:8px;"></i> Loading provider rates...</td></tr>
               </tbody>
             </table>
           </div>
@@ -1155,7 +1169,8 @@
         currency: 'INR',
         baseRate: rate,
         symbol: '₹',
-        isArabic: false
+        isArabic: false,
+        hideCta: true
       });
     if (typeof window.dchTrackCalculation === 'function') window.dchTrackCalculation('saudi-remittance-calculator_sar-to-inr');
     }
