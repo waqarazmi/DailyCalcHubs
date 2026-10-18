@@ -935,7 +935,7 @@
   <main class="container">
     <div class="hub-calculator-layout">
       <!-- Calculator Column -->
-      <section class="calc-card">
+      <section class="calc-card" id="duration">
         <div class="calc-card-header">
           <div class="calc-card-title"><i class="fas fa-sliders" style="color:#ea580c;"></i> Iqama &amp; Levy Simulator</div>
           <div class="live-status-pill"><span class="live-pulse"></span> 2026 Rates</div>
@@ -1353,10 +1353,22 @@
       }
     }
 
+    function syncIqamaDurationChips(months) {
+      const chips = document.querySelectorAll('.amount-chip-btn');
+      chips.forEach(function(b) {
+        const onclickAttr = b.getAttribute('onclick') || '';
+        if (onclickAttr.indexOf('(' + months + ')') !== -1) {
+          b.classList.add('active');
+        } else {
+          b.classList.remove('active');
+        }
+      });
+    }
+
     function setIqamaDuration(months) {
-      document.getElementById('iqamaDuration').value = months;
-      document.querySelectorAll('.amount-chip-btn').forEach(b => b.classList.remove('active'));
-      if (event && event.target) event.target.classList.add('active');
+      const sel = document.getElementById('iqamaDuration');
+      if (sel) sel.value = months;
+      syncIqamaDurationChips(months);
       calculateHubIqama();
     }
 
@@ -1366,6 +1378,8 @@
       const months = parseInt(document.getElementById('iqamaDuration').value) || 12;
       const dependents = parseInt(document.getElementById('dependentCount').value) || 0;
       const maktabGroup = document.getElementById('maktabAmalGroup');
+
+      syncIqamaDurationChips(months);
 
       let jawazatYearly = 650;
       let maktabMonthly = maktabCat;
@@ -1393,7 +1407,10 @@
       const grandTotal = employerCost + employeeCost;
 
       let durationText = months + " Months";
-      if (months === 12) durationText = "12 Months (1 Year)";
+      if (months === 12) durationText = "12 Months (1 Full Year)";
+      else if (months === 3) durationText = "3 Months (Quarterly)";
+      else if (months === 6) durationText = "6 Months (Biannual)";
+      else if (months === 9) durationText = "9 Months (Three-Quarter)";
 
       document.getElementById('resGrandTotal').innerText = grandTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' SAR';
       document.getElementById('resDurationLabel').innerText = durationText;
@@ -1404,7 +1421,41 @@
     if (typeof window.dchTrackCalculation === 'function') window.dchTrackCalculation('saudi-iqama-calculator_calculateHubIqama');
     }
 
-    window.addEventListener('DOMContentLoaded', calculateHubIqama);
+    function initIqamaDurationFromUrl() {
+      try {
+        const search = window.location.search;
+        if (search) {
+          const params = new URLSearchParams(search);
+          const dur = params.get('duration') || params.get('months');
+          if (dur) {
+            const num = parseInt(dur, 10);
+            if ([3, 6, 9, 12].indexOf(num) !== -1) {
+              const sel = document.getElementById('iqamaDuration');
+              if (sel) sel.value = num;
+              syncIqamaDurationChips(num);
+            }
+          }
+        }
+      } catch (e) {
+        console.warn('Iqama duration parameter parsing error:', e);
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', function() {
+      initIqamaDurationFromUrl();
+      calculateHubIqama();
+      if (window.location.hash) {
+        const hash = window.location.hash;
+        if (hash === '#duration' || hash === '#calculator' || hash === '#iqamaDuration') {
+          const target = document.getElementById('duration') || document.getElementById('iqamaDuration') || document.querySelector('.calc-card');
+          if (target) {
+            setTimeout(function() {
+              target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 100);
+          }
+        }
+      }
+    });
   </script>
   <script src="/theme.js" defer></script>
   <script src="/share.js" defer></script>

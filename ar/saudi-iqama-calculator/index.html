@@ -1352,7 +1352,7 @@
   <main class="container">
 
     <!-- Interactive Iqama Calculator Card -->
-    <div class="calc-card">
+    <div class="calc-card" id="duration">
       <div class="calc-card-header">
         <div class="calc-card-title">
           <i class="fas fa-id-card-clip" style="color:#ea580c;"></i>
@@ -1917,10 +1917,22 @@
       }
     }
 
+    function syncIqamaDurationChips(months) {
+      const chips = document.querySelectorAll('.amount-chip-btn');
+      chips.forEach(function(b) {
+        const onclickAttr = b.getAttribute('onclick') || '';
+        if (onclickAttr.indexOf('(' + months + ')') !== -1) {
+          b.classList.add('active');
+        } else {
+          b.classList.remove('active');
+        }
+      });
+    }
+
     function setIqamaDuration(months) {
-      document.getElementById('iqamaDuration').value = months;
-      document.querySelectorAll('.amount-chip-btn').forEach(b => b.classList.remove('active'));
-      if (event && event.target) event.target.classList.add('active');
+      const sel = document.getElementById('iqamaDuration');
+      if (sel) sel.value = months;
+      syncIqamaDurationChips(months);
       calculateHubIqama();
     }
 
@@ -1930,6 +1942,8 @@
       const months = parseInt(document.getElementById('iqamaDuration').value) || 12;
       const dependents = parseInt(document.getElementById('dependentCount').value) || 0;
       const maktabGroup = document.getElementById('maktabAmalGroup');
+
+      syncIqamaDurationChips(months);
 
       let jawazatYearly = 650;
       let maktabMonthly = maktabCat;
@@ -1956,22 +1970,56 @@
       const employeeCost = dependentTotal;
       const grandTotal = employerCost + employeeCost;
 
-      let durationText = months + " أشهر";
-      if (months === 12) durationText = "12 شهراً (سنة كاملة)";
-      else if (months === 3) durationText = "3 أشهر (ربع سنوي)";
-      else if (months === 6) durationText = "6 أشهر (نصف سنوي)";
-      else if (months === 9) durationText = "9 أشهر (3 أرباع سنة)";
+      let durationText = months + " \u0623\u0634\u0647\u0631";
+      if (months === 12) durationText = "12 \u0634\u0647\u0631\u0627\u064B (\u0633\u0646\u0629 \u0643\u0627\u0645\u0644\u0629)";
+      else if (months === 3) durationText = "3 \u0623\u0634\u0647\u0631 (\u0631\u0628\u0639 \u0633\u0646\u0648\u064A)";
+      else if (months === 6) durationText = "6 \u0623\u0634\u0647\u0631 (\u0646\u0635\u0641 \u0633\u0646\u0648\u064A)";
+      else if (months === 9) durationText = "9 \u0623\u0634\u0647\u0631 (3 \u0623\u0631\u0628\u0627\u0639 \u0633\u0646\u0629)";
 
-      document.getElementById('resGrandTotal').innerText = grandTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' ر.س';
+      document.getElementById('resGrandTotal').innerText = grandTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' \u0631.\u0633';
       document.getElementById('resDurationLabel').innerText = durationText;
-      document.getElementById('resEmployerCost').innerText = employerCost.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' ر.س';
-      document.getElementById('resEmployeeCost').innerText = employeeCost.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' ر.س';
-      document.getElementById('resJawazatFee').innerText = jawazatProrated.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' ر.س';
-      document.getElementById('resMaktabFee').innerText = maktabTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' ر.س';
+      document.getElementById('resEmployerCost').innerText = employerCost.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' \u0631.\u0633';
+      document.getElementById('resEmployeeCost').innerText = employeeCost.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' \u0631.\u0633';
+      document.getElementById('resJawazatFee').innerText = jawazatProrated.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' \u0631.\u0633';
+      document.getElementById('resMaktabFee').innerText = maktabTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' \u0631.\u0633';
     if (typeof window.dchTrackCalculation === 'function') window.dchTrackCalculation('saudi-iqama-calculator_calculateHubIqama');
     }
 
-    window.addEventListener('DOMContentLoaded', calculateHubIqama);
+    function initIqamaDurationFromUrl() {
+      try {
+        const search = window.location.search;
+        if (search) {
+          const params = new URLSearchParams(search);
+          const dur = params.get('duration') || params.get('months');
+          if (dur) {
+            const num = parseInt(dur, 10);
+            if ([3, 6, 9, 12].indexOf(num) !== -1) {
+              const sel = document.getElementById('iqamaDuration');
+              if (sel) sel.value = num;
+              syncIqamaDurationChips(num);
+            }
+          }
+        }
+      } catch (e) {
+        console.warn('Iqama duration parameter parsing error:', e);
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', function() {
+      initIqamaDurationFromUrl();
+      calculateHubIqama();
+      if (window.location.hash) {
+        const hash = window.location.hash;
+        if (hash === '#duration' || hash === '#calculator' || hash === '#iqamaDuration') {
+          const target = document.getElementById('duration') || document.getElementById('iqamaDuration') || document.querySelector('.calc-card');
+          if (target) {
+            setTimeout(function() {
+              target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 100);
+          }
+        }
+      }
+    });
   </script>
   <script src="/theme.js" defer></script>
   <script src="/share.js" defer></script>
