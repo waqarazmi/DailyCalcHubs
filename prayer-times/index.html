@@ -21,10 +21,15 @@
         var raw = localStorage.getItem('dch_prayer_location');
         if (!raw) return;
         var d = JSON.parse(raw);
-        if (!d || !d.schedule) return;
+        if (!d || !d.schedule || !d.timestamp) return;
+        var tz = d.timezone || 'Asia/Riyadh';
+        try {
+          var sDate = new Intl.DateTimeFormat('en-CA', { timeZone: tz }).format(new Date(d.timestamp));
+          var tDate = new Intl.DateTimeFormat('en-CA', { timeZone: tz }).format(new Date());
+          if (sDate !== tDate) return;
+        } catch(e) { return; }
         window.__dchCachedLocation = d;
         var s = d.schedule;
-        var tz = d.timezone || 'Asia/Riyadh';
         var IS_AR = false;
 
         function fmt12(timeStr) {
@@ -202,7 +207,7 @@
               if (q !== null) el.textContent = q + '°';
             }
             else if (id === 'qiblaAccuracyTag') {
-              el.textContent = d.sourceTag || 'Approximate Location (IP)';
+              el.textContent = d.sourceTag || 'Default Location (Riyadh)';
             }
             else if (id === 'compassOrientationLabel') {
               el.textContent = 'Digital Compass (Tap to Enable)';
@@ -2515,6 +2520,33 @@
       updateLiveClocks();
     }
 
+    function renderLoadingPrayerState() {
+      const ids = ['timeFajr', 'timeSunrise', 'timeIshraq', 'timeChasht', 'timeDhuhr', 'timeAsr', 'timeMaghrib', 'timeIsha'];
+      ids.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.textContent = IS_ARABIC ? 'جاري التحميل...' : 'Loading...';
+      });
+      const cardIds = ['pCardFajr', 'pCardSunrise', 'pCardIshraq', 'pCardChasht', 'pCardDhuhr', 'pCardAsr', 'pCardMaghrib', 'pCardIsha'];
+      cardIds.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.classList.remove('active-prayer');
+      });
+      const hEl = document.getElementById('timerHours');
+      const mEl = document.getElementById('timerMinutes');
+      const sEl = document.getElementById('timerSeconds');
+      const nameEl = document.getElementById('nextPrayerName');
+      const timeEl = document.getElementById('nextPrayerTime');
+      if (hEl) hEl.textContent = '--';
+      if (mEl) mEl.textContent = '--';
+      if (sEl) sEl.textContent = '--';
+      if (nameEl) nameEl.textContent = IS_ARABIC ? 'جاري حساب المواقيت...' : 'Calculating Next Prayer...';
+      if (timeEl) timeEl.textContent = IS_ARABIC ? 'جاري التحميل...' : 'Loading...';
+      const chashtSubEl = document.getElementById('chashtDynamicSub');
+      if (chashtSubEl) {
+        chashtSubEl.textContent = IS_ARABIC ? '⚡ جاري حساب منتصف الضحى...' : '⚡ Calculating Midpoint...';
+      }
+    }
+
     function renderUnavailablePrayerState() {
       prayerSchedule = null;
       const ids = ['timeFajr', 'timeSunrise', 'timeIshraq', 'timeChasht', 'timeDhuhr', 'timeAsr', 'timeMaghrib', 'timeIsha'];
@@ -2670,6 +2702,14 @@
       clearTimeout(noticeEl._timeout);
       noticeEl._timeout = setTimeout(() => { noticeEl.style.opacity = '0'; }, 4000);
     }
+
+    function dismissFailureNotice() {
+      const noticeEl = document.getElementById('prayerFailureNotice');
+      if (noticeEl) {
+        clearTimeout(noticeEl._timeout);
+        noticeEl.style.opacity = '0';
+      }
+    }
     // ==========================================
     // LIVE CURRENT TEMPERATURE ENGINE (OPEN-METEO)
     // ==========================================
@@ -2819,6 +2859,9 @@
       } else if (sLower.includes('city') || sLower.includes('المدينة')) {
         iconClass = 'fa-city';
         iconColor = '#fbbf24';
+      } else if (sLower.includes('default') || sLower.includes('افتراضي')) {
+        iconClass = 'fa-location-dot';
+        iconColor = '#a855f7';
       }
       if (accTagEl) {
         accTagEl.innerHTML = '<i class="fas ' + iconClass + '" style="color: ' + iconColor + ';"></i> ' + locationSourceType;
@@ -3041,7 +3084,7 @@
             if (isUserInitiated) {
               let reason = IS_ARABIC ? 'نظام GPS غير متاح' : 'GPS Unavailable';
               if (err.code === 1) {
-                reason = IS_ARABIC ? 'تم رفض إذن GPS (استخدام الموقع التلقائي)' : 'GPS Denied (Using Fallback)';
+                reason = IS_ARABIC ? 'تم رفض إذن GPS (الموقع الافتراضي)' : 'GPS Denied (Default Location)';
               } else if (err.code === 2) {
                 reason = IS_ARABIC ? 'نظام GPS غير متوفر (استخدام الموقع التلقائي)' : 'GPS Unavailable (Using Fallback)';
               } else if (err.code === 3) {
@@ -3137,31 +3180,30 @@
       if (locLabelEl) locLabelEl.textContent = currentCityLabel;
       highlightCityButton(matchingKey);
 
-      // Initial instantaneous DOM render: priority to cached schedule
-      if (stored && stored.schedule) {
+      // Validate whether stored schedule is valid for today
+      let isStoredValidToday = false;
+      if (stored && stored.schedule && stored.timestamp) {
+        try {
+          const tz = stored.timezone || 'Asia/Riyadh';
+          const sDate = new Intl.DateTimeFormat('en-CA', { timeZone: tz }).format(new Date(stored.timestamp));
+          const tDate = new Intl.DateTimeFormat('en-CA', { timeZone: tz }).format(new Date());
+          isStoredValidToday = (sDate === tDate);
+        } catch(e) {}
+      }
+
+      // Initial instantaneous DOM render: priority to cached schedule if valid for today
+      if (isStoredValidToday && stored && stored.schedule) {
           hasCommittedPrayerSchedule = true;
           prayerSchedule = stored.schedule;
           const safeSchedule = Object.assign({}, stored.schedule);
           safeSchedule.label = currentCityLabel;
           applyPrayerTimesToDOM(safeSchedule);
-      } else if (stored && matchingKey && defaultPrayerMap[matchingKey]) {
-        const fallbackEntry = defaultPrayerMap[matchingKey] || defaultPrayerMap.riyadh;
-        applyPrayerTimesToDOM({
-          fajr: fallbackEntry.fajr,
-          sunrise: fallbackEntry.sunrise,
-          ishraq: fallbackEntry.ishraq,
-          chasht: fallbackEntry.chasht,
-          dhuhr: fallbackEntry.dhuhr,
-          asr: fallbackEntry.asr,
-          maghrib: fallbackEntry.maghrib,
-          isha: fallbackEntry.isha,
-          label: currentCityLabel,
-          hijri: getDynamicHijriFallback(false, currentTimezone),
-          hijriAr: '(' + getDynamicHijriFallback(true, currentTimezone) + ')'
-        });
+      } else {
+          // Fresh first visit or stale cache: render loading state while Aladhan fetches
+          renderLoadingPrayerState();
       }
 
-      let initialSourceTag = (stored && stored.sourceTag) || null;
+      let initialSourceTag = (isStoredValidToday && stored && stored.sourceTag) || null;
       if (!initialSourceTag) {
         if (initSource === 'manual') {
           initialSourceTag = IS_ARABIC ? ('اختيار المدينة (' + initLabel.split('،')[0].split(',')[0] + ')') : ('City Selection (' + initLabel.split(',')[0] + ')');
@@ -3170,7 +3212,7 @@
         } else if (initSource === 'ip') {
           initialSourceTag = IS_ARABIC ? 'موقع تقريبي (IP)' : 'Approximate Location (IP)';
         } else {
-          initialSourceTag = IS_ARABIC ? 'جاري تحديد الموقع...' : 'Detecting Location...';
+          initialSourceTag = IS_ARABIC ? ('الموقع الافتراضي (' + initLabel.split('،')[0].split(',')[0] + ')') : ('Default Location (' + initLabel.split(',')[0] + ')');
         }
       }
 
@@ -3184,7 +3226,7 @@
       startWeatherPeriodicRefresh();
 
       // Silent non-blocking background revalidation when valid cached data exists
-      if (stored && stored.schedule) {
+      if (isStoredValidToday && stored && stored.schedule) {
         (async function() {
             let freshGpsAcquired = false;
             if (navigator.geolocation && currentLocationIntent === 'auto') {
@@ -3227,7 +3269,7 @@
 
         // 3. Fallback chain if live GPS is denied, timed out, or unavailable:
         if (typeof currentLocationIntent === 'undefined' || currentLocationIntent === 'auto') {
-          if (stored) {
+          if (stored && isStoredValidToday) {
           // Cleanly revalidate and preserve stored location schedule
           await fetchPrayerForCoords(initLat, initLng, currentCityLabel, initSource, currentTimezone, matchingKey, true);
         } else {

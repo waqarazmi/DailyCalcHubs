@@ -223,10 +223,15 @@
           const locLabelEl = document.getElementById('prayerLocLabel');
           if (locLabelEl) locLabelEl.textContent = currentCityLabel;
           applyPrayerTimesToDOM(validatedSchedule);
+          if (typeof dismissFailureNotice === 'function') dismissFailureNotice();
 
           const srcLabel = IS_ARABIC ?
-            (stagedSource === 'manual' ? ('اختيار المدينة (' + stagedLabel.split('،')[0].split(',')[0] + ')') : (stagedSource === 'gps' ? 'دقة نظام GPS' : 'موقع تقريبي (IP)')) :
-            (stagedSource === 'manual' ? ('City Selection (' + stagedLabel.split(',')[0] + ')') : (stagedSource === 'gps' ? 'GPS Precision' : 'Approximate Location (IP)'));
+            (stagedSource === 'manual' ? ('اختيار المدينة (' + stagedLabel.split('،')[0].split(',')[0] + ')') :
+             (stagedSource === 'gps' ? 'دقة نظام GPS' :
+              (stagedSource === 'default' ? ('الموقع الافتراضي (' + stagedLabel.split('،')[0].split(',')[0] + ')') : 'موقع تقريبي (IP)'))) :
+            (stagedSource === 'manual' ? ('City Selection (' + stagedLabel.split(',')[0] + ')') :
+             (stagedSource === 'gps' ? 'GPS Precision' :
+              (stagedSource === 'default' ? ('Default Location (' + stagedLabel.split(',')[0] + ')') : 'Approximate Location (IP)')));
 
           updateQiblaDisplay(currentLatitude, currentLongitude, srcLabel);
           fetchWeatherForCoords(currentLatitude, currentLongitude, true);
@@ -261,9 +266,18 @@
         if (reqId !== activePrayerRequestId) return; // Drop stale response
         const fallbackStored = !prayerSchedule ? getStoredLocation() : null;
         if (fallbackStored && fallbackStored.schedule && !prayerSchedule) {
-          prayerSchedule = fallbackStored.schedule;
-          hasCommittedPrayerSchedule = true;
-          applyPrayerTimesToDOM(prayerSchedule);
+          let isFallbackValid = false;
+          try {
+            const tz = fallbackStored.timezone || 'Asia/Riyadh';
+            const sDate = new Intl.DateTimeFormat('en-CA', { timeZone: tz }).format(new Date(fallbackStored.timestamp));
+            const tDate = new Intl.DateTimeFormat('en-CA', { timeZone: tz }).format(new Date());
+            isFallbackValid = (sDate === tDate);
+          } catch(err) {}
+          if (isFallbackValid) {
+            prayerSchedule = fallbackStored.schedule;
+            hasCommittedPrayerSchedule = true;
+            applyPrayerTimesToDOM(prayerSchedule);
+          }
         }
         if (hasCommittedPrayerSchedule && prayerSchedule) {
           // A valid prayer schedule is ALREADY COMMITTED from a prior successful fetch:
@@ -379,7 +393,7 @@
           let ipDetected = false;
           try {
             const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 4000);
+            const timeoutId = setTimeout(() => controller.abort(), 2500);
             const ipRes = await fetch('https://ipapi.co/json/', { cache: 'no-cache', signal: controller.signal });
             clearTimeout(timeoutId);
             if (ipRes.ok) {
