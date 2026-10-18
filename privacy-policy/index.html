@@ -760,9 +760,33 @@
         <li>Responding to user-initiated queries and feedback via our contact channels</li>
       </ul>
 
-      <h2>3. Cookies &amp; Web Beacons</h2>
-      <p>DailyCalcHubs and our third-party service providers use cookies to enhance your browsing experience. Cookies are small text files stored locally on your device that retain user preferences, manage session states, and provide aggregated analytics.</p>
-      <p>You can choose to disable cookies through your individual browser options. Detailed instructions on cookie management can be found in your browser's help documentation.</p>
+      <h2>3. Cookies, Consent Management &amp; Web Beacons</h2>
+      <p>DailyCalcHubs and our third-party service providers use cookies and browser local storage to provide essential website functions, remember user preferences, and support privacy-safe analytics and advertising.</p>
+
+      <h3>Cookie Categories &amp; Operation</h3>
+      <ul>
+        <li><strong>Strictly Essential Cookies &amp; Storage:</strong> Necessary for core site operations, client-side calculations, theme preferences (<code>dch_theme</code>), and storing your cookie consent status (<code>dch_cookie_consent</code>). These cannot be disabled as the site cannot function properly without them.</li>
+        <li><strong>Analytics Cookies (Google Analytics GA4):</strong> Help us understand aggregate traffic patterns and tool popularity using anonymized metrics. Measurement ID: <code>G-18Y3LNHDR8</code>.</li>
+        <li><strong>Advertising Cookies (Google AdSense):</strong> Used by Google to serve relevant advertisements and fund our free computational tools.</li>
+      </ul>
+
+      <h3>Consent Mode v2 &amp; User Choices</h3>
+      <p>DailyCalcHubs implements <strong>Google Consent Mode v2</strong> with strict privacy safeguards:</p>
+      <ul>
+        <li><strong>Default Denied:</strong> Before any user interaction or tag execution, default consent signals for <code>ad_storage</code>, <code>analytics_storage</code>, <code>ad_user_data</code>, and <code>ad_personalization</code> are automatically set to <code>'denied'</code>.</li>
+        <li><strong>Essential Only:</strong> Selecting "Essential Only" suppresses all non-essential tracking. Google Analytics is deactivated (<code>ga-disable-G-18Y3LNHDR8 = true</code>) and Google AdSense ad requests are paused (<code>adsbygoogle.pauseAdRequests = 1</code>).</li>
+        <li><strong>Accept All:</strong> Selecting "Accept All" grants consent for analytics and advertising cookies, supporting platform operations and continuous updates.</li>
+      </ul>
+      <h3>Managing &amp; Revoking Cookie Preferences</h3>
+      <p>You have full control over your cookie preferences at all times. You can review or change your consent choice at any moment by clicking the button below:</p>
+
+      <div style="margin: 18px 0 24px;">
+        <button type="button" class="cookie-btn cookie-btn-primary" onclick="window.openCookieSettings()" data-cookie-settings="true" style="padding: 10px 20px; font-size: 14px; font-weight: 700; border: none; border-radius: 8px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 2px 4px rgba(2, 132, 199, 0.2);">
+          <i class="fas fa-cookie-bite" aria-hidden="true"></i> Manage Cookie Preferences
+        </button>
+      </div>
+
+      <p>Additionally, you can disable or clear cookies directly through your individual browser settings. Detailed instructions on cookie management can be found in your browser's help documentation.</p>
 
       <h2>4. Google AdSense &amp; Advertising Partners</h2>
       <p>Google is an advertising partner on DailyCalcHubs. Google uses cookies, including the DoubleClick DART cookie, to serve advertisements to visitors based upon their visits to this website and other sites on the internet.</p>
@@ -886,9 +910,10 @@
           <li><a href="/about/">About Us</a></li>
           <li><a href="/contact/">Contact Support</a></li>
           <li><a href="/privacy-policy/">Privacy Policy</a></li>
-          <li><a href="/terms/">Terms of Service</a>
-        <span>|</span>
-        <a href="/disclaimer/">Disclaimer</a></li>
+          <li><a href="/terms/">Terms of Service</a></li>
+          <li><a href="/disclaimer/">Disclaimer</a></li>
+          <li><a href="#cookie-settings" data-cookie-settings>Cookie Settings</a></li>
+
         </ul>
       </div>
     </div>
