@@ -209,6 +209,9 @@
             else if (id === 'qiblaAccuracyTag') {
               el.textContent = d.sourceTag || 'Default Location (Riyadh)';
             }
+            else if (id === 'prayerTimingStatus') {
+              el.textContent = 'Cached schedule (Today)';
+            }
             else if (id === 'compassOrientationLabel') {
               el.textContent = 'Digital Compass (Tap to Enable)';
             }
@@ -1623,7 +1626,7 @@
       <!-- D. Daily 5 Obligatory Prayers + Sunrise Grid -->
       <div class="prayer-section-heading">
         <span><i class="fas fa-clock" style="color: var(--prayer-primary); margin-right: 6px;"></i> Daily Obligatory (Fardh) Prayers</span>
-        <span class="badge-sub">Auto-computed for coordinates</span>
+        <span class="badge-sub" id="prayerTimingStatus">Auto-computed for coordinates</span>
       </div>
 
       <div class="fardh-prayers-grid">
@@ -2471,6 +2474,7 @@
         hasCommittedPrayerSchedule = true;
       }
       applyPrayerTimesToDOM(prayerSchedule);
+      if (typeof updateTimingStatus === 'function') updateTimingStatus('fallback');
     }
 
     function updateLiveClocks() {
@@ -3096,11 +3100,13 @@
           const safeSchedule = Object.assign({}, stored.schedule);
           safeSchedule.label = currentCityLabel;
           applyPrayerTimesToDOM(safeSchedule);
+          if (typeof updateTimingStatus === 'function') updateTimingStatus('cached');
       } else {
           // Cold first visit or stale cache: apply temporary Riyadh fallback so timings and countdown remain populated
           hasCommittedPrayerSchedule = true;
           prayerSchedule = Object.assign({}, RIYADH_FALLBACK);
           applyPrayerTimesToDOM(prayerSchedule);
+          if (typeof updateTimingStatus === 'function') updateTimingStatus('fallback');
       }
 
       let initialSourceTag = (isStoredValidToday && stored && stored.sourceTag) || null;

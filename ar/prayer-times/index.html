@@ -210,6 +210,9 @@
             else if (id === 'qiblaAccuracyTag') {
               el.textContent = d.sourceTag || 'الموقع الافتراضي (الرياض)';
             }
+            else if (id === 'prayerTimingStatus') {
+              el.textContent = 'مواقيت محفوظة (اليوم)';
+            }
             else if (id === 'compassOrientationLabel') {
               el.textContent = 'بوصلة رقمية (اضغط للتفعيل)';
             }
@@ -1704,7 +1707,7 @@
       <!-- D. Daily 5 Obligatory Prayers + Sunrise Grid -->
       <div class="prayer-section-heading">
         <span><i class="fas fa-clock" style="color: var(--prayer-primary); margin-left: 6px;"></i> الصلوات الخمس المفروضة وأوقات الأذان</span>
-        <span class="badge-sub">حساب فلكي مباشر حسب الإحداثيات</span>
+        <span class="badge-sub" id="prayerTimingStatus">حساب فلكي مباشر حسب الإحداثيات</span>
       </div>
 
       <div class="fardh-prayers-grid">
@@ -2552,6 +2555,7 @@
         hasCommittedPrayerSchedule = true;
       }
       applyPrayerTimesToDOM(prayerSchedule);
+      if (typeof updateTimingStatus === 'function') updateTimingStatus('fallback');
     }
 
     function updateLiveClocks() {
@@ -3183,11 +3187,13 @@
           const safeSchedule = Object.assign({}, stored.schedule);
           safeSchedule.label = currentCityLabel;
           applyPrayerTimesToDOM(safeSchedule);
+          if (typeof updateTimingStatus === 'function') updateTimingStatus('cached');
       } else {
           // Cold first visit or stale cache: apply temporary Riyadh fallback so timings and countdown remain populated
           hasCommittedPrayerSchedule = true;
           prayerSchedule = Object.assign({}, RIYADH_FALLBACK);
           applyPrayerTimesToDOM(prayerSchedule);
+          if (typeof updateTimingStatus === 'function') updateTimingStatus('fallback');
       }
 
       let initialSourceTag = (isStoredValidToday && stored && stored.sourceTag) || null;

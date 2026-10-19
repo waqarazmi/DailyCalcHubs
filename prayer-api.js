@@ -4,6 +4,18 @@
 
     let nominatimQueue = Promise.resolve();
 
+    function updateTimingStatus(mode) {
+      const el = document.getElementById('prayerTimingStatus') || document.querySelector('.prayer-section-heading .badge-sub');
+      if (!el) return;
+      if (mode === 'live') {
+        el.textContent = IS_ARABIC ? 'حساب فلكي مباشر حسب الإحداثيات' : 'Auto-computed for coordinates';
+      } else if (mode === 'cached') {
+        el.textContent = IS_ARABIC ? 'مواقيت محفوظة (اليوم)' : 'Cached schedule (Today)';
+      } else if (mode === 'fallback') {
+        el.textContent = IS_ARABIC ? 'مواقيت مرجعية (افتراضية)' : 'Reference timings (Fallback)';
+      }
+    }
+
     // High-Precision Universal Reverse Geocoder (Cleaned: no hardcoded street overrides, resilient abort timeouts, global support)
     async function reverseGeocodeWithOSM(lat, lng, fallbackCity, fallbackCountry, langOverride = null, restrictedKeys = null) {
       const isAr = langOverride ? (langOverride === 'ar') : IS_ARABIC;
@@ -223,6 +235,7 @@
           const locLabelEl = document.getElementById('prayerLocLabel');
           if (locLabelEl) locLabelEl.textContent = currentCityLabel;
           applyPrayerTimesToDOM(validatedSchedule);
+          if (typeof updateTimingStatus === 'function') updateTimingStatus('live');
           if (typeof dismissFailureNotice === 'function') dismissFailureNotice();
 
           const srcLabel = IS_ARABIC ?
@@ -277,6 +290,7 @@
             prayerSchedule = fallbackStored.schedule;
             hasCommittedPrayerSchedule = true;
             applyPrayerTimesToDOM(prayerSchedule);
+            if (typeof updateTimingStatus === 'function') updateTimingStatus('cached');
           }
         }
         if (!prayerSchedule) {
@@ -288,6 +302,7 @@
           prayerSchedule = Object.assign({}, fallbackRiyadh);
           hasCommittedPrayerSchedule = true;
           applyPrayerTimesToDOM(prayerSchedule);
+          if (typeof updateTimingStatus === 'function') updateTimingStatus('fallback');
         }
 
         if (hasCommittedPrayerSchedule && prayerSchedule) {
@@ -299,15 +314,21 @@
           const locLabelEl = document.getElementById('prayerLocLabel');
           if (locLabelEl) locLabelEl.textContent = currentCityLabel;
 
+          const retainedSrcLabel = IS_ARABIC ?
+            (currentLocationSource === 'manual' ? ('اختيار المدينة (' + currentCityLabel.split('،')[0].split(',')[0] + ')') :
+             (currentLocationSource === 'gps' ? 'دقة نظام GPS' :
+              (currentLocationSource === 'default' ? ('الموقع الافتراضي (' + currentCityLabel.split('،')[0].split(',')[0] + ')') : 'موقع تقريبي (IP)'))) :
+            (currentLocationSource === 'manual' ? ('City Selection (' + currentCityLabel.split(',')[0] + ')') :
+             (currentLocationSource === 'gps' ? 'GPS Precision' :
+              (currentLocationSource === 'default' ? ('Default Location (' + currentCityLabel.split(',')[0] + ')') : 'Approximate Location (IP)')));
+          updateQiblaDisplay(currentLatitude, currentLongitude, retainedSrcLabel);
+
           if (!isSilent) {
             const isDefaultRiyadh = (stagedSource === 'default' || stagedCityKey === 'riyadh');
             const failMsg = IS_ARABIC ?
               (isDefaultRiyadh ? 'تعذر الاتصال بالخادم لمواقيت الصلاة المباشرة. يتم عرض المواقيت الافتراضية.' : 'تعذر تحميل مواقيت الصلاة للموقع المطلوب. تم الاحتفاظ بالموقع الحالي.') :
               (isDefaultRiyadh ? 'Unable to connect to live prayer API. Displaying default fallback timings.' : 'Unable to load prayer times for the requested location. Retaining current location.');
             showFailureNotice(failMsg);
-            if (!isDefaultRiyadh) {
-              updateQiblaAccuracyTag(IS_ARABIC ? 'خطأ في الاتصال' : 'Connection Error');
-            }
           }
           return false;
         }
