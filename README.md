@@ -2,7 +2,7 @@
 
 > **Smart, Precision Online Financial & Expat Utilities for the GCC & Global Community.**
 
-DailyCalcHubs is a modern, high-performance web utility platform engineered specifically for Gulf expats (Saudi Arabia, UAE, Qatar, Kuwait, Oman, Bahrain) and Non-Resident Indians (NRIs).
+DailyCalcHubs is a modern, high-performance web utility platform engineered specifically for expats and residents in Saudi Arabia and Non-Resident Indians (NRIs).
 
 ---
 
