@@ -1,6 +1,6 @@
 # 🌍 DailyCalcHubs
 
-> **Smart, Precision Online Financial & Expat Utilities for the GCC & Global Community.**
+Smart, Precision Online Financial & Expat Utilities for Saudi Arabia & Expat Communities.
 
 DailyCalcHubs is a modern, high-performance web utility platform engineered specifically for expats and residents in Saudi Arabia and Non-Resident Indians (NRIs).
 
