@@ -8,9 +8,7 @@ DailyCalcHubs is a modern, high-performance web utility platform engineered spec
 
 ### ⚡ Core Features & Tools
 * 💱 **Live Remittance & Currency Engine:** Real-time SAR to INR exchange tracking with provider breakdown (Barq, STC Pay, urpay).
-* ⚖️ **Shariah-Compliant Zakat Calculator:** Precision Nisab calculation for gold, silver, cash, and business assets.
 * 🇸🇦 **Saudi Expat Utilities:** End-of-Service Benefit (EOSB) calculator and 2026 Dependent Fee estimator.
-* 🪙 **Precious Metals & Jewelry Tax:** Live 24K/22K gold estimation with 3% GST calculation.
 * ✈️ **Travel Budgeting & Flight Planners:** Fast travel expenditure tools.
 
 ---
