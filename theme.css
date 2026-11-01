@@ -5717,6 +5717,24 @@ html[lang="ar"] #aboutUsDropdown .category-dropdown-menu:focus-within {
   font-weight: 600 !important;
 }
 
+/* Current Category Dropdown Hover Stability Fix */
+#currentCategoryDropdown .category-dropdown-menu {
+  overflow: visible !important;
+}
+#currentCategoryDropdown .category-dropdown-menu::before {
+  left: 0 !important;
+  right: 0 !important;
+  width: auto !important;
+}
+#currentCategoryDropdown .category-dropdown-menu:focus-within {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 2px !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(0) !important;
+}
+
 /* ==========================================================================
    MOBILE ACCORDION TOOL BULLET PARITY (CSS-INJECTED)
    ========================================================================== */
