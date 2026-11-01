@@ -73,6 +73,199 @@
     });
   }
 
+  function hydrateCurrentCategoryDropdown(data) {
+    if (!data || !data.categories) return;
+
+    var rawPath = window.location.pathname || '';
+    var cleanPath = (rawPath.replace(/\/index\.html$/i, '').replace(/\/+$/, '') || '/').toLowerCase();
+
+    // Guard: Dropdown must NOT appear on homepages, prayer times, or about/legal pages
+    var excludedPaths = [
+      '/',
+      '/ar',
+      '/prayer-times',
+      '/ar/prayer-times',
+      '/about',
+      '/ar/about',
+      '/contact',
+      '/ar/contact',
+      '/disclaimer',
+      '/ar/disclaimer',
+      '/privacy-policy',
+      '/ar/privacy-policy',
+      '/terms',
+      '/ar/terms'
+    ];
+    if (excludedPaths.indexOf(cleanPath) !== -1) {
+      return;
+    }
+
+    var isAr = (document.documentElement.getAttribute('lang') === 'ar' || cleanPath.indexOf('/ar/') === 0 || cleanPath === '/ar');
+
+    // Historical category button labels
+    var CATEGORY_TITLES = {
+      salary: { en: 'Salary & EOSB', ar: '\u0627\u0644\u0631\u0648\u0627\u062a\u0628 \u0648\u0646\u0647\u0627\u064a\u0629 \u0627\u0644\u062e\u062f\u0645\u0629' },
+      everyday: { en: 'Everyday Smart', ar: '\u0627\u0644\u062d\u0627\u0633\u0628\u0629 \u0627\u0644\u064a\u0648\u0645\u064a\u0629' },
+      remittance: { en: 'Remittance', ar: '\u062a\u062d\u0648\u064a\u0644 \u0627\u0644\u0623\u0645\u0648\u0627\u0644' },
+      iqama: { en: 'Iqama', ar: '\u0631\u0633\u0648\u0645 \u0627\u0644\u0625\u0642\u0627\u0645\u0629' },
+      travel: { en: 'Travel & Booking', ar: '\u0627\u0644\u0633\u0641\u0631 \u0648\u0627\u0644\u062d\u062c\u0648\u0632\u0627\u062a' },
+      sip: { en: 'Shariah SIP', ar: '\u0627\u0644\u0627\u0633\u062a\u062b\u0645\u0627\u0631 \u0627\u0644\u0634\u0631\u0639\u064a' }
+    };
+
+    function normUrl(u) {
+      if (!u) return '';
+      return (u.replace(/\/index\.html$/i, '').replace(/\/+$/, '') || '/').toLowerCase();
+    }
+
+    var targetCat = null;
+    for (var i = 0; i < data.categories.length; i++) {
+      var cat = data.categories[i];
+      if (cat.key === 'prayer' || cat.key === 'about') continue;
+
+      var normEnHub = normUrl(cat.enHub);
+      var normArHub = normUrl(cat.arHub);
+
+      // 1. Hub page match
+      if (cleanPath === normEnHub || cleanPath === normArHub) {
+        targetCat = cat;
+        break;
+      }
+
+      // 2. Exact tool URL match
+      var tList = isAr ? cat.arTools : cat.enTools;
+      if (tList) {
+        for (var t = 0; t < tList.length; t++) {
+          if (cleanPath === normUrl(tList[t].url)) {
+            targetCat = cat;
+            break;
+          }
+        }
+      }
+      if (targetCat) break;
+
+      // 3. Fallback check for the other language tools list
+      var altList = isAr ? cat.enTools : cat.arTools;
+      if (altList) {
+        for (var at = 0; at < altList.length; at++) {
+          if (cleanPath === normUrl(altList[at].url)) {
+            targetCat = cat;
+            break;
+          }
+        }
+      }
+      if (targetCat) break;
+
+      // 4. Prefix match for subdirectories under the category hub
+      if ((normEnHub && normEnHub !== '/' && (cleanPath === normEnHub || cleanPath.indexOf(normEnHub + '/') === 0)) ||
+          (normArHub && normArHub !== '/' && (cleanPath === normArHub || cleanPath.indexOf(normArHub + '/') === 0))) {
+        targetCat = cat;
+        break;
+      }
+    }
+
+    // Historical mapping: /guides/ and /ar/guides/ belong to remittance
+    if (!targetCat && (cleanPath === '/guides' || cleanPath === '/ar/guides' || cleanPath.indexOf('/guides/') === 0 || cleanPath.indexOf('/ar/guides/') === 0)) {
+      for (var k = 0; k < data.categories.length; k++) {
+        if (data.categories[k].key === 'remittance') {
+          targetCat = data.categories[k];
+          break;
+        }
+      }
+    }
+
+    if (!targetCat) return;
+
+    var tools = isAr ? targetCat.arTools : targetCat.enTools;
+    if (!tools || tools.length === 0) return;
+
+    var catTitleObj = CATEGORY_TITLES[targetCat.key];
+    var catTitle = catTitleObj ? (isAr ? catTitleObj.ar : catTitleObj.en) : (isAr ? (targetCat.arTitle || targetCat.arTabTitle) : (targetCat.enTitle || targetCat.enTabTitle));
+
+    var aboutDropdown = document.getElementById('aboutUsDropdown');
+    var exploreDropdown = document.getElementById('exploreToolsDropdown');
+    var parentNav = aboutDropdown ? aboutDropdown.parentNode : (exploreDropdown ? exploreDropdown.parentNode : document.querySelector('.site-header .main-navigation, .site-header .header-nav-container, .main-navigation'));
+    if (!parentNav) return;
+
+    var catDropdown = document.getElementById('currentCategoryDropdown');
+    if (!catDropdown) {
+      catDropdown = document.createElement('div');
+      catDropdown.className = 'nav-dropdown-item category-dropdown-item';
+      catDropdown.id = 'currentCategoryDropdown';
+
+      var catBtn = document.createElement('button');
+      catBtn.type = 'button';
+      catBtn.className = 'nav-link-item nav-dropdown-btn active';
+      catBtn.id = 'currentCategoryBtn';
+      catBtn.setAttribute('aria-expanded', 'false');
+      catBtn.setAttribute('aria-haspopup', 'true');
+      catBtn.setAttribute('aria-controls', 'currentCategoryMenu');
+
+      var titleSpan = document.createElement('span');
+      titleSpan.textContent = catTitle;
+
+      var icon = document.createElement('i');
+      icon.className = 'fas fa-chevron-down nav-dropdown-arrow';
+
+      catBtn.appendChild(titleSpan);
+      catBtn.appendChild(icon);
+      catDropdown.appendChild(catBtn);
+
+      var menuDiv = document.createElement('div');
+      menuDiv.className = 'category-dropdown-menu';
+      menuDiv.id = 'currentCategoryMenu';
+      menuDiv.setAttribute('role', 'menu');
+      menuDiv.setAttribute('aria-label', catTitle);
+
+      catDropdown.appendChild(menuDiv);
+
+      if (aboutDropdown && aboutDropdown.parentNode === parentNav) {
+        parentNav.insertBefore(catDropdown, aboutDropdown);
+      } else if (exploreDropdown && exploreDropdown.nextSibling) {
+        parentNav.insertBefore(catDropdown, exploreDropdown.nextSibling);
+      } else {
+        parentNav.appendChild(catDropdown);
+      }
+    } else {
+      var existingBtnSpan = catDropdown.querySelector('#currentCategoryBtn span');
+      if (existingBtnSpan) existingBtnSpan.textContent = catTitle;
+    }
+
+    // Populate or update menu links
+    var menu = document.getElementById('currentCategoryMenu');
+    if (menu) {
+      menu.innerHTML = '';
+      menu.setAttribute('aria-label', catTitle);
+      var frag = document.createDocumentFragment();
+
+      tools.forEach(function(t) {
+        var a = document.createElement('a');
+        a.href = t.url;
+        a.className = 'category-dropdown-link';
+        a.setAttribute('role', 'menuitem');
+
+        if (cleanPath === normUrl(t.url)) {
+          a.classList.add('active');
+          a.setAttribute('aria-current', 'page');
+        }
+
+        var bullet = document.createElement('span');
+        bullet.className = 'category-dropdown-bullet';
+
+        var text = document.createElement('span');
+        text.className = 'category-dropdown-text';
+        text.textContent = t.title;
+
+        a.appendChild(bullet);
+        a.appendChild(text);
+        frag.appendChild(a);
+      });
+
+      menu.appendChild(frag);
+    }
+
+    initCategoryDropdown();
+  }
+
   // Background fetch to update cached navigation data if updated
   function fetchRemoteNavData() {
     if (typeof fetch !== 'function') return;
@@ -81,6 +274,7 @@
       if (cached) {
         window.DCH_NAV_DATA = JSON.parse(cached);
         hydrateNavMenu(window.DCH_NAV_DATA);
+        hydrateCurrentCategoryDropdown(window.DCH_NAV_DATA);
         return;
       }
     } catch (e) {}
@@ -94,6 +288,7 @@
         if (data && data.categories) {
           window.DCH_NAV_DATA = data;
           hydrateNavMenu(data);
+          hydrateCurrentCategoryDropdown(data);
           try {
             sessionStorage.setItem('dch_nav_data_v1', JSON.stringify(data));
           } catch (e) {}
@@ -211,6 +406,12 @@
         if (exploreDropdown) {
           exploreDropdown.classList.remove('active');
           if (exploreBtn) exploreBtn.setAttribute('aria-expanded', 'false');
+        }
+        var aboutDropdown = document.getElementById('aboutUsDropdown');
+        if (aboutDropdown) {
+          aboutDropdown.classList.remove('active');
+          var aboutBtn = aboutDropdown.querySelector('.nav-dropdown-btn');
+          if (aboutBtn) aboutBtn.setAttribute('aria-expanded', 'false');
         }
         var isOpen = catDropdown.classList.contains('active');
         catDropdown.classList.toggle('active', !isOpen);
@@ -559,6 +760,7 @@
 
   function initAll() {
     hydrateNavMenu(window.DCH_NAV_DATA);
+    hydrateCurrentCategoryDropdown(window.DCH_NAV_DATA);
     initExploreDropdown();
     initCategoryDropdown();
     initAboutUsDropdown();
