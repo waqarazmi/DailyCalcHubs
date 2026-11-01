@@ -478,7 +478,7 @@
     var sym = opts.symbol || '';
     var isArabic = !!opts.isArabic || document.documentElement.lang === 'ar';
     var incentiveMultiplier = Number(opts.incentiveMultiplier) || 1.0;
-    var hideCta = !!opts.hideCta || (typeof opts.tbody === 'string' && opts.tbody === 'inrTableBody') || (tbody.id === 'inrTableBody');
+    var hideCta = !!opts.hideCta;
 
     if (!rate || rate <= 0) {
       var colSpan = hideCta ? 5 : 6;
