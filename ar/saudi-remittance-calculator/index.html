@@ -154,19 +154,77 @@
   </script>
 
   <style>
+    /* Local styles matching English hub with strict Arabic RTL adaptation */
     :root {
-      --navy-footer: #081024;
+      --navy-dark: #0f172a;
+      --navy-footer: #020617;
+      --green-saudi: #16a34a;
+      --border-light: #e2e8f0;
+      --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+      --card-shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+      --text-muted: #64748b;
     }
+
     body {
-      margin: 0;
+      font-family: 'Tajawal', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      background: var(--bg-body);
+      color: var(--text-body);
+      line-height: 1.6;
       overflow-x: hidden;
+      direction: rtl;
+      text-align: right;
     }
-    /* Local styles matching English hub */
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Top Ticker */
+    .top-currency-ticker {
+      background: #0f172a;
+      color: #94a3b8;
+      font-size: 12px;
+      padding: 6px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .ticker-inner {
+      display: inline-flex;
+      gap: 28px;
+      animation: tickerSlide 35s linear infinite;
+    }
+    .ticker-item { display: inline-flex; align-items: center; gap: 6px; }
+    .ticker-item strong { color: #f8fafc; font-weight: 700; }
+    .ticker-item .rate-up { color: #22c55e; }
+    @keyframes tickerSlide {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(50%); }
+    }
+
+    /* Breadcrumbs */
+    .breadcrumbs-bar {
+      background: #ffffff;
+      border-bottom: 1px solid var(--border-light);
+      padding: 10px 0;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    .breadcrumbs-bar a {
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+    .breadcrumbs-bar a:hover { color: var(--navy-dark); }
+    .breadcrumbs-bar span { margin: 0 6px; }
+    .breadcrumbs-bar .current-crumb { color: var(--navy-dark); font-weight: 600; }
+
+    /* Hero / Header of Tool */
     .hub-hero {
       background: linear-gradient(180deg, #ffffff 0%, #f1f5f9 100%);
-      color: #0f172a;
       padding: 40px 0 30px;
-      border-bottom: 1px solid var(--border-light, #e2e8f0);
+      border-bottom: 1px solid var(--border-light);
     }
     .hub-pill {
       display: inline-flex;
@@ -175,93 +233,85 @@
       background: #f0fdf4;
       border: 1px solid #bbf7d0;
       color: #166534;
-      font-size: 12px;
-      font-weight: 700;
       padding: 4px 12px;
       border-radius: 9999px;
+      font-size: 12px;
+      font-weight: 700;
       margin-bottom: 16px;
     }
     .hub-title {
-      font-size: clamp(26px, 4vw, 36px);
+      font-size: 36px;
       font-weight: 800;
+      color: var(--navy-dark);
+      letter-spacing: -0.7px;
+      margin-bottom: 12px;
       line-height: 1.25;
-      margin-bottom: 14px;
-      color: #0f172a;
-      letter-spacing: -0.5px;
     }
     .hub-lead {
       font-size: 16px;
-      line-height: 1.7;
       color: #475569;
-      max-width: 780px;
-      margin-bottom: 24px;
+      max-width: 820px;
+      line-height: 1.6;
+      margin-bottom: 20px;
     }
-    .hub-stats-row {
+    .hub-features-row {
       display: flex;
       flex-wrap: wrap;
       gap: 16px;
-      margin-top: 20px;
+      align-items: center;
     }
-    .hub-stat-card {
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      border-radius: 12px;
-      padding: 12px 18px;
-      min-width: 140px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-    }
-    .hub-stat-num {
-      font-size: 20px;
-      font-weight: 800;
-      color: #059669;
-      display: block;
-    }
-    .hub-stat-label {
-      font-size: 12px;
-      color: #64748b;
+    .hub-badge-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
       font-weight: 600;
+      color: #334155;
+      background: #ffffff;
+      padding: 6px 14px;
+      border-radius: 8px;
+      border: 1px solid var(--border-light);
     }
-    html[data-theme="dark"] .hub-hero {
-      background: #0f172a !important;
-      border-bottom-color: #1e293b !important;
+    .hub-badge-item i { color: var(--green-saudi); }
+
+    /* Main Calculator Section */
+    .calc-interactive-section {
+      padding: 36px 0;
     }
-    html[data-theme="dark"] .hub-title {
-      color: #f8fafc !important;
+    .calc-main-layout {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 30px;
+      align-items: start;
     }
-    html[data-theme="dark"] .hub-lead {
-      color: #cbd5e1 !important;
-    }
-    html[data-theme="dark"] .hub-stat-card {
-      background: #1e293b !important;
-      border-color: #334155 !important;
+    @media (max-width: 960px) {
+      .calc-main-layout { grid-template-columns: minmax(0, 1fr); }
+      .calc-main-layout > * { min-width: 0; max-width: 100%; }
     }
 
-    /* Live Interactive Rate Card */
-    .live-calc-card {
-      background: var(--bg-white, #ffffff);
-      border: 1px solid var(--border-light, #e2e8f0);
+    /* Calculator Card */
+    .calc-card {
+      background: #ffffff;
       border-radius: 16px;
+      border: 1px solid var(--border-light);
+      box-shadow: var(--card-shadow);
       padding: 28px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-      margin: -24px auto 40px;
-      max-width: 1240px;
-      position: relative;
-      z-index: 2;
+      min-width: 0;
+      max-width: 100%;
+      box-sizing: border-box;
     }
-    .live-card-header {
+    .calc-card-header {
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
-      border-bottom: 1px solid #f1f5f9;
+      align-items: center;
+      margin-bottom: 20px;
       padding-bottom: 16px;
-      margin-bottom: 22px;
+      border-bottom: 1px solid var(--border-light);
     }
-    .live-card-title {
-      font-size: 18px;
+    .calc-card-title {
+      font-size: 20px;
       font-weight: 800;
-      color: #0f172a;
+      color: var(--navy-dark);
       display: flex;
       align-items: center;
       gap: 10px;
@@ -273,63 +323,88 @@
       font-size: 12px;
       font-weight: 700;
       padding: 4px 10px;
-      border-radius: 9999px;
+      border-radius: 20px;
       background: #f0fdf4;
       color: #166534;
       border: 1px solid #bbf7d0;
     }
-    .live-calc-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-      align-items: end;
+    .live-pulse {
+      width: 8px;
+      height: 8px;
+      background: #22c55e;
+      border-radius: 50%;
+      box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.3);
+      animation: pulseAnim 2s infinite;
     }
-    .calc-input-group label {
+    @keyframes pulseAnim {
+      0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.6); }
+      70% { box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+    }
+
+    .form-group { margin-bottom: 20px; }
+    .form-label {
       display: block;
-      font-size: 13px;
+      font-size: 13.5px;
       font-weight: 700;
-      color: #475569;
+      color: #1e293b;
       margin-bottom: 8px;
     }
-    .calc-input-wrap {
-      position: relative;
+    .input-with-addons {
       display: flex;
       align-items: center;
-    }
-    .calc-input-wrap input,
-    .calc-input-wrap select {
-      width: 100%;
-      height: 48px;
-      border: 1.5px solid #cbd5e1;
+      border: 2px solid #cbd5e1;
       border-radius: 10px;
-      padding: 0 14px;
-      font-size: 16px;
+      background: #fff;
+      overflow: hidden;
+      transition: border-color 0.15s;
+    }
+    .input-with-addons:focus-within {
+      border-color: var(--green-saudi);
+      box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.15);
+    }
+    /* RTL: input-addon-badge on right side */
+    .input-addon-badge {
+      background: #f8fafc;
+      padding: 12px 16px;
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--navy-dark);
+      border-left: 1px solid #e2e8f0;
+      border-right: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+    .calc-input {
+      flex: 1;
+      border: none;
+      outline: none;
+      padding: 12px 16px;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--navy-dark);
+      font-family: inherit;
+      width: 100%;
+      text-align: right;
+    }
+    /* RTL: select-currency-addon on left side */
+    .select-currency-addon {
+      border: none;
+      outline: none;
+      background: #f8fafc;
+      padding: 12px 14px;
+      font-size: 14px;
       font-weight: 700;
       color: #0f172a;
-      background: #f8fafc;
-      transition: all 0.2s ease;
-      box-sizing: border-box;
+      border-right: 1px solid #e2e8f0;
+      border-left: none;
+      cursor: pointer;
+      font-family: inherit;
     }
-    .calc-input-wrap input:focus,
-    .calc-input-wrap select:focus {
-      outline: none;
-      border-color: #059669;
-      background: #ffffff;
-      box-shadow: 0 0 0 3px rgba(5,150,105,0.15);
-    }
-    .calc-currency-badge {
-      position: absolute;
-      left: 12px;
-      font-size: 13px;
-      font-weight: 700;
-      color: #64748b;
-      pointer-events: none;
-    }
-    html[dir="rtl"] .calc-input-wrap input {
-      padding-left: 45px;
-      padding-right: 14px;
-    }
-    .quick-chips-row {
+
+    .amount-chips-row {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
@@ -338,309 +413,435 @@
     .amount-chip-btn {
       background: #f1f5f9;
       border: 1px solid #e2e8f0;
-      border-radius: 8px;
-      padding: 5px 12px;
-      font-size: 12px;
-      font-weight: 700;
       color: #334155;
-      cursor: pointer;
-      transition: all 0.15s ease;
-    }
-    .amount-chip-btn:hover, .amount-chip-btn.active {
-      background: #059669;
-      color: #ffffff;
-      border-color: #059669;
-    }
-    .calc-result-box {
-      background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
-      border: 1.5px solid #a7f3d0;
-      border-radius: 12px;
-      padding: 16px 20px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      min-height: 80px;
-    }
-    .calc-result-label {
-      font-size: 12px;
+      font-size: 12.5px;
       font-weight: 700;
-      color: #065f46;
-      margin-bottom: 4px;
+      padding: 5px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.15s;
+      font-family: inherit;
     }
-    .calc-result-val {
-      font-size: 24px;
-      font-weight: 800;
-      color: #047857;
-      letter-spacing: -0.5px;
+    .amount-chip-btn:hover {
+      background: #e2e8f0;
+      color: #0f172a;
     }
-    .calc-result-rate-tag {
-      font-size: 12px;
-      font-weight: 600;
-      color: #059669;
-      margin-top: 4px;
+    .amount-chip-btn.active {
+      background: #16a34a;
+      color: #ffffff;
+      border-color: #16a34a;
     }
 
-    /* Comparison Table */
-    .comparison-table-wrap {
-      margin-top: 24px;
-      overflow-x: auto;
+    /* Result Box */
+    .result-summary-box {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: #fff;
       border-radius: 12px;
-      border: 1px solid #e2e8f0;
+      padding: 22px;
+      margin-top: 24px;
     }
-    .comparison-table {
+    .result-row-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 12px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .result-label {
+      font-size: 13px;
+      color: #94a3b8;
+      font-weight: 700;
+    }
+    .result-big-val {
+      font-size: 32px;
+      font-weight: 800;
+      color: #38bdf8;
+      line-height: 1.1;
+      margin-top: 4px;
+    }
+    .result-rate-tag {
+      font-size: 13px;
+      color: #e2e8f0;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      direction: ltr;
+    }
+    .result-meta-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 14px;
+      font-size: 13px;
+    }
+    @media (max-width: 500px) {
+      .result-meta-grid { grid-template-columns: 1fr; }
+    }
+    .meta-box-inner {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 10px 14px;
+      border-radius: 8px;
+    }
+    .meta-box-title { color: #94a3b8; font-size: 11.5px; font-weight: 600; margin-bottom: 3px; }
+    .meta-box-val { color: #f8fafc; font-weight: 700; }
+
+    /* Calculation Result Actions: Print/PDF & WhatsApp Share */
+    .calc-action-bar {
+      display: flex;
+      gap: 12px;
+      margin-top: 18px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .btn-action-print, .btn-action-whatsapp {
+      flex: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: none;
+      font-family: inherit;
+    }
+    .btn-action-print {
+      background: rgba(255, 255, 255, 0.1);
+      color: #f8fafc;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+    .btn-action-print:hover {
+      background: rgba(255, 255, 255, 0.2);
+      color: #fff;
+    }
+    .btn-action-whatsapp {
+      background: #25d366;
+      color: #ffffff;
+    }
+    .btn-action-whatsapp:hover {
+      background: #22c55e;
+    }
+    @media (max-width: 540px) {
+      .calc-action-bar { flex-direction: column; }
+    }
+
+    /* Provider Comparison Table */
+    .provider-table-card {
+      margin-top: 32px;
+      background: #ffffff;
+      border-radius: 16px;
+      border: 1px solid var(--border-light);
+      box-shadow: var(--card-shadow);
+      padding: 24px 28px;
+      box-sizing: border-box;
+      width: 100%;
+    }
+    .provider-table-title {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--navy-dark);
+      margin-bottom: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .provider-table-wrap {
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .provider-table {
+      min-width: 360px;
       width: 100%;
       border-collapse: collapse;
-      font-size: 13.5px;
+      font-size: 13px;
       text-align: right;
     }
-    .comparison-table th {
+    .provider-table th {
       background: #f8fafc;
       color: #475569;
       font-weight: 700;
-      padding: 12px 16px;
-      border-bottom: 1px solid #e2e8f0;
+      padding: 10px 12px;
+      border-bottom: 2px solid var(--border-light);
       white-space: nowrap;
     }
-    .comparison-table td {
-      padding: 14px 16px;
-      border-bottom: 1px solid #f1f5f9;
-      color: #1e293b;
+    .provider-table td {
+      padding: 12px;
+      border-bottom: 1px solid var(--border-light);
       vertical-align: middle;
-    }
-    .comparison-table tr:hover {
-      background: #f8fafc;
     }
     .provider-badge-best {
       background: #dcfce7;
       color: #15803d;
-      font-size: 11px;
+      font-size: 10.5px;
       font-weight: 800;
-      padding: 2px 8px;
-      border-radius: 6px;
+      padding: 2px 6px;
+      border-radius: 4px;
       margin-right: 6px;
-    }
-
-    /* Tools Grid */
-    .tools-grid-section {
-      padding: 20px 0 50px;
-    }
-    .section-header {
-      margin-bottom: 30px;
-    }
-    .section-pill {
+      margin-left: 0;
       display: inline-block;
-      font-size: 12px;
-      font-weight: 800;
-      color: #059669;
-      background: #ecfdf5;
-      border: 1px solid #a7f3d0;
-      padding: 4px 12px;
-      border-radius: 9999px;
-      margin-bottom: 8px;
     }
-    .section-title {
-      font-size: clamp(22px, 3vw, 30px);
-      font-weight: 800;
-      color: #0f172a;
-      letter-spacing: -0.5px;
-    }
-    .section-subtitle {
-      font-size: 14.5px;
-      color: #64748b;
-      margin-top: 6px;
-    }
-    .tools-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 20px;
-    }
-    .tool-card {
-      background: #ffffff;
-      border: 1.5px solid #e2e8f0;
-      border-radius: 14px;
-      padding: 22px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: all 0.25s ease;
-      text-decoration: none;
-      color: inherit;
-    }
-    .tool-card:hover {
-      border-color: #10b981;
-      transform: translateY(-3px);
-      box-shadow: 0 10px 24px rgba(16, 185, 129, 0.12);
-    }
-    .tool-card-top {
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-      margin-bottom: 14px;
-    }
-    .tool-card-icon {
-      width: 46px;
-      height: 46px;
-      border-radius: 12px;
-      background: #ecfdf5;
-      color: #059669;
-      display: flex;
+    .btn-provider-action {
+      display: inline-flex;
       align-items: center;
-      justify-content: center;
-      font-size: 20px;
-      flex-shrink: 0;
-    }
-    .tool-card-title {
-      font-size: 16px;
-      font-weight: 800;
-      color: #0f172a;
-      margin-bottom: 4px;
-      line-height: 1.35;
-    }
-    .tool-card-badge {
-      font-size: 11px;
-      font-weight: 700;
-      padding: 2px 8px;
+      gap: 6px;
+      background: #16a34a;
+      color: #ffffff !important;
+      padding: 6px 14px;
       border-radius: 6px;
-      background: #f1f5f9;
-      color: #475569;
-      display: inline-block;
-      margin-bottom: 6px;
-    }
-    .tool-card-desc {
-      font-size: 13px;
-      color: #64748b;
-      line-height: 1.6;
-      margin-bottom: 16px;
-    }
-    .tool-card-action {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-top: 1px solid #f1f5f9;
-      padding-top: 12px;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 700;
-      color: #059669;
-    }
-
-    /* Content & FAQ Guide Section */
-    .guide-content-section {
-      background: #f8fafc;
-      padding: 60px 0;
-      border-top: 1px solid #e2e8f0;
-      border-bottom: 1px solid #e2e8f0;
-    }
-    .guide-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 40px;
-    }
-    @media (max-width: 900px) {
-      .guide-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-    .guide-article {
-      color: #334155;
-      font-size: 15px;
-      line-height: 1.8;
-    }
-    .guide-article h2 {
-      font-size: 24px;
-      font-weight: 800;
-      color: #0f172a;
-      margin: 32px 0 16px;
-      letter-spacing: -0.3px;
-    }
-    .guide-article h3 {
-      font-size: 18px;
-      font-weight: 800;
-      color: #0f172a;
-      margin: 24px 0 12px;
-    }
-    .guide-article p {
-      margin-bottom: 18px;
-    }
-    .guide-callout {
-      background: #f0fdf4;
-      border-right: 4px solid #059669;
-      padding: 16px 20px;
-      border-radius: 8px;
-      margin: 24px 0;
-      font-size: 14px;
-      color: #166534;
-    }
-    .faq-accordion-item {
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      border-radius: 12px;
-      margin-bottom: 12px;
-      overflow: hidden;
-    }
-    .faq-accordion-question {
-      padding: 16px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      cursor: pointer;
-      font-weight: 700;
-      font-size: 15px;
-      color: #0f172a;
+      text-decoration: none;
       transition: background 0.15s;
+      white-space: nowrap;
     }
-    .faq-accordion-question:hover {
-      background: #f8fafc;
-    }
-    .faq-accordion-answer {
-      display: none;
-      padding: 0 20px 18px;
-      color: #475569;
-      font-size: 14px;
-      line-height: 1.7;
-    }
+    .btn-provider-action:hover { background: #15803d; }
 
     /* Sidebar info */
-    .sidebar-card {
+    .sidebar-info-card {
       background: #ffffff;
-      border: 1px solid #e2e8f0;
-      border-radius: 14px;
+      border-radius: 16px;
+      border: 1px solid var(--border-light);
+      box-shadow: var(--card-shadow);
       padding: 24px;
       margin-bottom: 24px;
     }
     .sidebar-card-heading {
       font-size: 16px;
       font-weight: 800;
-      color: #0f172a;
-      margin-bottom: 14px;
+      color: var(--navy-dark);
+      margin-bottom: 16px;
       display: flex;
       align-items: center;
       gap: 8px;
     }
-    .sidebar-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-    .sidebar-list li {
-      padding: 10px 0;
-      border-bottom: 1px solid #f1f5f9;
+    .sidebar-card-heading i { color: var(--green-saudi); }
+    .rules-list { list-style: none; padding: 0; margin: 0; }
+    .rules-item {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 14px;
       font-size: 13.5px;
-      color: #475569;
+      line-height: 1.5;
+      color: #334155;
+    }
+    .rules-icon {
+      color: var(--green-saudi);
+      font-size: 14px;
+      margin-top: 3px;
+      flex-shrink: 0;
+    }
+
+    /* Section 10 Remittance Calculators & Tools Cards */
+    .tools-grid-section {
+      padding: 40px 0;
+      background: #ffffff;
+      border-top: 1px solid var(--border-light);
+      border-bottom: 1px solid var(--border-light);
+    }
+    .section-header-center {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 36px;
+    }
+    .section-badge {
+      display: inline-block;
+      background: #f0fdf4;
+      color: #166534;
+      font-size: 12px;
+      font-weight: 800;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 10px;
+      border: 1px solid #bbf7d0;
+    }
+    .section-title {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--navy-dark);
+      letter-spacing: -0.5px;
+      margin-bottom: 10px;
+    }
+    .section-subtitle {
+      font-size: 15px;
+      color: var(--text-muted);
+    }
+
+    .tools-10-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .tool-card-item {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 22px;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+    .tool-card-item:hover {
+      border-color: #16a34a;
+      box-shadow: var(--card-shadow-hover);
+      transform: translateY(-2px);
+    }
+    .tool-card-top {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
+      margin-bottom: 12px;
     }
-    .sidebar-list li:last-child {
-      border-bottom: none;
+    .tool-card-badge-num {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: #f0fdf4;
+      color: #16a34a;
+      border: 1px solid #bbf7d0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 14px;
+      flex-shrink: 0;
     }
-    .sidebar-list li i {
-      color: #059669;
-      font-size: 12px;
+    .tool-card-name {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--navy-dark);
     }
+    .tool-card-desc {
+      font-size: 13.5px;
+      color: #64748b;
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+    .tool-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 13px;
+      font-weight: 700;
+      color: #16a34a;
+      padding-top: 12px;
+      border-top: 1px solid #f1f5f9;
+    }
+
+    /* Content & Guide Section */
+    .guide-content-section {
+      padding: 48px 0;
+    }
+    .content-article {
+      max-width: 860px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 36px;
+      border-radius: 16px;
+      border: 1px solid var(--border-light);
+      box-shadow: var(--card-shadow);
+    }
+    .content-article h2 {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--navy-dark);
+      margin: 28px 0 14px;
+      letter-spacing: -0.3px;
+    }
+    .content-article h2:first-of-type { margin-top: 0; }
+    .content-article h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--navy-dark);
+      margin: 20px 0 10px;
+    }
+    .content-article p {
+      font-size: 15px;
+      line-height: 1.7;
+      color: #334155;
+      margin-bottom: 16px;
+    }
+    .content-article ul, .content-article ol {
+      margin-bottom: 18px;
+      padding-right: 24px;
+      padding-left: 0;
+    }
+    .content-article li {
+      font-size: 14.5px;
+      line-height: 1.6;
+      color: #334155;
+      margin-bottom: 8px;
+    }
+    .content-callout {
+      background: #f8fafc;
+      border-right: 4px solid var(--green-saudi);
+      border-left: none;
+      padding: 16px 20px;
+      border-radius: 8px 0 0 8px;
+      margin: 20px 0;
+      font-size: 14.5px;
+      color: #334155;
+    }
+    .content-callout strong { color: var(--navy-dark); }
+
+    /* FAQs */
+    .faq-item {
+      border: 1px solid var(--border-light);
+      border-radius: 10px;
+      margin-bottom: 12px;
+      background: #ffffff;
+      overflow: hidden;
+    }
+    .faq-question {
+      padding: 16px 20px;
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--navy-dark);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      user-select: none;
+    }
+    .faq-question:hover { background: #f8fafc; }
+    .faq-answer {
+      padding: 0 20px 16px;
+      font-size: 14px;
+      line-height: 1.6;
+      color: #475569;
+    }
+
+    /* AdSense Container with 0 CLS */
+    .ad-slot-container {
+      max-width: 1240px;
+      margin: 30px auto;
+      min-height: 90px;
+      background: #f1f5f9;
+      border: 1px dashed #cbd5e1;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
     /* Footer */
-    html[lang="ar"] .site-footer,
     .site-footer {
-      background: #081024;
+      background: var(--navy-footer);
       color: #94a3b8;
       padding: 48px 0 24px;
       border-top: 1px solid rgba(255, 255, 255, 0.08);
@@ -652,80 +853,26 @@
       gap: 36px;
       margin-bottom: 36px;
     }
-    @media (max-width: 840px) { .footer-columns-grid { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 540px) { .footer-columns-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 840px) {
+      .footer-columns-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 540px) {
+      .footer-columns-grid { grid-template-columns: 1fr; }
+    }
     .footer-col-heading {
       color: #fff;
       font-size: 15px;
       font-weight: 700;
-      margin-top: 0;
       margin-bottom: 16px;
     }
-    .footer-nav-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-    .footer-nav-list li {
-      margin-bottom: 8px;
-    }
+    .footer-nav-list { list-style: none; padding: 0; margin: 0; }
+    .footer-nav-list li { margin-bottom: 10px; }
     .footer-nav-list a {
       color: #94a3b8;
       text-decoration: none;
-      transition: color 0.15s ease;
+      transition: color 0.15s;
     }
-    .footer-nav-list a:hover {
-      color: #38bdf8;
-    }
-    .footer-social-text {
-      font-size: 13px;
-      color: #94a3b8;
-      margin-top: 0;
-      margin-bottom: 12px;
-    }
-    .footer-social-row {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 14px;
-    }
-    .footer-contact-link {
-      color: #94a3b8;
-      font-size: 13.5px;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      text-decoration: none;
-      transition: color 0.15s ease;
-    }
-    .footer-contact-link:hover {
-      color: #38bdf8;
-    }
-    .footer-saudi-community-btn {
-      background: #064e3b;
-      border: 1px solid #059669;
-      border-radius: 10px;
-      padding: 9px 14px;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-      color: #ffffff;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-      max-width: 100%;
-      box-sizing: border-box;
-    }
-    .footer-saudi-community-btn svg {
-      width: 24px;
-      height: 24px;
-      flex-shrink: 0;
-    }
-    .saudi-community-title {
-      font-size: 12.5px;
-      font-weight: 700;
-      color: #ffffff;
-      line-height: 1.2;
-    }
+    .footer-nav-list a:hover { color: #38bdf8; }
     .footer-bottom-bar {
       border-top: 1px solid rgba(255, 255, 255, 0.08);
       padding-top: 24px;
@@ -741,16 +888,71 @@
       text-decoration: none;
       margin: 0 8px;
     }
-    .footer-legal-links a:hover {
-      color: #fff;
+    .footer-legal-links a:hover { color: #fff; }
+
+    @media (max-width: 640px) {
+      .hub-title { font-size: 28px; }
+      .calc-card { padding: 20px 16px; }
+      .header-nav-links { display: none; }
     }
-    .inshallah-phrase {
-      color: #64748b;
-      font-size: 12px;
+
+    /* ==========================================================================
+       Dark Mode Page-Scoped Visual & Contrast Refinements (RTL Adapted)
+       Preserves 100% of Light Mode; ensures full dark mode contrast & legibility.
+       ========================================================================== */
+    html[data-theme="dark"] .tools-grid-section {
+      background: #0b0f19 !important;
+      border-top-color: #1e293b !important;
+      border-bottom-color: #1e293b !important;
+    }
+    html[data-theme="dark"] .tools-grid-section .section-title {
+      color: #f8fafc !important;
+    }
+    html[data-theme="dark"] .tools-grid-section .section-subtitle {
+      color: #94a3b8 !important;
+    }
+    html[data-theme="dark"] .hub-badge-item {
+      background: #1a233a !important;
+      border-color: #1e293b !important;
+      color: #cbd5e1 !important;
+    }
+    html[data-theme="dark"] .sidebar-info-card p {
+      color: #94a3b8 !important;
+    }
+    html[data-theme="dark"] .sidebar-info-card a {
+      color: #38bdf8 !important;
+    }
+    html[data-theme="dark"] .sidebar-info-card a:hover {
+      color: #7dd3fc !important;
+    }
+    html[data-theme="dark"] .hub-lead {
+      color: #94a3b8 !important;
+    }
+    html[data-theme="dark"] .select-currency-addon {
+      background-color: #1a233a !important;
+      color: #f8fafc !important;
+      border-right-color: #334155 !important;
+      border-left: none !important;
+    }
+    html[data-theme="dark"] .select-currency-addon option {
+      background-color: #1a233a !important;
+      color: #f8fafc !important;
+    }
+    html[data-theme="dark"] .provider-table th {
+      background: #1e293b !important;
+      color: #cbd5e1 !important;
+      border-bottom-color: #334155 !important;
+    }
+    html[data-theme="dark"] .content-callout {
+      background: #1e293b !important;
+      color: #cbd5e1 !important;
+    }
+    html[data-theme="dark"] .content-callout strong {
+      color: #f8fafc !important;
     }
   </style>
   <script src="/remittance-providers.js?v=20260928"></script>
-<script src="/constants.js" defer></script>
+  <script src="/constants.js" defer></script>
 </head>
 <body>
 
@@ -1232,477 +1434,483 @@
     </div>
   </div>
 
+
   <!-- Hero Header -->
   <section class="hub-hero">
     <div class="container">
-      <div class="hub-pill"><i class="fas fa-building-columns"></i> مرجع معتمد وفق لوائح ساما وهيئة الزكاة والضريبة والجمارك • إصدار 2026</div>
-      <h1 class="hub-title">حاسبة تحويل الأموال في السعودية</h1>
+      <div class="hub-pill">
+        <i class="fas fa-building-columns"></i> Ù…Ø±Ø¬Ø¹ Ù…Ø¹ØªÙ…Ø¯ ÙˆÙÙ‚ Ù„ÙˆØ§Ø¦Ø­ Ø³Ø§Ù…Ø§ ÙˆÙ‡ÙŠØ¦Ø© Ø§Ù„Ø²ÙƒØ§Ø© ÙˆØ§Ù„Ø¶Ø±ÙŠØ¨Ø© ÙˆØ§Ù„Ø¬Ù…Ø§Ø±Ùƒ â€¢ Ø¥ØµØ¯Ø§Ø± 2026
+      </div>
+      <h1 class="hub-title">Ø­Ø§Ø³Ø¨Ø© ØªØ­ÙˆÙŠÙ„ Ø§Ù„Ø£Ù…ÙˆØ§Ù„ ÙÙŠ Ø§Ù„Ø³Ø¹ÙˆØ¯ÙŠØ©</h1>
       <p class="hub-lead">
-        احسب وقارن أسعار تحويل الريال السعودي (SAR) المرجعية إلى الهند، باكستان، بنغلاديش، الفلبين، نيبال وسريلانكا. استكشف الفروق بين أسعار التحويل بين البنوك وتطبيقات التحويل الرقمية الرائدة في المملكة مع مقارنة رسوم التحويل الصافية.
+        Ø§Ø­Ø³Ø¨ ÙˆÙ‚Ø§Ø±Ù† Ø£Ø³Ø¹Ø§Ø± ØªØ­ÙˆÙŠÙ„ Ø§Ù„Ø±ÙŠØ§Ù„ Ø§Ù„Ø³Ø¹ÙˆØ¯ÙŠ (SAR) Ø§Ù„Ù…Ø±Ø¬Ø¹ÙŠØ©ØŒ ÙˆØ§Ø­ØªØ³Ø¨ Ø±Ø³ÙˆÙ… Ø§Ù„Ø®Ø¯Ù…Ø© Ø§Ù„Ø¥Ø¯Ø§Ø±ÙŠØ© Ø§Ù„ØµØ§ÙÙŠØ©ØŒ ÙˆØªØ£ÙƒØ¯ Ù…Ù† Ù…Ø¨Ø§Ù„Øº Ø§Ù„Ø§Ø³ØªÙ„Ø§Ù… Ø§Ù„ÙØ¹Ù„ÙŠØ© Ø¹Ø¨Ø± Ø£ÙØ¶Ù„ Ø§Ù„Ù…Ø­Ø§ÙØ¸ Ø§Ù„Ø±Ù‚Ù…ÙŠØ© ÙˆØ§Ù„Ù‚Ù†ÙˆØ§Øª Ø§Ù„Ù…ØµØ±ÙÙŠØ© Ø§Ù„Ù…Ø±Ø®ØµØ© ÙÙŠ Ø§Ù„Ù…Ù…Ù„ÙƒØ©.
       </p>
-
-      <div class="hub-stats-row">
-        <div class="hub-stat-card">
-          <span class="hub-stat-num">0.00 ر.س</span>
-          <span class="hub-stat-label">عروض تحويل مجانية (برق)</span>
-        </div>
-        <div class="hub-stat-card">
-          <span class="hub-stat-num">فوري</span>
-          <span class="hub-stat-label">تسليم بنكي سريع للمستفيد</span>
-        </div>
-        <div class="hub-stat-card">
-          <span class="hub-stat-num">15% فقط</span>
-          <span class="hub-stat-label">ضريبة القيمة المضافة على الرسوم</span>
-        </div>
-        <div class="hub-stat-card">
-          <span class="hub-stat-num">ساما SAMA</span>
-          <span class="hub-stat-label">أنظمة تحويل مرخصة ومراقبة</span>
-        </div>
+      <div class="hub-features-row">
+        <div class="hub-badge-item"><i class="fas fa-check-circle"></i> Ø£Ø³Ø¹Ø§Ø± ØµØ±Ù Ù…Ø±Ø¬Ø¹ÙŠØ© ÙŠÙˆÙ…ÙŠØ©</div>
+        <div class="hub-badge-item"><i class="fas fa-check-circle"></i> 15% Ø¶Ø±ÙŠØ¨Ø© Ø¹Ù„Ù‰ Ø§Ù„Ø±Ø³ÙˆÙ… ÙÙ‚Ø·</div>
+        <div class="hub-badge-item"><i class="fas fa-check-circle"></i> Ù…Ù‚Ø§Ø±Ù†Ø© 7 Ù…Ø²ÙˆØ¯ÙŠ ØªØ­ÙˆÙŠÙ„ Ù…Ø±Ø®ØµÙŠÙ†</div>
+        <div class="hub-badge-item"><i class="fas fa-check-circle"></i> Ù‡ÙˆØ§Ù…Ø´ ØµØ±Ù ÙˆØ§Ø¶Ø­Ø© ÙˆØ´ÙØ§ÙØ©</div>
       </div>
     </div>
   </section>
+  <!-- Interactive Live Calculator -->
+  <section class="calc-interactive-section">
+    <div class="container">
+      <div class="calc-main-layout">
 
-  <!-- Main Container -->
-  <main class="container">
+        <!-- Right (Column 1 in RTL): Calculator Box -->
+        <div>
+          <div class="calc-card">
+            <div class="calc-card-header">
+              <div class="calc-card-title">
+                <i class="fas fa-calculator" style="color:var(--green-saudi);"></i> ØªÙ‚Ø¯ÙŠØ± Ø§Ù„Ø­ÙˆØ§Ù„Ø© Ø§Ù„ÙÙˆØ±ÙŠ
+              </div>
+              <div class="live-status-pill" id="liveStatusBadge">
+                <span class="live-pulse"></span>
+                <span id="liveStatusText">Ø³Ø¹Ø± Ø§Ù„ØµØ±Ù Ø§Ù„Ù…Ø±Ø¬Ø¹ÙŠ Ù†Ø´Ø·</span>
+              </div>
+            </div>
 
-    <!-- Live Interactive Remittance Calculator Card -->
-    <div class="live-calc-card">
-      <div class="live-card-header">
-        <div class="live-card-title">
-          <i class="fas fa-calculator" style="color:#059669;"></i>
-          <span>حاسبة التحويل المالي السريع ومقارنة المحافظ</span>
+            <!-- Amount Input -->
+            <div class="form-group">
+              <label class="form-label" for="sarAmountInput">Ù…Ø¨Ù„Øº Ø§Ù„ØªØ­ÙˆÙŠÙ„ (Ø¨Ø§Ù„Ø±ÙŠØ§Ù„ Ø§Ù„Ø³Ø¹ÙˆØ¯ÙŠ - SAR)</label>
+              <div class="input-with-addons">
+                <span class="input-addon-badge">Ø±.Ø³</span>
+                <input type="number" id="sarAmountInput" class="calc-input" value="1000" min="1" max="1000000" step="10" placeholder="1000" aria-label="Ù…Ø¨Ù„Øº Ø§Ù„ØªØ­ÙˆÙŠÙ„ Ø¨Ø§Ù„Ø±ÙŠØ§Ù„ Ø§Ù„Ø³Ø¹ÙˆØ¯ÙŠ">
+              </div>
+              <div class="amount-chips-row">
+                <button type="button" class="amount-chip-btn" onclick="setSarAmount(500)">500 Ø±.Ø³</button>
+                <button type="button" class="amount-chip-btn active" onclick="setSarAmount(1000)">1,000 Ø±.Ø³</button>
+                <button type="button" class="amount-chip-btn" onclick="setSarAmount(2500)">2,500 Ø±.Ø³</button>
+                <button type="button" class="amount-chip-btn" onclick="setSarAmount(5000)">5,000 Ø±.Ø³</button>
+                <button type="button" class="amount-chip-btn" onclick="setSarAmount(10000)">10,000 Ø±.Ø³</button>
+              </div>
+            </div>
+
+            <!-- Destination Currency (All 9 Corridors) -->
+            <div class="form-group">
+              <label class="form-label" for="destCurrencySelect">Ø§Ù„Ø¹Ù…Ù„Ø© Ø§Ù„Ù…Ø³ØªÙ„Ù…Ø© ÙˆØ§Ù„Ø¨Ù„Ø¯</label>
+              <div class="input-with-addons">
+                <span class="input-addon-badge">Ø¥Ù„Ù‰</span>
+                <select id="destCurrencySelect" class="calc-input select-currency-addon" onchange="recalculate()" aria-label="Ø¹Ù…Ù„Ø© Ø¨Ù„Ø¯ Ø§Ù„Ø§Ø³ØªÙ„Ø§Ù…">
+                  <option value="INR" selected>Ø§Ù„Ù‡Ù†Ø¯ (INR - &#8377; Ø±ÙˆØ¨ÙŠØ© Ù‡Ù†Ø¯ÙŠØ©)</option>
+                  <option value="PKR">Ø¨Ø§ÙƒØ³ØªØ§Ù† (PKR - Rs Ø±ÙˆØ¨ÙŠØ© Ø¨Ø§ÙƒØ³ØªØ§Ù†ÙŠØ©)</option>
+                  <option value="BDT">Ø¨Ù†ØºÙ„Ø§Ø¯ÙŠØ´ (BDT - &#2547; ØªØ§ÙƒØ§ + 2.5% Ø­Ø§ÙØ² Ø­ÙƒÙˆÙ…ÙŠ)</option>
+                  <option value="PHP">Ø§Ù„ÙÙ„Ø¨ÙŠÙ† (PHP - &#8369; Ø¨ÙŠØ²Ùˆ ÙÙ„Ø¨ÙŠÙ†ÙŠ)</option>
+                  <option value="NPR">Ù†ÙŠØ¨Ø§Ù„ (NPR - Rs Ø±ÙˆØ¨ÙŠØ© Ù†ÙŠØ¨Ø§Ù„ÙŠØ©)</option>
+                  <option value="LKR">Ø³Ø±ÙŠÙ„Ø§Ù†ÙƒØ§ (LKR - Rs Ø±ÙˆØ¨ÙŠØ© Ø³Ø±ÙŠÙ„Ø§Ù†ÙƒÙŠØ©)</option>
+                  <option value="EGP">Ù…ØµØ± (EGP - E&#163; Ø¬Ù†ÙŠÙ‡ Ù…ØµØ±ÙŠ)</option>
+                  <option value="USD">Ø§Ù„ÙˆÙ„Ø§ÙŠØ§Øª Ø§Ù„Ù…ØªØ­Ø¯Ø© (USD - $ Ø¯ÙˆÙ„Ø§Ø± Ø£Ù…Ø±ÙŠÙƒÙŠ)</option>
+                  <option value="AED">Ø§Ù„Ø¥Ù…Ø§Ø±Ø§Øª (AED - Ø¯Ø±Ù‡Ù… Ø¥Ù…Ø§Ø±Ø§ØªÙŠ)</option>
+                </select>
+              </div>
+            </div>
+
+            <div id="amtNoticeBox" class="amt-notice-box" style="display:none; padding:12px; border-radius:8px; font-size:12.5px; margin-bottom:16px;"></div>
+
+            <!-- Dynamic Result Box -->
+            <div class="result-summary-box">
+              <div class="result-row-top">
+                <div>
+                  <div class="result-label">Ø£ÙØ¶Ù„ ØªÙ‚Ø¯ÙŠØ± Ù„Ù…Ø¨Ù„Øº Ø§Ù„Ø§Ø³ØªÙ„Ø§Ù… Ø§Ù„ØµØ§ÙÙŠ (ØªØ·Ø¨ÙŠÙ‚ Ø¨Ø±Ù‚)</div>
+                  <div class="result-big-val" id="estimatedPayoutDisplay"><span style="color:#94a3b8;font-size:24px;">&#8377; ...</span></div>
+                  <div id="baseBenchmarkVal" style="font-size:11.5px; color:#94a3b8; margin-top:4px;">Ø§Ù„Ø³Ø¹Ø± Ø§Ù„Ù…Ø±Ø¬Ø¹ÙŠ Ø¨ÙŠÙ† Ø§Ù„Ø¨Ù†ÙˆÙƒ: Ø¬Ø§Ø±ÙŠ Ø§Ù„Ø­Ø³Ø§Ø¨...</div>
+                </div>
+                <div class="result-rate-tag" id="liveRateDisplayTag">
+                  <i class="fas fa-bolt" style="color:#fbbf24;"></i>
+                  <span>Ø¬Ø§Ø±ÙŠ ØªØ­Ù…ÙŠÙ„ Ø³Ø¹Ø± Ø§Ù„ØµØ±Ù Ø§Ù„Ù…Ø±Ø¬Ø¹ÙŠ...</span>
+                </div>
+              </div>
+
+              <div class="result-meta-grid">
+                <div class="meta-box-inner">
+                  <div class="meta-box-title">Ù…ØµØ¯Ø± Ø§Ù„Ø³Ø¹Ø± ÙˆØ§Ù„Ø­Ø§Ù„Ø©</div>
+                  <div class="meta-box-val" id="rateTimestampVal">Ø³Ø¹Ø± Ø§Ù„ØµØ±Ù Ø§Ù„Ù…Ø±Ø¬Ø¹ÙŠ Ø§Ù„ÙŠÙˆÙ…ÙŠ Ù†Ø´Ø·</div>
+                </div>
+                <div class="meta-box-inner">
+                  <div class="meta-box-title">Ø±Ø³ÙˆÙ… Ø§Ù„ØªØ­ÙˆÙŠÙ„ Ø§Ù„Ø±Ù‚Ù…ÙŠØ© Ø§Ù„ØªÙ‚Ø¯ÙŠØ±ÙŠØ©</div>
+                  <div class="meta-box-val" id="estFeeVal">0.00 - 17.25 Ø±.Ø³</div>
+                </div>
+              </div>
+            
+              <!-- Calculation Result Actions: Print/PDF & WhatsApp Share -->
+              <div class="calc-action-bar">
+                <button type="button" class="btn-action-print" onclick="dchPrintSummary(this)" aria-label="Ø·Ø¨Ø§Ø¹Ø© Ø£Ùˆ Ø­ÙØ¸ Ù…Ù„Ø®Øµ Ø§Ù„Ø­Ø³Ø§Ø¨ Ø¨ØµÙŠØºØ© PDF">
+                  <i class="fas fa-file-pdf"></i>
+                  <span>Ø·Ø¨Ø§Ø¹Ø© / Ø­ÙØ¸ Ø§Ù„Ù…Ù„Ø®Øµ (PDF)</span>
+                </button>
+                <button type="button" class="btn-action-whatsapp" onclick="dchShareWhatsApp(this)" aria-label="Ù…Ø´Ø§Ø±ÙƒØ© ØªÙØ§ØµÙŠÙ„ Ø§Ù„Ø­Ø³Ø¨Ø© Ø¹Ø¨Ø± ÙˆØ§ØªØ³Ø§Ø¨">
+                  <i class="fab fa-whatsapp"></i>
+                  <span>Ù…Ø´Ø§Ø±ÙƒØ© Ø¹Ø¨Ø± ÙˆØ§ØªØ³Ø§Ø¨</span>
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="live-status-pill" id="liveStatusBadge">
-          <i class="fas fa-circle-dot" style="color:#16a34a; font-size:10px;"></i>
-          <span id="liveStatusText">سعر الصرف المرجعي نشط</span>
+
+        <!-- Left (Column 2 in RTL): Saudi Remittance Quick Guide & Rules -->
+        <div>
+          <div class="sidebar-info-card">
+            <h3 class="sidebar-card-heading">
+              <i class="fas fa-shield-halved"></i> Ø¥Ø±Ø´Ø§Ø¯Ø§Øª Ø§Ù„ØªØ­ÙˆÙŠÙ„ Ø§Ù„Ù…Ø§Ù„ÙŠ Ø§Ù„Ù…Ø¹ØªÙ…Ø¯Ø© ÙÙŠ Ø§Ù„Ø³Ø¹ÙˆØ¯ÙŠØ© 2026
+            </h3>
+            <ul class="rules-list">
+              <li class="rules-item">
+                <i class="fas fa-check-circle rules-icon"></i>
+                <div>
+                  <strong>Ø¶Ø±ÙŠØ¨Ø© 15% Ø¹Ù„Ù‰ Ø§Ù„Ø±Ø³ÙˆÙ… ÙÙ‚Ø·:</strong> ØªØ·Ø¨Ù‚ Ø¶Ø±ÙŠØ¨Ø© Ø§Ù„Ù‚ÙŠÙ…Ø© Ø§Ù„Ù…Ø¶Ø§ÙØ© Ù…Ù† Ù‡ÙŠØ¦Ø© Ø§Ù„Ø²ÙƒØ§Ø© ÙˆØ§Ù„Ø¶Ø±ÙŠØ¨Ø© ÙˆØ§Ù„Ø¬Ù…Ø§Ø±Ùƒ (ZATCA) Ø­ØµØ±ÙŠØ§Ù‹ Ø¹Ù„Ù‰ Ø±Ø³ÙˆÙ… Ø§Ù„Ø®Ø¯Ù…Ø© Ø§Ù„Ø¥Ø¯Ø§Ø±ÙŠØ© (Ù…Ø«Ù„ 1.50 Ø±ÙŠØ§Ù„ Ø¹Ù„Ù‰ Ø±Ø³Ù… 10 Ø±ÙŠØ§Ù„Ø§Øª)ØŒ ÙˆÙ„Ø§ ØªÙØ±Ø¶ Ø¥Ø·Ù„Ø§Ù‚Ø§Ù‹ Ø¹Ù„Ù‰ Ø£ØµÙ„ Ø§Ù„Ù…Ø¨Ù„Øº Ø§Ù„Ù…Ø­ÙˆÙ„.
+                </div>
+              </li>
+              <li class="rules-item">
+                <i class="fas fa-check-circle rules-icon"></i>
+                <div>
+                  <strong>Ù…Ø·Ø§Ø¨Ù‚Ø© Ø§Ù„Ø¯Ø®Ù„ ÙˆÙ„ÙˆØ§Ø¦Ø­ Ù…ÙƒØ§ÙØ­Ø© ØºØ³Ù„ Ø§Ù„Ø£Ù…ÙˆØ§Ù„:</strong> ØªØ®Ø¶Ø¹ ÙƒØ§ÙØ© Ø§Ù„Ø­ÙˆØ§Ù„Ø§Øª Ù„Ø£Ù†Ø¸Ù…Ø© Ø§Ù„Ø¨Ù†Ùƒ Ø§Ù„Ù…Ø±ÙƒØ²ÙŠ Ø§Ù„Ø³Ø¹ÙˆØ¯ÙŠ (Ø³Ø§Ù…Ø§) ÙˆØªØ¯Ù‚ÙŠÙ‚ Ù…Ù†ØµØ© Ø­Ù…Ø§ÙŠØ© Ø§Ù„Ø£Ø¬ÙˆØ± (WPS). ÙŠÙØ±Ø¬Ù‰ Ø§Ù„Ø§Ø­ØªÙØ§Ø¸ Ø¨Ø¥Ø«Ø¨Ø§Øª Ù…ØµØ¯Ø± Ø§Ù„Ø¯Ø®Ù„ Ø£Ùˆ Ø´Ù‡Ø§Ø¯Ø© Ø§Ù„Ø±Ø§ØªØ¨ Ù„Ù„Ø­ÙˆØ§Ù„Ø§Øª Ø§Ù„ÙƒØ¨ÙŠØ±Ø©.
+                </div>
+              </li>
+              <li class="rules-item">
+                <i class="fas fa-check-circle rules-icon"></i>
+                <div>
+                  <strong>Ø§Ù„Ù…Ø­Ø§ÙØ¸ Ø§Ù„Ø±Ù‚Ù…ÙŠØ© Ù…Ù‚Ø§Ø¨Ù„ ÙØ±ÙˆØ¹ Ø§Ù„Ø¨Ù†ÙˆÙƒ:</strong> ØªÙˆÙØ± Ø§Ù„Ù…Ø­Ø§ÙØ¸ Ø§Ù„Ø±Ù‚Ù…ÙŠØ© Ù…Ø«Ù„ ØªØ·Ø¨ÙŠÙ‚ Ø¨Ø±Ù‚ØŒ ÙˆÙŠÙˆØ±Ø¨Ø§ÙŠØŒ ÙˆSTC Pay Ù‡ÙˆØ§Ù…Ø´ ØµØ±Ù Ø£ÙØ¶Ù„ ÙˆØ±Ø³ÙˆÙ…Ø§Ù‹ Ø£Ù‚Ù„ Ù…Ø¹ ØªØ­ÙˆÙŠÙ„Ø§Øª ÙÙˆØ±ÙŠØ© Ù…Ù‚Ø§Ø±Ù†Ø© Ø¨Ø§Ù„Ø­ÙˆØ§Ù„Ø§Øª Ø§Ù„Ù†Ù‚Ø¯ÙŠØ© Ø§Ù„ØªÙ‚Ù„ÙŠØ¯ÙŠØ© Ø¹Ø¨Ø± Ø§Ù„ÙØ±ÙˆØ¹.
+                </div>
+              </li>
+              <li class="rules-item">
+                <i class="fas fa-check-circle rules-icon"></i>
+                <div>
+                  <strong>ØªÙˆØ«ÙŠÙ‚ Ø¨ÙŠØ§Ù†Ø§Øª Ø§Ù„Ù…Ø³ØªÙÙŠØ¯ Ø¨Ø¯Ù‚Ø©:</strong> ØªØ£ÙƒØ¯ Ù…Ù† ØªØ·Ø§Ø¨Ù‚ Ø§Ø³Ù… Ø§Ù„Ù…Ø³ØªÙÙŠØ¯ ÙˆØ±Ù‚Ù… Ø§Ù„Ø­Ø³Ø§Ø¨ Ø§Ù„Ø¨Ù†ÙƒÙŠ (IBAN) ØªÙ…Ø§Ù…Ø§Ù‹ Ù„ØªÙØ§Ø¯ÙŠ ØªØ¹Ù„ÙŠÙ‚ Ø§Ù„Ø­ÙˆØ§Ù„Ø© Ø£Ùˆ Ø±ÙØ¶Ù‡Ø§ Ø¨Ù…ÙˆØ¬Ø¨ Ø£Ù†Ø¸Ù…Ø© Ø­Ù…Ø§ÙŠØ© Ø§Ù„Ù…Ø³ØªÙ‡Ù„Ùƒ Ø§Ù„Ù…Ø§Ù„ÙŠ.
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Quick Navigation to Dedicated Tools -->
+          <div class="sidebar-info-card" style="background:#f0fdf4; border-color:#bbf7d0;">
+            <h3 class="sidebar-card-heading" style="color:#166534;">
+              <i class="fas fa-compass"></i> Ø£Ø¯ÙˆØ§Øª Ø§Ù„ØªØ­ÙˆÙŠÙ„ Ø§Ù„Ø£ÙƒØ«Ø± Ø·Ù„Ø¨Ø§Ù‹
+            </h3>
+            <p style="font-size:13px; color:#166534; margin-bottom:12px;">
+              Ù‡Ù„ ØªØ¨Ø­Ø« Ø¹Ù† Ø­Ø§Ø³Ø¨Ø§Øª Ù…Ø®ØµØµØ© Ù„ÙƒÙ„ Ø¯ÙˆÙ„Ø© Ù…Ø¹ ØªÙØ§ØµÙŠÙ„ Ø§Ù„Ø¨Ù†ÙˆÙƒ Ø§Ù„Ù…Ø­Ù„ÙŠØ© ÙˆØ§Ù„Ø¥Ø¹ÙØ§Ø¡Ø§Øª Ø§Ù„Ø¶Ø±ÙŠØ¨ÙŠØ© ÙˆØ§Ù„Ø­ÙˆØ§ÙØ² Ø§Ù„Ø­ÙƒÙˆÙ…ÙŠØ©ØŸ
+            </p>
+            <div style="display:flex; flex-direction:column; gap:8px;">
+              <a href="/ar/saudi-remittance-calculator/sar-to-inr/" style="color:#15803d; font-weight:700; text-decoration:none; font-size:13.5px;">
+                <i class="fas fa-arrow-left"></i> ØªØ­ÙˆÙŠÙ„ Ø§Ù„Ø±ÙŠØ§Ù„ Ø¥Ù„Ù‰ Ø§Ù„Ø±ÙˆØ¨ÙŠØ© Ø§Ù„Ù‡Ù†Ø¯ÙŠØ© (INR)
+              </a>
+              <a href="/ar/saudi-remittance-calculator/sar-to-pkr/" style="color:#15803d; font-weight:700; text-decoration:none; font-size:13.5px;">
+                <i class="fas fa-arrow-left"></i> ØªØ­ÙˆÙŠÙ„ Ø§Ù„Ø±ÙŠØ§Ù„ Ø¥Ù„Ù‰ Ø§Ù„Ø±ÙˆØ¨ÙŠØ© Ø§Ù„Ø¨Ø§ÙƒØ³ØªØ§Ù†ÙŠØ© (PKR)
+              </a>
+              <a href="/ar/saudi-remittance-calculator/sar-to-bdt/" style="color:#15803d; font-weight:700; text-decoration:none; font-size:13.5px;">
+                <i class="fas fa-arrow-left"></i> ØªØ­ÙˆÙŠÙ„ Ø§Ù„Ø±ÙŠØ§Ù„ Ø¥Ù„Ù‰ Ø§Ù„ØªØ§ÙƒØ§ Ø§Ù„Ø¨Ù†ØºÙ„Ø§Ø¯ÙŠØ´ÙŠØ© (BDT + 2.5% Ø­Ø§ÙØ²)
+              </a>
+              <a href="/ar/saudi-remittance-calculator/remittance-fee/" style="color:#15803d; font-weight:700; text-decoration:none; font-size:13.5px;">
+                <i class="fas fa-arrow-left"></i> Ø­Ø§Ø³Ø¨Ø© Ø±Ø³ÙˆÙ… Ø§Ù„ØªØ­ÙˆÙŠÙ„ ÙˆØ¶Ø±ÙŠØ¨Ø© 15%
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- In-Hand Wallet Comparison -->
+      <div class="provider-table-card">
+        <div class="provider-table-title">
+          <span><i class="fas fa-wallet" style="color:#16a34a;"></i> Ù…Ù‚Ø§Ø±Ù†Ø© Ø§Ù„Ù…Ø­Ø§ÙØ¸ Ø§Ù„Ø±Ù‚Ù…ÙŠØ© ÙˆØ§Ù„Ø¨Ù†ÙˆÙƒ Ø§Ù„Ù…Ø±Ø®ØµØ© ÙÙŠ Ø§Ù„Ø³Ø¹ÙˆØ¯ÙŠØ©</span>
+          <span style="font-size:12px; font-weight:600; color:#64748b;" id="compareCurNote">* Ù…Ù‚Ø§Ø±Ù†Ø© Ø£Ø³Ø¹Ø§Ø± Ø§Ù„ØªØ­ÙˆÙŠÙ„ Ø§Ù„Ù…Ø­Ø¯Ø«Ø© Ù…Ù† Ø§Ù„Ø±ÙŠØ§Ù„ Ø§Ù„Ø³Ø¹ÙˆØ¯ÙŠ Ø¥Ù„Ù‰ INR</span>
+        </div>
+        <div class="provider-table-wrap">
+          <table class="provider-table">
+            <thead>
+              <tr>
+                <th>Ù…Ø²ÙˆØ¯ Ø§Ù„Ø®Ø¯Ù…Ø©</th>
+                <th>Ø³Ø¹Ø± Ø§Ù„ØµØ±Ù</th>
+                <th>Ø±Ø³ÙˆÙ… Ø§Ù„ØªØ­ÙˆÙŠÙ„</th>
+                <th>ØµØ§ÙÙŠ Ù…Ø§ ÙŠØ³ØªÙ„Ù…Ù‡ Ø§Ù„Ù…Ø³ØªÙÙŠØ¯</th>
+                <th>Ø³Ø±Ø¹Ø© Ø§Ù„ØªØ­ÙˆÙŠÙ„</th>
+                <th>Ø¥Ø±Ø³Ø§Ù„ Ø§Ù„Ø£Ù…ÙˆØ§Ù„</th>
+              </tr>
+            </thead>
+            <tbody id="providerTableBody">
+              <tr><td colspan="6" style="text-align:center;padding:28px 16px;color:#64748b;"><i class="fas fa-circle-notch fa-spin" style="margin-left:8px;color:#16a34a;"></i> Ø¬Ø§Ø±ÙŠ ØªØ­Ù…ÙŠÙ„ Ø£Ø³Ø¹Ø§Ø± Ù…Ø²ÙˆØ¯ÙŠ Ø§Ù„Ø®Ø¯Ù…Ø©...</td></tr>
+            </tbody>
+          </table>
         </div>
       </div>
 
-      <div class="live-calc-grid">
-        <!-- Input SAR -->
-        <div class="calc-input-group">
-          <label for="sarAmountInput">مبلغ التحويل بالريال السعودي (SAR)</label>
-          <div class="calc-input-wrap">
-            <input type="number" id="sarAmountInput" value="1000" min="10" step="50" placeholder="1000" dir="ltr" inputmode="decimal">
-            <span class="calc-currency-badge">SAR</span>
-          </div>
-                    <div class="quick-chips-row">
-            <button type="button" class="amount-chip-btn" onclick="setSarAmount(500)">500 ر.س</button>
-            <button type="button" class="amount-chip-btn active" onclick="setSarAmount(1000)">1,000 ر.س</button>
-            <button type="button" class="amount-chip-btn" onclick="setSarAmount(2500)">2,500 ر.س</button>
-            <button type="button" class="amount-chip-btn" onclick="setSarAmount(5000)">5,000 ر.س</button>
-            <button type="button" class="amount-chip-btn" onclick="setSarAmount(10000)">10,000 ر.س</button>
-          </div>
-
-          <div id="amtNoticeBox" style="display:none; margin-top:12px; padding:10px 14px; border-radius:8px; font-size:12.5px;"></div>
-        </div>
-
-        <!-- Target Currency -->
-        <div class="calc-input-group">
-          <label for="destCurrencySelect">العملة المستلمة / بلد التحويل</label>
-          <div class="calc-input-wrap">
-            <select id="destCurrencySelect" onchange="recalculate()">
-              <option value="INR" selected>الهند (INR - روبية هندية)</option>
-              <option value="PKR">باكستان (PKR - روبية باكستانية)</option>
-              <option value="BDT">بنغلاديش (BDT - تاكا)</option>
-              <option value="PHP">الفلبين (PHP - بيزو)</option>
-              <option value="NPR">نيبال (NPR - روبية)</option>
-              <option value="LKR">سريلانكا (LKR - روبية)</option>
-              <option value="EGP">مصر (EGP - جنيه مصري)</option>
-            </select>
-          </div>
-          <div style="font-size:11px; color:#64748b; margin-top:8px;" id="rateTimestampEl">
-            جاري جلب أسعار التحويل المحدثة...
-          </div>
-        </div>
-
-        <!-- Estimated Payout -->
-        <div class="calc-result-box result-summary-box">
-          <span class="calc-result-label result-label">أفضل مبلغ تسليم مقدر (تطبيق برق)</span>
-          <span class="calc-result-val result-big-val" id="estimatedPayoutDisplay"><span style="color:#94a3b8;font-size:24px;">&#8377; ...</span></span>
-          <span class="calc-result-rate-tag result-rate-tag" id="liveRateDisplayTag">
-            <i class="fas fa-bolt" style="color:#fbbf24;"></i> <span>جاري تحميل السعر المرجعي...</span>
-          </span>
-          <div id="baseBenchmarkVal" style="font-size:11.5px; color:#065f46; margin-top:4px;">السعر المرجعي بين البنوك: جاري الحساب...</div>
-
-          <!-- Calculation Result Actions: Print/PDF & WhatsApp Share -->
-          <div class="calc-action-bar" style="margin-top:14px;">
-            <button type="button" class="btn-action-print" onclick="dchPrintSummary(this)" aria-label="طباعة أو حفظ التقرير كملف PDF">
-              <i class="fas fa-file-pdf"></i>
-              <span>طباعة / حفظ التقرير (PDF)</span>
-            </button>
-            <button type="button" class="btn-action-whatsapp" onclick="dchShareWhatsApp(this)" aria-label="مشاركة ملخص الحساب عبر واتساب">
-              <i class="fab fa-whatsapp"></i>
-              <span>مشاركة عبر واتساب</span>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Provider Comparison Table -->
-      <div class="comparison-table-wrap">
-        <table class="comparison-table provider-table data-table-cards">
-          <thead>
-            <tr>
-              <th>تطبيق / مزود التحويل</th>
-              <th>سعر الصرف المقدر</th>
-              <th>رسوم التحويل الإدارية</th>
-              <th>صافي المبلغ المستلم</th>
-              <th>سرعة الإيداع</th>
-              <th>إرسال الأموال</th>
-            </tr>
-          </thead>
-          <tbody id="providerTableBody">
-            <tr><td colspan="6" style="text-align:center;padding:28px 16px;color:#64748b;"><i class="fas fa-circle-notch fa-spin" style="margin-left:8px;color:#16a34a;"></i> جاري تحميل عروض ومبالغ الشركات...</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p style="font-size: 11px; color: #94a3b8; margin-top: 10px; text-align: center;" id="compareCurNote">
-        * أسعار الصرف وهوامش الرسوم تقديرية ومحدثة لمقارنة محافظ التحويل الشهيرة في المملكة.
-      </p>
     </div>
-
-    <!-- Hub Tools Directory Section -->
-    <section class="tools-grid-section">
-      <div class="section-header">
-        <span class="section-pill"><i class="fas fa-grid-2"></i> أدوات مخصصة للتحويل</span>
-        <h2 class="section-title">حاسبات وأدلة تحويل العملات الدولية</h2>
-        <p class="section-subtitle">اختر أداة التحويل المخصصة لبلدك لمتابعة الرسوم الدقيقة، حدود التحويل اليومية، وأفضل التطبيقات المعتمدة في المملكة.</p>
+  </section>
+  <!-- 10 Remittance Calculators & Tools Section -->
+  <section class="tools-grid-section" id="tools-suite">
+    <div class="container">
+      <div class="section-header-center">
+        <span class="section-badge">Ø¨Ø§Ù‚Ø© Ø§Ù„Ø£Ø¯ÙˆØ§Øª Ø§Ù„ÙƒØ§Ù…Ù„Ø©</span>
+        <h2 class="section-title">Ø­Ø§Ø³Ø¨Ø§Øª ÙˆØ£Ø¯Ù„Ø© ØªØ­ÙˆÙŠÙ„ Ø§Ù„Ø¹Ù…Ù„Ø§Øª Ø§Ù„Ø¯ÙˆÙ„ÙŠØ©</h2>
+        <p class="section-subtitle">
+          Ø§Ø³ØªÙƒØ´Ù Ø­Ø§Ø³Ø¨Ø§Øª Ø§Ù„Ù…Ø³Ø§Ø±Ø§Øª Ø§Ù„Ù…Ø®ØµØµØ©ØŒ ÙˆØ£Ø¯ÙˆØ§Øª Ø§Ø­ØªØ³Ø§Ø¨ Ø§Ù„Ø±Ø³ÙˆÙ… ÙˆØ§Ù„Ø¶Ø±Ø§Ø¦Ø¨ØŒ ÙˆØ§Ù„Ø£Ø¯Ù„Ø© Ø§Ù„Ø¥Ø±Ø´Ø§Ø¯ÙŠØ© Ø§Ù„Ù…ÙˆØ«Ù‚Ø© Ù„Ù„Ù…Ù‚ÙŠÙ…ÙŠÙ† ÙˆØ§Ù„Ù…ØºØªØ±Ø¨ÙŠÙ† ÙÙŠ Ø§Ù„Ù…Ù…Ù„ÙƒØ© Ø§Ù„Ø¹Ø±Ø¨ÙŠØ© Ø§Ù„Ø³Ø¹ÙˆØ¯ÙŠØ©.
+        </p>
       </div>
 
-      <div class="tools-grid">
+      <div class="tools-10-grid">
 
-        <!-- Tool 1: SAR to INR -->
-        <a href="/ar/saudi-remittance-calculator/sar-to-inr/" class="tool-card">
+        <!-- Card 1: SAR to INR -->
+        <a href="/ar/saudi-remittance-calculator/sar-to-inr/" class="tool-card-item">
           <div>
             <div class="tool-card-top">
-              <div class="tool-card-icon"><i class="fas fa-bolt"></i></div>
-              <div>
-                <span class="tool-card-badge">الأكثر استخداماً</span>
-                <h3 class="tool-card-title">تحويل الريال إلى الروبية الهندية (INR)</h3>
-              </div>
+              <div class="tool-card-badge-num">1</div>
+              <div class="tool-card-name">ØªØ­ÙˆÙŠÙ„ Ø§Ù„Ø±ÙŠØ§Ù„ Ø¥Ù„Ù‰ Ø§Ù„Ø±ÙˆØ¨ÙŠØ© Ø§Ù„Ù‡Ù†Ø¯ÙŠØ©</div>
             </div>
             <p class="tool-card-desc">
-              حساب فوري لسعر تحويل الريال السعودي إلى الهند مع مقارنة مرجعية لأسعار تطبيق برق، STC Pay، يورباي وتحويل الراجحي.
+              Ø­Ø³Ø§Ø¨ ÙÙˆØ±ÙŠ Ù„Ø³Ø¹Ø± ØªØ­ÙˆÙŠÙ„ Ø§Ù„Ø±ÙŠØ§Ù„ Ø§Ù„Ø³Ø¹ÙˆØ¯ÙŠ Ø¥Ù„Ù‰ Ø§Ù„Ù‡Ù†Ø¯ Ù…Ø¹ Ù…Ù‚Ø§Ø±Ù†Ø© Ù‡ÙˆØ§Ù…Ø´ Ø£Ø³Ø¹Ø§Ø± ØªØ·Ø¨ÙŠÙ‚ Ø¨Ø±Ù‚ØŒ STC PayØŒ ÙŠÙˆØ±Ø¨Ø§ÙŠ ÙˆØªØ­ÙˆÙŠÙ„ Ø§Ù„Ø±Ø§Ø¬Ø­ÙŠ ÙˆØ´Ø¨ÙƒØ© IMPS.
             </p>
           </div>
-          <div class="tool-card-action">
-            <span>فتح الحاسبة المتخصصة</span>
-            <i class="fas fa-arrow-left"></i>
+          <div class="tool-card-footer">
+            <span>ÙØªØ­ Ø§Ù„Ø­Ø§Ø³Ø¨Ø© Ø§Ù„Ù…ØªØ®ØµØµØ©</span>
+            <i class="fas fa-chevron-left"></i>
           </div>
         </a>
 
-        <!-- Tool 2: SAR to PKR -->
-        <a href="/ar/saudi-remittance-calculator/sar-to-pkr/" class="tool-card">
+        <!-- Card 2: SAR to PKR -->
+        <a href="/ar/saudi-remittance-calculator/sar-to-pkr/" class="tool-card-item">
           <div>
             <div class="tool-card-top">
-              <div class="tool-card-icon" style="background:#f0fdf4; color:#16a34a;"><i class="fas fa-bolt"></i></div>
-              <div>
-                <span class="tool-card-badge">سريع ومباشر</span>
-                <h3 class="tool-card-title">تحويل الريال إلى الروبية الباكستانية (PKR)</h3>
-              </div>
+              <div class="tool-card-badge-num">2</div>
+              <div class="tool-card-name">ØªØ­ÙˆÙŠÙ„ Ø§Ù„Ø±ÙŠØ§Ù„ Ø¥Ù„Ù‰ Ø§Ù„Ø±ÙˆØ¨ÙŠØ© Ø§Ù„Ø¨Ø§ÙƒØ³ØªØ§Ù†ÙŠØ©</div>
             </div>
             <p class="tool-card-desc">
-              متابعة مرجعية لأسعار صرف الريال السعودي إلى باكستان عبر شبكات التحويل الفوري ونظام راك (Raast) البنكي.
+              Ù…ØªØ§Ø¨Ø¹Ø© Ø£Ø³Ø¹Ø§Ø± ØµØ±Ù Ø§Ù„Ø±ÙŠØ§Ù„ Ø¥Ù„Ù‰ Ø¨Ø§ÙƒØ³ØªØ§Ù† Ù…Ø¹ Ø´Ø±ÙˆØ· Ø¥Ø¹ÙØ§Ø¡ Ø±Ø³ÙˆÙ… Ù…Ø¨Ø§Ø¯Ø±Ø© Ø§Ù„ØªØ­ÙˆÙŠÙ„Ø§Øª Ø§Ù„Ø¨Ø§ÙƒØ³ØªØ§Ù†ÙŠØ© (PRI) ÙˆØ´Ø¨ÙƒØ© Ø±Ø§Ùƒ (Raast) Ù„Ù„Ø¥ÙŠØ¯Ø§Ø¹ Ø§Ù„ÙÙˆØ±ÙŠ.
             </p>
           </div>
-          <div class="tool-card-action">
-            <span>فتح الحاسبة المتخصصة</span>
-            <i class="fas fa-arrow-left"></i>
+          <div class="tool-card-footer">
+            <span>ÙØªØ­ Ø§Ù„Ø­Ø§Ø³Ø¨Ø© Ø§Ù„Ù…ØªØ®ØµØµØ©</span>
+            <i class="fas fa-chevron-left"></i>
           </div>
         </a>
 
-        <!-- Tool 3: SAR to BDT -->
-        <a href="/ar/saudi-remittance-calculator/sar-to-bdt/" class="tool-card">
+        <!-- Card 3: SAR to BDT -->
+        <a href="/ar/saudi-remittance-calculator/sar-to-bdt/" class="tool-card-item">
           <div>
             <div class="tool-card-top">
-              <div class="tool-card-icon" style="background:#fef2f2; color:#dc2626;"><i class="fas fa-bolt"></i></div>
-              <div>
-                <span class="tool-card-badge">حوالات بنغالية</span>
-                <h3 class="tool-card-title">تحويل الريال إلى التاكا البنغلاديشية (BDT)</h3>
-              </div>
+              <div class="tool-card-badge-num">3</div>
+              <div class="tool-card-name">ØªØ­ÙˆÙŠÙ„ Ø§Ù„Ø±ÙŠØ§Ù„ Ø¥Ù„Ù‰ Ø§Ù„ØªØ§ÙƒØ§ Ø§Ù„Ø¨Ù†ØºÙ„Ø§Ø¯ÙŠØ´ÙŠØ©</div>
             </div>
             <p class="tool-card-desc">
-              حاسبة مخصصة لتحويل الأموال إلى بنغلاديش متوافقة مع الحوافز الحكومية والتحويل المباشر إلى حسابات بنك بكاش ومحافظ bKash.
+              Ø­Ø³Ø§Ø¨ Ø¯Ù‚ÙŠÙ‚ Ù„ØªØ­ÙˆÙŠÙ„ Ø§Ù„Ø¹Ù…Ù„Ø© Ø¥Ù„Ù‰ Ø¨Ù†ØºÙ„Ø§Ø¯ÙŠØ´ Ø´Ø§Ù…Ù„Ø§Ù‹ Ø§Ù„Ø­Ø§ÙØ² Ø§Ù„Ù†Ù‚Ø¯ÙŠ Ø§Ù„Ø­ÙƒÙˆÙ…ÙŠ Ø¨Ù†Ø³Ø¨Ø© 2.5% ÙˆØ§Ù„ØªØ­ÙˆÙŠÙ„ Ø§Ù„Ù…Ø¨Ø§Ø´Ø± Ù„Ù…Ø­Ø§ÙØ¸ bKash ÙˆØ¨Ù†ÙˆÙƒ Ø¨Ù†ØºÙ„Ø§Ø¯ÙŠØ´.
             </p>
           </div>
-          <div class="tool-card-action">
-            <span>فتح الحاسبة المتخصصة</span>
-            <i class="fas fa-arrow-left"></i>
+          <div class="tool-card-footer">
+            <span>ÙØªØ­ Ø§Ù„Ø­Ø§Ø³Ø¨Ø© Ø§Ù„Ù…ØªØ®ØµØµØ©</span>
+            <i class="fas fa-chevron-left"></i>
           </div>
         </a>
 
-        <!-- Tool 4: Remittance Fee Calculator -->
-        <a href="/ar/saudi-remittance-calculator/remittance-fee/" class="tool-card">
+        <!-- Card 4: SAR to PHP -->
+        <a href="/ar/saudi-remittance-calculator/sar-to-php/" class="tool-card-item">
           <div>
             <div class="tool-card-top">
-              <div class="tool-card-icon" style="background:#eff6ff; color:#2563eb;"><i class="fas fa-percent"></i></div>
-              <div>
-                <span class="tool-card-badge">حساب الرسوم والضريبة</span>
-                <h3 class="tool-card-title">حاسبة رسوم التحويل وضريبة 15%</h3>
-              </div>
+              <div class="tool-card-badge-num">4</div>
+              <div class="tool-card-name">ØªØ­ÙˆÙŠÙ„ Ø§Ù„Ø±ÙŠØ§Ù„ Ø¥Ù„Ù‰ Ø§Ù„Ø¨ÙŠØ²Ùˆ Ø§Ù„ÙÙ„Ø¨ÙŠÙ†ÙŠ</div>
             </div>
             <p class="tool-card-desc">
-              حساب دقيق لرسوم التحويل الإدارية المفروضة من البنوك والمحافظ السعودية مع احتساب ضريبة القيمة المضافة النظامية بدقة.
+              Ø­Ø§Ø³Ø¨Ø© Ù…Ø®ØµØµØ© Ù„Ù„Ø¬Ø§Ù„ÙŠØ© Ø§Ù„ÙÙ„Ø¨ÙŠÙ†ÙŠØ© ÙÙŠ Ø§Ù„Ù…Ù…Ù„ÙƒØ© Ù„Ù…Ù‚Ø§Ø±Ù†Ø© Ø§Ù„Ø¥ÙŠØ¯Ø§Ø¹ Ø§Ù„Ø¨Ù†ÙƒÙŠ ÙˆÙ…Ø­Ø§ÙØ¸ GCash ÙˆMaya ÙˆØ®ÙŠØ§Ø±Ø§Øª Ø§Ù„Ø§Ø³ØªÙ„Ø§Ù… Ø§Ù„Ù†Ù‚Ø¯ÙŠ Ø§Ù„ÙÙˆØ±ÙŠ.
             </p>
           </div>
-          <div class="tool-card-action">
-            <span>فتح الحاسبة المتخصصة</span>
-            <i class="fas fa-arrow-left"></i>
+          <div class="tool-card-footer">
+            <span>ÙØªØ­ Ø§Ù„Ø­Ø§Ø³Ø¨Ø© Ø§Ù„Ù…ØªØ®ØµØµØ©</span>
+            <i class="fas fa-chevron-left"></i>
           </div>
         </a>
 
-        <!-- Tool 5: SAR to PHP -->
-        <a href="/ar/saudi-remittance-calculator/sar-to-php/" class="tool-card">
+        <!-- Card 5: SAR to NPR -->
+        <a href="/ar/saudi-remittance-calculator/sar-to-npr/" class="tool-card-item">
           <div>
             <div class="tool-card-top">
-              <div class="tool-card-icon" style="background:#fefce8; color:#ca8a04;"><i class="fas fa-bolt"></i></div>
-              <div>
-                <span class="tool-card-badge">الجالية الفلبينية</span>
-                <h3 class="tool-card-title">تحويل الريال إلى البيزو الفلبيني (PHP)</h3>
-              </div>
+              <div class="tool-card-badge-num">5</div>
+              <div class="tool-card-name">ØªØ­ÙˆÙŠÙ„ Ø§Ù„Ø±ÙŠØ§Ù„ Ø¥Ù„Ù‰ Ø§Ù„Ø±ÙˆØ¨ÙŠØ© Ø§Ù„Ù†ÙŠØ¨Ø§Ù„ÙŠØ©</div>
             </div>
             <p class="tool-card-desc">
-              تقدير فوري لتحويل الأموال من السعودية إلى الفلبين مع مقارنة محافظ GCash وMaya والإيداع المباشر في البنوك الفلبينية.
+              Ù…ØªØ§Ø¨Ø¹Ø© Ø£Ø³Ø¹Ø§Ø± Ø§Ù„ØµØ±Ù Ø§Ù„ÙŠÙˆÙ…ÙŠØ© Ø§Ù„Ù…ØªÙˆØ§ÙÙ‚Ø© Ù…Ø¹ ØªØ¹Ù„ÙŠÙ…Ø§Øª Ø§Ù„Ø¨Ù†Ùƒ Ø§Ù„Ù…Ø±ÙƒØ²ÙŠ Ø§Ù„Ù†ÙŠØ¨Ø§Ù„ÙŠ ÙˆÙ…Ø­Ø§ÙØ¸ IME Pay ÙˆeSewa Ø§Ù„Ø³Ø±ÙŠØ¹Ø© ÙÙŠ Ù†ÙŠØ¨Ø§Ù„.
             </p>
           </div>
-          <div class="tool-card-action">
-            <span>فتح الحاسبة المتخصصة</span>
-            <i class="fas fa-arrow-left"></i>
+          <div class="tool-card-footer">
+            <span>ÙØªØ­ Ø§Ù„Ø­Ø§Ø³Ø¨Ø© Ø§Ù„Ù…ØªØ®ØµØµØ©</span>
+            <i class="fas fa-chevron-left"></i>
           </div>
         </a>
 
-        <!-- Tool 6: SAR to NPR -->
-        <a href="/ar/saudi-remittance-calculator/sar-to-npr/" class="tool-card">
+        <!-- Card 6: SAR to LKR -->
+        <a href="/ar/saudi-remittance-calculator/sar-to-lkr/" class="tool-card-item">
           <div>
             <div class="tool-card-top">
-              <div class="tool-card-icon" style="background:#fdf2f8; color:#db2777;"><i class="fas fa-bolt"></i></div>
-              <div>
-                <span class="tool-card-badge">حوالات نيبال</span>
-                <h3 class="tool-card-title">تحويل الريال إلى الروبية النيبالية (NPR)</h3>
-              </div>
+              <div class="tool-card-badge-num">6</div>
+              <div class="tool-card-name">ØªØ­ÙˆÙŠÙ„ Ø§Ù„Ø±ÙŠØ§Ù„ Ø¥Ù„Ù‰ Ø§Ù„Ø±ÙˆØ¨ÙŠØ© Ø§Ù„Ø³Ø±ÙŠÙ„Ø§Ù†ÙƒÙŠØ©</div>
             </div>
             <p class="tool-card-desc">
-              متابعة أسعار صرف الريال السعودي إلى نيبال لحساب مبالغ الاستلام الصافية وأفضل قنوات التحويل السريعة في المملكة.
+              Ø£Ø³Ø¹Ø§Ø± ØµØ±Ù Ø§Ù„Ø±ÙŠØ§Ù„ Ø§Ù„ÙŠÙˆÙ…ÙŠØ© Ù…Ù‚Ø§Ø¨Ù„ Ø§Ù„Ø±ÙˆØ¨ÙŠØ© Ø§Ù„Ø³Ø±ÙŠÙ„Ø§Ù†ÙƒÙŠØ© ÙˆÙÙ‚ ØªØ¹Ù„ÙŠÙ…Ø§Øª Ø§Ù„Ø¨Ù†Ùƒ Ø§Ù„Ù…Ø±ÙƒØ²ÙŠ Ø§Ù„Ø³Ø±ÙŠÙ„Ø§Ù†ÙƒÙŠ ÙˆÙ‡ÙˆØ§Ù…Ø´ Ø§Ù„Ø¨Ù†ÙˆÙƒ Ø§Ù„ØªØ¬Ø§Ø±ÙŠØ©.
             </p>
           </div>
-          <div class="tool-card-action">
-            <span>فتح الحاسبة المتخصصة</span>
-            <i class="fas fa-arrow-left"></i>
+          <div class="tool-card-footer">
+            <span>ÙØªØ­ Ø§Ù„Ø­Ø§Ø³Ø¨Ø© Ø§Ù„Ù…ØªØ®ØµØµØ©</span>
+            <i class="fas fa-chevron-left"></i>
           </div>
         </a>
 
-        <!-- Tool 7: SAR to LKR -->
-        <a href="/ar/saudi-remittance-calculator/sar-to-lkr/" class="tool-card">
+        <!-- Card 7: Remittance Fee Calculator -->
+        <a href="/ar/saudi-remittance-calculator/remittance-fee/" class="tool-card-item">
           <div>
             <div class="tool-card-top">
-              <div class="tool-card-icon" style="background:#f5f3ff; color:#7c3aed;"><i class="fas fa-bolt"></i></div>
-              <div>
-                <span class="tool-card-badge">سريلانكا</span>
-                <h3 class="tool-card-title">تحويل الريال إلى الروبية السريلانكية (LKR)</h3>
-              </div>
+              <div class="tool-card-badge-num">7</div>
+              <div class="tool-card-name">Ø­Ø§Ø³Ø¨Ø© Ø±Ø³ÙˆÙ… Ø§Ù„ØªØ­ÙˆÙŠÙ„ ÙˆØ¶Ø±ÙŠØ¨Ø© 15%</div>
             </div>
             <p class="tool-card-desc">
-              حساب فوري لتحويل العملة من الريال السعودي إلى سريلانكا ومقارنة العمولات المصرفية وأسعار الإيداع المباشر.
+              Ø§Ø­Ø³Ø¨ Ø§Ù„ØªÙƒÙ„ÙØ© Ø§Ù„Ø¥Ø¬Ù…Ø§Ù„ÙŠØ© Ù„Ù„Ø­ÙˆØ§Ù„Ø©: Ø±Ø³ÙˆÙ… Ø§Ù„Ø®Ø¯Ù…Ø© Ø§Ù„Ø¥Ø¯Ø§Ø±ÙŠØ©ØŒ Ø¶Ø±ÙŠØ¨Ø© Ø§Ù„Ù‚ÙŠÙ…Ø© Ø§Ù„Ù…Ø¶Ø§ÙØ© 15% Ø§Ù„Ù†Ø¸Ø§Ù…ÙŠØ©ØŒ ÙˆÙ‡Ø§Ù…Ø´ Ø³Ø¹Ø± Ø§Ù„ØµØ±Ù Ø§Ù„ÙØ¹Ù„ÙŠ.
             </p>
           </div>
-          <div class="tool-card-action">
-            <span>فتح الحاسبة المتخصصة</span>
-            <i class="fas fa-arrow-left"></i>
+          <div class="tool-card-footer">
+            <span>Ø§Ø­ØªØ³Ø§Ø¨ Ø±Ø³ÙˆÙ… Ø§Ù„ØªØ­ÙˆÙŠÙ„</span>
+            <i class="fas fa-chevron-left"></i>
           </div>
         </a>
 
-        <!-- Tool 8: Remittance Comparison -->
-        <a href="/ar/saudi-remittance-calculator/remittance-comparison/" class="tool-card">
+        <!-- Card 8: Remittance Comparison -->
+        <a href="/ar/saudi-remittance-calculator/remittance-comparison/" class="tool-card-item">
           <div>
             <div class="tool-card-top">
-              <div class="tool-card-icon" style="background:#ecfeff; color:#0891b2;"><i class="fas fa-scale-balanced"></i></div>
-              <div>
-                <span class="tool-card-badge">مقارنة شاملة</span>
-                <h3 class="tool-card-title">مقارنة تطبيقات ومحافظ التحويل</h3>
-              </div>
+              <div class="tool-card-badge-num">8</div>
+              <div class="tool-card-name">Ù…Ù‚Ø§Ø±Ù†Ø© ØªØ·Ø¨ÙŠÙ‚Ø§Øª ÙˆÙ…Ø­Ø§ÙØ¸ Ø§Ù„ØªØ­ÙˆÙŠÙ„</div>
             </div>
             <p class="tool-card-desc">
-              مقارنة تفصيلية بين تطبيق برق، STC Pay، يورباي، إنجاز، تحويل الراجحي، والويسترن يونيون من حيث السرعة والرسوم وسعر الصرف.
+              Ù…Ù‚Ø§Ø±Ù†Ø© Ø´Ø§Ù…Ù„Ø© Ø¬Ù†Ø¨Ø§Ù‹ Ø¥Ù„Ù‰ Ø¬Ù†Ø¨ Ø¨ÙŠÙ† ØªØ·Ø¨ÙŠÙ‚ Ø¨Ø±Ù‚ØŒ STC PayØŒ ÙŠÙˆØ±Ø¨Ø§ÙŠØŒ ØªØ­ÙˆÙŠÙ„ Ø§Ù„Ø±Ø§Ø¬Ø­ÙŠØŒ ÙˆÙˆÙŠØ³ØªØ±Ù† ÙŠÙˆÙ†ÙŠÙˆÙ† Ù…Ù† Ø­ÙŠØ« Ø§Ù„Ø±Ø³ÙˆÙ… ÙˆØ§Ù„Ø³Ø±Ø¹Ø© ÙˆÙ‡ÙˆØ§Ù…Ø´ Ø§Ù„ØµØ±Ù.
             </p>
           </div>
-          <div class="tool-card-action">
-            <span>فتح دليل المقارنة</span>
-            <i class="fas fa-arrow-left"></i>
+          <div class="tool-card-footer">
+            <span>Ù…Ù‚Ø§Ø±Ù†Ø© ØªØ·Ø¨ÙŠÙ‚Ø§Øª Ø§Ù„ØªØ­ÙˆÙŠÙ„</span>
+            <i class="fas fa-chevron-left"></i>
           </div>
         </a>
 
-        <!-- Tool 9: Reference Exchange Rates -->
-        <a href="/ar/saudi-remittance-calculator/live-sar-exchange-rate/" class="tool-card">
+        <!-- Card 9: SAR Exchange Rate Reference -->
+        <a href="/ar/saudi-remittance-calculator/live-sar-exchange-rate/" class="tool-card-item">
           <div>
             <div class="tool-card-top">
-              <div class="tool-card-icon" style="background:#f0fdf4; color:#15803d;"><i class="fas fa-signal"></i></div>
-              <div>
-                <span class="tool-card-badge">بيانات مرجعية</span>
-                <h3 class="tool-card-title">أسعار صرف الريال المرجعية</h3>
-              </div>
+              <div class="tool-card-badge-num">9</div>
+              <div class="tool-card-name">Ø£Ø³Ø¹Ø§Ø± ØµØ±Ù Ø§Ù„Ø±ÙŠØ§Ù„ Ø§Ù„Ù…Ø±Ø¬Ø¹ÙŠØ©</div>
             </div>
             <p class="tool-card-desc">
-              لوحة متكاملة لمتابعة أسعار صرف الريال السعودي مقابل العملات العالمية والعربية الرئيسية مع تحديثات منتظمة.
+              Ù„ÙˆØ­Ø© Ø³ÙˆÙ‚ÙŠØ© Ù…ØªØ¹Ø¯Ø¯Ø© Ø§Ù„Ø¹Ù…Ù„Ø§Øª Ù„Ù…ØªØ§Ø¨Ø¹Ø© Ø£Ø³Ø¹Ø§Ø± ØµØ±Ù Ø§Ù„Ø±ÙŠØ§Ù„ Ø§Ù„Ø³Ø¹ÙˆØ¯ÙŠ Ø§Ù„Ù…Ø±Ø¬Ø¹ÙŠØ© Ù…Ù‚Ø§Ø¨Ù„ Ø§Ù„Ø¹Ù…Ù„Ø§Øª Ø§Ù„Ø¹Ø§Ù„Ù…ÙŠØ© ÙˆØ§Ù„Ø¹Ø±Ø¨ÙŠØ© Ù…Ø¹ Ø¨ÙŠØ§Ù†Ø§Øª ØªÙ‚Ù„Ø¨Ø§Øª Ø§Ù„Ø³ÙˆÙ‚.
             </p>
           </div>
-          <div class="tool-card-action">
-            <span>عرض أسعار الصرف المرجعية</span>
-            <i class="fas fa-arrow-left"></i>
+          <div class="tool-card-footer">
+            <span>Ø¹Ø±Ø¶ Ø£Ø³Ø¹Ø§Ø± Ø§Ù„ØµØ±Ù Ø§Ù„Ù…Ø±Ø¬Ø¹ÙŠØ©</span>
+            <i class="fas fa-chevron-left"></i>
           </div>
         </a>
 
-        <!-- Tool 10: Complete Remittance Guide -->
-        <a href="/ar/saudi-remittance-calculator/saudi-to-india-remittance-guide/" class="tool-card">
+        <!-- Card 10: Saudi-to-India Remittance Guide -->
+        <a href="/ar/saudi-remittance-calculator/saudi-to-india-remittance-guide/" class="tool-card-item">
           <div>
             <div class="tool-card-top">
-              <div class="tool-card-icon" style="background:#fffbeb; color:#d97706;"><i class="fas fa-book-open"></i></div>
-              <div>
-                <span class="tool-card-badge">دليل شامل</span>
-                <h3 class="tool-card-title">دليل التحويل الشامل للمقيمين</h3>
-              </div>
+              <div class="tool-card-badge-num">10</div>
+              <div class="tool-card-name">Ø¯Ù„ÙŠÙ„ Ø§Ù„ØªØ­ÙˆÙŠÙ„ Ø§Ù„Ø´Ø§Ù…Ù„ Ù„Ù„Ù…Ù‚ÙŠÙ…ÙŠÙ†</div>
             </div>
             <p class="tool-card-desc">
-              دليل عملي وتفصيلي يشرح حدود التحويل، اللوائح الضريبية والبنكية لساما، وكيفية توثيق الحسابات لتجنب تعليق الحوالات.
+              Ø¯Ù„ÙŠÙ„ Ø¥Ø±Ø´Ø§Ø¯ÙŠ Ù…Ø¹ØªÙ…Ø¯ Ù„Ø¹Ø§Ù… 2026 ÙŠØºØ·ÙŠ Ø­Ø³Ø§Ø¨Ø§Øª NRE/NROØŒ Ø§Ù„Ù‚ÙˆØ§Ø¹Ø¯ Ø§Ù„Ø¶Ø±ÙŠØ¨ÙŠØ©ØŒ Ø­Ø¯ÙˆØ¯ Ø§Ù„ØªØ­ÙˆÙŠÙ„ Ø§Ù„Ø³Ù†ÙˆÙŠØ©ØŒ ÙˆØ§Ù„Ø§Ù…ØªØ«Ø§Ù„ Ø§Ù„Ù†Ø¸Ø§Ù…ÙŠ ÙÙŠ Ø§Ù„Ø³Ø¹ÙˆØ¯ÙŠØ©.
             </p>
           </div>
-          <div class="tool-card-action">
-            <span>قراءة الدليل الكامل</span>
-            <i class="fas fa-arrow-left"></i>
+          <div class="tool-card-footer">
+            <span>Ù‚Ø±Ø§Ø¡Ø© Ø§Ù„Ø¯Ù„ÙŠÙ„ Ø§Ù„ÙƒØ§Ù…Ù„</span>
+            <i class="fas fa-chevron-left"></i>
           </div>
         </a>
 
       </div>
-    </section>
-
-  </main>
-
-  <!-- Comprehensive Educational & FAQ Section -->
+    </div>
+  </section>
+  <!-- In-Depth Content & FAQs Section -->
   <section class="guide-content-section">
-    <div class="container guide-grid">
-      
-      <!-- Left Article -->
-      <article class="guide-article">
-        <h2>كيف تعمل الحوالات المالية الدولية في المملكة العربية السعودية</h2>
+    <div class="container">
+      <div class="content-article">
+        <h2>ÙƒÙŠÙ ØªØ¹Ù…Ù„ Ø§Ù„Ø­ÙˆØ§Ù„Ø§Øª Ø§Ù„Ù…Ø§Ù„ÙŠØ© Ø§Ù„Ø¯ÙˆÙ„ÙŠØ© ÙÙŠ Ø§Ù„Ù…Ù…Ù„ÙƒØ© Ø§Ù„Ø¹Ø±Ø¨ÙŠØ© Ø§Ù„Ø³Ø¹ÙˆØ¯ÙŠØ©</h2>
         <p>
-          تعد المملكة العربية السعودية واحدة من أكبر مصادر التحويلات المالية الدولية في العالم، حيث يعتمد ملايين المقيمين والمغتربين على القنوات المصرفية والمحافظ الرقمية لإرسال أموالهم إلى أسرهم في مختلف دول العالم. وتخضع هذه العمليات لرقابة وإشراف البنك المركزي السعودي (ساما) لضمان أعلى معايير الأمان والشفافية.
+          ØªØ¹Ø¯ Ø§Ù„Ù…Ù…Ù„ÙƒØ© Ø§Ù„Ø¹Ø±Ø¨ÙŠØ© Ø§Ù„Ø³Ø¹ÙˆØ¯ÙŠØ© ÙˆØ§Ø­Ø¯Ø© Ù…Ù† Ø£ÙƒØ¨Ø± Ù…ØµØ§Ø¯Ø± Ø§Ù„ØªØ­ÙˆÙŠÙ„Ø§Øª Ø§Ù„Ù…Ø§Ù„ÙŠØ© Ø§Ù„Ø¯ÙˆÙ„ÙŠØ© ÙÙŠ Ø§Ù„Ø¹Ø§Ù„Ù…ØŒ Ø­ÙŠØ« ÙŠØ¹ØªÙ…Ø¯ Ù…Ù„Ø§ÙŠÙŠÙ† Ø§Ù„Ù…Ù‚ÙŠÙ…ÙŠÙ† ÙˆØ§Ù„Ù…ØºØªØ±Ø¨ÙŠÙ† Ø¹Ù„Ù‰ Ø§Ù„Ù‚Ù†ÙˆØ§Øª Ø§Ù„Ù…ØµØ±ÙÙŠØ© ÙˆØ§Ù„Ù…Ø­Ø§ÙØ¸ Ø§Ù„Ø±Ù‚Ù…ÙŠØ© Ù„Ø¥Ø±Ø³Ø§Ù„ Ø£Ù…ÙˆØ§Ù„Ù‡Ù… Ø¥Ù„Ù‰ Ø£Ø³Ø±Ù‡Ù… ÙÙŠ Ù…Ø®ØªÙ„Ù Ø¯ÙˆÙ„ Ø§Ù„Ø¹Ø§Ù„Ù…. ÙˆØªØ®Ø¶Ø¹ Ù‡Ø°Ù‡ Ø§Ù„Ø¹Ù…Ù„ÙŠØ§Øª Ù„Ø±Ù‚Ø§Ø¨Ø© ÙˆØ¥Ø´Ø±Ø§Ù Ø§Ù„Ø¨Ù†Ùƒ Ø§Ù„Ù…Ø±ÙƒØ²ÙŠ Ø§Ù„Ø³Ø¹ÙˆØ¯ÙŠ (Ø³Ø§Ù…Ø§) Ù„Ø¶Ù…Ø§Ù† Ø£Ø¹Ù„Ù‰ Ù…Ø¹Ø§ÙŠÙŠØ± Ø§Ù„Ø£Ù…Ø§Ù† ÙˆØ§Ù„Ø´ÙØ§ÙÙŠØ©.
         </p>
 
-        <h3>1. الفرق بين أسعار الصرف بين البنوك وأسعار تطبيقات التحويل</h3>
+        <h3>1. Ø§Ù„ÙØ±Ù‚ Ø¨ÙŠÙ† Ø£Ø³Ø¹Ø§Ø± Ø§Ù„ØµØ±Ù Ø¨ÙŠÙ† Ø§Ù„Ø¨Ù†ÙˆÙƒ ÙˆØ£Ø³Ø¹Ø§Ø± ØªØ·Ø¨ÙŠÙ‚Ø§Øª Ø§Ù„ØªØ­ÙˆÙŠÙ„</h3>
         <p>
-          عند البحث عن سعر الصرف عبر الإنترنت، يظهر غالباً ما يعرف بـ <strong>سعر الإنتربنك (Interbank Rate)</strong>، وهو سعر الصرف المرجعي المستخدم بين المؤسسات المالية الكبرى. أما عند إجراء حوالة عبر المحافظ الرقمية أو البنوك (مثل تطبيق برق، STC Pay، يورباي، أو الراجحي)، يطبق المزود <strong>سعر الصرف الفعلي للعملاء</strong>، والذي يتضمن هامش ربح بسيط (سبريد) لتغطية تكاليف التحويل ومخاطر تقلبات العملة.
+          Ø¹Ù†Ø¯ Ø§Ù„Ø¨Ø­Ø« Ø¹Ù† Ø³Ø¹Ø± Ø§Ù„ØµØ±Ù Ø¹Ø¨Ø± Ø§Ù„Ø¥Ù†ØªØ±Ù†ØªØŒ ÙŠØ¸Ù‡Ø± ØºØ§Ù„Ø¨Ø§Ù‹ Ù…Ø§ ÙŠØ¹Ø±Ù Ø¨Ù€ <strong>Ø³Ø¹Ø± Ø§Ù„Ø¥Ù†ØªØ±Ø¨Ù†Ùƒ (Interbank Rate)</strong>ØŒ ÙˆÙ‡Ùˆ Ø³Ø¹Ø± Ø§Ù„ØµØ±Ù Ø§Ù„Ù…Ø±Ø¬Ø¹ÙŠ Ø§Ù„Ù…Ø³ØªØ®Ø¯Ù… Ø¨ÙŠÙ† Ø§Ù„Ù…Ø¤Ø³Ø³Ø§Øª Ø§Ù„Ù…Ø§Ù„ÙŠØ© Ø§Ù„ÙƒØ¨Ø±Ù‰. Ø£Ù…Ø§ Ø¹Ù†Ø¯ Ø¥Ø¬Ø±Ø§Ø¡ Ø­ÙˆØ§Ù„Ø© Ø¹Ø¨Ø± Ø§Ù„Ù…Ø­Ø§ÙØ¸ Ø§Ù„Ø±Ù‚Ù…ÙŠØ© Ø£Ùˆ Ø§Ù„Ø¨Ù†ÙˆÙƒ (Ù…Ø«Ù„ ØªØ·Ø¨ÙŠÙ‚ Ø¨Ø±Ù‚ØŒ STC PayØŒ ÙŠÙˆØ±Ø¨Ø§ÙŠØŒ Ø£Ùˆ Ø§Ù„Ø±Ø§Ø¬Ø­ÙŠ)ØŒ ÙŠØ·Ø¨Ù‚ Ø§Ù„Ù…Ø²ÙˆØ¯ <strong>Ø³Ø¹Ø± Ø§Ù„ØµØ±Ù Ø§Ù„ÙØ¹Ù„ÙŠ Ù„Ù„Ø¹Ù…Ù„Ø§Ø¡</strong>ØŒ ÙˆØ§Ù„Ø°ÙŠ ÙŠØªØ¶Ù…Ù† Ù‡Ø§Ù…Ø´ Ø±Ø¨Ø­ Ø¨Ø³ÙŠØ· (Ø³Ø¨Ø±ÙŠØ¯) Ù„ØªØºØ·ÙŠØ© ØªÙƒØ§Ù„ÙŠÙ Ø§Ù„ØªØ­ÙˆÙŠÙ„ ÙˆÙ…Ø®Ø§Ø·Ø± ØªÙ‚Ù„Ø¨Ø§Øª Ø§Ù„Ø¹Ù…Ù„Ø©.
         </p>
 
-        <div class="guide-callout">
-          <strong><i class="fas fa-circle-info"></i> نصيحة هامة للتحويل:</strong> لا تقارن المحافظ بناءً على رسوم التحويل فقط؛ ففي كثير من الأحيان يعوض التطبيق انخفاض رسومه بتقديم سعر صرف أقل، والعكس صحيح. دائماً قارن <em>صافي المبلغ المستلم</em> بعملة بلدك.
+        <div class="content-callout">
+          <strong><i class="fas fa-circle-info"></i> Ù†ØµÙŠØ­Ø© Ù‡Ø§Ù…Ø© Ù„Ù„ØªØ­ÙˆÙŠÙ„:</strong> Ù„Ø§ ØªÙ‚Ø§Ø±Ù† Ø§Ù„Ù…Ø­Ø§ÙØ¸ Ø¨Ù†Ø§Ø¡Ù‹ Ø¹Ù„Ù‰ Ø±Ø³ÙˆÙ… Ø§Ù„ØªØ­ÙˆÙŠÙ„ ÙÙ‚Ø·Ø› ÙÙÙŠ ÙƒØ«ÙŠØ± Ù…Ù† Ø§Ù„Ø£Ø­ÙŠØ§Ù† ÙŠØ¹ÙˆØ¶ Ø§Ù„ØªØ·Ø¨ÙŠÙ‚ Ø§Ù†Ø®ÙØ§Ø¶ Ø±Ø³ÙˆÙ…Ù‡ Ø¨ØªÙ‚Ø¯ÙŠÙ… Ø³Ø¹Ø± ØµØ±Ù Ø£Ù‚Ù„ØŒ ÙˆØ§Ù„Ø¹ÙƒØ³ ØµØ­ÙŠØ­. Ø¯Ø§Ø¦Ù…Ø§Ù‹ Ù‚Ø§Ø±Ù† <em>ØµØ§ÙÙŠ Ø§Ù„Ù…Ø¨Ù„Øº Ø§Ù„Ù…Ø³ØªÙ„Ù…</em> Ø¨Ø¹Ù…Ù„Ø© Ø¨Ù„Ø¯Ùƒ.
         </div>
 
-        <h3>2. ضريبة القيمة المضافة (15%) على الحوالات في السعودية</h3>
+        <h3>2. Ø¶Ø±ÙŠØ¨Ø© Ø§Ù„Ù‚ÙŠÙ…Ø© Ø§Ù„Ù…Ø¶Ø§ÙØ© (15%) Ø¹Ù„Ù‰ Ø§Ù„Ø­ÙˆØ§Ù„Ø§Øª ÙÙŠ Ø§Ù„Ø³Ø¹ÙˆØ¯ÙŠØ©</h3>
         <p>
-          تنص اللوائح الصادرة عن هيئة الزكاة والضريبة والجمارك (ZATCA) على أن ضريبة القيمة المضافة بنسبة 15% <strong>لا تفرض إطلاقاً على أصل المبلغ المحول</strong>، بل تطبق فقط وحصرياً على <em>رسوم الخدمة الإدارية</em> التي يفرضها البنك أو التطبيق. على سبيل المثال:
+          ØªÙ†Øµ Ø§Ù„Ù„ÙˆØ§Ø¦Ø­ Ø§Ù„ØµØ§Ø¯Ø±Ø© Ø¹Ù† Ù‡ÙŠØ¦Ø© Ø§Ù„Ø²ÙƒØ§Ø© ÙˆØ§Ù„Ø¶Ø±ÙŠØ¨Ø© ÙˆØ§Ù„Ø¬Ù…Ø§Ø±Ùƒ (ZATCA) Ø¹Ù„Ù‰ Ø£Ù† Ø¶Ø±ÙŠØ¨Ø© Ø§Ù„Ù‚ÙŠÙ…Ø© Ø§Ù„Ù…Ø¶Ø§ÙØ© Ø¨Ù†Ø³Ø¨Ø© 15% <strong>Ù„Ø§ ØªÙØ±Ø¶ Ø¥Ø·Ù„Ø§Ù‚Ø§Ù‹ Ø¹Ù„Ù‰ Ø£ØµÙ„ Ø§Ù„Ù…Ø¨Ù„Øº Ø§Ù„Ù…Ø­ÙˆÙ„</strong>ØŒ Ø¨Ù„ ØªØ·Ø¨Ù‚ ÙÙ‚Ø· ÙˆØ­ØµØ±ÙŠØ§Ù‹ Ø¹Ù„Ù‰ <em>Ø±Ø³ÙˆÙ… Ø§Ù„Ø®Ø¯Ù…Ø© Ø§Ù„Ø¥Ø¯Ø§Ø±ÙŠØ©</em> Ø§Ù„ØªÙŠ ÙŠÙØ±Ø¶Ù‡Ø§ Ø§Ù„Ø¨Ù†Ùƒ Ø£Ùˆ Ø§Ù„ØªØ·Ø¨ÙŠÙ‚. Ø¹Ù„Ù‰ Ø³Ø¨ÙŠÙ„ Ø§Ù„Ù…Ø«Ø§Ù„:
         </p>
-        <ul style="padding-right: 20px; margin-bottom: 18px;">
-          <li>مبلغ التحويل: 2,000 ريال سعودي (معفى من الضريبة بالكامل).</li>
-          <li>رسوم التحويل الإدارية للتطبيق: 10 ريالات.</li>
-          <li>ضريبة القيمة المضافة (15% على الرسوم فقط): 1.50 ريال.</li>
-          <li>إجمالي المبلغ المخصوم من حسابك: 2,011.50 ريال سعودي.</li>
+        <ul>
+          <li>Ù…Ø¨Ù„Øº Ø§Ù„ØªØ­ÙˆÙŠÙ„: 2,000 Ø±ÙŠØ§Ù„ Ø³Ø¹ÙˆØ¯ÙŠ (Ù…Ø¹ÙÙ‰ Ù…Ù† Ø§Ù„Ø¶Ø±ÙŠØ¨Ø© Ø¨Ø§Ù„ÙƒØ§Ù…Ù„).</li>
+          <li>Ø±Ø³ÙˆÙ… Ø§Ù„ØªØ­ÙˆÙŠÙ„ Ø§Ù„Ø¥Ø¯Ø§Ø±ÙŠØ© Ù„Ù„ØªØ·Ø¨ÙŠÙ‚: 10 Ø±ÙŠØ§Ù„Ø§Øª.</li>
+          <li>Ø¶Ø±ÙŠØ¨Ø© Ø§Ù„Ù‚ÙŠÙ…Ø© Ø§Ù„Ù…Ø¶Ø§ÙØ© (15% Ø¹Ù„Ù‰ Ø§Ù„Ø±Ø³ÙˆÙ… ÙÙ‚Ø·): 1.50 Ø±ÙŠØ§Ù„.</li>
+          <li>Ø¥Ø¬Ù…Ø§Ù„ÙŠ Ø§Ù„Ù…Ø¨Ù„Øº Ø§Ù„Ù…Ø®ØµÙˆÙ… Ù…Ù† Ø­Ø³Ø§Ø¨Ùƒ: 2,011.50 Ø±ÙŠØ§Ù„ Ø³Ø¹ÙˆØ¯ÙŠ.</li>
         </ul>
 
-        <h3>3. لوائح البنك المركزي السعودي (ساما) والحدود المالية</h3>
+        <h3>3. Ù„ÙˆØ§Ø¦Ø­ Ø§Ù„Ø¨Ù†Ùƒ Ø§Ù„Ù…Ø±ÙƒØ²ÙŠ Ø§Ù„Ø³Ø¹ÙˆØ¯ÙŠ (Ø³Ø§Ù…Ø§) ÙˆØ§Ù„Ø­Ø¯ÙˆØ¯ Ø§Ù„Ù…Ø§Ù„ÙŠØ©</h3>
         <p>
-          وفقاً لتعليمات البنك المركزي السعودي، تخضع كافة الحوالات المالية لمطابقة آلية مع بيانات المقيم النظامية في منصة التأمينات الاجتماعية (GOSI) ونظام حماية الأجور (WPS). وتتيح المحافظ الرقمية حدود تحويل شهرية مرنة تتناسب مع فئة الحساب ودرجة توثيقه عبر منصة نفاذ الوطني الموحد.
+          ÙˆÙÙ‚Ø§Ù‹ Ù„ØªØ¹Ù„ÙŠÙ…Ø§Øª Ø§Ù„Ø¨Ù†Ùƒ Ø§Ù„Ù…Ø±ÙƒØ²ÙŠ Ø§Ù„Ø³Ø¹ÙˆØ¯ÙŠØŒ ØªØ®Ø¶Ø¹ ÙƒØ§ÙØ© Ø§Ù„Ø­ÙˆØ§Ù„Ø§Øª Ø§Ù„Ù…Ø§Ù„ÙŠØ© Ù„Ù…Ø·Ø§Ø¨Ù‚Ø© Ø¢Ù„ÙŠØ© Ù…Ø¹ Ø¨ÙŠØ§Ù†Ø§Øª Ø§Ù„Ù…Ù‚ÙŠÙ… Ø§Ù„Ù†Ø¸Ø§Ù…ÙŠØ© ÙÙŠ Ù…Ù†ØµØ© Ø§Ù„ØªØ£Ù…ÙŠÙ†Ø§Øª Ø§Ù„Ø§Ø¬ØªÙ…Ø§Ø¹ÙŠØ© (GOSI) ÙˆÙ†Ø¸Ø§Ù… Ø­Ù…Ø§ÙŠØ© Ø§Ù„Ø£Ø¬ÙˆØ± (WPS). ÙˆØªØªÙŠØ­ Ø§Ù„Ù…Ø­Ø§ÙØ¸ Ø§Ù„Ø±Ù‚Ù…ÙŠØ© Ø­Ø¯ÙˆØ¯ ØªØ­ÙˆÙŠÙ„ Ø´Ù‡Ø±ÙŠØ© Ù…Ø±Ù†Ø© ØªØªÙ†Ø§Ø³Ø¨ Ù…Ø¹ ÙØ¦Ø© Ø§Ù„Ø­Ø³Ø§Ø¨ ÙˆØ¯Ø±Ø¬Ø© ØªÙˆØ«ÙŠÙ‚Ù‡ Ø¹Ø¨Ø± Ù…Ù†ØµØ© Ù†ÙØ§Ø° Ø§Ù„ÙˆØ·Ù†ÙŠ Ø§Ù„Ù…ÙˆØ­Ø¯.
         </p>
 
-        <h2>الأسئلة الشائعة حول تحويل الأموال</h2>
+        <h2>Ø§Ù„Ø£Ø³Ø¦Ù„Ø© Ø§Ù„Ø´Ø§Ø¦Ø¹Ø© Ø­ÙˆÙ„ ØªØ­ÙˆÙŠÙ„ Ø§Ù„Ø£Ù…ÙˆØ§Ù„</h2>
 
         <!-- FAQ 1 -->
-        <div class="faq-accordion-item">
-          <div class="faq-accordion-question" onclick="toggleFaq(this)">
-            <span>ما هو أفضل تطبيق لتحويل الأموال من السعودية إلى الهند؟</span>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>Ù…Ø§ Ù‡Ùˆ Ø£ÙØ¶Ù„ ØªØ·Ø¨ÙŠÙ‚ Ù„ØªØ­ÙˆÙŠÙ„ Ø§Ù„Ø£Ù…ÙˆØ§Ù„ Ù…Ù† Ø§Ù„Ø³Ø¹ÙˆØ¯ÙŠØ© Ø¥Ù„Ù‰ Ø§Ù„Ù‡Ù†Ø¯ØŸ</span>
             <i class="fas fa-chevron-down"></i>
           </div>
-          <div class="faq-accordion-answer">
-            توفر المنصات الرقمية مثل تطبيق برق (Barq) في كثير من الأحيان أعلى مبلغ تسليم صافٍ إلى الهند بفضل فارق سعر الصرف الضيق وعروض التحويل بدون رسوم. كما تشمل الخيارات الشائعة STC Pay ويورباي وتحويل الراجحي، والتي تتراوح رسومها عادة بين 10 إلى 17.25 ريال سعودي لكل حوالة.
+          <div class="faq-answer">
+            ØªÙˆÙØ± Ø§Ù„Ù…Ù†ØµØ§Øª Ø§Ù„Ø±Ù‚Ù…ÙŠØ© Ù…Ø«Ù„ ØªØ·Ø¨ÙŠÙ‚ Ø¨Ø±Ù‚ (Barq) ÙÙŠ ÙƒØ«ÙŠØ± Ù…Ù† Ø§Ù„Ø£Ø­ÙŠØ§Ù† Ø£Ø¹Ù„Ù‰ Ù…Ø¨Ù„Øº ØªØ³Ù„ÙŠÙ… ØµØ§ÙÙ Ø¥Ù„Ù‰ Ø§Ù„Ù‡Ù†Ø¯ Ø¨ÙØ¶Ù„ ÙØ§Ø±Ù‚ Ø³Ø¹Ø± Ø§Ù„ØµØ±Ù Ø§Ù„Ø¶ÙŠÙ‚ ÙˆØ¹Ø±ÙˆØ¶ Ø§Ù„ØªØ­ÙˆÙŠÙ„ Ø¨Ø¯ÙˆÙ† Ø±Ø³ÙˆÙ…. ÙƒÙ…Ø§ ØªØ´Ù…Ù„ Ø§Ù„Ø®ÙŠØ§Ø±Ø§Øª Ø§Ù„Ø´Ø§Ø¦Ø¹Ø© STC Pay ÙˆÙŠÙˆØ±Ø¨Ø§ÙŠ ÙˆØªØ­ÙˆÙŠÙ„ Ø§Ù„Ø±Ø§Ø¬Ø­ÙŠØŒ ÙˆØ§Ù„ØªÙŠ ØªØªØ±Ø§ÙˆØ­ Ø±Ø³ÙˆÙ…Ù‡Ø§ Ø¹Ø§Ø¯Ø© Ø¨ÙŠÙ† 10 Ø¥Ù„Ù‰ 17.25 Ø±ÙŠØ§Ù„ Ø³Ø¹ÙˆØ¯ÙŠ Ù„ÙƒÙ„ Ø­ÙˆØ§Ù„Ø©.
           </div>
         </div>
 
         <!-- FAQ 2 -->
-        <div class="faq-accordion-item">
-          <div class="faq-accordion-question" onclick="toggleFaq(this)">
-            <span>هل تطبق ضريبة القيمة المضافة بنسبة 15% على الحوالات الدولية من السعودية؟</span>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>Ù‡Ù„ ØªØ·Ø¨Ù‚ Ø¶Ø±ÙŠØ¨Ø© Ø§Ù„Ù‚ÙŠÙ…Ø© Ø§Ù„Ù…Ø¶Ø§ÙØ© Ø¨Ù†Ø³Ø¨Ø© 15% Ø¹Ù„Ù‰ Ø§Ù„Ø­ÙˆØ§Ù„Ø§Øª Ø§Ù„Ø¯ÙˆÙ„ÙŠØ© Ù…Ù† Ø§Ù„Ø³Ø¹ÙˆØ¯ÙŠØ©ØŸ</span>
             <i class="fas fa-chevron-down"></i>
           </div>
-          <div class="faq-accordion-answer">
-            وفقاً للوائح هيئة الزكاة والضريبة والجمارك (ZATCA)، تطبق ضريبة القيمة المضافة (15%) فقط على رسوم الخدمة الإدارية التي يتقاضاها البنك أو المحفظة، ولا تطبق إطلاقاً على أصل مبلغ الحوالة المالية. على سبيل المثال، إذا كانت رسوم التحويل 10 ريالات، تضاف إليها ضريبة بقيمة 1.50 ريال.
+          <div class="faq-answer">
+            ÙˆÙÙ‚Ø§Ù‹ Ù„Ù„ÙˆØ§Ø¦Ø­ Ù‡ÙŠØ¦Ø© Ø§Ù„Ø²ÙƒØ§Ø© ÙˆØ§Ù„Ø¶Ø±ÙŠØ¨Ø© ÙˆØ§Ù„Ø¬Ù…Ø§Ø±Ùƒ (ZATCA)ØŒ ØªØ·Ø¨Ù‚ Ø¶Ø±ÙŠØ¨Ø© Ø§Ù„Ù‚ÙŠÙ…Ø© Ø§Ù„Ù…Ø¶Ø§ÙØ© (15%) ÙÙ‚Ø· Ø¹Ù„Ù‰ Ø±Ø³ÙˆÙ… Ø§Ù„Ø®Ø¯Ù…Ø© Ø§Ù„Ø¥Ø¯Ø§Ø±ÙŠØ© Ø§Ù„ØªÙŠ ÙŠØªÙ‚Ø§Ø¶Ø§Ù‡Ø§ Ø§Ù„Ø¨Ù†Ùƒ Ø£Ùˆ Ø§Ù„Ù…Ø­ÙØ¸Ø©ØŒ ÙˆÙ„Ø§ ØªØ·Ø¨Ù‚ Ø¥Ø·Ù„Ø§Ù‚Ø§Ù‹ Ø¹Ù„Ù‰ Ø£ØµÙ„ Ù…Ø¨Ù„Øº Ø§Ù„Ø­ÙˆØ§Ù„Ø© Ø§Ù„Ù…Ø§Ù„ÙŠØ©. Ø¹Ù„Ù‰ Ø³Ø¨ÙŠÙ„ Ø§Ù„Ù…Ø«Ø§Ù„ØŒ Ø¥Ø°Ø§ ÙƒØ§Ù†Øª Ø±Ø³ÙˆÙ… Ø§Ù„ØªØ­ÙˆÙŠÙ„ 10 Ø±ÙŠØ§Ù„Ø§ØªØŒ ØªØ¶Ø§Ù Ø¥Ù„ÙŠÙ‡Ø§ Ø¶Ø±ÙŠØ¨Ø© Ø¨Ù‚ÙŠÙ…Ø© 1.50 Ø±ÙŠØ§Ù„.
           </div>
         </div>
 
         <!-- FAQ 3 -->
-        <div class="faq-accordion-item">
-          <div class="faq-accordion-question" onclick="toggleFaq(this)">
-            <span>ما هو الحد الأقصى القانوني للحوالات المالية للمقيمين في السعودية؟</span>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>Ù…Ø§ Ù‡Ùˆ Ø§Ù„Ø­Ø¯ Ø§Ù„Ø£Ù‚ØµÙ‰ Ø§Ù„Ù‚Ø§Ù†ÙˆÙ†ÙŠ Ù„Ù„Ø­ÙˆØ§Ù„Ø§Øª Ø§Ù„Ù…Ø§Ù„ÙŠØ© Ù„Ù„Ù…Ù‚ÙŠÙ…ÙŠÙ† ÙÙŠ Ø§Ù„Ø³Ø¹ÙˆØ¯ÙŠØ©ØŸ</span>
             <i class="fas fa-chevron-down"></i>
           </div>
-          <div class="faq-accordion-answer">
-            يلزم البنك المركزي السعودي (ساما) البنوك والمحافظ المرخصة بمراقبة التحويلات الدولية ومطابقتها مع الراتب الموثق للمقيم في التأمينات الاجتماعية (GOSI) ونظام حماية الأجور. ورغم أن الحدود اليومية للمحافظ تتراوح غالباً بين 10,000 إلى 20,000 ريال، إلا أن التحويلات التراكمية التي تتجاوز الدخل السنوي المعلن قد تتطلب تقديم إثبات لمصدر الأموال.
+          <div class="faq-answer">
+            ÙŠÙ„Ø²Ù… Ø§Ù„Ø¨Ù†Ùƒ Ø§Ù„Ù…Ø±ÙƒØ²ÙŠ Ø§Ù„Ø³Ø¹ÙˆØ¯ÙŠ (Ø³Ø§Ù…Ø§) Ø§Ù„Ø¨Ù†ÙˆÙƒ ÙˆØ§Ù„Ù…Ø­Ø§ÙØ¸ Ø§Ù„Ù…Ø±Ø®ØµØ© Ø¨Ù…Ø±Ø§Ù‚Ø¨Ø© Ø§Ù„ØªØ­ÙˆÙŠÙ„Ø§Øª Ø§Ù„Ø¯ÙˆÙ„ÙŠØ© ÙˆÙ…Ø·Ø§Ø¨Ù‚ØªÙ‡Ø§ Ù…Ø¹ Ø§Ù„Ø±Ø§ØªØ¨ Ø§Ù„Ù…ÙˆØ«Ù‚ Ù„Ù„Ù…Ù‚ÙŠÙ… ÙÙŠ Ø§Ù„ØªØ£Ù…ÙŠÙ†Ø§Øª Ø§Ù„Ø§Ø¬ØªÙ…Ø§Ø¹ÙŠØ© (GOSI) ÙˆÙ†Ø¸Ø§Ù… Ø­Ù…Ø§ÙŠØ© Ø§Ù„Ø£Ø¬ÙˆØ±. ÙˆØ±ØºÙ… Ø£Ù† Ø§Ù„Ø­Ø¯ÙˆØ¯ Ø§Ù„ÙŠÙˆÙ…ÙŠØ© Ù„Ù„Ù…Ø­Ø§ÙØ¸ ØªØªØ±Ø§ÙˆØ­ ØºØ§Ù„Ø¨Ø§Ù‹ Ø¨ÙŠÙ† 10,000 Ø¥Ù„Ù‰ 20,000 Ø±ÙŠØ§Ù„ØŒ Ø¥Ù„Ø§ Ø£Ù† Ø§Ù„ØªØ­ÙˆÙŠÙ„Ø§Øª Ø§Ù„ØªØ±Ø§ÙƒÙ…ÙŠØ© Ø§Ù„ØªÙŠ ØªØªØ¬Ø§ÙˆØ² Ø§Ù„Ø¯Ø®Ù„ Ø§Ù„Ø³Ù†ÙˆÙŠ Ø§Ù„Ù…Ø¹Ù„Ù† Ù‚Ø¯ ØªØªØ·Ù„Ø¨ ØªÙ‚Ø¯ÙŠÙ… Ø¥Ø«Ø¨Ø§Øª Ù„Ù…ØµØ¯Ø± Ø§Ù„Ø£Ù…ÙˆØ§Ù„.
           </div>
         </div>
 
         <!-- FAQ 4 -->
-        <div class="faq-accordion-item">
-          <div class="faq-accordion-question" onclick="toggleFaq(this)">
-            <span>لماذا يختلف سعر صرف التحويل في التطبيقات عن السعر المعروض في جوجل؟</span>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>Ù„Ù…Ø§Ø°Ø§ ÙŠØ®ØªÙ„Ù Ø³Ø¹Ø± ØµØ±Ù Ø§Ù„ØªØ­ÙˆÙŠÙ„ ÙÙŠ Ø§Ù„ØªØ·Ø¨ÙŠÙ‚Ø§Øª Ø¹Ù† Ø§Ù„Ø³Ø¹Ø± Ø§Ù„Ù…Ø¹Ø±ÙˆØ¶ ÙÙŠ Ø¬ÙˆØ¬Ù„ØŸ</span>
             <i class="fas fa-chevron-down"></i>
           </div>
-          <div class="faq-accordion-answer">
-            السعر المعروض في محرك بحث جوجل هو سعر الصرف بين البنوك (Interbank Wholesale Rate)، وهو مخصص للتداولات المؤسسية الضخمة بملايين الدولارات. أما شركات التحويل والمحافظ الرقمية فتضيف هامش ربح بسيط (سبريد) لتغطية تقلبات أسعار الصرف، العمليات التشغيلية، ورسوم المقاصة مع البنوك المستلمة.
+          <div class="faq-answer">
+            Ø§Ù„Ø³Ø¹Ø± Ø§Ù„Ù…Ø¹Ø±ÙˆØ¶ ÙÙŠ Ù…Ø­Ø±Ùƒ Ø¨Ø­Ø« Ø¬ÙˆØ¬Ù„ Ù‡Ùˆ Ø³Ø¹Ø± Ø§Ù„ØµØ±Ù Ø¨ÙŠÙ† Ø§Ù„Ø¨Ù†ÙˆÙƒ (Interbank Wholesale Rate)ØŒ ÙˆÙ‡Ùˆ Ù…Ø®ØµØµ Ù„Ù„ØªØ¯Ø§ÙˆÙ„Ø§Øª Ø§Ù„Ù…Ø¤Ø³Ø³ÙŠØ© Ø§Ù„Ø¶Ø®Ù…Ø© Ø¨Ù…Ù„Ø§ÙŠÙŠÙ† Ø§Ù„Ø¯ÙˆÙ„Ø§Ø±Ø§Øª. Ø£Ù…Ø§ Ø´Ø±ÙƒØ§Øª Ø§Ù„ØªØ­ÙˆÙŠÙ„ ÙˆØ§Ù„Ù…Ø­Ø§ÙØ¸ Ø§Ù„Ø±Ù‚Ù…ÙŠØ© ÙØªØ¶ÙŠÙ Ù‡Ø§Ù…Ø´ Ø±Ø¨Ø­ Ø¨Ø³ÙŠØ· (Ø³Ø¨Ø±ÙŠØ¯) Ù„ØªØºØ·ÙŠØ© ØªÙ‚Ù„Ø¨Ø§Øª Ø£Ø³Ø¹Ø§Ø± Ø§Ù„ØµØ±ÙØŒ Ø§Ù„Ø¹Ù…Ù„ÙŠØ§Øª Ø§Ù„ØªØ´ØºÙŠÙ„ÙŠØ©ØŒ ÙˆØ±Ø³ÙˆÙ… Ø§Ù„Ù…Ù‚Ø§ØµØ© Ù…Ø¹ Ø§Ù„Ø¨Ù†ÙˆÙƒ Ø§Ù„Ù…Ø³ØªÙ„Ù…Ø©.
           </div>
         </div>
 
-      
-        <!-- إخلاء المسؤولية المالية -->
+        <!-- Ø¥Ø®Ù„Ø§Ø¡ Ø§Ù„Ù…Ø³Ø¤ÙˆÙ„ÙŠØ© Ø§Ù„Ù…Ø§Ù„ÙŠØ© -->
         <div style="margin-top:36px; padding:18px; background:#fffbeb; border:1px solid #fde68a; border-radius:10px; font-size:13px; color:#92400e;">
-          <strong><i class="fas fa-circle-info"></i> إخلاء مسؤولية مالية:</strong>
-          تقدم منصة DailyCalcHubs تقديرات إرشادية مبنية على أسعار الصرف المرجعية اليومية. تحدد المؤسسات المالية وتطبيقات التحويل المرخصة (مثل برق، ويورباي، وبنك STC، وتحويل الراجحي، وإنجاز) هوامش صرف ورسوم تحويل وحدود إرسال مستقلة عند تنفيذ الحوالة. يُرجى التحقق دائماً من السعر النهائي المثبت داخل التطبيق المعتمد قبل تأكيد التحويل. منصة DailyCalcHubs أداة معلوماتية حسابية مستقلة وليست جهة حكومية أو مصرفية.
+          <strong><i class="fas fa-circle-info"></i> Ø¥Ø®Ù„Ø§Ø¡ Ù…Ø³Ø¤ÙˆÙ„ÙŠØ© Ù…Ø§Ù„ÙŠØ©:</strong>
+          ØªÙ‚Ø¯Ù… Ù…Ù†ØµØ© DailyCalcHubs ØªÙ‚Ø¯ÙŠØ±Ø§Øª Ø¥Ø±Ø´Ø§Ø¯ÙŠØ© Ù…Ø¨Ù†ÙŠØ© Ø¹Ù„Ù‰ Ø£Ø³Ø¹Ø§Ø± Ø§Ù„ØµØ±Ù Ø§Ù„Ù…Ø±Ø¬Ø¹ÙŠØ© Ø§Ù„ÙŠÙˆÙ…ÙŠØ©. ØªØ­Ø¯Ø¯ Ø§Ù„Ù…Ø¤Ø³Ø³Ø§Øª Ø§Ù„Ù…Ø§Ù„ÙŠØ© ÙˆØªØ·Ø¨ÙŠÙ‚Ø§Øª Ø§Ù„ØªØ­ÙˆÙŠÙ„ Ø§Ù„Ù…Ø±Ø®ØµØ© (Ù…Ø«Ù„ Ø¨Ø±Ù‚ØŒ ÙˆÙŠÙˆØ±Ø¨Ø§ÙŠØŒ ÙˆØ¨Ù†Ùƒ STCØŒ ÙˆØªØ­ÙˆÙŠÙ„ Ø§Ù„Ø±Ø§Ø¬Ø­ÙŠØŒ ÙˆØ¥Ù†Ø¬Ø§Ø²) Ù‡ÙˆØ§Ù…Ø´ ØµØ±Ù ÙˆØ±Ø³ÙˆÙ… ØªØ­ÙˆÙŠÙ„ ÙˆØ­Ø¯ÙˆØ¯ Ø¥Ø±Ø³Ø§Ù„ Ù…Ø³ØªÙ‚Ù„Ø© Ø¹Ù†Ø¯ ØªÙ†ÙÙŠØ° Ø§Ù„Ø­ÙˆØ§Ù„Ø©. ÙŠÙØ±Ø¬Ù‰ Ø§Ù„ØªØ­Ù‚Ù‚ Ø¯Ø§Ø¦Ù…Ø§Ù‹ Ù…Ù† Ø§Ù„Ø³Ø¹Ø± Ø§Ù„Ù†Ù‡Ø§Ø¦ÙŠ Ø§Ù„Ù…Ø«Ø¨Øª Ø¯Ø§Ø®Ù„ Ø§Ù„ØªØ·Ø¨ÙŠÙ‚ Ø§Ù„Ù…Ø¹ØªÙ…Ø¯ Ù‚Ø¨Ù„ ØªØ£ÙƒÙŠØ¯ Ø§Ù„ØªØ­ÙˆÙŠÙ„. Ù…Ù†ØµØ© DailyCalcHubs Ø£Ø¯Ø§Ø© Ù…Ø¹Ù„ÙˆÙ…Ø§ØªÙŠØ© Ø­Ø³Ø§Ø¨ÙŠØ© Ù…Ø³ØªÙ‚Ù„Ø© ÙˆÙ„ÙŠØ³Øª Ø¬Ù‡Ø© Ø­ÙƒÙˆÙ…ÙŠØ© Ø£Ùˆ Ù…ØµØ±ÙÙŠØ©.
         </div>
 
-
-      </article>
-
-      <!-- Right Sidebar -->
-      <aside>
-        <div class="sidebar-card">
-          <h3 class="sidebar-card-heading">
-            <i class="fas fa-shield-halved" style="color:#059669;"></i>
-            <span>إرشادات التحويل المالي الآمن 2026</span>
-          </h3>
-          <ul class="sidebar-list">
-            <li><i class="fas fa-check"></i> <span>استخدم دائماً تطبيقات مرخصة من البنك المركزي السعودي (ساما).</span></li>
-            <li><i class="fas fa-check"></i> <span>تأكد من كتابة الاسم ورقم الحساب (IBAN) للمستفيد بدقة لتجنب التأخير.</span></li>
-            <li><i class="fas fa-check"></i> <span>قارن صافي المبلغ المستلم بدلاً من النظر إلى الرسوم الاسمية فقط.</span></li>
-            <li><i class="fas fa-check"></i> <span>احتفظ بالرقم المرجعي للعملية حتى تأكيد وصول الحوالة.</span></li>
-            <li><i class="fas fa-check"></i> <span>تجنب التحويل عبر قنوات غير رسمية أو وسطاء غير مرخصين.</span></li>
-          </ul>
-        </div>
-
-        <div class="sidebar-card">
-          <h3 class="sidebar-card-heading" style="color:#166534;">
-            <i class="fas fa-compass"></i>
-            <span>أدوات التحويل الأكثر طلباً</span>
-          </h3>
-          <ul class="sidebar-list">
-            <li><i class="fas fa-arrow-left"></i> <a href="/ar/saudi-remittance-calculator/sar-to-inr/" style="color:inherit;text-decoration:none;">تحويل الريال إلى الروبية الهندية</a></li>
-            <li><i class="fas fa-arrow-left"></i> <a href="/ar/saudi-remittance-calculator/sar-to-pkr/" style="color:inherit;text-decoration:none;">تحويل الريال إلى الروبية الباكستانية</a></li>
-            <li><i class="fas fa-arrow-left"></i> <a href="/ar/saudi-remittance-calculator/sar-to-bdt/" style="color:inherit;text-decoration:none;">تحويل الريال إلى التاكا البنغلاديشية</a></li>
-            <li><i class="fas fa-arrow-left"></i> <a href="/ar/saudi-remittance-calculator/remittance-fee/" style="color:inherit;text-decoration:none;">حاسبة رسوم التحويل والضريبة</a></li>
-            <li><i class="fas fa-arrow-left"></i> <a href="/ar/saudi-remittance-calculator/live-sar-exchange-rate/" style="color:inherit;text-decoration:none;">لوحة أسعار الصرف المرجعية</a></li>
-          </ul>
-        </div>
-      </aside>
-
+      </div>
     </div>
   </section>
-
   <!-- Footer -->
   <footer class="site-footer">
     <div class="container">
@@ -1805,15 +2013,16 @@
   <script src="/share.js" defer></script>
 
   <script>
-    // Currency metadata
+    // Currency metadata (9 corridors)
     const currencySymbols = {
       INR: '\u20B9', PKR: 'Rs', BDT: '\u09F3', PHP: '\u20B1', NPR: 'Rs',
       LKR: 'Rs', EGP: 'E\u00A3', USD: '$', AED: 'AED'
     };
+
     function initRates() {
       const statusBadge = document.getElementById('liveStatusBadge');
       const statusText = document.getElementById('liveStatusText');
-      const timestampEl = document.getElementById('rateTimestampEl');
+      const timestampEl = document.getElementById('rateTimestampVal');
 
       if (!window.DailyCalcRemittance) return;
 
@@ -1822,14 +2031,14 @@
           statusBadge.style.background = '#f0fdf4';
           statusBadge.style.color = '#166534';
           statusBadge.style.border = '1px solid #bbf7d0';
-          statusText.textContent = info.statusAr || 'سعر الصرف المرجعي نشط';
-          timestampEl.textContent = info.timeFormattedAr || 'سعر الصرف المرجعي اليومي نشط';
+          statusText.textContent = info.statusAr || 'Ø³Ø¹Ø± Ø§Ù„ØµØ±Ù Ø§Ù„Ù…Ø±Ø¬Ø¹ÙŠ Ù†Ø´Ø·';
+          if (timestampEl) timestampEl.textContent = info.timeFormattedAr || 'Ø³Ø¹Ø± Ø§Ù„ØµØ±Ù Ø§Ù„Ù…Ø±Ø¬Ø¹ÙŠ Ø§Ù„ÙŠÙˆÙ…ÙŠ Ù†Ø´Ø·';
         } else {
           statusBadge.style.background = '#fef2f2';
           statusBadge.style.color = '#991b1b';
           statusBadge.style.border = '1px solid #fecaca';
-          statusText.textContent = 'سعر الإغلاق المرجعي';
-          timestampEl.textContent = 'سعر الإغلاق المرجعي';
+          statusText.textContent = 'Ø³Ø¹Ø± Ø§Ù„Ø¥ØºÙ„Ø§Ù‚ Ø§Ù„Ù…Ø±Ø¬Ø¹ÙŠ';
+          if (timestampEl) timestampEl.textContent = 'Ø³Ø¹Ø± Ø§Ù„Ø¥ØºÙ„Ø§Ù‚ Ø§Ù„Ù…Ø±Ø¬Ø¹ÙŠ';
         }
         recalculate();
       });
@@ -1866,21 +2075,21 @@
           noticeBox.style.background = '#fef3c7';
           noticeBox.style.color = '#92400e';
           noticeBox.style.border = '1px solid #fde68a';
-          noticeBox.innerHTML = '<i class="fas fa-triangle-exclamation"></i> <strong>تنبيه للمبالغ الصغيرة:</strong> في القنوات المصرفية التي تفرض رسوماً قدرها 15 ريالاً + 15% ضريبة (17.25 ريال إجمالي)، تكون الرسوم مساوية أو أكبر من أصل الحوالة. يُنصح باستخدام محفظة رقمية بدون رسوم مثل تطبيق برق.';
+          noticeBox.innerHTML = '<i class="fas fa-triangle-exclamation"></i> <strong>ØªÙ†Ø¨ÙŠÙ‡ Ù„Ù„Ù…Ø¨Ø§Ù„Øº Ø§Ù„ØµØºÙŠØ±Ø©:</strong> ÙÙŠ Ø§Ù„Ù‚Ù†ÙˆØ§Øª Ø§Ù„Ù…ØµØ±ÙÙŠØ© Ø§Ù„ØªÙŠ ØªÙØ±Ø¶ Ø±Ø³ÙˆÙ…Ø§Ù‹ Ù‚Ø¯Ø±Ù‡Ø§ 15 Ø±ÙŠØ§Ù„Ø§Ù‹ + 15% Ø¶Ø±ÙŠØ¨Ø© (17.25 Ø±ÙŠØ§Ù„ Ø¥Ø¬Ù…Ø§Ù„ÙŠ)ØŒ ØªÙƒÙˆÙ† Ø§Ù„Ø±Ø³ÙˆÙ… Ù…Ø³Ø§ÙˆÙŠØ© Ø£Ùˆ Ø£ÙƒØ¨Ø± Ù…Ù† Ø£ØµÙ„ Ø§Ù„Ø­ÙˆØ§Ù„Ø©. ÙŠÙÙ†ØµØ­ Ø¨Ø§Ø³ØªØ®Ø¯Ø§Ù… Ù…Ø­ÙØ¸Ø© Ø±Ù‚Ù…ÙŠØ© Ø¨Ø¯ÙˆÙ† Ø±Ø³ÙˆÙ… Ù…Ø«Ù„ ØªØ·Ø¨ÙŠÙ‚ Ø¨Ø±Ù‚.';
         } else if (sarAmount > 50000) {
           noticeBox.style.display = 'block';
           noticeBox.style.background = '#eff6ff';
           noticeBox.style.color = '#1e40af';
           noticeBox.style.border = '1px solid #bfdbfe';
-          noticeBox.innerHTML = '<i class="fas fa-shield-halved"></i> <strong>تنبيه الامتثال لأنظمة ساما:</strong> الحوالات التي تتجاوز 50,000 ريال سعودي تتطلب عادةً تقديم إثبات لمصدر الدخل أو شهادة الراتب بموجب لوائح مكافحة غسل الأموال.';
+          noticeBox.innerHTML = '<i class="fas fa-shield-halved"></i> <strong>ØªÙ†Ø¨ÙŠÙ‡ Ø§Ù„Ø§Ù…ØªØ«Ø§Ù„ Ù„Ø£Ù†Ø¸Ù…Ø© Ø³Ø§Ù…Ø§:</strong> Ø§Ù„Ø­ÙˆØ§Ù„Ø§Øª Ø§Ù„ØªÙŠ ØªØªØ¬Ø§ÙˆØ² 50,000 Ø±ÙŠØ§Ù„ Ø³Ø¹ÙˆØ¯ÙŠ ØªØªØ·Ù„Ø¨ Ø¹Ø§Ø¯Ø©Ù‹ ØªÙ‚Ø¯ÙŠÙ… Ø¥Ø«Ø¨Ø§Øª Ù„Ù…ØµØ¯Ø± Ø§Ù„Ø¯Ø®Ù„ Ø£Ùˆ Ø´Ù‡Ø§Ø¯Ø© Ø§Ù„Ø±Ø§ØªØ¨ Ø¨Ù…ÙˆØ¬Ø¨ Ù„ÙˆØ§Ø¦Ø­ Ù…ÙƒØ§ÙØ­Ø© ØºØ³Ù„ Ø§Ù„Ø£Ù…ÙˆØ§Ù„.';
         } else {
           noticeBox.style.display = 'none';
         }
       }
 
       if (!baseRate || baseRate <= 0) {
-        payoutDisplay.textContent = 'غير متوفر';
-        rateDisplay.textContent = 'سعر الصرف غير متاح مؤقتاً';
+        payoutDisplay.textContent = 'ØºÙŠØ± Ù…ØªÙˆÙØ±';
+        rateDisplay.textContent = 'Ø³Ø¹Ø± Ø§Ù„ØµØ±Ù ØºÙŠØ± Ù…ØªØ§Ø­ Ù…Ø¤Ù‚ØªØ§Ù‹';
         return;
       }
 
@@ -1892,10 +2101,10 @@
       rateDisplay.innerHTML = `<i class="fas fa-bolt" style="color:#fbbf24;"></i> <span dir="ltr">1 SAR = ${baseRate.toFixed(4)} ${targetCur}</span>`;
       if (benchmarkVal) {
         const wholesaleGross = Math.max(0, sarAmount * baseRate * incentiveMultiplier);
-        benchmarkVal.innerHTML = 'السعر المرجعي بين البنوك: <span dir="ltr">' + symbol + ' ' + window.DailyCalcRemittance.formatPayout(wholesaleGross, targetCur) + '</span>' + (targetCur === 'BDT' ? ' (شامل الحافز 2.5%)' : '');
+        benchmarkVal.innerHTML = 'Ø§Ù„Ø³Ø¹Ø± Ø§Ù„Ù…Ø±Ø¬Ø¹ÙŠ Ø¨ÙŠÙ† Ø§Ù„Ø¨Ù†ÙˆÙƒ: <span dir="ltr">' + symbol + ' ' + window.DailyCalcRemittance.formatPayout(wholesaleGross, targetCur) + '</span>' + (targetCur === 'BDT' ? ' (Ø´Ø§Ù…Ù„ Ø§Ù„Ø­Ø§ÙØ² 2.5%)' : '');
       }
       if (compareNote) {
-        compareNote.textContent = `* مقارنة أسعار التحويل المحدثة من الريال السعودي إلى ${targetCur}`;
+        compareNote.textContent = `* Ù…Ù‚Ø§Ø±Ù†Ø© Ø£Ø³Ø¹Ø§Ø± Ø§Ù„ØªØ­ÙˆÙŠÙ„ Ø§Ù„Ù…Ø­Ø¯Ø«Ø© Ù…Ù† Ø§Ù„Ø±ÙŠØ§Ù„ Ø§Ù„Ø³Ø¹ÙˆØ¯ÙŠ Ø¥Ù„Ù‰ ${targetCur}`;
       }
 
       window.DailyCalcRemittance.renderTable({
@@ -1922,10 +2131,9 @@
     }
 
     // Synchronous execution for zero-flicker cached hydration
-      const amtInput = document.getElementById('sarAmountInput');
-      if (amtInput) amtInput.addEventListener('input', recalculate);
-      initRates();
-
+    const amtInput = document.getElementById('sarAmountInput');
+    if (amtInput) amtInput.addEventListener('input', recalculate);
+    initRates();
   </script>
 </body>
 </html>
