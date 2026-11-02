@@ -437,43 +437,12 @@
     }
 
     /* Guide content & FAQ */
-    .guide-content-section {
-      background: #f8fafc;
-      padding: 60px 0;
-      border-top: 1px solid #e2e8f0;
-      border-bottom: 1px solid #e2e8f0;
-    }
-    .guide-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 40px;
-    }
-    @media (max-width: 900px) {
-      .guide-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-    .guide-article {
-      color: #334155;
-      font-size: 15px;
-      line-height: 1.8;
-    }
-    .guide-article h2 {
-      font-size: 24px;
-      font-weight: 800;
-      color: #0f172a;
-      margin: 32px 0 16px;
-      letter-spacing: -0.3px;
-    }
-    .guide-article h3 {
-      font-size: 18px;
-      font-weight: 800;
-      color: #0f172a;
-      margin: 24px 0 12px;
-    }
-    .guide-article p {
-      margin-bottom: 18px;
-    }
+        /* Article & SEO Content */
+    .content-article { background: #ffffff; padding: 40px; border-radius: 16px; border: 1px solid var(--border-light); box-shadow: var(--card-shadow); margin-bottom: 40px; }
+    .content-article h2 { font-size: 24px; font-weight: 800; color: var(--navy-dark); margin: 32px 0 16px; letter-spacing: -0.3px; }
+    .content-article h2:first-of-type { margin-top: 0; }
+    .content-article h3 { font-size: 18px; font-weight: 700; color: var(--navy-dark); margin: 24px 0 12px; }
+    .content-article p { font-size: 15px; line-height: 1.8; color: #334155; margin-bottom: 18px; }
     .faq-accordion-item {
       background: #ffffff;
       border: 1px solid #e2e8f0;
@@ -1431,11 +1400,9 @@
   </main>
 
   <!-- Educational Guide & FAQ Section -->
-  <section class="guide-content-section">
-    <div class="container guide-grid">
-      
-      <!-- Left Article -->
-      <article class="guide-article">
+    <!-- Editorial Guide -->
+  <div class="container">
+    <article class="content-article">
         <h2>لماذا تعد الأدوات الحسابية اليومية ضرورية لإدارة ميزانيتك؟</h2>
         <p>
           تتطلب الحياة اليومية الحديثة اتخاذ عشرات القرارات المالية والعملية الصغيرة التي قد تتراكم لتحدث فارقاً كبيراً في ميزانيتك الشهرية وجودة حياتك. من حساب استهلاك الأجهزة الكهربائية وترشيد الفواتير، إلى التحقق من عروض التخفيضات الحقيقية وتوزيع مصاريف التنقل المشترك، تساعدك الأدوات الحسابية الدقيقة على إدارة وقتك وأموالك بذكاء.
@@ -1497,40 +1464,7 @@
         </div>
 
       </article>
-
-      <!-- Right Sidebar -->
-      <aside>
-        <div class="sidebar-card">
-          <h3 class="sidebar-card-heading">
-            <i class="fas fa-lightbulb" style="color:#0284c7;"></i>
-            <span>نصائح للاستخدام اليومي الذكي</span>
-          </h3>
-          <ul class="sidebar-list">
-            <li><i class="fas fa-check"></i> <span>اضبط منظم حرارة المكيف عند 24 درجة مئوية لتوفير استهلاك الكهرباء.</span></li>
-            <li><i class="fas fa-check"></i> <span>تأكد من شمول الأسعار لضريبة 15% قبل احتساب الخصم النهائي.</span></li>
-            <li><i class="fas fa-check"></i> <span>افحص ضغط إطارات السيارة دورياً لتقليل استهلاك الوقود.</span></li>
-            <li><i class="fas fa-check"></i> <span>احفظ الحاسبات المفضلة في شاشتك الرئيسية للوصول السريع.</span></li>
-            <li><i class="fas fa-check"></i> <span>شارك الفواتير المقسمة فوراً مع مجموعتك لتجنب تراكم المصاريف.</span></li>
-          </ul>
-        </div>
-
-        <div class="sidebar-card">
-          <h3 class="sidebar-card-heading" style="color:#0369a1;">
-            <i class="fas fa-compass"></i>
-            <span>أدوات يومية شائعة</span>
-          </h3>
-          <ul class="sidebar-list">
-            <li><i class="fas fa-arrow-left"></i> <a href="/ar/everyday-smart-calculator/age-calculator/" style="color:inherit;text-decoration:none;">حاسبة العمر وتاريخ الميلاد</a></li>
-            <li><i class="fas fa-arrow-left"></i> <a href="/ar/everyday-smart-calculator/discount-calculator/" style="color:inherit;text-decoration:none;">حاسبة الخصم الذكية</a></li>
-            <li><i class="fas fa-arrow-left"></i> <a href="/ar/everyday-smart-calculator/bmi-calculator/" style="color:inherit;text-decoration:none;">حاسبة كتلة الجسم BMI</a></li>
-            <li><i class="fas fa-arrow-left"></i> <a href="/ar/everyday-smart-calculator/electricity-cost-calculator/" style="color:inherit;text-decoration:none;">حاسبة تكلفة الكهرباء</a></li>
-            <li><i class="fas fa-arrow-left"></i> <a href="/ar/everyday-smart-calculator/split-bill-calculator/" style="color:inherit;text-decoration:none;">حاسبة تقسيم الفاتورة</a></li>
-          </ul>
-        </div>
-      </aside>
-
-    </div>
-  </section>
+  </div>
 
   <!-- Footer -->
   <footer class="site-footer">

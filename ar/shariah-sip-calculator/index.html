@@ -492,43 +492,12 @@
     }
 
     /* Content & FAQ Guide Section */
-    .guide-content-section {
-      background: #f8fafc;
-      padding: 60px 0;
-      border-top: 1px solid #e2e8f0;
-      border-bottom: 1px solid #e2e8f0;
-    }
-    .guide-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 40px;
-    }
-    @media (max-width: 900px) {
-      .guide-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-    .guide-article {
-      color: #334155;
-      font-size: 15px;
-      line-height: 1.8;
-    }
-    .guide-article h2 {
-      font-size: 24px;
-      font-weight: 800;
-      color: #0f172a;
-      margin: 32px 0 16px;
-      letter-spacing: -0.3px;
-    }
-    .guide-article h3 {
-      font-size: 18px;
-      font-weight: 800;
-      color: #0f172a;
-      margin: 24px 0 12px;
-    }
-    .guide-article p {
-      margin-bottom: 18px;
-    }
+        /* Article & SEO Content */
+    .seo-content-section { background: #ffffff; border-radius: 16px; border: 1px solid var(--border-light); padding: 40px; margin: 30px 0; box-shadow: var(--card-shadow); }
+    .seo-content-section h2 { font-size: 24px; font-weight: 800; color: var(--navy-dark); margin: 32px 0 16px; letter-spacing: -0.3px; }
+    .seo-content-section h2:first-of-type { margin-top: 0; }
+    .seo-content-section h3 { font-size: 18px; font-weight: 700; color: var(--navy-dark); margin: 24px 0 12px; }
+    .seo-content-section p { font-size: 15px; line-height: 1.8; color: #334155; margin-bottom: 18px; }
     .faq-accordion-item {
       background: #ffffff;
       border: 1px solid #e2e8f0;
@@ -1527,11 +1496,9 @@
   </main>
 
   <!-- Educational Guide & FAQ Section -->
-  <section class="guide-content-section">
-    <div class="container guide-grid">
-      
-      <!-- Left Article -->
-      <article class="guide-article">
+    <!-- SEO & Educational Guide Section -->
+  <div class="container">
+    <article class="seo-content-section">
         <h2>فهم خطة الاستثمار الدوري المنظم (SIP) المتوافقة مع الشريعة</h2>
         <p>
           تعتمد خطة الاستثمار الدوري المنظم (Systematic Investment Plan) على مفهوم الاستثمار التدريجي المنتظم. وبدلاً من محاولة التنبؤ بتقلبات الأسواق وتوقيتها (Timing the Market)، يلتزم المستثمر باستقطاع مبلغ ثابت شهرياً، مما يحقق ميزة "متوسط تكلفة الشراء" (Dollar-Cost Averaging)، حيث تشتري وحدات أكثر عندما تنخفض الأسعار ووحدات أقل عندما ترتفع.
@@ -1614,39 +1581,7 @@
         </div>
 
       </article>
-
-      <!-- Right Sidebar -->
-      <aside>
-        <div class="sidebar-card">
-          <h3 class="sidebar-card-heading">
-            <i class="fas fa-shield-halved" style="color:#b45309;"></i>
-            <span>معايير الاستثمار المنضبط</span>
-          </h3>
-          <ul class="sidebar-list">
-            <li><i class="fas fa-check"></i> <span>ابدأ بمبالغ شهرية تتناسب مع فائض ميزانيتك.</span></li>
-            <li><i class="fas fa-check"></i> <span>احرص على أفق زمني لا يقل عن 5 إلى 10 سنوات.</span></li>
-            <li><i class="fas fa-check"></i> <span>اختر صناديق مرخصة من هيئة السوق المالية (CMA).</span></li>
-            <li><i class="fas fa-check"></i> <span>تجنب إيقاف الاستقطاع أثناء انخفاضات السوق المؤقتة.</span></li>
-            <li><i class="fas fa-check"></i> <span>راجع التوزيع والأداء سنوياً دون تسرع.</span></li>
-          </ul>
-        </div>
-
-        <div class="sidebar-card">
-          <h3 class="sidebar-card-heading" style="color:#92400e;">
-            <i class="fas fa-compass"></i>
-            <span>أدوات استثمارية متخصصة</span>
-          </h3>
-          <ul class="sidebar-list">
-            <li><i class="fas fa-arrow-left"></i> <a href="/ar/shariah-sip-calculator/sip-calculator/" style="color:inherit;text-decoration:none;">حاسبة الاستثمار الشهري SIP</a></li>
-            <li><i class="fas fa-arrow-left"></i> <a href="/ar/shariah-sip-calculator/sip-goal-calculator/" style="color:inherit;text-decoration:none;">حاسبة أهداف الاستثمار والتقاعد</a></li>
-            <li><i class="fas fa-arrow-left"></i> <a href="/ar/shariah-sip-calculator/monthly-investment-calculator/" style="color:inherit;text-decoration:none;">حاسبة الاستثمار الشهري الموجه</a></li>
-            <li><i class="fas fa-arrow-left"></i> <a href="/ar/shariah-sip-calculator/lump-sum-calculator/" style="color:inherit;text-decoration:none;">حاسبة الاستثمار المقطوع</a></li>
-          </ul>
-        </div>
-      </aside>
-
-    </div>
-  </section>
+  </div>
 
   <!-- Footer -->
   <footer class="site-footer">
