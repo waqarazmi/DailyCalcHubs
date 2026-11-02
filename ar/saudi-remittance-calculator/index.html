@@ -165,6 +165,10 @@
       --text-muted: #64748b;
     }
 
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       font-family: 'Tajawal', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
       background: var(--bg-body);
@@ -1559,22 +1563,26 @@
                 <div>
                   <strong>ضريبة 15% على الرسوم فقط:</strong> تطبق ضريبة القيمة المضافة من هيئة الزكاة والضريبة والجمارك (ZATCA) حصرياً على رسوم الخدمة الإدارية (مثل 1.50 ريال على رسم 10 ريالات)، ولا تفرض إطلاقاً على أصل المبلغ المحول.
                 </div>
-              </li>`r`n              <li class="rules-item">
+              </li>
+              <li class="rules-item">
                 <i class="fas fa-check-circle rules-icon"></i>
                 <div>
                   <strong>مطابقة الدخل ولوائح مكافحة غسل الأموال:</strong> تخضع كافة الحوالات لأنظمة البنك المركزي السعودي (ساما) وتدقيق منصة حماية الأجور (WPS). يُرجى الاحتفاظ بإثبات مصدر الدخل أو شهادة الراتب للحوالات الكبيرة.
                 </div>
-              </li>`r`n              <li class="rules-item">
+              </li>
+              <li class="rules-item">
                 <i class="fas fa-check-circle rules-icon"></i>
                 <div>
                   <strong>المحافظ الرقمية مقابل فروع البنوك:</strong> توفر المحافظ الرقمية مثل تطبيق برق، ويورباي، وSTC Pay هوامش صرف أفضل ورسوماً أقل مع تحويلات فورية مقارنة بالحوالات النقدية التقليدية عبر الفروع.
                 </div>
-              </li>`r`n              <li class="rules-item">
+              </li>
+              <li class="rules-item">
                 <i class="fas fa-check-circle rules-icon"></i>
                 <div>
                   <strong>توثيق بيانات المستفيد بدقة:</strong> تأكد من تطابق اسم المستفيد ورقم الحساب البنكي (IBAN) تماماً لتفادي تعليق الحوالة أو رفضها بموجب أنظمة حماية المستهلك المالي.
                 </div>
-              </li>`r`n            </ul>
+              </li>
+            </ul>
           </div>
 
           <!-- Quick Navigation to Dedicated Tools -->
@@ -1659,7 +1667,7 @@
             <span>فتح الحاسبة المتخصصة</span>
             <i class="fas fa-chevron-left"></i>
           </div>
-        </a>`r`n
+        </a>
         <!-- Card 2: تحويل الريال إلى الروبية الباكستانية -->
         <a href="/ar/saudi-remittance-calculator/sar-to-pkr/" class="tool-card-item">
           <div>
@@ -1675,7 +1683,7 @@
             <span>فتح الحاسبة المتخصصة</span>
             <i class="fas fa-chevron-left"></i>
           </div>
-        </a>`r`n
+        </a>
         <!-- Card 3: تحويل الريال إلى التاكا البنغلاديشية -->
         <a href="/ar/saudi-remittance-calculator/sar-to-bdt/" class="tool-card-item">
           <div>
@@ -1691,7 +1699,7 @@
             <span>فتح الحاسبة المتخصصة</span>
             <i class="fas fa-chevron-left"></i>
           </div>
-        </a>`r`n
+        </a>
         <!-- Card 4: تحويل الريال إلى البيزو الفلبيني -->
         <a href="/ar/saudi-remittance-calculator/sar-to-php/" class="tool-card-item">
           <div>
@@ -1707,7 +1715,7 @@
             <span>فتح الحاسبة المتخصصة</span>
             <i class="fas fa-chevron-left"></i>
           </div>
-        </a>`r`n
+        </a>
         <!-- Card 5: تحويل الريال إلى الروبية النيبالية -->
         <a href="/ar/saudi-remittance-calculator/sar-to-npr/" class="tool-card-item">
           <div>
@@ -1723,7 +1731,7 @@
             <span>فتح الحاسبة المتخصصة</span>
             <i class="fas fa-chevron-left"></i>
           </div>
-        </a>`r`n
+        </a>
         <!-- Card 6: تحويل الريال إلى الروبية السريلانكية -->
         <a href="/ar/saudi-remittance-calculator/sar-to-lkr/" class="tool-card-item">
           <div>
@@ -1739,7 +1747,7 @@
             <span>فتح الحاسبة المتخصصة</span>
             <i class="fas fa-chevron-left"></i>
           </div>
-        </a>`r`n
+        </a>
         <!-- Card 7: حاسبة رسوم التحويل وضريبة 15% -->
         <a href="/ar/saudi-remittance-calculator/remittance-fee/" class="tool-card-item">
           <div>
@@ -1755,7 +1763,7 @@
             <span>احتساب رسوم التحويل</span>
             <i class="fas fa-chevron-left"></i>
           </div>
-        </a>`r`n
+        </a>
         <!-- Card 8: مقارنة تطبيقات ومحافظ التحويل -->
         <a href="/ar/saudi-remittance-calculator/remittance-comparison/" class="tool-card-item">
           <div>
@@ -1771,7 +1779,7 @@
             <span>مقارنة تطبيقات التحويل</span>
             <i class="fas fa-chevron-left"></i>
           </div>
-        </a>`r`n
+        </a>
         <!-- Card 9: أسعار صرف الريال المرجعية -->
         <a href="/ar/saudi-remittance-calculator/live-sar-exchange-rate/" class="tool-card-item">
           <div>
@@ -1787,7 +1795,7 @@
             <span>عرض أسعار الصرف المرجعية</span>
             <i class="fas fa-chevron-left"></i>
           </div>
-        </a>`r`n
+        </a>
         <!-- Card 10: دليل التحويل الشامل للمقيمين -->
         <a href="/ar/saudi-remittance-calculator/saudi-to-india-remittance-guide/" class="tool-card-item">
           <div>
@@ -1803,7 +1811,8 @@
             <span>قراءة الدليل الكامل</span>
             <i class="fas fa-chevron-left"></i>
           </div>
-        </a>`r`n      </div>
+        </a>
+      </div>
     </div>
   </section>
   <!-- In-Depth Content & FAQs Section -->
@@ -1851,7 +1860,7 @@
           <div class="faq-answer">
             توفر المنصات الرقمية مثل تطبيق برق (Barq) في كثير من الأحيان أعلى مبلغ تسليم صافٍ إلى الهند بفضل فارق سعر الصرف الضيق وعروض التحويل بدون رسوم. كما تشمل الخيارات الشائعة STC Pay ويورباي وتحويل الراجحي، والتي تتراوح رسومها عادة بين 10 إلى 17.25 ريال سعودي لكل حوالة.
           </div>
-        </div>`r`n
+        </div>
         <!-- FAQ 2 -->
         <div class="faq-item">
           <div class="faq-question" onclick="toggleFaq(this)">
@@ -1861,7 +1870,7 @@
           <div class="faq-answer">
             وفقاً للوائح هيئة الزكاة والضريبة والجمارك (ZATCA)، تطبق ضريبة القيمة المضافة (15%) فقط على رسوم الخدمة الإدارية التي يتقاضاها البنك أو المحفظة، ولا تطبق إطلاقاً على أصل مبلغ الحوالة المالية. على سبيل المثال، إذا كانت رسوم التحويل 10 ريالات، تضاف إليها ضريبة بقيمة 1.50 ريال.
           </div>
-        </div>`r`n
+        </div>
         <!-- FAQ 3 -->
         <div class="faq-item">
           <div class="faq-question" onclick="toggleFaq(this)">
@@ -1871,7 +1880,7 @@
           <div class="faq-answer">
             يلزم البنك المركزي السعودي (ساما) البنوك والمحافظ المرخصة بمراقبة التحويلات الدولية ومطابقتها مع الراتب الموثق للمقيم في التأمينات الاجتماعية (GOSI) ونظام حماية الأجور. ورغم أن الحدود اليومية للمحافظ تتراوح غالباً بين 10,000 إلى 20,000 ريال، إلا أن التحويلات التراكمية التي تتجاوز الدخل السنوي المعلن قد تتطلب تقديم إثبات لمصدر الأموال.
           </div>
-        </div>`r`n
+        </div>
         <!-- FAQ 4 -->
         <div class="faq-item">
           <div class="faq-question" onclick="toggleFaq(this)">
@@ -1881,7 +1890,7 @@
           <div class="faq-answer">
             السعر المعروض في محرك بحث جوجل هو سعر الصرف بين البنوك (Interbank Wholesale Rate)، وهو مخصص للتداولات المؤسسية الضخمة بملايين الدولارات. أما شركات التحويل والمحافظ الرقمية فتضيف هامش ربح بسيط (سبريد) لتغطية تقلبات أسعار الصرف، العمليات التشغيلية، ورسوم المقاصة مع البنوك المستلمة.
           </div>
-        </div>`r`n
+        </div>
         <!-- Financial Disclaimer -->
         <div style="margin-top:36px; padding:18px; background:#fffbeb; border:1px solid #fde68a; border-radius:10px; font-size:13px; color:#92400e;">
           <strong><i class="fas fa-circle-info"></i> إخلاء مسؤولية مالية:</strong> تقدم منصة DailyCalcHubs تقديرات إرشادية مبنية على أسعار الصرف المرجعية اليومية. تحدد المؤسسات المالية وتطبيقات التحويل المرخصة (مثل برق، ويورباي، وبنك STC، وتحويل الراجحي، وإنجاز) هوامش صرف ورسوم تحويل وحدود إرسال مستقلة عند تنفيذ الحوالة. يُرجى التحقق دائماً من السعر النهائي المثبت داخل التطبيق المعتمد قبل تأكيد التحويل. منصة DailyCalcHubs أداة معلوماتية حسابية مستقلة وليست جهة حكومية أو مصرفية.
