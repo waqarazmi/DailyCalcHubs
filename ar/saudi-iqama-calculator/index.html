@@ -560,6 +560,28 @@
       color: #ea580c;
       font-size: 12px;
     }
+    .rules-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .rules-item {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 14px;
+      font-size: 13.5px;
+      line-height: 1.6;
+      color: #334155;
+    }
+    .rules-item:last-child {
+      margin-bottom: 0;
+    }
+    .rules-icon {
+      color: #ea580c;
+      font-size: 14px;
+      margin-top: 3px;
+      flex-shrink: 0;
+    }
     /* Footer */
     html[lang="ar"] .site-footer,
     .site-footer {
@@ -1300,32 +1322,25 @@
       <aside>
         <div class="sidebar-card">
           <h3 class="sidebar-card-heading">
-            <i class="fas fa-shield-halved" style="color:#ea580c;"></i>
-            <span>إرشادات تجديد الإقامة 2026</span>
+            <i class="fas fa-scale-balanced" style="color:#ea580c;"></i>
+            <span>من يتحمل الرسوم؟ (المادة 40 من نظام العمل)</span>
           </h3>
-          <ul class="sidebar-list">
-            <li><i class="fas fa-check"></i> <span>سداد رخصة العمل أولاً عبر منصة قوى.</span></li>
-            <li><i class="fas fa-check"></i> <span>سداد رسوم الجوازات عبر نظام سداد (رمز المدفوعات الحكومية 090).</span></li>
-            <li><i class="fas fa-check"></i> <span>توفير تأمين طبي سارٍ ومرتبط بمجلس الضمان الصحي (CCHI).</span></li>
-            <li><i class="fas fa-check"></i> <span>تجديد الإقامة قبل انتهائها لتفادي غرامة التأخير (500 ر.س لأول مرة).</span></li>
-            <li><i class="fas fa-check"></i> <span>سريان جواز السفر لمدة لا تقل عن 6 أشهر.</span></li>
+          <ul class="rules-list">
+            <li class="rules-item">
+              <i class="fas fa-check-circle rules-icon"></i>
+              <div><strong>مسؤولية صاحب العمل النظامية:</strong> تنص المادة 40 (الفقرة 1) من نظام العمل السعودي على أن صاحب العمل يتحمل رسوم الإقامة ورخصة العمل وتجديدهما ورسوم نقل الخدمة. ويحظر نظاماً حسم هذه الرسوم من راتب الموظف.</div>
+            </li>
+            <li class="rules-item">
+              <i class="fas fa-check-circle rules-icon"></i>
+              <div><strong>مسؤولية الموظف المقيم:</strong> يتحمل العامل المقيم شخصياً المقابل المالي للمرافقين والتابعين (400 ريال شهرياً عن كل مرافق) عبر نظام سداد برمز المدفوعات الحكومية 092.</div>
+            </li>
+            <li class="rules-item">
+              <i class="fas fa-check-circle rules-icon"></i>
+              <div><strong>مجلس الضمان الصحي (CCHI):</strong> يشترط وجود تأمين طبي سارٍ ومرتبط إلكترونياً بمجلس الضمان الصحي لإتمام التجديد عبر منصة أبشر أو مقيم.</div>
+            </li>
           </ul>
         </div>
 
-        <div class="sidebar-card">
-          <h3 class="sidebar-card-heading" style="color:#c2410c;">
-            <i class="fas fa-compass"></i>
-            <span>أدوات الإقامة الأكثر طلباً</span>
-          </h3>
-          <ul class="sidebar-list">
-            <li><i class="fas fa-arrow-left"></i> <a href="/ar/saudi-iqama-calculator/renewal-fee/" style="color:inherit;text-decoration:none;">حاسبة رسوم تجديد الإقامة</a></li>
-            <li><i class="fas fa-arrow-left"></i> <a href="/ar/saudi-iqama-calculator/dependent-fee/" style="color:inherit;text-decoration:none;">حاسبة رسوم المرافقين الشهرية</a></li>
-            <li><i class="fas fa-arrow-left"></i> <a href="/ar/saudi-iqama-calculator/maktab-amal/" style="color:inherit;text-decoration:none;">المقابل المالي لمكتب العمل</a></li>
-            <li><i class="fas fa-arrow-left"></i> <a href="/ar/saudi-iqama-calculator/?duration=3#duration" style="color:inherit;text-decoration:none;">تكلفة تجديد الإقامة 3 أشهر</a></li>
-            <li><i class="fas fa-arrow-left"></i> <a href="/ar/saudi-iqama-calculator/renewal-guide/" style="color:inherit;text-decoration:none;">دليل سداد رسوم الإقامة خطوة بخطوة</a></li>
-          </ul>
-        </div>
-      
         <div class="sidebar-card">
           <h3 class="sidebar-card-heading" style="color:#c2410c;">
             <i class="fas fa-clock-rotate-left"></i>
@@ -1583,6 +1598,21 @@
           </div>
         </a>
 
+      </div>
+
+      <!-- Supporting Renewal Guidelines Card -->
+      <div class="sidebar-card" style="margin-top: 32px; background: #f8fafc; border: 1px solid #e2e8f0;">
+        <h3 class="sidebar-card-heading">
+          <i class="fas fa-shield-halved" style="color:#ea580c;"></i>
+          <span>إرشادات تجديد الإقامة 2026</span>
+        </h3>
+        <ul class="sidebar-list" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px;">
+          <li style="border-bottom: none; padding: 6px 0;"><i class="fas fa-check"></i> <span>سداد رخصة العمل أولاً عبر منصة قوى.</span></li>
+          <li style="border-bottom: none; padding: 6px 0;"><i class="fas fa-check"></i> <span>سداد رسوم الجوازات عبر نظام سداد (رمز المدفوعات الحكومية 090).</span></li>
+          <li style="border-bottom: none; padding: 6px 0;"><i class="fas fa-check"></i> <span>توفير تأمين طبي سارٍ ومرتبط بمجلس الضمان الصحي (CCHI).</span></li>
+          <li style="border-bottom: none; padding: 6px 0;"><i class="fas fa-check"></i> <span>تجديد الإقامة قبل انتهائها لتفادي غرامة التأخير (500 ر.س لأول مرة).</span></li>
+          <li style="border-bottom: none; padding: 6px 0;"><i class="fas fa-check"></i> <span>سريان جواز السفر لمدة لا تقل عن 6 أشهر.</span></li>
+        </ul>
       </div>
     </section>
 
