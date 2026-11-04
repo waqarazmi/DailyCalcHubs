@@ -6482,3 +6482,105 @@ html[data-theme="dark"] #feeChannel option {
   background-color: #1a233a !important;
   color: #f8fafc !important;
 }
+
+/* --------------------------------------------------------------------------
+   7. Consolidated Targeted Night Mode Visibility Repairs
+   -------------------------------------------------------------------------- */
+
+/* Target 1: Arabic Shariah SIP Calculator — Active Preset Amber Accent */
+html[data-theme="dark"]:has(head link[rel="canonical"][href="https://dailycalchubs.com/ar/shariah-sip-calculator/"]) .amount-chip-btn.active,
+html[data-theme="dark"] body:has(#hubSipMonthly) .amount-chip-btn.active {
+  background: #b45309 !important;
+  border-color: #b45309 !important;
+  color: #ffffff !important;
+}
+
+/* Target 2: English Shariah SIP Calculator — Preset Chips */
+html[data-theme="dark"] #tabContentSip .mini-chip-btn {
+  background: #1a233a !important;
+  border: 1px solid #334155 !important;
+  color: #cbd5e1 !important;
+}
+
+html[data-theme="dark"] #tabContentSip .mini-chip-btn:hover,
+html[data-theme="dark"] #tabContentSip .mini-chip-btn.active {
+  background: #b45309 !important;
+  border-color: #b45309 !important;
+  color: #ffffff !important;
+}
+
+html[data-theme="dark"] #tabContentSip .mini-chip-btn:focus-visible {
+  outline: 2px solid #b45309 !important;
+  outline-offset: 1px !important;
+}
+
+/* Target 3: Tip Calculator — Percentage Preset Chips */
+html[data-theme="dark"] .tip-chip-btn {
+  background: #1a233a !important;
+  border: 1px solid #334155 !important;
+  color: #cbd5e1 !important;
+}
+
+html[data-theme="dark"] .tip-chip-btn:hover,
+html[data-theme="dark"] .tip-chip-btn.active {
+  background: #0284c7 !important;
+  border-color: #0284c7 !important;
+  color: #ffffff !important;
+}
+
+/* Target 4: Arabic Saudi Iqama Calculator — Dropdowns & Active Duration Accent */
+html[data-theme="dark"] #workerType,
+html[data-theme="dark"] #maktabCategory,
+html[data-theme="dark"] #iqamaDuration {
+  background-color: #1a233a !important;
+  color: #f8fafc !important;
+}
+
+html[data-theme="dark"] select#workerType option,
+html[data-theme="dark"] #workerType option,
+html[data-theme="dark"] select#maktabCategory option,
+html[data-theme="dark"] #maktabCategory option,
+html[data-theme="dark"] select#iqamaDuration option,
+html[data-theme="dark"] #iqamaDuration option {
+  background-color: #1a233a !important;
+  color: #f8fafc !important;
+}
+
+html[data-theme="dark"]:has(head link[rel="canonical"][href="https://dailycalchubs.com/ar/saudi-iqama-calculator/"]) .amount-chip-btn.active,
+html[data-theme="dark"] body:has(#iqamaDuration) .amount-chip-btn.active {
+  background: #ea580c !important;
+  border-color: #ea580c !important;
+  color: #ffffff !important;
+}
+
+/* Target 5: Saudi Salary Calculator — Statutory Applicability Note */
+html[data-theme="dark"] div[style*="border-left:4px solid #7c3aed"],
+html[data-theme="dark"] div[style*="border-left: 4px solid #7c3aed"] {
+  background-color: #131b2e !important;
+  border-color: #1e293b !important;
+  border-left-color: #7c3aed !important;
+  color: #cbd5e1 !important;
+}
+
+html[data-theme="dark"] div[style*="border-right:4px solid #7c3aed"],
+html[data-theme="dark"] div[style*="border-right: 4px solid #7c3aed"] {
+  background-color: #131b2e !important;
+  border-color: #1e293b !important;
+  border-right-color: #7c3aed !important;
+  color: #cbd5e1 !important;
+}
+
+html[data-theme="dark"] div[style*="border-left:4px solid #7c3aed"] strong,
+html[data-theme="dark"] div[style*="border-left: 4px solid #7c3aed"] strong,
+html[data-theme="dark"] div[style*="border-right:4px solid #7c3aed"] strong,
+html[data-theme="dark"] div[style*="border-right: 4px solid #7c3aed"] strong {
+  color: #f8fafc !important;
+}
+
+html[data-theme="dark"] div[style*="border-left:4px solid #7c3aed"] a,
+html[data-theme="dark"] div[style*="border-left: 4px solid #7c3aed"] a,
+html[data-theme="dark"] div[style*="border-right:4px solid #7c3aed"] a,
+html[data-theme="dark"] div[style*="border-right: 4px solid #7c3aed"] a {
+  color: #a78bfa !important;
+  text-decoration: underline !important;
+}
