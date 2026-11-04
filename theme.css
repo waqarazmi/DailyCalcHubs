@@ -6392,3 +6392,78 @@ html[data-theme="dark"] div[style*="color:#64748b"],
 html[data-theme="dark"] div[style*="color: #64748b"] {
   color: #94a3b8 !important;
 }
+
+/* --------------------------------------------------------------------------
+   5. Travel Booking Calculator Specific Repairs (Issue A & Issue B)
+   -------------------------------------------------------------------------- */
+
+/* Issue A: English Travel Preset Controls (8 Preset Buttons in Vacation Tab) */
+html[data-theme="dark"] #tabContentTrip .mini-chip-btn {
+  background: #1a233a !important;
+  border: 1px solid #334155 !important;
+  color: #cbd5e1 !important;
+}
+
+html[data-theme="dark"] #tabContentTrip .mini-chip-btn:hover {
+  background: #e11d48 !important;
+  border-color: #e11d48 !important;
+  color: #ffffff !important;
+}
+
+html[data-theme="dark"] #tabContentTrip .mini-chip-btn.active {
+  background: #e11d48 !important;
+  border-color: #e11d48 !important;
+  color: #ffffff !important;
+}
+
+html[data-theme="dark"] #tabContentTrip .mini-chip-btn:focus-visible {
+  outline: 2px solid #e11d48 !important;
+  outline-offset: 1px !important;
+}
+
+/* Issue B: Travel Booking Affiliate Partnership Transparency Notice */
+html[data-theme="dark"] body:has(#tabContentTrip) div[style*="border-left: 4px solid #0284c7"] {
+  background: #131b2e !important;
+  border: 1px solid #1e293b !important;
+  border-left: 4px solid #0284c7 !important;
+  color: #cbd5e1 !important;
+}
+
+html[data-theme="dark"]:has(head link[rel="canonical"][href="https://dailycalchubs.com/ar/travel-booking-calculator/"]) div[style*="border-right: 4px solid #0284c7"],
+html[data-theme="dark"] body:has(#tabContentTrip) div[style*="border-right: 4px solid #0284c7"] {
+  background: #131b2e !important;
+  border: 1px solid #1e293b !important;
+  border-right: 4px solid #0284c7 !important;
+  color: #cbd5e1 !important;
+}
+
+html[data-theme="dark"] body:has(#tabContentTrip) div[style*="border-left: 4px solid #0284c7"] div[style*="color: #0f172a"],
+html[data-theme="dark"]:has(head link[rel="canonical"][href="https://dailycalchubs.com/ar/travel-booking-calculator/"]) div[style*="border-right: 4px solid #0284c7"] div[style*="color: #0f172a"],
+html[data-theme="dark"] body:has(#tabContentTrip) div[style*="border-right: 4px solid #0284c7"] div[style*="color: #0f172a"] {
+  color: #f8fafc !important;
+}
+
+html[data-theme="dark"] body:has(#tabContentTrip) div[style*="border-left: 4px solid #0284c7"] strong,
+html[data-theme="dark"]:has(head link[rel="canonical"][href="https://dailycalchubs.com/ar/travel-booking-calculator/"]) div[style*="border-right: 4px solid #0284c7"] strong,
+html[data-theme="dark"] body:has(#tabContentTrip) div[style*="border-right: 4px solid #0284c7"] strong {
+  color: #f8fafc !important;
+}
+
+html[data-theme="dark"] body:has(#tabContentTrip) div[style*="border-left: 4px solid #0284c7"] i.fa-circle-info,
+html[data-theme="dark"]:has(head link[rel="canonical"][href="https://dailycalchubs.com/ar/travel-booking-calculator/"]) div[style*="border-right: 4px solid #0284c7"] i.fa-circle-info,
+html[data-theme="dark"] body:has(#tabContentTrip) div[style*="border-right: 4px solid #0284c7"] i.fa-circle-info {
+  color: #38bdf8 !important;
+}
+
+html[data-theme="dark"] body:has(#tabContentTrip) div[style*="border-left: 4px solid #0284c7"] a,
+html[data-theme="dark"]:has(head link[rel="canonical"][href="https://dailycalchubs.com/ar/travel-booking-calculator/"]) div[style*="border-right: 4px solid #0284c7"] a,
+html[data-theme="dark"] body:has(#tabContentTrip) div[style*="border-right: 4px solid #0284c7"] a {
+  color: #38bdf8 !important;
+  text-decoration: underline !important;
+}
+
+html[data-theme="dark"] body:has(#tabContentTrip) div[style*="border-left: 4px solid #0284c7"] a:hover,
+html[data-theme="dark"]:has(head link[rel="canonical"][href="https://dailycalchubs.com/ar/travel-booking-calculator/"]) div[style*="border-right: 4px solid #0284c7"] a:hover,
+html[data-theme="dark"] body:has(#tabContentTrip) div[style*="border-right: 4px solid #0284c7"] a:hover {
+  color: #7dd3fc !important;
+}
