@@ -6199,3 +6199,196 @@ html[dir="rtl"] .site-footer .footer-brand-logo {
 html[dir="rtl"] .site-footer .footer-brand-logo .logo-text-group {
   text-align: right;
 }
+
+
+/* ==========================================================================
+   CONSOLIDATED NIGHT MODE VISIBILITY & READABILITY REPAIRS (VERSION 3)
+   Fixes: Mobile Drawer Footer/Icons, Arabic In-Page FAQs, Hub Action Buttons,
+   Affiliate/Transparency Notices, Remittance Rate Badges & Guide Footnotes.
+   Scoped strictly under html[data-theme="dark"] with ZERO Light Mode impact.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Mobile Navigation Drawer Footer, Category Icons & Accordion Chevrons
+   -------------------------------------------------------------------------- */
+html[data-theme="dark"] .mobile-nav-footer {
+  background: #1a233a !important;
+  border-top: 1px solid #1e293b !important;
+}
+
+html[data-theme="dark"] .mobile-nav-footer .lang-switch-btn {
+  background: #25334d !important;
+  border-color: #334155 !important;
+  color: #f8fafc !important;
+}
+
+html[data-theme="dark"] .mobile-nav-footer .lang-switch-btn span {
+  color: #f8fafc !important;
+}
+
+html[data-theme="dark"] .mobile-nav-footer .lang-switch-btn i {
+  color: #38bdf8 !important;
+}
+
+html[data-theme="dark"] .mobile-acc-icon {
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: #38bdf8 !important;
+}
+
+html[data-theme="dark"] .mobile-acc-icon i,
+html[data-theme="dark"] .mobile-acc-icon svg,
+html[data-theme="dark"] .mobile-acc-icon .fas,
+html[data-theme="dark"] .mobile-acc-icon .fa-solid {
+  color: #38bdf8 !important;
+}
+
+html[data-theme="dark"] .mobile-acc-chevron {
+  color: #94a3b8 !important;
+}
+
+html[data-theme="dark"] .mobile-accordion-item.active .mobile-acc-chevron,
+html[data-theme="dark"] .mobile-accordion-header:hover .mobile-acc-chevron {
+  color: #38bdf8 !important;
+}
+
+/* --------------------------------------------------------------------------
+   2. Arabic Major Hub In-Page FAQs (Collapsed & Expanded States)
+   -------------------------------------------------------------------------- */
+html[data-theme="dark"] .faq-accordion-item {
+  background: #131b2e !important;
+  border: 1px solid #1e293b !important;
+}
+
+html[data-theme="dark"] .faq-accordion-question {
+  color: #f8fafc !important;
+}
+
+html[data-theme="dark"] .faq-accordion-question span {
+  color: #f8fafc !important;
+}
+
+html[data-theme="dark"] .faq-accordion-question i,
+html[data-theme="dark"] .faq-accordion-question .fas {
+  color: #38bdf8 !important;
+}
+
+html[data-theme="dark"] .faq-accordion-question:hover {
+  background: #1a233a !important;
+}
+
+html[data-theme="dark"] .faq-accordion-question:focus-visible {
+  outline: 2px solid #38bdf8 !important;
+  outline-offset: -2px !important;
+}
+
+html[data-theme="dark"] .faq-accordion-answer {
+  background: #131b2e !important;
+  color: #cbd5e1 !important;
+}
+
+html[data-theme="dark"] .faq-accordion-answer p,
+html[data-theme="dark"] .faq-accordion-answer span,
+html[data-theme="dark"] .faq-accordion-answer div {
+  color: #cbd5e1 !important;
+}
+
+html[data-theme="dark"] .faq-accordion-answer a {
+  color: #38bdf8 !important;
+  text-decoration: underline !important;
+}
+
+/* --------------------------------------------------------------------------
+   3. Hub Action Buttons & Action Links
+   -------------------------------------------------------------------------- */
+html[data-theme="dark"] a.card-action-btn,
+html[data-theme="dark"] .tool-hub-card a.card-action-btn {
+  color: #ffffff !important;
+}
+
+html[data-theme="dark"] a.card-action-btn span,
+html[data-theme="dark"] a.card-action-btn i,
+html[data-theme="dark"] .tool-hub-card a.card-action-btn span,
+html[data-theme="dark"] .tool-hub-card a.card-action-btn i {
+  color: #ffffff !important;
+}
+
+/* Everyday Smart Hub Action Buttons: high-contrast dark text (#0f172a) on branded cyan (#0ea5e9) */
+html[data-theme="dark"] .featured-grid a.card-action-btn[href*="/everyday-smart-calculator/"],
+html[data-theme="dark"] a.card-action-btn[href*="/everyday-smart-calculator/"] {
+  color: #0f172a !important;
+}
+
+html[data-theme="dark"] .featured-grid a.card-action-btn[href*="/everyday-smart-calculator/"] span,
+html[data-theme="dark"] .featured-grid a.card-action-btn[href*="/everyday-smart-calculator/"] i,
+html[data-theme="dark"] a.card-action-btn[href*="/everyday-smart-calculator/"] span,
+html[data-theme="dark"] a.card-action-btn[href*="/everyday-smart-calculator/"] i {
+  color: #0f172a !important;
+}
+
+html[data-theme="dark"] .featured-grid a.card-action-btn[href*="/everyday-smart-calculator/"]:hover,
+html[data-theme="dark"] a.card-action-btn[href*="/everyday-smart-calculator/"]:hover {
+  color: #020617 !important;
+}
+
+html[data-theme="dark"] .featured-grid a.card-action-btn[href*="/everyday-smart-calculator/"]:hover span,
+html[data-theme="dark"] .featured-grid a.card-action-btn[href*="/everyday-smart-calculator/"]:hover i,
+html[data-theme="dark"] a.card-action-btn[href*="/everyday-smart-calculator/"]:hover span,
+html[data-theme="dark"] a.card-action-btn[href*="/everyday-smart-calculator/"]:hover i {
+  color: #020617 !important;
+}
+
+html[data-theme="dark"] .tool-card-action {
+  border-top: 1px solid #1e293b !important;
+  color: #38bdf8 !important;
+}
+
+html[data-theme="dark"] .tool-card-action span,
+html[data-theme="dark"] .tool-card-action a,
+html[data-theme="dark"] .tool-card-action i {
+  color: #38bdf8 !important;
+}
+
+/* --------------------------------------------------------------------------
+   4. Notices, Disclosures, Badges & Footnotes (Narrowed Selectors)
+   -------------------------------------------------------------------------- */
+html[data-theme="dark"] .transparency-box,
+html[data-theme="dark"] .affiliate-disclosure-box {
+  background: #131b2e !important;
+  border: 1px solid #1e293b !important;
+  color: #cbd5e1 !important;
+}
+
+html[data-theme="dark"] .transparency-box p,
+html[data-theme="dark"] .transparency-box span,
+html[data-theme="dark"] .transparency-box div,
+html[data-theme="dark"] .affiliate-disclosure-box p,
+html[data-theme="dark"] .affiliate-disclosure-box span,
+html[data-theme="dark"] .affiliate-disclosure-box div {
+  color: #cbd5e1 !important;
+}
+
+html[data-theme="dark"] .transparency-box a,
+html[data-theme="dark"] .affiliate-disclosure-box a {
+  color: #38bdf8 !important;
+  text-decoration: underline !important;
+}
+
+html[data-theme="dark"] .calc-badge,
+html[data-theme="dark"] .ref-rate-badge {
+  background: #0d2319 !important;
+  color: #4ade80 !important;
+}
+
+html[data-theme="dark"] .calc-badge span,
+html[data-theme="dark"] .calc-badge i,
+html[data-theme="dark"] .ref-rate-badge span,
+html[data-theme="dark"] .ref-rate-badge i {
+  color: #4ade80 !important;
+}
+
+html[data-theme="dark"] small[style*="color:#64748b"],
+html[data-theme="dark"] small[style*="color: #64748b"],
+html[data-theme="dark"] div[style*="color:#64748b"],
+html[data-theme="dark"] div[style*="color: #64748b"] {
+  color: #94a3b8 !important;
+}
