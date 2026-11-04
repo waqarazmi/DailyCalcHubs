@@ -6467,3 +6467,18 @@ html[data-theme="dark"]:has(head link[rel="canonical"][href="https://dailycalchu
 html[data-theme="dark"] body:has(#tabContentTrip) div[style*="border-right: 4px solid #0284c7"] a:hover {
   color: #7dd3fc !important;
 }
+
+/* --------------------------------------------------------------------------
+   6. Remittance Fee Calculator Specific Repairs (Night Mode Dropdown)
+   Pages: /saudi-remittance-calculator/remittance-fee/ (EN & AR)
+   -------------------------------------------------------------------------- */
+/* Remittance Fee Calculator — Night Mode dropdown visibility */
+html[data-theme="dark"] #feeChannel {
+  background-color: #1a233a !important;
+  color: #f8fafc !important;
+}
+
+html[data-theme="dark"] #feeChannel option {
+  background-color: #1a233a !important;
+  color: #f8fafc !important;
+}
