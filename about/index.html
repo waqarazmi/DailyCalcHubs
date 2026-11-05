@@ -12,8 +12,8 @@
       } catch (e) {}
     })();
   </script>
-  <title>About DailyCalcHubs — Precision Everyday Financial &amp; Utility Calculators</title>
-  <meta name="description" content="Learn about DailyCalcHubs, our mission to simplify everyday finance, remittance, salary, Iqama, and travel calculations for Gulf expatriates and global households.">
+  <title>About DailyCalcHubs — Company Hub, Principles &amp; Legal Governance</title>
+  <meta name="description" content="Learn about DailyCalcHubs, our company mission, client-side engineering principles, and institutional governance. Access our official support desk, legal disclaimer, privacy policy, and terms of service.">
   <meta name="keywords" content="about dailycalchubs, saudi financial calculators, expatriate salary tools, remittance comparison, everyday utility calculators">
   <link rel="canonical" href="https://dailycalchubs.com/about/">
   <link rel="alternate" hreflang="en" href="https://dailycalchubs.com/about/">
@@ -31,8 +31,8 @@
   <meta property="og:type" content="website">
   <meta property="og:locale" content="en_US">
   <meta property="og:url" content="https://dailycalchubs.com/about/">
-  <meta property="og:title" content="About DailyCalcHubs — Precision Everyday Financial &amp; Utility Calculators">
-  <meta property="og:description" content="Learn about DailyCalcHubs, our mission to provide transparent, high-precision everyday financial, administrative, and travel calculation engines.">
+  <meta property="og:title" content="About DailyCalcHubs — Company Hub, Principles &amp; Legal Governance">
+  <meta property="og:description" content="Learn about DailyCalcHubs, our company mission, client-side engineering principles, and institutional governance. Access our official support desk, legal disclaimer, privacy policy, and terms of service.">
   <meta property="og:image" content="https://dailycalchubs.com/og-image.jpg">
   <meta property="og:image:secure_url" content="https://dailycalchubs.com/og-image.jpg">
   <meta property="og:image:width" content="1200">
@@ -41,8 +41,8 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="About DailyCalcHubs — Precision Everyday Financial &amp; Utility Calculators">
-  <meta name="twitter:description" content="Learn about DailyCalcHubs, our mission to provide transparent, high-precision everyday financial, administrative, and travel calculation engines.">
+  <meta name="twitter:title" content="About DailyCalcHubs — Company Hub, Principles &amp; Legal Governance">
+  <meta name="twitter:description" content="Learn about DailyCalcHubs, our company mission, client-side engineering principles, and institutional governance. Access our official support desk, legal disclaimer, privacy policy, and terms of service.">
   <meta name="twitter:image" content="https://dailycalchubs.com/og-image.jpg">
 
   <!-- DailyCalcHubs Owner Admin Exclusion Mode (Zero GA4 Views / Zero AdSense Impressions) -->
@@ -152,6 +152,100 @@
     .tool-name { font-size: 13.5px; font-weight: 700; color: var(--navy-dark); }
     .tool-sub { font-size: 11.5px; color: var(--text-muted); }
 
+    /* Institutional Hub Directory Cards */
+    .institutional-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      margin: 24px 0 32px;
+    }
+    @media (max-width: 768px) {
+      .institutional-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .institutional-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.25s ease;
+      text-decoration: none;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    }
+    .institutional-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+      border-color: #0284c7;
+    }
+    .institutional-card-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 12px;
+    }
+    .institutional-card-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+    .institutional-card-title {
+      font-size: 16.5px;
+      font-weight: 700;
+      color: #0f172a;
+      line-height: 1.35;
+    }
+    .institutional-card-desc {
+      font-size: 13.5px;
+      color: #64748b;
+      line-height: 1.6;
+      margin-bottom: 16px;
+      flex-grow: 1;
+    }
+    .institutional-card-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: #0284c7;
+    }
+    .institutional-card-cta i {
+      font-size: 12px;
+      transition: transform 0.2s ease;
+    }
+    .institutional-card:hover .institutional-card-cta i {
+      transform: translateX(4px);
+    }
+
+    /* Night Mode Styling */
+    html[data-theme="dark"] .institutional-card {
+      background: #131b2e;
+      border-color: #1e293b;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    }
+    html[data-theme="dark"] .institutional-card:hover {
+      border-color: #38bdf8;
+      box-shadow: 0 10px 20px -3px rgba(0, 0, 0, 0.5);
+    }
+    html[data-theme="dark"] .institutional-card-title {
+      color: #f8fafc;
+    }
+    html[data-theme="dark"] .institutional-card-desc {
+      color: #94a3b8;
+    }
+    html[data-theme="dark"] .institutional-card-cta {
+      color: #38bdf8;
+    }
+
     /* Footer */
     .site-footer { background: var(--navy-footer); color: #cbd5e1; padding: 48px 20px 24px; font-size: 13.5px; }
     .footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 32px; margin-bottom: 36px; }
@@ -257,7 +351,7 @@
             <span class="mega-cat-icon-badge" style="background:#eef2ff; color:#4f46e5; border:1px solid #c7d2fe;">
               <i class="fas fa-building"></i>
             </span>
-            <span class="mega-cat-tab-title">About Us</span>
+            <span class="mega-cat-tab-title">Company</span>
             <span class="mega-cat-tab-count">5</span>
             <i class="fas fa-chevron-right mega-tab-arrow"></i>
           </button>
@@ -399,7 +493,7 @@
                   <i class="fas fa-building"></i>
                 </span>
                 <div>
-                  <div class="mega-panel-title">About Us</div>
+                  <div class="mega-panel-title">Company</div>
                   <p class="mega-panel-desc">Company information and legal policies</p>
                 </div>
               </div>
@@ -429,15 +523,15 @@
         </div>
           <div class="nav-dropdown-item category-dropdown-item" id="aboutUsDropdown">
             <button type="button" class="nav-link-item nav-dropdown-btn active" aria-expanded="false" aria-haspopup="true">
-              <span>About Us</span>
+              <span>Company</span>
               <i class="fas fa-chevron-down nav-dropdown-arrow"></i>
             </button>
             <div class="category-dropdown-menu" role="menu">
               <a href="/about/" class="category-dropdown-link active" aria-current="page" role="menuitem">
-                <span class="category-dropdown-bullet"></span><span class="category-dropdown-text">About Us</span>
+                <span class="category-dropdown-bullet"></span><span class="category-dropdown-text">About DailyCalcHubs</span>
               </a>
               <a href="/contact/" class="category-dropdown-link" role="menuitem">
-                <span class="category-dropdown-bullet"></span><span class="category-dropdown-text">Contact</span>
+                <span class="category-dropdown-bullet"></span><span class="category-dropdown-text">Contact &amp; Support</span>
               </a>
               <a href="/disclaimer/" class="category-dropdown-link" role="menuitem">
                 <span class="category-dropdown-bullet"></span><span class="category-dropdown-text">Disclaimer</span>
@@ -446,7 +540,7 @@
                 <span class="category-dropdown-bullet"></span><span class="category-dropdown-text">Privacy Policy</span>
               </a>
               <a href="/terms/" class="category-dropdown-link" role="menuitem">
-                <span class="category-dropdown-bullet"></span><span class="category-dropdown-text">Terms of Use</span>
+                <span class="category-dropdown-bullet"></span><span class="category-dropdown-text">Terms of Service</span>
               </a>
             </div>
           </div>
@@ -640,14 +734,14 @@
     <div class="breadcrumbs-wrap">
       <a href="/"><i class="fas fa-home"></i> Home</a>
       <i class="fas fa-chevron-right" style="font-size: 10px;"></i>
-      <span>About DailyCalcHubs</span>
+      <span>Company Hub (About Us)</span>
     </div>
   </section>
 
   <!-- Hero Section -->
   <section class="page-hero">
     <div class="hero-content">
-      <div class="badge-pill"><i class="fas fa-circle-info"></i> Transparent Everyday Computation</div>
+      <div class="badge-pill"><i class="fas fa-building"></i> Company Hub &amp; Institutional Governance</div>
       <h1>About DailyCalcHubs</h1>
       <p>Precision calculation engines designed to demystify complex financial, administrative, spiritual, and travel decisions for residents, expatriates, and families across Saudi Arabia and the GCC.</p>
     </div>
@@ -692,6 +786,75 @@
           <div class="pillar-title">Zero Dark Patterns</div>
           <div class="pillar-desc">No deceptive buttons, no forced sign-ups, and no paywalls. We provide clean, fast, mobile-friendly tools that deliver instant answers without obstruction.</div>
         </div>
+      </div>
+
+      <h2><i class="fas fa-sitemap"></i> Institutional Governance &amp; Support Directory</h2>
+      <p>DailyCalcHubs operates with strict architectural transparency and zero-storage user privacy. Navigate our specialized institutional departments, compliance standards, and official support channels below:</p>
+
+      <div class="institutional-grid">
+        <a href="/contact/" class="institutional-card">
+          <div>
+            <div class="institutional-card-header">
+              <div class="institutional-card-icon" style="background: #e0f2fe; color: #0284c7; border: 1px solid #bae6fd;">
+                <i class="fas fa-headset"></i>
+              </div>
+              <div class="institutional-card-title">Contact &amp; Support Desk</div>
+            </div>
+            <div class="institutional-card-desc">Direct communication channels, 1-business-day response SLA, ticket routing for computational discrepancies, technical support, and institutional inquiries.</div>
+          </div>
+          <div class="institutional-card-cta">
+            <span>Contact Support Team</span>
+            <i class="fas fa-arrow-right"></i>
+          </div>
+        </a>
+
+        <a href="/disclaimer/" class="institutional-card">
+          <div>
+            <div class="institutional-card-header">
+              <div class="institutional-card-icon" style="background: #fef3c7; color: #d97706; border: 1px solid #fde68a;">
+                <i class="fas fa-scale-balanced"></i>
+              </div>
+              <div class="institutional-card-title">Legal &amp; Regulatory Disclaimer</div>
+            </div>
+            <div class="institutional-card-desc">Operational autonomy notices, regulatory boundaries regarding ZATCA, MHRSD, and SAMA frameworks, and formal disclaimers for non-binding informational planning.</div>
+          </div>
+          <div class="institutional-card-cta">
+            <span>Read Legal Disclaimer</span>
+            <i class="fas fa-arrow-right"></i>
+          </div>
+        </a>
+
+        <a href="/privacy-policy/" class="institutional-card">
+          <div>
+            <div class="institutional-card-header">
+              <div class="institutional-card-icon" style="background: #dcfce7; color: #16a34a; border: 1px solid #bbf7d0;">
+                <i class="fas fa-shield-halved"></i>
+              </div>
+              <div class="institutional-card-title">Privacy Policy &amp; Data Security</div>
+            </div>
+            <div class="institutional-card-desc">Client-side local execution guarantees, zero-server-storage commitments, compliance with the Saudi Personal Data Protection Law (PDPL), and Google Consent Mode v2 integration.</div>
+          </div>
+          <div class="institutional-card-cta">
+            <span>Review Privacy Policy</span>
+            <i class="fas fa-arrow-right"></i>
+          </div>
+        </a>
+
+        <a href="/terms/" class="institutional-card">
+          <div>
+            <div class="institutional-card-header">
+              <div class="institutional-card-icon" style="background: #f3e8ff; color: #9333ea; border: 1px solid #e9d5ff;">
+                <i class="fas fa-file-contract"></i>
+              </div>
+              <div class="institutional-card-title">Terms of Service &amp; Usage Rules</div>
+            </div>
+            <div class="institutional-card-desc">Acceptable use policies, platform availability warranties, intellectual property protections, algorithmic limitations, and user obligations.</div>
+          </div>
+          <div class="institutional-card-cta">
+            <span>View Terms of Service</span>
+            <i class="fas fa-arrow-right"></i>
+          </div>
+        </a>
       </div>
 
       <h2><i class="fas fa-users"></i> Who DailyCalcHubs Is For</h2>

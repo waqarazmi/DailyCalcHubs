@@ -548,10 +548,10 @@
                        },
                        {
                            "key":  "about",
-                           "enTabTitle":  "About Us",
-                           "arTabTitle":  "من نحن",
-                           "enTitle":  "About Us",
-                           "arTitle":  "من نحن",
+                           "enTabTitle":  "Company",
+                           "arTabTitle":  "عن المنصة",
+                           "enTitle":  "Company",
+                           "arTitle":  "عن المنصة",
                            "enDesc":  "Company information and legal policies",
                            "arDesc":  "معلومات الشركة والسياسات القانونية",
                            "enHub":  "/about/",
@@ -559,11 +559,11 @@
                            "enTools":  [
                                            {
                                                "url":  "/about/",
-                                               "title":  "About Us"
+                                               "title":  "About DailyCalcHubs"
                                            },
                                            {
                                                "url":  "/contact/",
-                                               "title":  "Contact"
+                                               "title":  "Contact & Support"
                                            },
                                            {
                                                "url":  "/disclaimer/",
@@ -575,17 +575,17 @@
                                            },
                                            {
                                                "url":  "/terms/",
-                                               "title":  "Terms of Use"
+                                               "title":  "Terms of Service"
                                            }
                                        ],
                            "arTools":  [
                                            {
                                                "url":  "/ar/about/",
-                                               "title":  "من نحن"
+                                               "title":  "عن ديلي كالك هبز"
                                            },
                                            {
                                                "url":  "/ar/contact/",
-                                               "title":  "اتصل بنا"
+                                               "title":  "اتصل بنا والدعم"
                                            },
                                            {
                                                "url":  "/ar/disclaimer/",
