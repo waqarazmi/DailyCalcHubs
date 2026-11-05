@@ -6700,6 +6700,19 @@ html[data-theme="dark"] body:has(#iqamaDuration) .amount-chip-btn.active {
   color: #ffffff !important;
 }
 
+/* Arabic Saudi Iqama Calculator - 2026 Standards Badge Night Mode Colors */
+html[data-theme="dark"]:has(head link[rel="canonical"][href="https://dailycalchubs.com/ar/saudi-iqama-calculator/"]) .calc-status-badge,
+html[data-theme="dark"] body:has(#iqamaDuration) .calc-status-badge {
+  background: #292318 !important;
+  color: #fbbf24 !important;
+  border-color: #80612d !important;
+}
+
+html[data-theme="dark"]:has(head link[rel="canonical"][href="https://dailycalchubs.com/ar/saudi-iqama-calculator/"]) .calc-status-badge i,
+html[data-theme="dark"] body:has(#iqamaDuration) .calc-status-badge i {
+  color: #fbbf24 !important;
+}
+
 /* Target 5: Saudi Salary Calculator — Statutory Applicability Note */
 html[data-theme="dark"] div[style*="border-left:4px solid #7c3aed"],
 html[data-theme="dark"] div[style*="border-left: 4px solid #7c3aed"] {
