@@ -665,8 +665,7 @@
       if (isAboutPage) {
         // Target 8: About Us
         for (var i = 0; i < accItems.length; i++) {
-          var aboutLink = accItems[i].querySelector('a[href="/about/"], a[href="/ar/about/"]');
-          if (aboutLink) {
+          if (accItems[i].getAttribute('data-cat') === 'about') {
             targetItem = accItems[i];
             break;
           }
