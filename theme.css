@@ -3149,6 +3149,11 @@ html[data-theme="dark"] .nav-link-item.active::after {
   background: #f1f5f9 !important;
 }
 
+.nav-dropdown-btn:focus-visible {
+  outline: 2px solid #0284c7 !important;
+  outline-offset: 1px !important;
+}
+
 .nav-dropdown-arrow {
   font-size: 11px !important;
   transition: transform 0.2s ease !important;
@@ -4288,9 +4293,15 @@ html[data-theme="dark"] .nav-dropdown-btn {
 }
 
 html[data-theme="dark"] .nav-dropdown-btn:hover,
-html[data-theme="dark"] .nav-dropdown-item.active .nav-dropdown-btn {
+html[data-theme="dark"] .nav-dropdown-item.active .nav-dropdown-btn,
+html[data-theme="dark"] .nav-dropdown-item:focus-within .nav-dropdown-btn,
+html[data-theme="dark"] .nav-dropdown-btn:focus {
   color: #38bdf8 !important;
   background: #1e293b !important;
+}
+
+html[data-theme="dark"] .nav-dropdown-btn:focus-visible {
+  outline-color: #38bdf8 !important;
 }
 
 html[data-theme="dark"] .explore-mega-menu {
@@ -5758,6 +5769,10 @@ html[data-theme="dark"] #aboutUsDropdown:focus-within {
   color: #334155 !important;
   border-radius: 0 8px 8px 0 !important;
   transition: color 0.15s ease, transform 0.2s ease !important;
+}
+#aboutUsDropdown .about-arrow-btn:focus-within,
+#aboutUsDropdown .about-arrow-btn:focus {
+  background: transparent !important;
 }
 .about-hub-link.active,
 #aboutUsDropdown.active .about-hub-link,
