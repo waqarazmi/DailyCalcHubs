@@ -6584,3 +6584,55 @@ html[data-theme="dark"] div[style*="border-right: 4px solid #7c3aed"] a {
   color: #a78bfa !important;
   text-decoration: underline !important;
 }
+
+/* --------------------------------------------------------------------------
+   8. Arabic Shariah SIP Calculator — Targeted Night Mode Visibility Repairs
+   -------------------------------------------------------------------------- */
+
+/* Target 1: Projected Wealth Result Card (Highlight) */
+html[data-theme="dark"]:has(head link[rel="canonical"][href="https://dailycalchubs.com/ar/shariah-sip-calculator/"]) .sip-result-card.highlight,
+html[data-theme="dark"] body:has(#hubSipMonthly) .sip-result-card.highlight {
+  background: #241c10 !important;
+  background-image: none !important;
+  border: 1.5px solid #b45309 !important;
+}
+
+html[data-theme="dark"]:has(head link[rel="canonical"][href="https://dailycalchubs.com/ar/shariah-sip-calculator/"]) .sip-result-card.highlight .sip-result-label,
+html[data-theme="dark"] body:has(#hubSipMonthly) .sip-result-card.highlight .sip-result-label {
+  color: #fde68a !important;
+}
+
+html[data-theme="dark"]:has(head link[rel="canonical"][href="https://dailycalchubs.com/ar/shariah-sip-calculator/"]) .sip-result-card.highlight .sip-result-val,
+html[data-theme="dark"] body:has(#hubSipMonthly) .sip-result-card.highlight .sip-result-val {
+  color: #fbbf24 !important;
+}
+
+html[data-theme="dark"]:has(head link[rel="canonical"][href="https://dailycalchubs.com/ar/shariah-sip-calculator/"]) .sip-result-card.highlight .sip-result-sub,
+html[data-theme="dark"] body:has(#hubSipMonthly) .sip-result-card.highlight .sip-result-sub {
+  color: #94a3b8 !important;
+}
+
+/* Target 2: Shariah Disclaimer Callout Box */
+html[data-theme="dark"]:has(head link[rel="canonical"][href="https://dailycalchubs.com/ar/shariah-sip-calculator/"]) .shariah-disclaimer-box,
+html[data-theme="dark"] body:has(#hubSipMonthly) .shariah-disclaimer-box {
+  background: #1a233a !important;
+  border: 1px solid #334155 !important;
+  border-right: 4px solid #ca8a04 !important;
+  color: #cbd5e1 !important;
+}
+
+html[data-theme="dark"]:has(head link[rel="canonical"][href="https://dailycalchubs.com/ar/shariah-sip-calculator/"]) .shariah-disclaimer-box strong,
+html[data-theme="dark"] body:has(#hubSipMonthly) .shariah-disclaimer-box strong {
+  color: #fde68a !important;
+}
+
+/* Target 3: Showcase Title Heading & Dividing Header Border */
+html[data-theme="dark"]:has(head link[rel="canonical"][href="https://dailycalchubs.com/ar/shariah-sip-calculator/"]) .showcase-title,
+html[data-theme="dark"] body:has(#hubSipMonthly) .showcase-title {
+  color: #f8fafc !important;
+}
+
+html[data-theme="dark"]:has(head link[rel="canonical"][href="https://dailycalchubs.com/ar/shariah-sip-calculator/"]) .showcase-header,
+html[data-theme="dark"] body:has(#hubSipMonthly) .showcase-header {
+  border-bottom-color: #1e293b !important;
+}
