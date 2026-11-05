@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -202,6 +202,180 @@
     .input-with-addons:focus-within { border-color: var(--green-saudi); box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.15); }
     .input-addon-badge { background: #f8fafc; padding: 12px 16px; font-size: 14px; font-weight: 800; color: var(--navy-dark); border-right: 1px solid #e2e8f0; display: flex; align-items: center; gap: 6px; }
     .calc-input { flex: 1; border: none; outline: none; padding: 12px 16px; font-size: 18px; font-weight: 700; color: var(--navy-dark); font-family: inherit; width: 100%; }
+
+    /* Accessible Contained Custom Fee Dropdown */
+    .custom-fee-dropdown-wrap {
+      position: relative;
+      overflow: visible !important;
+    }
+    .custom-fee-dropdown-wrap.is-open {
+      border-color: var(--green-saudi, #16a34a);
+      box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.15);
+    }
+    html[data-theme="dark"] .custom-fee-dropdown-wrap.is-open {
+      border-color: #38bdf8 !important;
+      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2) !important;
+      background: #1e293b !important;
+    }
+    .sr-only-fee-select {
+      position: absolute !important;
+      width: 1px !important;
+      height: 1px !important;
+      padding: 0 !important;
+      margin: -1px !important;
+      overflow: hidden !important;
+      clip: rect(0, 0, 0, 0) !important;
+      white-space: nowrap !important;
+      border: 0 !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+    }
+    .custom-fee-trigger {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      background: transparent;
+      border: none;
+      outline: none;
+      padding: 12px 16px;
+      font-size: 14.5px;
+      font-weight: 700;
+      color: var(--navy-dark, #0f172a);
+      font-family: inherit;
+      cursor: pointer;
+      text-align: left;
+      width: 100%;
+      min-width: 0;
+      box-sizing: border-box;
+    }
+    .custom-fee-trigger:focus-visible {
+      outline: none;
+    }
+    .custom-fee-trigger-text {
+      flex: 1;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      min-width: 0;
+    }
+    .custom-fee-trigger-arrow {
+      color: #64748b;
+      font-size: 13px;
+      transition: transform 0.2s ease, color 0.2s ease;
+      flex-shrink: 0;
+    }
+    .custom-fee-dropdown-wrap.is-open .custom-fee-trigger-arrow {
+      transform: rotate(180deg);
+      color: var(--green-saudi, #16a34a);
+    }
+    html[data-theme="dark"] .custom-fee-dropdown-wrap.is-open .custom-fee-trigger-arrow {
+      color: #38bdf8 !important;
+    }
+    .custom-fee-menu {
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+      right: 0;
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
+      background: #ffffff;
+      border: 2px solid #cbd5e1;
+      border-radius: 10px;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+      list-style: none;
+      padding: 6px;
+      margin: 0;
+      z-index: 100;
+      display: none;
+      max-height: 320px;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+    }
+    .custom-fee-dropdown-wrap.is-open .custom-fee-menu {
+      display: block;
+    }
+    .custom-fee-option {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 14px;
+      border-radius: 6px;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: #1e293b;
+      cursor: pointer;
+      transition: background 0.12s ease, color 0.12s ease;
+      margin-bottom: 2px;
+    }
+    .custom-fee-option:last-child {
+      margin-bottom: 0;
+    }
+    .custom-fee-option:hover,
+    .custom-fee-option.active-focused {
+      background: #f1f5f9;
+      color: #0f172a;
+    }
+    .custom-fee-option.selected {
+      background: #eff6ff;
+      color: #1d4ed8;
+      font-weight: 700;
+    }
+    .custom-fee-option.selected.active-focused {
+      background: #dbeafe;
+    }
+    .custom-fee-option-text {
+      flex: 1;
+      white-space: normal;
+      line-height: 1.45;
+      word-break: normal;
+    }
+    .custom-fee-check {
+      display: none;
+      color: #2563eb;
+      font-size: 13px;
+      flex-shrink: 0;
+      margin-left: 8px;
+    }
+    .custom-fee-option.selected .custom-fee-check {
+      display: inline-flex;
+      align-items: center;
+    }
+
+    /* Night Mode overrides for Custom Dropdown */
+    html[data-theme="dark"] .custom-fee-trigger {
+      color: #f8fafc !important;
+    }
+    html[data-theme="dark"] .custom-fee-trigger-arrow {
+      color: #94a3b8 !important;
+    }
+    html[data-theme="dark"] .custom-fee-menu {
+      background: #1a233a !important;
+      border: 1.5px solid #334155 !important;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.55), 0 8px 10px -6px rgba(0, 0, 0, 0.4) !important;
+    }
+    html[data-theme="dark"] .custom-fee-option {
+      color: #e2e8f0 !important;
+    }
+    html[data-theme="dark"] .custom-fee-option:hover,
+    html[data-theme="dark"] .custom-fee-option.active-focused {
+      background: #24304f !important;
+      color: #ffffff !important;
+    }
+    html[data-theme="dark"] .custom-fee-option.selected {
+      background: rgba(56, 189, 248, 0.16) !important;
+      color: #38bdf8 !important;
+    }
+    html[data-theme="dark"] .custom-fee-option.selected.active-focused {
+      background: rgba(56, 189, 248, 0.28) !important;
+      color: #38bdf8 !important;
+    }
+    html[data-theme="dark"] .custom-fee-check {
+      color: #38bdf8 !important;
+    }
 
     .amount-chips-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
     .amount-chip-btn { background: #f1f5f9; border: 1px solid #e2e8f0; color: #334155; font-size: 12.5px; font-weight: 700; padding: 5px 12px; border-radius: 6px; cursor: pointer; transition: all 0.15s; }
@@ -815,16 +989,57 @@
         </div>
 
         <div class="form-group">
-          <label class="form-label" for="feeChannel">Remittance Channel / Method:</label>
-          <div class="input-with-addons">
-            <div class="input-addon-badge"><i class="fas fa-building-columns" style="color:#0284c7;"></i> METHOD</div>
-            <select id="feeChannel" class="calc-input select-currency-addon" onchange="recalcFee()">
+          <label class="form-label" id="feeChannelLabel" for="feeChannelTrigger">Remittance Channel / Method:</label>
+          <div class="input-with-addons custom-fee-dropdown-wrap" id="feeDropdownWrap">
+            <div class="input-addon-badge" aria-hidden="true"><i class="fas fa-building-columns" style="color:#0284c7;"></i> METHOD</div>
+
+            <select id="feeChannel" class="sr-only-fee-select" tabindex="-1" aria-hidden="true" onchange="recalcFee()">
               <option value="wallet_zero" selected>Promotional Digital Wallet (e.g. Barq - 0 SAR Fee)</option>
               <option value="wallet_standard">Standard Digital Wallet (e.g. urpay - 10 SAR Fee + 15% VAT)</option>
               <option value="bank_app">Commercial Bank App / STC Pay / Enjaz (15 SAR Fee + 15% VAT)</option>
               <option value="branch_counter">Physical Exchange Counter (25 SAR Fee + 15% VAT)</option>
               <option value="express_cash">Express Cash Counter (Western Union / MoneyGram - 25 SAR Fee + 15% VAT)</option>
             </select>
+
+            <button type="button"
+                    id="feeChannelTrigger"
+                    class="custom-fee-trigger"
+                    role="combobox"
+                    aria-haspopup="listbox"
+                    aria-expanded="false"
+                    aria-controls="feeChannelListbox"
+                    aria-labelledby="feeChannelLabel feeChannelTriggerText"
+                    aria-activedescendant="feeOpt-wallet_zero">
+              <span id="feeChannelTriggerText" class="custom-fee-trigger-text">Promotional Digital Wallet (e.g. Barq - 0 SAR Fee)</span>
+              <span class="custom-fee-trigger-arrow" aria-hidden="true"><i class="fas fa-chevron-down"></i></span>
+            </button>
+
+            <ul id="feeChannelListbox"
+                class="custom-fee-menu"
+                role="listbox"
+                aria-labelledby="feeChannelLabel"
+                tabindex="-1">
+              <li id="feeOpt-wallet_zero" class="custom-fee-option selected" role="option" aria-selected="true" data-value="wallet_zero">
+                <span class="custom-fee-option-text">Promotional Digital Wallet (e.g. Barq - 0 SAR Fee)</span>
+                <span class="custom-fee-check" aria-hidden="true"><i class="fas fa-check"></i></span>
+              </li>
+              <li id="feeOpt-wallet_standard" class="custom-fee-option" role="option" aria-selected="false" data-value="wallet_standard">
+                <span class="custom-fee-option-text">Standard Digital Wallet (e.g. urpay - 10 SAR Fee + 15% VAT)</span>
+                <span class="custom-fee-check" aria-hidden="true"><i class="fas fa-check"></i></span>
+              </li>
+              <li id="feeOpt-bank_app" class="custom-fee-option" role="option" aria-selected="false" data-value="bank_app">
+                <span class="custom-fee-option-text">Commercial Bank App / STC Pay / Enjaz (15 SAR Fee + 15% VAT)</span>
+                <span class="custom-fee-check" aria-hidden="true"><i class="fas fa-check"></i></span>
+              </li>
+              <li id="feeOpt-branch_counter" class="custom-fee-option" role="option" aria-selected="false" data-value="branch_counter">
+                <span class="custom-fee-option-text">Physical Exchange Counter (25 SAR Fee + 15% VAT)</span>
+                <span class="custom-fee-check" aria-hidden="true"><i class="fas fa-check"></i></span>
+              </li>
+              <li id="feeOpt-express_cash" class="custom-fee-option" role="option" aria-selected="false" data-value="express_cash">
+                <span class="custom-fee-option-text">Express Cash Counter (Western Union / MoneyGram - 25 SAR Fee + 15% VAT)</span>
+                <span class="custom-fee-check" aria-hidden="true"><i class="fas fa-check"></i></span>
+              </li>
+            </ul>
           </div>
         </div>
 
@@ -1052,7 +1267,180 @@
     if (typeof window.dchTrackCalculation === 'function') window.dchTrackCalculation('saudi-remittance-calculator_remittance-fee');
     }
 
+        function initCustomFeeDropdown() {
+      const wrap = document.getElementById('feeDropdownWrap');
+      const trigger = document.getElementById('feeChannelTrigger');
+      const triggerText = document.getElementById('feeChannelTriggerText');
+      const listbox = document.getElementById('feeChannelListbox');
+      const nativeSelect = document.getElementById('feeChannel');
+      if (!wrap || !trigger || !triggerText || !listbox || !nativeSelect) return;
+
+      const options = Array.from(listbox.querySelectorAll('.custom-fee-option'));
+      let focusedIndex = -1;
+      let typeaheadBuffer = '';
+      let typeaheadTimeout = null;
+
+      function isOpen() {
+        return wrap.classList.contains('is-open');
+      }
+
+      function openDropdown() {
+        if (isOpen()) return;
+        wrap.classList.add('is-open');
+        trigger.setAttribute('aria-expanded', 'true');
+        const selectedOpt = options.find(opt => opt.getAttribute('data-value') === nativeSelect.value);
+        focusedIndex = selectedOpt ? options.indexOf(selectedOpt) : 0;
+        updateFocusedOption(focusedIndex);
+      }
+
+      function closeDropdown(focusTrigger = true) {
+        if (!isOpen()) return;
+        wrap.classList.remove('is-open');
+        trigger.setAttribute('aria-expanded', 'false');
+        options.forEach(opt => opt.classList.remove('active-focused'));
+        if (focusTrigger) {
+          trigger.focus();
+        }
+      }
+
+      function updateFocusedOption(index) {
+        if (index < 0) index = 0;
+        if (index >= options.length) index = options.length - 1;
+        focusedIndex = index;
+        options.forEach((opt, i) => {
+          if (i === index) {
+            opt.classList.add('active-focused');
+            trigger.setAttribute('aria-activedescendant', opt.id);
+            opt.scrollIntoView({ block: 'nearest' });
+          } else {
+            opt.classList.remove('active-focused');
+          }
+        });
+      }
+
+      function selectOption(val, triggerChange = true) {
+        nativeSelect.value = val;
+        options.forEach(opt => {
+          const isSelected = opt.getAttribute('data-value') === val;
+          opt.classList.toggle('selected', isSelected);
+          opt.setAttribute('aria-selected', isSelected ? 'true' : 'false');
+          if (isSelected) {
+            const textSpan = opt.querySelector('.custom-fee-option-text');
+            triggerText.textContent = textSpan ? textSpan.textContent.trim() : opt.textContent.trim();
+            trigger.setAttribute('aria-activedescendant', opt.id);
+          }
+        });
+        if (triggerChange) {
+          nativeSelect.dispatchEvent(new Event('change', { bubbles: true }));
+        }
+      }
+
+      // Sync initial state
+      selectOption(nativeSelect.value, false);
+
+      // Trigger click
+      trigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (isOpen()) {
+          closeDropdown(true);
+        } else {
+          openDropdown();
+        }
+      });
+
+      // Option click
+      options.forEach((opt, idx) => {
+        opt.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const val = opt.getAttribute('data-value');
+          selectOption(val, true);
+          closeDropdown(true);
+        });
+        opt.addEventListener('mouseenter', () => {
+          updateFocusedOption(idx);
+        });
+      });
+
+      // Document click outside
+      document.addEventListener('click', (e) => {
+        if (!wrap.contains(e.target)) {
+          closeDropdown(false);
+        }
+      });
+
+      // Keyboard navigation on trigger
+      trigger.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          if (!isOpen()) {
+            openDropdown();
+          } else {
+            updateFocusedOption(focusedIndex + 1);
+          }
+        } else if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          if (!isOpen()) {
+            openDropdown();
+          } else {
+            updateFocusedOption(focusedIndex - 1);
+          }
+        } else if (e.key === 'Home') {
+          if (isOpen()) {
+            e.preventDefault();
+            updateFocusedOption(0);
+          }
+        } else if (e.key === 'End') {
+          if (isOpen()) {
+            e.preventDefault();
+            updateFocusedOption(options.length - 1);
+          }
+        } else if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          if (!isOpen()) {
+            openDropdown();
+          } else if (focusedIndex >= 0 && focusedIndex < options.length) {
+            const val = options[focusedIndex].getAttribute('data-value');
+            selectOption(val, true);
+            closeDropdown(true);
+          }
+        } else if (e.key === 'Escape') {
+          if (isOpen()) {
+            e.preventDefault();
+            closeDropdown(true);
+          }
+        } else if (e.key === 'Tab') {
+          if (isOpen()) {
+            closeDropdown(false);
+          }
+        } else if (e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey) {
+          // Type-ahead search
+          clearTimeout(typeaheadTimeout);
+          typeaheadBuffer += e.key.toLowerCase();
+          typeaheadTimeout = setTimeout(() => { typeaheadBuffer = ''; }, 600);
+
+          const matchedIndex = options.findIndex(opt => {
+            const text = opt.textContent.trim().toLowerCase();
+            return text.startsWith(typeaheadBuffer) || text.includes(typeaheadBuffer);
+          });
+          if (matchedIndex !== -1) {
+            if (!isOpen()) openDropdown();
+            updateFocusedOption(matchedIndex);
+          }
+        }
+      });
+
+      // Sync if nativeSelect changed externally
+      nativeSelect.addEventListener('change', () => {
+        const currentVal = nativeSelect.value;
+        const selectedOpt = options.find(opt => opt.getAttribute('data-value') === currentVal);
+        if (selectedOpt && !selectedOpt.classList.contains('selected')) {
+          selectOption(currentVal, false);
+        }
+      });
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
+      initCustomFeeDropdown();
       document.getElementById('feeAmount').addEventListener('input', recalcFee);
       recalcFee();
     });
