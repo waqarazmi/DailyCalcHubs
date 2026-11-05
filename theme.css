@@ -6540,26 +6540,30 @@ html[data-theme="dark"] div[style*="color: #64748b"] {
    5. Travel Booking Calculator Specific Repairs (Issue A & Issue B)
    -------------------------------------------------------------------------- */
 
-/* Issue A: English Travel Preset Controls (8 Preset Buttons in Vacation Tab) */
-html[data-theme="dark"] #tabContentTrip .mini-chip-btn {
+/* Issue A: English Travel Preset Controls (Vacation Tab & Group Expense Splitter) */
+html[data-theme="dark"] #tabContentTrip .mini-chip-btn,
+html[data-theme="dark"] #tabContentSplit .mini-chip-btn {
   background: #1a233a !important;
   border: 1px solid #334155 !important;
   color: #cbd5e1 !important;
 }
 
-html[data-theme="dark"] #tabContentTrip .mini-chip-btn:hover {
+html[data-theme="dark"] #tabContentTrip .mini-chip-btn:hover,
+html[data-theme="dark"] #tabContentSplit .mini-chip-btn:hover {
   background: #e11d48 !important;
   border-color: #e11d48 !important;
   color: #ffffff !important;
 }
 
-html[data-theme="dark"] #tabContentTrip .mini-chip-btn.active {
+html[data-theme="dark"] #tabContentTrip .mini-chip-btn.active,
+html[data-theme="dark"] #tabContentSplit .mini-chip-btn.active {
   background: #e11d48 !important;
   border-color: #e11d48 !important;
   color: #ffffff !important;
 }
 
-html[data-theme="dark"] #tabContentTrip .mini-chip-btn:focus-visible {
+html[data-theme="dark"] #tabContentTrip .mini-chip-btn:focus-visible,
+html[data-theme="dark"] #tabContentSplit .mini-chip-btn:focus-visible {
   outline: 2px solid #e11d48 !important;
   outline-offset: 1px !important;
 }
