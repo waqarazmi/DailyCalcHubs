@@ -4911,6 +4911,17 @@ html[data-theme="dark"] .comparison-table td {
   border-bottom-color: #1e293b !important;
   color: #f8fafc !important;
 }
+/* Remittance Dynamic Comparison Table - Speed Column Night Mode Contrast */
+html[data-theme="dark"] .provider-cell-speed span {
+  color: #94a3b8 !important;
+}
+html[data-theme="dark"] .provider-cell-speed span[style*="#16a34a"],
+html[data-theme="dark"] .provider-cell-speed span:has(i) {
+  color: #16a34a !important;
+}
+html[data-theme="dark"] .provider-cell-speed span i {
+  color: #16a34a !important;
+}
 html[data-theme="dark"] .comparison-table-wrap {
   border-color: #1e293b !important;
 }
