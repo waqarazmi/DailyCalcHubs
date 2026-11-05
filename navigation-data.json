@@ -548,19 +548,15 @@
                        },
                        {
                            "key":  "about",
-                           "enTabTitle":  "Company",
-                           "arTabTitle":  "عن المنصة",
-                           "enTitle":  "Company",
-                           "arTitle":  "عن المنصة",
+                           "enTabTitle":  "About Us",
+                           "arTabTitle":  "من نحن",
+                           "enTitle":  "About Us",
+                           "arTitle":  "من نحن",
                            "enDesc":  "Company information and legal policies",
                            "arDesc":  "معلومات الشركة والسياسات القانونية",
                            "enHub":  "/about/",
                            "arHub":  "/ar/about/",
                            "enTools":  [
-                                           {
-                                               "url":  "/about/",
-                                               "title":  "About DailyCalcHubs"
-                                           },
                                            {
                                                "url":  "/contact/",
                                                "title":  "Contact & Support"
@@ -580,12 +576,8 @@
                                        ],
                            "arTools":  [
                                            {
-                                               "url":  "/ar/about/",
-                                               "title":  "عن ديلي كالك هبز"
-                                           },
-                                           {
                                                "url":  "/ar/contact/",
-                                               "title":  "اتصل بنا والدعم"
+                                               "title":  "اتصل بنا"
                                            },
                                            {
                                                "url":  "/ar/disclaimer/",
