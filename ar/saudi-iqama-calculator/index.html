@@ -1273,7 +1273,7 @@
         <div class="calc-input-group">
           <label for="iqamaDuration">مدة تجديد الإقامة ورخصة العمل</label>
           <div class="calc-input-wrap">
-            <select id="iqamaDuration" onchange="calculateHubIqama()">
+            <select id="iqamaDuration" onchange="setIqamaDuration(this.value)">
               <option value="12" selected>12 شهراً (سنة كاملة)</option>
               <option value="3">3 أشهر (ربع سنوي)</option>
               <option value="6">6 أشهر (نصف سنوي)</option>
@@ -1851,11 +1851,77 @@
       });
     }
 
+    function getValidIqamaUrlDuration() {
+      try {
+        var params = new URLSearchParams(window.location.search);
+        var dur = params.get('duration') || params.get('months');
+        if (dur) {
+          var num = parseInt(dur, 10);
+          if ([3, 6, 9, 12].indexOf(num) !== -1) {
+            return num;
+          }
+        }
+      } catch (e) {}
+      return null;
+    }
+
+    function syncIqamaLangToggleHref() {
+      try {
+        var validDur = getValidIqamaUrlDuration();
+        var langBtns = document.querySelectorAll('.lang-switch-btn');
+        langBtns.forEach(function(btn) {
+          var baseHref = btn.getAttribute('data-base-href');
+          if (!baseHref) {
+            baseHref = (btn.getAttribute('href') || '').split('?')[0];
+            btn.setAttribute('data-base-href', baseHref);
+          }
+          if (validDur !== null) {
+            btn.setAttribute('href', baseHref + '?duration=' + validDur);
+          } else {
+            btn.setAttribute('href', baseHref);
+          }
+        });
+      } catch (e) {}
+    }
+
+    function updateIqamaUrlDuration(months) {
+      try {
+        var num = parseInt(months, 10);
+        if ([3, 6, 9, 12].indexOf(num) !== -1 && window.history && window.history.pushState) {
+          var u = new URL(window.location.href);
+          if (u.searchParams.get('duration') !== String(num)) {
+            u.searchParams.set('duration', num);
+            window.history.pushState({ duration: num }, '', u.pathname + u.search + u.hash);
+          }
+        }
+      } catch (e) {}
+      syncIqamaLangToggleHref();
+    }
+
+    function setupIqamaLangToggleListeners() {
+      var langBtns = document.querySelectorAll('.lang-switch-btn');
+      langBtns.forEach(function(btn) {
+        if (!btn.dataset.iqamaDurHooked) {
+          btn.dataset.iqamaDurHooked = 'true';
+          btn.addEventListener('click', function() {
+            syncIqamaLangToggleHref();
+          });
+          btn.addEventListener('pointerenter', function() {
+            syncIqamaLangToggleHref();
+          });
+          btn.addEventListener('focus', function() {
+            syncIqamaLangToggleHref();
+          });
+        }
+      });
+    }
+
     function setIqamaDuration(months) {
       const sel = document.getElementById('iqamaDuration');
       if (sel) sel.value = months;
       syncIqamaDurationChips(months);
       calculateHubIqama();
+      updateIqamaUrlDuration(months);
     }
 
     function calculateHubIqama() {
@@ -1930,6 +1996,8 @@
     window.addEventListener('DOMContentLoaded', function() {
       initIqamaDurationFromUrl();
       calculateHubIqama();
+      syncIqamaLangToggleHref();
+      setupIqamaLangToggleListeners();
       if (window.location.hash) {
         const hash = window.location.hash;
         if (hash === '#duration' || hash === '#calculator' || hash === '#iqamaDuration') {
@@ -1941,6 +2009,12 @@
           }
         }
       }
+    });
+
+    window.addEventListener('popstate', function() {
+      initIqamaDurationFromUrl();
+      calculateHubIqama();
+      syncIqamaLangToggleHref();
     });
   </script>
   <script src="/theme.js" defer></script>
