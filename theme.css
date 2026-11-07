@@ -6643,20 +6643,24 @@ html[data-theme="dark"] body:has(#hubSipMonthly) .amount-chip-btn.active {
 }
 
 /* Target 2: English Shariah SIP Calculator — Preset Chips */
-html[data-theme="dark"] #tabContentSip .mini-chip-btn {
+html[data-theme="dark"] #tabContentSip .mini-chip-btn,
+html[data-theme="dark"] #tabContentGoal .mini-chip-btn {
   background: #1a233a !important;
   border: 1px solid #334155 !important;
   color: #cbd5e1 !important;
 }
 
 html[data-theme="dark"] #tabContentSip .mini-chip-btn:hover,
-html[data-theme="dark"] #tabContentSip .mini-chip-btn.active {
+html[data-theme="dark"] #tabContentSip .mini-chip-btn.active,
+html[data-theme="dark"] #tabContentGoal .mini-chip-btn:hover,
+html[data-theme="dark"] #tabContentGoal .mini-chip-btn.active {
   background: #b45309 !important;
   border-color: #b45309 !important;
   color: #ffffff !important;
 }
 
-html[data-theme="dark"] #tabContentSip .mini-chip-btn:focus-visible {
+html[data-theme="dark"] #tabContentSip .mini-chip-btn:focus-visible,
+html[data-theme="dark"] #tabContentGoal .mini-chip-btn:focus-visible {
   outline: 2px solid #b45309 !important;
   outline-offset: 1px !important;
 }
@@ -6795,4 +6799,32 @@ html[data-theme="dark"] body:has(#hubSipMonthly) .showcase-title {
 html[data-theme="dark"]:has(head link[rel="canonical"][href="https://dailycalchubs.com/ar/shariah-sip-calculator/"]) .showcase-header,
 html[data-theme="dark"] body:has(#hubSipMonthly) .showcase-header {
   border-bottom-color: #1e293b !important;
+}
+
+/* Target 4: Arabic Shariah SIP Calculator -- Non-Highlighted Goal Result Cards */
+html[data-theme="dark"]:has(head link[rel="canonical"][href="https://dailycalchubs.com/ar/shariah-sip-calculator/"]) #resultsGoalWrap .sip-result-card:not(.highlight),
+html[data-theme="dark"] body:has(#hubSipMonthly) #resultsGoalWrap .sip-result-card:not(.highlight) {
+  background: #1a233a !important;
+  border: 1px solid #1e293b !important;
+  color: #cbd5e1 !important;
+}
+
+html[data-theme="dark"]:has(head link[rel="canonical"][href="https://dailycalchubs.com/ar/shariah-sip-calculator/"]) #resultsGoalWrap .sip-result-card:not(.highlight) .sip-result-label,
+html[data-theme="dark"] body:has(#hubSipMonthly) #resultsGoalWrap .sip-result-card:not(.highlight) .sip-result-label {
+  color: #94a3b8 !important;
+}
+
+html[data-theme="dark"]:has(head link[rel="canonical"][href="https://dailycalchubs.com/ar/shariah-sip-calculator/"]) #resultsGoalWrap .sip-result-card:not(.highlight) .sip-result-val,
+html[data-theme="dark"] body:has(#hubSipMonthly) #resultsGoalWrap .sip-result-card:not(.highlight) .sip-result-val {
+  color: #f8fafc !important;
+}
+
+html[data-theme="dark"]:has(head link[rel="canonical"][href="https://dailycalchubs.com/ar/shariah-sip-calculator/"]) #resultsGoalWrap #resHubGoalGain,
+html[data-theme="dark"] body:has(#hubSipMonthly) #resultsGoalWrap #resHubGoalGain {
+  color: #4ade80 !important;
+}
+
+html[data-theme="dark"]:has(head link[rel="canonical"][href="https://dailycalchubs.com/ar/shariah-sip-calculator/"]) #resultsGoalWrap .sip-result-card:not(.highlight) .sip-result-sub,
+html[data-theme="dark"] body:has(#hubSipMonthly) #resultsGoalWrap .sip-result-card:not(.highlight) .sip-result-sub {
+  color: #94a3b8 !important;
 }
