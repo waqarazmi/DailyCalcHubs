@@ -93,25 +93,7 @@
         var list = mobItem.querySelector('.mobile-acc-links-list');
         if (list && list.children.length === 0) {
           var mobFrag = document.createDocumentFragment();
-          // Dedicated Hub Overview entry for calculator categories (excluding prayer & about)
-          if (cat.key !== 'prayer' && cat.key !== 'about' && (cat.enHub || cat.arHub)) {
-            var mobHubUrl = isAr ? cat.arHub : cat.enHub;
-            var mobOverviewTitle = isAr ? '\u0646\u0638\u0631\u0629 \u0639\u0627\u0645\u0629' : 'Overview';
-            var ovMob = document.createElement('a');
-            ovMob.href = mobHubUrl;
-            var isMobOvCurrent = isCurrentPage(mobHubUrl);
-            ovMob.className = isMobOvCurrent ? 'mobile-acc-tool-link active' : 'mobile-acc-tool-link';
-            if (isMobOvCurrent) {
-              ovMob.setAttribute('aria-current', 'page');
-            }
-            ovMob.textContent = mobOverviewTitle;
-            mobFrag.appendChild(ovMob);
-          }
-
           tools.forEach(function(t) {
-            var mobHubCheck = isAr ? cat.arHub : cat.enHub;
-            if (mobHubCheck && normUrl(t.url) === normUrl(mobHubCheck)) return;
-
             var a = document.createElement('a');
             a.href = t.url;
             var isCurrent = isCurrentPage(t.url);
@@ -288,9 +270,6 @@
     // Populate or update menu links
     var menu = document.getElementById('currentCategoryMenu');
     if (menu) {
-      var hubUrl = isAr ? targetCat.arHub : targetCat.enHub;
-      var overviewTitle = isAr ? '\u0646\u0638\u0631\u0629 \u0639\u0627\u0645\u0629' : 'Overview';
-
       var existingLinks = menu.querySelectorAll('.category-dropdown-link');
       if (existingLinks.length > 0) {
         // Idempotent sync: update active classes on existing links without destroying DOM
@@ -310,34 +289,7 @@
         menu.setAttribute('aria-label', catTitle);
         var frag = document.createDocumentFragment();
 
-        // 1. Dedicated Hub Overview entry at the top
-        if (hubUrl) {
-          var ovA = document.createElement('a');
-          ovA.href = hubUrl;
-          ovA.className = 'category-dropdown-link';
-          ovA.setAttribute('role', 'menuitem');
-
-          if (isCurrentPage(hubUrl)) {
-            ovA.classList.add('active');
-            ovA.setAttribute('aria-current', 'page');
-          }
-
-          var ovBullet = document.createElement('span');
-          ovBullet.className = 'category-dropdown-bullet';
-
-          var ovText = document.createElement('span');
-          ovText.className = 'category-dropdown-text';
-          ovText.textContent = overviewTitle;
-
-          ovA.appendChild(ovBullet);
-          ovA.appendChild(ovText);
-          frag.appendChild(ovA);
-        }
-
-        // 2. Child tools
         tools.forEach(function(t) {
-          if (hubUrl && normUrl(t.url) === normUrl(hubUrl)) return;
-
           var a = document.createElement('a');
           a.href = t.url;
           a.className = 'category-dropdown-link';
@@ -1054,12 +1006,13 @@
           if (dur) {
             syncIqamaNavDuration(parseInt(dur, 10));
           } else {
-            // Restore Overview
+            // Restore active state based on current page
             var menu = document.getElementById('currentCategoryMenu');
             if (menu) {
               var links = menu.querySelectorAll('.category-dropdown-link');
-              links.forEach(function(link, idx) {
-                if (idx === 0) {
+              links.forEach(function(link) {
+                var href = link.getAttribute('href');
+                if (href && isCurrentPage(href)) {
                   link.classList.add('active');
                   link.setAttribute('aria-current', 'page');
                 } else {
@@ -1071,8 +1024,9 @@
             var mobItem = document.querySelector('.mobile-accordion-item[data-cat="iqama"]');
             if (mobItem) {
               var mobLinks = mobItem.querySelectorAll('.mobile-acc-tool-link');
-              mobLinks.forEach(function(link, idx) {
-                if (idx === 0) {
+              mobLinks.forEach(function(link) {
+                var href = link.getAttribute('href');
+                if (href && isCurrentPage(href)) {
                   link.classList.add('active');
                   link.setAttribute('aria-current', 'page');
                 } else {
