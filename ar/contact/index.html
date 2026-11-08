@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
@@ -1413,28 +1413,9 @@
       statusBox.className = 'form-status';
       statusBox.style.display = 'none';
 
-      const autoReplyText = `مرحباً ${name}،\n\nشكراً لتواصلك مع DailyCalcHubs.\n\nتم استلام رسالتك بنجاح برقم التذكرة: (${ticketId}) بخصوص "${subject}".\n\nنحرص على مراجعة الاستفسار والرد خلال يوم عمل واحد.\n\nإذا كانت رسالتك تتعلق بنتيجة حاسبة معينة، يرجى تزويدنا باسم الحاسبة والمدخلات الرقمية.\n\nمع أطيب التحيات،\nفريق الدعم — DailyCalcHubs\nhttps://dailycalchubs.com/ar/`;
-
-      const payload = {
-        name: sanitizeInput(name),
-        email: sanitizeInput(email),
-        ticket_id: ticketId,
-        submission_time: timestampAST,
-        category: sanitizeInput(category),
-        subject: sanitizeInput(subject),
-        ai_triage_classification: triage.classification,
-        triage_risk_level: triage.riskLevel,
-        review_status: triage.isSafe ? 'مُجاب آلياً (مراجعة خلال يوم عمل إذا لزم)' : 'يتطلب مراجعة بشرية متخصصة',
-        message: message,
-        _subject: `تذكرة استفسار جديدة في DailyCalcHubs — ${category} [${triage.badge}] (${ticketId})`,
-        _template: 'table',
-        _captcha: 'false',
-        _autoresponse: autoReplyText
-      };
-
       try {
         // Dispatch to DailyCalcHubs Cloudflare Serverless Helpdesk API
-        await fetch('/api/contact', {
+        const response = await fetch('/api/contact', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -1456,6 +1437,11 @@
           })
         });
 
+        const resData = await response.json();
+        if (!response.ok || !resData.success) {
+          throw new Error(resData.error || 'Server error processing contact request');
+        }
+
         localStorage.setItem('dch_last_contact_time', String(nowMs));
 
         saveLocalTicket({
@@ -1463,7 +1449,7 @@
           date: timestampAST,
           category: category,
           subject: subject,
-          status: triage.isSafe ? 'تم الإرشاد الآلي' : 'قيد المراجعة البشرية',
+          status: triage.isSafe ? 'Auto-Responded' : 'Needs Review',
           isSafe: triage.isSafe
         });
 
@@ -1473,7 +1459,7 @@
             <div><i class="fas fa-circle-check"></i> <strong>تم استلام رسالتك بنجاح.</strong></div>
             <span class="ticket-id-tag">رقم التذكرة: ${ticketId}</span>
           </div>
-          <p style="margin-bottom: 8px;">شكراً لتواصلك معنا. تم إرسال تأكيد تلقائي إلى بريدك الإلكتروني (<strong>${sanitizeInput(email)}</strong>).</p>
+          <p style="margin-bottom: 8px;">شكراً لتواصلك معنا. تم إرسال تأكيد تلقائي فوراً إلى بريدك الإلكتروني (<strong>${sanitizeInput(email)}</strong>)، وقد يختلف وقت وصوله إلى صندوق الوارد بحسب مزود البريد لديك.</p>
           <p style="margin-bottom: 0;">نحرص على الرد خلال يوم عمل واحد إذا تطلب الأمر متابعة يدوية من فريقنا.</p>
         `;
 
@@ -1548,6 +1534,26 @@
       } catch (e) {}
     }
 
+        function getStatusMeta(status, lang) {
+      const s = String(status || '').trim();
+      if (s === 'Needs Review' || s === '\u062A\u062D\u062A\u0627\u062C \u0625\u0644\u0649 \u0645\u0631\u0627\u062C\u0639\u0629' || s.includes('\u0645\u0631\u0627\u062C\u0639\u0629') || s.includes('\u0627\u0644\u0645\u0631\u0627\u062C\u0639\u0629')) {
+        return {
+          cssClass: 'ticket-status-review',
+          label: lang === 'ar' ? '\u062A\u062D\u062A\u0627\u062C \u0625\u0644\u0649 \u0645\u0631\u0627\u062C\u0639\u0629' : 'Needs Review'
+        };
+      }
+      if (s === 'Auto-Responded' || s === '\u062A\u0645 \u0627\u0644\u0631\u062F \u062A\u0644\u0642\u0627\u0626\u064A\u0627\u064B' || s.includes('\u062A\u0644\u0642\u0627\u0626\u064A') || s.includes('\u0627\u0644\u0622\u0644\u064A') || s.includes('\u0645\u064F\u062C\u0627\u0628')) {
+        return {
+          cssClass: 'ticket-status-auto',
+          label: lang === 'ar' ? '\u062A\u0645 \u0627\u0644\u0631\u062F \u062A\u0644\u0642\u0627\u0626\u064A\u0627\u064B' : 'Auto-Responded'
+        };
+      }
+      return {
+        cssClass: 'ticket-status-neutral',
+        label: lang === 'ar' ? (s === 'Received' ? '\u062A\u0645 \u0627\u0644\u0627\u0633\u062A\u0644\u0627\u0645' : (s || '\u062A\u0645 \u0627\u0644\u0627\u0633\u062A\u0644\u0627\u0645')) : (s === '\u062A\u0645 \u0627\u0644\u0627\u0633\u062A\u0644\u0627\u0645' ? 'Received' : (s || 'Received'))
+      };
+    }
+
     function renderLocalTicketHistory() {
       try {
         const history = JSON.parse(localStorage.getItem('dch_ticket_history') || '[]');
@@ -1563,17 +1569,20 @@
         panel.style.display = 'block';
         countSpan.textContent = history.length;
 
-        listDiv.innerHTML = history.map(item => `
+        listDiv.innerHTML = history.map(item => {
+          const meta = getStatusMeta(item.status, 'ar');
+          return `
           <div class="ticket-history-item">
             <div>
-              <strong>${item.id}</strong> — <span style="color: #64748b;">${item.category}</span>
+              <strong>${item.id}</strong> \u2014 <span style="color: #64748b;">${item.category}</span>
               <div style="font-size: 11.5px; color: #94a3b8;">${item.date}</div>
             </div>
-            <span style="font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 10px; background: ${item.status.includes('المراجعة') ? '#fef3c7; color: #92400e;' : '#ecfdf5; color: #065f46;'}">
-              ${item.status}
+            <span class="ticket-status-badge ${meta.cssClass}">
+              ${meta.label}
             </span>
           </div>
-        `).join('');
+        `;
+        }).join('');
 
         const toggleBtn = document.getElementById('ticketHistoryToggle');
         toggleBtn.onclick = function() {

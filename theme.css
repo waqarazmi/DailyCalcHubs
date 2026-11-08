@@ -4564,11 +4564,22 @@ html[data-theme="dark"] .salary-result-card.highlight {
   background: #231b40 !important;
   border-color: #7c3aed !important;
 }
-html[data-theme="dark"] .salary-result-val {
+html[data-theme="dark"] .salary-result-val,
+html[data-theme="dark"] .travel-result-val {
   color: #f8fafc !important;
 }
 html[data-theme="dark"] .salary-result-card.highlight .salary-result-val {
   color: #c4b5fd !important;
+}
+html[data-theme="dark"] .travel-result-label,
+html[data-theme="dark"] .travel-result-sub {
+  color: #94a3b8 !important;
+}
+html[data-theme="dark"] .travel-result-card.highlight .travel-result-val {
+  color: #fda4af !important;
+}
+html[data-theme="dark"] .travel-result-card.highlight .travel-result-label {
+  color: #fecdd3 !important;
 }
 
 /* 4. Callouts, Result Details & Form Elements */
@@ -5465,10 +5476,50 @@ html[data-theme="dark"] .form-control:focus {
   border-color: #0284c7 !important;
   color: #f8fafc !important;
 }
+/* Ticket History Status Badges (Light Base) */
+.ticket-status-badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 10px;
+  display: inline-block;
+  line-height: 1.4;
+  border: 1px solid transparent;
+}
+.ticket-status-badge.ticket-status-auto {
+  background: #ecfdf5;
+  color: #065f46;
+  border-color: #a7f3d0;
+}
+.ticket-status-badge.ticket-status-review {
+  background: #fef3c7;
+  color: #92400e;
+  border-color: #fde68a;
+}
+.ticket-status-badge.ticket-status-neutral {
+  background: #f1f5f9;
+  color: #475569;
+  border-color: #cbd5e1;
+}
 html[data-theme="dark"] .ticket-history-item {
   background: #131b2e !important;
   border-color: #1e293b !important;
   color: #f8fafc !important;
+}
+html[data-theme="dark"] .ticket-status-badge.ticket-status-auto {
+  background: rgba(6, 95, 70, 0.3) !important;
+  color: #6ee7b7 !important;
+  border-color: rgba(110, 231, 183, 0.35) !important;
+}
+html[data-theme="dark"] .ticket-status-badge.ticket-status-review {
+  background: rgba(146, 64, 14, 0.3) !important;
+  color: #fcd34d !important;
+  border-color: rgba(252, 211, 77, 0.35) !important;
+}
+html[data-theme="dark"] .ticket-status-badge.ticket-status-neutral {
+  background: rgba(148, 163, 184, 0.2) !important;
+  color: #cbd5e1 !important;
+  border-color: rgba(203, 213, 225, 0.25) !important;
 }
 html[data-theme="dark"] .pillar-box {
   background: #131b2e !important;

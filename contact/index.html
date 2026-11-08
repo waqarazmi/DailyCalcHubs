@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -1424,27 +1424,6 @@
       statusBox.className = 'form-status';
       statusBox.style.display = 'none';
 
-      // Build professional auto-reply email text (sent directly to visitor via FormSubmit)
-      const autoReplyText = `Hello ${name},\n\nThank you for contacting DailyCalcHubs.\n\nWe’ve received your message (Ticket ID: ${ticketId}) regarding "${subject}" and will review your inquiry.\n\nWe aim to respond within 1 business day.\n\nIf your message concerns a calculator result, please include the relevant calculator name and details so we can review it accurately.\n\nThank you,\nDailyCalcHubs Support\nhttps://dailycalchubs.com/`;
-
-      // Build structured payload for FormSubmit
-      const payload = {
-        name: sanitizeInput(name),
-        email: sanitizeInput(email),
-        ticket_id: ticketId,
-        submission_time: timestampAST,
-        category: sanitizeInput(category),
-        subject: sanitizeInput(subject),
-        ai_triage_classification: triage.classification,
-        triage_risk_level: triage.riskLevel,
-        review_status: triage.isSafe ? 'Auto-Responded (Review within 1 business day if needed)' : 'Needs Human Review (Sensitive / Non-Automated Query)',
-        message: message,
-        _subject: `New DailyCalcHubs Contact Request — ${category} [${triage.badge}] (${ticketId})`,
-        _template: 'table',
-        _captcha: 'false',
-        _autoresponse: autoReplyText
-      };
-
       try {
         // Dispatch to DailyCalcHubs Cloudflare Serverless Helpdesk API
         const response = await fetch('/api/contact', {
@@ -1469,6 +1448,11 @@
           })
         });
 
+        const resData = await response.json();
+        if (!response.ok || !resData.success) {
+          throw new Error(resData.error || 'Server error processing contact request');
+        }
+
         // Record submission timestamp for anti-spam
         localStorage.setItem('dch_last_contact_time', String(nowMs));
 
@@ -1489,7 +1473,7 @@
             <div><i class="fas fa-circle-check"></i> <strong>Message received successfully.</strong></div>
             <span class="ticket-id-tag">Ticket: ${ticketId}</span>
           </div>
-          <p style="margin-bottom: 8px;">Thank you for contacting DailyCalcHubs. An automatic confirmation has been sent to your email (<strong>${sanitizeInput(email)}</strong>).</p>
+          <p style="margin-bottom: 8px;">Thank you for contacting DailyCalcHubs. An automatic confirmation has been dispatched immediately to your email (<strong>${sanitizeInput(email)}</strong>). Actual delivery time to your inbox may vary depending on your email provider.</p>
           <p style="margin-bottom: 0;">We aim to respond within 1 business day when further review is required.</p>
         `;
 
@@ -1573,6 +1557,26 @@
       }
     }
 
+        function getStatusMeta(status, lang) {
+      const s = String(status || '').trim();
+      if (s === 'Needs Review' || s === '\u062A\u062D\u062A\u0627\u062C \u0625\u0644\u0649 \u0645\u0631\u0627\u062C\u0639\u0629' || s.includes('\u0645\u0631\u0627\u062C\u0639\u0629') || s.includes('\u0627\u0644\u0645\u0631\u0627\u062C\u0639\u0629')) {
+        return {
+          cssClass: 'ticket-status-review',
+          label: lang === 'ar' ? '\u062A\u062D\u062A\u0627\u062C \u0625\u0644\u0649 \u0645\u0631\u0627\u062C\u0639\u0629' : 'Needs Review'
+        };
+      }
+      if (s === 'Auto-Responded' || s === '\u062A\u0645 \u0627\u0644\u0631\u062F \u062A\u0644\u0642\u0627\u0626\u064A\u0627\u064B' || s.includes('\u062A\u0644\u0642\u0627\u0626\u064A') || s.includes('\u0627\u0644\u0622\u0644\u064A') || s.includes('\u0645\u064F\u062C\u0627\u0628')) {
+        return {
+          cssClass: 'ticket-status-auto',
+          label: lang === 'ar' ? '\u062A\u0645 \u0627\u0644\u0631\u062F \u062A\u0644\u0642\u0627\u0626\u064A\u0627\u064B' : 'Auto-Responded'
+        };
+      }
+      return {
+        cssClass: 'ticket-status-neutral',
+        label: lang === 'ar' ? (s === 'Received' ? '\u062A\u0645 \u0627\u0644\u0627\u0633\u062A\u0644\u0627\u0645' : (s || '\u062A\u0645 \u0627\u0644\u0627\u0633\u062A\u0644\u0627\u0645')) : (s === '\u062A\u0645 \u0627\u0644\u0627\u0633\u062A\u0644\u0627\u0645' ? 'Received' : (s || 'Received'))
+      };
+    }
+
     function renderLocalTicketHistory() {
       try {
         const history = JSON.parse(localStorage.getItem('dch_ticket_history') || '[]');
@@ -1588,17 +1592,20 @@
         panel.style.display = 'block';
         countSpan.textContent = history.length;
 
-        listDiv.innerHTML = history.map(item => `
+        listDiv.innerHTML = history.map(item => {
+          const meta = getStatusMeta(item.status, 'en');
+          return `
           <div class="ticket-history-item">
             <div>
-              <strong>${item.id}</strong> — <span style="color: #64748b;">${item.category}</span>
+              <strong>${item.id}</strong> \u2014 <span style="color: #64748b;">${item.category}</span>
               <div style="font-size: 11.5px; color: #94a3b8;">${item.date}</div>
             </div>
-            <span style="font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 10px; background: ${item.status === 'Needs Review' ? '#fef3c7; color: #92400e;' : '#ecfdf5; color: #065f46;'}">
-              ${item.status}
+            <span class="ticket-status-badge ${meta.cssClass}">
+              ${meta.label}
             </span>
           </div>
-        `).join('');
+        `;
+        }).join('');
 
         const toggleBtn = document.getElementById('ticketHistoryToggle');
         toggleBtn.onclick = function() {
