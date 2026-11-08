@@ -1,4 +1,4 @@
-// Cloudflare Worker for DailyCalcHubs (Workers with Static Assets)
+﻿// Cloudflare Worker for DailyCalcHubs (Workers with Static Assets)
 // Routes /api/contact to helpdesk logic and delegates all other traffic to static assets.
 
 export default {
@@ -177,7 +177,7 @@ async function handleContactPost(request, env) {
       <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; padding: 20px; color: #1e293b; max-width: 650px;">
         <h2 style="color: #0f172a; margin-top: 0; border-bottom: 2px solid #0284c7; padding-bottom: 8px;">New Helpdesk Inquiry (${escapeHtml(ticket_id)})</h2>
         <div style="background: #e0f2fe; color: #0369a1; padding: 10px 14px; border-radius: 6px; font-weight: bold; margin-bottom: 16px; font-size: 13.5px;">
-          Auto-Reply: Dispatched Immediately to Visitor upon Submission
+          Auto-Reply Scheduled for Visitor at: ${escapeHtml(scheduledAstText)} AST
         </div>
         <table style="border-collapse: collapse; width: 100%; font-size: 14px;">
           <tr><td style="padding: 8px 12px; border: 1px solid #cbd5e1; background: #f8fafc; font-weight: bold; width: 140px;">Ticket ID:</td><td style="padding: 8px 12px; border: 1px solid #cbd5e1; font-family: monospace; font-weight: bold; color: #0284c7;">${escapeHtml(ticket_id)}</td></tr>
@@ -198,7 +198,7 @@ async function handleContactPost(request, env) {
       </div>
     `;
 
-    // A. Dispatch IMMEDIATE acknowledgement email to Visitor via Resend
+    // A. Schedule email to Visitor via Resend with Smart Natural Timing
     const visitorEmailRes = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
@@ -210,6 +210,7 @@ async function handleContactPost(request, env) {
         to: [email],
         reply_to: 'support@dailycalchubs.com',
         subject: `Re: [Ticket #${ticket_id}] ${subject}`,
+        scheduled_at: scheduledIso,
         html: visitorHtml
       })
     });
@@ -234,7 +235,7 @@ async function handleContactPost(request, env) {
     return new Response(JSON.stringify({
       success: visitorEmailRes.ok,
       ticket_id: ticket_id,
-      dispatched_at: new Date().toISOString(),
+      scheduled_ast: scheduledAstText,
       email_id: visitorEmailData.id || null
     }), {
       status: visitorEmailRes.ok ? 200 : 502,
