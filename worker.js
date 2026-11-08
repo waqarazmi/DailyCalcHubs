@@ -1,25 +1,45 @@
-// Cloudflare Pages Serverless Function: POST /api/contact
-// Handles contact inquiries, sends instant admin alerts, and schedules professional visitor replies via Resend.
+// Cloudflare Worker for DailyCalcHubs (Workers with Static Assets)
+// Routes /api/contact to helpdesk logic and delegates all other traffic to static assets.
 
-export async function onRequestOptions() {
-  return new Response(null, {
-    status: 204,
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'POST, OPTIONS',
-      'Access-Control-Allow-Headers': 'Content-Type, Accept'
+export default {
+  async fetch(request, env, ctx) {
+    const url = new URL(request.url);
+
+    // 1. Intercept Contact API Route
+    if (url.pathname === '/api/contact') {
+      if (request.method === 'OPTIONS') {
+        return new Response(null, {
+          status: 204,
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'POST, OPTIONS',
+            'Access-Control-Allow-Headers': 'Content-Type, Accept'
+          }
+        });
+      }
+
+      if (request.method === 'POST') {
+        return handleContactPost(request, env);
+      }
+
+      return new Response(JSON.stringify({ error: 'Method not allowed' }), {
+        status: 405,
+        headers: { 'Content-Type': 'application/json' }
+      });
     }
-  });
-}
 
-export async function onRequestPost(context) {
+    // 2. Delegate all other requests to Static Assets
+    return env.ASSETS.fetch(request);
+  }
+};
+
+async function handleContactPost(request, env) {
   const corsHeaders = {
     'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': '*'
   };
 
   try {
-    const { request, env } = context;
     const body = await request.json();
 
     const {
