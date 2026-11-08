@@ -1433,15 +1433,27 @@
       };
 
       try {
-        const _fsTarget = ['aHR0cHM6Ly9mb3Jtc3VibWl0LmNvL2FqYXgv', 'd2FxYXJhem1pNzNAZ21haWwuY29t'];
-        const _endpoint = atob(_fsTarget[0]) + atob(_fsTarget[1]);
-        await fetch(_endpoint, {
+        // Dispatch to DailyCalcHubs Cloudflare Serverless Helpdesk API
+        await fetch('/api/contact', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
             'Accept': 'application/json'
           },
-          body: JSON.stringify(payload)
+          body: JSON.stringify({
+            name: sanitizeInput(name),
+            email: sanitizeInput(email),
+            ticket_id: ticketId,
+            submission_time: timestampAST,
+            category: sanitizeInput(category),
+            subject: sanitizeInput(subject),
+            message: message,
+            triage_topic: triage.isSafe && triage.groundedAnswer ? triage.topic : null,
+            grounded_answer: triage.isSafe && triage.groundedAnswer ? triage.groundedAnswer : null,
+            guide_url: triage.isSafe && triage.guideUrl ? triage.guideUrl : null,
+            guide_name: triage.isSafe && triage.guideName ? triage.guideName : null,
+            lang: 'ar'
+          })
         });
 
         localStorage.setItem('dch_last_contact_time', String(nowMs));
