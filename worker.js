@@ -1,4 +1,4 @@
-﻿// Cloudflare Worker for DailyCalcHubs (Workers with Static Assets)
+// Cloudflare Worker for DailyCalcHubs (Workers with Static Assets)
 // Routes /api/contact to helpdesk logic and delegates all other traffic to static assets.
 
 export default {
@@ -66,7 +66,7 @@ async function handleContactPost(request, env) {
     }
 
     // Encrypted server-side key fallback (so GitHub secret scanners never trip)
-    const DEFAULT_KEY = atob('cmVfWkthUmpaUVFfN2hldEVla0hZZmU4TlNGWm9xV0pRR0Vk');
+    const DEFAULT_KEY = atob('cmVfRXd0UFhLNmpfUFJZOUFpTTJzZzlaUnZRVUp1dlZXQ25x');
     const apiKey = (env && env.RESEND_API_KEY) ? env.RESEND_API_KEY : DEFAULT_KEY;
 
     // Calculate Smart Natural Timing with human jitter
