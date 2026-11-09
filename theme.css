@@ -4685,8 +4685,55 @@ html[dir="rtl"][data-theme="dark"] .ai-escalation-card {
   border-left-color: #78350f !important;
   border-right: 4px solid #f59e0b !important;
 }
+html[data-theme="dark"] .ai-grounded-head {
+  color: #34d399 !important;
+}
+html[data-theme="dark"] .ai-grounded-head span:last-child,
+html[data-theme="dark"] .ai-verified-badge {
+  background: rgba(16, 185, 129, 0.2) !important;
+  color: #34d399 !important;
+  border: 1px solid rgba(16, 185, 129, 0.4) !important;
+}
+html[data-theme="dark"] .ai-grounded-link {
+  color: #38bdf8 !important;
+}
+html[data-theme="dark"] .ai-grounded-link:hover {
+  color: #7dd3fc !important;
+}
+html[data-theme="dark"] .ai-escalation-head {
+  color: #fbbf24 !important;
+}
 html[data-theme="dark"] .ai-escalation-text {
   color: #fde68a !important;
+}
+
+/* Contact Form Status Box Dark Mode */
+html[data-theme="dark"] .form-status.success {
+  background: #062e24 !important;
+  border-color: #059669 !important;
+  color: #ecfdf5 !important;
+}
+html[data-theme="dark"] .form-status.success .status-badge-row strong {
+  color: #6ee7b7 !important;
+}
+html[data-theme="dark"] .form-status.success p {
+  color: #a7f3d0 !important;
+}
+html[data-theme="dark"] .form-status.success p strong {
+  color: #ffffff !important;
+}
+html[data-theme="dark"] .form-status.success .ticket-id-tag {
+  background: #0f172a !important;
+  border: 1px solid #334155 !important;
+  color: #f8fafc !important;
+}
+html[data-theme="dark"] .form-status.error {
+  background: #3b1212 !important;
+  border-color: #991b1b !important;
+  color: #fecaca !important;
+}
+html[data-theme="dark"] .form-status.error strong {
+  color: #fee2e2 !important;
 }
 html[data-theme="dark"] .ticket-history-panel {
   background: #1a233a !important;

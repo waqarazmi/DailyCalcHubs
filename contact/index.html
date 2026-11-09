@@ -299,6 +299,7 @@
       border-radius: 12px;
       font-size: 14px;
       line-height: 1.6;
+      scroll-margin-top: 95px;
     }
     .form-status.success {
       display: block;
@@ -1483,7 +1484,7 @@
             <div class="ai-grounded-card">
               <div class="ai-grounded-head">
                 <span><i class="fas fa-wand-magic-sparkles"></i> Automated First-Line Guidance: ${triage.topic}</span>
-                <span style="font-size: 11px; background: #dcfce7; color: #15803d; padding: 2px 8px; border-radius: 12px;">Verified Knowledge</span>
+                <span class="ai-verified-badge" style="font-size: 11px; background: #dcfce7; color: #15803d; padding: 2px 8px; border-radius: 12px;">Verified Knowledge</span>
               </div>
               <div class="ai-grounded-text">${triage.groundedAnswer}</div>
               <a href="${triage.guideUrl}" class="ai-grounded-link">
@@ -1511,6 +1512,20 @@
         // Clear form fields
         document.getElementById('contactForm').reset();
         renderLocalTicketHistory();
+
+        // Smooth scroll to confirmation card accounting for sticky header & reduced motion
+        requestAnimationFrame(() => {
+          const header = document.querySelector('.site-header');
+          const headerHeight = header ? header.offsetHeight : 71;
+          const targetOffset = headerHeight + 24;
+          const boxRect = statusBox.getBoundingClientRect();
+          const targetY = boxRect.top + window.pageYOffset - targetOffset;
+          const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          window.scrollTo({
+            top: Math.max(0, targetY),
+            behavior: prefersReduced ? 'auto' : 'smooth'
+          });
+        });
 
       } catch (err) {
         console.error('Contact submission error:', err);
