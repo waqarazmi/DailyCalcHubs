@@ -1514,18 +1514,7 @@
         renderLocalTicketHistory();
 
         // Smooth scroll to confirmation card accounting for sticky header & reduced motion
-        requestAnimationFrame(() => {
-          const header = document.querySelector('.site-header');
-          const headerHeight = header ? header.offsetHeight : 71;
-          const targetOffset = headerHeight + 24;
-          const boxRect = statusBox.getBoundingClientRect();
-          const targetY = boxRect.top + window.pageYOffset - targetOffset;
-          const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-          window.scrollTo({
-            top: Math.max(0, targetY),
-            behavior: prefersReduced ? 'auto' : 'smooth'
-          });
-        });
+        scrollToConfirmation(statusBox);
 
       } catch (err) {
         console.error('Contact submission error:', err);
@@ -1584,22 +1573,109 @@
         renderLocalTicketHistory();
 
         // Smooth scroll to confirmation card accounting for sticky header & reduced motion
-        requestAnimationFrame(() => {
-          const header = document.querySelector('.site-header');
-          const headerHeight = header ? header.offsetHeight : 71;
-          const targetOffset = headerHeight + 24;
-          const boxRect = statusBox.getBoundingClientRect();
-          const targetY = boxRect.top + window.pageYOffset - targetOffset;
-          const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-          window.scrollTo({
-            top: Math.max(0, targetY),
-            behavior: prefersReduced ? 'auto' : 'smooth'
-          });
-        });
+        scrollToConfirmation(statusBox);
       } finally {
         submitBtn.disabled = false;
         submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Inquiry to Helpdesk';
       }
+    }
+
+    // -------------------------------------------------------------
+    // Refined Post-Submission Smooth Scrolling
+    // -------------------------------------------------------------
+    function smoothScrollTo(targetY, duration) {
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        window.scrollTo(0, targetY);
+        return;
+      }
+
+      const startY = window.pageYOffset;
+      const distance = targetY - startY;
+      if (Math.abs(distance) < 2) return;
+
+      const dur = duration || 750;
+      const startTime = performance.now();
+      let animId = null;
+
+      function cancel() {
+        if (animId) {
+          cancelAnimationFrame(animId);
+          animId = null;
+        }
+        window.removeEventListener('wheel', cancel);
+        window.removeEventListener('touchstart', cancel);
+      }
+
+      window.addEventListener('wheel', cancel, { passive: true });
+      window.addEventListener('touchstart', cancel, { passive: true });
+
+      function step(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / dur, 1);
+        // Natural cubic ease-out curve
+        const ease = 1 - Math.pow(1 - progress, 3);
+        window.scrollTo(0, Math.round(startY + (distance * ease)));
+
+        if (progress < 1) {
+          animId = requestAnimationFrame(step);
+        } else {
+          cancel();
+        }
+      }
+
+      animId = requestAnimationFrame(step);
+    }
+
+    function scrollToConfirmation(statusBox) {
+      if (!statusBox) return;
+
+      requestAnimationFrame(() => {
+        // Measure cumulative sticky obstruction (header + breadcrumbs)
+        const header = document.querySelector('.site-header');
+        const breadcrumbs = document.querySelector('.breadcrumbs-section, .breadcrumbs-bar, .breadcrumb-bar');
+        let stickyBottom = 0;
+
+        if (header) {
+          const hCs = window.getComputedStyle(header);
+          if (hCs.position === 'sticky' || hCs.position === 'fixed') {
+            stickyBottom = Math.max(stickyBottom, header.getBoundingClientRect().bottom);
+          }
+        }
+        if (breadcrumbs) {
+          const bCs = window.getComputedStyle(breadcrumbs);
+          if (bCs.position === 'sticky' || bCs.position === 'fixed') {
+            stickyBottom = Math.max(stickyBottom, breadcrumbs.getBoundingClientRect().bottom);
+          }
+        }
+        if (stickyBottom <= 0) {
+          const hH = header ? header.offsetHeight : 71;
+          const bH = breadcrumbs ? breadcrumbs.offsetHeight : 46;
+          stickyBottom = hH + bH;
+        }
+
+        const isDesktop = window.innerWidth >= 768;
+        const availableHeight = window.innerHeight - stickyBottom;
+        const cardHeight = statusBox.offsetHeight;
+
+        let topCushion = 20;
+        if (isDesktop) {
+          // Leave 56-70px of comfortable breathing space below sticky elements on desktop
+          topCushion = 64;
+        } else {
+          // On mobile, keep heading and Ticket ID visible without being covered by either sticky element
+          if (cardHeight + 40 < availableHeight) {
+            topCushion = Math.min(Math.max(Math.round((availableHeight - cardHeight) / 3), 20), 40);
+          } else {
+            topCushion = 20;
+          }
+        }
+
+        const targetOffset = stickyBottom + topCushion;
+        const boxRect = statusBox.getBoundingClientRect();
+        const targetY = Math.max(0, Math.round(boxRect.top + window.pageYOffset - targetOffset));
+
+        smoothScrollTo(targetY, 750);
+      });
     }
 
     // -------------------------------------------------------------
