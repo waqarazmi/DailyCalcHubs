@@ -1523,7 +1523,7 @@
         });
 
         statusBox.className = 'form-status success';
-        statusBox.innerHTML = `
+        let fallbackResponse = `
           <div class="status-badge-row">
             <div><i class="fas fa-circle-check"></i> <strong>تم استلام رسالتك بنجاح.</strong></div>
             <span class="ticket-id-tag">رقم التذكرة: ${ticketId}</span>
@@ -1531,9 +1531,51 @@
           <p style="margin-bottom: 8px;">شكراً لتواصلك مع DailyCalcHubs. تم تسجيل استفسارك بنجاح.</p>
           <p style="margin-bottom: 0;">نحرص على الرد خلال يوم عمل واحد.</p>
         `;
+
+        if (triage.isSafe && triage.groundedAnswer) {
+          fallbackResponse += `
+            <div class="ai-grounded-card">
+              <div class="ai-grounded-head">
+                <span><i class="fas fa-wand-magic-sparkles"></i> إرشاد فوري مؤتمت: ${triage.topic}</span>
+                <span class="ai-verified-badge" style="font-size: 11px; background: #dcfce7; color: #15803d; padding: 2px 8px; border-radius: 12px;">معلومات موثقة</span>
+              </div>
+              <div class="ai-grounded-text">${triage.groundedAnswer}</div>
+              <a href="${triage.guideUrl}" class="ai-grounded-link">
+                فتح ${triage.guideName} <i class="fas fa-arrow-left"></i>
+              </a>
+            </div>
+          `;
+        } else if (!triage.isSafe) {
+          fallbackResponse += `
+            <div class="ai-escalation-card">
+              <div class="ai-escalation-head">
+                <i class="fas fa-user-shield"></i> تم تحويل التذكرة للمراجعة البشرية
+              </div>
+              <div class="ai-escalation-text">
+                تتضمن رسالتك استفساراً في مسائل نظامية أو قضائية أو سياسات حساسة. حرصاً على الدقة التامة والامتثال، لا يقدم المساعد الآلي إجابات قطعية في هذه المسائل. تم تصعيد تذكرتك مباشرة لمراجعتها يدوياً من قِبل فريق الدعم.
+              </div>
+            </div>
+          `;
+        }
+
+        statusBox.innerHTML = fallbackResponse;
         statusBox.style.display = 'block';
         document.getElementById('contactForm').reset();
         renderLocalTicketHistory();
+
+        // Smooth scroll to confirmation card accounting for sticky header & reduced motion
+        requestAnimationFrame(() => {
+          const header = document.querySelector('.site-header');
+          const headerHeight = header ? header.offsetHeight : 71;
+          const targetOffset = headerHeight + 24;
+          const boxRect = statusBox.getBoundingClientRect();
+          const targetY = boxRect.top + window.pageYOffset - targetOffset;
+          const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          window.scrollTo({
+            top: Math.max(0, targetY),
+            behavior: prefersReduced ? 'auto' : 'smooth'
+          });
+        });
       } finally {
         submitBtn.disabled = false;
         submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> إرسال الرسالة إلى مكتب الدعم';

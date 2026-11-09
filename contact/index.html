@@ -1541,7 +1541,7 @@
         });
 
         statusBox.className = 'form-status success';
-        statusBox.innerHTML = `
+        let fallbackResponse = `
           <div class="status-badge-row">
             <div><i class="fas fa-circle-check"></i> <strong>Message received successfully.</strong></div>
             <span class="ticket-id-tag">Ticket: ${ticketId}</span>
@@ -1549,9 +1549,53 @@
           <p style="margin-bottom: 8px;">Thank you for contacting DailyCalcHubs. Your inquiry has been registered.</p>
           <p style="margin-bottom: 0;">We aim to respond within 1 business day when further review is required.</p>
         `;
+
+        // Render AI Guidance for safe queries
+        if (triage.isSafe && triage.groundedAnswer) {
+          fallbackResponse += `
+            <div class="ai-grounded-card">
+              <div class="ai-grounded-head">
+                <span><i class="fas fa-wand-magic-sparkles"></i> Automated First-Line Guidance: ${triage.topic}</span>
+                <span class="ai-verified-badge" style="font-size: 11px; background: #dcfce7; color: #15803d; padding: 2px 8px; border-radius: 12px;">Verified Knowledge</span>
+              </div>
+              <div class="ai-grounded-text">${triage.groundedAnswer}</div>
+              <a href="${triage.guideUrl}" class="ai-grounded-link">
+                Open ${triage.guideName} <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          `;
+        } else if (!triage.isSafe) {
+          // Render Escalation Notice for sensitive queries
+          fallbackResponse += `
+            <div class="ai-escalation-card">
+              <div class="ai-escalation-head">
+                <i class="fas fa-user-shield"></i> Flagged for Human Review
+              </div>
+              <div class="ai-escalation-text">
+                Your message involves specialized legal, governmental, regulatory, or policy matters. To maintain strict accuracy and compliance, our automated assistant does not provide definitive advice on these topics. Your inquiry has been prioritized for direct review by our support team.
+              </div>
+            </div>
+          `;
+        }
+
+        statusBox.innerHTML = fallbackResponse;
         statusBox.style.display = 'block';
         document.getElementById('contactForm').reset();
         renderLocalTicketHistory();
+
+        // Smooth scroll to confirmation card accounting for sticky header & reduced motion
+        requestAnimationFrame(() => {
+          const header = document.querySelector('.site-header');
+          const headerHeight = header ? header.offsetHeight : 71;
+          const targetOffset = headerHeight + 24;
+          const boxRect = statusBox.getBoundingClientRect();
+          const targetY = boxRect.top + window.pageYOffset - targetOffset;
+          const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          window.scrollTo({
+            top: Math.max(0, targetY),
+            behavior: prefersReduced ? 'auto' : 'smooth'
+          });
+        });
       } finally {
         submitBtn.disabled = false;
         submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Inquiry to Helpdesk';
