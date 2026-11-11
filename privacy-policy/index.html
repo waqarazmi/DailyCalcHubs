@@ -48,7 +48,7 @@
   <!-- DailyCalcHubs Owner Admin Exclusion Mode (Zero GA4 Views / Zero AdSense Impressions) -->
     <script src="/owner-mode.js"></script>
     <!-- Google AdSense -->
-  <!-- Google Consent Mode v2 Default State -->
+  <!-- Google Consent Mode v2 Region-Aware Default State -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -56,7 +56,16 @@
       'ad_storage': 'denied',
       'analytics_storage': 'denied',
       'ad_user_data': 'denied',
-      'ad_personalization': 'denied'
+      'ad_personalization': 'denied',
+      'region': ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE', 'IS', 'LI', 'NO', 'GB', 'CH'],
+      'wait_for_update': 500
+    });
+    gtag('consent', 'default', {
+      'ad_storage': 'denied',
+      'analytics_storage': 'granted',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'wait_for_update': 500
     });
   </script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6944579701716470" crossorigin="anonymous"></script>
@@ -681,12 +690,13 @@
         <li><strong>Advertising Cookies (Google AdSense):</strong> Used by Google to serve relevant advertisements and fund our free computational tools.</li>
       </ul>
 
-      <h3>Consent Mode v2 &amp; User Choices</h3>
-      <p>DailyCalcHubs implements <strong>Google Consent Mode v2</strong> with strict privacy safeguards:</p>
+      <h3>Region-Aware Consent Mode v2 &amp; User Choices</h3>
+      <p>DailyCalcHubs implements a <strong>Region-Aware Google Consent Mode v2</strong> architecture designed to uphold statutory privacy standards across global jurisdictions while supporting free computational tools:</p>
       <ul>
-        <li><strong>Default Denied:</strong> Before any user interaction or tag execution, default consent signals for <code>ad_storage</code>, <code>analytics_storage</code>, <code>ad_user_data</code>, and <code>ad_personalization</code> are automatically set to <code>'denied'</code>.</li>
-        <li><strong>Essential Only:</strong> Selecting "Essential Only" suppresses all non-essential tracking. Google Analytics is deactivated (<code>ga-disable-G-18Y3LNHDR8 = true</code>) and Google AdSense ad requests are paused (<code>adsbygoogle.pauseAdRequests = 1</code>).</li>
-        <li><strong>Accept All:</strong> Selecting "Accept All" grants consent for analytics and advertising cookies, supporting platform operations and continuous updates.</li>
+        <li><strong>Saudi Arabia &amp; Non-EEA Visitors (Legitimate Interests):</strong> In accordance with the Saudi Personal Data Protection Law (PDPL, Royal Decree No. M/19 amended by M/148, Art. 6(2) and Executive Regulations Art. 16), first-party aggregated analytics (<code>analytics_storage</code>) operates under legitimate operational interests to monitor tool availability and calculate server performance without unnecessary banner friction. Third-party advertising cookies and profiling (<code>ad_storage</code>, <code>ad_user_data</code>, <code>ad_personalization</code>) remain denied by default until opted in.</li>
+        <li><strong>European Economic Area (EEA), UK &amp; Switzerland (Prior Opt-In):</strong> In compliance with the EU ePrivacy Directive (Art. 5(3)), GDPR, UK PECR, and Swiss revFADP, all non-essential cookies (including analytics and advertising) remain strictly denied by default until affirmative consent is provided via the cookie banner.</li>
+        <li><strong>Essential Only:</strong> Selecting "Essential Only" at any time suppresses all non-essential tracking globally. Google Analytics is deactivated (<code>ga-disable-G-18Y3LNHDR8 = true</code>) and Google AdSense ad requests are paused (<code>adsbygoogle.pauseAdRequests = 1</code>).</li>
+        <li><strong>Accept All:</strong> Selecting "Accept All" grants consent for analytics and advertising cookies, supporting platform operations and continuous tool enhancements.</li>
       </ul>
       <h3>Managing &amp; Revoking Cookie Preferences</h3>
       <p>You have full control over your cookie preferences at all times. You can review or change your consent choice at any moment by clicking the button below:</p>

@@ -47,26 +47,25 @@
   <!-- DailyCalcHubs Owner Admin Exclusion Mode (Zero GA4 Views / Zero AdSense Impressions) -->
   <script src="/owner-mode.js"></script>
 
-  <!-- Google Consent Mode v2 Default State -->
-
+  <!-- Google Consent Mode v2 Region-Aware Default State -->
   <script>
-
     window.dataLayer = window.dataLayer || [];
-
     function gtag(){dataLayer.push(arguments);}
-
     gtag('consent', 'default', {
-
       'ad_storage': 'denied',
-
       'analytics_storage': 'denied',
-
       'ad_user_data': 'denied',
-
-      'ad_personalization': 'denied'
-
+      'ad_personalization': 'denied',
+      'region': ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE', 'IS', 'LI', 'NO', 'GB', 'CH'],
+      'wait_for_update': 500
     });
-
+    gtag('consent', 'default', {
+      'ad_storage': 'denied',
+      'analytics_storage': 'granted',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'wait_for_update': 500
+    });
   </script>
 
   <!-- Google AdSense -->
@@ -709,11 +708,12 @@
         <li><strong>ملفات تعريف الارتباط الإعلانية (Google AdSense):</strong> تُستخدم من قبل شركة Google لعرض إعلانات ملائمة تساعد في تمويل استمرارية وتطوير أدواتنا الحسابية المجانية.</li>
       </ul>
 
-      <h3>نظام إدارة الموافقة (Google Consent Mode v2) وخيارات المستخدم</h3>
-      <p>تطبق DailyCalcHubs معيار <strong>Google Consent Mode v2</strong> مع ضوابط خصوصية صارمة:</p>
+      <h3>نظام إدارة الموافقة الإقليمي (Region-Aware Google Consent Mode v2) وخيارات المستخدم</h3>
+      <p>تطبق DailyCalcHubs معيار <strong>Google Consent Mode v2 الإقليمي</strong> مع ضوابط خصوصية صارمة تراعي التشريعات المحلية والدولية:</p>
       <ul>
-        <li><strong>الرفض الافتراضي المسبق:</strong> قبل أي تفاعل من المستخدم وقبل تفعيل وسوم التتبع، تكون إشارات الموافقة لملفات <code>ad_storage</code> و<code>analytics_storage</code> و<code>ad_user_data</code> و<code>ad_personalization</code> مضبوطة تلقائياً على وضع الرفض (<code>'denied'</code>).</li>
-        <li><strong>خيار "الضرورية فقط":</strong> عند النقر على "الضرورية فقط"، يتم حجب التتبع غير الضروري برمجياً بالكامل؛ حيث يتم إيقاف تحليلات Google Analytics (<code>ga-disable-G-18Y3LNHDR8 = true</code>) وتجميد طلبات إعلانات Google AdSense مؤقتاً (<code>adsbygoogle.pauseAdRequests = 1</code>).</li>
+        <li><strong>زوار المملكة العربية السعودية والدول غير الأوروبية (المصالح المشروعة):</strong> وفقاً لنظام حماية البيانات الشخصية السعودي (PDPL، المرسوم الملكي م/19 المعدل بم/148، المادة 6(2) واللائحة التنفيذية المادة 16)، تعمل تحليلات الطرف الأول المجمعة (<code>analytics_storage</code>) وفق سند المصالح المشروعة لتحسين استقرار الأدوات ومراقبة كفاءتها الحسابية دون إزعاج الزائر بإشعارات متكررة، بينما تظل ملفات الإعلانات والتخصيص (<code>ad_storage</code> و<code>ad_user_data</code> و<code>ad_personalization</code>) في وضع الرفض الافتراضي حتى الموافقة.</li>
+        <li><strong>زوار المنطقة الاقتصادية الأوروبية (EEA) والمملكة المتحدة وسويسرا (الموافقة المسبقة الإلزامية):</strong> امتثالاً للائحة الخصوصية الإلكترونية الأوروبية (المادة 5(3))، والنظام العام لحماية البيانات (GDPR)، وقواعد PECR البريطانية، تظل جميع ملفات تعريف الارتباط غير الضرورية (بما في ذلك التحليلات والإعلانات) مرفوضة مسبقاً (<code>'denied'</code>) حتى يمنح الزائر موافقته الصريحة عبر الإشعار.</li>
+        <li><strong>خيار "الضرورية فقط":</strong> عند النقر على "الضرورية فقط" في أي وقت، يتم حجب التتبع غير الضروري برمجياً بالكامل؛ حيث يتم إيقاف تحليلات Google Analytics (<code>ga-disable-G-18Y3LNHDR8 = true</code>) وتجميد طلبات إعلانات Google AdSense مؤقتاً (<code>adsbygoogle.pauseAdRequests = 1</code>).</li>
         <li><strong>خيار "قبول الكل":</strong> عند اختيار "قبول الكل"، تُحدّث إشارات الموافقة إلى وضع القبول (<code>'granted'</code>)، مما يسمح بجمع التحليلات المجهولة وتفعيل الإعلانات لدعم المنصة.</li>
       </ul>
 

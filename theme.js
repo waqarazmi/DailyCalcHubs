@@ -179,6 +179,7 @@
       window['ga-disable-G-18Y3LNHDR8'] = true;
       window.adsbygoogle = window.adsbygoogle || [];
       window.adsbygoogle.pauseAdRequests = 1;
+      window.__dch_ads_paused = true;
       if (typeof window.gtag === 'function') {
         window.gtag('consent', 'update', {
           'ad_storage': 'denied',
@@ -193,6 +194,7 @@
         window['ga-disable-G-18Y3LNHDR8'] = false;
         window.adsbygoogle = window.adsbygoogle || [];
         window.adsbygoogle.pauseAdRequests = 0;
+        window.__dch_ads_paused = false;
       }
       if (typeof window.gtag === 'function') {
         window.gtag('consent', 'update', {
@@ -217,18 +219,42 @@
       if (window.__dch_consent_applied !== consent) {
         setConsent(consent);
       }
-    }
-
-    var existingBanner = document.getElementById('cookieConsentBanner');
-    if (existingBanner) {
-      if (!consent) {
-        existingBanner.style.display = 'block';
+      var existingBanner = document.getElementById('cookieConsentBanner');
+      if (existingBanner) {
+        existingBanner.style.display = 'none';
       }
       return;
     }
 
-    if (!consent) {
-      injectCookieBanner();
+    function showBannerIfRequired() {
+      if (getConsent()) return;
+      if (window.__dch_banner_needed === true) {
+        var existing = document.getElementById('cookieConsentBanner');
+        if (existing) {
+          existing.style.display = 'block';
+        } else {
+          injectCookieBanner();
+        }
+      } else if (window.__dch_banner_needed === false) {
+        var ex = document.getElementById('cookieConsentBanner');
+        if (ex) {
+          ex.style.display = 'none';
+        }
+      }
+    }
+
+    if (window.__dch_banner_needed !== undefined) {
+      showBannerIfRequired();
+    } else {
+      // Geo detection in flight — attach handler to prevent flicker
+      window.__dch_on_geo_resolved = function(country, needed) {
+        showBannerIfRequired();
+      };
+      if (window.__dch_geo_promise && typeof window.__dch_geo_promise.then === 'function') {
+        window.__dch_geo_promise.then(function() {
+          showBannerIfRequired();
+        });
+      }
     }
   }
 

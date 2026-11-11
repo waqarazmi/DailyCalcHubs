@@ -74,7 +74,7 @@
 
     <!-- DailyCalcHubs Owner Admin Exclusion Mode (Zero GA4 Views / Zero AdSense Impressions) -->
     <script src="/owner-mode.js"></script>
-    <!-- Google Consent Mode v2 Default State -->
+    <!-- Google Consent Mode v2 Region-Aware Default State -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -82,7 +82,16 @@
       'ad_storage': 'denied',
       'analytics_storage': 'denied',
       'ad_user_data': 'denied',
-      'ad_personalization': 'denied'
+      'ad_personalization': 'denied',
+      'region': ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE', 'IS', 'LI', 'NO', 'GB', 'CH'],
+      'wait_for_update': 500
+    });
+    gtag('consent', 'default', {
+      'ad_storage': 'denied',
+      'analytics_storage': 'granted',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'wait_for_update': 500
     });
   </script>
   <!-- Google AdSense -->
@@ -2442,56 +2451,12 @@
     }
   </style>
   <script>
-    function initCookieConsent() {
-      try {
-        if (!localStorage.getItem('dch_cookie_consent')) {
-          const banner = document.getElementById('cookieConsentBanner');
-          if (banner) banner.style.display = 'block';
-        }
-      } catch (e) {}
-    }
     function handleCookieChoice(choice) {
       if (window.DailyCalcHubsCookies && typeof window.DailyCalcHubsCookies.choose === 'function') {
         window.DailyCalcHubsCookies.choose(choice);
       } else if (window.DailyCalcHubsConsent && typeof window.DailyCalcHubsConsent.applyConsent === 'function') {
         window.DailyCalcHubsConsent.applyConsent(choice);
-      } else {
-        try {
-          localStorage.setItem('dch_cookie_consent', choice);
-          if (choice === 'essential') {
-            window['ga-disable-G-18Y3LNHDR8'] = true;
-            window.adsbygoogle = window.adsbygoogle || [];
-            window.adsbygoogle.pauseAdRequests = 1;
-            if (typeof gtag === 'function') {
-              gtag('consent', 'update', {
-                'ad_storage': 'denied',
-                'analytics_storage': 'denied',
-                'ad_user_data': 'denied',
-                'ad_personalization': 'denied'
-              });
-            }
-          } else if (choice === 'all') {
-            window['ga-disable-G-18Y3LNHDR8'] = false;
-            window.adsbygoogle = window.adsbygoogle || [];
-            window.adsbygoogle.pauseAdRequests = 0;
-            if (typeof gtag === 'function') {
-              gtag('consent', 'update', {
-                'ad_storage': 'granted',
-                'analytics_storage': 'granted',
-                'ad_user_data': 'granted',
-                'ad_personalization': 'granted'
-              });
-            }
-          }
-        } catch (e) {}
-        const banner = document.getElementById('cookieConsentBanner');
-        if (banner) banner.style.display = 'none';
       }
-    }
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initCookieConsent);
-    } else {
-      initCookieConsent();
     }
   </script>
 

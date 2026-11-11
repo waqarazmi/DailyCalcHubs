@@ -28,7 +28,39 @@ export default {
       });
     }
 
-    // 2. Delegate all other requests to Static Assets
+    // 2. Intercept Geo Resolution API Route
+    if (url.pathname === '/api/geo') {
+      if (request.method === 'OPTIONS') {
+        return new Response(null, {
+          status: 204,
+          headers: {
+            'Access-Control-Allow-Origin': url.origin,
+            'Access-Control-Allow-Methods': 'GET, OPTIONS',
+            'Access-Control-Allow-Headers': 'Content-Type'
+          }
+        });
+      }
+
+      if (request.method !== 'GET') {
+        return new Response(JSON.stringify({ error: 'Method not allowed' }), {
+          status: 405,
+          headers: { 'Content-Type': 'application/json' }
+        });
+      }
+
+      let rawCountry = request.cf && request.cf.country;
+      let country = (typeof rawCountry === 'string' && /^[A-Z]{2}$/.test(rawCountry)) ? rawCountry : 'XX';
+
+      return new Response(JSON.stringify({ country }), {
+        headers: {
+          'Content-Type': 'application/json; charset=utf-8',
+          'Cache-Control': 'private, no-cache, no-store, must-revalidate',
+          'Access-Control-Allow-Origin': url.origin
+        }
+      });
+    }
+
+    // 3. Delegate all other requests to Static Assets
     return env.ASSETS.fetch(request);
   }
 };

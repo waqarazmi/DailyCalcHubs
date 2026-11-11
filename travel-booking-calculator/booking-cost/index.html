@@ -59,7 +59,7 @@
 
   <!-- DailyCalcHubs Owner Admin Exclusion Mode (Zero GA4 Views / Zero AdSense Impressions) -->
     <script src="/owner-mode.js"></script>
-    <!-- Google Consent Mode v2 Default State -->
+    <!-- Google Consent Mode v2 Region-Aware Default State -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -67,7 +67,16 @@
       'ad_storage': 'denied',
       'analytics_storage': 'denied',
       'ad_user_data': 'denied',
-      'ad_personalization': 'denied'
+      'ad_personalization': 'denied',
+      'region': ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE', 'IS', 'LI', 'NO', 'GB', 'CH'],
+      'wait_for_update': 500
+    });
+    gtag('consent', 'default', {
+      'ad_storage': 'denied',
+      'analytics_storage': 'granted',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'wait_for_update': 500
     });
   </script>
   <!-- Google AdSense -->
@@ -1148,6 +1157,7 @@
           <li><a href="/privacy-policy/">Privacy Policy</a></li>
           <li><a href="/terms/">Terms of Service</a></li>
             <li><a href="/disclaimer/">Disclaimer</a></li>
+          <li><a href="#cookie-settings" data-cookie-settings>Cookie Settings</a></li>
         </ul>
       </div>
     </div>

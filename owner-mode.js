@@ -28,10 +28,105 @@
       window['ga-disable-G-18Y3LNHDR8'] = true;
       window.adsbygoogle = window.adsbygoogle || [];
       window.adsbygoogle.pauseAdRequests = 1;
+      window.__dch_ads_paused = true;
     } else if (savedConsent === 'all' && !isOwner) {
       window['ga-disable-G-18Y3LNHDR8'] = false;
       window.adsbygoogle = window.adsbygoogle || [];
       window.adsbygoogle.pauseAdRequests = 0;
+      window.__dch_ads_paused = false;
+    }
+
+    // European Economic Area (30 states), UK, and Switzerland require prior opt-in
+    var EEA_UK_CH = [
+      'AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE',
+      'IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','IS',
+      'LI','NO','GB','CH'
+    ];
+
+    // Local environment check for QA test overrides (strictly disabled in production)
+    var isLocalEnv = (
+      window.location.hostname === 'localhost' ||
+      window.location.hostname === '127.0.0.1' ||
+      window.location.hostname === '' ||
+      window.location.protocol === 'file:'
+    );
+    if (isLocalEnv && params.get('geo')) {
+      try {
+        sessionStorage.setItem('dch_geo', params.get('geo').toUpperCase());
+      } catch (e) {}
+    }
+
+    // Determine if cookie consent banner is needed
+    if (isOwner || savedConsent) {
+      // If owner mode is active or user has already chosen, banner is never needed
+      window.__dch_banner_needed = false;
+    } else {
+      var cachedGeo = null;
+      try {
+        cachedGeo = sessionStorage.getItem('dch_geo');
+      } catch (e) {}
+
+      if (cachedGeo) {
+        window.__dch_geo = cachedGeo;
+        window.__dch_banner_needed = (EEA_UK_CH.indexOf(cachedGeo) !== -1 || cachedGeo === 'XX');
+      } else {
+        // Asynchronously resolve visitor country via edge endpoint with safe fallback
+        if (typeof Promise !== 'undefined' && typeof fetch === 'function') {
+          window.__dch_geo_promise = new Promise(function(resolve) {
+            var resolved = false;
+            var timer = setTimeout(function() {
+              if (!resolved) {
+                resolved = true;
+                finishGeo('XX');
+                resolve('XX');
+              }
+            }, 1500);
+
+            function finishGeo(country) {
+              country = (country && typeof country === 'string' && /^[A-Z]{2}$/.test(country)) ? country : 'XX';
+              try { sessionStorage.setItem('dch_geo', country); } catch (e) {}
+              window.__dch_geo = country;
+              var needed = (EEA_UK_CH.indexOf(country) !== -1 || country === 'XX');
+              window.__dch_banner_needed = needed;
+              if (!needed && !window.__dch_consent_applied && !isOwner) {
+                if (typeof window.gtag === 'function') {
+                  window.gtag('consent', 'update', { 'analytics_storage': 'granted' });
+                }
+              }
+              if (typeof window.__dch_on_geo_resolved === 'function') {
+                try { window.__dch_on_geo_resolved(country, needed); } catch (err) {}
+              }
+            }
+
+            fetch('/api/geo', { credentials: 'same-origin' })
+              .then(function(res) {
+                if (!res.ok) throw new Error('status ' + res.status);
+                return res.json();
+              })
+              .then(function(data) {
+                if (!resolved) {
+                  resolved = true;
+                  clearTimeout(timer);
+                  var c = (data && data.country) ? data.country.toUpperCase() : 'XX';
+                  finishGeo(c);
+                  resolve(c);
+                }
+              })
+              .catch(function() {
+                if (!resolved) {
+                  resolved = true;
+                  clearTimeout(timer);
+                  finishGeo('XX');
+                  resolve('XX');
+                }
+              });
+          });
+        } else {
+          // Ancient browser fallback: require consent
+          window.__dch_geo = 'XX';
+          window.__dch_banner_needed = true;
+        }
+      }
     }
 
     // Google Consent Mode v2 Early Hook:
@@ -67,6 +162,11 @@
               'ad_personalization': 'granted'
             }]);
             window.__dch_consent_applied = 'all';
+          } else if (window.__dch_banner_needed === false && !currentOwner) {
+            // Visitor is confirmed in non-EEA region (e.g. Saudi Arabia, India)
+            origPush(['consent', 'update', {
+              'analytics_storage': 'granted'
+            }]);
           }
         }
       }
@@ -89,6 +189,7 @@
           window['ga-disable-G-18Y3LNHDR8'] = true;
           window.adsbygoogle = window.adsbygoogle || [];
           window.adsbygoogle.pauseAdRequests = 1;
+          window.__dch_ads_paused = true;
           if (typeof window.gtag === 'function') {
             window.gtag('consent', 'update', {
               'ad_storage': 'denied',
@@ -103,6 +204,7 @@
             window['ga-disable-G-18Y3LNHDR8'] = false;
             window.adsbygoogle = window.adsbygoogle || [];
             window.adsbygoogle.pauseAdRequests = 0;
+            window.__dch_ads_paused = false;
           }
           if (typeof window.gtag === 'function') {
             window.gtag('consent', 'update', {
