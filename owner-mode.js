@@ -92,6 +92,16 @@
                 if (typeof window.gtag === 'function') {
                   window.gtag('consent', 'update', { 'analytics_storage': 'granted' });
                 }
+              } else if (needed && !window.__dch_consent_applied && !isOwner) {
+                if (typeof window.gtag === 'function') {
+                  window.gtag('consent', 'update', {
+                    'ad_storage': 'denied',
+                    'analytics_storage': 'denied',
+                    'ad_user_data': 'denied',
+                    'ad_personalization': 'denied'
+                  });
+                }
+                window.__dch_consent_applied = 'denied_by_region';
               }
               if (typeof window.__dch_on_geo_resolved === 'function') {
                 try { window.__dch_on_geo_resolved(country, needed); } catch (err) {}
@@ -132,8 +142,16 @@
     // Google Consent Mode v2 Early Hook:
     // When the subsequent <head> script calls gtag('consent', 'default', ...),
     // automatically sequence the returning visitor's update immediately after default.
+    // Note: Google's gtag.js parser specifically expects an Arguments object rather than a raw Array.
     window.dataLayer = window.dataLayer || [];
     var origPush = window.dataLayer.push.bind(window.dataLayer);
+    function sendGtag() {
+      origPush(arguments);
+    }
+    window.gtag = window.gtag || function() {
+      window.dataLayer.push(arguments);
+    };
+
     window.dataLayer.push = function() {
       var res = origPush.apply(window.dataLayer, arguments);
       for (var i = 0; i < arguments.length; i++) {
@@ -147,26 +165,35 @@
           } catch (e) {}
 
           if (currentOwner || currentConsent === 'essential') {
-            origPush(['consent', 'update', {
+            sendGtag('consent', 'update', {
               'ad_storage': 'denied',
               'analytics_storage': 'denied',
               'ad_user_data': 'denied',
               'ad_personalization': 'denied'
-            }]);
+            });
             window.__dch_consent_applied = 'essential';
           } else if (currentConsent === 'all' && !currentOwner) {
-            origPush(['consent', 'update', {
+            sendGtag('consent', 'update', {
               'ad_storage': 'granted',
               'analytics_storage': 'granted',
               'ad_user_data': 'granted',
               'ad_personalization': 'granted'
-            }]);
+            });
             window.__dch_consent_applied = 'all';
           } else if (window.__dch_banner_needed === false && !currentOwner) {
             // Visitor is confirmed in non-EEA region (e.g. Saudi Arabia, India)
-            origPush(['consent', 'update', {
+            sendGtag('consent', 'update', {
               'analytics_storage': 'granted'
-            }]);
+            });
+          } else if (window.__dch_banner_needed === true && !currentOwner) {
+            // Visitor is in EEA/UK/CH or unknown fallback: prior opt-in mandated
+            sendGtag('consent', 'update', {
+              'ad_storage': 'denied',
+              'analytics_storage': 'denied',
+              'ad_user_data': 'denied',
+              'ad_personalization': 'denied'
+            });
+            window.__dch_consent_applied = 'denied_by_region';
           }
         }
       }
