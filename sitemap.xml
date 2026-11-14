@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://dailycalchubs.com/</loc>
-    <lastmod>2026-09-09</lastmod>
+    <lastmod>2026-11-14</lastmod>
     <priority>1.00</priority>
+    <image:image>
+      <image:loc>https://dailycalchubs.com/og-image.jpg</image:loc>
+      <image:title>DailyCalcHubs - Saudi Tools &amp; Calculators for Expats</image:title>
+      <image:caption>DailyCalcHubs official platform preview banner</image:caption>
+    </image:image>
   </url>
 
   <!-- Saudi Remittance Suite (Step 2A) -->
@@ -187,9 +193,18 @@
   <!-- Legal & Static Pages -->
   <url>
     <loc>https://dailycalchubs.com/about/</loc>
-    <lastmod>2026-09-20</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-11-14</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.80</priority>
+    <image:image>
+      <image:loc>https://dailycalchubs.com/exports/dailycalchubs-instagram-1080x1080.png</image:loc>
+      <image:title>DailyCalcHubs Official Brand Logo</image:title>
+      <image:caption>Official squircle vector brand logo of DailyCalcHubs for Saudi Arabia</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://dailycalchubs.com/android-chrome-512x512.png</image:loc>
+      <image:title>DailyCalcHubs Brand Icon 512x512</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://dailycalchubs.com/privacy-policy/</loc>
@@ -719,9 +734,14 @@
   <!-- Arabic Legal & Trust Pages -->
   <url>
     <loc>https://dailycalchubs.com/ar/about/</loc>
-    <lastmod>2026-09-20</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-11-14</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.80</priority>
+    <image:image>
+      <image:loc>https://dailycalchubs.com/exports/dailycalchubs-instagram-1080x1080.png</image:loc>
+      <image:title>شعار DailyCalcHubs الرسمي</image:title>
+      <image:caption>الشعار الرسمي لمنصة DailyCalcHubs لحاسبات وأدوات المملكة العربية السعودية</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://dailycalchubs.com/ar/privacy-policy/</loc>
