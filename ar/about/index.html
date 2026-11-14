@@ -274,6 +274,8 @@
       border-color: #0284c7;
       box-shadow: 0 8px 20px -4px rgba(2, 132, 199, 0.12);
     }
+    .brand-logo-light { display: block; }
+    .brand-logo-dark { display: none; }
     .brand-asset-img {
       width: 110px;
       height: 110px;
@@ -362,6 +364,8 @@
       border-color: rgba(56, 189, 248, 0.4);
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
     }
+    html[data-theme="dark"] .brand-logo-light { display: none; }
+    html[data-theme="dark"] .brand-logo-dark { display: block; }
     html[data-theme="dark"] .brand-asset-img {
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
     }
@@ -947,7 +951,8 @@
       <p>تعمل منصة DailyCalcHubs تحت شعارنا الرسمي وهويتنا البصرية المعتمدة. يمكن لوسائل الإعلام والشركاء ومحركات البحث الرجوع إلى أصول العلامة أدناه:</p>
       
       <div class="brand-asset-card">
-        <img src="/exports/dailycalchubs-instagram-1080x1080.png" alt="شعار DailyCalcHubs الرسمي" width="110" height="110" class="brand-asset-img" loading="lazy" decoding="async">
+                <img src="/exports/dailycalchubs-instagram-1080x1080-light.png" alt="شعار DailyCalcHubs الرسمي" width="110" height="110" class="brand-asset-img brand-logo-light" loading="lazy" decoding="async">
+        <img src="/exports/dailycalchubs-instagram-1080x1080.png" alt="شعار DailyCalcHubs الرسمي" width="110" height="110" class="brand-asset-img brand-logo-dark" loading="lazy" decoding="async">
         <div>
           <h3 class="brand-asset-title">الشعار الرسمي وأصول الهوية البصرية لمنصة DailyCalcHubs</h3>
           <p class="brand-asset-desc">الشعار الرسمي المعتمد والأيقونة الرقمية لمنصة DailyCalcHubs — حاسبات رقمية وأدوات يومية مجانية للمقيمين والعائلات في المملكة العربية السعودية.</p>
