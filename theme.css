@@ -6926,3 +6926,23 @@ html[data-theme="dark"]:has(head link[rel="canonical"][href="https://dailycalchu
 html[data-theme="dark"] body:has(#hubSipMonthly) #resultsGoalWrap .sip-result-card:not(.highlight) .sip-result-sub {
   color: #94a3b8 !important;
 }
+
+/* ==========================================================================
+   Sitewide Official Brand Logo Container & Image Scaling
+   ========================================================================== */
+.brand-logo-area .logo-icon-box,
+.mobile-logo-group .logo-icon-box,
+.footer-brand-logo .logo-icon-box,
+.logo-area .logo-icon {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+.brand-logo-area .logo-icon-box img,
+.mobile-logo-group .logo-icon-box img,
+.footer-brand-logo .logo-icon-box img,
+.logo-area .logo-icon img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
