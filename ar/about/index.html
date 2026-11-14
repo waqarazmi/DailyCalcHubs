@@ -257,6 +257,141 @@
       color: #38bdf8;
     }
 
+    /* Brand Asset Showcase Card */
+    .brand-asset-card {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      padding: 22px 24px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      margin: 20px 0 32px 0;
+      transition: all 0.25s ease;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    }
+    .brand-asset-card:hover {
+      border-color: #0284c7;
+      box-shadow: 0 8px 20px -4px rgba(2, 132, 199, 0.12);
+    }
+    .brand-asset-img {
+      width: 110px;
+      height: 110px;
+      border-radius: 22px;
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.12);
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+    .brand-asset-title {
+      margin: 0 0 6px 0;
+      font-size: 19px;
+      color: #0f172a;
+      font-weight: 800;
+      line-height: 1.35;
+    }
+    .brand-asset-desc {
+      margin: 0 0 14px 0;
+      font-size: 13.5px;
+      color: #64748b;
+      line-height: 1.6;
+    }
+    .brand-asset-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .brand-btn-svg {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 12.5px;
+      font-weight: 700;
+      color: #0284c7;
+      text-decoration: none;
+      background: #e0f2fe;
+      padding: 8px 16px;
+      border-radius: 8px;
+      border: 1px solid #bae6fd;
+      transition: all 0.2s ease;
+    }
+    .brand-btn-svg:hover {
+      background: #0284c7;
+      color: #ffffff;
+      border-color: #0284c7;
+      transform: translateY(-1px);
+    }
+    .brand-btn-png {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 12.5px;
+      font-weight: 700;
+      color: #16a34a;
+      text-decoration: none;
+      background: #f0fdf4;
+      padding: 8px 16px;
+      border-radius: 8px;
+      border: 1px solid #bbf7d0;
+      transition: all 0.2s ease;
+    }
+    .brand-btn-png:hover {
+      background: #16a34a;
+      color: #ffffff;
+      border-color: #16a34a;
+      transform: translateY(-1px);
+    }
+    @media (max-width: 580px) {
+      .brand-asset-card {
+        flex-direction: column;
+        text-align: center;
+        gap: 16px;
+        padding: 20px 16px;
+      }
+      .brand-asset-actions {
+        justify-content: center;
+      }
+    }
+
+    /* Brand Asset Card - Dark Mode */
+    html[data-theme="dark"] .brand-asset-card {
+      background: linear-gradient(135deg, #0b1120 0%, #131b2e 100%);
+      border-color: #1e293b;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    }
+    html[data-theme="dark"] .brand-asset-card:hover {
+      border-color: rgba(56, 189, 248, 0.4);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+    }
+    html[data-theme="dark"] .brand-asset-img {
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+    }
+    html[data-theme="dark"] .brand-asset-title {
+      color: #f8fafc;
+    }
+    html[data-theme="dark"] .brand-asset-desc {
+      color: #94a3b8;
+    }
+    html[data-theme="dark"] .brand-btn-svg {
+      color: #38bdf8;
+      background: rgba(56, 189, 248, 0.12);
+      border-color: rgba(56, 189, 248, 0.3);
+    }
+    html[data-theme="dark"] .brand-btn-svg:hover {
+      background: #0284c7;
+      color: #ffffff;
+      border-color: #0284c7;
+    }
+    html[data-theme="dark"] .brand-btn-png {
+      color: #4ade80;
+      background: rgba(34, 197, 94, 0.12);
+      border-color: rgba(34, 197, 94, 0.3);
+    }
+    html[data-theme="dark"] .brand-btn-png:hover {
+      background: #16a34a;
+      color: #ffffff;
+      border-color: #16a34a;
+    }
+
     /* Footer */
     .site-footer { background: var(--navy-footer); color: #cbd5e1; padding: 48px 20px 24px; font-size: 13.5px; }
     .footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 32px; margin-bottom: 36px; }
@@ -811,14 +946,14 @@
       <h2><i class="fas fa-award"></i> الشعار الرسمي، الهوية البصرية وأصول العلامة</h2>
       <p>تعمل منصة DailyCalcHubs تحت شعارنا الرسمي وهويتنا البصرية المعتمدة. يمكن لوسائل الإعلام والشركاء ومحركات البحث الرجوع إلى أصول العلامة أدناه:</p>
       
-      <div class="brand-asset-card" style="display:flex; align-items:center; gap:24px; padding:20px; background:linear-gradient(135deg, #070d18 0%, #0f172a 100%); border-radius:16px; border:1px solid rgba(56, 189, 248, 0.25); margin:20px 0 32px 0; color:#ffffff;">
-        <img src="/exports/dailycalchubs-instagram-1080x1080.png" alt="شعار DailyCalcHubs الرسمي" width="120" height="120" style="width:120px; height:120px; border-radius:24px; box-shadow:0 8px 24px rgba(0,0,0,0.5); object-fit:contain; flex-shrink:0;" loading="lazy" decoding="async">
+      <div class="brand-asset-card">
+        <img src="/exports/dailycalchubs-instagram-1080x1080.png" alt="شعار DailyCalcHubs الرسمي" width="110" height="110" class="brand-asset-img" loading="lazy" decoding="async">
         <div>
-          <h3 style="margin:0 0 6px 0; font-size:19px; color:#ffffff; font-weight:800;">الشعار الرسمي وأصول الهوية البصرية لمنصة DailyCalcHubs</h3>
-          <p style="margin:0 0 12px 0; font-size:13px; color:#94a3b8; line-height:1.5;">الشعار الرسمي المعتمد والأيقونة الرقمية لمنصة DailyCalcHubs — حاسبات رقمية وأدوات يومية مجانية للمقيمين والعائلات في المملكة العربية السعودية.</p>
-          <div style="display:flex; gap:12px; flex-wrap:wrap;">
-            <a href="/favicon.svg" target="_blank" style="display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:700; color:#38bdf8; text-decoration:none; background:rgba(56,189,248,0.12); padding:7px 14px; border-radius:8px; border:1px solid rgba(56,189,248,0.3);"><i class="fas fa-file-code"></i> الشعار المتجهي (SVG)</a>
-            <a href="/android-chrome-512x512.png" target="_blank" style="display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:700; color:#22c55e; text-decoration:none; background:rgba(34,197,94,0.12); padding:7px 14px; border-radius:8px; border:1px solid rgba(34,197,94,0.3);"><i class="fas fa-image"></i> أيقونة عالية الدقة (512px)</a>
+          <h3 class="brand-asset-title">الشعار الرسمي وأصول الهوية البصرية لمنصة DailyCalcHubs</h3>
+          <p class="brand-asset-desc">الشعار الرسمي المعتمد والأيقونة الرقمية لمنصة DailyCalcHubs — حاسبات رقمية وأدوات يومية مجانية للمقيمين والعائلات في المملكة العربية السعودية.</p>
+          <div class="brand-asset-actions">
+            <a href="/favicon.svg" target="_blank" class="brand-btn-svg"><i class="fas fa-file-code"></i> الشعار المتجهي (SVG)</a>
+            <a href="/android-chrome-512x512.png" target="_blank" class="brand-btn-png"><i class="fas fa-image"></i> أيقونة عالية الدقة (512px)</a>
           </div>
         </div>
       </div>
