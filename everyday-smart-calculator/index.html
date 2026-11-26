@@ -46,7 +46,8 @@
   <meta name="twitter:image" content="https://dailycalchubs.com/og-image.jpg">
 
   <!-- DailyCalcHubs Owner Admin Exclusion Mode (Zero GA4 Views / Zero AdSense Impressions) -->
-    <script src="/owner-mode.js"></script>
+    <script>(function(){try{var p=new URLSearchParams(location.search),o=p.get('owner');if(o==='waqar_lock'){localStorage.setItem('dch_owner_mode','active');p.delete('owner');history.replaceState({},document.title,location.pathname+(p.toString()?'?'+p.toString():'')+location.hash)}else if(o==='off'){localStorage.removeItem('dch_owner_mode');p.delete('owner');history.replaceState({},document.title,location.pathname+(p.toString()?'?'+p.toString():'')+location.hash)}var i=false,s=null;try{i=localStorage.getItem('dch_owner_mode')==='active';s=localStorage.getItem('dch_cookie_consent')}catch(e){}if(i||s==='essential'){window['ga-disable-G-18Y3LNHDR8']=true;window.adsbygoogle=window.adsbygoogle||[];window.adsbygoogle.pauseAdRequests=1;window.__dch_ads_paused=true}else if(s==='all'&&!i){window['ga-disable-G-18Y3LNHDR8']=false;window.adsbygoogle=window.adsbygoogle||[];window.adsbygoogle.pauseAdRequests=0;window.__dch_ads_paused=false}var E=['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','IS','LI','NO','GB','CH'],d=window.dataLayer=window.dataLayer||[],op=d.push.bind(d);window.gtag=window.gtag||function(){d.push(arguments)};if(i||s){window.__dch_banner_needed=false}else{try{var cg=sessionStorage.getItem('dch_geo');if(cg){window.__dch_geo=cg;window.__dch_banner_needed=E.indexOf(cg)!==-1||cg==='XX'}}catch(e){}}function sg(){op(arguments)}d.push=function(){var r=op.apply(d,arguments);for(var k=0;k<arguments.length;k++){var it=arguments[k];if(it&&it[0]==='consent'&&it[1]==='default'){var cc=null,co=false;try{cc=localStorage.getItem('dch_cookie_consent');co=localStorage.getItem('dch_owner_mode')==='active'}catch(e){}if(co||cc==='essential'){sg('consent','update',{ad_storage:'denied',analytics_storage:'denied',ad_user_data:'denied',ad_personalization:'denied'});window.__dch_consent_applied='essential'}else if(cc==='all'&&!co){sg('consent','update',{ad_storage:'granted',analytics_storage:'granted',ad_user_data:'granted',ad_personalization:'granted'});window.__dch_consent_applied='all'}else if(window.__dch_banner_needed===false&&!co){sg('consent','update',{analytics_storage:'granted'})}else if(window.__dch_banner_needed===true&&!co){sg('consent','update',{ad_storage:'denied',analytics_storage:'denied',ad_user_data:'denied',ad_personalization:'denied'});window.__dch_consent_applied='denied_by_region'}}}return r}}catch(e){}})();</script>
+  <script src="/owner-mode.js?v=2026.3" defer></script>
     <!-- Google Consent Mode v2 Region-Aware Default State -->
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -79,10 +80,11 @@
   </script>
 
   <!-- Fonts & Icons -->
+  <link rel="preload" href="/theme.css?v=2026.3" as="style">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"></noscript>
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
 
   <!-- Schema.org JSON-LD -->
   <script type="application/ld+json">
@@ -193,7 +195,7 @@
     .header-nav-links { display: flex; align-items: center; gap: 14px; list-style: none; }
     .header-nav-links a { color: #334155; text-decoration: none; font-size: 14px; font-weight: 600; transition: color 0.15s; }
     .header-nav-links a:hover, .header-nav-links a.active { color: var(--sky-saudi); }
-    .saudi-badge-header { display: inline-flex; align-items: center; gap: 6px; background: #f0f9ff; border: 1px solid #bae6fd; color: #0284c7; padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; }
+    .saudi-badge-header { display: inline-flex; align-items: center; gap: 6px; background: #f0f9ff; border: 1px solid #bae6fd; color: #0369a1; padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; }
 
     /* Breadcrumbs */
     .breadcrumbs-bar { background: #fff; border-bottom: 1px solid var(--border-light); padding: 12px 0; font-size: 13px; }
@@ -204,7 +206,7 @@
 
     /* Hero */
     .hub-hero { background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%); padding: 42px 0 32px; border-bottom: 1px solid var(--border-light); }
-    .hub-pill { display: inline-flex; align-items: center; gap: 8px; background: #f0f9ff; border: 1px solid #bae6fd; color: #0284c7; padding: 4px 12px; border-radius: 9999px; font-size: 12px; font-weight: 700; margin-bottom: 14px; }
+    .hub-pill { display: inline-flex; align-items: center; gap: 8px; background: #f0f9ff; border: 1px solid #bae6fd; color: #0369a1; padding: 4px 12px; border-radius: 9999px; font-size: 12px; font-weight: 700; margin-bottom: 14px; }
     .hub-title { font-size: 36px; font-weight: 800; color: var(--navy-dark); letter-spacing: -0.8px; margin-bottom: 12px; line-height: 1.2; }
     .hub-lead { font-size: 16px; color: #475569; max-width: 860px; line-height: 1.6; margin-bottom: 20px; }
 
@@ -245,7 +247,7 @@
       height: 54px;
       border-radius: 14px;
       background: #f0f9ff;
-      color: #0284c7;
+      color: #0369a1;
       border: 1px solid #bae6fd;
       display: flex;
       align-items: center;
@@ -274,7 +276,7 @@
       transition: all 0.15s ease;
       width: 100%;
     }
-    .card-action-btn:hover { background: #0284c7; }
+    .card-action-btn:hover { background: #0369a1; }
 
     /* Interactive Showcase Section */
     .interactive-showcase-section { background: #ffffff; border-radius: 16px; border: 1px solid var(--border-light); box-shadow: var(--card-shadow); padding: 36px; margin-bottom: 48px; }
@@ -282,7 +284,7 @@
     .showcase-title { font-size: 22px; font-weight: 800; color: var(--navy-dark); display: flex; align-items: center; gap: 10px; }
     .tabs-nav { display: flex; gap: 8px; background: #f1f5f9; padding: 4px; border-radius: 10px; }
     .tab-btn { border: none; background: transparent; padding: 8px 16px; font-size: 13.5px; font-weight: 700; color: #475569; border-radius: 8px; cursor: pointer; transition: all 0.15s ease; font-family: inherit; }
-    .tab-btn.active { background: #ffffff; color: #0284c7; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); }
+    .tab-btn.active { background: #ffffff; color: #0369a1; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); }
 
     /* Quick Mini Tools Inside Showcase */
     .mini-tool-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: center; }
@@ -338,9 +340,9 @@
       .header-nav-links { display: none; }
     }
   </style>
-  <link rel="stylesheet" href="/theme.css?v=2026.2">
-  <script src="/mobile-nav.js" defer></script>
-<script src="/constants.js" defer></script>
+  <link rel="stylesheet" href="/theme.css?v=2026.3">
+  <script src="/mobile-nav.js?v=2026.3" defer></script>
+<script src="/constants.js?v=2026.3" defer></script>
 </head>
 <body>
   <!-- Top Rates Ticker -->
@@ -381,7 +383,7 @@
           <i class="fas fa-chevron-right mega-tab-arrow"></i>
         </button>
         <button type="button" class="mega-cat-tab" role="tab" id="tab-prayer" aria-selected="false" aria-controls="panel-prayer" data-cat="prayer" tabindex="-1">
-          <span class="mega-cat-icon-badge" style="background:#f0f9ff; color:#0284c7; border:1px solid #bae6fd;">
+          <span class="mega-cat-icon-badge" style="background:#f0f9ff; color:#0369a1; border:1px solid #bae6fd;">
             <i class="fas fa-mosque"></i>
           </span>
           <span class="mega-cat-tab-title">Prayer & Religious</span>
@@ -462,7 +464,7 @@
         <div class="mega-category-panel" id="panel-prayer" role="tabpanel" aria-labelledby="tab-prayer">
           <div class="mega-panel-header">
             <div class="mega-panel-title-group">
-              <span class="mega-cat-icon-badge" style="background:#f0f9ff; color:#0284c7; border:1px solid #bae6fd; width:32px; height:32px; font-size:14px;">
+              <span class="mega-cat-icon-badge" style="background:#f0f9ff; color:#0369a1; border:1px solid #bae6fd; width:32px; height:32px; font-size:14px;">
                 <i class="fas fa-mosque"></i>
               </span>
               <div>
@@ -591,7 +593,7 @@
       <!-- Bottom Status & Quick Link Bar -->
       <div class="mega-menu-footer">
         <div class="mega-footer-count">
-          <i class="fas fa-layer-group" style="color: #0284c7;"></i>
+          <i class="fas fa-layer-group" style="color: #0369a1;"></i>
           <span>55 Calculators & Tools</span>
         </div>
         <a href="/#popular-calculators" class="mega-footer-link" onclick="closeExploreDropdown()">
@@ -651,11 +653,11 @@
     <div class="mobile-nav-drawer">
       <div class="mobile-nav-header">
         <div class="mobile-logo-group">
-          <div class="logo-icon-box" style="width:34px;height:34px;font-size:15px;background:#0284c7;color:#fff;border-radius:10px;display:flex;align-items:center;justify-content:center;">
+          <div class="logo-icon-box" style="width:34px;height:34px;font-size:15px;background:#0369a1;color:#fff;border-radius:10px;display:flex;align-items:center;justify-content:center;">
             <img src="/favicon.svg" alt="DailyCalcHubs Logo" width="34" height="34" style="display:block; width:34px; height:34px; object-fit:contain;" loading="eager" decoding="async">
           </div>
           <div class="logo-text-group">
-            <span class="logo-title" style="font-size:18px;font-weight:800;color:#0f172a;">DailyCalc<span style="color:#0284c7;">Hubs</span></span>
+            <span class="logo-title" style="font-size:18px;font-weight:800;color:#0f172a;">DailyCalc<span style="color:#0369a1;">Hubs</span></span>
           </div>
         </div>
         <div class="mobile-header-actions">
@@ -679,7 +681,7 @@
           <div class="mobile-accordion-item" data-cat="remittance">
             <button type="button" class="mobile-accordion-header" aria-expanded="false">
               <div class="mobile-acc-title-group">
-                <span class="mobile-acc-icon" style="background:#ecfdf5; color:#059669; border:1px solid #a7f3d0;">
+                <span class="mobile-acc-icon" style="background:#ecfdf5; color:#047857; border:1px solid #a7f3d0;">
                   <i class="fas fa-money-bill-transfer"></i>
                 </span>
                 <span class="mobile-acc-title">Remittance &amp; Forex</span>
@@ -743,7 +745,7 @@
           <div class="mobile-accordion-item" data-cat="everyday">
             <button type="button" class="mobile-accordion-header" aria-expanded="false">
               <div class="mobile-acc-title-group">
-                <span class="mobile-acc-icon" style="background:#f0f9ff; color:#0284c7; border:1px solid #bae6fd;">
+                <span class="mobile-acc-icon" style="background:#f0f9ff; color:#0369a1; border:1px solid #bae6fd;">
                   <i class="fas fa-calculator"></i>
                 </span>
                 <span class="mobile-acc-title">Everyday Smart Tools</span>
@@ -1100,8 +1102,8 @@
                 <input type="date" id="quickDob" class="mini-calc-input" value="1995-06-15" onchange="runQuickAge()">
               </div>
             </div>
-            <div style="font-size:13px; color:#64748b; line-height:1.5;">
-              Want full milestone statistics and hours lived? Visit the <a href="/everyday-smart-calculator/age-calculator/" style="color:#0284c7; font-weight:700;">full Age Calculator page</a>.
+            <div style="font-size:13px; color:#94a3b8; line-height:1.5;">
+              Want full milestone statistics and hours lived? Visit the <a href="/everyday-smart-calculator/age-calculator/" style="color:#0369a1; font-weight:700;">full Age Calculator page</a>.
             </div>
           </div>
           <div class="mini-result-box">
@@ -1157,17 +1159,17 @@
 
       <h3>Household Energy &amp; Utility Planning</h3>
       <p>
-        Residential utility budgeting requires understanding both overall billing structures and individual appliance energy draws. To forecast your monthly electricity invoice based on Saudi Electricity Company (SEC) residential progressive tariff slabs (0.18 SAR/kWh up to 6,000 kWh, and 0.30 SAR/kWh thereafter), utilize our <a href="/everyday-smart-calculator/electricity-cost-calculator/" style="color:#0284c7; font-weight:700;">Electricity Cost Calculator</a>. When diagnosing which home devices drive up power bills—such as high-tonnage split air conditioners during intense Gulf summers—our <a href="/everyday-smart-calculator/appliance-electricity-consumption/" style="color:#0284c7; font-weight:700;">Appliance Electricity Consumption Calculator</a> lets you calculate kilowatt-hours and running costs for individual appliances with ease.
+        Residential utility budgeting requires understanding both overall billing structures and individual appliance energy draws. To forecast your monthly electricity invoice based on Saudi Electricity Company (SEC) residential progressive tariff slabs (0.18 SAR/kWh up to 6,000 kWh, and 0.30 SAR/kWh thereafter), utilize our <a href="/everyday-smart-calculator/electricity-cost-calculator/" style="color:#0369a1; font-weight:700;">Electricity Cost Calculator</a>. When diagnosing which home devices drive up power bills—such as high-tonnage split air conditioners during intense Gulf summers—our <a href="/everyday-smart-calculator/appliance-electricity-consumption/" style="color:#0369a1; font-weight:700;">Appliance Electricity Consumption Calculator</a> lets you calculate kilowatt-hours and running costs for individual appliances with ease.
       </p>
 
       <h3>Smart Retail Shopping &amp; VAT Budgeting</h3>
       <p>
-        Major shopping seasons—including Saudi National Day, Founding Day, Ramadan, and White Friday—bring steep promotional sales. However, evaluating true savings requires navigating stacked promo codes and standard tax rules. With our <a href="/everyday-smart-calculator/discount-calculator/" style="color:#0284c7; font-weight:700;">Smart Discount Calculator</a>, you can determine genuine final checkout prices after consecutive discounts and standard 15% Saudi VAT. For broader numerical comparisons, ratio adjustments, and percentage markups, our <a href="/everyday-smart-calculator/percentage-calculator/" style="color:#0284c7; font-weight:700;">Percentage Calculator</a> provides instant mathematical breakdowns for everyday school, business, and personal applications.
+        Major shopping seasons—including Saudi National Day, Founding Day, Ramadan, and White Friday—bring steep promotional sales. However, evaluating true savings requires navigating stacked promo codes and standard tax rules. With our <a href="/everyday-smart-calculator/discount-calculator/" style="color:#0369a1; font-weight:700;">Smart Discount Calculator</a>, you can determine genuine final checkout prices after consecutive discounts and standard 15% Saudi VAT. For broader numerical comparisons, ratio adjustments, and percentage markups, our <a href="/everyday-smart-calculator/percentage-calculator/" style="color:#0369a1; font-weight:700;">Percentage Calculator</a> provides instant mathematical breakdowns for everyday school, business, and personal applications.
       </p>
 
       <h3>Daily Commute &amp; Travel Mobility</h3>
       <p>
-        Whether coordinating weekly carpools between Riyadh, Jeddah, and Dammam or planning interstate highway travel, road fuel expenditures add up quickly. Our <a href="/everyday-smart-calculator/fuel-cost-calculator/" style="color:#0284c7; font-weight:700;">Fuel Cost Calculator</a> factors in distance, vehicle fuel efficiency (liters per 100 km), passenger counts, and current official Saudi Aramco domestic retail fuel prices to provide clear per-person travel budgets.
+        Whether coordinating weekly carpools between Riyadh, Jeddah, and Dammam or planning interstate highway travel, road fuel expenditures add up quickly. Our <a href="/everyday-smart-calculator/fuel-cost-calculator/" style="color:#0369a1; font-weight:700;">Fuel Cost Calculator</a> factors in distance, vehicle fuel efficiency (liters per 100 km), passenger counts, and current official Saudi Aramco domestic retail fuel prices to provide clear per-person travel budgets.
       </p>
 
       <h3>How Everyday Smart Tools Work Together</h3>
@@ -1384,7 +1386,7 @@
       runQuickDiscount();
     });
   </script>
-  <script src="/theme.js" defer></script>
-  <script src="/share.js" defer></script>
+  <script src="/theme.js?v=2026.3" defer></script>
+  <script src="/share.js?v=2026.3" defer></script>
 </body>
 </html>

@@ -46,7 +46,8 @@
   <meta name="twitter:image" content="https://dailycalchubs.com/og-image.jpg">
 
   <!-- DailyCalcHubs Owner Admin Exclusion Mode (Zero GA4 Views / Zero AdSense Impressions) -->
-    <script src="/owner-mode.js"></script>
+    <script>(function(){try{var p=new URLSearchParams(location.search),o=p.get('owner');if(o==='waqar_lock'){localStorage.setItem('dch_owner_mode','active');p.delete('owner');history.replaceState({},document.title,location.pathname+(p.toString()?'?'+p.toString():'')+location.hash)}else if(o==='off'){localStorage.removeItem('dch_owner_mode');p.delete('owner');history.replaceState({},document.title,location.pathname+(p.toString()?'?'+p.toString():'')+location.hash)}var i=false,s=null;try{i=localStorage.getItem('dch_owner_mode')==='active';s=localStorage.getItem('dch_cookie_consent')}catch(e){}if(i||s==='essential'){window['ga-disable-G-18Y3LNHDR8']=true;window.adsbygoogle=window.adsbygoogle||[];window.adsbygoogle.pauseAdRequests=1;window.__dch_ads_paused=true}else if(s==='all'&&!i){window['ga-disable-G-18Y3LNHDR8']=false;window.adsbygoogle=window.adsbygoogle||[];window.adsbygoogle.pauseAdRequests=0;window.__dch_ads_paused=false}var E=['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','IS','LI','NO','GB','CH'],d=window.dataLayer=window.dataLayer||[],op=d.push.bind(d);window.gtag=window.gtag||function(){d.push(arguments)};if(i||s){window.__dch_banner_needed=false}else{try{var cg=sessionStorage.getItem('dch_geo');if(cg){window.__dch_geo=cg;window.__dch_banner_needed=E.indexOf(cg)!==-1||cg==='XX'}}catch(e){}}function sg(){op(arguments)}d.push=function(){var r=op.apply(d,arguments);for(var k=0;k<arguments.length;k++){var it=arguments[k];if(it&&it[0]==='consent'&&it[1]==='default'){var cc=null,co=false;try{cc=localStorage.getItem('dch_cookie_consent');co=localStorage.getItem('dch_owner_mode')==='active'}catch(e){}if(co||cc==='essential'){sg('consent','update',{ad_storage:'denied',analytics_storage:'denied',ad_user_data:'denied',ad_personalization:'denied'});window.__dch_consent_applied='essential'}else if(cc==='all'&&!co){sg('consent','update',{ad_storage:'granted',analytics_storage:'granted',ad_user_data:'granted',ad_personalization:'granted'});window.__dch_consent_applied='all'}else if(window.__dch_banner_needed===false&&!co){sg('consent','update',{analytics_storage:'granted'})}else if(window.__dch_banner_needed===true&&!co){sg('consent','update',{ad_storage:'denied',analytics_storage:'denied',ad_user_data:'denied',ad_personalization:'denied'});window.__dch_consent_applied='denied_by_region'}}}return r}}catch(e){}})();</script>
+  <script src="/owner-mode.js?v=2026.3" defer></script>
     <!-- Google Consent Mode v2 Region-Aware Default State -->
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -80,10 +81,13 @@
   </script>
 
   <!-- Google Fonts & FontAwesome -->
+  <link rel="preload" as="image" href="/assets/img/hero-riyadh-mobile.webp" media="(max-width: 767px)" fetchpriority="high">
+  <link rel="preload" as="image" href="/assets/img/hero-riyadh-desktop.webp" media="(min-width: 768px)" fetchpriority="high">
+  <link rel="preload" href="/theme.css?v=2026.3" as="style">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"></noscript>
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
 
   <!-- Schema.org JSON-LD -->
   <script type="application/ld+json">
@@ -128,8 +132,8 @@
       --bg-white: #ffffff;
       --navy-dark: #0f172a;
       --navy-footer: #081024;
-      --blue-primary: #0284c7;
-      --blue-hover: #0369a1;
+      --blue-primary: #0369a1;
+      --blue-hover: #075985;
       --green-saudi: #059669;
       --green-saudi-dark: #064e3b;
       --border-light: #e2e8f0;
@@ -212,7 +216,7 @@
       color: #0f172a;
     }
     .logo-title span {
-      color: #0284c7;
+      color: #0369a1;
     }
     .logo-subtitle {
       font-size: 11px;
@@ -241,10 +245,10 @@
       padding: 8px 0;
     }
     .nav-link-item:hover {
-      color: #0284c7;
+      color: #0369a1;
     }
     .nav-link-item.active {
-      color: #0284c7;
+      color: #0369a1;
       font-weight: 700;
     }
     .nav-link-item.active::after {
@@ -254,7 +258,7 @@
       left: 0;
       width: 100%;
       height: 3px;
-      background: #0284c7;
+      background: #0369a1;
       border-radius: 2px;
     }
 
@@ -323,12 +327,17 @@
     .hero-saudi-section {
       position: relative;
       background: linear-gradient(135deg, rgba(8, 20, 44, 0.88) 0%, rgba(15, 30, 65, 0.82) 50%, rgba(6, 15, 35, 0.92) 100%),
-                  url('https://images.unsplash.com/photo-1586724237569-f3d0c1dee8c6?q=80&w=1600&auto=format&fit=crop');
+                  url('/assets/img/hero-riyadh-desktop.webp');
       background-size: cover;
       background-position: center 35%;
       color: #ffffff;
       padding: 60px 0 65px 0;
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    @media (max-width: 767px) {
+      .hero-saudi-section {
+        background-image: linear-gradient(135deg, rgba(8, 20, 44, 0.88) 0%, rgba(15, 30, 65, 0.82) 50%, rgba(6, 15, 35, 0.92) 100%), url('/assets/img/hero-riyadh-mobile.webp');
+      }
     }
     .hero-grid {
       display: grid;
@@ -623,9 +632,9 @@
       border: 1px solid #bae6fd;
     }
     .card-prayer:hover { box-shadow: 0 12px 24px rgba(2, 132, 199, 0.12); }
-    .card-prayer .card-num-circle { background: #0284c7; }
-    .card-prayer .card-icon-box { background: #0284c7; }
-    .card-prayer .card-use-btn { background: #0284c7; }
+    .card-prayer .card-num-circle { background: #0369a1; }
+    .card-prayer .card-icon-box { background: #0369a1; }
+    .card-prayer .card-use-btn { background: #0369a1; }
 
     /* CARD 3: Salary (Purple) */
     .card-salary {
@@ -655,7 +664,7 @@
     .card-everyday:hover { box-shadow: 0 12px 24px rgba(14, 165, 233, 0.12); }
     .card-everyday .card-num-circle { background: #0ea5e9; }
     .card-everyday .card-icon-box { background: #0ea5e9; }
-    .card-everyday .card-use-btn { background: #0284c7; }
+    .card-everyday .card-use-btn { background: #0369a1; }
 
     /* CARD 6: SIP (Amber/Brown) */
     .card-sip {
@@ -739,7 +748,7 @@
       width: 22px;
       height: 22px;
       border-radius: 50%;
-      background: #0284c7;
+      background: #0369a1;
       color: #ffffff;
       font-size: 11.5px;
       font-weight: 800;
@@ -804,7 +813,7 @@
       font-size: 16px;
     }
     .val-icon-green { color: #16a34a; }
-    .val-icon-blue { color: #0284c7; }
+    .val-icon-blue { color: #0369a1; }
     .val-icon-dark { color: #0f172a; }
     .val-icon-red { color: #e11d48; }
 
@@ -924,7 +933,7 @@
       flex-wrap: wrap;
       gap: 16px;
       font-size: 13px;
-      color: #64748b;
+      color: #94a3b8;
     }
     .footer-legal-links {
       display: flex;
@@ -1082,7 +1091,7 @@
       background: #f8fafc;
     }
     .site-search-icon {
-      color: #0284c7;
+      color: #0369a1;
       font-size: 18px;
       flex-shrink: 0;
     }
@@ -1103,7 +1112,7 @@
       width: 32px;
       height: 32px;
       border-radius: 50%;
-      color: #64748b;
+      color: #94a3b8;
       cursor: pointer;
       display: flex;
       align-items: center;
@@ -1140,7 +1149,7 @@
     }
     .search-quick-chip:hover {
       background: #e0f2fe;
-      color: #0284c7;
+      color: #0369a1;
       border-color: #bae6fd;
     }
     .search-result-item {
@@ -1212,7 +1221,7 @@
       }
     }
   </style>
-  <link rel="stylesheet" href="/theme.css?v=2026.2">
+  <link rel="stylesheet" href="/theme.css?v=2026.3">
 </head>
 <body>
 
@@ -1255,7 +1264,7 @@
           <i class="fas fa-chevron-right mega-tab-arrow"></i>
         </button>
         <button type="button" class="mega-cat-tab" role="tab" id="tab-prayer" aria-selected="false" aria-controls="panel-prayer" data-cat="prayer" tabindex="-1">
-          <span class="mega-cat-icon-badge" style="background:#f0f9ff; color:#0284c7; border:1px solid #bae6fd;">
+          <span class="mega-cat-icon-badge" style="background:#f0f9ff; color:#0369a1; border:1px solid #bae6fd;">
             <i class="fas fa-mosque"></i>
           </span>
           <span class="mega-cat-tab-title">Prayer & Religious</span>
@@ -1336,7 +1345,7 @@
         <div class="mega-category-panel" id="panel-prayer" role="tabpanel" aria-labelledby="tab-prayer">
           <div class="mega-panel-header">
             <div class="mega-panel-title-group">
-              <span class="mega-cat-icon-badge" style="background:#f0f9ff; color:#0284c7; border:1px solid #bae6fd; width:32px; height:32px; font-size:14px;">
+              <span class="mega-cat-icon-badge" style="background:#f0f9ff; color:#0369a1; border:1px solid #bae6fd; width:32px; height:32px; font-size:14px;">
                 <i class="fas fa-mosque"></i>
               </span>
               <div>
@@ -1465,7 +1474,7 @@
       <!-- Bottom Status & Quick Link Bar -->
       <div class="mega-menu-footer">
         <div class="mega-footer-count">
-          <i class="fas fa-layer-group" style="color: #0284c7;"></i>
+          <i class="fas fa-layer-group" style="color: #0369a1;"></i>
           <span>55 Calculators & Tools</span>
         </div>
         <a href="#popular-calculators" class="mega-footer-link" onclick="closeExploreDropdown()">
@@ -1547,11 +1556,11 @@
     <div class="mobile-nav-drawer">
       <div class="mobile-nav-header">
         <div class="mobile-logo-group">
-          <div class="logo-icon-box" style="width:34px;height:34px;font-size:15px;background:#0284c7;color:#fff;border-radius:10px;display:flex;align-items:center;justify-content:center;">
+          <div class="logo-icon-box" style="width:34px;height:34px;font-size:15px;background:#0369a1;color:#fff;border-radius:10px;display:flex;align-items:center;justify-content:center;">
             <img src="/favicon.svg" alt="DailyCalcHubs Logo" width="34" height="34" style="display:block; width:34px; height:34px; object-fit:contain;" loading="eager" decoding="async">
           </div>
           <div class="logo-text-group">
-            <span class="logo-title" style="font-size:18px;font-weight:800;color:#0f172a;">DailyCalc<span style="color:#0284c7;">Hubs</span></span>
+            <span class="logo-title" style="font-size:18px;font-weight:800;color:#0f172a;">DailyCalc<span style="color:#0369a1;">Hubs</span></span>
           </div>
         </div>
         <div class="mobile-header-actions">
@@ -1575,7 +1584,7 @@
           <div class="mobile-accordion-item" data-cat="remittance">
             <button type="button" class="mobile-accordion-header" aria-expanded="false">
               <div class="mobile-acc-title-group">
-                <span class="mobile-acc-icon" style="background:#ecfdf5; color:#059669; border:1px solid #a7f3d0;">
+                <span class="mobile-acc-icon" style="background:#ecfdf5; color:#047857; border:1px solid #a7f3d0;">
                   <i class="fas fa-money-bill-transfer"></i>
                 </span>
                 <span class="mobile-acc-title">Remittance &amp; Forex</span>
@@ -1639,7 +1648,7 @@
           <div class="mobile-accordion-item" data-cat="everyday">
             <button type="button" class="mobile-accordion-header" aria-expanded="false">
               <div class="mobile-acc-title-group">
-                <span class="mobile-acc-icon" style="background:#f0f9ff; color:#0284c7; border:1px solid #bae6fd;">
+                <span class="mobile-acc-icon" style="background:#f0f9ff; color:#0369a1; border:1px solid #bae6fd;">
                   <i class="fas fa-calculator"></i>
                 </span>
                 <span class="mobile-acc-title">Everyday Smart Tools</span>
@@ -1709,6 +1718,8 @@
       </div>
     </div>
   </div>
+
+  <main>
 
   <!-- ================= 3. HERO SECTION ================= -->
   <section class="hero-saudi-section">
@@ -1998,6 +2009,8 @@
   </section>
 
   <!-- ================= 7. FOOTER (EXACT SCREENSHOT) ================= -->
+  </main>
+
   <footer class="site-footer">
     <div class="container">
       
@@ -2375,7 +2388,7 @@
       white-space: nowrap;
     }
     .cookie-btn-primary {
-      background: #0284c7;
+      background: #0369a1;
       color: #ffffff;
     }
     .cookie-btn-primary:hover {
@@ -2421,9 +2434,9 @@
       });
     });
   </script>
-  <script src="/theme.js" defer></script>
+  <script src="/theme.js?v=2026.3" defer></script>
 
   <!-- Hierarchical Navigation & Mobile Drawer Controller -->
-  <script src="/mobile-nav.js" defer></script>
+  <script src="/mobile-nav.js?v=2026.3" defer></script>
 </body>
 </html>
